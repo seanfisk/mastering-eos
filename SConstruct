@@ -9,6 +9,9 @@ env = Environment(ENV=os.environ)
 # Use LuaTeX instead of pdfTeX.
 env.Replace(PDFLATEX='lualatex')
 
+# Use Biber instead of BiBTeX.
+env.Replace(BIBTEX='biber')
+
 # Shell escape. Needed by minted and dot2tex to name a few.
 # env.AppendUnique(PDFLATEXFLAGS='-shell-escape')
 
