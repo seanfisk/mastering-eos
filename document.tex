@@ -1,6 +1,34 @@
+\RequirePackage[l2tabu,orthodox]{nag}
 \documentclass{article}
-\title{Just A Simple Hello World}
-\author{Sean Fisk}
+% Uncomment to use the KOMA-Script scrartcl class. This allows things such as a subtitle.
+% \documentclass{scrartcl}
+% If you use the above, uncomment this to use the same font as the `article' class.
+% \setkomafont{disposition}{\normalfont\bfseries}
+
+\usepackage{microtype}
+% Uncomment if using references.
+% \usepackage{csquotes}
+% \usepackage[backend=biber,style=authoryear]{biblatex}
+% \addbibresource{citations.bib}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\newcommand{\mailtohref}[1]{\href{mailto:#1}{$<$\nolinkurl{#1}$>$}}
+
+\title{Just a \LaTeX template}
+\author{Sean Fisk \mailtohref{sean@seanfisk.com}}
+
 \begin{document}
 \maketitle
+
+% Uncomment if using references.
+% \printbibliography
+
 \end{document}
+
+% Change `document' below to the name of this file without the `.tex'
+% suffix for use with AUCTeX in Emacs.
+
+%%% Local Variables:
+%%% TeX-master: "document"
+%%% End:
