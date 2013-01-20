@@ -9,9 +9,6 @@ env = Environment(ENV=os.environ)
 # Use LuaTeX instead of pdfTeX.
 env.Replace(PDFLATEX='lualatex')
 
-# Crash immediately on error.
-env.AppendUnique(PDFLATEXFLAGS='-halt-on-error')
-
 # Shell escape. Needed by minted and dot2tex to name a few.
 # env.AppendUnique(PDFLATEXFLAGS='-shell-escape')
 
