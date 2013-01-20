@@ -36,3 +36,6 @@
 
 # SCons database.
 .sconsign.dblite
+
+# Ignore rope projects.
+.ropeproject
