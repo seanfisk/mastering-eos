@@ -3,8 +3,7 @@
 
 import os
 
-# Inherit the current environment. Just makes a lot of things much easier.
-env = Environment(ENV=os.environ)
+env = Environment()
 
 # Use LuaTeX instead of pdfTeX.
 env.Replace(PDFLATEX='lualatex')
