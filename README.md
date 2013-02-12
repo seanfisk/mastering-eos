@@ -18,3 +18,7 @@ such as:
 To see how I use this template to build my PDFs from [Emacs][emacs], please take a look at the [TeX section of my Emacs configuration][sean-tex-emacs].
 
 [sean-tex-emacs]: https://github.com/seanfisk/emacs/blob/sean/personal/personal-tex.el
+
+**Note:** This template supports multi-file documents. If you change
+  the name of the main document (i.e., `document.tex`), be sure to
+  change the `TeX-master` directory variable in `.dir-locals.el`.
