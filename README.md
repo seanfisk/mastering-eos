@@ -6,6 +6,7 @@ such as:
 * Use of [LuaTeX][luatex] instead of [pdfTeX][pdftex].
 * Use of [Biber][biber] instead of [BiBTeX][bibtex].
 * Use of [Emacs][emacs] and [AUCTeX][auctex] for editing the document.
+* Use of [Skim][skim] with [SyncTeX][synctex] for document viewing.
 
 [scons]: http://scons.org/
 [luatex]: http://www.luatex.org/
@@ -14,6 +15,8 @@ such as:
 [bibtex]: http://www.ctan.org/pkg/bibtex
 [emacs]: http://www.gnu.org/software/emacs/
 [auctex]: http://www.gnu.org/software/auctex/
+[skim]: http://skim-app.sourceforge.net/index.html
+[synctex]: http://mactex-wiki.tug.org/wiki/index.php/SyncTeX
 
 To see how I use this template to build my PDFs from [Emacs][emacs], please take a look at the [TeX section of my Emacs configuration][sean-tex-emacs].
 
