@@ -32,7 +32,7 @@
 *.xdy
 
 # Ignore PDF outputs as well.
-*.pdf
+document.pdf
 
 # SCons database.
 .sconsign.dblite
