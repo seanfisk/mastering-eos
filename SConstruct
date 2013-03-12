@@ -3,7 +3,12 @@
 
 import os
 
-env = Environment(ENV={'PATH': os.environ['PATH']})
+# Use this to inherit the PATH environmental variable if necessary.
+#
+# This will be necessary, e.g., for finding pygmentize for minted installed in
+# the Python user directory (e.g., ~/.local).
+# env = Environment(ENV={'PATH': os.environ['PATH']})
+env = Environment()
 
 # Use LuaTeX instead of pdfTeX.
 env.Replace(PDFLATEX='lualatex')
