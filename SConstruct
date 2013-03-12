@@ -3,7 +3,7 @@
 
 import os
 
-env = Environment()
+env = Environment(ENV={'PATH': os.environ['PATH']})
 
 # Use LuaTeX instead of pdfTeX.
 env.Replace(PDFLATEX='lualatex')
