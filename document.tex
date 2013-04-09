@@ -18,7 +18,7 @@
 \usepackage{hyperref}
 \hypersetup{hidelinks}
 
-\newcommand{\mailtohref}[1]{\href{mailto:#1}{$<$\nolinkurl{#1}$>$}}
+\newcommand{\mailtohref}[1]{\urlstyle{same}\href{mailto:#1}{\textless\nolinkurl{#1}\textgreater}}
 
 \title{Just a \LaTeX template}
 \author{Sean Fisk \mailtohref{sean@seanfisk.com}}
