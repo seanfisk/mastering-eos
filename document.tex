@@ -1,9 +1,13 @@
+% -*- coding: utf-8; -*-
 \RequirePackage[l2tabu,orthodox]{nag}
 \documentclass{article}
 % Uncomment to use the KOMA-Script scrartcl class. This allows things such as a subtitle.
 % \documentclass{scrartcl}
 % If you use the above, uncomment this to use the same font as the `article' class.
 % \setkomafont{disposition}{\normalfont\bfseries}
+
+% Just loading fontspec should cause LuaLaTeX to pick a font that can display Unicode characters.
+\usepackage{fontspec}
 
 \usepackage{microtype}
 % Uncomment if using references.
