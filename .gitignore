@@ -30,9 +30,13 @@
 *.toc
 *.vrb
 *.xdy
+*.fls
+
+# AUCTeX junk
+/auto
 
 # Ignore PDF outputs as well.
-document.pdf
+eos-cheatsheet.pdf
 
 # SCons database.
 .sconsign.dblite

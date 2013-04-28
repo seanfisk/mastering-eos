@@ -1,0 +1,50 @@
+Generating an SSH key
+
+Checking quota (human readable with quota -s)
+
+If a user is logged on... Ctrl-Alt-Backspace to kill the X server.
+
+List of editors
+- Emacs
+- Vim
+- etc.
+
+Emacs commands
+
+Vim commands
+
+Local install of programs
+
+Parallel make
+
+C/C++ build systems
+- make
+- CMake
+- SCons
+
+Java build systems
+- Ant
+- Maven
+- Buildr
+
+xclip
+
+axel/curl/wget
+
+tmux
+
+Changing your password
+
+Web frameworks that can be used
+- PHP
+  - Wordpress
+  - Drupal
+- Static HTML
+  - Octopress
+
+Version control systems
+- git
+- subversion
+
+users
+w, last, users, Sean's finduser script

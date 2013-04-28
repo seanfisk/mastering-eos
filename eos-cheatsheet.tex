@@ -1,0 +1,57 @@
+% -*- coding: utf-8; -*-
+% \RequirePackage[l2tabu,orthodox]{nag}
+\documentclass{beamer}
+\mode<presentation>
+{
+  \usetheme{EOS}
+}
+\graphicspath{{images/}}
+
+% Just loading fontspec should cause LuaLaTeX to pick a font that can display most Unicode characters.
+\usepackage{fontspec}
+
+\usepackage{microtype}
+% Uncomment if using references.
+% \usepackage{csquotes}
+% \usepackage[backend=biber,style=authoryear]{biblatex}
+% \addbibresource{citations.bib}
+
+\usepackage[orientation=portrait,size=a1,scale=1.4,grid,debug]{beamerposter}
+
+% Uncomment if using dot2tex.
+% \usepackage{dot2texi}
+% \usepackage{tikz} % For dot2texi
+% \usetikzlibrary{shapes,arrows} % For dot2texi
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\newcommand{\mailtohref}[1]{\urlstyle{same}\href{mailto:#1}{\textless\nolinkurl{#1}\textgreater}}
+
+\title{Mastering EOS}
+\author[Woodring \& Fisk]{Ira Woodring \mailtohref{woodriir@gvsu.edu} \\
+  Sean Fisk \mailtohref{fiskse@mail.gvsu.edu}}
+\institute[GVSU]{Grand Valley State University}
+
+\begin{document}
+\begin{frame}{}
+  \vfill
+  \begin{block}{\large Fontsizes}
+    \centering
+    {\tiny tiny}\par
+    {\scriptsize scriptsize}\par
+    {\footnotesize footnotesize}\par
+    {\normalsize normalsize}\par
+    {\large large}\par
+    {\Large Large}\par
+    {\LARGE LARGE}\par
+    {\veryHuge veryHuge}\par
+    {\VeryHuge VeryHuge}\par
+    {\VERYHuge VERYHuge}\par
+  \end{block}
+  \vfill
+\end{frame}
+
+% Uncomment if using references.
+% \printbibliography
+
+\end{document}

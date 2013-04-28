@@ -36,5 +36,5 @@ env.AppendUnique(PDFLATEXFLAGS='-synctex=1')
 # Look in standard directory ~/texmf for .sty files.
 env.SetDefault(TEXMFHOME=os.path.join(os.environ['HOME'], 'texmf'))
 
-pdf = env.PDF('document.tex')
+pdf = env.PDF('eos-cheatsheet.tex')
 Default(pdf)
