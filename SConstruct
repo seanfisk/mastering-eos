@@ -17,8 +17,7 @@ import os
 #
 # This will be necessary, e.g., for finding pygmentize for minted installed in
 # the Python user directory (e.g., ~/.local).
-# env = Environment(ENV={'PATH': os.environ['PATH']})
-env = Environment()
+env = Environment(ENV={'PATH': os.environ['PATH']})
 
 # Use LuaTeX instead of pdfTeX.
 env.Replace(PDFLATEX='lualatex')
@@ -31,7 +30,7 @@ env.Replace(BIBTEX='biber')
 env.AppendUnique(PDFLATEXFLAGS='-synctex=1')
 
 # Shell escape. Needed by minted and dot2tex to name a few.
-# env.AppendUnique(PDFLATEXFLAGS='-shell-escape')
+env.AppendUnique(PDFLATEXFLAGS='-shell-escape')
 
 # Look in standard directory ~/texmf for .sty files.
 env.SetDefault(TEXMFHOME=os.path.join(os.environ['HOME'], 'texmf'))

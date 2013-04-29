@@ -7,6 +7,8 @@
 }
 \graphicspath{{images/}}
 
+\usepackage{minted}
+
 % Just loading fontspec should cause LuaLaTeX to pick a font that can display most Unicode characters.
 \usepackage{fontspec}
 
@@ -16,14 +18,14 @@
 % \usepackage[backend=biber,style=authoryear]{biblatex}
 % \addbibresource{citations.bib}
 
-\usepackage[orientation=portrait,size=a1,scale=1.4,grid,debug]{beamerposter}
+\usepackage[orientation=landscape,size=a1,scale=1.4]{beamerposter}
 
 % Uncomment if using dot2tex.
 % \usepackage{dot2texi}
 % \usepackage{tikz} % For dot2texi
 % \usetikzlibrary{shapes,arrows} % For dot2texi
-\usepackage{hyperref}
-\hypersetup{hidelinks}
+% \usepackage{hyperref}
+% \hypersetup{hidelinks}
 
 \newcommand{\mailtohref}[1]{\urlstyle{same}\href{mailto:#1}{\textless\nolinkurl{#1}\textgreater}}
 
@@ -33,20 +35,24 @@
 \institute[GVSU]{Grand Valley State University}
 
 \begin{document}
-\begin{frame}{}
+\begin{frame}[fragile]{}
+  % \vfill
+  % \begin{block}{\large Fontsizes}
+  %   \centering
+  %   {\tiny tiny}\par
+  %   {\scriptsize scriptsize}\par
+  %   {\footnotesize footnotesize}\par
+  %   {\normalsize normalsize}\par
+  %   {\large large}\par
+  %   {\Large Large}\par
+  %   {\LARGE LARGE}\par
+  %   {\veryHuge veryHuge}\par
+  %   {\VeryHuge VeryHuge}\par
+  %   {\VERYHuge VERYHuge}\par
+  % \end{block}
   \vfill
-  \begin{block}{\large Fontsizes}
-    \centering
-    {\tiny tiny}\par
-    {\scriptsize scriptsize}\par
-    {\footnotesize footnotesize}\par
-    {\normalsize normalsize}\par
-    {\large large}\par
-    {\Large Large}\par
-    {\LARGE LARGE}\par
-    {\veryHuge veryHuge}\par
-    {\VeryHuge VeryHuge}\par
-    {\VERYHuge VERYHuge}\par
+  \begin{block}{\large Inter-EOS Password-less SSH}
+    \inputminted{bash}{scripts/ssh.bash}
   \end{block}
   \vfill
 \end{frame}
