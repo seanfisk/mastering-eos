@@ -55,20 +55,20 @@
       %   {\VERYHuge VERYHuge}\par
       % \end{block}
       \vfill
-      \begin{block}{\large Inter-EOS Password-less SSH}
+      \begin{block}{Inter-EOS Password-less SSH}
         \inputminted[tabsize=2]{bash}{scripts/ssh.bash}
         \bigskip
         For more security, use a passphrase and \texttt{ssh-agent}.
       \end{block}
       \vfill
-      \begin{block}{\large Checking quota}
+      \begin{block}{Checking quota}
         \begin{minted}[gobble=10]{bash}
           quota --human-readable # or
           quota -s
         \end{minted}
       \end{block}
       \vfill
-      \begin{block}{\large Run \texttt{make} faster by using all processors}
+      \begin{block}{Run \texttt{make} faster by using all processors}
         \mint{bash}/make --jobs="$(grep '^processor' | wc --lines)"/
         % Emacs AUCTeX thinks we're in math mode because of the $ in the above code.
         % The one in this comment sets it straight.
@@ -76,14 +76,14 @@
     \end{column}
     \begin{column}{0.49\textwidth}
       \vfill
-      \begin{block}{\large Downloading files}
+      \begin{block}{Downloading files}
         \begin{minted}[gobble=10]{bash}
           wget 'http://cis.gvsu.edu/Facilities/eosLabs/'
           curl 'http://cis.gvsu.edu/Facilities/eosLabs/' > index.html
         \end{minted}
       \end{block}
       \vfill
-      \begin{block}{\large Miscellaneous}
+      \begin{block}{Miscellaneous}
         \begin{itemize}
         \item If a user is already logged on to a machine, press \command{Ctrl-Alt-Backspace} to kill the X server and log them out.
         \item Change your password with \command{passwd}.
@@ -98,6 +98,23 @@
           copy eos.txt
           paste > eos.txt
         \end{minted}
+      \end{block}
+      \vfill
+      \begin{block}{Software build systems}
+        \begin{itemize}
+        \item C/C++
+          \begin{itemize}
+          \item make (\url{http://gnu.org/s/make/})
+          \item CMake (\url{http://cmake.org/})
+          \item SCons (\url{http://scons.org/})
+          \end{itemize}
+        \item Java
+          \begin{itemize}
+          \item Ant (\url{http://ant.apache.org/})
+          \item Maven (\url{http://maven.apache.org/})
+          \item Buildr (\url{http://buildr.apache.org/})
+          \end{itemize}
+        \end{itemize}
       \end{block}
     \end{column}
   \end{columns}

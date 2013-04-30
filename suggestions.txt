@@ -17,12 +17,12 @@ Local install of programs
 
 X Parallel make
 
-C/C++ build systems
+X C/C++ build systems
 - make
 - CMake
 - SCons
 
-Java build systems
+X Java build systems
 - Ant
 - Maven
 - Buildr
