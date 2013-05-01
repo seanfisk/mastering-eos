@@ -19,6 +19,8 @@ X Parallel make
 
 X C/C++ build systems
 - make
+	- especially with configuration of the prefix.  Students often don't
+	  get that.
 - CMake
 - SCons
 
@@ -36,6 +38,7 @@ tmux
 X Changing your password
 
 Web frameworks that can be used
+- .htaccess changes they must make
 - PHP
   - Wordpress
   - Drupal
