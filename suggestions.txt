@@ -1,8 +1,8 @@
-Generating an SSH key
+X Generating an SSH key
 
-Checking quota (human readable with quota -s)
+X Checking quota (human readable with quota -s)
 
-If a user is logged on... Ctrl-Alt-Backspace to kill the X server.
+X If a user is logged on... Ctrl-Alt-Backspace to kill the X server.
 
 List of editors
 - Emacs
@@ -15,27 +15,27 @@ Vim commands
 
 Local install of programs
 
-Parallel make
+X Parallel make
 
-C/C++ build systems
+X C/C++ build systems
 - make
 	- especially with configuration of the prefix.  Students often don't
 	  get that.
 - CMake
 - SCons
 
-Java build systems
+X Java build systems
 - Ant
 - Maven
 - Buildr
 
-xclip
+X xclip
 
-axel/curl/wget
+X axel/curl/wget
 
 tmux
 
-Changing your password
+X Changing your password
 
 Web frameworks that can be used
 - .htaccess changes they must make
