@@ -13,6 +13,8 @@
 % Just loading fontspec should cause LuaLaTeX to pick a font that can display most Unicode characters.
 \usepackage{fontspec}
 
+\usepackage{tabu}
+
 \usepackage{microtype}
 % Uncomment if using references.
 % \usepackage{csquotes}
@@ -63,6 +65,20 @@
         % Emacs AUCTeX thinks we're in math mode because of the $ in the above code.
         % The one in this comment sets it straight.
       \end{block}
+      \begin{block}{Multiple terminals}
+        As an alternative to opening multiple terminals running \texttt{ssh} or multiple PuTTY windows, terminal multiplexers such as \texttt{screen} and \texttt{tmux} may be used. \texttt{tmux} is recommended. Type \command{tmux} once SSH'd to start it. \\
+        \textbf{Default \texttt{tmux} bindings:} \\
+        {\newcommand{\key}[1]{\texttt{C-b #1}}
+          \command{C-b c} means \command{Control + b}, then \command{c}.
+        \begin{tabu} to 0.9\linewidth { X[2] X X[2] X }
+          \hline
+          New window & \key{c} & Kill window & \key{\&} \\ \hline
+          Last window & \key{l} & Jump to window 4 & \key{4} \\ \hline
+          Next window & \key{n} & Previous window & \key{p} \\ \hline
+          Enter copy mode & \key{[} & Paste buffer & \key{]} \\ \hline
+        \end{tabu}
+      }
+    \end{block}
     \end{column}
     \begin{column}{0.33\textwidth}
 
