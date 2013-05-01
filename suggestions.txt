@@ -33,7 +33,7 @@ X xclip
 
 X axel/curl/wget
 
-tmux
+X tmux
 
 X Changing your password
 
