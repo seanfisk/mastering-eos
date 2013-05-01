@@ -36,4 +36,6 @@ env.AppendUnique(PDFLATEXFLAGS='-shell-escape')
 env.SetDefault(TEXMFHOME=os.path.join(os.environ['HOME'], 'texmf'))
 
 pdf = env.PDF('eos-cheatsheet.tex')
-Default(pdf)
+env.Depends(pdf, 'beamerthemeEOS.sty')
+env.Depends(pdf, env.Glob('scripts/*'))
+env.Default(pdf)
