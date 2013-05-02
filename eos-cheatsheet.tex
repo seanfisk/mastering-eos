@@ -57,8 +57,8 @@
       %   {\VERYHuge VERYHuge}\par
       % \end{block}
       \begin{block}{Inter-EOS Password-less SSH}
-        {\tiny \inputminted[tabsize=2]{bash}{scripts/ssh.bash}}
-        {\footnotesize For more security, use a passphrase and \texttt{ssh-agent}.}
+        {\scriptsize \inputminted[tabsize=2]{bash}{scripts/ssh.bash}}
+        For more security, use a passphrase and \texttt{ssh-agent}.
       \end{block}
       \begin{block}{Run \texttt{make} faster by using all processors}
         \mint{bash}/make --jobs="$(grep '^processor' | wc --lines)"/
@@ -81,7 +81,10 @@
     \end{block}
     \end{column}
     \begin{column}{0.33\textwidth}
-
+      \begin{block}{Installing software to your EOS account}
+        Installs version 1.17.0 of aria2, the ``next generation download utility.'' This install is typical of many programs using the GNU build system. The option of note is the \texttt{--prefix} option to \texttt{./configure}. You may install to any directory you like, but \url{\~/.local} is somewhat of a convention. \\
+        {\scriptsize \inputminted[tabsize=2]{bash}{scripts/install-aria2.bash}}
+      \end{block}
     \end{column}
     \begin{column}{0.33\textwidth}
       \begin{block}{Downloading files}

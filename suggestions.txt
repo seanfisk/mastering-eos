@@ -13,7 +13,7 @@ Emacs commands
 
 Vim commands
 
-Local install of programs
+X Local install of programs
 
 X Parallel make
 

@@ -2,7 +2,9 @@
 ssh-keygen # Press Enter at each prompt
 # Add new SSH key to authorized_keys
 < ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-_trust_host() { ssh -o StrictHostKeyChecking=no -o ConnectTimeout=2 "$1" exit}
+_trust_host() {
+	ssh -o StrictHostKeyChecking=no -o ConnectTimeout=2 "$1" exit
+}
 # Trust all EOS machines
 for i in {1..24}; do _trust_host "eos$(printf '%02d' $i)"; done
 # Trust all Arch machines
