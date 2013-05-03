@@ -61,7 +61,7 @@
         For more security, use a passphrase and \texttt{ssh-agent}.
       \end{block}
       \begin{block}{Run \texttt{make} faster by using all processors}
-        \mint{bash}/make --jobs="$(grep '^processor' | wc --lines)"/
+        \mint{bash}!make --jobs="$(grep '^processor' /proc/cpuinfo | wc --lines)"!
         % Emacs AUCTeX thinks we're in math mode because of the $ in the above code.
         % The one in this comment sets it straight.
       \end{block}
