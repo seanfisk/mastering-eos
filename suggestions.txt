@@ -51,3 +51,5 @@ Version control systems
 
 users
 w, last, users, Sean's finduser script
+
+pushd and popd
