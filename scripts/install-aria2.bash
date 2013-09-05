@@ -3,6 +3,7 @@ cd ~/.local/src
 wget 'http://downloads.sourceforge.net/project/'\
 'aria2/stable/aria2-1.17.0/aria2-1.17.0.tar.gz'
 tar -xf aria2-1.17.0.tar.gz
+cd aria2-1.17.0
 ./configure --prefix ~/.local
 make # builds the program
 make install # installs program to ~/.local/bin
