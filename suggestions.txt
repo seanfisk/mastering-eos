@@ -58,4 +58,4 @@ pushd and popd
 
 setting the PATH
 
-getting help (man and info)
+X getting help (man and info)
