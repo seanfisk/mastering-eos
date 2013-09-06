@@ -59,3 +59,9 @@ pushd and popd
 setting the PATH
 
 X getting help (man and info)
+
+Job management
+- pgrep and pkill
+- ps
+- jobs
+- backgrounding commands (&), fg, and bg
