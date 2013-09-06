@@ -82,6 +82,21 @@
     \end{block}
     \end{column}
     \begin{column}{0.33\textwidth}
+      \begin{block}{Version control systems}
+        Version control systems are used to track changes to a set of files. Their use is considered professional software development practice.
+        \begin{itemize}
+        \item Distributed Version Control Systems (recommended)
+          \begin{itemize}
+          \item Git (git) \url{<git-scm.com>}
+          \item Mercurial (hg) \url{<mercurial.selenic.com>}
+          \end{itemize}
+        \item Centralized Version Control Systems
+          \begin{itemize}
+          \item Subversion (svn) \url{<subversion.apache.org>}
+          \item Concurrent Versions System (cvs) \url{<cvs.nongnu.org>}
+          \end{itemize}
+        \end{itemize}
+      \end{block}
       \begin{block}{Installing software to your EOS account}
         Installs version 1.17.0 of aria2, a download utility similar to wget but with more features. This install is typical of many programs using the GNU build system. The option of note is the \texttt{--prefix} option to \texttt{./configure}. You may install to any directory you like, but \url{\~/.local} is a common convention. \\
         {\scriptsize \inputminted[tabsize=2]{bash}{scripts/install-aria2.bash}}
@@ -116,15 +131,15 @@
         \begin{itemize}
         \item C/C++
           \begin{itemize}
-          \item make (\url{gnu.org/s/make})
-          \item CMake (\url{cmake.org})
-          \item SCons (\url{scons.org})
+          \item make \url{<gnu.org/s/make>}
+          \item CMake \url{<cmake.org>}
+          \item SCons \url{<scons.org>}
           \end{itemize}
         \item Java
           \begin{itemize}
-          \item Ant (\url{ant.apache.org})
-          \item Maven (\url{maven.apache.org})
-          \item Buildr (\url{buildr.apache.org})
+          \item Ant \url{<ant.apache.org>}
+          \item Maven \url{<maven.apache.org>}
+          \item Buildr \url{<buildr.apache.org>}
           \end{itemize}
         \end{itemize}
       \end{block}

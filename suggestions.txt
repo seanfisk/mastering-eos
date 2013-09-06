@@ -45,9 +45,11 @@ Web frameworks that can be used
 - Static HTML
   - Octopress
 
-Version control systems
+X Version control systems
 - git
-- subversion
+- hg
+- svn
+- cvs
 
 users
 w, last, users, Sean's finduser script
