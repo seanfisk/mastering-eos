@@ -55,3 +55,7 @@ users
 w, last, users, Sean's finduser script
 
 pushd and popd
+
+setting the PATH
+
+getting help (man and info)
