@@ -1,3 +1,14 @@
+Definitely
+----------
+
+Setting the PATH
+pushd, popd, and dirs
+w, last, users
+uptime to Misc section
+
+Others
+------
+
 X Generating an SSH key
 
 X Checking quota (human readable with quota -s)
@@ -52,14 +63,7 @@ X Version control systems
 - svn
 - cvs
 
-users
-w, last, users, Sean's finduser script
-
-pushd, popd, and dirs
-
 autojump?
-
-setting the PATH
 
 X getting help (man and info)
 
