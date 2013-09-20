@@ -3,8 +3,8 @@ Definitely
 
 Setting the PATH
 X pushd, popd, and dirs
-w, last, users
-uptime to Misc section
+X w, last, users
+X uptime to Misc section
 
 Others
 ------

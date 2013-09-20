@@ -117,6 +117,14 @@
       \end{block}
     \end{column}
     \begin{column}{0.33\textwidth}
+      \begin{block}{Interacting with other users}
+        \begin{tabu} to 0.9\linewidth { X X }
+          \texttt{w} & Show system uptime, who is logged in, and what they are doing \\ \hline
+          \texttt{last} & Show login history \\ \hline
+          \texttt{write} & Write a message to another user's terminal \\ \hline
+          \texttt{mesg [yn]} & Enable or disable \texttt{write} access to your terminal
+        \end{tabu}
+      \end{block}
       \begin{block}{Downloading files}
         Download a copy of the W4 form.
         \begin{minted}[gobble=10]{bash}
