@@ -2,7 +2,7 @@ Definitely
 ----------
 
 Setting the PATH
-pushd, popd, and dirs
+X pushd, popd, and dirs
 w, last, users
 uptime to Misc section
 
