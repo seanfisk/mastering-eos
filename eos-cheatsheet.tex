@@ -70,18 +70,16 @@
         \textbf{Default \texttt{tmux} bindings:} \\
         {\newcommand{\key}[1]{\texttt{C-b #1}}
           \textbf{\key{c}} means \command{Control + b}, then \command{c}.
-        \begin{tabu} to 0.9\linewidth { X[2] X X[2] X }
-          \hline
-          New window & \key{c} & Kill window & \key{\&} \\ \hline
-          Last window & \key{l} & Jump to window 4 & \key{4} \\ \hline
-          Next window & \key{n} & Previous window & \key{p} \\ \hline
-          Enter copy mode & \key{[} & Paste buffer & \key{]} \\ \hline
-        \end{tabu} \\[0.5em]
-        \textbf{Warning:} Detached sessions will be killed periodically. Please do not leave important jobs running.
-      }
-    \end{block}
-    \end{column}
-    \begin{column}{0.33\textwidth}
+          \begin{tabu} to 0.9\linewidth { X[2] X X[2] X }
+            \hline
+            New window & \key{c} & Kill window & \key{\&} \\ \hline
+            Last window & \key{l} & Jump to window 4 & \key{4} \\ \hline
+            Next window & \key{n} & Previous window & \key{p} \\ \hline
+            Enter copy mode & \key{[} & Paste buffer & \key{]} \\ \hline
+          \end{tabu} \\[0.5em]
+          \textbf{Warning:} Detached sessions will be killed periodically. Please do not leave important jobs running.
+        }
+      \end{block}
       \begin{block}{Getting help on commands}
         To get help on the \texttt{dd} command...
         \begin{itemize}
@@ -89,6 +87,8 @@
         \item Detailed help: \texttt{info dd}, available for some commands
         \end{itemize}
       \end{block}
+    \end{column}
+    \begin{column}{0.33\textwidth}
       \begin{block}{Version control systems}
         Version control systems are used to track changes to a set of files. Their use is considered professional software development practice.
         \begin{itemize}
@@ -107,6 +107,13 @@
       \begin{block}{Installing software to your EOS account}
         Installs version 1.17.0 of aria2, a download utility similar to wget but with more features. This install is typical of many programs using the GNU build system. The option of note is the \texttt{--prefix} option to \texttt{./configure}. You may install to any directory you like, but \url{\~/.local} is a common convention. \\
         {\scriptsize \inputminted[tabsize=2]{bash}{scripts/install-aria2.bash}}
+      \end{block}
+      \begin{block}{Directory navigation}
+        \begin{tabu} to 0.9\linewidth { X X }
+          \texttt{pushd} \textit{dir} & Switch to \textit{dir} and add the current directory to the directory stack \\ \hline
+          \texttt{popd} & Remove the top directory on the directory stack and switch to it \\ \hline
+          \texttt{dirs} & Show contents of the directory stack
+        \end{tabu}
       \end{block}
     \end{column}
     \begin{column}{0.33\textwidth}
