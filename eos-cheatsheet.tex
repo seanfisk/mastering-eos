@@ -1,6 +1,8 @@
 % -*- coding: utf-8; -*-
+
 % \RequirePackage[l2tabu,orthodox]{nag}
-\documentclass[8pt]{beamer}
+% Note: Font size doesn't do anything here. Use scale in the beamerposter usepackage below.
+\documentclass{beamer}
 \mode<presentation>
 {
   \usetheme{EOS}
@@ -8,27 +10,14 @@
 \graphicspath{{images/}}
 
 \usepackage{minted}
-\newmint{bash}{}
+\newmint{bash}{frame=single}
+\newminted{bash}{gobble=10,frame=single}
 
 % Just loading fontspec should cause LuaLaTeX to pick a font that can display most Unicode characters.
 \usepackage{fontspec}
-
 \usepackage{tabu}
-
 \usepackage{microtype}
-% Uncomment if using references.
-% \usepackage{csquotes}
-% \usepackage[backend=biber,style=authoryear]{biblatex}
-% \addbibresource{citations.bib}
-
-\usepackage[orientation=landscape,size=a1,scale=1.4]{beamerposter}
-
-% Uncomment if using dot2tex.
-% \usepackage{dot2texi}
-% \usepackage{tikz} % For dot2texi
-% \usetikzlibrary{shapes,arrows} % For dot2texi
-% \usepackage{hyperref}
-% \hypersetup{hidelinks}
+\usepackage[orientation=landscape,size=a1,scale=1.2]{beamerposter}
 
 \newcommand{\mailtohref}[1]{\urlstyle{same}\href{mailto:#1}{\textless\nolinkurl{#1}\textgreater}}
 \newcommand{\command}[1]{\textbf{\texttt{#1}}}
@@ -40,7 +29,7 @@
 
 \begin{document}
 \begin{frame}[fragile]{}
-  \begin{columns}
+  \begin{columns}[T]
     \begin{column}{0.33\textwidth}
       % \vfill
       % \begin{block}{\large Fontsizes}
@@ -57,13 +46,19 @@
       %   {\VERYHuge VERYHuge}\par
       % \end{block}
       \begin{block}{Inter-EOS Password-less SSH}
-        {\scriptsize \inputminted[tabsize=2]{bash}{scripts/ssh.bash}}
+        {\scriptsize \inputminted[tabsize=2,frame=single]{bash}{scripts/ssh.bash}}
         For more security, use a passphrase and \texttt{ssh-agent}.
       \end{block}
-      \begin{block}{Run \texttt{make} faster by using all processors}
-        \mint{bash}!make --jobs="$(grep '^processor' /proc/cpuinfo | wc --lines)"!
-        % Emacs AUCTeX thinks we're in math mode because of the $ in the above code.
-        % The one in this comment sets it straight.
+      \begin{block}{Manipulating the PATH}
+        When you type a command, the shell searches for the executable using the \texttt{PATH} environmental variable. \texttt{PATH} should be set to a colon-delimited list of directories containing executables. To view your \texttt{PATH}, type:
+        \begin{bashcode}
+          echo $PATH
+        \end{bashcode}
+        For instance, to add a local scripts directory (conventionally called \url{\~/bin}) to your \texttt{PATH}, run:
+        \begin{bashcode}
+          export PATH=~/bin:$PATH
+        \end{bashcode}
+        Note that this causes the shell to find your scripts before system executables of the same name.
       \end{block}
       \begin{block}{Multiple terminals}
         As an alternative to opening multiple terminals running \texttt{ssh} or multiple PuTTY windows, terminal multiplexers such as \texttt{screen} and \texttt{tmux} may be used. \texttt{tmux} is recommended. Type \command{tmux} once SSH'd to start it. \\
@@ -106,7 +101,7 @@
       \end{block}
       \begin{block}{Installing software to your EOS account}
         Installs version 1.17.0 of aria2, a download utility similar to wget but with more features. This install is typical of many programs using the GNU build system. The option of note is the \texttt{--prefix} option to \texttt{./configure}. You may install to any directory you like, but \url{\~/.local} is a common convention. \\
-        {\scriptsize \inputminted[tabsize=2]{bash}{scripts/install-aria2.bash}}
+        {\scriptsize \inputminted[tabsize=2,frame=single]{bash}{scripts/install-aria2.bash}}
       \end{block}
       \begin{block}{Directory navigation}
         \begin{tabu} to 0.9\linewidth { X X }
@@ -115,8 +110,24 @@
           \texttt{dirs} & Show contents of the directory stack
         \end{tabu}
       \end{block}
+      \begin{block}{Using the clipboard}
+        \begin{bashcode}
+          alias copy='xclip -selection clipboard -in'
+          alias paste='xclip -selection clipboard -out'
+          echo 'EOS Rocks' | copy
+          copy eos.txt
+          paste > eos.txt
+        \end{bashcode}
+      \end{block}
     \end{column}
     \begin{column}{0.33\textwidth}
+      \begin{block}{Downloading files}
+        Download a copy of the W4 form.
+        \begin{bashcode}
+          wget 'http://www.irs.gov/pub/irs-pdf/fw4.pdf'
+          curl 'http://www.irs.gov/pub/irs-pdf/fw4.pdf' > fw4.pdf
+        \end{bashcode}
+      \end{block}
       \begin{block}{Interacting with other users}
         \begin{tabu} to 0.9\linewidth { X X }
           \texttt{w} & Show system uptime, who is logged in, and what they are doing \\ \hline
@@ -125,30 +136,7 @@
           \texttt{mesg [yn]} & Enable or disable \texttt{write} access to your terminal
         \end{tabu}
       \end{block}
-      \begin{block}{Downloading files}
-        Download a copy of the W4 form.
-        \begin{minted}[gobble=10]{bash}
-          wget 'http://www.irs.gov/pub/irs-pdf/fw4.pdf'
-          curl 'http://www.irs.gov/pub/irs-pdf/fw4.pdf' > fw4.pdf
-        \end{minted}
-      \end{block}
-      \begin{block}{Miscellaneous}
-        \begin{itemize}
-        \item If a user is already logged on to a machine, press \command{Ctrl-Alt-Backspace} to kill the X server and log them out.
-        \item Change your password with \command{passwd}.
-        \item Check your quota with \command{quota --human-readable} or \command{quota -s}.
-        \end{itemize}
-      \end{block}
-      \begin{block}{Using the clipboard}
-        \begin{minted}[gobble=10]{bash}
-          alias copy='xclip -selection clipboard -in'
-          alias paste='xclip -selection clipboard -out'
-          echo 'EOS Rocks' | copy
-          copy eos.txt
-          paste > eos.txt
-        \end{minted}
-      \end{block}
-      \begin{block}{Software build systems}
+            \begin{block}{Software build systems}
         Using a build system offers an alternative to repetitively typing compiler commands and is considered professional practice.
         \begin{itemize}
         \item C/C++
@@ -166,11 +154,18 @@
           \end{itemize}
         \end{itemize}
       \end{block}
+            \begin{block}{Run \texttt{make} faster by using all processors}
+        \bash!make --jobs="$(grep '^processor' /proc/cpuinfo | wc --lines)"!
+      \end{block}
+      \begin{block}{Miscellaneous}
+        \begin{itemize}
+        \item If a user is already logged on to a machine, press \command{Ctrl-Alt-Backspace} to kill the X server and log them out.
+        \item Change your password with \command{passwd}.
+        \item Check your quota with \command{quota --human-readable} or \command{quota -s}.
+        \end{itemize}
+      \end{block}
     \end{column}
   \end{columns}
 \end{frame}
-
-% Uncomment if using references.
-% \printbibliography
 
 \end{document}

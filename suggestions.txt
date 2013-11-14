@@ -1,7 +1,7 @@
 Definitely
 ----------
 
-Setting the PATH
+X Setting the PATH
 X pushd, popd, and dirs
 X w, last, users
 X uptime to Misc section
