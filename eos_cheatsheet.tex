@@ -1,0 +1,55 @@
+% -*- coding: utf-8; -*-
+
+% \RequirePackage[l2tabu,orthodox]{nag}
+% Note: Font size doesn't do anything here. Use scale in the beamerposter usepackage below.
+\documentclass{beamer}
+\mode<presentation>
+{
+  \usetheme{EOS}
+}
+\graphicspath{{images/}}
+
+\usepackage{minted}
+\newmint{bash}{frame=single}
+\newminted{bash}{gobble=4,frame=single}
+
+% Just loading fontspec should cause LuaLaTeX to pick a font that can display most Unicode characters.
+\usepackage{fontspec}
+\usepackage{tabu}
+\usepackage{microtype}
+\usepackage[orientation=landscape,size=a1,scale=1.15]{beamerposter}
+
+\newcommand{\mailtohref}[1]{\urlstyle{same}\href{mailto:#1}{\textless\nolinkurl{#1}\textgreater}}
+\newcommand{\command}[1]{\textbf{\texttt{#1}}}
+
+\title{Mastering EOS}
+\author[Woodring \& Fisk]{Ira Woodring \mailtohref{woodriir@gvsu.edu} \\
+  Sean Fisk \mailtohref{fiskse@mail.gvsu.edu}}
+\institute[GVSU]{Grand Valley State University}
+
+\begin{document}
+\begin{frame}[fragile]{}
+  \begin{columns}[T]
+    \begin{column}{0.33\textwidth}
+      \input{blocks/manip_path.tex}
+      \input{blocks/users.tex}
+      \input{blocks/downloading.tex}
+      \input{blocks/inter_eos_ssh.tex}
+    \end{column}
+    \begin{column}{0.33\textwidth}
+      \input{blocks/multiple_terminals.tex}
+      \input{blocks/dir_nav.tex}
+      \input{blocks/clipboard.tex}
+      \input{blocks/installing_software.tex}
+    \end{column}
+    \begin{column}{0.33\textwidth}
+      \input{blocks/vcs.tex}
+      \input{blocks/build_systems.tex}
+      \input{blocks/parallel_make.tex}
+      \input{blocks/getting_help.tex}
+      \input{blocks/misc.tex}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\end{document}

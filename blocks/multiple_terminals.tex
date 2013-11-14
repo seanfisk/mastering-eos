@@ -1,0 +1,15 @@
+\begin{block}{Multiple terminals}
+  As an alternative to opening multiple terminals running \texttt{ssh} or multiple PuTTY windows, terminal multiplexers such as \texttt{screen} and \texttt{tmux} may be used. \texttt{tmux} is recommended. Type \command{tmux} once SSH'd to start it. \\
+  \textbf{Default \texttt{tmux} bindings:} \\
+  {\newcommand{\key}[1]{\texttt{C-b #1}}
+    \textbf{\key{c}} means \command{Control + b}, then \command{c}.
+    \begin{tabu} to 0.9\linewidth { X[2] X X[2] X }
+      \hline
+      New window & \key{c} & Kill window & \key{\&} \\ \hline
+      Last window & \key{l} & Jump to window 4 & \key{4} \\ \hline
+      Next window & \key{n} & Previous window & \key{p} \\ \hline
+      Enter copy mode & \key{[} & Paste buffer & \key{]} \\ \hline
+    \end{tabu} \\[0.5em]
+    \textbf{Warning:} Detached sessions will be killed periodically. Please do not leave important jobs running.
+  }
+\end{block}

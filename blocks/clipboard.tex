@@ -1,0 +1,10 @@
+\begin{block}{Using the clipboard}
+  The X11 clipboard can be accessed through the terminal using a utility called \texttt{xclip}.
+  \begin{bashcode}
+    alias copy='xclip -selection clipboard -in'
+    alias paste='xclip -selection clipboard -out'
+    echo 'EOS Rocks' | copy
+    copy eos.txt
+    paste > eos.txt
+  \end{bashcode}
+\end{block}

@@ -36,7 +36,7 @@
 /auto
 
 # Ignore PDF outputs as well.
-eos-cheatsheet.pdf
+/eos_cheatsheet.pdf
 
 # SCons database.
 .sconsign.dblite
