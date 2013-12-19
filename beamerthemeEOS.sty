@@ -10,7 +10,7 @@
 
 \setbeamercolor{headline}{fg=tabutter,bg=ta2gray}
 \setbeamercolor{footline}{fg=tabutter, bg=ta3gray}
-\setbeamerfont{footline}{size=\large,series=\tt}
+\setbeamerfont{footline}{size=\normalsize}
 \setbeamercolor{separation line}{bg=ta2orange}
 \setbeamercolor{title in headline}{fg=tabutter}
 \setbeamercolor{author in headline}{fg=ta2orange}
@@ -57,14 +57,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{headline}{
   \begin{beamercolorbox}[wd=\textwidth]{headline}
-    \vspace{1em}
+    \vspace{2ex}
     \begin{minipage}{\textwidth}
       % Based on
       % <http://tex.stackexchange.com/questions/55472/how-to-make-text-aligned-left-center-right-in-the-same-line>
       \null\hfill%
       % The `b' is very important. This sends the minipage to the
       % baseline of the surrounding text (the image).
-      \begin{minipage}[b]{0.3\textwidth} \centering
+      \begin{minipage}[b]{0.25\textwidth} \centering
           \usebeamercolor{title in
             headline}{\color{fg}\textbf{\LARGE{\inserttitle}}\\[1ex]}
           \usebeamercolor{author in
@@ -72,49 +72,30 @@
           \usebeamercolor{institute in
             headline}{\color{fg}\large{\insertinstitute}}
         \end{minipage}%
-      \hfill\llap{\includegraphics[width=0.2\textwidth]{gvsu-cis-logo}}\hspace{2em}
+      \hfill\llap{\includegraphics[width=0.2\textwidth]{gvsu-cis-logo}}\hspace{2ex}
     \end{minipage}
-    \vspace{1em}
+    \vspace{2ex}
   \end{beamercolorbox}
 
   \begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
-    \rule{0pt}{5pt}
+    \rule{0pt}{3pt}
   \end{beamercolorbox}
 }
 
-%  \setbeamertemplate{headline}{
-%    \leavevmode
-%    \begin{beamercolorbox}[sep=0.5cm,wd=.8\paperwidth]{headline}
-%      \usebeamercolor{title in headline}{\raggedleft\color{fg}\textbf{\LARGE{\inserttitle}}\\[1ex]}
-%      \usebeamercolor{author in headline}{\raggedleft\color{fg}\large{\insertauthor}\\[1ex]}
-%      \usebeamercolor{institute in headline}{\raggedleft\color{fg}\large{\insertinstitute}\\[1ex]}
-%    \end{beamercolorbox}%
-%    \begin{beamercolorbox}[wd=.2\paperwidth]{logo in headline}
-%      \centering
-%      \LARGE{LOGO}
-%    \end{beamercolorbox}
-
-
-%}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \setbeamertemplate{footline}{
-%   \begin{beamercolorbox}[wd=\paperwidth]{upper separation line foot}
-%     \rule{0pt}{2pt}
-%   \end{beamercolorbox}
+\setbeamertemplate{footline}{
+  \begin{beamercolorbox}[wd=\paperwidth]{upper separation line foot}
+    \rule{0pt}{3pt}
+  \end{beamercolorbox}
 
-%   \leavevmode%
-%   \begin{beamercolorbox}[ht=4ex,leftskip=1cm,rightskip=1cm]{author in head/foot}%
-%     \texttt{http://www-i6.informatik.rwth-aachen.de}
-%     \hfill
-%     \texttt{<surname>@cs.rwth-aachen.de}
-%     \vskip1ex
-%   \end{beamercolorbox}
-%   \vskip0pt%
-%   \begin{beamercolorbox}[wd=\paperwidth]{lower separation line foot}
-%     \rule{0pt}{2pt}
-%   \end{beamercolorbox}
-% }
+  \leavevmode%
+  \begin{beamercolorbox}[ht=2.25ex,dp=1.25ex,leftskip=1cm,rightskip=1cm]{author in head/foot}%
+    \dotfill \usebeamerfont{block blody}for more intersting tips, please see the accompanying manual at \url{http://cis.gvsu.edu/~fiskse/mastering-eos}.\hspace{1ex}
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line foot}
+    \rule{0pt}{3pt}
+  \end{beamercolorbox}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Display a grid to help align images ... and it looks nice with this color scheme
