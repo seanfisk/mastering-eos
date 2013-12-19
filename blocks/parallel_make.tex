@@ -1,4 +1,6 @@
 \begin{block}{Run \texttt{make} faster by using all processors}
   Software which takes longer to compile can be compiled faster by running \texttt{make} in parallel. This command utilizes all processors of the current machine.
-  \bash!make --jobs="$(grep '^processor' /proc/cpuinfo | wc --lines)"!
+  \begin{indented}
+    \bash!make --jobs="$(grep '^processor' /proc/cpuinfo | wc --lines)"!
+  \end{indented}
 \end{block}

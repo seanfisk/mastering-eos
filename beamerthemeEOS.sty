@@ -42,12 +42,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{block begin}{
   \vskip.75ex
-  \begin{beamercolorbox}[ht=3ex,dp=1ex,center,rounded=true,shadow=true,leftskip=1cm,colsep*=.75ex]{block title}%
+  \begin{beamercolorbox}[center,rounded=true,shadow=true,colsep*=.75ex]{block title}%
     \usebeamerfont*{block title}\insertblocktitle
   \end{beamercolorbox}%
   {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
   \usebeamerfont{block body}%
-  \begin{beamercolorbox}[rounded=true,shadow=true,leftskip=1cm,colsep*=.75ex,sep=2ex,vmode]{block body}%
+  \begin{beamercolorbox}[rounded=true,shadow=true,colsep*=.75ex,sep=2ex,vmode]{block body}%
     \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
   }
   \setbeamertemplate{block end}{
@@ -56,39 +56,29 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{headline}{
-  \leavevmode
-
-  \begin{beamercolorbox}[wd=\paperwidth]{headline}
-    \begin{columns}[T]
-      \begin{column}{.02\paperwidth}
-      \end{column}
-      \begin{column}{.07\paperwidth}
-        \begin{center}
-          %\includegraphics[width=.6\linewidth]{logos/i6-hks44}
-        \end{center}
-        \vskip1ex
-      \end{column}
-      \begin{column}{.675\paperwidth}
-        \vskip4ex
-        \raggedleft
-        \usebeamercolor{title in headline}{\color{fg}\textbf{\LARGE{\inserttitle}}\\[1ex]}
-        \usebeamercolor{author in headline}{\color{fg}\large{\insertauthor}\\[1ex]}
-        \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]}
-      \end{column}
-      \begin{column}{.25\paperwidth}
-        \vskip1cm
-        \begin{center}
-          \includegraphics[width=0.85\linewidth]{gvsu-cis-logo}
-        \end{center}
-        \vskip1.5cm
-      \end{column}
-      \begin{column}{.03\paperwidth}
-      \end{column}
-    \end{columns}
+  \begin{beamercolorbox}[wd=\textwidth]{headline}
+    \vspace{1em}
+    \begin{minipage}{\textwidth}
+      % Based on
+      % <http://tex.stackexchange.com/questions/55472/how-to-make-text-aligned-left-center-right-in-the-same-line>
+      \null\hfill%
+      % The `b' is very important. This sends the minipage to the
+      % baseline of the surrounding text (the image).
+      \begin{minipage}[b]{0.3\textwidth} \centering
+          \usebeamercolor{title in
+            headline}{\color{fg}\textbf{\LARGE{\inserttitle}}\\[1ex]}
+          \usebeamercolor{author in
+            headline}{\color{fg}\large{\insertauthor}\\[1ex]}
+          \usebeamercolor{institute in
+            headline}{\color{fg}\large{\insertinstitute}}
+        \end{minipage}%
+      \hfill\llap{\includegraphics[width=0.2\textwidth]{gvsu-cis-logo}}\hspace{2em}
+    \end{minipage}
+    \vspace{1em}
   \end{beamercolorbox}
 
   \begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
-    \rule{0pt}{2pt}
+    \rule{0pt}{5pt}
   \end{beamercolorbox}
 }
 

@@ -11,21 +11,30 @@
 
 \usepackage{minted}
 \newmint{bash}{frame=single}
-\newminted{bash}{gobble=4,frame=single}
+\newminted{bash}{gobble=6,frame=single}
 
 % Just loading fontspec should cause LuaLaTeX to pick a font that can display most Unicode characters.
 \usepackage{fontspec}
 \usepackage{tabu}
+% Add more space to the top and bottom of cells.
+\tabulinesep=0.5em
+
 \usepackage{microtype}
 \usepackage[orientation=landscape,size=a1,scale=1.15]{beamerposter}
 
+% \usepackage{enumitem} % For hanging indents with itemize
+
+\usepackage{changepage} % For the adjustwidth environment
+\usepackage{wrapfig}
+
 \newcommand{\mailtohref}[1]{\urlstyle{same}\href{mailto:#1}{\textless\nolinkurl{#1}\textgreater}}
 \newcommand{\command}[1]{\textbf{\texttt{#1}}}
+% \newenvironment{indented_itemize}{\begin{itemize}\setlength{\itemindent}{2ex}}{\end{itemize}}
+\newenvironment{indented}{\bigskip\begin{adjustwidth}{2ex}{}}{\end{adjustwidth}}
 
 \title{Mastering EOS}
 \author[Woodring \& Fisk]{Ira Woodring \mailtohref{woodriir@gvsu.edu} \\
   Sean Fisk \mailtohref{fiskse@mail.gvsu.edu}}
-\institute[GVSU]{Grand Valley State University}
 
 \begin{document}
 \begin{frame}[fragile]{}
