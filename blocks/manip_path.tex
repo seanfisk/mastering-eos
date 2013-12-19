@@ -1,5 +1,5 @@
 \begin{block}{Manipulating the \texttt{PATH}}
-  When you type a command, the shell searches for the executable using the \texttt{PATH} environmental variable. \texttt{PATH} should be set to a colon-delimited list of directories containing executables. To view your \texttt{PATH}, type:
+  When you execute a command, the shell searches for the executable using the \texttt{PATH} environmental variable. \texttt{PATH} should be set to a colon-delimited list of directories containing executables. To view your \texttt{PATH}, type:
   \begin{indented}
     \begin{bashcode}
       echo $PATH
@@ -11,5 +11,5 @@
       export PATH=~/bin:$PATH
     \end{bashcode}
   \end{indented}
-  Note that this causes the shell to find your scripts before system executables of the same name; however, this is usually preferred. To make this setting persist, consider adding it to the \nolinkurl{~/.bash_profile}.
+  Note that this causes the shell to find your scripts before system executables of the same name; however, this effect is usually desired. To make this setting persist, consider adding it to your \nolinkurl{~/.bash_profile}.
 \end{block}
