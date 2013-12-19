@@ -22,15 +22,18 @@
 \usepackage{microtype}
 \usepackage[orientation=landscape,size=a1,scale=1.13]{beamerposter}
 
-% \usepackage{enumitem} % For hanging indents with itemize
-
 \usepackage{changepage} % For the adjustwidth environment
 \usepackage{wrapfig}
 
 \newcommand{\mailtohref}[1]{\href{mailto:#1}{\nolinkurl{#1}}}
 \newcommand{\command}[1]{\textbf{\texttt{#1}}}
-% \newenvironment{indented_itemize}{\begin{itemize}\setlength{\itemindent}{2ex}}{\end{itemize}}
-\newenvironment{indented}{\bigskip\begin{adjustwidth}{2ex}{}}{\end{adjustwidth}}
+
+% Itemize environments and minted code blocks do not follow the block indent, so we do it manually. It's a hack to be sure, but it works.
+\newlength{\blockinnerindent}
+\setlength{\blockinnerindent}{2em}
+% Wasn't able to succeed in making an environment that does bashcode and indenting. Seems to be some problem with environments and minted.
+\newenvironment{indented}{\bigskip\begin{adjustwidth}{\blockinnerindent}{}}{\end{adjustwidth}}
+\newenvironment{indented_itemize}{\begin{adjustwidth}{\blockinnerindent}{}\begin{itemize}}{\end{itemize}\end{adjustwidth}}
 
 \title{Mastering EOS}
 \author[Woodring \& Fisk]{
