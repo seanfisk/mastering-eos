@@ -4,9 +4,9 @@
     \begin{bashcode}
       alias copy='xclip -selection clipboard -in'
       alias paste='xclip -selection clipboard -out'
-      echo 'EOS Rocks' | copy
-      copy eos.txt
-      paste > eos.txt
+      echo 'EOS Rocks' | copy # set clipboard to 'EOS Rocks'
+      copy < eos.txt # set clipboard to contents of eos.txt
+      paste > eos.txt # write clipboard contents to eos.txt
     \end{bashcode}
   \end{indented}
 \end{block}
