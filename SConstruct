@@ -35,7 +35,7 @@ env.AppendUnique(PDFLATEXFLAGS='-shell-escape')
 # Look in standard directory ~/texmf for .sty files.
 env.SetDefault(TEXMFHOME=os.path.join(os.environ['HOME'], 'texmf'))
 
-pdf = env.PDF('eos_cheatsheet.tex')
+pdf = env.PDF('mastering-eos.tex')
 env.Depends(pdf, 'beamerthemeEOS.sty')
 env.Depends(pdf, env.Glob('scripts/*'))
 env.Depends(pdf, env.Glob('images/*'))

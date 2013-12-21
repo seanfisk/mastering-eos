@@ -2,7 +2,7 @@
 ;;; See Info node `(emacs) Directory Variables' for more information.
 
 ((latex-mode
-  (TeX-master . "eos_cheatsheet")
+  (TeX-master . "mastering-eos")
   (TeX-command-default . "SCons")
   (eval . (add-to-list
            'TeX-style-path
