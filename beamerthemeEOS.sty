@@ -33,7 +33,7 @@
 
 \setbeamercolor{alerted text}{fg=ta3gray}
 
-%\setbeamercolor{example text}{fg=taorange}
+% \setbeamercolor{example text}{fg=taorange}
 \setbeamercolor{structure}{fg=ta3skyblue}
 
 \setbeamertemplate{itemize items}[triangle]
@@ -64,14 +64,12 @@
       \null\hfill%
       % The `b' is very important. This sends the minipage to the
       % baseline of the surrounding text (the image).
-      \begin{minipage}[b]{0.25\textwidth} \centering
-          \usebeamercolor{title in
-            headline}{\color{fg}\textbf{\LARGE{\inserttitle}}\\[1ex]}
-          \usebeamercolor{author in
-            headline}{\color{fg}\large{\insertauthor}\\[1ex]}
-          \usebeamercolor{institute in
-            headline}{\color{fg}\large{\insertinstitute}}
-        \end{minipage}%
+      \begin{minipage}[b]{0.25\textwidth}
+        \centering
+        \usebeamercolor{title in headline}{\color{fg}\textbf{\LARGE{\inserttitle}}\\[1ex]}
+        \usebeamercolor{author in headline}{\color{fg}\large{\insertauthor}\\[1ex]}
+        \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}}
+      \end{minipage}%
       \hfill\llap{\includegraphics[width=0.2\textwidth]{gvsu-cis-logo}}\hspace{2ex}
     \end{minipage}
     \vspace{2ex}
