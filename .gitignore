@@ -43,3 +43,6 @@
 
 # Ignore rope projects.
 .ropeproject
+
+# Ignore pyenv version files.
+/.python-version
