@@ -1,0 +1,42 @@
+# From GitHub LaTeX gitignore.
+*.acn
+*.acr
+*.alg
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.fdb_latexmk
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.lof
+*.log
+*.lot
+*.maf
+*.mtc
+*.mtc0
+*.nav
+*.nlo
+*.out
+*.pdfsync
+*.ps
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.xdy
+*.fls
+
+# AUCTeX junk
+/auto
+
+# Ignore PDF outputs as well.
+/mastering-eos.pdf
+
+# SCons database.
+.sconsign.dblite
