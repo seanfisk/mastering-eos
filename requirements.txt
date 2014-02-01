@@ -1,0 +1,2 @@
+# For minted
+Pygments==1.6
