@@ -1,10 +1,10 @@
 Mastering EOS
 =============
 
-Contents:
-
 .. toctree::
    :maxdepth: 2
+
+   ssh
 
 
 .. only:: html
