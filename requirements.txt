@@ -6,3 +6,8 @@ Sphinx==1.2.1
 Jinja2==2.7.2
 MarkupSafe==0.18
 docutils==0.11
+
+# For the manual's reportlab builder
+rst2pdf==0.93.dev
+reportlab==2.7
+pdfrw==0.1
