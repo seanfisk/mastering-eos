@@ -6,6 +6,7 @@ Mastering EOS
 
    ssh
    winserv
+   databases
 
 .. only:: html
 
