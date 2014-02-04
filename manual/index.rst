@@ -5,7 +5,7 @@ Mastering EOS
    :maxdepth: 2
 
    ssh
-
+   winserv
 
 .. only:: html
 
