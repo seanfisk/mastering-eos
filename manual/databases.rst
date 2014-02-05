@@ -36,3 +36,24 @@ Username:   ``doesj``
 Password:   ``**********``
 
 Do not attempt to use the 'Reset Password' feature on the APEX homepage; it has never worked properly.  If you attempt to use it you will be unable to login until a Systems Administrator can delete and recreate your account.
+
+MSSQL
+=====
+
+Microsoft also provides an enterprise quality database server that we provide.  Microsoft's database is called MSSQL.  We host MSSQL on the Winserv machine, and accounts are granted when needed.
+
+SQLite
+======
+
+The SQLite system is a relational database that can exist in the personal file structure of a project.  SQLite is different from the above mentioned databases in that it does not operate as a client/server set of processes, but instead can be linked to the application being programmed.  As many databases as need be created (within storage limits) can be created by EOS users, as each database is merely a separate file on the filesystem.
+
+Outside of a programming context, SQLite can be accessed from the commandline with the 
+
+``sqlite3``
+
+command.  This will provide users with a command-line interface from which they can work with their database useing SQL statements.
+
+Remote Database Connections
+===========================
+
+
