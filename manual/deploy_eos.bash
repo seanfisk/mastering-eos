@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+make html
+
 # Deploy to Ira's account on EOS
 
 # exec so we exit with the error code of rsync.
