@@ -32,6 +32,6 @@ Accept the default values unless you know what you are doing.  Once the keys hav
 
 Note that <REMOTE HOST> can be either an IP address or DNS resolvable hostname.  Also note that on OSX machines the ``ssh-copy-id`` command does not exist.  In that case you will manually need to copy over your keys.  This can be done in the following manner:
 
-``cat ~/.ssh/id_rsa.pub | ssh <username>@<REMOTE HOST> "cat >> ~/.ssh/authorized_keys"``
+``ssh <username>@<REMOTE HOST> 'cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_rsa.pub``
 
 Once this process has been completed users can ``ssh`` into the remote machine without the need of inserting a password.
