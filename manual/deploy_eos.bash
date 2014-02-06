@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-make html
+make html latexpdf epub
 
 # Deploy to Ira's account on EOS
 
@@ -11,4 +11,7 @@ exec rsync \
 	--chmod=go=rX \
 	--compress \
 	_build/html/* \
+	_build/latex/MasteringEOS.pdf \
+	_build/epub/MasteringEOS.epub \
 	woodriir@eos10.cis.gvsu.edu:public_html/mastering-eos
+
