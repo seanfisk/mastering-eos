@@ -3,11 +3,11 @@ Mastering EOS
 
 .. only:: builder_html
 
-   Mastering EOS is always available in `.pdf <MasteringEOS.pdf>`_ and `.epub <MasteringEOS.epub>`_.
+   *Mastering EOS* is also available in `PDF <MasteringEOS.pdf>`_ and `EPUB (e-book) <MasteringEOS.epub>`_ formats.
 
 .. toctree::
    :maxdepth: 2
-   
+
    intro
    rules
    ssh
