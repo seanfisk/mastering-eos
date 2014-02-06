@@ -3,7 +3,9 @@ Mastering EOS
 
 .. toctree::
    :maxdepth: 2
-
+   
+   intro
+   rules
    ssh
    winserv
    databases
