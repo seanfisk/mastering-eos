@@ -9,10 +9,10 @@ Common Settings for Any RDP Client
 
 Despite the RDP client or platform you use, you will need to remember a few things:
 
-     - The machine's IP address may change; use the DNS name instead.
-     - If outside of the EOS network you will need to use the fully-qualified-domain-name, ``winserv.cis.gvsu.edu``.  While on the EOS network you can simply use ``winserv``.
-     - You must login to the CIS domain.  For instance, if your username is doej you would login with ``CIS\doej``.
-     - We self-sign our certificate.  You may want to instruct your client to save this information or you will have to accept a security warning each time you login.
+- The machine's IP address may change; use the DNS name instead.
+- If outside of the EOS network you will need to use the fully-qualified-domain-name, ``winserv.cis.gvsu.edu``.  While on the EOS network you can simply use ``winserv``.
+- You must login to the CIS domain.  For instance, if your username is doej you would login with ``CIS\doej``.
+- We self-sign our certificate.  You may want to instruct your client to save this information or you will have to accept a security warning each time you login.
 
 From Windows with MSTSC
 =======================
