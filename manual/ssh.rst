@@ -22,13 +22,13 @@ The most popular and capable SSH client for Windows is called PuTTY_. It can be 
 Password-less Logins
 ====================
 
-It is often handy to be able to ``ssh`` into a host without having to type a password (for instance if the ``ssh`` command was part of a script).  In most \*nix systems this is quite easy to accomplish.  First, you need to generate your public/private key pairs with the command
+It is often handy to be able to ``ssh`` into a host without having to type a password (for instance if the ``ssh`` command was part of a script).  In most \*nix systems this is quite easy to accomplish.  First, you need to generate your public/private key pairs with the command::
 
-``ssh-keygen``
+    ssh-keygen
 
-Accept the default values unless you know what you are doing.  Once the keys have been generated you can copy the public key over to the remote system by entering
+Accept the default values unless you know what you are doing.  Once the keys have been generated you can copy the public key over to the remote system by entering::
 
-``ssh-copy-id <username>@<REMOTE HOST>``
+    ssh-copy-id <username>@<REMOTE HOST>
 
 Note that <REMOTE HOST> can be either an IP address or DNS resolvable hostname.  Also note that on OSX machines the ``ssh-copy-id`` command does not exist.  In that case you will manually need to copy over your keys.  This can be done in the following manner:
 

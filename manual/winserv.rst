@@ -27,12 +27,12 @@ Newer versions of Microsoft's Remote Desktop Application for Mac no longer work.
 From a \*nix Machine with rdesktop
 ==================================
 
-\*nix systems usually have the rdesktop tool in their repositories.  If not, it can most likely be built from source.  ``rdesktop`` provides a geometry flag that accepts both screen percentages or resolutions from the command-line to help adjust the client to an appropriate size.  For instance, users can type
+\*nix systems usually have the rdesktop tool in their repositories.  If not, it can most likely be built from source.  ``rdesktop`` provides a geometry flag that accepts both screen percentages or resolutions from the command-line to help adjust the client to an appropriate size.  For instance, users can type::
 
-``rdekstop winserv.cis.gvsu.edu -g 90%``
+    rdekstop winserv.cis.gvsu.edu -g 90%
 
-to allow the client to take up 90% of their screen.  Alternatively they could type
+to allow the client to take up 90% of their screen.  Alternatively they could type::
 
-``rdekstop winserv.cis.gvsu.edu -g 1024x768``
+    rdekstop winserv.cis.gvsu.edu -g 1024x768
 
 to force a resolution of 1024x768 pixels.

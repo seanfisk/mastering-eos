@@ -7,18 +7,18 @@ Learning to setup and maintain a database is essential to any Computer Science c
 MySQL
 =====
 
-MySQL is a powerful open source database.  To access it via the command-line, login to an EOS/Arch machine and enter
+MySQL is a powerful open source database.  To access it via the command-line, login to an EOS/Arch machine and enter::
 
-``mysql -u <USERNAME> -p -h cis.gvsu.edu``
+    mysql -u <USERNAME> -p -h cis.gvsu.edu
 
 This attempts to log you in with the provided username, using a password, to the host cis.gvsu.edu (our MySQL server).
 
 Oracle
 ======
 
-Oracle is a very powerful and complex enterprise quality system.  Once you have been granted access you can access it with the command
+Oracle is a very powerful and complex enterprise quality system.  Once you have been granted access you can access it with the command::
 
-``sqlplus <USERNAME>@orcl``
+    sqlplus <USERNAME>@orcl
 
 Please note that when you change your password for Oracle that you must not use the ``@`` character.  Oracle will accept this but you will be unable to login.
 
@@ -47,13 +47,11 @@ SQLite
 
 The SQLite system is a relational database that can exist in the personal file structure of a project.  SQLite is different from the above mentioned databases in that it does not operate as a client/server set of processes, but instead can be linked to the application being programmed.  As many databases as need be created (within storage limits) can be created by EOS users, as each database is merely a separate file on the filesystem.
 
-Outside of a programming context, SQLite can be accessed from the commandline with the 
+Outside of a programming context, SQLite can be accessed from the commandline with::
 
-``sqlite3``
+    sqlite3
 
-command.  This will provide users with a command-line interface from which they can work with their database useing SQL statements.
+This will provide users with a command-line interface from which they can work with their database useing SQL statements.
 
 Remote Database Connections
 ===========================
-
-
