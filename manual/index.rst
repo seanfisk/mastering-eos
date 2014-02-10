@@ -13,6 +13,7 @@ Mastering EOS
    ssh
    winserv
    databases
+   ide
 
 .. only:: builder_html
 
