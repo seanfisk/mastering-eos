@@ -55,3 +55,5 @@ This will provide users with a command-line interface from which they can work w
 
 Remote Database Connections
 ===========================
+
+It is often advantageous for programmers to connect their programs to databases to do work.  There are a variety of ways to accomplish this task, and many are language specific.  It is of note though that our databases are not accessible from outside of our network due to firewall restrictions.  Programs running from within the EOS infrastructure can make connections to databases however.
