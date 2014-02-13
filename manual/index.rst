@@ -10,6 +10,7 @@ Mastering EOS
 
    intro
    rules
+   shells
    ssh
    winserv
    databases
