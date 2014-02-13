@@ -11,3 +11,11 @@ docutils==0.11
 rst2pdf==0.93
 reportlab==2.7
 pdfrw==0.1
+
+# Fabric
+Fabric==1.8.1
+ecdsa==0.10
+paramiko==1.12.1
+pycrypto==2.6.1
+
+texttable==0.8.1
