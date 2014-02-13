@@ -10,3 +10,8 @@ If you are not sitting in the EOS or Arch lab, EOS can be accessed from home usi
    windows
    mac_os_x
    gnu_linux
+
+
+Fingerprints:
+
+.. include:: common/fingerprints.rst
