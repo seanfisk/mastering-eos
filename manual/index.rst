@@ -11,6 +11,7 @@ Mastering EOS
    intro
    rules
    shells
+   path
    ssh
    winserv
    databases
