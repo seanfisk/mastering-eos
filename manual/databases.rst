@@ -9,7 +9,7 @@ MySQL
 
 MySQL is a powerful open source database.  To access it via the command-line, login to an EOS/Arch machine and enter::
 
-    mysql -u <USERNAME> -p -h cis.gvsu.edu
+    mysql -u smithj -p -h cis.gvsu.edu
 
 This attempts to log you in with the provided username, using a password, to the host cis.gvsu.edu (our MySQL server).
 
@@ -18,7 +18,7 @@ Oracle
 
 Oracle is a very powerful and complex enterprise quality system.  Once you have been granted access you can access it with the command::
 
-    sqlplus <USERNAME>@orcl
+    sqlplus smithj@orcl
 
 Please note that when you change your password for Oracle that you must not use the ``@`` character.  Oracle will accept this but you will be unable to login.
 
@@ -31,8 +31,8 @@ http://dbserv.cis.gvsu.edu:5560/apex
 
 You will need to provide a workspace name, username, and password.  If your username is doej a sample login would use
 
-Workspace:  ``doej_ws``
-Username:   ``doesj``
+Workspace:  ``smithj_ws``
+Username:   ``smithj``
 Password:   ``**********``
 
 Do not attempt to use the 'Reset Password' feature on the APEX homepage; it has never worked properly.  If you attempt to use it you will be unable to login until a Systems Administrator can delete and recreate your account.

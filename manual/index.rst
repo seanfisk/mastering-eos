@@ -11,11 +11,12 @@ Mastering EOS
    intro
    rules
    ssh/index
+   shells
    winserv
    databases
    ide
 
-.. only:: builder_html
+.. only:: build_html
 
     Indices and tables
     ==================

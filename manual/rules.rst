@@ -47,8 +47,8 @@ Living in the Lab
 
 It should go without saying (but hasn't gone without saying in the past) that you cannot live in the lab.  People have been found living in the lab for brief periods of time between leases, etc.  We must note that this is not only a huge safety violation but is illegal.  If caught living in the lab you will be removed and Campus Safety notified.
 
-Hacking
-=======
+Malicious Activity
+==================
 
 The infrastructure provided to the EOS labs includes very powerful tools that can be used to secure network infrastructure.  Unfortunately, these tools may also be used for more nefarious purposes.  We provide these tools for you to learn to defend future systems it may be your job to secure.  Under no circumstances should these tools be used to attack other students, other machines, or any other entities.  We do not provide these resources without reasonable oversight as to their use; using them illegally will be noticed and students will face strong consequences - possibly including removal from the university and criminal charges.
 
