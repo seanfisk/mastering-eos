@@ -10,7 +10,7 @@ Mastering EOS
 
    intro
    rules
-   ssh
+   ssh/index
    winserv
    databases
    ide
