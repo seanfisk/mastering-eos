@@ -229,8 +229,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'masteringeos', u'Mastering EOS Documentation',
-     [u'Sean Fisk and Ira Woodring'], 1)
+    ('index', 'eos', u'Mastering EOS',
+     [u'Sean Fisk and Ira Woodring'], 7)
 ]
 
 # If true, show URL addresses after external links.
@@ -243,8 +243,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'MasteringEOS', u'Mastering EOS Documentation',
-   u'Sean Fisk and Ira Woodring', 'MasteringEOS', 'One line description of project.',
+  ('index', 'eos', u'Mastering EOS',
+   u'Sean Fisk and Ira Woodring', 'MasteringEOS', 'EOS lab documentation',
    'Miscellaneous'),
 ]
 
