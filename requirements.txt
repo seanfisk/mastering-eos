@@ -8,6 +8,6 @@ MarkupSafe==0.18
 docutils==0.11
 
 # For the manual's reportlab builder
-rst2pdf==0.93.dev
+rst2pdf==0.93
 reportlab==2.7
 pdfrw==0.1
