@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-make html latexpdf epub
+make html latexpdf epub man info
 
 # Deploy to Ira's account on EOS
 
