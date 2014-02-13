@@ -2,7 +2,7 @@ from __future__ import print_function
 from glob import glob
 import subprocess
 
-from fabric.api import env, task, execute, run, runs_once
+from fabric.api import env, task, execute, run, runs_once, put
 from texttable import Texttable
 
 # Allow being overridden from the command-line.
@@ -64,3 +64,22 @@ def deploy():
         # Allow the user to override the username using fabric.
         env.user + '@eos10.cis.gvsu.edu:public_html/mastering-eos'
     ])
+
+
+@task
+@runs_once
+def deploy_man_info_local():
+    """Upload the man page and info docs to user's home directory."""
+    LOCAL_PREFIX = '.local'
+    put('_build/man/eos.7', LOCAL_PREFIX + '/man/man7/eos.7')
+    put('_build/texinfo/eos.info', LOCAL_PREFIX + '/share/info/eos.info')
+
+
+@task
+def deploy_man_info_lab():
+    """Upload the man page and info docs to each EOS machine."""
+    # Untested, but this should work.
+    GLOBAL_PREFIX = '/usr/local'
+    put('_build/man/eos.7', GLOBAL_PREFIX + '/man/eos.7', use_sudo=True)
+    put('_build/texinfo/eos.info', GLOBAL_PREFIX + '/share/info/eos.info',
+        use_sudo=True)
