@@ -10,9 +10,9 @@ Mastering EOS
 
    intro
    rules
+   ssh/index
    shells
    path
-   ssh
    winserv
    databases
    ide
