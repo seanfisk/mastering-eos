@@ -16,7 +16,7 @@ Mastering EOS
    databases
    ide
 
-.. only:: builder_html
+.. only:: build_html
 
     Indices and tables
     ==================

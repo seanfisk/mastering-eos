@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-make html latexpdf epub man info
+# Must have epub first or we receive index can't be built errors
+make epub html latexpdf man info
 
 # Deploy to Ira's account on EOS
 
