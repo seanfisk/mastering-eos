@@ -15,8 +15,11 @@ if env.hosts == []:
 
 @task
 def fingerprint_for_machine():
-    """Find the SSH fingerprint for a specific machine."""
-    return run('ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub', shell=False)
+    """Retrieve the SSH fingerprint for a specific machine."""
+    output = run(
+        'ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub', shell=False)
+    # The second element is the fingerprint.
+    return output.split()[1]
 
 
 @task
@@ -28,9 +31,7 @@ def gen_fingerprints():
     # The default decoration produces the correct table.
     table.header(['Host', 'Fingerprint'])
 
-    for host, output in sorted(results_dict.items()):
-        # The second element is the fingerprint.
-        fingerprint = output.split()[1]
+    for host, fingerprint in sorted(results_dict.items()):
         table.add_row([host, fingerprint])
 
     with open('ssh/common/fingerprints.rst', 'w') as fingerprint_file:
