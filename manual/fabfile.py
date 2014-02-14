@@ -73,9 +73,8 @@ def build():
 @task
 @runs_once
 def deploy_html_pdf_epub():
-    """Deploy the manual to the user's personal web directory in their EOS
-    account.
-    """
+    ("Deploy the manual to the user's personal web directory in their EOS "
+     'account.')
     execute(build)
     subprocess.check_call([
         'rsync',
@@ -103,9 +102,8 @@ def deploy_man_info_for_user():
 
 @task
 def deploy_man_info_for_lab():
-    """Upload the man page and info docs to each EOS machine. Requires root
-    access to said machines.
-    """
+    ('Upload the man page and info docs to each EOS machine. Requires root '
+     'access to said machines.')
     execute(build)
     # Untested, but this should work.
     GLOBAL_PREFIX = '/usr/local'
