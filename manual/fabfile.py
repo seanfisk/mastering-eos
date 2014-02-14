@@ -34,7 +34,14 @@ def generate_fingerprints_table():
     # The default decoration produces the correct table.
     table.header(['Host', 'Fingerprint'])
 
-    table.add_rows(sorted(results_dict.iteritems()), header=False)
+    table.add_rows(
+        sorted(
+            # Use the short host name, and use a fixed-width for the
+            # fingerprint itself.
+            (host.split('.')[0], '``{0}``'.format(fingerprint))
+            for (host, fingerprint)
+            in results_dict.iteritems()),
+        header=False)
 
     with open(FINGERPRINTS_TABLE_FILENAME, 'w') as fingerprint_file:
         print(table.draw(), file=fingerprint_file)
