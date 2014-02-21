@@ -8,5 +8,5 @@ _trust_host() {
 # Trust all EOS machines
 for i in {1..24}; do _trust_host "eos$(printf '%02d' $i)"; done
 # Trust all Arch machines
-for i in {1..8}; do _trust_host "arch$(printf '%02d' $i)"; done
+for i in {1..10}; do _trust_host "arch$(printf '%02d' $i)"; done
 ssh eos15 # Automatic login
