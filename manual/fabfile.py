@@ -96,6 +96,7 @@ def deploy_man_info_for_user():
     """Upload the man page and info docs to user's `~.local' directory."""
     execute(build)
     LOCAL_PREFIX = '.local'
+    run('mkdir -p {0}/man/man7 {0}/share/info'.format(LOCAL_PREFIX), shell=False)
     put('_build/man/eos.7', LOCAL_PREFIX + '/man/man7/eos.7')
     put('_build/texinfo/eos.info', LOCAL_PREFIX + '/share/info/eos.info')
 
