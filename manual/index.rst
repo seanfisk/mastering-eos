@@ -3,7 +3,12 @@ Mastering EOS
 
 .. only:: builder_html
 
-   *Mastering EOS* is also available in `PDF <MasteringEOS.pdf>`_ and `EPUB (e-book) <MasteringEOS.epub>`_ formats.
+   *Mastering EOS* is also available:
+
+   * in `PDF <MasteringEOS.pdf>`_ and `EPUB (e-book) <MasteringEOS.epub>`_ formats.
+   * by typing ``man eos`` or ``info eos`` on any EOS or Arch machine.
+
+**Contents:**
 
 .. toctree::
    :maxdepth: 2
