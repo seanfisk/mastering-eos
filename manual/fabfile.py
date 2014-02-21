@@ -95,10 +95,10 @@ def deploy_html_pdf_epub():
 def deploy_man_info_for_user():
     """Upload the man page and info docs to user's `~.local' directory."""
     execute(build)
-    LOCAL_PREFIX = '.local'
-    run('mkdir -p {0}/man/man7 {0}/share/info'.format(LOCAL_PREFIX), shell=False)
+    LOCAL_PREFIX = '.local/share'
+    run('mkdir -p {0}/man/man7 {0}/info'.format(LOCAL_PREFIX), shell=False)
     put('_build/man/eos.7', LOCAL_PREFIX + '/man/man7/eos.7')
-    put('_build/texinfo/eos.info', LOCAL_PREFIX + '/share/info/eos.info')
+    put('_build/texinfo/eos.info', LOCAL_PREFIX + '/info/eos.info')
 
 
 @task
@@ -107,7 +107,8 @@ def deploy_man_info_for_lab():
      'access to said machines.')
     execute(build)
     # Untested, but this should work.
-    GLOBAL_PREFIX = '/usr/local'
-    put('_build/man/eos.7', GLOBAL_PREFIX + '/man/eos.7', use_sudo=True)
-    put('_build/texinfo/eos.info', GLOBAL_PREFIX + '/share/info/eos.info',
-        use_sudo=True)
+    env.user = 'root'
+    GLOBAL_PREFIX = '/usr/local/share'
+    run('mkdir -p {0}/man/man7 {0}/info'.format(GLOBAL_PREFIX), shell=False)
+    put('_build/man/eos.7', GLOBAL_PREFIX + '/man/man7/eos.7')
+    put('_build/texinfo/eos.info', GLOBAL_PREFIX + '/info/eos.info')
