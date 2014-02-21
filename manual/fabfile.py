@@ -13,7 +13,7 @@ if env.hosts == []:
     env.hosts += [
         'eos{0:02}.cis.gvsu.edu'.format(num) for num in xrange(1, 25)]
     env.hosts += [
-        'arch{0:02}.cis.gvsu.edu'.format(num) for num in xrange(1, 9)]
+        'arch{0:02}.cis.gvsu.edu'.format(num) for num in xrange(1, 11)]
 
 
 @task
