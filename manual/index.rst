@@ -15,6 +15,7 @@ Mastering EOS
 
    intro
    rules
+   login
    ssh/index
    shells
    path
