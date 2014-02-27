@@ -4,6 +4,8 @@ Shells
 
 A \*nix shell allows users a command line to run run programs.  The EOS infrastructure provides a variety of different shell options for users to choose from.  The default is Bash but users may use any of the following provided shells.
 
+.. _bash:
+
 Bash
 ====
 
@@ -24,5 +26,3 @@ Kornshell
 `Kornshell`_ is a shell developed at AT&T Bell Laboratories.  It has features of both the Bash and Korn shells, as well as additional features.
 
 .. _Kornshell: http://www.kornshell.org
-
-

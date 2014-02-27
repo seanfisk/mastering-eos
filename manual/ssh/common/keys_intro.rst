@@ -1,7 +1,7 @@
 Password-less Logins
 ====================
 
-It is often handy to be able to ``ssh`` into a host without having to type a password, for instance as part of a script. First, you need to generate your public/private key pairs with the command::
+It is often handy to be able to SSH into a host without having to type a password, for instance as part of a script. First, generate your public/private key pairs with::
 
     ssh-keygen
 
