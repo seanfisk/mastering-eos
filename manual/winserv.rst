@@ -17,17 +17,17 @@ Despite the RDP client or platform you use, you will need to remember a few thin
 From Windows with MSTSC
 =======================
 
-Microsoft provides the ``mstsc`` program with all versions of Windows.  This program provides an RDP mechanism for connecting to hosts with RDP enabled.  You can find this command by searching for ``mstsc`` or ``Remote Desktop`` in the start menu.
+Microsoft provides the :program:`mstsc` program with all versions of Windows.  This program provides an RDP mechanism for connecting to hosts with RDP enabled.  You can find this command by searching for :program:`mstsc` or **Remote Desktop** in the start menu.
 
-From an OSX Machine with CoRD
-=============================
+From Mac OS X Machine with CoRD
+===============================
 
-Newer versions of Microsoft's Remote Desktop Application for Mac no longer work.  Fortunately the open-source rdesktop RDP implementation has been implemented for OSX as a program called CoRD.
+Newer versions of Microsoft's Remote Desktop Application for Mac OS X no longer work.  Fortunately the open-source rdesktop RDP implementation has been implemented for Mac OS X as a program called CoRD.
 
 From a \*nix Machine with rdesktop
 ==================================
 
-\*nix systems usually have the rdesktop tool in their repositories.  If not, it can most likely be built from source.  ``rdesktop`` provides a geometry flag that accepts both screen percentages or resolutions from the command-line to help adjust the client to an appropriate size.  For instance, users can type::
+\*nix systems usually have the rdesktop tool in their repositories.  If not, it can most likely be built from source.  :program:`rdesktop` provides a geometry flag that accepts both screen percentages or resolutions from the command-line to help adjust the client to an appropriate size.  For instance, users can type::
 
     rdekstop winserv.cis.gvsu.edu -g 90%
 
