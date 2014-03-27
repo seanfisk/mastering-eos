@@ -25,7 +25,7 @@ The keycards also gain the holder access to Mackinac Hall after hours as well.
 Disk Space
 ==========
 
-Users are given 8 gigabytes (GB) of disk space.  Once a user exceeds this limit, they can no longer store data on the system.  Often times this leads to being unable to login via a graphical session, as X11, the graphical subsystem on these machines, must be able to write to disk.  Users must then login via a text based console and delete files to make space.
+Users are given 10 gigabytes (GB) of disk space.  Once a user exceeds this limit, they can no longer store data on the system.  Often times this leads to being unable to login via a graphical session, as X11, the graphical subsystem on these machines, must be able to write to disk.  Users must then login via a text based console and delete files to make space.
 
 Copyrighted Material
 ====================
