@@ -29,13 +29,13 @@ Oracle also provides the APEX system for web based database development.  An APE
 
 http://dbserv.cis.gvsu.edu:5560/apex
 
-You will need to provide a workspace name, username, and password.  If your username is doej a sample login would use
+You will need to provide a workspace name, username, and password.  If your username is :samp:`smithj`, a sample login would be
 
-Workspace:  ``smithj_ws``
-Username:   ``smithj``
-Password:   ``**********``
+:Workspace: smithj_ws
+:Username: smithj
+:Password: \**********
 
-Do not attempt to use the 'Reset Password' feature on the APEX homepage; it has never worked properly.  If you attempt to use it you will be unable to login until a Systems Administrator can delete and recreate your account.
+Do not attempt to use the *Reset Password* feature on the APEX homepage; it has never worked properly.  If you attempt to use it you will be unable to login until a system administrator can delete and recreate your account.
 
 MSSQL
 =====
