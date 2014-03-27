@@ -12,3 +12,7 @@ Add remote access directory. Split into SSH and VNC, with VNC section first.
 * SSH
 
 Add some SSH tricks from the Smylers blog.
+
+* PATH
+
+Add information on the PATH section.
