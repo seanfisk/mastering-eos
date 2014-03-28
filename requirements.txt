@@ -2,20 +2,20 @@
 Pygments==1.6
 
 # For the manual
-Sphinx==1.2.1
+Sphinx==1.2.2
 Jinja2==2.7.2
-MarkupSafe==0.18
+MarkupSafe==0.19
 docutils==0.11
 
 # For the manual's reportlab builder
 rst2pdf==0.93
-reportlab==2.7
+reportlab==3.0
 pdfrw==0.1
 
 # Fabric
-Fabric==1.8.1
-ecdsa==0.10
-paramiko==1.12.1
+Fabric==1.8.3
+ecdsa==0.11
+paramiko==1.12.3
 pycrypto==2.6.1
 
 texttable==0.8.1
