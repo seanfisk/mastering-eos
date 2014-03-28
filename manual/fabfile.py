@@ -6,7 +6,7 @@ import os
 from fabric.api import env, task, execute, run, runs_once, put
 from texttable import Texttable
 
-FINGERPRINTS_TABLE_FILENAME = 'ssh/common/fingerprints.rst'
+FINGERPRINTS_TABLE_FILENAME = 'remote_access/common/fingerprints.rst'
 
 # Allow being overridden from the command-line.
 if env.hosts == []:
