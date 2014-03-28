@@ -18,6 +18,16 @@ In the field under :guilabel:`Saved Sessions`, type :samp:`EOS` (this name is no
 
 To log in to EOS, click :guilabel:`Open`. For future logins, you may now simply select the session you created and click :guilabel:`Open` to connect.
 
+Checking Host Fingerprints
+==========================
+
+When logging in to an EOS machine for the first time, you will see a dialog like this:
+
+.. image:: /_static/putty-security-alert.png
+    :alt: PuTTY Security Alert
+
+.. include:: common/checking_fingerprints.rst
+
 Password-less Logins
 ====================
 

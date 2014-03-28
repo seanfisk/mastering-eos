@@ -18,7 +18,9 @@ With other distributions (Arch, etc.), you are on your own.
 
 .. _OpenSSH: http://www.openssh.com/
 
-.. include:: common/basic_openssh.rst
+.. include:: common/openssh_connect.rst
+
+.. include:: common/openssh_fingerprints.rst
 
 .. include:: common/keys_intro.rst
 

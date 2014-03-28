@@ -16,7 +16,7 @@ Mastering EOS
    intro
    rules
    login
-   ssh/index
+   remote_access/index
    shells
    path
    winserv
