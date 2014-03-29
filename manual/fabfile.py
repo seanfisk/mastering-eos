@@ -2,11 +2,13 @@ from __future__ import print_function
 from glob import glob
 import subprocess
 import os
+import stat
 
 from fabric.api import env, task, execute, run, runs_once, put
 from texttable import Texttable
 
-FINGERPRINTS_TABLE_FILENAME = 'remote_access/common/fingerprints.rst'
+FINGERPRINTS_TABLE_FILENAME = 'remote_access/common/fingerprints/table.rst'
+VNC_TABLE_FILENAME = 'remote_access/common/vnc_port_geometry_table.rst'
 
 # Allow being overridden from the command-line.
 if env.hosts == []:
@@ -49,14 +51,40 @@ def generate_fingerprints_table():
 
 @task
 @runs_once
+def generate_vnc_table():
+    """Generate the VNC port/geometry table for the manual."""
+    script_name = 'vnc_extract_port_geometry.py'
+    dest_path = '~/bin/' + script_name
+    put('../scripts/' + script_name, dest_path, mode=stat.S_IRWXU)
+    output = run(dest_path, shell=False)
+
+    table = Texttable()
+    # The default decoration produces the correct table.
+    table.header(['Port', 'Geometry'])
+
+    for line in output.splitlines():
+        try:
+            port, geometry = line.split()
+        except IndexError:
+            raise SystemExit('Invalid format returned by remote command')
+        table.add_row([port, geometry])
+    with open(VNC_TABLE_FILENAME, 'w') as vnc_table_file:
+        print(table.draw(), file=vnc_table_file)
+
+
+@task
+@runs_once
 def build():
     """Build the manual."""
-    # Build the fingerprints file if it does not exist. If it does exist, we
-    # assume that it's accurate. Not the best assumption, so it's up to the
-    # user to delete the fingerprints table file or manually re-run the
+    # Build the fingerprints and VNC tables if they do not exist. If it does
+    # exist, we assume that it's accurate. Not the best assumption, so it's up
+    # to the user to delete the generated table files or manually re-run the
     # generation task when it should be updated.
     if not os.path.exists(FINGERPRINTS_TABLE_FILENAME):
         execute(generate_fingerprints_table)
+
+    if not os.path.exists(VNC_TABLE_FILENAME):
+        execute(generate_vnc_table)
 
     # We choose not to use fabric's local() because it uses the shell. It's
     # better to avoid invoking the shell.

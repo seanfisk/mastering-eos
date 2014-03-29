@@ -2,13 +2,16 @@
  Microsoft Windows
 ===================
 
+SSH
+===
+
 The most popular SSH client for Windows is called PuTTY_. It can be installed by visiting the `PuTTY download page`_. We recommend installing via the Windows installer, labeled *A Windows installer for everything except PuTTYtel*.
 
 .. _PuTTY: http://www.chiark.greenend.org.uk/~sgtatham/putty/
 .. _PuTTY download page: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 
 Logging In
-==========
+----------
 
 The first we will do is create a saved session for our EOS connection configuration. This will save time for future logins.
 
@@ -19,17 +22,17 @@ In the field under :guilabel:`Saved Sessions`, type :samp:`EOS` (this name is no
 To log in to EOS, click :guilabel:`Open`. For future logins, you may now simply select the session you created and click :guilabel:`Open` to connect.
 
 Checking Host Fingerprints
-==========================
+--------------------------
 
 When logging in to an EOS machine for the first time, you will see a dialog like this:
 
 .. image:: /_static/putty-security-alert.png
     :alt: PuTTY Security Alert
 
-.. include:: common/checking_fingerprints.rst
+.. include:: common/fingerprints/checking.rst
 
 Password-less Logins
-====================
+--------------------
 
 It is often handy to be able to SSH into a host without having to type a password, for instance as part of a script. First, we need to generate our public/private. Open PuTTYgen_ from the PuTTY distribution to begin the generation process. Click :guilabel:`Generate` and do the mouse nonsense to generate your keys.
 
@@ -55,7 +58,12 @@ Go back to :guilabel:`Session` and click :guilabel:`Save`. PuTTY is now configur
 
 As is obvious from these instructions, SSH key management is not a simple process. We recommend reading the `PuTTY Guide to SSH Keys`_, which is the source for much of this information. If you would like to use a passphrase with your key, please see the `PuTTY Guide to Pageant`_, PuTTY's SSH agent.
 
-OpenSSH is also available for Windows, though PuTTY is the recommended client.
-
 .. _PuTTY Guide to SSH Keys: http://the.earth.li/~sgtatham/putty/latest/htmldoc/Chapter8.html#pubkey
 .. _PuTTY Guide to Pageant: http://the.earth.li/~sgtatham/putty/latest/htmldoc/Chapter9.html#pageant
+
+Alternatives
+------------
+
+Though PuTTY is the recommended client, OpenSSH is also available for Windows. The recommended way of running OpenSSH on Windows is through Cygwin_.
+
+.. _Cygwin: http://www.cygwin.com/

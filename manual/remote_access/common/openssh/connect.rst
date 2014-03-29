@@ -1,5 +1,5 @@
 Logging in
-==========
+----------
 
 First, open your terminal emulator to start a shell. To connect to a specific machine, run::
 
