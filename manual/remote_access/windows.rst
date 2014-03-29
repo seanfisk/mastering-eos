@@ -67,3 +67,14 @@ Alternatives
 Though PuTTY is the recommended client, OpenSSH is also available for Windows. The recommended way of running OpenSSH on Windows is through Cygwin_.
 
 .. _Cygwin: http://www.cygwin.com/
+
+VNC
+===
+
+Viewers:
+
+* `UltraVNC <http://www.uvnc.com/>`_
+* `RealVNC Viewer <http://realvnc.com/download/viewer/>`_
+* `RealVNC Viewer for Google Chrome <https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en>`_
+* `TightVNC <http://tightvnc.com/download.php>`_
+* `TigerVNC <http://sourceforge.net/projects/tigervnc/files/tigervnc/1.3.1/>`_
