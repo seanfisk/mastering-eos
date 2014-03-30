@@ -22,6 +22,6 @@ Note the following rules when creating a new password:
 * Password must not be based on a dictionary word.
 * Passwords should not be all numbers. The system will accept such a password, but it is incredibly insecure. Additionally, the system will often not let you login with it.
 
-Please take the time to memorize your password!  Password resets are available by contacting Ira Woodring, but it often takes a day for Ira to get to it. Professors are also able to reset passwords via a SSH reset mechanism, though some remain unaware of this fact.
+Please take the time to memorize your password!  Password resets are available by contacting |the_sysadmin|, but it often takes a day to get to it. Professors are also able to reset passwords via a SSH reset mechanism, though some remain unaware of this fact.
 
 .. [#cis_classes] All students except those in CIS 150, 160, 162, 231, or 253. Students in these classes should not need access to the system.

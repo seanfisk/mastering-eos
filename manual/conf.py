@@ -431,3 +431,11 @@ pdf_use_numbered_links = False
 
 # Background images fitting mode
 pdf_fit_background_mode = 'scale'
+
+# -- Custom Options -------------------------------------------------------
+
+# Global substitutions, using rst_epilog.
+# Apparently we can't use the `text <link>`_ notation in here.
+rst_epilog = '''
+.. |the_sysadmin| replace:: Ira Woodring
+'''
