@@ -7,7 +7,7 @@
 
 * VNC
 
-Add remote access directory. Split into SSH and VNC, with VNC section first.
+Finish Windows step-by-step guides. Decided what we want to do with Linux.
 
 * SSH
 
@@ -16,3 +16,11 @@ Add some SSH tricks from the Smylers blog.
 * PATH
 
 Add information on the PATH section.
+
+* Fix copyright section.
+
+Too informal, and some mistakes.
+
+* Long commands need to be wrapped. They do not get wrapped by default in the PDF and end up looking terrible. You can't even scroll to see the rest of them.
+
+* Re-check all outputs for mistakes.
