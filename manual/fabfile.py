@@ -98,23 +98,42 @@ def build():
         'make', 'clean', 'epub', 'html', 'latexpdf', 'man', 'info'])
 
 
-@task
-@runs_once
-def deploy_html_pdf_epub():
-    ("Deploy the manual to the user's personal web directory in their EOS "
-     'account.')
+def rsync_to(extra_args):
+    """Rsync the documentation with the specificed extra args.
+    These should include the destination."""
     execute(build)
     subprocess.check_call([
         'rsync',
         '--verbose',
         '--archive',
-        '--chmod=go=rX',
-        '--compress'
+        '--compress',
     ] + glob('_build/html/*') + [
         '_build/latex/MasteringEOS.pdf',
         '_build/epub/MasteringEOS.epub',
+    ] + extra_args)
+
+
+@task
+@runs_once
+def deploy_eos_web():
+    ("Deploy the manual to the user's personal web directory in their EOS "
+     'account.')
+    rsync_to([
+        '--chmod=go=rX',
         # Allow the user to override the username using fabric.
-        env.user + '@eos10.cis.gvsu.edu:public_html/mastering-eos'
+        env.user + '@eos10.cis.gvsu.edu:public_html/mastering-eos',
+    ])
+
+
+@task
+@runs_once
+def deploy_github_pages():
+    """Deploy the manual to GitHub pages."""
+    # Allow the user to override the username using fabric.
+    rsync_to([
+        # Be less careful about what we delete on GitHub pages.
+        '--delete',
+        'github_pages',
     ])
 
 

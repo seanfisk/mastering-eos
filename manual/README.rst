@@ -10,15 +10,21 @@ The Mastering EOS manual serves as the "new EOS documentation." It is written in
 Tips for using Fabric
 =====================
 
-Fabric is used to build and deploy the documentation. To deploy the documentation in typical fashion, run::
+Fabric is used to build and deploy the documentation.
 
-    fab --parallel deploy_html_pdf_epub
+To deploy to the canonical web site at GitHub Pages, run::
+
+    fab --parallel deploy_github_pages
+
+To deploy the documentation to the user's personal EOS account, run::
+
+    fab --parallel deploy_eos_web
 
 This deploys the said formats to the user's personal web directory in their EOS account.
 
 If your EOS username doesn't match your local username, you may specify it with::
 
-    fab --parallel --user smithj deploy_html_pdf_epub
+    fab --parallel --user smithj deploy_eos_web
 
 The EOS SSH fingerprints table is generated only if the file doesn't exist. If you want to re-generate the fingerprints table, re-run the task specifically::
 
