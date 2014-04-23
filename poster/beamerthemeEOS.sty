@@ -8,6 +8,26 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\RequirePackage{fontspec} % To use external fonts
+\setsansfont[
+Path=fonts/Ubuntu/,
+Extension=.ttf,
+Ligatures=TeX,
+UprightFont=*-R,
+BoldFont=*-B,
+ItalicFont=*-RI,
+BoldItalicFont=*-BI,
+]{Ubuntu}
+\setmonofont[
+Path=fonts/Ubuntu/,
+Extension=.ttf,
+Ligatures=TeX,
+UprightFont=*-R,
+BoldFont=*-B,
+ItalicFont=*-RI,
+BoldItalicFont=*-BI,
+]{UbuntuMono}
+
 \setbeamercolor{headline}{fg=tabutter,bg=ta2gray}
 \setbeamercolor{footline}{fg=tabutter, bg=ta3gray}
 \setbeamerfont{footline}{size=\normalsize}
@@ -41,14 +61,14 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{block begin}{
-  \vskip.75ex
-  \begin{beamercolorbox}[center,rounded=true,shadow=true,colsep*=.75ex]{block title}%
+  \vskip.5ex
+  \begin{beamercolorbox}[center,rounded=true,shadow=true,colsep*=.5ex]{block title}%
     \usebeamerfont*{block title}\insertblocktitle
   \end{beamercolorbox}%
   {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
   \usebeamerfont{block body}%
-  \begin{beamercolorbox}[rounded=true,shadow=true,colsep*=.75ex,sep=2ex,vmode]{block body}%
-    \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+  \begin{beamercolorbox}[rounded=true,shadow=true,colsep*=.5ex,sep=1ex,vmode]{block body}%
+    \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.5ex}\vbox{}%
   }
   \setbeamertemplate{block end}{
   \end{beamercolorbox}
