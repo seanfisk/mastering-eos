@@ -1,11 +1,11 @@
-\begin{block}{Manipulating the \texttt{PATH}}
-  When you execute a command, the shell searches for the executable using the \texttt{PATH} environment variable. \texttt{PATH} should be set to a colon-delimited list of directories containing executables. To view your \texttt{PATH}, type:
+\begin{block}{Manipulating the \clicode{PATH}}
+  When you execute a command, the shell searches for the executable using the \clicode{PATH} environment variable. \clicode{PATH} should be set to a colon-delimited list of directories containing executables. To view your \clicode{PATH}, type:
   \begin{indented}
     \begin{bashcode}
       echo $PATH
     \end{bashcode}
   \end{indented}
-  For instance, to add a local scripts directory (conventionally called \url{\~/bin}) to your \texttt{PATH}, run:
+  For instance, to add a local scripts directory (conventionally called \url{\~/bin}) to your \clicode{PATH}, run:
   \begin{indented}
     \begin{bashcode}
       export PATH=~/bin:$PATH
