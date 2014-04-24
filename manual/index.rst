@@ -1,9 +1,8 @@
-Mastering EOS
-=============
+.. include:: ../README.rst
 
 .. only:: builder_html
 
-   *Mastering EOS* is also available:
+   In addition to the HTML you are currently viewing, Mastering EOS is also available
 
    * in `PDF <MasteringEOS.pdf>`_ and `EPUB (e-book) <MasteringEOS.epub>`_ formats.
    * by typing ``man eos`` or ``info eos`` on any EOS or Arch machine.

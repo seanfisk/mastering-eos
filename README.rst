@@ -1,7 +1,8 @@
-Mastering EOS
-=============
+===============
+ Mastering EOS
+===============
 
-Mastering EOS is a new initiative to produce better documentation for the Grand Valley State University School of Computer and Information System Exploratory Operating System Lab (GVSU CIS EOS Lab). It is intended to augment and eventually supplant the [original EOS documentation][eos-doc-original] located on the School of CIS website.
+Mastering EOS is a new initiative to produce better documentation for the Grand Valley State University School of Computer and Information System Exploratory Operating System Lab (GVSU CIS EOS Lab). It is intended to augment and eventually supplant the `original EOS documentation`_ located on the School of CIS website.
 
 Mastering EOS consists of two parts:
 
@@ -10,7 +11,7 @@ Mastering EOS consists of two parts:
 
 Mastering EOS is written by:
 
-* Sean Fisk, former GVSU CIS student, with a BS and MS from GVSU
+* Sean Fisk, BS and MS in Computer Science from GVSU
 * Ira Woodring, GVSU EOS Lab system administrator
 
-[eos-doc-original]: http://www.cis.gvsu.edu/facilities/eos
+.. _original EOS documentation: http://www.cis.gvsu.edu/facilities/eos
