@@ -4,7 +4,7 @@
 
    In addition to the HTML you are currently viewing, Mastering EOS is also available
 
-   * in `PDF <MasteringEOS.pdf>`_ and `EPUB (e-book) <MasteringEOS.epub>`_ formats.
+   * in `PDF <MasteringEOS.pdf>`_, `EPUB (e-book) <MasteringEOS.epub>`_, and HTML Archive (`.tar.gz <mastering-eos-html.tar.gz>`_ or `.zip <mastering-eos-html.zip>`_) formats.
    * by typing ``man eos`` or ``info eos`` on any EOS or Arch machine.
 
 **Contents:**

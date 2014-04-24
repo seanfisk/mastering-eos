@@ -3,6 +3,10 @@ from glob import glob
 import subprocess
 import os
 import stat
+from tempfile import mkdtemp
+import shutil
+import tarfile
+import zipfile
 
 from fabric.api import env, task, execute, run, runs_once, put
 from texttable import Texttable
@@ -123,6 +127,29 @@ def rsync_to(extra_args):
     """Rsync the documentation with the specificed extra args.
     These should include the destination."""
     execute(build)
+
+    # Create extra HTML archives.
+    parent_dir = mkdtemp(prefix='mastering-eos-')
+    name = 'mastering-eos-html'
+    html_dir_path = os.path.join(parent_dir, name)
+    shutil.copytree('_build/html', html_dir_path)
+
+    tarfile_name = name + '.tar.gz'
+    zipfile_name = name + '.zip'
+    tarfile_path = os.path.join(parent_dir, tarfile_name)
+    zipfile_path = os.path.join(parent_dir, zipfile_name)
+
+    with cwd(parent_dir):
+        tar = tarfile.open(tarfile_name, 'w:gz')
+        tar.add(name)
+        tar.close()
+
+        zip_ = zipfile.ZipFile(zipfile_name, 'w')
+        for dirpath, dirnames, filenames in os.walk(name):
+            for filename in filenames:
+                zip_.write(os.path.join(dirpath, filename))
+        zip_.close()
+
     subprocess.check_call([
         'rsync',
         '--verbose',
@@ -131,7 +158,11 @@ def rsync_to(extra_args):
     ] + glob('_build/html/*') + [
         '_build/latex/MasteringEOS.pdf',
         '_build/epub/MasteringEOS.epub',
+        tarfile_path,
+        zipfile_path,
     ] + extra_args)
+
+    shutil.rmtree(parent_dir)
 
 
 @task
