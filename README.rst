@@ -2,7 +2,7 @@
  Mastering EOS
 ===============
 
-Mastering EOS is a new initiative to produce better documentation for the Grand Valley State University School of Computer and Information System Exploratory Operating System Lab (GVSU CIS EOS Lab). It is intended to augment and eventually supplant the `original EOS documentation`_ located on the School of CIS website.
+Mastering EOS is a new initiative to produce better documentation for the Grand Valley State University School of Computer and Information Systems Exploratory Operating System Lab (GVSU CIS EOS Lab). It is intended to augment and eventually supplant the `original EOS documentation`_ located on the School of CIS website.
 
 Mastering EOS consists of two parts:
 
