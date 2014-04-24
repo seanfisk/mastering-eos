@@ -20,7 +20,7 @@
 \tabulinesep=0.5em
 
 \usepackage{microtype}
-\usepackage[orientation=landscape,size=a1,scale=1.1]{beamerposter}
+\usepackage[orientation=landscape,size=a1,scale=1.21]{beamerposter}
 
 \usepackage{changepage} % For the adjustwidth environment
 \usepackage{wrapfig}
@@ -45,21 +45,21 @@
   \begin{columns}[T]
     \begin{column}{0.33\textwidth}
       \input{blocks/manip_path.tex}
-      \input{blocks/users.tex}
-      \input{blocks/downloading.tex}
-      \input{blocks/inter_eos_ssh.tex}
-    \end{column}
-    \begin{column}{0.33\textwidth}
-      \input{blocks/multiple_terminals.tex}
       \input{blocks/dir_nav.tex}
       \input{blocks/clipboard.tex}
+      \input{blocks/multiple_terminals.tex}
+    \end{column}
+    \begin{column}{0.33\textwidth}
+      \input{blocks/inter_eos_ssh.tex}
+      \input{blocks/downloading.tex}
       \input{blocks/installing_software.tex}
+      \input{blocks/getting_help.tex}
     \end{column}
     \begin{column}{0.33\textwidth}
       \input{blocks/vcs.tex}
       \input{blocks/build_systems.tex}
       \input{blocks/parallel_make.tex}
-      \input{blocks/getting_help.tex}
+      \input{blocks/users.tex}
       \input{blocks/misc.tex}
     \end{column}
   \end{columns}
