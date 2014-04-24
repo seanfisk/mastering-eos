@@ -9,6 +9,7 @@ from texttable import Texttable
 
 FINGERPRINTS_TABLE_FILENAME = 'remote_access/common/fingerprints/table.rst'
 VNC_TABLE_FILENAME = 'remote_access/common/vnc_port_geometry_table.rst'
+GH_PAGES_DIR = 'github_pages'
 
 # Allow being overridden from the command-line.
 if env.hosts == []:
@@ -16,6 +17,26 @@ if env.hosts == []:
         'eos{0:02}.cis.gvsu.edu'.format(num) for num in xrange(1, 25)]
     env.hosts += [
         'arch{0:02}.cis.gvsu.edu'.format(num) for num in xrange(1, 11)]
+
+
+class cwd(object):
+    """Class used for temporarily changing directories. Can be though of
+    as a `pushd /my/dir' then a `popd' at the end.
+    """
+    def __init__(self, newcwd):
+        """:param newcwd: directory to make the cwd
+        :type newcwd: :class:`str`
+        """
+        self.newcwd = newcwd
+
+    def __enter__(self):
+        self.oldcwd = os.getcwd()
+        os.chdir(self.newcwd)
+        return os.getcwd()
+
+    def __exit__(self, type, value, traceback):
+        # This acts like a `finally' clause: it will always be executed.
+        os.chdir(self.oldcwd)
 
 
 @task
@@ -129,12 +150,22 @@ def deploy_eos_web():
 @runs_once
 def deploy_github_pages():
     """Deploy the manual to GitHub pages."""
+    if not os.path.exists(GH_PAGES_DIR):
+        git_url = subprocess.check_output([
+            'git', 'config', '--get', 'remote.origin.url']).rstrip()
+        subprocess.check_call([
+            'git', 'clone', '--branch', 'gh-pages', git_url, GH_PAGES_DIR])
     # Allow the user to override the username using fabric.
     rsync_to([
         # Be less careful about what we delete on GitHub pages.
         '--delete',
-        'github_pages',
+        GH_PAGES_DIR,
     ])
+    with cwd(GH_PAGES_DIR):
+        # Use '--all' rather than '.' so that deletions are also added.
+        subprocess.check_call(['git', 'add', '--all'])
+        subprocess.check_call(['git', 'commit', '-m', 'Update.'])
+        subprocess.check_call(['git', 'push', 'origin', 'gh-pages'])
 
 
 @task
