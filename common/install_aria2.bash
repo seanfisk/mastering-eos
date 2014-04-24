@@ -1,7 +1,7 @@
 mkdir -p ~/.local/src                           # Create directory for source code
 cd ~/.local/src
 wget 'http://downloads.sourceforge.net/project/'\
-'aria2/stable/aria2-1.17.0/aria2-1.17.0.tar.gz' # Download aria2's source code archive
+'aria2/stable/aria2-1.17.0/aria2-1.17.0.tar.gz' # Download aria2 source code
 tar -xf aria2-1.17.0.tar.gz                     # Unarchive source code
 cd aria2-1.17.0
 ./configure --prefix ~/.local                   # Set up build configuration
