@@ -17,10 +17,11 @@
 \usepackage{fontspec}
 \usepackage{tabu}
 % Add more space to the top and bottom of cells.
-\tabulinesep=0.5em
+\tabulinesep=0.7em
 
 \usepackage{microtype}
-\usepackage[orientation=landscape,size=a1,scale=1.21]{beamerposter}
+% We want 4' X 3' (or 48" X 36") landscape, but these measurements are in centimeters.
+\usepackage[orientation=landscape,size=custom,width=121.92,height=91.44,scale=1.88]{beamerposter}
 
 \usepackage{changepage} % For the adjustwidth environment
 \usepackage{wrapfig}
