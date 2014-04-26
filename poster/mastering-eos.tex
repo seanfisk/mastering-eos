@@ -17,11 +17,11 @@
 \usepackage{fontspec}
 \usepackage{tabu}
 % Add more space to the top and bottom of cells.
-\tabulinesep=0.7em
+\tabulinesep=0.8em
 
 \usepackage{microtype}
 % We want 4' X 3' (or 48" X 36") landscape, but these measurements are in centimeters.
-\usepackage[orientation=landscape,size=custom,width=121.92,height=91.44,scale=1.88]{beamerposter}
+\usepackage[orientation=landscape,size=custom,width=121.92,height=91.44,scale=1.89]{beamerposter}
 
 \usepackage{changepage} % For the adjustwidth environment
 \usepackage{wrapfig}
@@ -46,21 +46,21 @@
   \begin{columns}[T]
     \begin{column}{0.33\textwidth}
       \input{blocks/manip_path.tex}
-      \input{blocks/dir_nav.tex}
-      \input{blocks/clipboard.tex}
       \input{blocks/multiple_terminals.tex}
+      \input{blocks/dir_nav.tex}
+      \input{blocks/vcs.tex}
+    \end{column}
+    \begin{column}{0.33\textwidth}
+      \input{blocks/downloading.tex}
+      \input{blocks/installing_software.tex}
+      \input{blocks/build_systems.tex}
+      \input{blocks/parallel_make.tex}
     \end{column}
     \begin{column}{0.33\textwidth}
       \input{blocks/inter_eos_ssh.tex}
-      \input{blocks/downloading.tex}
-      \input{blocks/installing_software.tex}
-      \input{blocks/getting_help.tex}
-    \end{column}
-    \begin{column}{0.33\textwidth}
-      \input{blocks/vcs.tex}
-      \input{blocks/build_systems.tex}
-      \input{blocks/parallel_make.tex}
+      \input{blocks/clipboard.tex}
       \input{blocks/users.tex}
+      \input{blocks/getting_help.tex}
       \input{blocks/misc.tex}
     \end{column}
   \end{columns}
