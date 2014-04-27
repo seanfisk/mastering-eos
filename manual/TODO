@@ -26,3 +26,5 @@ Too informal, and some mistakes.
 * Re-check all outputs for mistakes.
 
 * Student contribution guide.
+
+* Move fabfile to top level, since we are distributing the poster now too.

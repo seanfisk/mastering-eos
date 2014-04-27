@@ -11,9 +11,12 @@ import zipfile
 from fabric.api import env, task, execute, run, runs_once, put
 from texttable import Texttable
 
-FINGERPRINTS_TABLE_FILENAME = 'remote_access/common/fingerprints/table.rst'
-VNC_TABLE_FILENAME = 'remote_access/common/vnc_port_geometry_table.rst'
+FINGERPRINTS_TABLE_FILENAME = os.path.join(
+    'remote_access', 'common', 'fingerprints', 'table.rst')
+VNC_TABLE_FILENAME = os.path.join(
+    'remote_access', 'common', 'vnc_port_geometry_table.rst')
 GH_PAGES_DIR = 'github_pages'
+POSTER_DIR = os.path.join('..', 'poster')
 
 # Allow being overridden from the command-line.
 if env.hosts == []:
@@ -80,7 +83,8 @@ def generate_vnc_table():
     """Generate the VNC port/geometry table for the manual."""
     script_name = 'vnc_extract_port_geometry.py'
     dest_path = '~/bin/' + script_name
-    put('../scripts/' + script_name, dest_path, mode=stat.S_IRWXU)
+    put(os.path.join('..', 'scripts', script_name),
+        dest_path, mode=stat.S_IRWXU)
     output = run(dest_path, shell=False)
 
     table = Texttable()
@@ -99,7 +103,7 @@ def generate_vnc_table():
 
 @task
 @runs_once
-def build():
+def build_manual():
     """Build the manual."""
     # Build the fingerprints and VNC tables if they do not exist. If it does
     # exist, we assume that it's accurate. Not the best assumption, so it's up
@@ -121,6 +125,21 @@ def build():
     # It's ugly, but it works.
     subprocess.check_call([
         'make', 'clean', 'epub', 'html', 'latexpdf', 'man', 'info'])
+
+
+@task
+@runs_once
+def build_poster():
+    """Build the poster."""
+    with cwd(POSTER_DIR):
+        subprocess.check_call(['scons'])
+
+
+@task
+@runs_once
+def build():
+    build_manual()
+    build_poster()
 
 
 def rsync_to(extra_args):
@@ -150,16 +169,24 @@ def rsync_to(extra_args):
                 zip_.write(os.path.join(dirpath, filename))
         zip_.close()
 
+    # Rename poster.
+    new_poster_name = 'mastering-eos-poster.pdf'
+    new_poster_path = os.path.join(parent_dir, new_poster_name)
+    shutil.copyfile(
+        os.path.join(POSTER_DIR, 'mastering-eos.pdf'),
+        new_poster_path)
+
     subprocess.check_call([
         'rsync',
         '--verbose',
         '--archive',
         '--compress',
-    ] + glob('_build/html/*') + [
-        '_build/latex/MasteringEOS.pdf',
-        '_build/epub/MasteringEOS.epub',
+    ] + glob(os.path.join('_build', 'html', '*')) + [
+        os.path.join('_build', 'latex', 'MasteringEOS.pdf'),
+        os.path.join('_build', 'epub', 'MasteringEOS.epub'),
         tarfile_path,
         zipfile_path,
+        new_poster_path,
     ] + extra_args)
 
     shutil.rmtree(parent_dir)
