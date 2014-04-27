@@ -9,6 +9,8 @@
 
    The poster is visible in the CIS Architecture Lab and is also available `as a PDF <mastering-eos-poster.pdf>`_.
 
+   **Student contribution to Mastering EOS is encouraged!** Please see the section :doc:`contributing` for more information.
+
 **Contents:**
 
 .. toctree::
@@ -23,6 +25,7 @@
    winserv
    databases
    ide
+   contributing
 
 .. only:: build_html
 
