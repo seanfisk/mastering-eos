@@ -9,7 +9,9 @@
 
    The poster is visible in the CIS Architecture Lab and is also available `as a PDF <mastering-eos-poster.pdf>`_.
 
-   **Student contribution to |title| is encouraged!** Please see the section :doc:`contributing` for more information.
+   .. We cannot use the title substitution here because it is bold. Ugh...
+
+   **Student contribution to Mastering EOS is encouraged!** Please see the section :doc:`contributing` for more information.
 
 **Contents:**
 
