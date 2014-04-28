@@ -44,3 +44,5 @@ Chicken is not the only VNC viewer available for Mac OS X. Some alternatives are
 * `JollysFastVNC <http://www.jinx.de/JollysFastVNC.html>`_ -- trial available
 * `TigerVNC <http://tigervnc.org/>`_ -- free and open source, command-line connection interface only
 * `Chicken of the VNC <http://sourceforge.net/projects/cotvnc/>`_ -- older version of Chicken, not recommended
+
+.. include:: common/openssh/advanced.rst

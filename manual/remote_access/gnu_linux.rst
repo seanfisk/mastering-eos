@@ -48,3 +48,5 @@ Operation of each of these applications is similar. For the host, enter in the h
 .. _TigerVNC: http://tigervnc.org/
 .. _RealVNC Viewer: http://realvnc.com/download/viewer/
 .. _RealVNC Viewer for Google Chrome: https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en
+
+.. include:: common/openssh/advanced.rst
