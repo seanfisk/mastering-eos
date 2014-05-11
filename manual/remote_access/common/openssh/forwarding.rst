@@ -16,7 +16,7 @@ For example, to access a web server running on port 8000 on ``eos01.cis.gvsu.edu
 
     ssh -L 5555:eos01.cis.gvsu.edu:8000 smithj@eos01.cis.gvsu.edu
 
-You can actually test this by running this is the SSH prompt::
+You can actually test this by running this in the SSH prompt::
 
     python -m SimpleHTTPServer
 
@@ -31,7 +31,7 @@ and visit http://localhost:5678/ in your local web browser. The CIS home page sh
 Forwarding in the Config File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The command-line works well for one-off tunnels, but for frequently established tunnels, it pays to alter the OpenSSH client configuration file. The OpenSSH client configuration resides on your local machine in the file :file:`~/.ssh/config`. This is a hidden directory inside your home directory. The easiest way to open this file, creating it if it doesn't exist, is to run:
+The command-line works well for one-off tunnels, but for frequently established tunnels, it pays to alter the OpenSSH client configuration file. The OpenSSH client configuration resides on your local machine in the file :file:`~/.ssh/config`. This is a file inside a hidden directory inside your home directory. The easiest way to open this file, creating it if it doesn't exist, is to run:
 
 .. highlight:: bash
 .. parsed-literal::
