@@ -13,12 +13,6 @@
 
 Finish Windows step-by-step guides. Decided what we want to do with Linux.
 
-* SSH
-
-Add SSH SOCKS proxy trick -- Mac OS X and GNU/Linux.
-
-* Change theme to use GVSU colors. Use black, white, the 3 blue shades from the home page, and the official blue (Pantone).
-
 * PATH
 
 Add information on the PATH section.
@@ -27,10 +21,6 @@ Add information on the PATH section.
 
 Too informal, and some mistakes.
 
-* Long commands need to be wrapped. They do not get wrapped by default in the PDF and end up looking terrible. You can't even scroll to see the rest of them.
-
-* Re-check all outputs for mistakes.
-
-* Student contribution guide.
-
 * Move fabfile to top level, since we are distributing the poster now too.
+
+* Change theme to use GVSU colors. Use black, white, the 3 blue shades from the home page, and the official blue (Pantone).
