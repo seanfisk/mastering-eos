@@ -1,6 +1,6 @@
-==================================
- Accessing EOS Remotely (SSH/VNC)
-==================================
+=========================
+ Remote Access (SSH/VNC)
+=========================
 
 If you are not sitting in the EOS or Arch lab, EOS can be accessed from home using a protocol called Secure Shell (SSH). SSH allows you to remotely run commands on any EOS machine.
 

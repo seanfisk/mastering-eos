@@ -1,15 +1,15 @@
-===================
- Logging in to EOS
-===================
+============
+ Logging In
+============
 
 The EOS system uses separate user accounts from the general university computing infrastructure. The system uses the same network ID given by Grand Valley's IT but authenticates against the CIS department's own LDAP_ server. The accounts are not interchangeable and administrators for one account cannot reset passwords for the other.
 
 .. _LDAP: http://en.wikipedia.org/wiki/LDAP
 
-Setting Up Credentials
-======================
+Obtaining Credentials
+=====================
 
-At the beginning of each term a report is compiled of all students who have CIS classes [#cis_classes]_. Accounts for these students are automatically generated on the last Friday before classes start, and emails are sent with temporary passwords. Students need to login once to the system, either locally at a terminal or remotely using SSH, and follow these steps:
+At the beginning of each term a report is compiled of all students who have CIS classes [#cis_classes]_. Accounts for these students are automatically generated on the last Friday before classes start, and emails are sent with temporary passwords. Students need to login to the system once, either locally at a terminal or remotely using SSH, and follow these steps:
 
 * Enter your username.
 * Enter the temporary password you have been given.

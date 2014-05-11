@@ -1,6 +1,6 @@
-=========
-Databases
-=========
+===========
+ Databases
+===========
 
 Learning to setup and maintain a database is essential to any Computer Science curriculum.  The EOS infrastructure supports multiple database variants depending on the user's needs.  To save space and setup time database accounts are only given to those who need them for a class, a specific project, etc.  Contact your professor and the Systems Administrator if you need a database account for any reason.
 

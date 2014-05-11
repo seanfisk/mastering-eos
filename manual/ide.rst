@@ -1,6 +1,6 @@
-===================================
-Integrated Development Environments
-===================================
+=====================================
+ Integrated Development Environments
+=====================================
 
 Prgramming is often aided by the use of an integrated development environment (IDE).  On the EOS system, we provide several IDEs to assist in programming tasks.
 

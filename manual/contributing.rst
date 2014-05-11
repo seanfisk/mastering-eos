@@ -2,7 +2,7 @@
  Contributing to |title|
 =========================
 
-This manual is a living document. It is maintained by its authors, but students (e.g., you!) are encouraged to contribute to the guide. The manual is written *by* GVSU CIS students *for* GVSU CIS students.
+This manual is a living document. It is maintained by its authors, but students (e.g., you!) are encouraged to contribute to the guide. The manual is written by GVSU CIS students for GVSU CIS students.
 
 The source code for |title| is `hosted on GitHub`_ and is available to the general public. GitHub is a popular site for hosting code repositories using Git_, a popular version control system.
 

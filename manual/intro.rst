@@ -1,8 +1,8 @@
-=======================================
- Introduction to the EOS Labs (Plural)
-=======================================
+==============
+ Introduction
+==============
 
-When addressing the Grand Valley State University School of Computing and Information Systems custom computing setup, we often refer to it simply as "EOS". Though EOS is only one set of our specialized computing labs, it is the one most often used by the greatest variety of students. As it was the original custom lab to be developed and the other labs are (largely) based on it, it sometimes makes sense to refer to the infrastructure as the EOS labs. Therefore, when reading this document, the following terms may be helpful:
+When addressing the computing setup used by the Grand Valley State University School of Computing and Information Systems, we often refer to it simply as "EOS". Though EOS is only one set of our specialized computing labs, it is the one most often used by the greatest variety of students. As it was the original custom lab to be developed and the other labs are largely based upon it, it sometimes makes sense to refer to the infrastructure as a whole. Therefore, when reading this document, the following terms may be helpful:
 
 - **EOS Labs** refers to the custom computing infrastructure provided for School of Computing and Information Systems students.
 - **EOS Lab** refers to the Exploring Operating Systems lab located in MAK A-1-171.
