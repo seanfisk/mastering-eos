@@ -6,6 +6,7 @@ Sphinx==1.2.2
 Jinja2==2.7.2
 MarkupSafe==0.19
 docutils==0.11
+sphinx-rtd-theme==0.1.6
 
 # For the manual's reportlab builder
 rst2pdf==0.93
