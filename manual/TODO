@@ -5,6 +5,10 @@
  TODO
 ======
 
+* Symbolic link instead of copying (maybe).
+
+* Switch to ghp-import from what we're currently doing (maybe).
+
 * VNC
 
 Finish Windows step-by-step guides. Decided what we want to do with Linux.
@@ -12,6 +16,8 @@ Finish Windows step-by-step guides. Decided what we want to do with Linux.
 * SSH
 
 Add SSH SOCKS proxy trick -- Mac OS X and GNU/Linux.
+
+* Change theme to use GVSU colors. Use black, white, the 3 blue shades from the home page, and the official blue (Pantone).
 
 * PATH
 
