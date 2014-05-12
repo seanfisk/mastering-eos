@@ -9,8 +9,6 @@
 
 * Symbolic link instead of copying (maybe).
 
-* Switch to ghp-import from what we're currently doing (maybe).
-
 * VNC
 
 Finish Windows step-by-step guides. Decided what we want to do with Linux.
