@@ -3,6 +3,7 @@ from glob import glob
 import subprocess
 import os
 import stat
+import errno
 from tempfile import mkdtemp
 import shutil
 import tarfile
@@ -44,6 +45,24 @@ class cwd(object):
     def __exit__(self, type, value, traceback):
         # This acts like a `finally' clause: it will always be executed.
         os.chdir(self.oldcwd)
+
+
+def copy_dir_contents(src_dir, dest_dir):
+    """Copy the contents of an existing directory to an existing destination
+    directory."""
+    # Annoying way to copy a tree to an existing directory.
+    with cwd(src_dir):
+        for rel_path in os.listdir('.'):
+            dest_path = os.path.join(dest_dir, rel_path)
+            try:
+                shutil.copytree(rel_path, dest_path)
+            except OSError as exc:
+                # Use exception handling to avoid the race condition between
+                # checking whether the file is a directory and copying it.
+                if exc.errno == errno.ENOTDIR:
+                    shutil.copyfile(rel_path, dest_path)
+                else:
+                    raise
 
 
 @task
@@ -142,23 +161,30 @@ def build():
     build_poster()
 
 
-def rsync_to(extra_args):
-    """Rsync the documentation with the specificed extra args.
-    These should include the destination."""
+def create_html_dist_directory():
+    """Prepare an HTML website directory suitable for distribution. It is
+    placed in a temporary directory, and the path to the directory is returned.
+    The calling code is responsible for deleting the directory."""
     execute(build)
 
-    # Create extra HTML archives.
-    parent_dir = mkdtemp(prefix='mastering-eos-')
     name = 'mastering-eos-html'
-    html_dir_path = os.path.join(parent_dir, name)
-    shutil.copytree('_build/html', html_dir_path)
+    dist_dir = mkdtemp(prefix='mastering-eos-dist-')
+    html_src_dir = '_build/html'
+
+    # Copy HTML (and other asset) files.
+    copy_dir_contents(html_src_dir, dist_dir)
+
+    # Create extra HTML archives.
+    temp_dir = mkdtemp(prefix='mastering-eos-tmp-')
+    temp_html_dir_path = os.path.join(temp_dir, name)
+    shutil.copytree('_build/html', temp_html_dir_path)
 
     tarfile_name = name + '.tar.gz'
     zipfile_name = name + '.zip'
-    tarfile_path = os.path.join(parent_dir, tarfile_name)
-    zipfile_path = os.path.join(parent_dir, zipfile_name)
+    tarfile_path = os.path.join(dist_dir, tarfile_name)
+    zipfile_path = os.path.join(dist_dir, zipfile_name)
 
-    with cwd(parent_dir):
+    with cwd(temp_dir):
         tar = tarfile.open(tarfile_name, 'w:gz')
         tar.add(name)
         tar.close()
@@ -169,27 +195,16 @@ def rsync_to(extra_args):
                 zip_.write(os.path.join(dirpath, filename))
         zip_.close()
 
-    # Rename poster.
+    shutil.rmtree(temp_dir)
+
+    # Copy poster.
     new_poster_name = 'mastering-eos-poster.pdf'
-    new_poster_path = os.path.join(parent_dir, new_poster_name)
+    new_poster_path = os.path.join(dist_dir, new_poster_name)
     shutil.copyfile(
         os.path.join(POSTER_DIR, 'mastering-eos.pdf'),
         new_poster_path)
 
-    subprocess.check_call([
-        'rsync',
-        '--verbose',
-        '--archive',
-        '--compress',
-    ] + glob(os.path.join('_build', 'html', '*')) + [
-        os.path.join('_build', 'latex', 'MasteringEOS.pdf'),
-        os.path.join('_build', 'epub', 'MasteringEOS.epub'),
-        tarfile_path,
-        zipfile_path,
-        new_poster_path,
-    ] + extra_args)
-
-    shutil.rmtree(parent_dir)
+    return dist_dir
 
 
 @task
@@ -197,33 +212,32 @@ def rsync_to(extra_args):
 def deploy_eos_web():
     ("Deploy the manual to the user's personal web directory in their EOS "
      'account.')
-    rsync_to([
-        '--chmod=go=rX',
-        # Allow the user to override the username using fabric.
-        env.user + '@eos10.cis.gvsu.edu:public_html/mastering-eos',
-    ])
+    temp_dir = create_html_dist_directory()
+    with cwd(temp_dir):
+        subprocess.check_call([
+            'rsync',
+            '--verbose',
+            '--archive',
+            '--compress',
+            '--chmod=go=rX',
+            '.',
+            # Allow the user to override the username using fabric.
+            env.user + '@eos10.cis.gvsu.edu:public_html/mastering-eos',
+        ])
+    shutil.rmtree(temp_dir)
 
 
 @task
 @runs_once
 def deploy_github_pages():
     """Deploy the manual to GitHub pages."""
-    if not os.path.exists(GH_PAGES_DIR):
-        git_url = subprocess.check_output([
-            'git', 'config', '--get', 'remote.origin.url']).rstrip()
-        subprocess.check_call([
-            'git', 'clone', '--branch', 'gh-pages', git_url, GH_PAGES_DIR])
-    # Allow the user to override the username using fabric.
-    rsync_to([
-        # Be less careful about what we delete on GitHub pages.
-        '--delete',
-        GH_PAGES_DIR,
+    temp_dir = create_html_dist_directory()
+    subprocess.check_call([
+        'ghp-import',
+        '-n',  # Include a .nojekyll file in the branch
+        temp_dir,
     ])
-    with cwd(GH_PAGES_DIR):
-        # Use '--all' rather than '.' so that deletions are also added.
-        subprocess.check_call(['git', 'add', '--all'])
-        subprocess.check_call(['git', 'commit', '-m', 'Update.'])
-        subprocess.check_call(['git', 'push', 'origin', 'gh-pages'])
+    shutil.rmtree(temp_dir)
 
 
 @task
