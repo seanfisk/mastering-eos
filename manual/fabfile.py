@@ -1,5 +1,4 @@
 from __future__ import print_function
-from glob import glob
 import subprocess
 import os
 import stat
@@ -181,8 +180,6 @@ def create_html_dist_directory():
 
     tarfile_name = name + '.tar.gz'
     zipfile_name = name + '.zip'
-    tarfile_path = os.path.join(dist_dir, tarfile_name)
-    zipfile_path = os.path.join(dist_dir, zipfile_name)
 
     with cwd(temp_dir):
         tar = tarfile.open(tarfile_name, 'w:gz')
