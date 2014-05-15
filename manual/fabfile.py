@@ -15,8 +15,8 @@ FINGERPRINTS_TABLE_FILENAME = os.path.join(
     'remote_access', 'common', 'fingerprints', 'table.rst')
 VNC_TABLE_FILENAME = os.path.join(
     'remote_access', 'common', 'vnc_port_geometry_table.rst')
-GH_PAGES_DIR = 'github_pages'
 POSTER_DIR = os.path.join('..', 'poster')
+BUILD_DIR = '_build'
 
 # Allow being overridden from the command-line.
 if env.hosts == []:
@@ -168,38 +168,40 @@ def create_html_dist_directory():
 
     name = 'mastering-eos-html'
     dist_dir = mkdtemp(prefix='mastering-eos-dist-')
-    html_src_dir = '_build/html'
+    html_src_dir = os.path.join(BUILD_DIR, 'html')
 
     # Copy HTML (and other asset) files.
     copy_dir_contents(html_src_dir, dist_dir)
+
+    # Copy PDF and EPUB.
+    shutil.copy(os.path.join(BUILD_DIR, 'epub', 'MasteringEOS.epub'), dist_dir)
+    shutil.copy(os.path.join(BUILD_DIR, 'latex', 'MasteringEOS.pdf'), dist_dir)
+
+    # Copy poster.
+    shutil.copyfile(
+        os.path.join(POSTER_DIR, 'mastering-eos.pdf'),
+        os.path.join(dist_dir, 'mastering-eos-poster.pdf'))
 
     # Create extra HTML archives.
     temp_dir = mkdtemp(prefix='mastering-eos-tmp-')
     temp_html_dir_path = os.path.join(temp_dir, name)
     shutil.copytree('_build/html', temp_html_dir_path)
 
-    tarfile_name = name + '.tar.gz'
-    zipfile_name = name + '.zip'
+    tarfile_path = os.path.join(dist_dir, name + '.tar.gz')
+    zipfile_path = os.path.join(dist_dir, name + '.zip')
 
     with cwd(temp_dir):
-        tar = tarfile.open(tarfile_name, 'w:gz')
+        tar = tarfile.open(tarfile_path, 'w:gz')
         tar.add(name)
         tar.close()
 
-        zip_ = zipfile.ZipFile(zipfile_name, 'w')
+        zip_ = zipfile.ZipFile(zipfile_path, 'w')
         for dirpath, dirnames, filenames in os.walk(name):
             for filename in filenames:
                 zip_.write(os.path.join(dirpath, filename))
         zip_.close()
 
     shutil.rmtree(temp_dir)
-
-    # Copy poster.
-    new_poster_name = 'mastering-eos-poster.pdf'
-    new_poster_path = os.path.join(dist_dir, new_poster_name)
-    shutil.copyfile(
-        os.path.join(POSTER_DIR, 'mastering-eos.pdf'),
-        new_poster_path)
 
     return dist_dir
 
@@ -232,6 +234,7 @@ def deploy_github_pages():
     subprocess.check_call([
         'ghp-import',
         '-n',  # Include a .nojekyll file in the branch
+        '-p',  # Push the branch after import
         temp_dir,
     ])
     shutil.rmtree(temp_dir)
