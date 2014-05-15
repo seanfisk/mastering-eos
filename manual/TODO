@@ -23,6 +23,4 @@ Expand the Shells section, consider taking out mentions of ksh and tcsh, and add
 
 Too informal, and some mistakes.
 
-* Move fabfile to top level, since we are distributing the poster now too.
-
 * Change theme to use GVSU colors. Use black, white, the 3 blue shades from the home page, and the official blue (Pantone).

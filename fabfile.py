@@ -11,12 +11,13 @@ import zipfile
 from fabric.api import env, task, execute, run, runs_once, put
 from texttable import Texttable
 
+POSTER_DIR = 'poster'
+MANUAL_DIR = 'manual'
 FINGERPRINTS_TABLE_FILENAME = os.path.join(
-    'remote_access', 'common', 'fingerprints', 'table.rst')
+    MANUAL_DIR, 'remote_access', 'common', 'fingerprints', 'table.rst')
 VNC_TABLE_FILENAME = os.path.join(
-    'remote_access', 'common', 'vnc_port_geometry_table.rst')
-POSTER_DIR = os.path.join('..', 'poster')
-BUILD_DIR = '_build'
+    MANUAL_DIR, 'remote_access', 'common', 'vnc_port_geometry_table.rst')
+BUILD_DIR = os.path.join(MANUAL_DIR, '_build')
 
 # Allow being overridden from the command-line.
 if env.hosts == []:
@@ -101,8 +102,7 @@ def generate_vnc_table():
     """Generate the VNC port/geometry table for the manual."""
     script_name = 'vnc_extract_port_geometry.py'
     dest_path = '~/bin/' + script_name
-    put(os.path.join('..', 'scripts', script_name),
-        dest_path, mode=stat.S_IRWXU)
+    put(os.path.join('scripts', script_name), dest_path, mode=stat.S_IRWXU)
     output = run(dest_path, shell=False)
 
     table = Texttable()
@@ -141,8 +141,9 @@ def build_manual():
     # Sometimes Sphinx doesn't detect modifications to files even though they
     # are modified (e.g., includes). As a workaround, clean before building.
     # It's ugly, but it works.
-    subprocess.check_call([
-        'make', 'clean', 'epub', 'html', 'latexpdf', 'man', 'info'])
+    with cwd(MANUAL_DIR):
+        subprocess.check_call([
+            'make', 'clean', 'epub', 'html', 'latexpdf', 'man', 'info'])
 
 
 @task
@@ -185,7 +186,7 @@ def create_html_dist_directory():
     # Create extra HTML archives.
     temp_dir = mkdtemp(prefix='mastering-eos-tmp-')
     temp_html_dir_path = os.path.join(temp_dir, name)
-    shutil.copytree('_build/html', temp_html_dir_path)
+    shutil.copytree(html_src_dir, temp_html_dir_path)
 
     tarfile_path = os.path.join(dist_dir, name + '.tar.gz')
     zipfile_path = os.path.join(dist_dir, name + '.zip')
@@ -243,12 +244,14 @@ def deploy_github_pages():
 @task
 @runs_once
 def deploy_man_info_for_user():
-    """Upload the man page and info docs to user's `~.local' directory."""
+    """Upload the man page and info docs to user's `~/.local` directory."""
     execute(build)
     LOCAL_PREFIX = '.local/share'
     run('mkdir -p {0}/man/man7 {0}/info'.format(LOCAL_PREFIX), shell=False)
-    put('_build/man/eos.7', LOCAL_PREFIX + '/man/man7/eos.7')
-    put('_build/texinfo/eos.info', LOCAL_PREFIX + '/info/eos.info')
+    put(os.path.join(BUILD_DIR, 'man', 'eos.7'),
+        LOCAL_PREFIX + '/man/man7/eos.7')
+    put(os.path.join(BUILD_DIR, 'texinfo', 'eos.info'),
+        LOCAL_PREFIX + '/info/eos.info')
 
 
 @task
@@ -256,9 +259,10 @@ def deploy_man_info_for_lab():
     ('Upload the man page and info docs to each EOS machine. Requires root '
      'access to said machines.')
     execute(build)
-    # Untested, but this should work.
     env.user = 'root'
     GLOBAL_PREFIX = '/usr/local/share'
     run('mkdir -p {0}/man/man7 {0}/info'.format(GLOBAL_PREFIX), shell=False)
-    put('_build/man/eos.7', GLOBAL_PREFIX + '/man/man7/eos.7')
-    put('_build/texinfo/eos.info', GLOBAL_PREFIX + '/info/eos.info')
+    put(os.path.join(BUILD_DIR, 'man', 'eos.7'),
+        GLOBAL_PREFIX + '/man/man7/eos.7')
+    put(os.path.join(BUILD_DIR, 'texinfo', 'eos.info'),
+        GLOBAL_PREFIX + '/info/eos.info')
