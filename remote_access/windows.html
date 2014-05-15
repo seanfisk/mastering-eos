@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Microsoft Windows &mdash; Mastering EOS 1.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Mastering EOS 1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Remote Access (SSH/VNC)" href="index.html"/>
+        <link rel="next" title="Mac OS X" href="mac_os_x.html"/>
+        <link rel="prev" title="Remote Access (SSH/VNC)" href="index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> Mastering EOS</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#physical-access-keycards">Physical Access (Keycards)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#computer-access-credentials">Computer Access (Credentials)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rules.html">Rules and Procedures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#disk-space">Disk Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#copyrighted-material">Copyrighted Material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#food-and-drink">Food and Drink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#overnight-parking">Overnight Parking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#living-in-the-lab">Living in the Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#malicious-activity">Malicious Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#games">Games</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Remote Access (SSH/VNC)</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mac_os_x.html">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gnu_linux.html">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../shells.html">Shells</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shells.html#bash">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shells.html#tcsh">Tcsh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shells.html#kornshell">Kornshell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../winserv.html">Accessing Winserv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#common-settings">Common Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#microsoft-windows">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#gnu-linux">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../databases.html">Databases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#mysql">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#oracle">Oracle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#oracle-apex">Oracle APEX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#mssql">MSSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#sqlite">SQLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#remote-database-connections">Remote Database Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ide.html">Integrated Development Environments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ide.html#bluej">BlueJ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ide.html#eclipse">Eclipse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ide.html#intellij">IntelliJ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to Mastering EOS</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Mastering EOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Remote Access (SSH/VNC)</a> &raquo;</li>
+      
+    <li>Microsoft Windows</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/remote_access/windows.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="microsoft-windows">
+<h1>Microsoft Windows<a class="headerlink" href="#microsoft-windows" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ssh">
+<h2>SSH<a class="headerlink" href="#ssh" title="Permalink to this headline">¶</a></h2>
+<p>The most popular SSH client for Windows is called <a class="reference external" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a>. It can be installed by visiting the <a class="reference external" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY download page</a>. We recommend installing via the Windows installer, labeled <em>A Windows installer for everything except PuTTYtel</em>.</p>
+<div class="section" id="logging-in">
+<h3>Logging In<a class="headerlink" href="#logging-in" title="Permalink to this headline">¶</a></h3>
+<p>The first we will do is create a saved session for our EOS connection configuration. This will save time for future logins.</p>
+<p>Open PuTTY and enter your username and the hostname of the EOS machine to which you would like to log into the <em class="guilabel">Host Name</em> field. This will take the form <em>user&#64;host</em>, for example, <tt class="samp docutils literal"><span class="pre">doej&#64;eos</span><em><span class="pre">XX</span></em><span class="pre">.cis.gvsu.edu</span></tt>, where <tt class="samp docutils literal"><span class="pre">XX</span></tt> is the number of the chosen machine.</p>
+<p>In the field under <em class="guilabel">Saved Sessions</em>, type <tt class="samp docutils literal"><span class="pre">EOS</span></tt> (this name is not strictly required, but is assumed in the next section). Click <em class="guilabel">Save</em>.</p>
+<p>To log in to EOS, click <em class="guilabel">Open</em>. For future logins, you may now simply select the session you created and click <em class="guilabel">Open</em> to connect.</p>
+</div>
+<div class="section" id="checking-host-fingerprints">
+<h3>Checking Host Fingerprints<a class="headerlink" href="#checking-host-fingerprints" title="Permalink to this headline">¶</a></h3>
+<p>When logging in to an EOS machine for the first time, you will see a dialog like this:</p>
+<img alt="PuTTY Security Alert" src="../_images/putty-security-alert.png" />
+<p>This is your SSH client requesting you to validate the identity of the machine to which you are connecting.</p>
+<p>Each EOS machine has a so-called fingerprint, a series of characters which is used to verify its identity. To ensure that an attacker between your client and the actual EOS machine is not pretending to be an EOS machine, you must check that the machine&#8217;s fingerprint matches the table below. Please report any mismatches to the system administrator immediately.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Host</th>
+<th class="head">Fingerprint</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>arch01</td>
+<td><tt class="docutils literal"><span class="pre">7e:df:14:7b:92:65:5e:29:59:99:4a:17:d1:79:1f:96</span></tt></td>
+</tr>
+<tr class="row-odd"><td>arch02</td>
+<td><tt class="docutils literal"><span class="pre">b7:b0:fb:63:e5:be:25:b0:d9:2c:15:78:1b:cc:ca:6f</span></tt></td>
+</tr>
+<tr class="row-even"><td>arch03</td>
+<td><tt class="docutils literal"><span class="pre">99:d3:7d:15:72:2b:80:4c:cb:56:8c:f9:d6:15:1e:38</span></tt></td>
+</tr>
+<tr class="row-odd"><td>arch04</td>
+<td><tt class="docutils literal"><span class="pre">fa:ae:f8:97:89:59:eb:91:fa:d0:d9:37:c1:f2:45:44</span></tt></td>
+</tr>
+<tr class="row-even"><td>arch05</td>
+<td><tt class="docutils literal"><span class="pre">67:b0:39:03:b2:c2:1c:1a:72:80:dd:49:23:d8:19:c4</span></tt></td>
+</tr>
+<tr class="row-odd"><td>arch06</td>
+<td><tt class="docutils literal"><span class="pre">6e:fc:21:fb:35:f5:b3:87:52:37:d3:5f:0b:d3:b3:b5</span></tt></td>
+</tr>
+<tr class="row-even"><td>arch07</td>
+<td><tt class="docutils literal"><span class="pre">7b:0d:0e:e0:51:c4:f7:bb:64:8a:14:e7:ab:66:de:34</span></tt></td>
+</tr>
+<tr class="row-odd"><td>arch08</td>
+<td><tt class="docutils literal"><span class="pre">e5:80:ac:98:22:6e:b5:41:26:18:27:c8:a5:22:52:42</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos01</td>
+<td><tt class="docutils literal"><span class="pre">6d:29:fd:23:c5:26:c7:c9:a5:6e:6e:c2:34:60:ea:54</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos02</td>
+<td><tt class="docutils literal"><span class="pre">05:d1:d5:61:a4:c4:4e:ba:07:85:e2:18:8e:4b:7b:59</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos03</td>
+<td><tt class="docutils literal"><span class="pre">98:e4:c6:10:9a:63:e0:1d:63:ae:a8:27:c3:39:e4:ba</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos04</td>
+<td><tt class="docutils literal"><span class="pre">7c:b7:a2:65:74:c0:4f:52:ee:a2:2d:b8:12:38:9a:be</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos05</td>
+<td><tt class="docutils literal"><span class="pre">db:70:3d:04:44:d3:7f:a4:83:72:13:71:0c:be:ab:97</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos06</td>
+<td><tt class="docutils literal"><span class="pre">80:a9:e8:ea:b8:54:1c:4d:3b:9d:e2:c2:a7:d0:37:46</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos07</td>
+<td><tt class="docutils literal"><span class="pre">f4:15:32:2a:b5:18:e9:e6:51:8a:58:63:71:64:ba:8b</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos08</td>
+<td><tt class="docutils literal"><span class="pre">0d:0b:31:06:0a:6e:e6:b4:fb:48:0f:11:d6:7b:98:8a</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos09</td>
+<td><tt class="docutils literal"><span class="pre">6e:c0:20:4b:7d:f2:88:3d:df:71:ee:2e:63:2b:3c:33</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos10</td>
+<td><tt class="docutils literal"><span class="pre">be:fe:47:76:1d:5a:4b:96:fc:b9:1e:f2:42:fd:ed:41</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos11</td>
+<td><tt class="docutils literal"><span class="pre">be:47:a2:1c:6a:30:e7:98:ab:9a:1c:d3:4b:33:f2:57</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos12</td>
+<td><tt class="docutils literal"><span class="pre">15:21:3f:d2:b5:0b:04:06:29:2f:10:a7:04:3e:83:b7</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos13</td>
+<td><tt class="docutils literal"><span class="pre">31:5e:6f:ab:4a:7c:2f:3e:36:06:bd:e4:e0:a4:a3:22</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos14</td>
+<td><tt class="docutils literal"><span class="pre">87:af:45:1a:59:48:3d:57:66:a1:d6:6f:6e:a8:05:59</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos15</td>
+<td><tt class="docutils literal"><span class="pre">c2:b2:34:fa:8e:16:65:49:c5:ea:f4:70:c2:54:50:bc</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos16</td>
+<td><tt class="docutils literal"><span class="pre">57:71:e3:80:36:ff:25:d3:d1:c9:96:3d:f0:2d:42:a4</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos17</td>
+<td><tt class="docutils literal"><span class="pre">fd:3e:66:2a:39:08:b1:8f:c2:d7:e9:8b:59:40:a1:d9</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos18</td>
+<td><tt class="docutils literal"><span class="pre">a8:c5:e3:8f:1c:32:8e:72:c6:f4:dd:52:ad:23:63:31</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos19</td>
+<td><tt class="docutils literal"><span class="pre">d7:65:50:f2:23:b9:d7:58:76:9a:e2:5c:f3:1b:c0:11</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos20</td>
+<td><tt class="docutils literal"><span class="pre">a0:76:77:7a:2f:8f:cf:a6:f7:50:38:a4:36:12:4b:2d</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos21</td>
+<td><tt class="docutils literal"><span class="pre">23:3a:2b:42:b4:cf:f4:9e:c8:14:57:2f:73:8f:65:46</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos22</td>
+<td><tt class="docutils literal"><span class="pre">a5:fc:1e:65:bb:29:9b:ee:1c:4a:e9:46:41:a1:8e:cd</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos23</td>
+<td><tt class="docutils literal"><span class="pre">86:bc:19:fa:64:05:73:ef:81:78:cb:24:b5:f7:8c:fd</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos24</td>
+<td><tt class="docutils literal"><span class="pre">ec:5c:2f:a7:e9:86:9f:36:e6:85:a1:bc:54:04:ce:a5</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="password-less-logins">
+<h3>Password-less Logins<a class="headerlink" href="#password-less-logins" title="Permalink to this headline">¶</a></h3>
+<p>It is often handy to be able to SSH into a host without having to type a password, for instance as part of a script. First, we need to generate our public/private. Open <a class="reference external" href="http://the.earth.li/~sgtatham/putty/0.63/htmldoc/Chapter8.html#pubkey-puttygen">PuTTYgen</a> from the PuTTY distribution to begin the generation process. Click <em class="guilabel">Generate</em> and do the mouse nonsense to generate your keys.</p>
+<p>Copy the text from the field labelled <em class="guilabel">Public key for pasting into OpenSSH authorized_keys file</em>. Open Notepad and paste this text. Save it to the desktop as <tt class="file docutils literal"><span class="pre">id_rsa.pub</span></tt>. Now open Windows PowerShell from the Start Menu and run the following command. If your EOS saved session is named something other than &#8220;EOS&#8221;, you will need to change it.</p>
+<div class="highlight-powershell"><div class="highlight"><pre>Get-Content &quot;$env:USERPROFILE\Desktop\id_rsa.pub&quot; | &amp; &quot;$env:SYSTEMDRIVE\Program Files (x86)\PuTTY\plink&quot; -pw ([Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($(Read-Host -AsSecureString Password)))) EOS &#39;umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys&#39;
+</pre></div>
+</div>
+<p>Your public key has now been uploaded to EOS. The file <tt class="file docutils literal"><span class="pre">id_rsa.pub</span></tt> may be deleted now.</p>
+<p>However, we still need to be able to tell PuTTY to use your private key to log in to EOS. Back in PuTTYgen, click <em class="guilabel">Save private key</em> and save the resulting PPK file to a location of your choosing. We recommend your home directory. Answer <em>Yes</em> when you are warned about saving the private key without a passphrase.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you would like to use a passphrase for your key, see the <a class="reference external" href="http://the.earth.li/~sgtatham/putty/latest/htmldoc/Chapter9.html#pageant">PuTTY Guide to Pageant</a> after completing this guide. Setting up an SSH agent is out of the scope of this guide.</p>
+</div>
+<p>Now start up PuTTY, click your saved session, then click <em class="guilabel">Load</em>. In the configuration tree to the left, expand <em class="menuselection">Connection ‣ SSH</em> and click on <em class="guilabel">Auth</em>. Click <em class="guilabel">Browse...</em> to the right of the field labelled <em class="guilabel">Private key file for authentication</em>. Select the PPK file you saved earlier.</p>
+<p>Go back to <em class="guilabel">Session</em> and click <em class="guilabel">Save</em>. PuTTY is now configured to use this private key to connect to EOS. Click <em class="guilabel">Open</em> and you should be able to log in without a password.</p>
+<p>As is obvious from these instructions, SSH key management is not a simple process. We recommend reading the <a class="reference external" href="http://the.earth.li/~sgtatham/putty/latest/htmldoc/Chapter8.html#pubkey">PuTTY Guide to SSH Keys</a>, which is the source for much of this information. If you would like to use a passphrase with your key, please see the <a class="reference external" href="http://the.earth.li/~sgtatham/putty/latest/htmldoc/Chapter9.html#pageant">PuTTY Guide to Pageant</a>, PuTTY&#8217;s SSH agent.</p>
+</div>
+<div class="section" id="alternatives">
+<h3>Alternatives<a class="headerlink" href="#alternatives" title="Permalink to this headline">¶</a></h3>
+<p>Though PuTTY is the recommended client, OpenSSH is also available for Windows. The recommended way of running OpenSSH on Windows is through <a class="reference external" href="http://www.cygwin.com/">Cygwin</a>.</p>
+</div>
+</div>
+<div class="section" id="vnc">
+<h2>VNC<a class="headerlink" href="#vnc" title="Permalink to this headline">¶</a></h2>
+<p>Viewers:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.uvnc.com/">UltraVNC</a></li>
+<li><a class="reference external" href="http://realvnc.com/download/viewer/">RealVNC Viewer</a></li>
+<li><a class="reference external" href="https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en">RealVNC Viewer for Google Chrome</a></li>
+<li><a class="reference external" href="http://tightvnc.com/download.php">TightVNC</a></li>
+<li><a class="reference external" href="http://sourceforge.net/projects/tigervnc/files/tigervnc/1.3.1/">TigerVNC</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mac_os_x.html" class="btn btn-neutral float-right" title="Mac OS X"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Remote Access (SSH/VNC)"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Sean Fisk and Ira Woodring.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

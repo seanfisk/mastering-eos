@@ -1,0 +1,227 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Shells &mdash; Mastering EOS 1.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Mastering EOS 1.0 documentation" href="index.html"/>
+        <link rel="next" title="Accessing Winserv" href="winserv.html"/>
+        <link rel="prev" title="GNU/Linux" href="remote_access/gnu_linux.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> Mastering EOS</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#physical-access-keycards">Physical Access (Keycards)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#computer-access-credentials">Computer Access (Credentials)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules and Procedures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#disk-space">Disk Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#copyrighted-material">Copyrighted Material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#food-and-drink">Food and Drink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#overnight-parking">Overnight Parking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#living-in-the-lab">Living in the Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#malicious-activity">Malicious Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#games">Games</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="remote_access/index.html">Remote Access (SSH/VNC)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="remote_access/windows.html">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_access/mac_os_x.html">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_access/gnu_linux.html">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Shells</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#bash">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tcsh">Tcsh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kornshell">Kornshell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="winserv.html">Accessing Winserv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="winserv.html#common-settings">Common Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="winserv.html#microsoft-windows">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="winserv.html#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="winserv.html#gnu-linux">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="databases.html">Databases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#mysql">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#oracle">Oracle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#oracle-apex">Oracle APEX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#mssql">MSSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#sqlite">SQLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#remote-database-connections">Remote Database Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ide.html">Integrated Development Environments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ide.html#bluej">BlueJ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ide.html#eclipse">Eclipse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ide.html#intellij">IntelliJ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to Mastering EOS</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Mastering EOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Shells</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/shells.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="shells">
+<h1>Shells<a class="headerlink" href="#shells" title="Permalink to this headline">¶</a></h1>
+<p>A *nix shell allows users a command line to run run programs.  The EOS infrastructure provides a variety of different shell options from which users can choose.  The default is Bash, but users may use any of the following provided shells.</p>
+<div class="section" id="bash">
+<span id="id1"></span><h2>Bash<a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://gnu.org/s/bash">GNU Bash</a> (Bourne Again SHell) is setup for users automatically.  It is the default shell for the GNU project and is widely the standard shell distributed with most distributions of Linux.</p>
+</div>
+<div class="section" id="tcsh">
+<h2>Tcsh<a class="headerlink" href="#tcsh" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.tcsh.org">Tcsh</a> (TENEX C SHell) is a C style shell that adds a few extra features such as command line completion.</p>
+</div>
+<div class="section" id="kornshell">
+<h2>Kornshell<a class="headerlink" href="#kornshell" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.kornshell.org">Kornshell</a> is a shell developed at AT&amp;T Bell Laboratories.  It has features of both the Bash and Korn shells, as well as additional features.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="winserv.html" class="btn btn-neutral float-right" title="Accessing Winserv"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="remote_access/gnu_linux.html" class="btn btn-neutral" title="GNU/Linux"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Sean Fisk and Ira Woodring.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
