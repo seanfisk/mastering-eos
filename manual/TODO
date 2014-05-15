@@ -15,9 +15,9 @@ CoRD might not be the choice for Mac OS X, since it says it's not compatible wit
 
 Finish Windows step-by-step guides. Decided what we want to do with Linux.
 
-* PATH
+* Shells / PATH
 
-Add information on the PATH section.
+Expand the Shells section, consider taking out mentions of ksh and tcsh, and add path manip and prompt customization sections.
 
 * Fix copyright section.
 

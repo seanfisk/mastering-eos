@@ -22,7 +22,6 @@
    rules
    remote_access/index
    shells
-   path
    winserv
    databases
    ide
