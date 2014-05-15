@@ -4,23 +4,6 @@
 
 It is important that some basic rules and procedures be established to help maintain the lab and aid in its shared use.  To those ends, please be aware of the following guidelines:
 
-Keycards
-========
-
-CIS labs are highly-specialized labs paid for and maintained with department resources. These machines are not for the general computing public. Students are therefore required to obtain a keycard before they can gain access to the labs. To obtain a keycard, students must
-
-- be currently enrolled in a course which utiltizes the lab they would like to access
-- visit the computing office in MAK C-2-100
-- pay a $25 deposit that is refunded to the student when the card is returned
-
-We charge a deposit on the cards because they are costly for us to purchase and we need to ensure they will be returned in acceptable condition.  The $25 deposit is charged to the student's account, so no money actually changes hands.  A refund of $25 will be placed on the student's account when the card is returned.
-
-The keycard will allow students access to the EOS and Architecture Labs. In addition, the card grants the holder 24-hour access to Mackinac Hall. The courtyard door which is closest to the Architecture Lab possesses a card scanner similar to the lab scanners which will open when the key is swiped. No other building doors are equipped with scanners.
-
-It is important that students
-
-- do not allow anyone else to use your card
-- do not keep the card in your wallet, as the cards contain tiny hair-like wires that break easily
 
 Disk Space
 ==========

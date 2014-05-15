@@ -7,7 +7,7 @@
    * in `PDF <MasteringEOS.pdf>`_, `EPUB (e-book) <MasteringEOS.epub>`_, and HTML archive (`.tar.gz <mastering-eos-html.tar.gz>`_ or `.zip <mastering-eos-html.zip>`_) formats.
    * by typing ``man eos`` or ``info eos`` on any EOS or Arch machine.
 
-   The poster is visible in the CIS Architecture Lab and is also available `as a PDF <mastering-eos-poster.pdf>`_.
+   The poster is visible in the Architecture Lab and is also available `as a PDF <mastering-eos-poster.pdf>`_.
 
    .. We cannot use the title substitution here because it is bold. Ugh...
 
@@ -20,7 +20,6 @@
 
    intro
    rules
-   login
    remote_access/index
    shells
    path
