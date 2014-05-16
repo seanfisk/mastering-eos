@@ -22,3 +22,5 @@ Expand the Shells section, consider taking out mentions of ksh and tcsh, and add
 * Change theme to use GVSU colors. Use black, white, the 3 blue shades from the home page, and the official blue (Pantone).
 
 * Remove Sphinx M. EOS version number and module list when it doesn't make sense.
+
+* "Next class" Python module in prompt, e.g., ``<CIS452 in 01:42>``.
