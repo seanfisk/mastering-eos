@@ -38,3 +38,17 @@ An author should respond to your pull request, and with any luck, your changes s
 .. _Set Up Git: https://help.github.com/articles/set-up-git
 .. _Fork: https://help.github.com/articles/fork-a-repo
 .. _pull request: https://help.github.com/articles/using-pull-requests
+
+Writing Style
+=============
+
+When writing technical documentation, it is important to follow a consistent writing style. Within this manual, we attempt to follow the `OpenStack writing conventions`_. Their documentation presents a great summary of how to write coherent technical documentation.
+
+.. _OpenStack writing conventions: https://wiki.openstack.org/wiki/Documentation/Conventions/Writing_style#Writing_style
+
+Please also see the following links for writing technical documentation:
+
+* `ACS Distance Educatio Guidelines for Technical Writing <http://www.acs.edu.au/info/environment/bio-science/technical-documentation.aspx>`_
+* `Novell Open Source Documentation Style Quick Start <http://www.novell.com/documentation/osauthoring/ex_osstyle/data/ex_osstyle.html>`_
+* `BlueBream Documentation Guidelines <http://bluebream.zope.org/doc/1.0/dev/writing.html>`_
+* Description of `Imperative Mood on Wikipedia <http://en.wikipedia.org/wiki/Imperative_mood>`_
