@@ -9,6 +9,8 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
+from __future__ import unicode_literals
+
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -35,8 +37,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Mastering EOS'
-copyright = u'2014, Sean Fisk and Ira Woodring'
+project = 'Mastering EOS'
+unix_name = 'mastering-eos'
+copyright = '2014, Sean Fisk and Ira Woodring'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -179,8 +182,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ('index', 'MasteringEOS.tex', u'Mastering EOS Documentation',
-     u'Sean Fisk and Ira Woodring', 'manual'),
+    ('index', 'MasteringEOS.tex', 'Mastering EOS Documentation',
+     'Sean Fisk and Ira Woodring', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -209,8 +212,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'eos', u'Mastering EOS',
-     [u'Sean Fisk and Ira Woodring'], 7)
+    ('index', 'eos', 'Mastering EOS',
+     ['Sean Fisk and Ira Woodring'], 7)
 ]
 
 # If true, show URL addresses after external links.
@@ -223,8 +226,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'eos', u'Mastering EOS',
-     u'Sean Fisk and Ira Woodring', 'MasteringEOS', 'EOS lab documentation',
+    ('index', 'eos', 'Mastering EOS',
+     'Sean Fisk and Ira Woodring', 'MasteringEOS', 'EOS lab documentation',
      'Miscellaneous'),
 ]
 
@@ -244,10 +247,10 @@ texinfo_documents = [
 # -- Options for Epub output ----------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'Mastering EOS'
-epub_author = u'Sean Fisk and Ira Woodring'
-epub_publisher = u'Sean Fisk and Ira Woodring'
-epub_copyright = u'2014, Sean Fisk and Ira Woodring'
+epub_title = 'Mastering EOS'
+epub_author = 'Sean Fisk and Ira Woodring'
+epub_publisher = 'Sean Fisk and Ira Woodring'
+epub_copyright = '2014, Sean Fisk and Ira Woodring'
 
 # The basename for the epub file. It defaults to the project name.
 # epub_basename = u'Mastering EOS'
@@ -330,8 +333,8 @@ epub_exclude_files = ['search.html']
 # regardless of the global pdf_compressed setting.
 
 pdf_documents = [
-    ('index', u'MasteringEOS', u'Mastering EOS Documentation',
-     u'Sean Fisk and Ira Woodring'),
+    ('index', 'MasteringEOS', 'Mastering EOS Documentation',
+     'Sean Fisk and Ira Woodring'),
 ]
 
 # A comma-separated list of custom stylesheets. Example:
