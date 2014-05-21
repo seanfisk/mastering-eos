@@ -175,8 +175,10 @@ def create_html_dist_directory():
     copy_dir_contents(html_src_dir, dist_dir)
 
     # Copy PDF and EPUB.
-    shutil.copy(os.path.join(BUILD_DIR, 'epub', 'MasteringEOS.epub'), dist_dir)
-    shutil.copy(os.path.join(BUILD_DIR, 'latex', 'MasteringEOS.pdf'), dist_dir)
+    shutil.copy(
+        os.path.join(BUILD_DIR, 'epub', 'mastering-eos.epub'), dist_dir)
+    shutil.copy(
+        os.path.join(BUILD_DIR, 'latex', 'mastering-eos.pdf'), dist_dir)
 
     # Copy poster.
     shutil.copyfile(

@@ -39,7 +39,13 @@ master_doc = 'index'
 # General information about the project.
 project = 'Mastering EOS'
 unix_name = 'mastering-eos'
-copyright = '2014, Sean Fisk and Ira Woodring'
+authors = ['Sean Fisk', 'Ira Woodring']
+authors_str = ' and '.join(authors)
+from datetime import date
+copyright = '{year} {authors_str}'.format(
+    year=date.today().year, authors_str=authors_str)
+# Name of the man page and info docs.
+man_info_name = 'eos'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -96,7 +102,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-# html_title = None
+html_title = project
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 # html_short_title = None
@@ -136,7 +142,7 @@ html_static_path = ['_static']
 # html_additional_pages = {}
 
 # If false, no module index is generated.
-# html_domain_indices = True
+html_domain_indices = False
 
 # If false, no index is generated.
 # html_use_index = True
@@ -162,7 +168,7 @@ html_static_path = ['_static']
 # html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'MasteringEOSdoc'
+htmlhelp_basename = unix_name
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -182,8 +188,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ('index', 'MasteringEOS.tex', 'Mastering EOS Documentation',
-     'Sean Fisk and Ira Woodring', 'manual'),
+    ('index', unix_name + '.tex', project, authors_str, 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -204,7 +209,7 @@ latex_documents = [
 # latex_appendices = []
 
 # If false, no module index is generated.
-# latex_domain_indices = True
+latex_domain_indices = False
 
 
 # -- Options for manual page output ---------------------------------------
@@ -212,8 +217,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'eos', 'Mastering EOS',
-     ['Sean Fisk and Ira Woodring'], 7)
+    ('index', man_info_name, project, authors, 7),
 ]
 
 # If true, show URL addresses after external links.
@@ -226,16 +230,15 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'eos', 'Mastering EOS',
-     'Sean Fisk and Ira Woodring', 'MasteringEOS', 'EOS lab documentation',
-     'Miscellaneous'),
+    ('index', man_info_name, project, authors_str, project,
+     'EOS Lab Documentation', 'Miscellaneous'),
 ]
 
 # Documents to append as an appendix to all manuals.
 # texinfo_appendices = []
 
 # If false, no module index is generated.
-# texinfo_domain_indices = True
+texinfo_domain_indices = False
 
 # How to display URL addresses: 'footnote', 'no', or 'inline'.
 # texinfo_show_urls = 'footnote'
@@ -247,13 +250,13 @@ texinfo_documents = [
 # -- Options for Epub output ----------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = 'Mastering EOS'
-epub_author = 'Sean Fisk and Ira Woodring'
-epub_publisher = 'Sean Fisk and Ira Woodring'
-epub_copyright = '2014, Sean Fisk and Ira Woodring'
+epub_title = project
+epub_author = authors_str
+epub_publisher = authors_str
+epub_copyright = copyright
 
 # The basename for the epub file. It defaults to the project name.
-# epub_basename = u'Mastering EOS'
+epub_basename = unix_name
 
 # The HTML theme for the epub output. Since the default themes are not
 # optimized for small screen space, using the same theme for HTML and epub
@@ -333,8 +336,7 @@ epub_exclude_files = ['search.html']
 # regardless of the global pdf_compressed setting.
 
 pdf_documents = [
-    ('index', 'MasteringEOS', 'Mastering EOS Documentation',
-     'Sean Fisk and Ira Woodring'),
+    ('index', unix_name, project, authors_str),
 ]
 
 # A comma-separated list of custom stylesheets. Example:
@@ -378,7 +380,7 @@ pdf_style_path = ['.', '_styles']
 # pdf_use_index = True
 
 # If false, no modindex is generated.
-# pdf_use_modindex = True
+pdf_use_modindex = False
 
 # If false, no coverpage is generated.
 # pdf_use_coverpage = True
