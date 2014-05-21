@@ -22,3 +22,9 @@ Expand the Shells section, consider taking out mentions of ksh and tcsh, and add
 * Change theme to use GVSU colors. Use black, white, the 3 blue shades from the home page, and the official blue (Pantone).
 
 * "Next class" Python module in prompt, e.g., ``<CIS452 in 01:42>``.
+
+* Expand DB section; add PostgreSQL
+
+* List of GUI libraries
+
+* HPC? (Threading, OpenMP, MPI, C++, Python)
