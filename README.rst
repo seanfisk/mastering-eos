@@ -6,7 +6,7 @@ Mastering EOS is an initiative to produce better documentation for the Grand Val
 
 Mastering EOS consists of two parts:
 
-* A poster of lesser-known useful tips and tricks that can be used by students in the EOS Lab.
+* A poster of lesser-known tips and tricks that can be used in the EOS Lab.
 * A full manual documenting both basic and advanced tasks.
 
 Mastering EOS is written by:

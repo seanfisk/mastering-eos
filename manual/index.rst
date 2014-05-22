@@ -10,7 +10,7 @@
 
    .. We cannot use the title substitution here because it is bold. Ugh...
 
-   **Student contribution to Mastering EOS is encouraged!** Please see the section :doc:`contributing` for more information.
+   **Student contribution to Mastering EOS is encouraged. This means you!** Please see the section :doc:`contributing` for more information.
 
 **Contents:**
 
