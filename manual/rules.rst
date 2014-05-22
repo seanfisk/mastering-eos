@@ -1,5 +1,3 @@
-.. -*- coding: utf-8; -*-
-
 ======================
  Rules and Procedures
 ======================
@@ -26,7 +24,7 @@ Suffice to say, please be very careful when dealing with copyrighted materials w
 Food and Drink
 ==============
 
-You are encouraged to eat and drink in the labs --- these labs were made for you and we want them to be as comfortable and useful as possible. Many restaraunts in the area deliver to the labs, including Papa John's and Jimmy John's. However, it is your responsibility to clean up after yourself. If the lab becomes too messy, policies to limit food and drinks will be instituted.
+You are encouraged to eat and drink in the labs --- these labs were made for you and we want them to be as comfortable and useful as possible. Many restaraunts in the area deliver to the labs, including Papa John's and Jimmy John's. However, it is your responsibility to clean up after yourself. If the lab becomes too messy, policies to limit food and drinks will be instituted.
 
 Overnight Parking
 =================
@@ -41,7 +39,7 @@ It should go without saying (but hasn't in the past) that you cannot live in the
 Malicious Activity
 ==================
 
-The infrastructure provided by the EOS Labs includes very powerful tools that can be used to secure network infrastructure.  Unfortunately, these tools may also be used for malicious purposes. We provide these tools for you to learn to defend future systems it may be your job to secure. Under no circumstances should these tools be used to attack other students, machines, or entities. We do not provide these resources without reasonable oversight as to their use, and those using them illegally will be noticed and face strong consequences --- possibly including removal from the university and criminal charges.
+The infrastructure provided by the EOS Labs includes very powerful tools that can be used to secure network infrastructure.  Unfortunately, these tools may also be used for malicious purposes. We provide these tools for you to learn to defend future systems it may be your job to secure. Under no circumstances should these tools be used to attack other students, machines, or entities. We do not provide these resources without reasonable oversight as to their use, and those using them illegally will be noticed and face strong consequences --- possibly including removal from the university and criminal charges.
 
 Games
 =====

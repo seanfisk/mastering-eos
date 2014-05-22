@@ -1,5 +1,3 @@
-.. -*- coding: utf-8; -*-
-
 ==========
  Mac OS X
 ==========
@@ -41,11 +39,11 @@ Alternatives
 
 Chicken is not the only VNC viewer available for Mac OS X. Some alternatives are:
 
-* `RealVNC <https://www.realvnc.com/products/vnc/documentation/5.0/installing-removing/macosx>`_ --- free and paid versions available
-* `RealVNC Viewer for Google Chrome <https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en>`_ --- free Google Chrome extension
-* `JollysFastVNC <http://www.jinx.de/JollysFastVNC.html>`_ --- trial available
-* `TigerVNC <http://tigervnc.org/>`_ --- free and open source, command-line connection interface only
-* `Chicken of the VNC <http://sourceforge.net/projects/cotvnc/>`_ --- older version of Chicken, not recommended
+* `RealVNC <https://www.realvnc.com/products/vnc/documentation/5.0/installing-removing/macosx>`_ --- free and paid versions available
+* `RealVNC Viewer for Google Chrome <https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en>`_ --- free Google Chrome extension
+* `JollysFastVNC <http://www.jinx.de/JollysFastVNC.html>`_ --- trial available
+* `TigerVNC <http://tigervnc.org/>`_ --- free and open source, command-line connection interface only
+* `Chicken of the VNC <http://sourceforge.net/projects/cotvnc/>`_ --- older version of Chicken, not recommended
 
 .. include:: common/openssh/advanced/intro.rst
 
