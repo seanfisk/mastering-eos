@@ -1,6 +1,3 @@
-.. -*- mode: rst -*-
-.. This intentionally does not use the RST extension to prevent Sphinx from picking it up.
-
 ======
  TODO
 ======
