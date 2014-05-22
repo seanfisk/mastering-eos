@@ -28,3 +28,5 @@ Expand the Shells section, consider taking out mentions of ksh and tcsh, and add
 * List of GUI libraries
 
 * HPC? (Threading, OpenMP, MPI, C++, Python)
+
+* Be clear about keycard Datacomm vs. EOS/Arch access (Ira).
