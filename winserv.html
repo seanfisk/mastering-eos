@@ -150,12 +150,12 @@
 <p>Part of the department infrastructure is a Windows Server installation, called Winserv. Accounts for this machine are given as necessary &#8212; for example, when taking a course that involves projects which require the Windows platform. This server is named <tt class="docutils literal"><span class="pre">winserv.cis.gvsu</span></tt> and can be accessed via the <a class="reference external" href="http://en.wikipedia.org/wiki/Remote_Desktop_Protocol">Remote Desktop Protocol</a> (RDP). The following are methods for accessing Winserv from various RDP clients.</p>
 <div class="section" id="common-settings">
 <h2>Common Settings<a class="headerlink" href="#common-settings" title="Permalink to this headline">¶</a></h2>
-<p>Regardless of the RDP client or platform you use, you will need to remember a few things:</p>
+<p>Regardless of the RDP client or platform you use, please remember a few things:</p>
 <ul class="simple">
 <li>The machine&#8217;s IP address may change; use the DNS name instead.</li>
-<li>If outside of the EOS network you will need to use the fully qualified domain name, <tt class="docutils literal"><span class="pre">winserv.cis.gvsu.edu</span></tt>. While on the EOS network, you can simply use <tt class="docutils literal"><span class="pre">winserv</span></tt>.</li>
+<li>If outside of the EOS network, you will need to use the fully qualified domain name, <tt class="docutils literal"><span class="pre">winserv.cis.gvsu.edu</span></tt>. While on the EOS network, you can simply use <tt class="docutils literal"><span class="pre">winserv</span></tt>.</li>
 <li>You must login to the CIS domain. For instance, if your username is <tt class="docutils literal"><span class="pre">smithj</span></tt>, your login would be <tt class="docutils literal"><span class="pre">CIS\smithj</span></tt>.</li>
-<li>We self-sign our certificate. You may want to instruct your client to save this information or you will have to accept a security warning each time you login.</li>
+<li>Our certificate is self-signed. You may want to instruct your client to save this information, or you will have to accept a security warning each time you login.</li>
 </ul>
 </div>
 <div class="section" id="microsoft-windows">
@@ -167,17 +167,16 @@
 <p>Newer versions of Microsoft&#8217;s Remote Desktop Application for Mac OS X no longer work. Fortunately, the open-source rdesktop RDP implementation has been implemented for Mac OS X as a program called <a class="reference external" href="http://cord.sourceforge.net/">CoRD</a>.</p>
 </div>
 <div class="section" id="gnu-linux">
-<h2>GNU/Linux<a class="headerlink" href="#gnu-linux" title="Permalink to this headline">¶</a></h2>
-<p>GNU/Linux systems usually have the <a class="reference external" href="http://www.rdesktop.org/">rdesktop</a> command-line tool in their repositories. If not, it can most likely be built from source. rdesktop provides a geometry flag that accepts both screen percentages or resolutions from the command-line to help adjust the client to an appropriate size. For instance, users can type:</p>
+<span id="gnu-linux-rdp"></span><h2>GNU/Linux<a class="headerlink" href="#gnu-linux" title="Permalink to this headline">¶</a></h2>
+<p>GNU/Linux systems usually have the <a class="reference external" href="http://www.rdesktop.org/">rdesktop</a> command-line tool in their repositories. If not, it can most likely be built from source. rdesktop provides a geometry flag that accepts both screen percentages or resolutions from the command-line to help adjust the client to an appropriate size. For instance, to allow the client to take up 90% of your screen:</p>
 <div class="highlight-python"><div class="highlight"><pre>rdekstop winserv.cis.gvsu.edu -g 90%
 </pre></div>
 </div>
-<p>to allow the client to take up 90% of their screen.  Alternatively they could type:</p>
+<p>Alternatively, to force a resolution of 1024x768 pixels:</p>
 <div class="highlight-python"><div class="highlight"><pre>rdekstop winserv.cis.gvsu.edu -g 1024x768
 </pre></div>
 </div>
-<p>to force a resolution of 1024x768 pixels.</p>
-<p>For a graphical RDP client that can also be used for VNC, check out <a class="reference external" href="http://remmina.sourceforge.net/">Remmina</a>.</p>
+<p>For a graphical RDP client that can also be used for <a class="reference internal" href="remote_access/gnu_linux.html#gnu-linux-vnc"><em>VNC</em></a>, check out <a class="reference external" href="http://remmina.sourceforge.net/">Remmina</a>.</p>
 </div>
 </div>
 

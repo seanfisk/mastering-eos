@@ -159,7 +159,7 @@
 <div class="highlight-python"><div class="highlight"><pre>ssh smithj@eosXX.cis.gvsu.edu
 </pre></div>
 </div>
-<p>You should see a prompt open to <a class="reference internal" href="../shells.html#bash"><em>Bash</em></a>, the default shell on EOS. From here, you can run commands as you would inside a normal terminal emulator in an EOS desktop session. The commands will be run on the EOS machine to which you are logged in.</p>
+<p>You should see a prompt open to <a class="reference internal" href="../shells.html#bash"><em>Bash</em></a>, the default shell on EOS. From here, you can run commands as you would inside a normal terminal emulator in an EOS desktop session. The commands will be run on the EOS machine to which you have connected.</p>
 </div>
 <div class="section" id="checking-host-fingerprints">
 <h3>Checking Host Fingerprints<a class="headerlink" href="#checking-host-fingerprints" title="Permalink to this headline">¶</a></h3>
@@ -170,7 +170,7 @@ Are you sure you want to continue connecting (yes/no)?
 </pre></div>
 </div>
 <p>This is your SSH client requesting you to validate the identity of the machine to which you are connecting.</p>
-<p>Each EOS machine has a so-called fingerprint, a series of characters which is used to verify its identity. To ensure that an attacker between your client and the actual EOS machine is not pretending to be an EOS machine, you must check that the machine&#8217;s fingerprint matches the table below. Please report any mismatches to the system administrator immediately.</p>
+<p>Each EOS machine has a so-called fingerprint, a series of characters which is used to verify its identity. To ensure that an attacker between your client and the actual EOS machine is not pretending to be an EOS machine, you must check that the machine&#8217;s fingerprint matches the table below. Please report any mismatches to Ira Woodring immediately.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="13%" />
@@ -287,7 +287,7 @@ Are you sure you want to continue connecting (yes/no)?
 <div class="highlight-python"><div class="highlight"><pre><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span>
 </pre></div>
 </div>
-<p>Accept the default values by pressing <tt class="kbd docutils literal"><span class="pre">Enter</span></tt> at each prompt unless you know what you are doing. Once the keys have been generated you can copy the public key over to the remote system by entering:</p>
+<p>Accept the default values by pressing <tt class="kbd docutils literal"><span class="pre">Enter</span></tt> at each prompt unless you know what you are doing. Once the keys have been generated, you can copy the public key over to the remote system by entering:</p>
 <div class="highlight-bash"><div class="highlight"><pre>ssh smithj@eos01.cis.gvsu.edu <span class="s1">&#39;umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys&#39;</span> &lt; ~/.ssh/id_rsa.pub
 </pre></div>
 </div>
@@ -441,11 +441,11 @@ umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; touch ~/.ssh/config &amp;&
 <h3>Alternatives<a class="headerlink" href="#alternatives" title="Permalink to this headline">¶</a></h3>
 <p>Chicken is not the only VNC viewer available for Mac OS X. Some alternatives are:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://www.realvnc.com/products/vnc/documentation/5.0/installing-removing/macosx">RealVNC</a> &#8211; free and paid versions available</li>
-<li><a class="reference external" href="https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en">RealVNC Viewer for Google Chrome</a> &#8211; free Google Chrome extension</li>
-<li><a class="reference external" href="http://www.jinx.de/JollysFastVNC.html">JollysFastVNC</a> &#8211; trial available</li>
-<li><a class="reference external" href="http://tigervnc.org/">TigerVNC</a> &#8211; free and open source, command-line connection interface only</li>
-<li><a class="reference external" href="http://sourceforge.net/projects/cotvnc/">Chicken of the VNC</a> &#8211; older version of Chicken, not recommended</li>
+<li><a class="reference external" href="https://www.realvnc.com/products/vnc/documentation/5.0/installing-removing/macosx">RealVNC</a> &#8212; free and paid versions available</li>
+<li><a class="reference external" href="https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en">RealVNC Viewer for Google Chrome</a> &#8212; free Google Chrome extension</li>
+<li><a class="reference external" href="http://www.jinx.de/JollysFastVNC.html">JollysFastVNC</a> &#8212; trial available</li>
+<li><a class="reference external" href="http://tigervnc.org/">TigerVNC</a> &#8212; free and open source, command-line connection interface only</li>
+<li><a class="reference external" href="http://sourceforge.net/projects/cotvnc/">Chicken of the VNC</a> &#8212; older version of Chicken, not recommended</li>
 </ul>
 </div>
 </div>

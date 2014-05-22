@@ -9,12 +9,12 @@ Part of the department infrastructure is a Windows Server installation, called W
 Common Settings
 ===============
 
-Regardless of the RDP client or platform you use, you will need to remember a few things:
+Regardless of the RDP client or platform you use, please remember a few things:
 
 - The machine's IP address may change; use the DNS name instead.
-- If outside of the EOS network you will need to use the fully qualified domain name, ``winserv.cis.gvsu.edu``. While on the EOS network, you can simply use ``winserv``.
+- If outside of the EOS network, you will need to use the fully qualified domain name, ``winserv.cis.gvsu.edu``. While on the EOS network, you can simply use ``winserv``.
 - You must login to the CIS domain. For instance, if your username is ``smithj``, your login would be ``CIS\smithj``.
-- We self-sign our certificate. You may want to instruct your client to save this information or you will have to accept a security warning each time you login.
+- Our certificate is self-signed. You may want to instruct your client to save this information, or you will have to accept a security warning each time you login.
 
 Microsoft Windows
 =================
@@ -28,20 +28,20 @@ Newer versions of Microsoft's Remote Desktop Application for Mac OS X no longer 
 
 .. _CoRD: http://cord.sourceforge.net/
 
+.. _gnu-linux-rdp:
+
 GNU/Linux
 =========
 
-GNU/Linux systems usually have the rdesktop_ command-line tool in their repositories. If not, it can most likely be built from source. rdesktop provides a geometry flag that accepts both screen percentages or resolutions from the command-line to help adjust the client to an appropriate size. For instance, users can type::
+GNU/Linux systems usually have the rdesktop_ command-line tool in their repositories. If not, it can most likely be built from source. rdesktop provides a geometry flag that accepts both screen percentages or resolutions from the command-line to help adjust the client to an appropriate size. For instance, to allow the client to take up 90% of your screen::
 
     rdekstop winserv.cis.gvsu.edu -g 90%
 
-to allow the client to take up 90% of their screen.  Alternatively they could type::
+Alternatively, to force a resolution of 1024x768 pixels::
 
     rdekstop winserv.cis.gvsu.edu -g 1024x768
 
-to force a resolution of 1024x768 pixels.
-
-For a graphical RDP client that can also be used for VNC, check out Remmina_.
+For a graphical RDP client that can also be used for :ref:`VNC <gnu-linux-vnc>`, check out Remmina_.
 
 .. _rdesktop: http://www.rdesktop.org/
 .. _Remmina: http://remmina.sourceforge.net/
