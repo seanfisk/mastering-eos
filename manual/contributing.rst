@@ -48,7 +48,7 @@ When writing technical documentation, it is important to follow a consistent wri
 
 Please also see the following links for writing technical documentation:
 
-* `ACS Distance Educatio Guidelines for Technical Writing <http://www.acs.edu.au/info/environment/bio-science/technical-documentation.aspx>`_
+* `ACS Distance Education Guidelines for Technical Writing <http://www.acs.edu.au/info/environment/bio-science/technical-documentation.aspx>`_
 * `Novell Open Source Documentation Style Quick Start <http://www.novell.com/documentation/osauthoring/ex_osstyle/data/ex_osstyle.html>`_
 * `BlueBream Documentation Guidelines <http://bluebream.zope.org/doc/1.0/dev/writing.html>`_
 * Description of `Imperative Mood on Wikipedia <http://en.wikipedia.org/wiki/Imperative_mood>`_

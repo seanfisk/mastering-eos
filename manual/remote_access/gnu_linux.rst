@@ -36,7 +36,9 @@ With other distributions (Arch, etc.), you are on your own.
 .. |text_editor| replace:: gedit
 .. include:: common/openssh/forwarding.rst
 
-There are a number of capable VNC clients for GNU/Linux. Which one you choose depends on desktop environment and personal preference. For KDE, KRDC_ (KDE Remote Desktop Client) is the standard application. For GNOME, the standard remote desktop viewer is called Vinagre_. If either of these is not satisfying, you may want to try Reminna_, a third-party free and open-source remote desktop viewer. You should install these from your package manager.
+.. _gnu-linux-vnc:
+
+There are a number of capable VNC clients for GNU/Linux. Which one you choose depends on desktop environment and personal preference. For KDE, KRDC_ (KDE Remote Desktop Client) is the standard application. For GNOME, the standard remote desktop viewer is called Vinagre_. If you would also like to use :ref:`RDP with Winserv <gnu-linux-rdp>`, you may want to try Reminna_, a third-party free and open-source remote desktop viewer. You should install these from your package manager.
 
 TigerVNC_ and `RealVNC Viewer`_ are also available for GNU/Linux. RealVNC also offers `RealVNC Viewer for Google Chrome`_, a free viewer which runs inside the Google Chrome browser.
 
