@@ -50,7 +50,7 @@ CoRD_ is an open-source rdesktop-based RDP implementation for Mac OS X. Although
 
 .. _CoRD: http://cord.sourceforge.net/
 
-.. _gnu-linux-rdp:
+.. _winserv-gnu-linux:
 
 GNU/Linux
 =========

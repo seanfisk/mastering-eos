@@ -439,8 +439,19 @@ umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; touch ~/.ssh/config &amp;&
 </pre></div>
 </div>
 <p>You are now ready to tunnel your VNC session.</p>
-<p id="gnu-linux-vnc">There are a number of capable VNC clients for GNU/Linux. Which one you choose depends on desktop environment and personal preference. For KDE, <a class="reference external" href="http://kde.org/applications/internet/krdc/">KRDC</a> (KDE Remote Desktop Client) is the standard application. For GNOME, the standard remote desktop viewer is called <a class="reference external" href="https://wiki.gnome.org/Apps/Vinagre">Vinagre</a>. If you would also like to use <a class="reference internal" href="../winserv.html#gnu-linux-rdp"><em>RDP with Winserv</em></a>, you may want to try <a class="reference external" href="http://remmina.sourceforge.net/">Reminna</a>, a third-party free and open-source remote desktop viewer. You should install these from your package manager.</p>
-<p><a class="reference external" href="http://tigervnc.org/">TigerVNC</a> and <a class="reference external" href="http://realvnc.com/download/viewer/">RealVNC Viewer</a> are also available for GNU/Linux. RealVNC also offers <a class="reference external" href="https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en">RealVNC Viewer for Google Chrome</a>, a free viewer which runs inside the Google Chrome browser.</p>
+<p id="gnu-linux-vnc">There are a number of VNC clients for GNU/Linux, but the most capable and intuitive is <a class="reference external" href="http://remmina.sourceforge.net/">Reminna</a> (formerly <a class="reference external" href="http://sourceforge.net/projects/tsclient/">tsclient</a>). Reminna also supports RDP, so you can use it with <a class="reference internal" href="../winserv.html#winserv-gnu-linux"><em>Winserv</em></a>. It installed by default in Ubuntu 14.04. If it is not installed in your distribution, you should install from your package manager.</p>
+<p>In addition, Reminna supports automatic SSH tunneling. You do not need to establish a tunnel beforehand as shown in the previous section. However, if you need a shell or otherwise want to do it that way, there is nothing stopping you as it works just as well.</p>
+<p>To configure Reminna for VNC with automatic SSH tunneling, open Reminna and select <em class="menuselection">Connection ‣ New</em> to create a new connection. Under the <em class="guilabel">Basic</em> and <em class="guilabel">SSH</em> tabs, respectively, enter the following information. This configuration uses EOS10 and port 5907, but use the host of your choice and the port which matches your resolution from the previous section. Because <em class="guilabel">Public Key</em> is selected, if you have set up password-less login earlier, the login should be automatic.</p>
+<img alt="Reminna Basic Tab" src="../_images/basic.png" />
+<img alt="Reminna SSH Tab" src="../_images/ssh.png" />
+<p>We have tried various VNC clients, but found Reminna to be the easiest to use. However, other VNC clients for GNU/Linux exist and include:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://kde.org/applications/internet/krdc/">KRDC</a> &#8212; free and open-source, part of KDE</li>
+<li><a class="reference external" href="https://wiki.gnome.org/Apps/Vinagre">Vinagre</a> &#8212; free and open-source, part of GNOME</li>
+<li><a class="reference external" href="http://tigervnc.org/">TigerVNC</a> &#8212; command-line based, free and open-source</li>
+<li><a class="reference external" href="http://realvnc.com/download/viewer/">RealVNC Viewer</a> &#8212; free and paid versions available</li>
+<li><a class="reference external" href="https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en">RealVNC Viewer for Google Chrome</a> &#8212; free Google Chrome extension</li>
+</ul>
 <p>Operation of each of these applications is similar. For the host, enter in the hostname of the EOS machine to which you have SSH&#8217;ed. If a display is requested, enter <tt class="docutils literal"><span class="pre">0</span></tt>. If a port is requested, enter <tt class="docutils literal"><span class="pre">5900</span></tt> (these mean the same thing). If the viewer offers support for multiple protocols, make sure you select &#8220;VNC&#8221;.</p>
 </div>
 <div class="section" id="advanced-openssh">
@@ -532,7 +543,9 @@ okami<span class="nv">$ </span><span class="c"># Yay! Easy!</span>
 </pre></div>
 </div>
 <p>This establishes a SOCKS proxy with EOS01 served up on the local machine on port 5555. Now we must configure our operating system or browser to use this proxy.</p>
-<p><strong>TODO: Add configuration for GNU/Linux.</strong></p>
+<p>Proxy configuration varies from distro to distro. These steps show how to configure a system-wide SOCKS proxy on Ubuntu 14.04, but other distros may be similar.</p>
+<p>First, from the menu, select <em class="menuselection">System Settings ‣ Network ‣ Network Proxy</em>. For <em class="guilabel">Method</em>, select <em class="guilabel">Manual</em>, and under <em class="guilabel">Socks Host</em> enter <tt class="docutils literal"><span class="pre">localhost</span></tt> and <tt class="docutils literal"><span class="pre">5555</span></tt>. Then click <em class="guilabel">Apply system wide</em> and enter your password to turn on the proxy. To turn off the proxy, switch <em class="guilabel">Method</em> back to <em class="guilabel">None</em> and click <em class="guilabel">Apply system wide</em>.</p>
+<img alt="Ubuntu SOCKS Configuration" src="../_images/ubuntu-socks.png" />
 <p>If you again try to access the <a class="reference external" href="http://ieeexplore.ieee.org/">IEEE Xplore Digital Library</a>, you should see the following:</p>
 <img alt="IEEE Xplore Accessible" src="../_images/granted.png" />
 <p>You have now successfully used OpenSSH to establish a SOCKS proxy!</p>
