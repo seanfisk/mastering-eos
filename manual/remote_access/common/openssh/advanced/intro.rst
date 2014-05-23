@@ -104,7 +104,7 @@ An example of such a resource is the `IEEE Xplore Digital Library`_, which conta
 
 .. _IEEE Xplore Digital Library: http://ieeexplore.ieee.org/
 
-.. image:: /_static/socks-ieee/denied.png
+.. image:: /images/socks-ieee/denied.png
     :alt: IEEE Xplore Login Page
 
 By using a proxy through the EOS machines, we can transparently access the IEEE library as if we were on campus.

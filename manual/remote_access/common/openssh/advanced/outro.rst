@@ -1,6 +1,6 @@
 If you again try to access the `IEEE Xplore Digital Library`_, you should see the following:
 
-.. image:: /_static/socks-ieee/granted.png
+.. image:: /images/socks-ieee/granted.png
     :alt: IEEE Xplore Accessible
 
 You have now successfully used OpenSSH to establish a SOCKS proxy!
