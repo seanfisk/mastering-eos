@@ -8,7 +8,7 @@ Finish Windows step-by-step guides.
 
 * RDP
 
-Switch to Remmina for RDP on GNU/Linux.
+Switch to Remmina for RDP on GNU/Linux (and EOS) if OK with Ira.
 
 * Shells / PATH
 
@@ -36,3 +36,5 @@ Ira
 * Sean asks: Are we going to deploy man and info pages? They are commented out right now because they haven't been updated in a while. If we aren't going to keep them updated, we should remove them from the systems.
 
 * Sean asks: Is it OK to use the GVSU favicon?
+
+* Sean asks: Is it possible to install Remmina on EOS?
