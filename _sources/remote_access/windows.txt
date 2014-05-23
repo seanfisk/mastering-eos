@@ -26,7 +26,7 @@ Checking Host Fingerprints
 
 When logging in to an EOS machine for the first time, you will see a dialog like this:
 
-.. image:: /_static/putty-security-alert.png
+.. image:: /images/putty-security-alert.png
     :alt: PuTTY Security Alert
 
 .. include:: common/fingerprints/checking.rst

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Accessing Winserv &mdash; Mastering EOS</title>
+  <title>Winserv &mdash; Mastering EOS</title>
   
 
   
@@ -85,7 +85,7 @@
 <li class="toctree-l2"><a class="reference internal" href="shells.html#kornshell">Kornshell</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Accessing Winserv</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Winserv</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#common-settings">Common Settings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#microsoft-windows">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#mac-os-x">Mac OS X</a></li>
@@ -134,7 +134,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Accessing Winserv</li>
+    <li>Winserv</li>
       <li class="wy-breadcrumbs-aside">
         
           <a href="_sources/winserv.txt" rel="nofollow"> View page source</a>
@@ -145,8 +145,8 @@
 </div>
           <div role="main">
             
-  <div class="section" id="accessing-winserv">
-<h1>Accessing Winserv<a class="headerlink" href="#accessing-winserv" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="winserv">
+<h1>Winserv<a class="headerlink" href="#winserv" title="Permalink to this headline">¶</a></h1>
 <p>Part of the department infrastructure is a Windows Server installation, called Winserv. Accounts for this machine are given as necessary &#8212; for example, when taking a course that involves projects which require the Windows platform. This server is named <tt class="docutils literal"><span class="pre">winserv.cis.gvsu</span></tt> and can be accessed via the <a class="reference external" href="http://en.wikipedia.org/wiki/Remote_Desktop_Protocol">Remote Desktop Protocol</a> (RDP). The following are methods for accessing Winserv from various RDP clients.</p>
 <div class="section" id="common-settings">
 <h2>Common Settings<a class="headerlink" href="#common-settings" title="Permalink to this headline">¶</a></h2>
@@ -154,17 +154,28 @@
 <ul class="simple">
 <li>The machine&#8217;s IP address may change; use the DNS name instead.</li>
 <li>If outside of the EOS network, you will need to use the fully qualified domain name, <tt class="docutils literal"><span class="pre">winserv.cis.gvsu.edu</span></tt>. While on the EOS network, you can simply use <tt class="docutils literal"><span class="pre">winserv</span></tt>.</li>
-<li>You must login to the CIS domain. For instance, if your username is <tt class="docutils literal"><span class="pre">smithj</span></tt>, your login would be <tt class="docutils literal"><span class="pre">CIS\smithj</span></tt>.</li>
+<li>You must login to the CIS domain. For instance, if your username is <tt class="docutils literal"><span class="pre">smithj</span></tt>, your login would be <tt class="docutils literal"><span class="pre">CIS\smithj</span></tt>. These may be specified together with the backslash or separately depending on your client.</li>
 <li>Our certificate is self-signed. You may want to instruct your client to save this information, or you will have to accept a security warning each time you login.</li>
 </ul>
 </div>
 <div class="section" id="microsoft-windows">
 <h2>Microsoft Windows<a class="headerlink" href="#microsoft-windows" title="Permalink to this headline">¶</a></h2>
-<p>Microsoft provides the <strong class="program">mstsc</strong> program with all versions of Windows. This program provides an RDP mechanism for connecting to hosts with RDP enabled. You can find this command by searching for <strong class="program">mstsc</strong> or <em>Remote Desktop</em> in the Start Menu.</p>
+<p>All versions of Windows have the built-in Microsoft Terminal Services Client. You can find this program by searching for <strong class="program">mstsc</strong> or <em>Remote Desktop Connection</em> in the Start Menu. Here is a sample configuration for Winserv:</p>
+<img alt="MSTSC Configuration" src="_images/mstsc.png" />
 </div>
 <div class="section" id="mac-os-x">
 <h2>Mac OS X<a class="headerlink" href="#mac-os-x" title="Permalink to this headline">¶</a></h2>
-<p>Newer versions of Microsoft&#8217;s Remote Desktop Application for Mac OS X no longer work. Fortunately, the open-source rdesktop RDP implementation has been implemented for Mac OS X as a program called <a class="reference external" href="http://cord.sourceforge.net/">CoRD</a>.</p>
+<p>Multiple options exist for Mac OS X, including the official Microsoft client and an open-source client called CoRD. Both work well and provide a similar set of features, so it is up to you which one you&#8217;d like to use. See <a class="reference external" href="http://pc-addicts.com/3-remote-desktop-apps-for-os-x-mavericks/">here</a> for a comparison of three different options including the two just mentioned.</p>
+<div class="section" id="microsoft-remote-desktop">
+<h3>Microsoft Remote Desktop<a class="headerlink" href="#microsoft-remote-desktop" title="Permalink to this headline">¶</a></h3>
+<p>This application is available as <a class="reference external" href="https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12">Microsoft Remote Desktop in the Mac App Store</a>. <em>Do not</em> attempt to download <a class="reference external" href="http://www.microsoft.com/en-us/download/details.aspx?id=18140">Microsoft Remote Desktop Connection Client for Mac 2.1.1</a>, as it does not work for more recent versions of Mac OS X. You do not need to configure a gateway in order to use this client with Winserv. Here is a sample configuration:</p>
+<img alt="Microsoft Remote Desktop Configuration" src="_images/microsoft.png" />
+</div>
+<div class="section" id="cord">
+<h3>CoRD<a class="headerlink" href="#cord" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://cord.sourceforge.net/">CoRD</a> is an open-source rdesktop-based RDP implementation for Mac OS X. Although their website states that CoRD &#8220;doesn&#8217;t seem to work on 10.9 Mavericks&#8221;, we have had no issues with the latest version. Here is a sample configuration for Winserv:</p>
+<img alt="CoRD Configuration" src="_images/cord.png" />
+</div>
 </div>
 <div class="section" id="gnu-linux">
 <span id="gnu-linux-rdp"></span><h2>GNU/Linux<a class="headerlink" href="#gnu-linux" title="Permalink to this headline">¶</a></h2>
