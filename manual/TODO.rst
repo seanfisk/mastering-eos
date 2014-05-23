@@ -2,13 +2,9 @@
  TODO
 ======
 
-* Winserv
-
-CoRD might not be the choice for Mac OS X, since it says it's not compatible with Mavericks. Check out http://pc-addicts.com/3-remote-desktop-apps-for-os-x-mavericks/ with Winserv.
-
 * VNC
 
-Finish Windows step-by-step guides. Decided what we want to do with Linux.
+Finish Windows step-by-step guides. Decide what we want to do with Linux. Maybe Reminna all the way if it works well, since we can use it for RDP and VNC?
 
 * Shells / PATH
 
