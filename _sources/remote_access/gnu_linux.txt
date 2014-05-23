@@ -38,22 +38,22 @@ With other distributions (Arch, etc.), you are on your own.
 
 .. _gnu-linux-vnc:
 
-There are a number of VNC clients for GNU/Linux, but the most capable and intuitive is Reminna_ (formerly tsclient_). Reminna also supports RDP, so you can use it with :ref:`Winserv <winserv-gnu-linux>`. It installed by default in Ubuntu 14.04. If it is not installed in your distribution, you should install from your package manager.
+There are a number of VNC clients for GNU/Linux, but the most capable and intuitive is Remmina_ (formerly tsclient_). Remmina also supports RDP, so you can use it with :ref:`Winserv <winserv-gnu-linux>`. It installed by default in Ubuntu 14.04. If it is not installed in your distribution, you should install from your package manager.
 
-In addition, Reminna supports automatic SSH tunneling. You do not need to establish a tunnel beforehand as shown in the previous section. However, if you need a shell or otherwise want to do it that way, there is nothing stopping you as it works just as well.
+In addition, Remmina supports automatic SSH tunneling. You do not need to establish a tunnel beforehand as shown in the previous section. However, if you need a shell or otherwise want to do it that way, there is nothing stopping you as it works just as well.
 
-To configure Reminna for VNC with automatic SSH tunneling, open Reminna and select :menuselection:`Connection --> New` to create a new connection. Under the :guilabel:`Basic` and :guilabel:`SSH` tabs, respectively, enter the following information. This configuration uses EOS10 and port 5907, but use the host of your choice and the port which matches your resolution from the previous section. Because :guilabel:`Public Key` is selected, if you have set up password-less login earlier, the login should be automatic.
+To configure Remmina for VNC with automatic SSH tunneling, open Remmina and select :menuselection:`Connection --> New` to create a new connection. Under the :guilabel:`Basic` and :guilabel:`SSH` tabs, respectively, enter the following information. This configuration uses EOS10 and port 5907, but use the host of your choice and the port which matches your resolution from the previous section. Because :guilabel:`Public Key` is selected, if you have set up password-less login earlier, the login should be automatic.
 
-.. _Reminna: http://remmina.sourceforge.net/
+.. _Remmina: http://remmina.sourceforge.net/
 .. _tsclient: http://sourceforge.net/projects/tsclient/
 
-.. image:: /images/vnc/reminna/basic.png
-   :alt: Reminna Basic Tab
+.. image:: /images/vnc/remmina/basic.png
+   :alt: Remmina Basic Tab
 
-.. image:: /images/vnc/reminna/ssh.png
-   :alt: Reminna SSH Tab
+.. image:: /images/vnc/remmina/ssh.png
+   :alt: Remmina SSH Tab
 
-We have tried various VNC clients, but found Reminna to be the easiest to use. However, other VNC clients for GNU/Linux exist and include:
+We have tried various VNC clients, but found Remmina to be the easiest to use. However, other VNC clients for GNU/Linux exist and include:
 
 * `KRDC <http://kde.org/applications/internet/krdc/>`_ --- free and open-source, part of KDE
 * `Vinagre <https://wiki.gnome.org/Apps/Vinagre>`_ --- free and open-source, part of GNOME
