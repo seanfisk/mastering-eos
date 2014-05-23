@@ -8,7 +8,7 @@ Finish Windows step-by-step guides.
 
 * RDP
 
-Switch to Reminna for RDP on GNU/Linux.
+Switch to Remmina for RDP on GNU/Linux.
 
 * Shells / PATH
 
