@@ -38,18 +38,30 @@ With other distributions (Arch, etc.), you are on your own.
 
 .. _gnu-linux-vnc:
 
-There are a number of capable VNC clients for GNU/Linux. Which one you choose depends on desktop environment and personal preference. For KDE, KRDC_ (KDE Remote Desktop Client) is the standard application. For GNOME, the standard remote desktop viewer is called Vinagre_. If you would also like to use :ref:`RDP with Winserv <gnu-linux-rdp>`, you may want to try Reminna_, a third-party free and open-source remote desktop viewer. You should install these from your package manager.
+There are a number of VNC clients for GNU/Linux, but the most capable and intuitive is Reminna_ (formerly tsclient_). Reminna also supports RDP, so you can use it with :ref:`Winserv <winserv-gnu-linux>`. It installed by default in Ubuntu 14.04. If it is not installed in your distribution, you should install from your package manager.
 
-TigerVNC_ and `RealVNC Viewer`_ are also available for GNU/Linux. RealVNC also offers `RealVNC Viewer for Google Chrome`_, a free viewer which runs inside the Google Chrome browser.
+In addition, Reminna supports automatic SSH tunneling. You do not need to establish a tunnel beforehand as shown in the previous section. However, if you need a shell or otherwise want to do it that way, there is nothing stopping you as it works just as well.
+
+To configure Reminna for VNC with automatic SSH tunneling, open Reminna and select :menuselection:`Connection --> New` to create a new connection. Under the :guilabel:`Basic` and :guilabel:`SSH` tabs, respectively, enter the following information. This configuration uses EOS10 and port 5907, but use the host of your choice and the port which matches your resolution from the previous section. Because :guilabel:`Public Key` is selected, if you have set up password-less login earlier, the login should be automatic.
+
+.. _Reminna: http://remmina.sourceforge.net/
+.. _tsclient: http://sourceforge.net/projects/tsclient/
+
+.. image:: /images/vnc/reminna/basic.png
+   :alt: Reminna Basic Tab
+
+.. image:: /images/vnc/reminna/ssh.png
+   :alt: Reminna SSH Tab
+
+We have tried various VNC clients, but found Reminna to be the easiest to use. However, other VNC clients for GNU/Linux exist and include:
+
+* `KRDC <http://kde.org/applications/internet/krdc/>`_ --- free and open-source, part of KDE
+* `Vinagre <https://wiki.gnome.org/Apps/Vinagre>`_ --- free and open-source, part of GNOME
+* `TigerVNC <http://tigervnc.org/>`_ --- command-line based, free and open-source
+* `RealVNC Viewer <http://realvnc.com/download/viewer/>`_ --- free and paid versions available
+* `RealVNC Viewer for Google Chrome <https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en>`_ --- free Google Chrome extension
 
 Operation of each of these applications is similar. For the host, enter in the hostname of the EOS machine to which you have SSH'ed. If a display is requested, enter ``0``. If a port is requested, enter ``5900`` (these mean the same thing). If the viewer offers support for multiple protocols, make sure you select "VNC".
-
-.. _KRDC: http://kde.org/applications/internet/krdc/
-.. _Vinagre: https://wiki.gnome.org/Apps/Vinagre
-.. _Reminna: http://remmina.sourceforge.net/
-.. _TigerVNC: http://tigervnc.org/
-.. _RealVNC Viewer: http://realvnc.com/download/viewer/
-.. _RealVNC Viewer for Google Chrome: https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en
 
 .. include:: common/openssh/advanced/intro.rst
 

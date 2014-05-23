@@ -4,7 +4,11 @@
 
 * VNC
 
-Finish Windows step-by-step guides. Decide what we want to do with Linux. Maybe Reminna all the way if it works well, since we can use it for RDP and VNC?
+Finish Windows step-by-step guides.
+
+* RDP
+
+Switch to Reminna for RDP on GNU/Linux.
 
 * Shells / PATH
 
