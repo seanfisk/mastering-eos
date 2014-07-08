@@ -26,6 +26,12 @@ Expand the Shells section, consider taking out mentions of ksh and tcsh, and add
 
 * Include dash rules in writing style (hair space, em vs. en vs. hyphen).
 
+* Add section on 'Mining Information'.
+    * Finding versions of programs
+    * Finding OS versions
+    * Hardware information
+    * Web server details (info.php)
+
 Ira
 ===
 
