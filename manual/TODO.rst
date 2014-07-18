@@ -3,8 +3,8 @@
 ======
 
 * VNC
-
-Finish Windows step-by-step guides.
+    * Finish Windows step-by-step guides.
+    * Check out TigerVNC for Mac OS X.
 
 * RDP
 
