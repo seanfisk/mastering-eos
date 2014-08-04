@@ -32,6 +32,11 @@ Expand the Shells section, consider taking out mentions of ksh and tcsh, and add
     * Hardware information
     * Web server details (info.php)
 
+* Rewrite build system using Waf?
+
+* Later, tryout http://www.mremoteng.org/ and http://terminals.codeplex.com/.
+
+
 Ira
 ===
 
