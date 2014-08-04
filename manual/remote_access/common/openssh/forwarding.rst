@@ -1,9 +1,6 @@
-Tunnelling / Port Forwarding
-----------------------------
+.. include:: common/forwarding_intro.rst
 
-The SSH protocol possesses a special feature which allows it to tunnel other protocols within itself. This is called tunnelling or port forwarding. SSH can forward local ports (allowing the local machine access to resources on the remote machine) and remote ports (allowing the remote machine access to resources on the local machine). Port forwarding can be accomplished by passing arguments to the OpenSSH command-line client or editing the OpenSSH client configuration file.
-
-Local port forwarding is the more used feature, and is explained in the following sections. Remote port forwarding is similar but is outside the scope of this guide.
+Port forwarding can be accomplished with OpenSSH by passing arguments to the command-line client or by editing the client configuration file.
 
 Forwarding on the Command Line
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -15,7 +15,7 @@ Logging In
 
 The first step we will take is to create a saved session for our EOS connection configuration. This will save time for future logins.
 
-Open PuTTY and enter your username and the hostname of the EOS machine into the :guilabel:`Host Name` field. This will take the form *user@host*, for example, :samp:`doej@eos{XX}.cis.gvsu.edu`, where :samp:`XX` is the number of the chosen machine.
+Open PuTTY and enter your username and the hostname of the EOS machine into the :guilabel:`Host Name` field. This has the form *user@host*, for example, :samp:`smithj@eos{XX}.cis.gvsu.edu`, where :samp:`XX` is the number of the chosen machine.
 
 In the field under :guilabel:`Saved Sessions`, type :samp:`EOS` (this name is not strictly required, but is assumed in the next section). Click :guilabel:`Save`.
 
