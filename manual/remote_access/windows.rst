@@ -13,7 +13,7 @@ The most popular SSH client for Windows is called PuTTY_. It can be installed by
 Logging In
 ----------
 
-The first we will do is create a saved session for our EOS connection configuration. This will save time for future logins.
+The first step we will take is to create a saved session for our EOS connection configuration. This will save time for future logins.
 
 Open PuTTY and enter your username and the hostname of the EOS machine into the :guilabel:`Host Name` field. This will take the form *user@host*, for example, :samp:`doej@eos{XX}.cis.gvsu.edu`, where :samp:`XX` is the number of the chosen machine.
 
