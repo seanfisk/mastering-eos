@@ -52,29 +52,82 @@ However, we still need to be able to tell PuTTY to use your private key to log i
 
     If you would like to use a passphrase for your key, see the `PuTTY Guide to Pageant`_ after completing this guide. Setting up an SSH agent is out of the scope of this guide.
 
-Now start up PuTTY, click your saved session, then click :guilabel:`Load`. In the configuration tree to the left, expand :menuselection:`Connection --> SSH` and click on :guilabel:`Auth`. Click :guilabel:`Browse...` to the right of the field labelled :guilabel:`Private key file for authentication`. Select the PPK file you saved earlier.
+Now start up PuTTY, select your saved session, then click :guilabel:`Load`. This loads our previously configured session for editing. In the configuration tree to the left, expand :menuselection:`Connection --> SSH` and click on :guilabel:`Auth`. Click :guilabel:`Browse...` to the right of the field labelled :guilabel:`Private key file for authentication`. Select the PPK file you saved earlier.
 
 Go back to :guilabel:`Session` and click :guilabel:`Save`. PuTTY is now configured to use this private key to connect to EOS. Click :guilabel:`Open` to log in, which you should be able to do without a password.
+
+.. important::
+
+    When you make changes to your configuration, make sure to go back to :guilabel:`Session` and click :guilabel:`Save`. If you click :guilabel:`Open` after making changes, those changes will be applied to the current session but will not be saved for the next time you open PuTTY.
+
+.. hint::
+
+    You can also save a modified configuration under another name by editing the session name in the text box under :guilabel:`Saved Sessions` and clicking :guilabel:`Save`.
 
 As is obvious from these instructions, SSH key management is not a simple process. We recommend reading the `PuTTY Guide to SSH Keys`_, which is the source for much of this information. If you would like to use a passphrase with your key, please see the `PuTTY Guide to Pageant`_, PuTTY's SSH agent.
 
 .. _PuTTY Guide to SSH Keys: http://the.earth.li/~sgtatham/putty/latest/htmldoc/Chapter8.html#pubkey
 .. _PuTTY Guide to Pageant: http://the.earth.li/~sgtatham/putty/latest/htmldoc/Chapter9.html#pageant
 
-Alternatives
-------------
+.. include:: common/forwarding_intro.rst
 
-Though PuTTY is the recommended client, OpenSSH is also available for Windows. The recommended way of running OpenSSH on Windows is through Cygwin_.
+Fortunately, port forwarding with PuTTY is quite easy. Fire up PuTTY and select your saved session, then click the :guilabel:`Load`. In the configuration tree to the left, expand :menuselection:`Connection --> SSH` and click on :guilabel:`Tunnels`.
+
+In the :guilabel:`Source port` field, we will enter the port to which traffic should arrive on our local machine. In the destination field, we will enter the host and port from which the traffic should be forwarded in the form :samp:`{host}:{port}`. The host will usually match the EOS machine to which you are connecting using SSH, although this is not required. The radio buttons should be left at :guilabel:`Local` for the forwarding type and :guilabel:`Auto` for the Internet protocol.
+
+For example, where :samp:`eos{XX}.cis.gvsu.edu` is the remote EOS machine, to access a web server running on port 8000 on the EOS machine from your machine on port 5555, enter the following:
+
++-----------+---------------------------------+
+|Source port|5555                             |
++-----------+---------------------------------+
+|Destination|:samp:`eos{XX}.cis.gvsu.edu:8000`|
++-----------+---------------------------------+
+
+Click :guilabel:`Add` to add this as a forwarded port, then click :guilabel:`Open` (we will not save this configuration).
+
+You can test the forwarding by running this in the SSH prompt::
+
+    python -m SimpleHTTPServer
+
+and opening http://localhost:5555/ in your local web browser. You should see a web listing of your home directory! Press :kbd:`Control-C` to kill the web server.
+
+The remote host which is hosting the resource need not be the EOS machine to which you are connecting with SSH. Let's access the CIS web server through the SSH tunnel.
+
+Restart PuTTY, load your session, and navigate back to the :guilabel:`Tunnels` screen. Enter the following information:
+
++-----------+-------------------+
+|Source port|5678               |
++-----------+-------------------+
+|Destination|``cis.gvsu.edu:80``|
++-----------+-------------------+
+
+Click :guilabel:`Add` and :guilabel:`Open`, then visit http://localhost:5678/ in your local web browser. The CIS home page should appear!
+
+.. include:: common/vnc_intro.rst
+
+Restart PuTTY, load your session, and navigate back to the :guilabel:`Tunnels` screen. Enter the following information:
+
++-----------+------------------------------------------+
+|Source port|5900                                      |
++-----------+------------------------------------------+
+|Destination|:samp:`eos{XX}.cis.gvsu.edu:{REMOTE_PORT}`|
++-----------+------------------------------------------+
+
+Go back to :guilabel:`Session` and click :guilabel:`Save`. You are now ready to tunnel your VNC session. Click :guilabel:`Open` to start the tunnel.
+
+Alternative Clients
+===================
+
+Though PuTTY is the recommended SSH client for Windows, OpenSSH is also available. The recommended way of running OpenSSH on Windows is through Cygwin_. Cygwin is not simple to use and configure, but depending on your needs, it may provide a better SSH experience. OpenSSH is well-known as the best SSH client out there, and EOS uses OpenSSH as an SSH server as well.
 
 .. _Cygwin: http://www.cygwin.com/
 
-VNC
-===
+There are a plethora of alternate VNC viewers available for Windows, many based on the same original RealVNC code.
 
-Viewers:
+Each of `TigerVNC <http://tigervnc.org/>`_, `UltraVNC <http://www.uvnc.com/>`_, and `TightVNC <http://tightvnc.com/download.php>`_ offer relatively simple user interfaces with an appropriate amount of configuration options.
 
-* `UltraVNC <http://www.uvnc.com/>`_
-* `RealVNC Viewer <http://realvnc.com/download/viewer/>`_
-* `RealVNC Viewer for Google Chrome <https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en>`_
-* `TightVNC <http://tightvnc.com/download.php>`_
-* `TigerVNC <http://sourceforge.net/projects/tigervnc/files/tigervnc/1.3.1/>`_
+`RealVNC Viewer <http://realvnc.com/download/viewer/>`_ is a free viewer, but requires registration. RealVNC also offers `RealVNC Viewer for Google Chrome <https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en>`_, a free Google Chrome extension which does not require registration.
+
+MobaXterm_ is an all-in-one solution for SSH, SCP, VNC, RDP, and more. Since it is a unified product, it provides a smoother experience than a collection of standalone applications. However, because it includes much more capability, it can be difficult to configure. It is worth a try if your time spent on EOS warrants it.
+
+.. _MobaXterm: http://mobaxterm.mobatek.net/
