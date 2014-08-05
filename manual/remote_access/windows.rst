@@ -115,6 +115,16 @@ Restart PuTTY, load your session, and navigate back to the :guilabel:`Tunnels` s
 
 Go back to :guilabel:`Session` and click :guilabel:`Save`. You are now ready to tunnel your VNC session. Click :guilabel:`Open` to start the tunnel.
 
+.. hint::
+
+    If you clone a session for an EOS machine (using :guilabel:`Load` and :guilabel:`Save`), don't forget to change the tunnel to forward ports to that machine.
+
+The recommended VNC client for Windows is TightVNC_. Download it, install, then open. In the field labelled :guilabel:`Remote Host`, type ``localhost``. Click :guilabel:`Connect` to start the connection.
+
+For future connections, simply start TightVNC and click :guilabel:`Connect`. Alternatively, during the session, you can save the configuration to a file by clicking the :guilabel:`Save` button, shown as a diskette. After saving the configuration to a ``*.vnc`` file, double click the file to start the connection.
+
+.. _TightVNC: http://tightvnc.com/download.php
+
 Alternative Clients
 ===================
 
@@ -124,9 +134,9 @@ Though PuTTY is the recommended SSH client for Windows, OpenSSH is also availabl
 
 There are a plethora of alternate VNC viewers available for Windows, many based on the same original RealVNC code.
 
-Each of `TigerVNC <http://tigervnc.org/>`_, `UltraVNC <http://www.uvnc.com/>`_, and `TightVNC <http://tightvnc.com/download.php>`_ offer relatively simple user interfaces with an appropriate amount of configuration options.
+`UltraVNC <http://www.uvnc.com/>`_ and `TigerVNC <http://tigervnc.org/>`_ offer relatively simple user interfaces with an appropriate amount of configuration options. If you don't like or are having trouble with TightVNC, give UltraVNC a try.
 
-`RealVNC Viewer <http://realvnc.com/download/viewer/>`_ is a free viewer, but requires registration. RealVNC also offers `RealVNC Viewer for Google Chrome <https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en>`_, a free Google Chrome extension which does not require registration.
+RealVNC `Viewer <http://realvnc.com/download/viewer/>`_ and `Viewer Plus <http://www.realvnc.com/download/viewerplus/>`_ are freeware viewers, but require registration. RealVNC also offers `RealVNC Viewer for Google Chrome <https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en>`_, a free Google Chrome extension which does not require registration.
 
 MobaXterm_ is an all-in-one solution for SSH, SCP, VNC, RDP, and more. Since it is a unified product, it provides a smoother experience than a collection of standalone applications. However, because it includes much more capability, it can be difficult to configure. It is worth a try if your time spent on EOS warrants it.
 
