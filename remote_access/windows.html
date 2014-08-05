@@ -155,8 +155,8 @@
 <p>The most popular SSH client for Windows is called <a class="reference external" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a>. It can be installed by visiting the <a class="reference external" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY download page</a>. We recommend installing via the Windows installer, labeled <em>A Windows installer for everything except PuTTYtel</em>.</p>
 <div class="section" id="logging-in">
 <h3>Logging In<a class="headerlink" href="#logging-in" title="Permalink to this headline">¶</a></h3>
-<p>The first we will do is create a saved session for our EOS connection configuration. This will save time for future logins.</p>
-<p>Open PuTTY and enter your username and the hostname of the EOS machine into the <em class="guilabel">Host Name</em> field. This will take the form <em>user&#64;host</em>, for example, <tt class="samp docutils literal"><span class="pre">doej&#64;eos</span><em><span class="pre">XX</span></em><span class="pre">.cis.gvsu.edu</span></tt>, where <tt class="samp docutils literal"><span class="pre">XX</span></tt> is the number of the chosen machine.</p>
+<p>The first step we will take is to create a saved session for our EOS connection configuration. This will save time for future logins.</p>
+<p>Open PuTTY and enter your username and the hostname of the EOS machine into the <em class="guilabel">Host Name</em> field. This has the form <em>user&#64;host</em>, for example, <tt class="samp docutils literal"><span class="pre">smithj&#64;eos</span><em><span class="pre">XX</span></em><span class="pre">.cis.gvsu.edu</span></tt>, where <tt class="samp docutils literal"><span class="pre">XX</span></tt> is the number of the chosen machine.</p>
 <p>In the field under <em class="guilabel">Saved Sessions</em>, type <tt class="samp docutils literal"><span class="pre">EOS</span></tt> (this name is not strictly required, but is assumed in the next section). Click <em class="guilabel">Save</em>.</p>
 <p>To log in to EOS, click <em class="guilabel">Open</em>. For future logins, simply select the session you created and click <em class="guilabel">Open</em> to connect.</p>
 </div>
@@ -165,7 +165,7 @@
 <p>When logging in to an EOS machine for the first time, you will see a dialog like this:</p>
 <img alt="PuTTY Security Alert" src="../_images/putty-security-alert.png" />
 <p>This is your SSH client requesting you to validate the identity of the machine to which you are connecting.</p>
-<p>Each EOS machine has a so-called fingerprint, a series of characters which is used to verify its identity. To ensure that an attacker between your client and the actual EOS machine is not pretending to be an EOS machine, you must check that the machine&#8217;s fingerprint matches the table below. Please report any mismatches to Ira Woodring immediately.</p>
+<p>Each EOS machine has a so-called fingerprint, a series of characters which is used to verify its identity. To ensure that an attacker between your client and the actual EOS machine is not pretending to be an EOS machine, you must check that the machine&#8217;s fingerprint matches the table below. Please <a class="reference external" href="mailto:woodriir&#37;&#52;&#48;gvsu&#46;edu?subject=EOS%20Fingerprint%20Mismatch&amp;body=Hi%20Mr&#46;%20Woodring,%0A%0AIt%20seems%20that%20the%20key%20for%20eosXX&#46;cis&#46;gvsu&#46;edu%20is%20incorrect&#46;">report any mismatches</a> to Ira Woodring immediately.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="13%" />
@@ -201,77 +201,83 @@
 <tr class="row-odd"><td>arch08</td>
 <td><tt class="docutils literal"><span class="pre">e5:80:ac:98:22:6e:b5:41:26:18:27:c8:a5:22:52:42</span></tt></td>
 </tr>
+<tr class="row-even"><td>arch09</td>
+<td>down for maintenance</td>
+</tr>
+<tr class="row-odd"><td>arch10</td>
+<td>down for maintenance</td>
+</tr>
 <tr class="row-even"><td>eos01</td>
-<td><tt class="docutils literal"><span class="pre">6d:29:fd:23:c5:26:c7:c9:a5:6e:6e:c2:34:60:ea:54</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">37:86:61:af:1f:f1:18:e8:92:2e:de:d6:78:a2:29:dc</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos02</td>
-<td><tt class="docutils literal"><span class="pre">05:d1:d5:61:a4:c4:4e:ba:07:85:e2:18:8e:4b:7b:59</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">77:4c:79:72:9d:b6:28:da:f7:12:b6:74:fd:a3:50:aa</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos03</td>
-<td><tt class="docutils literal"><span class="pre">98:e4:c6:10:9a:63:e0:1d:63:ae:a8:27:c3:39:e4:ba</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">48:f3:0d:49:0b:3a:a4:2d:48:b8:62:5e:e2:c1:97:96</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos04</td>
-<td><tt class="docutils literal"><span class="pre">7c:b7:a2:65:74:c0:4f:52:ee:a2:2d:b8:12:38:9a:be</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">de:dd:78:dd:06:c0:48:b9:4e:48:b1:a8:cd:30:cd:2f</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos05</td>
-<td><tt class="docutils literal"><span class="pre">db:70:3d:04:44:d3:7f:a4:83:72:13:71:0c:be:ab:97</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">ea:85:26:bf:0c:18:00:f0:55:5f:b4:53:85:b5:91:8e</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos06</td>
-<td><tt class="docutils literal"><span class="pre">80:a9:e8:ea:b8:54:1c:4d:3b:9d:e2:c2:a7:d0:37:46</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">08:37:16:31:d9:4d:70:d2:08:de:3e:71:b6:a6:a0:78</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos07</td>
-<td><tt class="docutils literal"><span class="pre">f4:15:32:2a:b5:18:e9:e6:51:8a:58:63:71:64:ba:8b</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">c5:f5:e1:f4:14:7b:5b:12:1b:9f:2b:55:a5:04:f6:19</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos08</td>
-<td><tt class="docutils literal"><span class="pre">0d:0b:31:06:0a:6e:e6:b4:fb:48:0f:11:d6:7b:98:8a</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">2c:ab:02:30:a1:10:98:ba:49:65:79:29:53:85:7d:2d</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos09</td>
-<td><tt class="docutils literal"><span class="pre">6e:c0:20:4b:7d:f2:88:3d:df:71:ee:2e:63:2b:3c:33</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">b6:da:84:22:4b:1a:e0:4c:b0:98:af:eb:2f:6d:da:fe</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos10</td>
-<td><tt class="docutils literal"><span class="pre">be:fe:47:76:1d:5a:4b:96:fc:b9:1e:f2:42:fd:ed:41</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">66:8d:37:94:7f:6a:c5:c9:b9:54:55:ab:b7:69:12:6c</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos11</td>
-<td><tt class="docutils literal"><span class="pre">be:47:a2:1c:6a:30:e7:98:ab:9a:1c:d3:4b:33:f2:57</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">de:b7:d7:af:ed:e9:27:23:a1:f7:5a:13:1d:79:f1:29</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos12</td>
-<td><tt class="docutils literal"><span class="pre">15:21:3f:d2:b5:0b:04:06:29:2f:10:a7:04:3e:83:b7</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">6a:01:b7:87:75:9d:26:23:b1:2d:e5:22:bb:72:aa:66</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos13</td>
-<td><tt class="docutils literal"><span class="pre">31:5e:6f:ab:4a:7c:2f:3e:36:06:bd:e4:e0:a4:a3:22</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-odd"><td>eos14</td>
-<td><tt class="docutils literal"><span class="pre">87:af:45:1a:59:48:3d:57:66:a1:d6:6f:6e:a8:05:59</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">a1:f8:a5:0b:04:ea:1f:33:68:4b:53:8c:59:73:8e:81</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos15</td>
-<td><tt class="docutils literal"><span class="pre">c2:b2:34:fa:8e:16:65:49:c5:ea:f4:70:c2:54:50:bc</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">34:4d:ee:8a:dc:1e:3b:8c:fb:d5:f1:29:bc:16:41:48</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos16</td>
-<td><tt class="docutils literal"><span class="pre">57:71:e3:80:36:ff:25:d3:d1:c9:96:3d:f0:2d:42:a4</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">a0:c0:37:39:bf:1a:6a:3b:e8:21:d7:14:86:e4:9c:c8</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos17</td>
-<td><tt class="docutils literal"><span class="pre">fd:3e:66:2a:39:08:b1:8f:c2:d7:e9:8b:59:40:a1:d9</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">f3:17:53:ba:f0:00:31:ea:49:c9:b5:b1:1e:c7:70:98</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos18</td>
-<td><tt class="docutils literal"><span class="pre">a8:c5:e3:8f:1c:32:8e:72:c6:f4:dd:52:ad:23:63:31</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">bd:ca:1b:29:ab:c7:a2:5d:5b:e7:f2:0c:86:b4:e0:cd</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos19</td>
-<td><tt class="docutils literal"><span class="pre">d7:65:50:f2:23:b9:d7:58:76:9a:e2:5c:f3:1b:c0:11</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">25:9a:f9:c3:25:b6:28:f8:50:9b:b3:d5:4f:ab:34:2e</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos20</td>
-<td><tt class="docutils literal"><span class="pre">a0:76:77:7a:2f:8f:cf:a6:f7:50:38:a4:36:12:4b:2d</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-even"><td>eos21</td>
-<td><tt class="docutils literal"><span class="pre">23:3a:2b:42:b4:cf:f4:9e:c8:14:57:2f:73:8f:65:46</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-odd"><td>eos22</td>
-<td><tt class="docutils literal"><span class="pre">a5:fc:1e:65:bb:29:9b:ee:1c:4a:e9:46:41:a1:8e:cd</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-even"><td>eos23</td>
-<td><tt class="docutils literal"><span class="pre">86:bc:19:fa:64:05:73:ef:81:78:cb:24:b5:f7:8c:fd</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-odd"><td>eos24</td>
-<td><tt class="docutils literal"><span class="pre">ec:5c:2f:a7:e9:86:9f:36:e6:85:a1:bc:54:04:ce:a5</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 </tbody>
 </table>
@@ -289,25 +295,162 @@
 <p class="first admonition-title">Note</p>
 <p class="last">If you would like to use a passphrase for your key, see the <a class="reference external" href="http://the.earth.li/~sgtatham/putty/latest/htmldoc/Chapter9.html#pageant">PuTTY Guide to Pageant</a> after completing this guide. Setting up an SSH agent is out of the scope of this guide.</p>
 </div>
-<p>Now start up PuTTY, click your saved session, then click <em class="guilabel">Load</em>. In the configuration tree to the left, expand <em class="menuselection">Connection ‣ SSH</em> and click on <em class="guilabel">Auth</em>. Click <em class="guilabel">Browse...</em> to the right of the field labelled <em class="guilabel">Private key file for authentication</em>. Select the PPK file you saved earlier.</p>
+<p>Now start up PuTTY, select your saved session, then click <em class="guilabel">Load</em>. This loads our previously configured session for editing. In the configuration tree to the left, expand <em class="menuselection">Connection ‣ SSH</em> and click on <em class="guilabel">Auth</em>. Click <em class="guilabel">Browse...</em> to the right of the field labelled <em class="guilabel">Private key file for authentication</em>. Select the PPK file you saved earlier.</p>
 <p>Go back to <em class="guilabel">Session</em> and click <em class="guilabel">Save</em>. PuTTY is now configured to use this private key to connect to EOS. Click <em class="guilabel">Open</em> to log in, which you should be able to do without a password.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">When you make changes to your configuration, make sure to go back to <em class="guilabel">Session</em> and click <em class="guilabel">Save</em>. If you click <em class="guilabel">Open</em> after making changes, those changes will be applied to the current session but will not be saved for the next time you open PuTTY.</p>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">You can also save a modified configuration under another name by editing the session name in the text box under <em class="guilabel">Saved Sessions</em> and clicking <em class="guilabel">Save</em>.</p>
+</div>
 <p>As is obvious from these instructions, SSH key management is not a simple process. We recommend reading the <a class="reference external" href="http://the.earth.li/~sgtatham/putty/latest/htmldoc/Chapter8.html#pubkey">PuTTY Guide to SSH Keys</a>, which is the source for much of this information. If you would like to use a passphrase with your key, please see the <a class="reference external" href="http://the.earth.li/~sgtatham/putty/latest/htmldoc/Chapter9.html#pageant">PuTTY Guide to Pageant</a>, PuTTY&#8217;s SSH agent.</p>
 </div>
-<div class="section" id="alternatives">
-<h3>Alternatives<a class="headerlink" href="#alternatives" title="Permalink to this headline">¶</a></h3>
-<p>Though PuTTY is the recommended client, OpenSSH is also available for Windows. The recommended way of running OpenSSH on Windows is through <a class="reference external" href="http://www.cygwin.com/">Cygwin</a>.</p>
+<div class="section" id="tunnelling-port-forwarding">
+<span id="win-ssh-tunnel"></span><h3>Tunnelling / Port Forwarding<a class="headerlink" href="#tunnelling-port-forwarding" title="Permalink to this headline">¶</a></h3>
+<p>The SSH protocol possesses a special feature which allows it to tunnel other protocols within itself. This is called tunnelling or port forwarding. SSH can forward local ports (allowing the local machine access to resources on the remote machine) and remote ports (allowing the remote machine access to resources on the local machine).</p>
+<p>Local port forwarding is the more used feature, and is explained in the following sections. Remote port forwarding is similar but is outside the scope of this guide.</p>
+<p>Fortunately, port forwarding with PuTTY is quite easy. Fire up PuTTY and select your saved session, then click the <em class="guilabel">Load</em>. In the configuration tree to the left, expand <em class="menuselection">Connection ‣ SSH</em> and click on <em class="guilabel">Tunnels</em>.</p>
+<p>In the <em class="guilabel">Source port</em> field, we will enter the port to which traffic should arrive on our local machine. In the destination field, we will enter the host and port from which the traffic should be forwarded in the form <tt class="samp docutils literal"><em><span class="pre">host</span></em><span class="pre">:</span><em><span class="pre">port</span></em></tt>. The host will usually match the EOS machine to which you are connecting using SSH, although this is not required. The radio buttons should be left at <em class="guilabel">Local</em> for the forwarding type and <em class="guilabel">Auto</em> for the Internet protocol.</p>
+<p>For example, where <tt class="samp docutils literal"><span class="pre">eos</span><em><span class="pre">XX</span></em><span class="pre">.cis.gvsu.edu</span></tt> is the remote EOS machine, to access a web server running on port 8000 on the EOS machine from your machine on port 5555, enter the following:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Source port</td>
+<td>5555</td>
+</tr>
+<tr class="row-even"><td>Destination</td>
+<td><tt class="samp docutils literal"><span class="pre">eos</span><em><span class="pre">XX</span></em><span class="pre">.cis.gvsu.edu:8000</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>Click <em class="guilabel">Add</em> to add this as a forwarded port, then click <em class="guilabel">Open</em> (we will not save this configuration).</p>
+<p>You can test the forwarding by running this in the SSH prompt:</p>
+<div class="highlight-python"><div class="highlight"><pre>python -m SimpleHTTPServer
+</pre></div>
+</div>
+<p>and opening <a class="reference external" href="http://localhost:5555/">http://localhost:5555/</a> in your local web browser. You should see a web listing of your home directory! Press <tt class="kbd docutils literal"><span class="pre">Control-C</span></tt> to kill the web server.</p>
+<p>The remote host which is hosting the resource need not be the EOS machine to which you are connecting with SSH. Let&#8217;s access the CIS web server through the SSH tunnel.</p>
+<p>Restart PuTTY, load your session, and navigate back to the <em class="guilabel">Tunnels</em> screen. Enter the following information:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="63%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Source port</td>
+<td>5678</td>
+</tr>
+<tr class="row-even"><td>Destination</td>
+<td><tt class="docutils literal"><span class="pre">cis.gvsu.edu:80</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>Click <em class="guilabel">Add</em> and <em class="guilabel">Open</em>, then visit <a class="reference external" href="http://localhost:5678/">http://localhost:5678/</a> in your local web browser. The CIS home page should appear!</p>
 </div>
 </div>
 <div class="section" id="vnc">
 <h2>VNC<a class="headerlink" href="#vnc" title="Permalink to this headline">¶</a></h2>
-<p>Viewers:</p>
-<ul class="simple">
-<li><a class="reference external" href="http://www.uvnc.com/">UltraVNC</a></li>
-<li><a class="reference external" href="http://realvnc.com/download/viewer/">RealVNC Viewer</a></li>
-<li><a class="reference external" href="https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en">RealVNC Viewer for Google Chrome</a></li>
-<li><a class="reference external" href="http://tightvnc.com/download.php">TightVNC</a></li>
-<li><a class="reference external" href="http://sourceforge.net/projects/tigervnc/files/tigervnc/1.3.1/">TigerVNC</a></li>
-</ul>
+<p>First, we need to create a tunnel in order to forward VNC through our SSH connection. The remote port to which we must connect depends on the desired resolution of the remote desktop. Select a desired resolution from the following table, and note the port to which it corresponds.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Port</th>
+<th class="head">Geometry</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>5900</td>
+<td>1280x1024</td>
+</tr>
+<tr class="row-odd"><td>5901</td>
+<td>1024x768</td>
+</tr>
+<tr class="row-even"><td>5902</td>
+<td>800x600</td>
+</tr>
+<tr class="row-odd"><td>5903</td>
+<td>640x480</td>
+</tr>
+<tr class="row-even"><td>5904</td>
+<td>1440x900</td>
+</tr>
+<tr class="row-odd"><td>5905</td>
+<td>1280x800</td>
+</tr>
+<tr class="row-even"><td>5906</td>
+<td>1152x864</td>
+</tr>
+<tr class="row-odd"><td>5907</td>
+<td>1680x1050</td>
+</tr>
+<tr class="row-even"><td>5908</td>
+<td>1920x1200</td>
+</tr>
+<tr class="row-odd"><td>5909</td>
+<td>1280x768</td>
+</tr>
+<tr class="row-even"><td>5910</td>
+<td>1360x768</td>
+</tr>
+<tr class="row-odd"><td>5911</td>
+<td>1400x1050</td>
+</tr>
+<tr class="row-even"><td>5912</td>
+<td>1440x1000</td>
+</tr>
+<tr class="row-odd"><td>5913</td>
+<td>1024x600</td>
+</tr>
+<tr class="row-even"><td>5914</td>
+<td>1600x900</td>
+</tr>
+<tr class="row-odd"><td>5915</td>
+<td>1920x1080</td>
+</tr>
+<tr class="row-even"><td>5916</td>
+<td>1680x950</td>
+</tr>
+</tbody>
+</table>
+<p>In the following instructions, replace <tt class="docutils literal"><span class="pre">REMOTE_PORT</span></tt> with the port that you have selected.</p>
+<p>Restart PuTTY, load your session, and navigate back to the <em class="guilabel">Tunnels</em> screen. Enter the following information:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Source port</td>
+<td>5900</td>
+</tr>
+<tr class="row-even"><td>Destination</td>
+<td><tt class="samp docutils literal"><span class="pre">eos</span><em><span class="pre">XX</span></em><span class="pre">.cis.gvsu.edu:</span><em><span class="pre">REMOTE_PORT</span></em></tt></td>
+</tr>
+</tbody>
+</table>
+<p>Go back to <em class="guilabel">Session</em> and click <em class="guilabel">Save</em>. You are now ready to tunnel your VNC session. Click <em class="guilabel">Open</em> to start the tunnel.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">If you clone a session for an EOS machine (using <em class="guilabel">Load</em> and <em class="guilabel">Save</em>), don&#8217;t forget to change the tunnel to forward ports to that machine.</p>
+</div>
+<p>The recommended VNC client for Windows is <a class="reference external" href="http://tightvnc.com/download.php">TightVNC</a>. Download it, install, then open. In the field labelled <em class="guilabel">Remote Host</em>, type <tt class="docutils literal"><span class="pre">localhost</span></tt>. Click <em class="guilabel">Connect</em> to start the connection.</p>
+<p>For future connections, simply start TightVNC and click <em class="guilabel">Connect</em>. Alternatively, during the session, you can save the configuration to a file by clicking the <em class="guilabel">Save</em> button, shown as a diskette. After saving the configuration to a <tt class="docutils literal"><span class="pre">*.vnc</span></tt> file, double click the file to start the connection.</p>
+</div>
+<div class="section" id="alternative-clients">
+<h2>Alternative Clients<a class="headerlink" href="#alternative-clients" title="Permalink to this headline">¶</a></h2>
+<p>Though PuTTY is the recommended SSH client for Windows, OpenSSH is also available. The recommended way of running OpenSSH on Windows is through <a class="reference external" href="http://www.cygwin.com/">Cygwin</a>. Cygwin is not simple to use and configure, but depending on your needs, it may provide a better SSH experience. OpenSSH is well-known as the best SSH client out there, and EOS uses OpenSSH as an SSH server as well.</p>
+<p>There are a plethora of alternate VNC viewers available for Windows, many based on the same original RealVNC code.</p>
+<p><a class="reference external" href="http://www.uvnc.com/">UltraVNC</a> and <a class="reference external" href="http://tigervnc.org/">TigerVNC</a> offer relatively simple user interfaces with an appropriate amount of configuration options. If you don&#8217;t like or are having trouble with TightVNC, give UltraVNC a try.</p>
+<p>RealVNC <a class="reference external" href="http://realvnc.com/download/viewer/">Viewer</a> and <a class="reference external" href="http://www.realvnc.com/download/viewerplus/">Viewer Plus</a> are freeware viewers, but require registration. RealVNC also offers <a class="reference external" href="https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en">RealVNC Viewer for Google Chrome</a>, a free Google Chrome extension which does not require registration.</p>
+<p><a class="reference external" href="http://mobaxterm.mobatek.net/">MobaXterm</a> is an all-in-one solution for SSH, SCP, VNC, RDP, and more. Since it is a unified product, it provides a smoother experience than a collection of standalone applications. However, because it includes much more capability, it can be difficult to configure. It is worth a try if your time spent on EOS warrants it.</p>
 </div>
 </div>
 

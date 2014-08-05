@@ -165,11 +165,10 @@
 <p>With other distributions (Arch, etc.), you are on your own.</p>
 <div class="section" id="logging-in">
 <h3>Logging in<a class="headerlink" href="#logging-in" title="Permalink to this headline">¶</a></h3>
-<p>First, open your terminal emulator to start a shell. To connect to a specific machine, run:</p>
+<p>First, open your terminal emulator to start a shell. To connect to a specific machine, pass your username and hostname to the command-line client in the form <em>user&#64;host</em>. For example, where <tt class="samp docutils literal"><em><span class="pre">XX</span></em></tt> is the number of the chosen machine, run:</p>
 <div class="highlight-python"><div class="highlight"><pre>ssh smithj@eosXX.cis.gvsu.edu
 </pre></div>
 </div>
-<p>You should see a prompt open to <a class="reference internal" href="../shells.html#bash"><em>Bash</em></a>, the default shell on EOS. From here, you can run commands as you would inside a normal terminal emulator in an EOS desktop session. The commands will be run on the EOS machine to which you have connected.</p>
 </div>
 <div class="section" id="checking-host-fingerprints">
 <h3>Checking Host Fingerprints<a class="headerlink" href="#checking-host-fingerprints" title="Permalink to this headline">¶</a></h3>
@@ -180,7 +179,7 @@ Are you sure you want to continue connecting (yes/no)?
 </pre></div>
 </div>
 <p>This is your SSH client requesting you to validate the identity of the machine to which you are connecting.</p>
-<p>Each EOS machine has a so-called fingerprint, a series of characters which is used to verify its identity. To ensure that an attacker between your client and the actual EOS machine is not pretending to be an EOS machine, you must check that the machine&#8217;s fingerprint matches the table below. Please report any mismatches to Ira Woodring immediately.</p>
+<p>Each EOS machine has a so-called fingerprint, a series of characters which is used to verify its identity. To ensure that an attacker between your client and the actual EOS machine is not pretending to be an EOS machine, you must check that the machine&#8217;s fingerprint matches the table below. Please <a class="reference external" href="mailto:woodriir&#37;&#52;&#48;gvsu&#46;edu?subject=EOS%20Fingerprint%20Mismatch&amp;body=Hi%20Mr&#46;%20Woodring,%0A%0AIt%20seems%20that%20the%20key%20for%20eosXX&#46;cis&#46;gvsu&#46;edu%20is%20incorrect&#46;">report any mismatches</a> to Ira Woodring immediately.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="13%" />
@@ -216,77 +215,83 @@ Are you sure you want to continue connecting (yes/no)?
 <tr class="row-odd"><td>arch08</td>
 <td><tt class="docutils literal"><span class="pre">e5:80:ac:98:22:6e:b5:41:26:18:27:c8:a5:22:52:42</span></tt></td>
 </tr>
+<tr class="row-even"><td>arch09</td>
+<td>down for maintenance</td>
+</tr>
+<tr class="row-odd"><td>arch10</td>
+<td>down for maintenance</td>
+</tr>
 <tr class="row-even"><td>eos01</td>
-<td><tt class="docutils literal"><span class="pre">6d:29:fd:23:c5:26:c7:c9:a5:6e:6e:c2:34:60:ea:54</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">37:86:61:af:1f:f1:18:e8:92:2e:de:d6:78:a2:29:dc</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos02</td>
-<td><tt class="docutils literal"><span class="pre">05:d1:d5:61:a4:c4:4e:ba:07:85:e2:18:8e:4b:7b:59</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">77:4c:79:72:9d:b6:28:da:f7:12:b6:74:fd:a3:50:aa</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos03</td>
-<td><tt class="docutils literal"><span class="pre">98:e4:c6:10:9a:63:e0:1d:63:ae:a8:27:c3:39:e4:ba</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">48:f3:0d:49:0b:3a:a4:2d:48:b8:62:5e:e2:c1:97:96</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos04</td>
-<td><tt class="docutils literal"><span class="pre">7c:b7:a2:65:74:c0:4f:52:ee:a2:2d:b8:12:38:9a:be</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">de:dd:78:dd:06:c0:48:b9:4e:48:b1:a8:cd:30:cd:2f</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos05</td>
-<td><tt class="docutils literal"><span class="pre">db:70:3d:04:44:d3:7f:a4:83:72:13:71:0c:be:ab:97</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">ea:85:26:bf:0c:18:00:f0:55:5f:b4:53:85:b5:91:8e</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos06</td>
-<td><tt class="docutils literal"><span class="pre">80:a9:e8:ea:b8:54:1c:4d:3b:9d:e2:c2:a7:d0:37:46</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">08:37:16:31:d9:4d:70:d2:08:de:3e:71:b6:a6:a0:78</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos07</td>
-<td><tt class="docutils literal"><span class="pre">f4:15:32:2a:b5:18:e9:e6:51:8a:58:63:71:64:ba:8b</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">c5:f5:e1:f4:14:7b:5b:12:1b:9f:2b:55:a5:04:f6:19</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos08</td>
-<td><tt class="docutils literal"><span class="pre">0d:0b:31:06:0a:6e:e6:b4:fb:48:0f:11:d6:7b:98:8a</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">2c:ab:02:30:a1:10:98:ba:49:65:79:29:53:85:7d:2d</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos09</td>
-<td><tt class="docutils literal"><span class="pre">6e:c0:20:4b:7d:f2:88:3d:df:71:ee:2e:63:2b:3c:33</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">b6:da:84:22:4b:1a:e0:4c:b0:98:af:eb:2f:6d:da:fe</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos10</td>
-<td><tt class="docutils literal"><span class="pre">be:fe:47:76:1d:5a:4b:96:fc:b9:1e:f2:42:fd:ed:41</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">66:8d:37:94:7f:6a:c5:c9:b9:54:55:ab:b7:69:12:6c</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos11</td>
-<td><tt class="docutils literal"><span class="pre">be:47:a2:1c:6a:30:e7:98:ab:9a:1c:d3:4b:33:f2:57</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">de:b7:d7:af:ed:e9:27:23:a1:f7:5a:13:1d:79:f1:29</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos12</td>
-<td><tt class="docutils literal"><span class="pre">15:21:3f:d2:b5:0b:04:06:29:2f:10:a7:04:3e:83:b7</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">6a:01:b7:87:75:9d:26:23:b1:2d:e5:22:bb:72:aa:66</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos13</td>
-<td><tt class="docutils literal"><span class="pre">31:5e:6f:ab:4a:7c:2f:3e:36:06:bd:e4:e0:a4:a3:22</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-odd"><td>eos14</td>
-<td><tt class="docutils literal"><span class="pre">87:af:45:1a:59:48:3d:57:66:a1:d6:6f:6e:a8:05:59</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">a1:f8:a5:0b:04:ea:1f:33:68:4b:53:8c:59:73:8e:81</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos15</td>
-<td><tt class="docutils literal"><span class="pre">c2:b2:34:fa:8e:16:65:49:c5:ea:f4:70:c2:54:50:bc</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">34:4d:ee:8a:dc:1e:3b:8c:fb:d5:f1:29:bc:16:41:48</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos16</td>
-<td><tt class="docutils literal"><span class="pre">57:71:e3:80:36:ff:25:d3:d1:c9:96:3d:f0:2d:42:a4</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">a0:c0:37:39:bf:1a:6a:3b:e8:21:d7:14:86:e4:9c:c8</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos17</td>
-<td><tt class="docutils literal"><span class="pre">fd:3e:66:2a:39:08:b1:8f:c2:d7:e9:8b:59:40:a1:d9</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">f3:17:53:ba:f0:00:31:ea:49:c9:b5:b1:1e:c7:70:98</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos18</td>
-<td><tt class="docutils literal"><span class="pre">a8:c5:e3:8f:1c:32:8e:72:c6:f4:dd:52:ad:23:63:31</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">bd:ca:1b:29:ab:c7:a2:5d:5b:e7:f2:0c:86:b4:e0:cd</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos19</td>
-<td><tt class="docutils literal"><span class="pre">d7:65:50:f2:23:b9:d7:58:76:9a:e2:5c:f3:1b:c0:11</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">25:9a:f9:c3:25:b6:28:f8:50:9b:b3:d5:4f:ab:34:2e</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos20</td>
-<td><tt class="docutils literal"><span class="pre">a0:76:77:7a:2f:8f:cf:a6:f7:50:38:a4:36:12:4b:2d</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-even"><td>eos21</td>
-<td><tt class="docutils literal"><span class="pre">23:3a:2b:42:b4:cf:f4:9e:c8:14:57:2f:73:8f:65:46</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-odd"><td>eos22</td>
-<td><tt class="docutils literal"><span class="pre">a5:fc:1e:65:bb:29:9b:ee:1c:4a:e9:46:41:a1:8e:cd</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-even"><td>eos23</td>
-<td><tt class="docutils literal"><span class="pre">86:bc:19:fa:64:05:73:ef:81:78:cb:24:b5:f7:8c:fd</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-odd"><td>eos24</td>
-<td><tt class="docutils literal"><span class="pre">ec:5c:2f:a7:e9:86:9f:36:e6:85:a1:bc:54:04:ce:a5</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 </tbody>
 </table>
@@ -311,9 +316,10 @@ Are you sure you want to continue connecting (yes/no)?
 </div>
 </div>
 <div class="section" id="tunnelling-port-forwarding">
-<h3>Tunnelling / Port Forwarding<a class="headerlink" href="#tunnelling-port-forwarding" title="Permalink to this headline">¶</a></h3>
-<p>The SSH protocol possesses a special feature which allows it to tunnel other protocols within itself. This is called tunnelling or port forwarding. SSH can forward local ports (allowing the local machine access to resources on the remote machine) and remote ports (allowing the remote machine access to resources on the local machine). Port forwarding can be accomplished by passing arguments to the OpenSSH command-line client or editing the OpenSSH client configuration file.</p>
+<span id="gnu-linux-ssh-tunnel"></span><h3>Tunnelling / Port Forwarding<a class="headerlink" href="#tunnelling-port-forwarding" title="Permalink to this headline">¶</a></h3>
+<p>The SSH protocol possesses a special feature which allows it to tunnel other protocols within itself. This is called tunnelling or port forwarding. SSH can forward local ports (allowing the local machine access to resources on the remote machine) and remote ports (allowing the remote machine access to resources on the local machine).</p>
 <p>Local port forwarding is the more used feature, and is explained in the following sections. Remote port forwarding is similar but is outside the scope of this guide.</p>
+<p>Port forwarding can be accomplished with OpenSSH by passing arguments to the command-line client or by editing the client configuration file.</p>
 <div class="section" id="forwarding-on-the-command-line">
 <h4>Forwarding on the Command Line<a class="headerlink" href="#forwarding-on-the-command-line" title="Permalink to this headline">¶</a></h4>
 <p>Forwarding local ports on the command-line can be accomplished using the following syntax:</p>
@@ -324,11 +330,11 @@ Are you sure you want to continue connecting (yes/no)?
 <div class="highlight-python"><div class="highlight"><pre>ssh -L 5555:eos01.cis.gvsu.edu:8000 smithj@eos01.cis.gvsu.edu
 </pre></div>
 </div>
-<p>You can actually test this by running this in the SSH prompt:</p>
+<p>You can test the forwarding by running this in the SSH prompt:</p>
 <div class="highlight-python"><div class="highlight"><pre>python -m SimpleHTTPServer
 </pre></div>
 </div>
-<p>and opening <a class="reference external" href="http://localhost:5555/">http://localhost:5555/</a> in your local web browser.</p>
+<p>and opening <a class="reference external" href="http://localhost:5555/">http://localhost:5555/</a> in your local web browser. You should see a web listing of your home directory! Press <tt class="kbd docutils literal"><span class="pre">Control-C</span></tt> to kill the web server.</p>
 <p>The remote host which is hosting the resource need not be the EOS machine to which you are connecting with SSH. For example, to access the CIS web server through your SSH tunnel, you can run:</p>
 <div class="highlight-python"><div class="highlight"><pre>ssh -L 5678:cis.gvsu.edu:80 smithj@eos01.cis.gvsu.edu
 </pre></div>
@@ -349,7 +355,7 @@ umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; touch ~/.ssh/config &amp;&
 </pre></div>
 </div>
 <p>To use this host from the command line, simply type:</p>
-<div class="highlight-bash"><div class="highlight"><pre>ssh eoscisweb
+<div class="highlight-python"><div class="highlight"><pre>ssh eoscisweb
 </pre></div>
 </div>
 </div>
@@ -422,9 +428,9 @@ umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; touch ~/.ssh/config &amp;&
 </tr>
 </tbody>
 </table>
-<p>Replace <tt class="docutils literal"><span class="pre">REMOTE_PORT</span></tt> with the port that you have selected in the following command or file.</p>
+<p>In the following instructions, replace <tt class="docutils literal"><span class="pre">REMOTE_PORT</span></tt> with the port that you have selected.</p>
 <p>To create the tunnel, use the following command line:</p>
-<div class="highlight-bash"><div class="highlight"><pre>ssh -L 5900:eosXX.cis.gvsu.edu:REMOTE_PORT smithj@eosXX.cis.gvsu.edu
+<div class="highlight-python"><div class="highlight"><pre>ssh -L 5900:eosXX.cis.gvsu.edu:REMOTE_PORT smithj@eosXX.cis.gvsu.edu
 </pre></div>
 </div>
 <p>Or the following configuration file:</p>
@@ -435,7 +441,7 @@ umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; touch ~/.ssh/config &amp;&
 </pre></div>
 </div>
 <p>If you used the configuration file, run the following to create the tunnel:</p>
-<div class="highlight-bash"><div class="highlight"><pre>ssh eosvnc
+<div class="highlight-python"><div class="highlight"><pre>ssh eosvnc
 </pre></div>
 </div>
 <p>You are now ready to tunnel your VNC session.</p>
@@ -461,8 +467,8 @@ umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; touch ~/.ssh/config &amp;&
 <div class="section" id="hostname-aliases">
 <h3>Hostname Aliases<a class="headerlink" href="#hostname-aliases" title="Permalink to this headline">¶</a></h3>
 <p>It&#8217;s useful not to have to type out the entire full-qualified domain names to EOS machines. What you might normally type would be something like this:</p>
-<div class="highlight-bash"><div class="highlight"><pre>ssh smithj@eos02.cis.gvsu.edu
-<span class="c"># or</span>
+<div class="highlight-python"><div class="highlight"><pre>ssh smithj@eos02.cis.gvsu.edu
+# or
 ssh smithj@arch04.cis.gvsu.edu
 </pre></div>
 </div>
@@ -475,8 +481,8 @@ ssh smithj@arch04.cis.gvsu.edu
 </pre></div>
 </div>
 <p>With this, now you need only type:</p>
-<div class="highlight-bash"><div class="highlight"><pre>ssh eos02
-<span class="c"># or</span>
+<div class="highlight-python"><div class="highlight"><pre>ssh eos02
+# or
 ssh arch04
 </pre></div>
 </div>
@@ -512,9 +518,9 @@ ssh arch04
 <div class="section" id="multi-hop-connections">
 <h3>Multi-Hop Connections<a class="headerlink" href="#multi-hop-connections" title="Permalink to this headline">¶</a></h3>
 <p>Oftentimes a machine is only available when SSH&#8217;ing into another machine. For example, this is the case with the DEN&#8217;s Okami server, used in CIS 677 High-Performance Computing. In addition, Okami&#8217;s SSH server is only available on a non-standard port. This typically results in the user going through this process:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">local</span><span class="nv">$ </span>ssh smithj@eos01.cis.gvsu.edu
-eos01<span class="nv">$ </span>ssh -p 43022 okami
-okami<span class="nv">$ </span><span class="c"># Finally here!</span>
+<div class="highlight-python"><div class="highlight"><pre>local$ ssh smithj@eos01.cis.gvsu.edu
+eos01$ ssh -p 43022 okami
+okami$ # Finally here!
 </pre></div>
 </div>
 <p>This is annoying and unnecessary. By using the <tt class="docutils literal"><span class="pre">ProxyCommand</span></tt> keyword in our config file, we can automate this process:</p>
@@ -527,8 +533,8 @@ okami<span class="nv">$ </span><span class="c"># Finally here!</span>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">-W</span></tt> flag allows us to hop through the first host to the host and port specified by the variables (<tt class="docutils literal"><span class="pre">okami:43022</span></tt>). Note that the use of <tt class="docutils literal"><span class="pre">eos01</span></tt> here requires presence of the aliases set up in <a class="reference internal" href="#hostname-aliases">Hostname Aliases</a>.</p>
 <p>The process has now been simplified to:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">local</span><span class="nv">$ </span>ssh okami
-okami<span class="nv">$ </span><span class="c"># Yay! Easy!</span>
+<div class="highlight-python"><div class="highlight"><pre>local$ ssh okami
+okami$ # Yay! Easy!
 </pre></div>
 </div>
 </div>
@@ -539,7 +545,7 @@ okami<span class="nv">$ </span><span class="c"># Yay! Easy!</span>
 <img alt="IEEE Xplore Login Page" src="../_images/denied.png" />
 <p>By using a proxy through the EOS machines, we can transparently access the IEEE library as if we were on campus.</p>
 <p>OpenSSH support the SOCKS protocol for proxying. Activating the SOCKS feature is accomplished with the <tt class="docutils literal"><span class="pre">-D</span></tt> flag like so:</p>
-<div class="highlight-bash"><div class="highlight"><pre>ssh -D 5555 eos01
+<div class="highlight-python"><div class="highlight"><pre>ssh -D 5555 eos01
 </pre></div>
 </div>
 <p>This establishes a SOCKS proxy with EOS01 served up on the local machine on port 5555. Now we must configure our operating system or browser to use this proxy.</p>
