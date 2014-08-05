@@ -34,6 +34,7 @@ With other distributions (Arch, etc.), you are on your own.
 .. include:: common/keys/outro.rst
 
 .. |text_editor| replace:: gedit
+.. _gnu-linux-ssh-tunnel:
 .. include:: common/openssh/forwarding.rst
 
 .. _gnu-linux-vnc:

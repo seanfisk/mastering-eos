@@ -20,13 +20,14 @@ Mac OS X comes preinstalled with OpenSSH, the most popular implementation of the
 .. include:: common/keys/outro.rst
 
 .. |text_editor| replace:: open -t
+.. _mac-ssh-tunnel:
 .. include:: common/openssh/forwarding.rst
 
 The recommended VNC client for OS X is Chicken_, which is free and open-source software. Visit the website to download, install as you would any other Mac OS X application, and open.
 
 You will be prompted to create a new server. If not prompted, click :menuselection:`Connection --> Open Connection...` from the menu bar. Double click "New Server" in the list on the left and rename it to "EOS", or create a new session with the :guilabel:`+` button if none exist. Leave the :guilabel:`Host` field as ``localhost`` or fill it in if missing. Leave the :guilabel:`Display or port` field at 0 or fill it in if missing.
 
-Chicken has had some problems with the ZRLE encoding with our server. As this can cause a premature end to your session, our recommendation is to manually disable this encoding. To do this, first click the drop-down menu next to :guilabel:`Profile`, and click :guilabel:`Edit Conneciton Profiles...`. The :guilabel:`Profile Manager` configuration window will open. In the bottom left, enter "EOS" into the field and click the :guilabel:`+` button. Now click the checkbox next to the ZRLE encoding to disable it for EOS sessions. Close the :guilabel:`Profile Manager` window.
+Chicken has had some problems with the ZRLE encoding with our server. As this can cause a premature end to your session, our recommendation is to manually disable this encoding. To do this, first click the drop-down menu next to :guilabel:`Profile`, and click :guilabel:`Edit Connection Profiles...`. The :guilabel:`Profile Manager` configuration window will open. In the bottom left, enter "EOS" into the field and click the :guilabel:`+` button. Now click the checkbox next to the ZRLE encoding to disable it for EOS sessions. Close the :guilabel:`Profile Manager` window.
 
 Click :guilabel:`Connect` to begin your VNC session with EOS. To connect in the future, select :menuselection:`Connection --> Open Connection...` from the menu, select your EOS configuration, and click :guilabel:`Connect`.
 
@@ -39,11 +40,10 @@ Alternatives
 
 Chicken is not the only VNC viewer available for Mac OS X. Some alternatives are:
 
-* `RealVNC <https://www.realvnc.com/products/vnc/documentation/5.0/installing-removing/macosx>`_ --- free and paid versions available
-* `RealVNC Viewer for Google Chrome <https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en>`_ --- free Google Chrome extension
-* `JollysFastVNC <http://www.jinx.de/JollysFastVNC.html>`_ --- trial available
-* `TigerVNC <http://tigervnc.org/>`_ --- free and open source, command-line connection interface only
-* `Chicken of the VNC <http://sourceforge.net/projects/cotvnc/>`_ --- older version of Chicken, not recommended
+* `TigerVNC <http://tigervnc.org/>`_ is a capable free and open source VNC viewer. Its interface is not as Mac-friendly as Chicken, but it works well. If you are having problems with Chicken, try TigerVNC.
+* `RealVNC Viewer <http://realvnc.com/download/viewer/>`_ is a freeware viewer, but requires registration. RealVNC also offers `RealVNC Viewer for Google Chrome <https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en>`_, a free Google Chrome extension which does not require registration.
+* `JollysFastVNC <http://www.jinx.de/JollysFastVNC.html>`_ is a full-featured VNC client with trial and paid versions available.
+* `Chicken of the VNC <http://sourceforge.net/projects/cotvnc/>`_ is an older version of Chicken and is not recommended.
 
 .. include:: common/openssh/advanced/intro.rst
 
