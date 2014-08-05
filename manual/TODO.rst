@@ -6,10 +6,6 @@
     * Finish Windows step-by-step guides.
     * Check out TigerVNC for Mac OS X.
 
-* RDP
-
-Switch to Remmina for RDP on GNU/Linux (and EOS) if OK with Ira.
-
 * Shells / PATH
 
 Expand the Shells section, consider taking out mentions of ksh and tcsh, and add path manip and prompt customization sections.
