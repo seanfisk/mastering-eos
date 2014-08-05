@@ -83,14 +83,18 @@ def generate_fingerprints_table():
     # The default decoration produces the correct table.
     table.header(['Host', 'Fingerprint'])
 
-    table.add_rows(
-        sorted(
-            # Use the short host name, and use a fixed-width for the
-            # fingerprint itself.
-            (host.split('.')[0], '``{0}``'.format(fingerprint))
-            for (host, fingerprint)
-            in results_dict.iteritems()),
-        header=False)
+    for host, command_output in sorted(results_dict.iteritems()):
+        # Use the short host name.
+        short_hostname = host.split('.')[0]
+
+        if isinstance(command_output, Exception):
+            # Note that the host is down in the table when '--skip-bad-hosts'
+            # is given on the command line.
+            fingerprint_text = 'down for maintenance'
+        else:
+            # Use a fixed-width for the fingerprint itself.
+            fingerprint_text = '``{0}``'.format(command_output)
+        table.add_row((short_hostname, fingerprint_text))
 
     with open(FINGERPRINTS_TABLE_FILENAME, 'w') as fingerprint_file:
         print(table.draw(), file=fingerprint_file)
