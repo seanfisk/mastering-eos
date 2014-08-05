@@ -10,8 +10,6 @@
 
 Expand the Shells section, consider taking out mentions of ksh and tcsh, and add path manip and prompt customization sections.
 
-* Change theme to use GVSU colors. Use black, white, the 3 blue shades from the home page, and the official blue (Pantone).
-
 * "Next class" Python module in prompt, e.g., ``<CIS452 in 01:42>``.
 
 * Expand DB section; add PostgreSQL
@@ -30,6 +28,7 @@ Expand the Shells section, consider taking out mentions of ksh and tcsh, and add
 
 * Later, tryout http://www.mremoteng.org/ and http://terminals.codeplex.com/.
 
+* Change theme to use GVSU colors. Use black, white, the 3 blue shades from the home page, and the official blue (Pantone).
 
 Ira
 ===
