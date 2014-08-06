@@ -4,6 +4,8 @@
 
 * SCP
 
+* X forwarding
+
 * Shells / PATH
 
 Expand the Shells section, consider taking out mentions of ksh and tcsh, and add path manip and prompt customization sections.
