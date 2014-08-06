@@ -35,8 +35,8 @@ Click :guilabel:`Connect` to begin your VNC session with EOS. To connect in the 
 
 .. _Chicken: http://sourceforge.net/projects/chicken/
 
-Alternatives
-------------
+Alternative Clients
+===================
 
 Chicken is not the only VNC viewer available for Mac OS X. Some alternatives are:
 
