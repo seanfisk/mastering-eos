@@ -2,10 +2,6 @@
  TODO
 ======
 
-* VNC
-    * Finish Windows step-by-step guides.
-    * Check out TigerVNC for Mac OS X.
-
 * SCP
 
 * Shells / PATH
