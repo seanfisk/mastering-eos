@@ -54,6 +54,9 @@ To configure Remmina for VNC with automatic SSH tunneling, open Remmina and sele
 .. image:: /images/vnc/remmina/ssh.png
    :alt: Remmina SSH Tab
 
+Alternative Clients
+===================
+
 We have tried various VNC clients, but found Remmina to be the easiest to use. However, other VNC clients for GNU/Linux exist and include:
 
 * `KRDC <http://kde.org/applications/internet/krdc/>`_ --- free and open-source, part of KDE

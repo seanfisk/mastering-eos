@@ -149,6 +149,7 @@
 <span id="remote-access"></span><h1>Remote Access (SSH/VNC)<a class="headerlink" href="#remote-access-ssh-vnc" title="Permalink to this headline">¶</a></h1>
 <p>When not sitting at a physical machine in the EOS or Arch lab, EOS can be accessed from home using a protocol called Secure Shell (SSH). SSH gives you a prompt open to <a class="reference internal" href="../shells.html#bash"><em>Bash</em></a>, the default shell on EOS. From this shell, you can run commands as you would inside a normal terminal emulator in an EOS desktop session. The commands will be run on the EOS machine to which you have connected.</p>
 <p>SSH is a command-line-only technology. However, graphical remote access is available through a protocol called Virtual Network Computing (VNC). VNC allows access to a graphical desktop as if sitting at an EOS machine. Because the VNC protocol has no security of its own, our lab setup requires tunnelling VNC traffic through the SSH protocol. Each respective guide describes how to do this, but remember that you will first need to successfully set up SSH before attempting to use VNC.</p>
+<p>In addition to command-line and graphical access, you will likely need to transfer files between your local machine and EOS. This can be accomplished using a protocol called Secure</p>
 <p>The hostnames for the EOS machines are organized as follows: <tt class="samp docutils literal"><span class="pre">eos</span><em><span class="pre">XX</span></em><span class="pre">.cis.gvsu.edu</span></tt> where <tt class="samp docutils literal"><em><span class="pre">XX</span></em></tt> is 01 through 24 and <tt class="samp docutils literal"><span class="pre">arch</span><em><span class="pre">XX</span></em><span class="pre">.cis.gvsu.edu</span></tt> where <tt class="samp docutils literal"><em><span class="pre">XX</span></em></tt> is 01 through 10. Use these names to connect to a specific EOS machine.</p>
 <p>Your SSH and VNC clients of choice depend on your machine&#8217;s operating system.</p>
 <div class="toctree-wrapper compound">
@@ -162,12 +163,14 @@
 <li class="toctree-l1"><a class="reference internal" href="mac_os_x.html">Mac OS X</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="mac_os_x.html#ssh">SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mac_os_x.html#vnc">VNC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mac_os_x.html#alternative-clients">Alternative Clients</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mac_os_x.html#advanced-openssh">Advanced OpenSSH</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="gnu_linux.html">GNU/Linux</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="gnu_linux.html#ssh">SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gnu_linux.html#vnc">VNC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gnu_linux.html#alternative-clients">Alternative Clients</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gnu_linux.html#advanced-openssh">Advanced OpenSSH</a></li>
 </ul>
 </li>
