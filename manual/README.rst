@@ -34,9 +34,9 @@ This will re-generate the fingerprints table in ``common/ssh/fingerprints.rst``.
 
 If you are having trouble with some EOS SSH hosts being down, but still want to generate the table, you can run the following to ignore down hosts::
 
-    fab --skip-bad-hosts --parallel generate_fingerprints_table
+    fab --skip-bad-hosts generate_fingerprints_table
 
-This will skip the down hosts when generating the table. This isn't recommended for deployment, as it may miss hosts in the table, but is OK for a quick test.
+This will skip the down hosts when generating the table. Due to limitations in Fabric, this cannot be done in parallel. This also isn't recommended for a permanent deployment as it may miss hosts in the table.
 
 To see all tasks that are available via Fabric, run::
 
