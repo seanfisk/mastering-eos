@@ -42,7 +42,7 @@ Copy the text from the field labelled :guilabel:`Public key for pasting into Ope
 
 .. code-block:: powershell
 
-    Get-Content "$env:USERPROFILE\Desktop\id_rsa.pub" | & "$env:SYSTEMDRIVE\Program Files (x86)\PuTTY\plink" -pw ([Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($(Read-Host -AsSecureString Password)))) EOS 'umask u=rwx,go= && mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys'
+    $puttySessionName = 'EOS'; Get-Content "$env:USERPROFILE\Desktop\id_rsa.pub" | & "$env:SYSTEMDRIVE\Program Files (x86)\PuTTY\plink" -pw ([Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($(Read-Host -AsSecureString Password)))) $puttySessionName 'umask u=rwx,go= && mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys'
 
 Your public key has now been uploaded to EOS. The file :file:`id_rsa.pub` may be deleted now.
 
