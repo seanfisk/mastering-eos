@@ -8,6 +8,7 @@
         * Cyberduck looks good for Mac and Win
         * FileZilla [Mac,Win,Linux] apparently stores passwords in plaintext instead of using operating system facilities. This is unacceptable and we cannot recommend it.
     * X forwarding
+    * Add this link: http://www.techrepublic.com/blog/it-security/use-putty-as-a-secure-proxy-on-windows/
 
 * Shells / PATH
     * Focus on Bash and just mention other shells at the end
@@ -21,9 +22,17 @@
     * Hardware information
     * Web server details (info.php)
 
-* Expand DB section; add PostgreSQL
+* Installing software
+    * Manual compilation
+    * Linuxbrew
+    * Local install scripts
+    * Specific environments
+        * Python (https://github.com/yyuu/pyenv)
+        * Ruby (https://github.com/sstephenson/rbenv)
+        * Java (https://github.com/gcuisinier/jenv)
 
 * SSHFS
+* Expand DB section; add PostgreSQL
 
 * List of GUI libraries
 
