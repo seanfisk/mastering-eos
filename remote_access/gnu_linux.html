@@ -296,8 +296,8 @@ Are you sure you want to continue connecting (yes/no)?
 </tbody>
 </table>
 </div>
-<div class="section" id="password-less-logins">
-<h3>Password-less Logins<a class="headerlink" href="#password-less-logins" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="password-less-logins-ssh-keys">
+<h3>Password-less Logins (SSH keys)<a class="headerlink" href="#password-less-logins-ssh-keys" title="Permalink to this headline">¶</a></h3>
 <p>It is often handy to be able to SSH into a host without having to type a password, for instance as part of a script. First, generate your public/private key pair with:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span>
 </pre></div>
@@ -451,6 +451,26 @@ umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; touch ~/.ssh/config &amp;&
 <img alt="Remmina Basic Tab" src="../_images/basic.png" />
 <img alt="Remmina SSH Tab" src="../_images/ssh.png" />
 </div>
+<div class="section" id="file-transfer">
+<h2>File Transfer<a class="headerlink" href="#file-transfer" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="command-line-scp">
+<h3>Command Line (SCP)<a class="headerlink" href="#command-line-scp" title="Permalink to this headline">¶</a></h3>
+<p>Files can be transferred on the command line using a utility called SCP. Because SCP uses SSH for authentication, if you have set up <a class="reference internal" href="#password-less-logins-ssh-keys">Password-less Logins (SSH keys)</a>, you will not have to type any passwords. SCP stands for <em>Secure Copy</em> and works very similar to the <tt class="docutils literal"><span class="pre">cp</span></tt> command, except that it can also transfer files across the network. Make sure you are familiar with the operation of <tt class="docutils literal"><span class="pre">cp</span></tt> before using SCP.</p>
+<p>Each file can be prefixed with a machine name, which tells SCP where it is or should be located. Files with no prefix are assumed to be on the local machine. Paths on the remote machine start at your home directory, so there is typically no need to include <tt class="file docutils literal"><span class="pre">/home/smithj</span></tt> in the path. Here are some examples of use of SCP:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Typical upload</span>
+scp classes/cis162/hw1.txt eos01.cis.gvsu.edu:classes/cis162
+<span class="c"># Typical download</span>
+scp eos01.cis.gvsu.edu:classes/cis162/hw2.txt classes/cis162
+<span class="c"># Upload a directory</span>
+scp -r projects eos01.cis.gvsu.edu:classes/cis163
+<span class="c"># Include username as well</span>
+scp smithj@eos01.cis.gvsu.edu:classes/cis162/hw3.txt classes/cis162
+<span class="c"># Hostname aliases make this easier</span>
+scp eos01:classes/cis162/hw4.txt classes/cis162
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="alternative-clients">
 <h2>Alternative Clients<a class="headerlink" href="#alternative-clients" title="Permalink to this headline">¶</a></h2>
 <p>We have tried various VNC clients, but found Remmina to be the easiest to use. However, other VNC clients for GNU/Linux exist and include:</p>
@@ -461,7 +481,11 @@ umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; touch ~/.ssh/config &amp;&
 <li><a class="reference external" href="http://realvnc.com/download/viewer/">RealVNC Viewer</a> &#8212; free and paid versions available</li>
 <li><a class="reference external" href="https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en">RealVNC Viewer for Google Chrome</a> &#8212; free Google Chrome extension</li>
 </ul>
-<p>Operation of each of these applications is similar. For the host, enter in the hostname of the EOS machine to which you have SSH&#8217;ed. If a display is requested, enter <tt class="docutils literal"><span class="pre">0</span></tt>. If a port is requested, enter <tt class="docutils literal"><span class="pre">5900</span></tt> (these mean the same thing). If the viewer offers support for multiple protocols, make sure you select &#8220;VNC&#8221;.</p>
+<p>Operation of each of these applications is similar. For the host, enter in the hostname of the EOS machine to which you have SSH&#8217;ed. If a display is requested, enter <tt class="docutils literal"><span class="pre">0</span></tt>; if a port is requested, enter <tt class="docutils literal"><span class="pre">5900</span></tt> (these mean the same thing). If the viewer offers support for multiple protocols, make sure you select &#8220;VNC&#8221;.</p>
+<div class="admonition danger">
+<p class="first admonition-title">Danger</p>
+<p class="last">Another popular client for SFTP is <a class="reference external" href="https://filezilla-project.org/">FileZilla</a>. However, because FileZilla <a class="reference external" href="http://trac.filezilla-project.org/ticket/5530">stores its passwords insecurely</a>, we cannot recommend it. Please avoid its use to keep your password secure.</p>
+</div>
 </div>
 <div class="section" id="advanced-openssh">
 <h2>Advanced OpenSSH<a class="headerlink" href="#advanced-openssh" title="Permalink to this headline">¶</a></h2>

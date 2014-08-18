@@ -286,8 +286,8 @@ Are you sure you want to continue connecting (yes/no)?
 </tbody>
 </table>
 </div>
-<div class="section" id="password-less-logins">
-<h3>Password-less Logins<a class="headerlink" href="#password-less-logins" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="password-less-logins-ssh-keys">
+<h3>Password-less Logins (SSH keys)<a class="headerlink" href="#password-less-logins-ssh-keys" title="Permalink to this headline">¶</a></h3>
 <p>It is often handy to be able to SSH into a host without having to type a password, for instance as part of a script. First, generate your public/private key pair with:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span>
 </pre></div>
@@ -444,6 +444,37 @@ umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; touch ~/.ssh/config &amp;&
 <p class="last">Although Chicken offers an option to tunnel directly through SSH, we have not had luck using this option with our setup. We recommend sticking with the traditional SSH tunnel, as it is tested and works well.</p>
 </div>
 </div>
+<div class="section" id="file-transfer">
+<h2>File Transfer<a class="headerlink" href="#file-transfer" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="graphical">
+<h3>Graphical<a class="headerlink" href="#graphical" title="Permalink to this headline">¶</a></h3>
+<p>The recommend graphical client for file transfer on Mac OS X is <a class="reference external" href="http://cyberduck.io/">Cyberduck</a>. It is quite easy to use. Download the application, install as normal, and start Cyberduck.</p>
+<p>Click <em class="guilabel">Open Connection</em>. From the drop-down box, select <em class="guilabel">SFTP (SSH File Transfer Protocol)</em>. Type in the EOS machine to which you&#8217;d like to connect in the <em class="guilabel">Server</em> field and fill in your username.</p>
+<p>If you have set up <a class="reference internal" href="#password-less-logins-ssh-keys">Password-less Logins (SSH keys)</a>, click the <em class="guilabel">Use Public Key Authentication</em> checkbox and select the file <tt class="file docutils literal"><span class="pre">id_rsa</span></tt>. This is the identity file that you use to log in to EOS. If you have not set up your keys, you can still use password authentication, although this is not recommended.</p>
+<p>If you have created a config file as in <a class="reference internal" href="#hostname-aliases">Hostname Aliases</a>, you may also notice Cyberduck auto-detect your configuration and fill in some information.</p>
+<p>Your connection information should look something like this:</p>
+<img alt="Cyberduck Configuration" src="../_images/mac-cyberduck-conf.png" />
+<p>After connecting, we recommend creating a bookmark so that you can easily return. Click <em class="menuselection">Bookmark ‣ New Bookmark</em> to create one. You can change the nickname if you like. When you start Cyberduck again, simply click your bookmark to connect.</p>
+<p>Most of Cyberduck&#8217;s action are available through the <em class="guilabel">File</em> menu or the right-click context menu. In addition, Cyberduck has great support for dragging between it and Finder.</p>
+</div>
+<div class="section" id="command-line-scp">
+<h3>Command Line (SCP)<a class="headerlink" href="#command-line-scp" title="Permalink to this headline">¶</a></h3>
+<p>Files can be transferred on the command line using a utility called SCP. Because SCP uses SSH for authentication, if you have set up <a class="reference internal" href="#password-less-logins-ssh-keys">Password-less Logins (SSH keys)</a>, you will not have to type any passwords. SCP stands for <em>Secure Copy</em> and works very similar to the <tt class="docutils literal"><span class="pre">cp</span></tt> command, except that it can also transfer files across the network. Make sure you are familiar with the operation of <tt class="docutils literal"><span class="pre">cp</span></tt> before using SCP.</p>
+<p>Each file can be prefixed with a machine name, which tells SCP where it is or should be located. Files with no prefix are assumed to be on the local machine. Paths on the remote machine start at your home directory, so there is typically no need to include <tt class="file docutils literal"><span class="pre">/home/smithj</span></tt> in the path. Here are some examples of use of SCP:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Typical upload</span>
+scp classes/cis162/hw1.txt eos01.cis.gvsu.edu:classes/cis162
+<span class="c"># Typical download</span>
+scp eos01.cis.gvsu.edu:classes/cis162/hw2.txt classes/cis162
+<span class="c"># Upload a directory</span>
+scp -r projects eos01.cis.gvsu.edu:classes/cis163
+<span class="c"># Include username as well</span>
+scp smithj@eos01.cis.gvsu.edu:classes/cis162/hw3.txt classes/cis162
+<span class="c"># Hostname aliases make this easier</span>
+scp eos01:classes/cis162/hw4.txt classes/cis162
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="alternative-clients">
 <h2>Alternative Clients<a class="headerlink" href="#alternative-clients" title="Permalink to this headline">¶</a></h2>
 <p>Chicken is not the only VNC viewer available for Mac OS X. Some alternatives are:</p>
@@ -453,6 +484,10 @@ umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; touch ~/.ssh/config &amp;&
 <li><a class="reference external" href="http://www.jinx.de/JollysFastVNC.html">JollysFastVNC</a> is a full-featured VNC client with trial and paid versions available.</li>
 <li><a class="reference external" href="http://sourceforge.net/projects/cotvnc/">Chicken of the VNC</a> is an older version of Chicken and is not recommended.</li>
 </ul>
+<div class="admonition danger">
+<p class="first admonition-title">Danger</p>
+<p class="last">Another popular client for SFTP is <a class="reference external" href="https://filezilla-project.org/">FileZilla</a>. However, because FileZilla <a class="reference external" href="http://trac.filezilla-project.org/ticket/5530">stores its passwords insecurely</a>, we cannot recommend it. Please avoid its use to keep your password secure.</p>
+</div>
 </div>
 <div class="section" id="advanced-openssh">
 <h2>Advanced OpenSSH<a class="headerlink" href="#advanced-openssh" title="Permalink to this headline">¶</a></h2>
