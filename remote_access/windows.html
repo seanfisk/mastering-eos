@@ -150,18 +150,39 @@
             
   <div class="section" id="microsoft-windows">
 <h1>Microsoft Windows<a class="headerlink" href="#microsoft-windows" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#ssh" id="id1">SSH</a><ul>
+<li><a class="reference internal" href="#logging-in" id="id2">Logging In</a></li>
+<li><a class="reference internal" href="#checking-host-fingerprints" id="id3">Checking Host Fingerprints</a></li>
+<li><a class="reference internal" href="#password-less-logins-ssh-keys" id="id4">Password-less Logins (SSH keys)</a></li>
+<li><a class="reference internal" href="#tunnelling-port-forwarding" id="id5">Tunnelling / Port Forwarding</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vnc" id="id6">VNC</a></li>
+<li><a class="reference internal" href="#file-transfer" id="id7">File Transfer</a><ul>
+<li><a class="reference internal" href="#graphical" id="id8">Graphical</a><ul>
+<li><a class="reference internal" href="#automatic-synchronization" id="id9">Automatic Synchronization</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#command-line-scp" id="id10">Command Line (SCP)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#alternative-clients" id="id11">Alternative Clients</a></li>
+</ul>
+</div>
 <div class="section" id="ssh">
-<h2>SSH<a class="headerlink" href="#ssh" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id1">SSH</a><a class="headerlink" href="#ssh" title="Permalink to this headline">¶</a></h2>
 <p>The most popular SSH client for Windows is called <a class="reference external" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a>. It can be installed by visiting the <a class="reference external" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY download page</a>. We recommend installing via the Windows installer, labeled <em>A Windows installer for everything except PuTTYtel</em>.</p>
 <div class="section" id="logging-in">
-<h3>Logging In<a class="headerlink" href="#logging-in" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id2">Logging In</a><a class="headerlink" href="#logging-in" title="Permalink to this headline">¶</a></h3>
 <p>The first step we will take is to create a saved session for our EOS connection configuration. This will save time for future logins.</p>
 <p>Open PuTTY and enter your username and the hostname of the EOS machine into the <em class="guilabel">Host Name</em> field. This has the form <em>user&#64;host</em>, for example, <tt class="samp docutils literal"><span class="pre">smithj&#64;eos</span><em><span class="pre">XX</span></em><span class="pre">.cis.gvsu.edu</span></tt>, where <tt class="samp docutils literal"><span class="pre">XX</span></tt> is the number of the chosen machine.</p>
 <p>In the field under <em class="guilabel">Saved Sessions</em>, type <tt class="samp docutils literal"><span class="pre">EOS</span></tt> (this name is not strictly required, but is assumed in the next section). Click <em class="guilabel">Save</em>.</p>
 <p>To log in to EOS, click <em class="guilabel">Open</em>. For future logins, simply select the session you created and click <em class="guilabel">Open</em> to connect.</p>
 </div>
 <div class="section" id="checking-host-fingerprints">
-<h3>Checking Host Fingerprints<a class="headerlink" href="#checking-host-fingerprints" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id3">Checking Host Fingerprints</a><a class="headerlink" href="#checking-host-fingerprints" title="Permalink to this headline">¶</a></h3>
 <p>When logging in to an EOS machine for the first time, you will see a dialog like this:</p>
 <img alt="PuTTY Security Alert" src="../_images/putty-security-alert.png" />
 <p>This is your SSH client requesting you to validate the identity of the machine to which you are connecting.</p>
@@ -283,7 +304,7 @@
 </table>
 </div>
 <div class="section" id="password-less-logins-ssh-keys">
-<h3>Password-less Logins (SSH keys)<a class="headerlink" href="#password-less-logins-ssh-keys" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id4">Password-less Logins (SSH keys)</a><a class="headerlink" href="#password-less-logins-ssh-keys" title="Permalink to this headline">¶</a></h3>
 <p>It is often handy to be able to SSH into a host without having to type a password, for instance as part of a script. First, we need to generate your public/private key pair. Open <a class="reference external" href="http://the.earth.li/~sgtatham/putty/0.63/htmldoc/Chapter8.html#pubkey-puttygen">PuTTYgen</a> from the PuTTY distribution to begin the generation process. Click <em class="guilabel">Generate</em> and do the mouse nonsense to generate your keys.</p>
 <p>Copy the text from the field labelled <em class="guilabel">Public key for pasting into OpenSSH authorized_keys file</em>. Open Notepad and paste this text. Save it to the desktop as <tt class="file docutils literal"><span class="pre">id_rsa.pub</span></tt>. Now open Windows PowerShell from the Start Menu and run the following command. If your EOS saved session is named something other than &#8220;EOS&#8221;, you will need to change it in the command below.</p>
 <div class="highlight-powershell"><div class="highlight"><pre>$puttySessionName = &#39;EOS&#39;; Get-Content &quot;$env:USERPROFILE\Desktop\id_rsa.pub&quot; | &amp; &quot;$env:SYSTEMDRIVE\Program Files (x86)\PuTTY\plink&quot; -pw ([Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($(Read-Host -AsSecureString Password)))) $puttySessionName &#39;umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys&#39;
@@ -308,7 +329,7 @@
 <p>As is obvious from these instructions, SSH key management is not a simple process. We recommend reading the <a class="reference external" href="http://the.earth.li/~sgtatham/putty/latest/htmldoc/Chapter8.html#pubkey">PuTTY Guide to SSH Keys</a>, which is the source for much of this information. If you would like to use a passphrase with your key, please see the <a class="reference external" href="http://the.earth.li/~sgtatham/putty/latest/htmldoc/Chapter9.html#pageant">PuTTY Guide to Pageant</a>, PuTTY&#8217;s SSH agent.</p>
 </div>
 <div class="section" id="tunnelling-port-forwarding">
-<span id="win-ssh-tunnel"></span><h3>Tunnelling / Port Forwarding<a class="headerlink" href="#tunnelling-port-forwarding" title="Permalink to this headline">¶</a></h3>
+<span id="win-ssh-tunnel"></span><h3><a class="toc-backref" href="#id5">Tunnelling / Port Forwarding</a><a class="headerlink" href="#tunnelling-port-forwarding" title="Permalink to this headline">¶</a></h3>
 <p>The SSH protocol possesses a special feature which allows it to tunnel other protocols within itself. This is called tunnelling or port forwarding. SSH can forward local ports (allowing the local machine access to resources on the remote machine) and remote ports (allowing the remote machine access to resources on the local machine).</p>
 <p>Local port forwarding is the more used feature, and is explained in the following sections. Remote port forwarding is similar but is outside the scope of this guide.</p>
 <p>Fortunately, port forwarding with PuTTY is quite easy. Fire up PuTTY and select your saved session, then click the <em class="guilabel">Load</em>. In the configuration tree to the left, expand <em class="menuselection">Connection ‣ SSH</em> and click on <em class="guilabel">Tunnels</em>.</p>
@@ -354,7 +375,7 @@
 </div>
 </div>
 <div class="section" id="vnc">
-<h2>VNC<a class="headerlink" href="#vnc" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">VNC</a><a class="headerlink" href="#vnc" title="Permalink to this headline">¶</a></h2>
 <p>First, we need to create a tunnel in order to forward VNC through our SSH connection. The remote port to which we must connect depends on the desired resolution of the remote desktop. Select a desired resolution from the following table, and note the port to which it corresponds.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -445,9 +466,9 @@
 <p>For future connections, simply start TightVNC and click <em class="guilabel">Connect</em>. Alternatively, during the session, you can save the configuration to a file by clicking the <em class="guilabel">Save</em> button, shown as a diskette. After saving the configuration to a <tt class="docutils literal"><span class="pre">*.vnc</span></tt> file, double click the file to start the connection.</p>
 </div>
 <div class="section" id="file-transfer">
-<h2>File Transfer<a class="headerlink" href="#file-transfer" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">File Transfer</a><a class="headerlink" href="#file-transfer" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="graphical">
-<h3>Graphical<a class="headerlink" href="#graphical" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id8">Graphical</a><a class="headerlink" href="#graphical" title="Permalink to this headline">¶</a></h3>
 <p>The recommend graphical client for file transfer on Mac OS X is <a class="reference external" href="http://winscp.net/eng/index.php">WinSCP</a>, which can be found on the <a class="reference external" href="http://winscp.net/eng/download.php">WinSCP downloads page</a>. We recommend downloading the latest stable installer, labeled <em>Installation package</em>. It should be near the top.</p>
 <p>After downloading, run the installer. The <em>Typical installation</em> is usually fine, but feel free to customize the installation options. You can choose either the <em>Commander</em> or <em>Explorer</em> interface, but keep in mind that most people use the <em>Commander</em> interface. Don&#8217;t forget to disable the sneaky Google Chrome installer included with this installer.</p>
 <p>After the installer copies its files, it may detect your sessions from PuTTY. If so, click <em class="guilabel">OK</em> to import them. Select the sessions you&#8217;d like to import and click <em class="guilabel">OK</em> again. This is the single easiest way to start quickly with WinSCP.</p>
@@ -459,14 +480,14 @@
 <p class="last">You can create a desktop shortcut for your site by right-clicking your site in the WinSCP Login screen, then clicking <em class="guilabel">Desktop Icon</em>. This allows you to open your site directly without visiting the WinSCP Login screen. Creating a &#8216;Send To&#8217; shortcut for Windows Explorer is similarly useful.</p>
 </div>
 <div class="section" id="automatic-synchronization">
-<h4>Automatic Synchronization<a class="headerlink" href="#automatic-synchronization" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id9">Automatic Synchronization</a><a class="headerlink" href="#automatic-synchronization" title="Permalink to this headline">¶</a></h4>
 <p>Automatic synchronization of local to remote directories is a very useful advanced feature of WinSCP. It is especially useful when developing a website on EOS. This partially makes up for the lack of a maintained free Windows SSHFS implementation.</p>
 <p>To start using it, click <em class="menuselection">Commands ‣ Keep Remote Directory up to Date...</em>. You can get more information about this task and its use in the <a class="reference external" href="http://winscp.net/eng/docs/task_keep_up_to_date">WinSCP Keep Remote Directory up to Date documentation</a>.</p>
 <p>For more information on using WinSCP, consult the excellent <a class="reference external" href="http://winscp.net/eng/docs/start">WinSCP Documentation</a>.</p>
 </div>
 </div>
 <div class="section" id="command-line-scp">
-<h3>Command Line (SCP)<a class="headerlink" href="#command-line-scp" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id10">Command Line (SCP)</a><a class="headerlink" href="#command-line-scp" title="Permalink to this headline">¶</a></h3>
 <p>Files can be transferred on the command line using a utility called SCP, implemented in PuTTY through a command called <tt class="docutils literal"><span class="pre">pscp</span></tt>. Because <tt class="docutils literal"><span class="pre">pscp</span></tt> uses PuTTY for authentication, if you have set up <a class="reference internal" href="#password-less-logins-ssh-keys">Password-less Logins (SSH keys)</a>, you will not have to type any passwords. SCP stands for <em>Secure Copy</em> and works very similar to the GNU/Linux <tt class="docutils literal"><span class="pre">cp</span></tt> command, except that it can also transfer files across the network. Make sure you are familiar with the operation of <tt class="docutils literal"><span class="pre">cp</span></tt> before using SCP.</p>
 <p>PuTTY&#8217;s commands are not added to the Windows <a class="reference external" href="http://en.wikipedia.org/wiki/PATH_%28variable%29">Path</a> by default. To add them to the <span class="target" id="index-0"></span><tt class="xref std std-envvar docutils literal"><span class="pre">Path</span></tt>, open Windows PowerShell from the Start Menu and run the following command. If you installed PuTTY to a non-default location, you will need to change it in the command below.</p>
 <div class="highlight-powershell"><div class="highlight"><pre>$puttyInstallPath = &#39;C:\Program Files (x86)\PuTTY&#39;; [Environment]::SetEnvironmentVariable(&#39;Path&#39;, [Environment]::GetEnvironmentVariable(&#39;Path&#39;, &#39;User&#39;) + &#39;;&#39; + $puttyInstallPath, &#39;User&#39;)
@@ -491,7 +512,7 @@ pscp smithj@eos01.cis.gvsu.edu:classes/cis162/hw3.txt classes/cis162
 </div>
 </div>
 <div class="section" id="alternative-clients">
-<h2>Alternative Clients<a class="headerlink" href="#alternative-clients" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id11">Alternative Clients</a><a class="headerlink" href="#alternative-clients" title="Permalink to this headline">¶</a></h2>
 <p>Though PuTTY is the recommended SSH client for Windows, OpenSSH is also available. The recommended way of running OpenSSH on Windows is through <a class="reference external" href="http://www.cygwin.com/">Cygwin</a>. Cygwin is not simple to use and configure, but depending on your needs, it may provide a better SSH experience. OpenSSH is well-known as the best SSH client out there, and EOS uses OpenSSH as an SSH server as well.</p>
 <p>There are a plethora of alternate VNC viewers available for Windows, many based on the same original RealVNC code.</p>
 <p><a class="reference external" href="http://www.uvnc.com/">UltraVNC</a> and <a class="reference external" href="http://tigervnc.org/">TigerVNC</a> offer relatively simple user interfaces with an appropriate amount of configuration options. If you don&#8217;t like or are having trouble with TightVNC, give UltraVNC a try.</p>
