@@ -3,10 +3,8 @@
 ======
 
 * Remote
-    * SCP (PuTTY and OpenSSH)
-    * SFTP
-        * Cyberduck looks good for Mac and Win
-        * FileZilla [Mac,Win,Linux] apparently stores passwords in plaintext instead of using operating system facilities. This is unacceptable and we cannot recommend it.
+    * SSHFS (Mac and Linux, suggest ExpandDrive for Windows)
+    * rsync
     * X forwarding
     * Add this link: http://www.techrepublic.com/blog/it-security/use-putty-as-a-secure-proxy-on-windows/
 
@@ -31,7 +29,6 @@
         * Ruby (https://github.com/sstephenson/rbenv)
         * Java (https://github.com/gcuisinier/jenv)
 
-* SSHFS
 * Expand DB section; add PostgreSQL
 
 * List of GUI libraries

@@ -54,6 +54,11 @@ To configure Remmina for VNC with automatic SSH tunneling, open Remmina and sele
 .. image:: /images/vnc/remmina/ssh.png
    :alt: Remmina SSH Tab
 
+File Transfer
+=============
+
+.. include:: common/openssh/scp.rst
+
 Alternative Clients
 ===================
 
@@ -65,7 +70,9 @@ We have tried various VNC clients, but found Remmina to be the easiest to use. H
 * `RealVNC Viewer <http://realvnc.com/download/viewer/>`_ --- free and paid versions available
 * `RealVNC Viewer for Google Chrome <https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en>`_ --- free Google Chrome extension
 
-Operation of each of these applications is similar. For the host, enter in the hostname of the EOS machine to which you have SSH'ed. If a display is requested, enter ``0``. If a port is requested, enter ``5900`` (these mean the same thing). If the viewer offers support for multiple protocols, make sure you select "VNC".
+Operation of each of these applications is similar. For the host, enter in the hostname of the EOS machine to which you have SSH'ed. If a display is requested, enter ``0``; if a port is requested, enter ``5900`` (these mean the same thing). If the viewer offers support for multiple protocols, make sure you select "VNC".
+
+.. include:: common/filezilla_warning.rst
 
 .. include:: common/openssh/advanced/intro.rst
 

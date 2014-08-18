@@ -35,6 +35,33 @@ Click :guilabel:`Connect` to begin your VNC session with EOS. To connect in the 
 
 .. _Chicken: http://sourceforge.net/projects/chicken/
 
+File Transfer
+=============
+
+Graphical
+---------
+
+The recommend graphical client for file transfer on Mac OS X is Cyberduck_. It is quite easy to use. Download the application, install as normal, and start Cyberduck.
+
+.. _Cyberduck: http://cyberduck.io/
+
+Click :guilabel:`Open Connection`. From the drop-down box, select :guilabel:`SFTP (SSH File Transfer Protocol)`. Type in the EOS machine to which you'd like to connect in the :guilabel:`Server` field and fill in your username.
+
+If you have set up `Password-less Logins (SSH keys)`_, click the :guilabel:`Use Public Key Authentication` checkbox and select the file :file:`id_rsa`. This is the identity file that you use to log in to EOS. If you have not set up your keys, you can still use password authentication, although this is not recommended.
+
+If you have created a config file as in `Hostname Aliases`_, you may also notice Cyberduck auto-detect your configuration and fill in some information.
+
+Your connection information should look something like this:
+
+.. image:: /images/mac-cyberduck-conf.png
+   :alt: Cyberduck Configuration
+
+After connecting, we recommend creating a bookmark so that you can easily return. Click :menuselection:`Bookmark --> New Bookmark` to create one. You can change the nickname if you like. When you start Cyberduck again, simply click your bookmark to connect.
+
+Most of Cyberduck's action are available through the :guilabel:`File` menu or the right-click context menu. In addition, Cyberduck has great support for dragging between it and Finder.
+
+.. include:: common/openssh/scp.rst
+
 Alternative Clients
 ===================
 
@@ -46,6 +73,8 @@ Chicken is not the only VNC viewer available for Mac OS X. Some alternatives are
 * `RealVNC Viewer <http://realvnc.com/download/viewer/>`_ is a freeware viewer, but requires registration. RealVNC also offers `RealVNC Viewer for Google Chrome <https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en>`_, a free Google Chrome extension which does not require registration.
 * `JollysFastVNC <http://www.jinx.de/JollysFastVNC.html>`_ is a full-featured VNC client with trial and paid versions available.
 * `Chicken of the VNC <http://sourceforge.net/projects/cotvnc/>`_ is an older version of Chicken and is not recommended.
+
+.. include:: common/filezilla_warning.rst
 
 .. include:: common/openssh/advanced/intro.rst
 

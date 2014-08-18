@@ -1,5 +1,5 @@
-Password-less Logins
---------------------
+Password-less Logins (SSH keys)
+-------------------------------
 
 It is often handy to be able to SSH into a host without having to type a password, for instance as part of a script. First, generate your public/private key pair with::
 
