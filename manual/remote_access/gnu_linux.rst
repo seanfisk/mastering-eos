@@ -2,6 +2,9 @@
  GNU/Linux
 ===========
 
+.. contents::
+   :local:
+
 SSH
 ===
 

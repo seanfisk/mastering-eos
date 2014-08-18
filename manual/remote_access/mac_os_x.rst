@@ -2,6 +2,9 @@
  Mac OS X
 ==========
 
+.. contents::
+   :local:
+
 SSH
 ===
 

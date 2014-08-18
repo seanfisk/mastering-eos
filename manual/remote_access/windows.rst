@@ -2,6 +2,9 @@
  Microsoft Windows
 ===================
 
+.. contents::
+   :local:
+
 SSH
 ===
 
