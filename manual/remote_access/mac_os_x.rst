@@ -14,6 +14,8 @@ Mac OS X comes preinstalled with OpenSSH, the most popular implementation of the
 
 .. include:: common/openssh/fingerprints.rst
 
+.. _mac-ssh-keys:
+
 .. include:: common/keys/intro.rst
 
 .. code-block:: bash

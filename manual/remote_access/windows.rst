@@ -34,6 +34,8 @@ When logging in to an EOS machine for the first time, you will see a dialog like
 
 .. include:: common/fingerprints/checking.rst
 
+.. _win-ssh-keys:
+
 Password-less Logins (SSH keys)
 -------------------------------
 
