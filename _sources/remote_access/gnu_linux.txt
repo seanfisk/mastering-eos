@@ -28,6 +28,8 @@ With other distributions (Arch, etc.), you are on your own.
 
 .. include:: common/openssh/fingerprints.rst
 
+.. _gnu-linux-ssh-keys:
+
 .. include:: common/keys/intro.rst
 
 ::
