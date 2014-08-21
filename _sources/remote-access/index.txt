@@ -21,5 +21,5 @@ Your SSH and VNC clients of choice depend on your machine's operating system.
    :maxdepth: 2
 
    windows
-   mac_os_x
-   gnu_linux
+   mac-os-x
+   gnu-linux

@@ -24,7 +24,7 @@ Mac OS X comes preinstalled with OpenSSH, the most popular implementation of the
 
 .. include:: common/keys/outro.rst
 
-.. |text_editor| replace:: open -t
+.. |text-editor| replace:: open -t
 .. _mac-ssh-tunnel:
 .. include:: common/openssh/forwarding.rst
 
@@ -79,7 +79,7 @@ Chicken is not the only VNC viewer available for Mac OS X. Some alternatives are
 * `JollysFastVNC <http://www.jinx.de/JollysFastVNC.html>`_ is a full-featured VNC client with trial and paid versions available.
 * `Chicken of the VNC <http://sourceforge.net/projects/cotvnc/>`_ is an older version of Chicken and is not recommended.
 
-.. include:: common/filezilla_warning.rst
+.. include:: common/filezilla-warning.rst
 
 .. include:: common/openssh/advanced/intro.rst
 

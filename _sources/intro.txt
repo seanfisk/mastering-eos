@@ -36,7 +36,7 @@ The EOS system uses separate user accounts from the general university computing
 
 .. _LDAP: http://en.wikipedia.org/wiki/LDAP
 
-If you are registered for one or more eligible CIS courses [#eligible_cis_courses], you qualify for an EOS account. On the Friday before the semester starts, an account will be automatically created for you and a temporary password sent to your GVSU email address. To activate your account, you need to log in to the system once, either at a physical machine or :ref:`remotely using SSH <remote-access>`, and follow these steps:
+If you are registered for one or more eligible CIS courses [#eligible-cis-courses], you qualify for an EOS account. On the Friday before the semester starts, an account will be automatically created for you and a temporary password sent to your GVSU email address. To activate your account, you need to log in to the system once, either at a physical machine or :ref:`remotely using SSH <remote-access>`, and follow these steps:
 
 * Enter your username.
 * Enter the temporary password you have been given.
@@ -49,6 +49,6 @@ Note the following rules when creating a new password:
 * Yoru password must not be based on a dictionary word.
 * Your password should not be all numbers. The system will accept such a password, but it is incredibly insecure. Additionally, the system will often prevent login with such a password.
 
-Please take the time to memorize your password! Password resets are available by contacting |the_sysadmin|, but it often takes a day to get to it. Professors are also able to reset passwords via an SSH reset mechanism, though some are unaware of this mechanism.
+Please take the time to memorize your password! Password resets are available by contacting |the-sysadmin|, but it often takes a day to get to it. Professors are also able to reset passwords via an SSH reset mechanism, though some are unaware of this mechanism.
 
-.. [#eligible_cis_courses] All CIS courses except 150, 160, 162, 231, or 253. These courses do not require access.
+.. [#eligible-cis-courses] All CIS courses except 150, 160, 162, 231, or 253. These courses do not require access.

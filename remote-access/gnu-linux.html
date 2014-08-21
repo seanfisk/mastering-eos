@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Mac OS X &mdash; Mastering EOS</title>
+  <title>GNU/Linux &mdash; Mastering EOS</title>
   
 
   
@@ -30,8 +30,8 @@
   
     <link rel="top" title="Mastering EOS" href="../index.html"/>
         <link rel="up" title="Remote Access (SSH/VNC)" href="index.html"/>
-        <link rel="next" title="GNU/Linux" href="gnu_linux.html"/>
-        <link rel="prev" title="Microsoft Windows" href="windows.html"/> 
+        <link rel="next" title="Shells" href="../shells.html"/>
+        <link rel="prev" title="Mac OS X" href="mac-os-x.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -76,8 +76,8 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Remote Access (SSH/VNC)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="windows.html">Microsoft Windows</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Mac OS X</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gnu_linux.html">GNU/Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mac-os-x.html">Mac OS X</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">GNU/Linux</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../shells.html">Shells</a><ul>
@@ -137,10 +137,10 @@
       
           <li><a href="index.html">Remote Access (SSH/VNC)</a> &raquo;</li>
       
-    <li>Mac OS X</li>
+    <li>GNU/Linux</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/remote_access/mac_os_x.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/remote-access/gnu-linux.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -148,8 +148,8 @@
 </div>
           <div role="main">
             
-  <div class="section" id="mac-os-x">
-<h1>Mac OS X<a class="headerlink" href="#mac-os-x" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="gnu-linux">
+<h1>GNU/Linux<a class="headerlink" href="#gnu-linux" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><a class="reference internal" href="#ssh" id="id1">SSH</a><ul>
@@ -165,25 +165,34 @@
 </li>
 <li><a class="reference internal" href="#vnc" id="id8">VNC</a></li>
 <li><a class="reference internal" href="#file-transfer" id="id9">File Transfer</a><ul>
-<li><a class="reference internal" href="#graphical" id="id10">Graphical</a></li>
-<li><a class="reference internal" href="#command-line-scp" id="id11">Command Line (SCP)</a></li>
+<li><a class="reference internal" href="#command-line-scp" id="id10">Command Line (SCP)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#alternative-clients" id="id12">Alternative Clients</a></li>
-<li><a class="reference internal" href="#advanced-openssh" id="id13">Advanced OpenSSH</a><ul>
-<li><a class="reference internal" href="#hostname-aliases" id="id14">Hostname Aliases</a></li>
-<li><a class="reference internal" href="#shared-connections" id="id15">Shared Connections</a></li>
-<li><a class="reference internal" href="#persistent-connections" id="id16">Persistent Connections</a></li>
-<li><a class="reference internal" href="#multi-hop-connections" id="id17">Multi-Hop Connections</a></li>
-<li><a class="reference internal" href="#using-ssh-as-a-proxy" id="id18">Using SSH as a Proxy</a></li>
-<li><a class="reference internal" href="#example" id="id19">Example</a></li>
+<li><a class="reference internal" href="#alternative-clients" id="id11">Alternative Clients</a></li>
+<li><a class="reference internal" href="#advanced-openssh" id="id12">Advanced OpenSSH</a><ul>
+<li><a class="reference internal" href="#hostname-aliases" id="id13">Hostname Aliases</a></li>
+<li><a class="reference internal" href="#shared-connections" id="id14">Shared Connections</a></li>
+<li><a class="reference internal" href="#persistent-connections" id="id15">Persistent Connections</a></li>
+<li><a class="reference internal" href="#multi-hop-connections" id="id16">Multi-Hop Connections</a></li>
+<li><a class="reference internal" href="#using-ssh-as-a-proxy" id="id17">Using SSH as a Proxy</a></li>
+<li><a class="reference internal" href="#example" id="id18">Example</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="ssh">
 <h2><a class="toc-backref" href="#id1">SSH</a><a class="headerlink" href="#ssh" title="Permalink to this headline">¶</a></h2>
-<p>Mac OS X comes preinstalled with OpenSSH, the most popular implementation of the SSH protocol. The client can be run from the command-line and is simply called <tt class="docutils literal"><span class="pre">ssh</span></tt>.</p>
+<p>The most popular implementation of the SSH protocol on GNU/Linux is <a class="reference external" href="http://www.openssh.com/">OpenSSH</a>. The SSH client can be run from the command-line and is simply called <strong class="program">ssh</strong>.</p>
+<p>Many GNU/Linux distributions come with <a class="reference external" href="http://www.openssh.com/">OpenSSH</a> pre-installed. If your GNU/Linux distribution does not have it installed by default, please install it with your package manager. You should not install this software from scratch or on your own.</p>
+<p>On Debian-based systems (Ubuntu, Linux Mint, and friends), run the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install openssh-client
+</pre></div>
+</div>
+<p>On Red Hat-based systems (Fedora, CentOS, RHEL, and friends), run the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo yum install openssh-clients
+</pre></div>
+</div>
+<p>With other distributions (Arch, etc.), you are on your own.</p>
 <div class="section" id="logging-in">
 <h3><a class="toc-backref" href="#id2">Logging in</a><a class="headerlink" href="#logging-in" title="Permalink to this headline">¶</a></h3>
 <p>First, open your terminal emulator to start a shell. To connect to a specific machine, pass your username and hostname to the command-line client in the form <em>user&#64;host</em>. For example, where <tt class="samp docutils literal"><em><span class="pre">XX</span></em></tt> is the number of the chosen machine, run:</p>
@@ -213,28 +222,28 @@ Are you sure you want to continue connecting (yes/no)?
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>arch01</td>
-<td>down for maintenance</td>
+<td><tt class="docutils literal"><span class="pre">7e:df:14:7b:92:65:5e:29:59:99:4a:17:d1:79:1f:96</span></tt></td>
 </tr>
 <tr class="row-odd"><td>arch02</td>
-<td>down for maintenance</td>
+<td><tt class="docutils literal"><span class="pre">41:e0:df:d1:e4:bd:b3:7f:c0:d4:15:dc:d1:dc:39:bf</span></tt></td>
 </tr>
 <tr class="row-even"><td>arch03</td>
-<td><tt class="docutils literal"><span class="pre">99:d3:7d:15:72:2b:80:4c:cb:56:8c:f9:d6:15:1e:38</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">64:fb:e5:5f:94:e4:d4:56:9d:8d:27:a1:a8:d8:e4:02</span></tt></td>
 </tr>
 <tr class="row-odd"><td>arch04</td>
-<td><tt class="docutils literal"><span class="pre">fa:ae:f8:97:89:59:eb:91:fa:d0:d9:37:c1:f2:45:44</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-even"><td>arch05</td>
-<td><tt class="docutils literal"><span class="pre">67:b0:39:03:b2:c2:1c:1a:72:80:dd:49:23:d8:19:c4</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-odd"><td>arch06</td>
-<td><tt class="docutils literal"><span class="pre">6e:fc:21:fb:35:f5:b3:87:52:37:d3:5f:0b:d3:b3:b5</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">fe:75:66:3f:65:fc:63:3a:ce:c5:cd:82:ec:f9:21:fd</span></tt></td>
 </tr>
 <tr class="row-even"><td>arch07</td>
-<td><tt class="docutils literal"><span class="pre">7b:0d:0e:e0:51:c4:f7:bb:64:8a:14:e7:ab:66:de:34</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">c6:a3:27:17:16:8a:7f:0c:8e:9f:07:77:86:b1:7b:20</span></tt></td>
 </tr>
 <tr class="row-odd"><td>arch08</td>
-<td><tt class="docutils literal"><span class="pre">e5:80:ac:98:22:6e:b5:41:26:18:27:c8:a5:22:52:42</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">b5:f9:51:c8:81:45:92:70:5a:33:06:ee:f8:7b:52:52</span></tt></td>
 </tr>
 <tr class="row-even"><td>arch09</td>
 <td>down for maintenance</td>
@@ -246,13 +255,13 @@ Are you sure you want to continue connecting (yes/no)?
 <td><tt class="docutils literal"><span class="pre">37:86:61:af:1f:f1:18:e8:92:2e:de:d6:78:a2:29:dc</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos02</td>
-<td><tt class="docutils literal"><span class="pre">77:4c:79:72:9d:b6:28:da:f7:12:b6:74:fd:a3:50:aa</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-even"><td>eos03</td>
-<td><tt class="docutils literal"><span class="pre">48:f3:0d:49:0b:3a:a4:2d:48:b8:62:5e:e2:c1:97:96</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-odd"><td>eos04</td>
-<td><tt class="docutils literal"><span class="pre">de:dd:78:dd:06:c0:48:b9:4e:48:b1:a8:cd:30:cd:2f</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-even"><td>eos05</td>
 <td><tt class="docutils literal"><span class="pre">ea:85:26:bf:0c:18:00:f0:55:5f:b4:53:85:b5:91:8e</span></tt></td>
@@ -318,13 +327,13 @@ Are you sure you want to continue connecting (yes/no)?
 </table>
 </div>
 <div class="section" id="password-less-logins-ssh-keys">
-<span id="mac-ssh-keys"></span><h3><a class="toc-backref" href="#id4">Password-less Logins (SSH keys)</a><a class="headerlink" href="#password-less-logins-ssh-keys" title="Permalink to this headline">¶</a></h3>
+<span id="gnu-linux-ssh-keys"></span><h3><a class="toc-backref" href="#id4">Password-less Logins (SSH keys)</a><a class="headerlink" href="#password-less-logins-ssh-keys" title="Permalink to this headline">¶</a></h3>
 <p>It is often handy to be able to SSH into a host without having to type a password, for instance as part of a script. First, generate your public/private key pair with:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span>
 </pre></div>
 </div>
 <p>Accept the default values by pressing <tt class="kbd docutils literal"><span class="pre">Enter</span></tt> at each prompt unless you know what you are doing. Once the keys have been generated, you can copy the public key over to the remote system by entering:</p>
-<div class="highlight-bash"><div class="highlight"><pre>ssh smithj@eos01.cis.gvsu.edu <span class="s1">&#39;umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys&#39;</span> &lt; ~/.ssh/id_rsa.pub
+<div class="highlight-python"><div class="highlight"><pre>ssh-copy-id smithj@eos01.cis.gvsu.edu
 </pre></div>
 </div>
 <p>When you SSH into EOS now, you should be able to do so without having to provide a password:</p>
@@ -337,7 +346,7 @@ Are you sure you want to continue connecting (yes/no)?
 </div>
 </div>
 <div class="section" id="tunnelling-port-forwarding">
-<span id="mac-ssh-tunnel"></span><h3><a class="toc-backref" href="#id5">Tunnelling / Port Forwarding</a><a class="headerlink" href="#tunnelling-port-forwarding" title="Permalink to this headline">¶</a></h3>
+<span id="gnu-linux-ssh-tunnel"></span><h3><a class="toc-backref" href="#id5">Tunnelling / Port Forwarding</a><a class="headerlink" href="#tunnelling-port-forwarding" title="Permalink to this headline">¶</a></h3>
 <p>The SSH protocol possesses a special feature which allows it to tunnel other protocols within itself. This is called tunnelling or port forwarding. SSH can forward local ports (allowing the local machine access to resources on the remote machine) and remote ports (allowing the remote machine access to resources on the local machine).</p>
 <p>Local port forwarding is the more used feature, and is explained in the following sections. Remote port forwarding is similar but is outside the scope of this guide.</p>
 <p>Port forwarding can be accomplished with OpenSSH by passing arguments to the command-line client or by editing the client configuration file.</p>
@@ -366,7 +375,7 @@ Are you sure you want to continue connecting (yes/no)?
 <h4><a class="toc-backref" href="#id7">Forwarding in the Config File</a><a class="headerlink" href="#forwarding-in-the-config-file" title="Permalink to this headline">¶</a></h4>
 <p>The command-line works well for one-off tunnels, but for frequently established tunnels, it pays to alter the OpenSSH client configuration file. The OpenSSH client configuration resides on your local machine in the file <tt class="file docutils literal"><span class="pre">~/.ssh/config</span></tt>. This is a file inside a hidden directory inside your home directory. The easiest way to open this file, creating it if it doesn&#8217;t exist, is to run:</p>
 <pre class="literal-block">
-umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; touch ~/.ssh/config &amp;&amp; open -t ~/.ssh/config
+umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; touch ~/.ssh/config &amp;&amp; gedit ~/.ssh/config
 </pre>
 <p>To establish the CIS web server forwarding shown in the last section, one could use the following configuration:</p>
 <div class="highlight-apacheconf"><div class="highlight"><pre><span class="nb">Host</span> eoscisweb
@@ -466,30 +475,16 @@ umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; touch ~/.ssh/config &amp;&
 </pre></div>
 </div>
 <p>You are now ready to tunnel your VNC session.</p>
-<p>The recommended VNC client for OS X is <a class="reference external" href="http://sourceforge.net/projects/chicken/">Chicken</a>, which is free and open-source software. Visit the website to download, install as you would any other Mac OS X application, and open.</p>
-<p>You will be prompted to create a new server. If not prompted, click <em class="menuselection">Connection ‣ Open Connection...</em> from the menu bar. Double click &#8220;New Server&#8221; in the list on the left and rename it to &#8220;EOS&#8221;, or create a new session with the <em class="guilabel">+</em> button if none exist. Leave the <em class="guilabel">Host</em> field as <tt class="docutils literal"><span class="pre">localhost</span></tt> or fill it in if missing. Leave the <em class="guilabel">Display or port</em> field at 0 or fill it in if missing.</p>
-<p>Chicken has had some problems with the ZRLE encoding with our server. As this can cause a premature end to your session, our recommendation is to manually disable this encoding. To do this, first click the drop-down menu next to <em class="guilabel">Profile</em>, and click <em class="guilabel">Edit Connection Profiles...</em>. The <em class="guilabel">Profile Manager</em> configuration window will open. In the bottom left, enter &#8220;EOS&#8221; into the field and click the <em class="guilabel">+</em> button. Now click the checkbox next to the ZRLE encoding to disable it for EOS sessions. Close the <em class="guilabel">Profile Manager</em> window.</p>
-<p>Click <em class="guilabel">Connect</em> to begin your VNC session with EOS. To connect in the future, select <em class="menuselection">Connection ‣ Open Connection...</em> from the menu, select your EOS configuration, and click <em class="guilabel">Connect</em>.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Although Chicken offers an option to tunnel directly through SSH, we have not had luck using this option with our setup. We recommend sticking with the traditional SSH tunnel, as it is tested and works well.</p>
-</div>
+<p id="gnu-linux-vnc">There are a number of VNC clients for GNU/Linux, but the most capable and intuitive is <a class="reference external" href="http://remmina.sourceforge.net/">Remmina</a> (formerly <a class="reference external" href="http://sourceforge.net/projects/tsclient/">tsclient</a>). Remmina also supports RDP, so you can use it with <a class="reference internal" href="../winserv.html#winserv-gnu-linux"><em>Winserv</em></a>. It installed by default in Ubuntu 14.04. If it is not installed in your distribution, you should install from your package manager.</p>
+<p>In addition, Remmina supports automatic SSH tunneling. You do not need to establish a tunnel beforehand as shown in the previous section. However, if you need a shell or otherwise want to do it that way, there is nothing stopping you as it works just as well.</p>
+<p>To configure Remmina for VNC with automatic SSH tunneling, open Remmina and select <em class="menuselection">Connection ‣ New</em> to create a new connection. Under the <em class="guilabel">Basic</em> and <em class="guilabel">SSH</em> tabs, respectively, enter the following information. This configuration uses EOS10 and port 5907, but use the host of your choice and the port which matches your resolution from the previous section. Because <em class="guilabel">Public Key</em> is selected, if you have set up password-less login earlier, the login should be automatic.</p>
+<img alt="Remmina Basic Tab" src="../_images/basic.png" />
+<img alt="Remmina SSH Tab" src="../_images/ssh.png" />
 </div>
 <div class="section" id="file-transfer">
 <h2><a class="toc-backref" href="#id9">File Transfer</a><a class="headerlink" href="#file-transfer" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="graphical">
-<h3><a class="toc-backref" href="#id10">Graphical</a><a class="headerlink" href="#graphical" title="Permalink to this headline">¶</a></h3>
-<p>The recommend graphical client for file transfer on Mac OS X is <a class="reference external" href="http://cyberduck.io/">Cyberduck</a>. It is quite easy to use. Download the application, install as normal, and start Cyberduck.</p>
-<p>Click <em class="guilabel">Open Connection</em>. From the drop-down box, select <em class="guilabel">SFTP (SSH File Transfer Protocol)</em>. Type in the EOS machine to which you&#8217;d like to connect in the <em class="guilabel">Server</em> field and fill in your username.</p>
-<p>If you have set up <a class="reference internal" href="#password-less-logins-ssh-keys">Password-less Logins (SSH keys)</a>, click the <em class="guilabel">Use Public Key Authentication</em> checkbox and select the file <tt class="file docutils literal"><span class="pre">id_rsa</span></tt>. This is the identity file that you use to log in to EOS. If you have not set up your keys, you can still use password authentication, although this is not recommended.</p>
-<p>If you have created a config file as in <a class="reference internal" href="#hostname-aliases">Hostname Aliases</a>, you may also notice Cyberduck auto-detect your configuration and fill in some information.</p>
-<p>Your connection information should look something like this:</p>
-<img alt="Cyberduck Configuration" src="../_images/mac-cyberduck-conf.png" />
-<p>After connecting, we recommend creating a bookmark so that you can easily return. Click <em class="menuselection">Bookmark ‣ New Bookmark</em> to create one. You can change the nickname if you like. When you start Cyberduck again, simply click your bookmark to connect.</p>
-<p>Most of Cyberduck&#8217;s action are available through the <em class="guilabel">File</em> menu or the right-click context menu. In addition, Cyberduck has great support for dragging between it and Finder.</p>
-</div>
 <div class="section" id="command-line-scp">
-<h3><a class="toc-backref" href="#id11">Command Line (SCP)</a><a class="headerlink" href="#command-line-scp" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id10">Command Line (SCP)</a><a class="headerlink" href="#command-line-scp" title="Permalink to this headline">¶</a></h3>
 <p>Files can be transferred on the command line using a utility called SCP. Because SCP uses SSH for authentication, if you have set up <a class="reference internal" href="#password-less-logins-ssh-keys">Password-less Logins (SSH keys)</a>, you will not have to type any passwords. SCP stands for <em>Secure Copy</em> and works very similar to the <tt class="docutils literal"><span class="pre">cp</span></tt> command, except that it can also transfer files across the network. Make sure you are familiar with the operation of <tt class="docutils literal"><span class="pre">cp</span></tt> before using SCP.</p>
 <p>Each file can be prefixed with a machine name, which tells SCP where it is or should be located. Files with no prefix are assumed to be on the local machine. Paths on the remote machine start at your home directory, so there is typically no need to include <tt class="file docutils literal"><span class="pre">/home/smithj</span></tt> in the path. Here are some examples of use of SCP:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="c"># Typical upload</span>
@@ -507,25 +502,27 @@ scp eos01:classes/cis162/hw4.txt classes/cis162
 </div>
 </div>
 <div class="section" id="alternative-clients">
-<h2><a class="toc-backref" href="#id12">Alternative Clients</a><a class="headerlink" href="#alternative-clients" title="Permalink to this headline">¶</a></h2>
-<p>Chicken is not the only VNC viewer available for Mac OS X. Some alternatives are:</p>
+<h2><a class="toc-backref" href="#id11">Alternative Clients</a><a class="headerlink" href="#alternative-clients" title="Permalink to this headline">¶</a></h2>
+<p>We have tried various VNC clients, but found Remmina to be the easiest to use. However, other VNC clients for GNU/Linux exist and include:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://tigervnc.org/">TigerVNC</a> is a capable free and open source VNC viewer. Its interface is not as Mac-friendly as Chicken, but it works well. If you are having problems with Chicken, try TigerVNC.</li>
-<li><a class="reference external" href="http://realvnc.com/download/viewer/">RealVNC Viewer</a> is a freeware viewer, but requires registration. RealVNC also offers <a class="reference external" href="https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en">RealVNC Viewer for Google Chrome</a>, a free Google Chrome extension which does not require registration.</li>
-<li><a class="reference external" href="http://www.jinx.de/JollysFastVNC.html">JollysFastVNC</a> is a full-featured VNC client with trial and paid versions available.</li>
-<li><a class="reference external" href="http://sourceforge.net/projects/cotvnc/">Chicken of the VNC</a> is an older version of Chicken and is not recommended.</li>
+<li><a class="reference external" href="http://kde.org/applications/internet/krdc/">KRDC</a> &#8212; free and open-source, part of KDE</li>
+<li><a class="reference external" href="https://wiki.gnome.org/Apps/Vinagre">Vinagre</a> &#8212; free and open-source, part of GNOME</li>
+<li><a class="reference external" href="http://tigervnc.org/">TigerVNC</a> &#8212; command-line based, free and open-source</li>
+<li><a class="reference external" href="http://realvnc.com/download/viewer/">RealVNC Viewer</a> &#8212; free and paid versions available</li>
+<li><a class="reference external" href="https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en">RealVNC Viewer for Google Chrome</a> &#8212; free Google Chrome extension</li>
 </ul>
+<p>Operation of each of these applications is similar. For the host, enter in the hostname of the EOS machine to which you have SSH&#8217;ed. If a display is requested, enter <tt class="docutils literal"><span class="pre">0</span></tt>; if a port is requested, enter <tt class="docutils literal"><span class="pre">5900</span></tt> (these mean the same thing). If the viewer offers support for multiple protocols, make sure you select &#8220;VNC&#8221;.</p>
 <div class="admonition danger">
 <p class="first admonition-title">Danger</p>
 <p class="last">Another popular client for SFTP is <a class="reference external" href="https://filezilla-project.org/">FileZilla</a>. However, because FileZilla <a class="reference external" href="http://trac.filezilla-project.org/ticket/5530">stores its passwords insecurely</a>, we cannot recommend it. Please avoid its use to keep your password secure.</p>
 </div>
 </div>
 <div class="section" id="advanced-openssh">
-<h2><a class="toc-backref" href="#id13">Advanced OpenSSH</a><a class="headerlink" href="#advanced-openssh" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id12">Advanced OpenSSH</a><a class="headerlink" href="#advanced-openssh" title="Permalink to this headline">¶</a></h2>
 <p>OpenSSH can do much more than simply allow the user to establish connections with remote servers. If you use OpenSSH, there are a great many neat tricks available to you.</p>
 <p>This section is based in large part on the <a class="reference external" href="http://blogs.perl.org/users/smylers/2011/08/ssh-productivity-tips.html">Smylers SSH Productivity Tips blog post</a>. Please visit this post for <em>even more SSH awesomeness!</em></p>
 <div class="section" id="hostname-aliases">
-<h3><a class="toc-backref" href="#id14">Hostname Aliases</a><a class="headerlink" href="#hostname-aliases" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id13">Hostname Aliases</a><a class="headerlink" href="#hostname-aliases" title="Permalink to this headline">¶</a></h3>
 <p>It&#8217;s useful not to have to type out the entire full-qualified domain names to EOS machines. What you might normally type would be something like this:</p>
 <div class="highlight-python"><div class="highlight"><pre>ssh smithj@eos02.cis.gvsu.edu
 # or
@@ -548,7 +545,7 @@ ssh arch04
 </div>
 </div>
 <div class="section" id="shared-connections">
-<h3><a class="toc-backref" href="#id15">Shared Connections</a><a class="headerlink" href="#shared-connections" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id14">Shared Connections</a><a class="headerlink" href="#shared-connections" title="Permalink to this headline">¶</a></h3>
 <p>There is a about a minute timeout between allowed successive connnections to each individual EOS machine. This can prove very annoying when establishing multiple SSH connections to use <strong class="program">scp</strong> to copy files or opening multiple terminals (but see terminal multiplexing). One way to mitigate this annoyance is by using GVSU&#8217;s VPN. Another way is to used SSH shared connections. These solutions are also not mutually exclusive.</p>
 <p>Shared connections are established by creating a socket which multiplexes multiple connections. This socket is controlled by the <tt class="docutils literal"><span class="pre">ControlMaster</span></tt> and <tt class="docutils literal"><span class="pre">ControlPath</span></tt> keywords. The first connection is called the &#8220;master&#8221; and creates the socket. Subsequent connections use the already-created socket. This behavior can be automated by setting <tt class="docutils literal"><span class="pre">ControlMaster</span></tt> to the value <tt class="docutils literal"><span class="pre">auto</span></tt>. <tt class="docutils literal"><span class="pre">ControlPath</span></tt> specifies the path to the socket, with variables substituted as necessary. The following config amend the previous config to add connection sharing to EOS machines.</p>
 <div class="highlight-apacheconf"><div class="highlight"><pre><span class="c"># EOS</span>
@@ -567,7 +564,7 @@ ssh arch04
 <p>Connection sharing may be useful to enable for most hosts. However, it needs to be done with care because it typically conflicts with X forwarding and port forwarding.</p>
 </div>
 <div class="section" id="persistent-connections">
-<h3><a class="toc-backref" href="#id16">Persistent Connections</a><a class="headerlink" href="#persistent-connections" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id15">Persistent Connections</a><a class="headerlink" href="#persistent-connections" title="Permalink to this headline">¶</a></h3>
 <p>It is often useful to keep connections open in the background even after the terminal has actually been closed. This is useful as it allows OpenSSH to reconnect to the server without re-establishing a connection. Turning this behavior on is trivially simple. Add the following line under the host for which you would like connections to persist:</p>
 <div class="highlight-apacheconf"><div class="highlight"><pre><span class="c"># Persist connections for 2 hours.</span>
 <span class="nb">ControlPersist</span> <span class="m">2</span>h
@@ -576,7 +573,7 @@ ssh arch04
 <p>For GitHub users, this is especially useful when using Git over SSH. Within this period, OpenSSH does not need to re-establish a connection to the Git server, which makes pushes and pulls much faster.</p>
 </div>
 <div class="section" id="multi-hop-connections">
-<h3><a class="toc-backref" href="#id17">Multi-Hop Connections</a><a class="headerlink" href="#multi-hop-connections" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id16">Multi-Hop Connections</a><a class="headerlink" href="#multi-hop-connections" title="Permalink to this headline">¶</a></h3>
 <p>Oftentimes a machine is only available when SSH&#8217;ing into another machine. For example, this is the case with the DEN&#8217;s Okami server, used in CIS 677 High-Performance Computing. In addition, Okami&#8217;s SSH server is only available on a non-standard port. This typically results in the user going through this process:</p>
 <div class="highlight-python"><div class="highlight"><pre>local$ ssh smithj@eos01.cis.gvsu.edu
 eos01$ ssh -p 43022 okami
@@ -599,7 +596,7 @@ okami$ # Yay! Easy!
 </div>
 </div>
 <div class="section" id="using-ssh-as-a-proxy">
-<h3><a class="toc-backref" href="#id18">Using SSH as a Proxy</a><a class="headerlink" href="#using-ssh-as-a-proxy" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id17">Using SSH as a Proxy</a><a class="headerlink" href="#using-ssh-as-a-proxy" title="Permalink to this headline">¶</a></h3>
 <p>It is also possible to use SSH as a proxy for all network traffic. This can be useful if there are resources available from the SSH server that are not available from the local machine.</p>
 <p>An example of such a resource is the <a class="reference external" href="http://ieeexplore.ieee.org/">IEEE Xplore Digital Library</a>, which contains technical articles targeted at computer scientists and engineers. GVSU subscribes to this library, but access to the subscription is only available while <em>on campus</em>. If you try to access it off campus, you will see the following:</p>
 <img alt="IEEE Xplore Login Page" src="../_images/denied.png" />
@@ -609,7 +606,9 @@ okami$ # Yay! Easy!
 </pre></div>
 </div>
 <p>This establishes a SOCKS proxy with EOS01 served up on the local machine on port 5555. Now we must configure our operating system or browser to use this proxy.</p>
-<p>On Mac OS X, configuring your system to use our SOCKS proxy is quite simple. First, open <em class="guilabel">System Preferences</em>. From here, choose <em class="menuselection">Network ‣ Advanced... ‣ Proxies ‣ SOCKS Proxy</em>. Under the label <em class="guilabel">SOCKS Proxy Server</em>, enter <tt class="docutils literal"><span class="pre">localhost</span></tt> and <tt class="docutils literal"><span class="pre">5555</span></tt> to match the port passed to the <tt class="docutils literal"><span class="pre">-D</span></tt> flag. This can be any port as long as these numbers match. Check the box next to <em class="guilabel">SOCKS Proxy</em>, then click <em class="guilabel">OK</em> and <em class="guilabel">Apply</em> to turn on the proxy.</p>
+<p>Proxy configuration varies from distro to distro. These steps show how to configure a system-wide SOCKS proxy on Ubuntu 14.04, but other distros may be similar.</p>
+<p>First, from the menu, select <em class="menuselection">System Settings ‣ Network ‣ Network Proxy</em>. For <em class="guilabel">Method</em>, select <em class="guilabel">Manual</em>, and under <em class="guilabel">Socks Host</em> enter <tt class="docutils literal"><span class="pre">localhost</span></tt> and <tt class="docutils literal"><span class="pre">5555</span></tt>. Then click <em class="guilabel">Apply system wide</em> and enter your password to turn on the proxy. To turn off the proxy, switch <em class="guilabel">Method</em> back to <em class="guilabel">None</em> and click <em class="guilabel">Apply system wide</em>.</p>
+<img alt="Ubuntu SOCKS Configuration" src="../_images/ubuntu-socks.png" />
 <p>If you again try to access the <a class="reference external" href="http://ieeexplore.ieee.org/">IEEE Xplore Digital Library</a>, you should see the following:</p>
 <img alt="IEEE Xplore Accessible" src="../_images/granted.png" />
 <p>You have now successfully used OpenSSH to establish a SOCKS proxy!</p>
@@ -624,7 +623,7 @@ okami$ # Yay! Easy!
 </div>
 </div>
 <div class="section" id="example">
-<h3><a class="toc-backref" href="#id19">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id18">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p>For an example OpenSSH configuration file, see <a class="reference external" href="https://github.com/seanfisk/dotfiles/blob/master/.ssh/config">Sean&#8217;s SSH config</a>.</p>
 </div>
 </div>
@@ -636,10 +635,10 @@ okami$ # Yay! Easy!
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="gnu_linux.html" class="btn btn-neutral float-right" title="GNU/Linux"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../shells.html" class="btn btn-neutral float-right" title="Shells"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="windows.html" class="btn btn-neutral" title="Microsoft Windows"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mac-os-x.html" class="btn btn-neutral" title="Mac OS X"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
