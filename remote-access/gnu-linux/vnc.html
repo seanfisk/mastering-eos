@@ -1,0 +1,309 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>VNC &mdash; Mastering EOS</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Mastering EOS" href="../../index.html"/>
+        <link rel="up" title="GNU/Linux" href="index.html"/>
+        <link rel="next" title="File Transfer" href="file-transfer.html"/>
+        <link rel="prev" title="SSH" href="ssh.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="fa fa-home"> Mastering EOS</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#physical-access-keycards">Physical Access (Keycards)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#computer-access-credentials">Computer Access (Credentials)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rules.html">Rules and Procedures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#disk-space">Disk Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#copyrighted-material">Copyrighted Material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#food-and-drink">Food and Drink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#overnight-parking">Overnight Parking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#living-in-the-lab">Living in the Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#malicious-activity">Malicious Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#games">Games</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Remote Access (SSH/VNC)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../windows/index.html">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mac-os-x/index.html">Mac OS X</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../shells.html">Shells</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../shells.html#bash">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shells.html#tcsh">Tcsh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shells.html#kornshell">Kornshell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../winserv.html">Winserv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../winserv.html#common-settings">Common Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../winserv.html#microsoft-windows">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../winserv.html#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../winserv.html#gnu-linux">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../databases.html">Databases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#mysql">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#oracle">Oracle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#oracle-apex">Oracle APEX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#mssql">MSSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#sqlite">SQLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#remote-database-connections">Remote Database Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ide.html">Integrated Development Environments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ide.html#bluej">BlueJ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ide.html#eclipse">Eclipse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ide.html#intellij">IntelliJ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing to Mastering EOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing.html#writing-style">Writing Style</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">Mastering EOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Remote Access (SSH/VNC)</a> &raquo;</li>
+      
+          <li><a href="index.html">GNU/Linux</a> &raquo;</li>
+      
+    <li>VNC</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../../_sources/remote-access/gnu-linux/vnc.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="vnc">
+<span id="gnu-linux-vnc"></span><h1>VNC<a class="headerlink" href="#vnc" title="Permalink to this headline">¶</a></h1>
+<p>First, we need to create a tunnel in order to forward VNC through our SSH connection. The remote port to which we must connect depends on the desired resolution of the remote desktop. Select a desired resolution from the following table, and note the port to which it corresponds.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Port</th>
+<th class="head">Geometry</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>5900</td>
+<td>1280x1024</td>
+</tr>
+<tr class="row-odd"><td>5901</td>
+<td>1024x768</td>
+</tr>
+<tr class="row-even"><td>5902</td>
+<td>800x600</td>
+</tr>
+<tr class="row-odd"><td>5903</td>
+<td>640x480</td>
+</tr>
+<tr class="row-even"><td>5904</td>
+<td>1440x900</td>
+</tr>
+<tr class="row-odd"><td>5905</td>
+<td>1280x800</td>
+</tr>
+<tr class="row-even"><td>5906</td>
+<td>1152x864</td>
+</tr>
+<tr class="row-odd"><td>5907</td>
+<td>1680x1050</td>
+</tr>
+<tr class="row-even"><td>5908</td>
+<td>1920x1200</td>
+</tr>
+<tr class="row-odd"><td>5909</td>
+<td>1280x768</td>
+</tr>
+<tr class="row-even"><td>5910</td>
+<td>1360x768</td>
+</tr>
+<tr class="row-odd"><td>5911</td>
+<td>1400x1050</td>
+</tr>
+<tr class="row-even"><td>5912</td>
+<td>1440x1000</td>
+</tr>
+<tr class="row-odd"><td>5913</td>
+<td>1024x600</td>
+</tr>
+<tr class="row-even"><td>5914</td>
+<td>1600x900</td>
+</tr>
+<tr class="row-odd"><td>5915</td>
+<td>1920x1080</td>
+</tr>
+<tr class="row-even"><td>5916</td>
+<td>1680x950</td>
+</tr>
+</tbody>
+</table>
+<p>In the following instructions, replace <tt class="docutils literal"><span class="pre">REMOTE_PORT</span></tt> with the port that you have selected.</p>
+<p>To create the tunnel, use the following command line:</p>
+<div class="highlight-python"><div class="highlight"><pre>ssh -L 5900:eosXX.cis.gvsu.edu:REMOTE_PORT smithj@eosXX.cis.gvsu.edu
+</pre></div>
+</div>
+<p>Or the following configuration file:</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="nb">Host</span> eosvnc
+<span class="nb">HostName</span> eosXX.cis.gvsu.edu
+<span class="nb">User</span> smithj
+<span class="nb">LocalForward</span> <span class="m">5900</span> eosXX.cis.gvsu.edu:REMOTE_PORT
+</pre></div>
+</div>
+<p>If you used the configuration file, run the following to create the tunnel:</p>
+<div class="highlight-python"><div class="highlight"><pre>ssh eosvnc
+</pre></div>
+</div>
+<p>You are now ready to tunnel your VNC session.</p>
+<p>There are a number of VNC clients for GNU/Linux, but the most capable and intuitive is <a class="reference external" href="http://remmina.sourceforge.net/">Remmina</a> (formerly <a class="reference external" href="http://sourceforge.net/projects/tsclient/">tsclient</a>). Remmina also supports RDP, so you can use it with <a class="reference internal" href="../../winserv.html#winserv-gnu-linux"><em>Winserv</em></a>. It installed by default in Ubuntu 14.04. If it is not installed in your distribution, you should install from your package manager.</p>
+<p>In addition, Remmina supports automatic SSH tunneling. You do not need to establish a tunnel beforehand as shown in the previous section. However, if you need a shell or otherwise want to do it that way, there is nothing stopping you as it works just as well.</p>
+<p>To configure Remmina for VNC with automatic SSH tunneling, open Remmina and select <em class="menuselection">Connection ‣ New</em> to create a new connection. Under the <em class="guilabel">Basic</em> and <em class="guilabel">SSH</em> tabs, respectively, enter the following information. This configuration uses EOS10 and port 5907, but use the host of your choice and the port which matches your resolution from the previous section. Because <em class="guilabel">Public Key</em> is selected, if you have set up password-less login earlier, the login should be automatic.</p>
+<img alt="Remmina Basic Tab" src="../../_images/basic.png" />
+<img alt="Remmina SSH Tab" src="../../_images/ssh.png" />
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file-transfer.html" class="btn btn-neutral float-right" title="File Transfer"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ssh.html" class="btn btn-neutral" title="SSH"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 Sean Fisk and Ira Woodring.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Mac OS X &mdash; Mastering EOS</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Mastering EOS" href="../../index.html"/>
+        <link rel="up" title="Remote Access (SSH/VNC)" href="../index.html"/>
+        <link rel="next" title="SSH" href="ssh.html"/>
+        <link rel="prev" title="Alternative Clients" href="../windows/alternatives.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="fa fa-home"> Mastering EOS</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#physical-access-keycards">Physical Access (Keycards)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#computer-access-credentials">Computer Access (Credentials)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rules.html">Rules and Procedures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#disk-space">Disk Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#copyrighted-material">Copyrighted Material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#food-and-drink">Food and Drink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#overnight-parking">Overnight Parking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#living-in-the-lab">Living in the Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#malicious-activity">Malicious Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#games">Games</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Remote Access (SSH/VNC)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../windows/index.html">Microsoft Windows</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gnu-linux/index.html">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../shells.html">Shells</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../shells.html#bash">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shells.html#tcsh">Tcsh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shells.html#kornshell">Kornshell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../winserv.html">Winserv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../winserv.html#common-settings">Common Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../winserv.html#microsoft-windows">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../winserv.html#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../winserv.html#gnu-linux">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../databases.html">Databases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#mysql">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#oracle">Oracle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#oracle-apex">Oracle APEX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#mssql">MSSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#sqlite">SQLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#remote-database-connections">Remote Database Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ide.html">Integrated Development Environments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ide.html#bluej">BlueJ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ide.html#eclipse">Eclipse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ide.html#intellij">IntelliJ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing to Mastering EOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing.html#writing-style">Writing Style</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">Mastering EOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Remote Access (SSH/VNC)</a> &raquo;</li>
+      
+    <li>Mac OS X</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../../_sources/remote-access/mac-os-x/index.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="mac-os-x">
+<h1>Mac OS X<a class="headerlink" href="#mac-os-x" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ssh.html">SSH</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ssh.html#logging-in">Logging in</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssh.html#checking-host-fingerprints">Checking Host Fingerprints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssh.html#password-less-logins-ssh-keys">Password-less Logins (SSH keys)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssh.html#tunnelling-port-forwarding">Tunnelling / Port Forwarding</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vnc.html">VNC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file-transfer.html">File Transfer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file-transfer.html#graphical">Graphical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file-transfer.html#command-line-scp">Command Line (SCP)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced OpenSSH</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html#hostname-aliases">Hostname Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html#shared-connections">Shared Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html#persistent-connections">Persistent Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html#multi-hop-connections">Multi-Hop Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html#using-ssh-as-a-proxy">Using SSH as a Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="alternatives.html">Alternative Clients</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ssh.html" class="btn btn-neutral float-right" title="SSH"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../windows/alternatives.html" class="btn btn-neutral" title="Alternative Clients"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 Sean Fisk and Ira Woodring.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Advanced OpenSSH &mdash; Mastering EOS</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Mastering EOS" href="../../index.html"/>
+        <link rel="up" title="Mac OS X" href="index.html"/>
+        <link rel="next" title="Alternative Clients" href="alternatives.html"/>
+        <link rel="prev" title="File Transfer" href="file-transfer.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="fa fa-home"> Mastering EOS</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#physical-access-keycards">Physical Access (Keycards)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#computer-access-credentials">Computer Access (Credentials)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rules.html">Rules and Procedures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#disk-space">Disk Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#copyrighted-material">Copyrighted Material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#food-and-drink">Food and Drink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#overnight-parking">Overnight Parking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#living-in-the-lab">Living in the Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#malicious-activity">Malicious Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#games">Games</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Remote Access (SSH/VNC)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../windows/index.html">Microsoft Windows</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gnu-linux/index.html">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../shells.html">Shells</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../shells.html#bash">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shells.html#tcsh">Tcsh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shells.html#kornshell">Kornshell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../winserv.html">Winserv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../winserv.html#common-settings">Common Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../winserv.html#microsoft-windows">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../winserv.html#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../winserv.html#gnu-linux">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../databases.html">Databases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#mysql">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#oracle">Oracle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#oracle-apex">Oracle APEX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#mssql">MSSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#sqlite">SQLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#remote-database-connections">Remote Database Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ide.html">Integrated Development Environments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ide.html#bluej">BlueJ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ide.html#eclipse">Eclipse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ide.html#intellij">IntelliJ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing to Mastering EOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing.html#writing-style">Writing Style</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">Mastering EOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Remote Access (SSH/VNC)</a> &raquo;</li>
+      
+          <li><a href="index.html">Mac OS X</a> &raquo;</li>
+      
+    <li>Advanced OpenSSH</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../../_sources/remote-access/mac-os-x/advanced.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="advanced-openssh">
+<h1>Advanced OpenSSH<a class="headerlink" href="#advanced-openssh" title="Permalink to this headline">¶</a></h1>
+<p>OpenSSH can do much more than simply allow the user to establish connections with remote servers. If you use OpenSSH, there are a great many neat tricks available to you.</p>
+<p>This section is based in large part on the <a class="reference external" href="http://blogs.perl.org/users/smylers/2011/08/ssh-productivity-tips.html">Smylers SSH Productivity Tips blog post</a>. Please visit this post for <em>even more SSH awesomeness!</em></p>
+<div class="section" id="hostname-aliases">
+<h2>Hostname Aliases<a class="headerlink" href="#hostname-aliases" title="Permalink to this headline">¶</a></h2>
+<p>It&#8217;s useful not to have to type out the entire full-qualified domain names to EOS machines. What you might normally type would be something like this:</p>
+<div class="highlight-python"><div class="highlight"><pre>ssh smithj@eos02.cis.gvsu.edu
+# or
+ssh smithj@arch04.cis.gvsu.edu
+</pre></div>
+</div>
+<p>By adding a section to the config file, this becomes easier. Add this to your <tt class="file docutils literal"><span class="pre">~/.ssh/config</span></tt> as mentioned earlier:</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="c"># EOS</span>
+<span class="c"># Match all eos01, eos11, arch08, etc.</span>
+<span class="nb">Host</span> eos?? arch??
+<span class="nb">HostName</span> %h.cis.gvsu.edu
+<span class="nb">User</span> smithj
+</pre></div>
+</div>
+<p>With this, now you need only type:</p>
+<div class="highlight-python"><div class="highlight"><pre>ssh eos02
+# or
+ssh arch04
+</pre></div>
+</div>
+</div>
+<div class="section" id="shared-connections">
+<h2>Shared Connections<a class="headerlink" href="#shared-connections" title="Permalink to this headline">¶</a></h2>
+<p>There is a about a minute timeout between allowed successive connnections to each individual EOS machine. This can prove very annoying when establishing multiple SSH connections to use <strong class="program">scp</strong> to copy files or opening multiple terminals (but see terminal multiplexing). One way to mitigate this annoyance is by using GVSU&#8217;s VPN. Another way is to used SSH shared connections. These solutions are also not mutually exclusive.</p>
+<p>Shared connections are established by creating a socket which multiplexes multiple connections. This socket is controlled by the <tt class="docutils literal"><span class="pre">ControlMaster</span></tt> and <tt class="docutils literal"><span class="pre">ControlPath</span></tt> keywords. The first connection is called the &#8220;master&#8221; and creates the socket. Subsequent connections use the already-created socket. This behavior can be automated by setting <tt class="docutils literal"><span class="pre">ControlMaster</span></tt> to the value <tt class="docutils literal"><span class="pre">auto</span></tt>. <tt class="docutils literal"><span class="pre">ControlPath</span></tt> specifies the path to the socket, with variables substituted as necessary. The following config amend the previous config to add connection sharing to EOS machines.</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="c"># EOS</span>
+<span class="c"># Match all eos01, eos11, arch08, etc.</span>
+<span class="nb">Host</span> eos?? arch??
+<span class="nb">HostName</span> %h.cis.gvsu.edu
+<span class="nb">User</span> smithj
+<span class="nb">ControlMaster</span> auto
+<span class="c">#                       Host</span>
+<span class="c">#                         |Port</span>
+<span class="c">#                         |  | Username</span>
+<span class="c">#                         V  V  V</span>
+<span class="nb">ControlPath</span> <span class="sx">/tmp/ssh_mux_</span>%h_%p_%r
+</pre></div>
+</div>
+<p>Connection sharing may be useful to enable for most hosts. However, it needs to be done with care because it typically conflicts with X forwarding and port forwarding.</p>
+</div>
+<div class="section" id="persistent-connections">
+<h2>Persistent Connections<a class="headerlink" href="#persistent-connections" title="Permalink to this headline">¶</a></h2>
+<p>It is often useful to keep connections open in the background even after the terminal has actually been closed. This is useful as it allows OpenSSH to reconnect to the server without re-establishing a connection. Turning this behavior on is trivially simple. Add the following line under the host for which you would like connections to persist:</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="c"># Persist connections for 2 hours.</span>
+<span class="nb">ControlPersist</span> <span class="m">2</span>h
+</pre></div>
+</div>
+<p>For GitHub users, this is especially useful when using Git over SSH. Within this period, OpenSSH does not need to re-establish a connection to the Git server, which makes pushes and pulls much faster.</p>
+</div>
+<div class="section" id="multi-hop-connections">
+<h2>Multi-Hop Connections<a class="headerlink" href="#multi-hop-connections" title="Permalink to this headline">¶</a></h2>
+<p>Oftentimes a machine is only available when SSH&#8217;ing into another machine. For example, this is the case with the DEN&#8217;s Okami server, used in CIS 677 High-Performance Computing. In addition, Okami&#8217;s SSH server is only available on a non-standard port. This typically results in the user going through this process:</p>
+<div class="highlight-python"><div class="highlight"><pre>local$ ssh smithj@eos01.cis.gvsu.edu
+eos01$ ssh -p 43022 okami
+okami$ # Finally here!
+</pre></div>
+</div>
+<p>This is annoying and unnecessary. By using the <tt class="docutils literal"><span class="pre">ProxyCommand</span></tt> keyword in our config file, we can automate this process:</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="c"># DEN Okami</span>
+<span class="nb">Host</span> okami
+<span class="nb">User</span> smithj
+<span class="nb">Port</span> <span class="m">43022</span>
+<span class="nb">ProxyCommand</span> ssh eos01 -W %h:%p
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">-W</span></tt> flag allows us to hop through the first host to the host and port specified by the variables (<tt class="docutils literal"><span class="pre">okami:43022</span></tt>). Note that the use of <tt class="docutils literal"><span class="pre">eos01</span></tt> here requires presence of the aliases set up in <a class="reference internal" href="#hostname-aliases">Hostname Aliases</a>.</p>
+<p>The process has now been simplified to:</p>
+<div class="highlight-python"><div class="highlight"><pre>local$ ssh okami
+okami$ # Yay! Easy!
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-ssh-as-a-proxy">
+<h2>Using SSH as a Proxy<a class="headerlink" href="#using-ssh-as-a-proxy" title="Permalink to this headline">¶</a></h2>
+<p>It is also possible to use SSH as a proxy for all network traffic. This can be useful if there are resources available from the SSH server that are not available from the local machine.</p>
+<p>An example of such a resource is the <a class="reference external" href="http://ieeexplore.ieee.org/">IEEE Xplore Digital Library</a>, which contains technical articles targeted at computer scientists and engineers. GVSU subscribes to this library, but access to the subscription is only available while <em>on campus</em>. If you try to access it off campus, you will see the following:</p>
+<img alt="IEEE Xplore Login Page" src="../../_images/denied.png" />
+<p>By using a proxy through the EOS machines, we can transparently access the IEEE library as if we were on campus.</p>
+<p>OpenSSH support the SOCKS protocol for proxying. Activating the SOCKS feature is accomplished with the <tt class="docutils literal"><span class="pre">-D</span></tt> flag like so:</p>
+<div class="highlight-python"><div class="highlight"><pre>ssh -D 5555 eos01
+</pre></div>
+</div>
+<p>This establishes a SOCKS proxy with EOS01 served up on the local machine on port 5555. Now we must configure our operating system or browser to use this proxy.</p>
+<p>On Mac OS X, configuring your system to use our SOCKS proxy is quite simple. First, open <em class="guilabel">System Preferences</em>. From here, choose <em class="menuselection">Network ‣ Advanced... ‣ Proxies ‣ SOCKS Proxy</em>. Under the label <em class="guilabel">SOCKS Proxy Server</em>, enter <tt class="docutils literal"><span class="pre">localhost</span></tt> and <tt class="docutils literal"><span class="pre">5555</span></tt> to match the port passed to the <tt class="docutils literal"><span class="pre">-D</span></tt> flag. This can be any port as long as these numbers match. Check the box next to <em class="guilabel">SOCKS Proxy</em>, then click <em class="guilabel">OK</em> and <em class="guilabel">Apply</em> to turn on the proxy.</p>
+<p>If you again try to access the <a class="reference external" href="http://ieeexplore.ieee.org/">IEEE Xplore Digital Library</a>, you should see the following:</p>
+<img alt="IEEE Xplore Accessible" src="../../_images/granted.png" />
+<p>You have now successfully used OpenSSH to establish a SOCKS proxy!</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>By using a SOCKS proxy, <em>all</em> your network traffic is sent through the proxy. This has two implications:</p>
+<ul class="simple">
+<li>Network access will likely be slower.</li>
+<li>GVSU will be able to monitor your traffic as they do when you are on campus.</li>
+</ul>
+<p class="last">Please keep this in mind when using the proxy feature.</p>
+</div>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>For an example OpenSSH configuration file, see <a class="reference external" href="https://github.com/seanfisk/dotfiles/blob/master/.ssh/config">Sean&#8217;s SSH config</a>.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="alternatives.html" class="btn btn-neutral float-right" title="Alternative Clients"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file-transfer.html" class="btn btn-neutral" title="File Transfer"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 Sean Fisk and Ira Woodring.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

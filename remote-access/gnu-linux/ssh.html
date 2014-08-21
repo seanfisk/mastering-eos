@@ -1,0 +1,430 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SSH &mdash; Mastering EOS</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Mastering EOS" href="../../index.html"/>
+        <link rel="up" title="GNU/Linux" href="index.html"/>
+        <link rel="next" title="VNC" href="vnc.html"/>
+        <link rel="prev" title="GNU/Linux" href="index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="fa fa-home"> Mastering EOS</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#physical-access-keycards">Physical Access (Keycards)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#computer-access-credentials">Computer Access (Credentials)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rules.html">Rules and Procedures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#disk-space">Disk Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#copyrighted-material">Copyrighted Material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#food-and-drink">Food and Drink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#overnight-parking">Overnight Parking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#living-in-the-lab">Living in the Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#malicious-activity">Malicious Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rules.html#games">Games</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Remote Access (SSH/VNC)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../windows/index.html">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mac-os-x/index.html">Mac OS X</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../shells.html">Shells</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../shells.html#bash">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shells.html#tcsh">Tcsh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shells.html#kornshell">Kornshell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../winserv.html">Winserv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../winserv.html#common-settings">Common Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../winserv.html#microsoft-windows">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../winserv.html#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../winserv.html#gnu-linux">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../databases.html">Databases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#mysql">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#oracle">Oracle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#oracle-apex">Oracle APEX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#mssql">MSSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#sqlite">SQLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../databases.html#remote-database-connections">Remote Database Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ide.html">Integrated Development Environments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ide.html#bluej">BlueJ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ide.html#eclipse">Eclipse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ide.html#intellij">IntelliJ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing to Mastering EOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing.html#writing-style">Writing Style</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">Mastering EOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Remote Access (SSH/VNC)</a> &raquo;</li>
+      
+          <li><a href="index.html">GNU/Linux</a> &raquo;</li>
+      
+    <li>SSH</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../../_sources/remote-access/gnu-linux/ssh.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="ssh">
+<h1>SSH<a class="headerlink" href="#ssh" title="Permalink to this headline">¶</a></h1>
+<p>The most popular implementation of the SSH protocol on GNU/Linux is <a class="reference external" href="http://www.openssh.com/">OpenSSH</a>. The SSH client can be run from the command-line and is simply called <strong class="program">ssh</strong>.</p>
+<p>Many GNU/Linux distributions come with <a class="reference external" href="http://www.openssh.com/">OpenSSH</a> pre-installed. If your GNU/Linux distribution does not have it installed by default, please install it with your package manager. You should not install this software from scratch or on your own.</p>
+<p>On Debian-based systems (Ubuntu, Linux Mint, and friends), run the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install openssh-client
+</pre></div>
+</div>
+<p>On Red Hat-based systems (Fedora, CentOS, RHEL, and friends), run the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo yum install openssh-clients
+</pre></div>
+</div>
+<p>With other distributions (Arch, etc.), you are on your own.</p>
+<div class="section" id="logging-in">
+<h2>Logging in<a class="headerlink" href="#logging-in" title="Permalink to this headline">¶</a></h2>
+<p>First, open your terminal emulator to start a shell. To connect to a specific machine, pass your username and hostname to the command-line client in the form <em>user&#64;host</em>. For example, where <tt class="samp docutils literal"><em><span class="pre">XX</span></em></tt> is the number of the chosen machine, run:</p>
+<div class="highlight-python"><div class="highlight"><pre>ssh smithj@eosXX.cis.gvsu.edu
+</pre></div>
+</div>
+</div>
+<div class="section" id="checking-host-fingerprints">
+<h2>Checking Host Fingerprints<a class="headerlink" href="#checking-host-fingerprints" title="Permalink to this headline">¶</a></h2>
+<p>When logging in to an EOS machine for the first time, you will see a message like this:</p>
+<div class="highlight-python"><div class="highlight"><pre>The authenticity of host &#39;eos01.cis.gvsu.edu (148.61.162.101)&#39; can&#39;t be established.
+RSA key fingerprint is 6d:29:fd:23:c5:26:c7:c9:a5:6e:6e:c2:34:60:ea:54.
+Are you sure you want to continue connecting (yes/no)?
+</pre></div>
+</div>
+<p>This is your SSH client requesting you to validate the identity of the machine to which you are connecting.</p>
+<p>Each EOS machine has a so-called fingerprint, a series of characters which is used to verify its identity. To ensure that an attacker between your client and the actual EOS machine is not pretending to be an EOS machine, you must check that the machine&#8217;s fingerprint matches the table below. Please <a class="reference external" href="mailto:woodriir&#37;&#52;&#48;gvsu&#46;edu?subject=EOS%20Fingerprint%20Mismatch&amp;body=Hi%20Mr&#46;%20Woodring,%0A%0AIt%20seems%20that%20the%20key%20for%20eosXX&#46;cis&#46;gvsu&#46;edu%20is%20incorrect&#46;">report any mismatches</a> to Ira Woodring immediately.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Host</th>
+<th class="head">Fingerprint</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>arch01</td>
+<td><tt class="docutils literal"><span class="pre">7e:df:14:7b:92:65:5e:29:59:99:4a:17:d1:79:1f:96</span></tt></td>
+</tr>
+<tr class="row-odd"><td>arch02</td>
+<td><tt class="docutils literal"><span class="pre">41:e0:df:d1:e4:bd:b3:7f:c0:d4:15:dc:d1:dc:39:bf</span></tt></td>
+</tr>
+<tr class="row-even"><td>arch03</td>
+<td><tt class="docutils literal"><span class="pre">64:fb:e5:5f:94:e4:d4:56:9d:8d:27:a1:a8:d8:e4:02</span></tt></td>
+</tr>
+<tr class="row-odd"><td>arch04</td>
+<td>down for maintenance</td>
+</tr>
+<tr class="row-even"><td>arch05</td>
+<td>down for maintenance</td>
+</tr>
+<tr class="row-odd"><td>arch06</td>
+<td><tt class="docutils literal"><span class="pre">fe:75:66:3f:65:fc:63:3a:ce:c5:cd:82:ec:f9:21:fd</span></tt></td>
+</tr>
+<tr class="row-even"><td>arch07</td>
+<td><tt class="docutils literal"><span class="pre">c6:a3:27:17:16:8a:7f:0c:8e:9f:07:77:86:b1:7b:20</span></tt></td>
+</tr>
+<tr class="row-odd"><td>arch08</td>
+<td><tt class="docutils literal"><span class="pre">b5:f9:51:c8:81:45:92:70:5a:33:06:ee:f8:7b:52:52</span></tt></td>
+</tr>
+<tr class="row-even"><td>arch09</td>
+<td>down for maintenance</td>
+</tr>
+<tr class="row-odd"><td>arch10</td>
+<td>down for maintenance</td>
+</tr>
+<tr class="row-even"><td>eos01</td>
+<td><tt class="docutils literal"><span class="pre">37:86:61:af:1f:f1:18:e8:92:2e:de:d6:78:a2:29:dc</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos02</td>
+<td>down for maintenance</td>
+</tr>
+<tr class="row-even"><td>eos03</td>
+<td>down for maintenance</td>
+</tr>
+<tr class="row-odd"><td>eos04</td>
+<td>down for maintenance</td>
+</tr>
+<tr class="row-even"><td>eos05</td>
+<td><tt class="docutils literal"><span class="pre">ea:85:26:bf:0c:18:00:f0:55:5f:b4:53:85:b5:91:8e</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos06</td>
+<td><tt class="docutils literal"><span class="pre">08:37:16:31:d9:4d:70:d2:08:de:3e:71:b6:a6:a0:78</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos07</td>
+<td><tt class="docutils literal"><span class="pre">c5:f5:e1:f4:14:7b:5b:12:1b:9f:2b:55:a5:04:f6:19</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos08</td>
+<td><tt class="docutils literal"><span class="pre">2c:ab:02:30:a1:10:98:ba:49:65:79:29:53:85:7d:2d</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos09</td>
+<td><tt class="docutils literal"><span class="pre">b6:da:84:22:4b:1a:e0:4c:b0:98:af:eb:2f:6d:da:fe</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos10</td>
+<td><tt class="docutils literal"><span class="pre">66:8d:37:94:7f:6a:c5:c9:b9:54:55:ab:b7:69:12:6c</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos11</td>
+<td><tt class="docutils literal"><span class="pre">de:b7:d7:af:ed:e9:27:23:a1:f7:5a:13:1d:79:f1:29</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos12</td>
+<td>down for maintenance</td>
+</tr>
+<tr class="row-even"><td>eos13</td>
+<td>down for maintenance</td>
+</tr>
+<tr class="row-odd"><td>eos14</td>
+<td><tt class="docutils literal"><span class="pre">a1:f8:a5:0b:04:ea:1f:33:68:4b:53:8c:59:73:8e:81</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos15</td>
+<td><tt class="docutils literal"><span class="pre">34:4d:ee:8a:dc:1e:3b:8c:fb:d5:f1:29:bc:16:41:48</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos16</td>
+<td><tt class="docutils literal"><span class="pre">a0:c0:37:39:bf:1a:6a:3b:e8:21:d7:14:86:e4:9c:c8</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos17</td>
+<td><tt class="docutils literal"><span class="pre">f3:17:53:ba:f0:00:31:ea:49:c9:b5:b1:1e:c7:70:98</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos18</td>
+<td><tt class="docutils literal"><span class="pre">bd:ca:1b:29:ab:c7:a2:5d:5b:e7:f2:0c:86:b4:e0:cd</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos19</td>
+<td><tt class="docutils literal"><span class="pre">25:9a:f9:c3:25:b6:28:f8:50:9b:b3:d5:4f:ab:34:2e</span></tt></td>
+</tr>
+<tr class="row-odd"><td>eos20</td>
+<td><tt class="docutils literal"><span class="pre">39:9f:66:9d:d3:8f:73:79:29:86:18:72:7b:25:8c:24</span></tt></td>
+</tr>
+<tr class="row-even"><td>eos21</td>
+<td>down for maintenance</td>
+</tr>
+<tr class="row-odd"><td>eos22</td>
+<td>down for maintenance</td>
+</tr>
+<tr class="row-even"><td>eos23</td>
+<td>down for maintenance</td>
+</tr>
+<tr class="row-odd"><td>eos24</td>
+<td>down for maintenance</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="password-less-logins-ssh-keys">
+<span id="gnu-linux-ssh-keys"></span><h2>Password-less Logins (SSH keys)<a class="headerlink" href="#password-less-logins-ssh-keys" title="Permalink to this headline">¶</a></h2>
+<p>It is often handy to be able to SSH into a host without having to type a password, for instance as part of a script. First, generate your public/private key pair with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span>
+</pre></div>
+</div>
+<p>Accept the default values by pressing <tt class="kbd docutils literal"><span class="pre">Enter</span></tt> at each prompt unless you know what you are doing. Once the keys have been generated, you can copy the public key over to the remote system by entering:</p>
+<div class="highlight-python"><div class="highlight"><pre>ssh-copy-id smithj@eos01.cis.gvsu.edu
+</pre></div>
+</div>
+<p>When you SSH into EOS now, you should be able to do so without having to provide a password:</p>
+<div class="highlight-python"><div class="highlight"><pre>ssh smithj@eos01.cis.gvsu.edu
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In this setup, we created our public/private key pair without a passphrase, which is less secure. If you would like to use a passphrase, please see <a class="reference external" href="http://mah.everybody.org/docs/ssh">Mark Hershberger&#8217;s excellent guide to ssh-agent</a> and <a class="reference external" href="https://help.github.com/articles/working-with-ssh-key-passphrases#platform-mac">Github&#8217;s guide to SSH passphrases</a>.</p>
+</div>
+<span class="target" id="gnu-linux-ssh-tunnel"></span></div>
+<div class="section" id="tunnelling-port-forwarding">
+<h2>Tunnelling / Port Forwarding<a class="headerlink" href="#tunnelling-port-forwarding" title="Permalink to this headline">¶</a></h2>
+<p>The SSH protocol possesses a special feature which allows it to tunnel other protocols within itself. This is called tunnelling or port forwarding. SSH can forward local ports (allowing the local machine access to resources on the remote machine) and remote ports (allowing the remote machine access to resources on the local machine).</p>
+<p>Local port forwarding is the more used feature, and is explained in the following sections. Remote port forwarding is similar but is outside the scope of this guide.</p>
+<p>Port forwarding can be accomplished with OpenSSH by passing arguments to the command-line client or by editing the client configuration file.</p>
+<div class="section" id="forwarding-on-the-command-line">
+<h3>Forwarding on the Command Line<a class="headerlink" href="#forwarding-on-the-command-line" title="Permalink to this headline">¶</a></h3>
+<p>Forwarding local ports on the command-line can be accomplished using the following syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre>ssh -L local_port:remote_host:remote_port user@host
+</pre></div>
+</div>
+<p>For example, to access a web server running on port 8000 on <tt class="docutils literal"><span class="pre">eos01.cis.gvsu.edu</span></tt> from your machine on port 5555, use the following command line:</p>
+<div class="highlight-python"><div class="highlight"><pre>ssh -L 5555:eos01.cis.gvsu.edu:8000 smithj@eos01.cis.gvsu.edu
+</pre></div>
+</div>
+<p>You can test the forwarding by running this in the SSH prompt:</p>
+<div class="highlight-python"><div class="highlight"><pre>python -m SimpleHTTPServer
+</pre></div>
+</div>
+<p>and opening <a class="reference external" href="http://localhost:5555/">http://localhost:5555/</a> in your local web browser. You should see a web listing of your home directory! Press <tt class="kbd docutils literal"><span class="pre">Control-C</span></tt> to kill the web server.</p>
+<p>The remote host which is hosting the resource need not be the EOS machine to which you are connecting with SSH. For example, to access the CIS web server through your SSH tunnel, you can run:</p>
+<div class="highlight-python"><div class="highlight"><pre>ssh -L 5678:cis.gvsu.edu:80 smithj@eos01.cis.gvsu.edu
+</pre></div>
+</div>
+<p>and visit <a class="reference external" href="http://localhost:5678/">http://localhost:5678/</a> in your local web browser. The CIS home page should appear!</p>
+</div>
+<div class="section" id="forwarding-in-the-config-file">
+<h3>Forwarding in the Config File<a class="headerlink" href="#forwarding-in-the-config-file" title="Permalink to this headline">¶</a></h3>
+<p>The command-line works well for one-off tunnels, but for frequently established tunnels, it pays to alter the OpenSSH client configuration file. The OpenSSH client configuration resides on your local machine in the file <tt class="file docutils literal"><span class="pre">~/.ssh/config</span></tt>. This is a file inside a hidden directory inside your home directory. The easiest way to open this file, creating it if it doesn&#8217;t exist, is to run:</p>
+<pre class="literal-block">
+umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; touch ~/.ssh/config &amp;&amp; gedit ~/.ssh/config
+</pre>
+<p>To establish the CIS web server forwarding shown in the last section, one could use the following configuration:</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="nb">Host</span> eoscisweb
+<span class="nb">HostName</span> eos01.cis.gvsu.edu
+<span class="nb">User</span> smithj
+<span class="nb">LocalForward</span> <span class="m">5678</span> cis.gvsu.edu:80
+</pre></div>
+</div>
+<p>To use this host from the command line, simply type:</p>
+<div class="highlight-python"><div class="highlight"><pre>ssh eoscisweb
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="vnc.html" class="btn btn-neutral float-right" title="VNC"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="GNU/Linux"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 Sean Fisk and Ira Woodring.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
