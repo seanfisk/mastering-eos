@@ -4,4 +4,4 @@ Each EOS machine has a so-called fingerprint, a series of characters which is us
 
 .. _report any mismatches: mailto:woodriir@gvsu.edu?subject=EOS%20Fingerprint%20Mismatch&body=Hi%20Mr.%20Woodring,%0A%0AIt%20seems%20that%20the%20key%20for%20eosXX.cis.gvsu.edu%20is%20incorrect.
 
-.. include:: common/fingerprints/table.rst
+.. include:: ../common/fingerprints/table.rst

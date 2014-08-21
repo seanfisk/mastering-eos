@@ -1,5 +1,5 @@
 Checking Host Fingerprints
---------------------------
+==========================
 
 When logging in to an EOS machine for the first time, you will see a message like this::
 
@@ -7,4 +7,4 @@ When logging in to an EOS machine for the first time, you will see a message lik
     RSA key fingerprint is 6d:29:fd:23:c5:26:c7:c9:a5:6e:6e:c2:34:60:ea:54.
     Are you sure you want to continue connecting (yes/no)?
 
-.. include:: common/fingerprints/checking.rst
+.. include:: ../common/fingerprints/checking.rst

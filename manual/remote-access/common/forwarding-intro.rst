@@ -1,5 +1,5 @@
 Tunnelling / Port Forwarding
-----------------------------
+============================
 
 The SSH protocol possesses a special feature which allows it to tunnel other protocols within itself. This is called tunnelling or port forwarding. SSH can forward local ports (allowing the local machine access to resources on the remote machine) and remote ports (allowing the remote machine access to resources on the local machine).
 
