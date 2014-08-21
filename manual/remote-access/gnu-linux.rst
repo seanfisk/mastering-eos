@@ -38,7 +38,7 @@ With other distributions (Arch, etc.), you are on your own.
 
 .. include:: common/keys/outro.rst
 
-.. |text_editor| replace:: gedit
+.. |text-editor| replace:: gedit
 .. _gnu-linux-ssh-tunnel:
 .. include:: common/openssh/forwarding.rst
 
@@ -77,7 +77,7 @@ We have tried various VNC clients, but found Remmina to be the easiest to use. H
 
 Operation of each of these applications is similar. For the host, enter in the hostname of the EOS machine to which you have SSH'ed. If a display is requested, enter ``0``; if a port is requested, enter ``5900`` (these mean the same thing). If the viewer offers support for multiple protocols, make sure you select "VNC".
 
-.. include:: common/filezilla_warning.rst
+.. include:: common/filezilla-warning.rst
 
 .. include:: common/openssh/advanced/intro.rst
 

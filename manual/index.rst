@@ -19,7 +19,7 @@
 
    intro
    rules
-   remote_access/index
+   remote-access/index
    shells
    winserv
    databases

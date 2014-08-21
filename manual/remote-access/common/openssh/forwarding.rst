@@ -1,4 +1,4 @@
-.. include:: common/forwarding_intro.rst
+.. include:: common/forwarding-intro.rst
 
 Port forwarding can be accomplished with OpenSSH by passing arguments to the command-line client or by editing the client configuration file.
 
@@ -32,7 +32,7 @@ The command-line works well for one-off tunnels, but for frequently established 
 
 .. parsed-literal::
 
-    umask u=rwx,go= && mkdir -p ~/.ssh && touch ~/.ssh/config && |text_editor| ~/.ssh/config
+    umask u=rwx,go= && mkdir -p ~/.ssh && touch ~/.ssh/config && |text-editor| ~/.ssh/config
 
 To establish the CIS web server forwarding shown in the last section, one could use the following configuration:
 
@@ -48,7 +48,7 @@ To use this host from the command line, simply type::
 
     ssh eoscisweb
 
-.. include:: common/vnc_intro.rst
+.. include:: common/vnc-intro.rst
 
 To create the tunnel, use the following command line::
 

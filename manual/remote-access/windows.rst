@@ -76,7 +76,7 @@ As is obvious from these instructions, SSH key management is not a simple proces
 
 .. _win-ssh-tunnel:
 
-.. include:: common/forwarding_intro.rst
+.. include:: common/forwarding-intro.rst
 
 Fortunately, port forwarding with PuTTY is quite easy. Fire up PuTTY and select your saved session, then click the :guilabel:`Load`. In the configuration tree to the left, expand :menuselection:`Connection --> SSH` and click on :guilabel:`Tunnels`.
 
@@ -110,7 +110,7 @@ Restart PuTTY, load your session, and navigate back to the :guilabel:`Tunnels` s
 
 Click :guilabel:`Add` and :guilabel:`Open`, then visit http://localhost:5678/ in your local web browser. The CIS home page should appear!
 
-.. include:: common/vnc_intro.rst
+.. include:: common/vnc-intro.rst
 
 Restart PuTTY, load your session, and navigate back to the :guilabel:`Tunnels` screen. Enter the following information:
 
@@ -223,4 +223,4 @@ MobaXterm_ is an all-in-one solution for SSH, SCP, VNC, RDP, and more. Since it 
 
 .. _MobaXterm: http://mobaxterm.mobatek.net/
 
-.. include:: common/filezilla_warning.rst
+.. include:: common/filezilla-warning.rst

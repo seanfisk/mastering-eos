@@ -2,7 +2,7 @@
  Databases
 ===========
 
-Learning to setup and maintain a database is essential to any Computer Science curriculum. The EOS infrastructure supports multiple database variants depending on the your needs. To save space and setup time database accounts are only given to those who need them for a course or a specific project. Contact your professor and |the_sysadmin| if you need a database account for any reason.
+Learning to setup and maintain a database is essential to any Computer Science curriculum. The EOS infrastructure supports multiple database variants depending on the your needs. To save space and setup time database accounts are only given to those who need them for a course or a specific project. Contact your professor and |the-sysadmin| if you need a database account for any reason.
 
 MySQL
 =====

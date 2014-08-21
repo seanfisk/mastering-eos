@@ -14,9 +14,9 @@ from texttable import Texttable
 POSTER_DIR = 'poster'
 MANUAL_DIR = 'manual'
 FINGERPRINTS_TABLE_FILENAME = os.path.join(
-    MANUAL_DIR, 'remote_access', 'common', 'fingerprints', 'table.rst')
+    MANUAL_DIR, 'remote-access', 'common', 'fingerprints', 'table.rst')
 VNC_TABLE_FILENAME = os.path.join(
-    MANUAL_DIR, 'remote_access', 'common', 'vnc_port_geometry_table.rst')
+    MANUAL_DIR, 'remote-access', 'common', 'vnc-port-geometry-table.rst')
 BUILD_DIR = os.path.join(MANUAL_DIR, '_build')
 
 # Allow being overridden from the command-line.
