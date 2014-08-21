@@ -10,7 +10,9 @@ This section is based in large part on the `Smylers SSH Productivity Tips blog p
 Hostname Aliases
 ----------------
 
-It's useful not to have to type out the entire full-qualified domain names to EOS machines. What you might normally type would be something like this::
+It's useful not to have to type out the entire full-qualified domain names to EOS machines. What you might normally type would be something like this:
+
+.. code-block:: bash
 
     ssh smithj@eos02.cis.gvsu.edu
     # or
@@ -26,7 +28,9 @@ By adding a section to the config file, this becomes easier. Add this to your :f
     HostName %h.cis.gvsu.edu
     User smithj
 
-With this, now you need only type::
+With this, now you need only type:
+
+.. code-block:: bash
 
     ssh eos02
     # or
@@ -70,11 +74,13 @@ For GitHub users, this is especially useful when using Git over SSH. Within this
 Multi-Hop Connections
 ---------------------
 
-Oftentimes a machine is only available when SSH'ing into another machine. For example, this is the case with the DEN's Okami server, used in CIS 677 High-Performance Computing. In addition, Okami's SSH server is only available on a non-standard port. This typically results in the user going through this process::
+Oftentimes a machine is only available when SSH'ing into another machine. For example, this is the case with the DEN's Okami server, used in CIS 677 High-Performance Computing. In addition, Okami's SSH server is only available on a non-standard port. This typically results in the user going through this process:
 
-    local$ ssh smithj@eos01.cis.gvsu.edu
-    eos01$ ssh -p 43022 okami
-    okami$ # Finally here!
+.. code-block:: console
+
+    smithj@local$ ssh smithj@eos01.cis.gvsu.edu
+    smithj@eos01$ ssh -p 43022 okami
+    smithj@okami$ # Finally here!
 
 This is annoying and unnecessary. By using the ``ProxyCommand`` keyword in our config file, we can automate this process:
 
@@ -90,10 +96,12 @@ This is annoying and unnecessary. By using the ``ProxyCommand`` keyword in our c
 
 The ``-W`` flag allows us to hop through the first host to the host and port specified by the variables (``okami:43022``). Note that the use of ``eos01`` here requires presence of the aliases set up in `Hostname Aliases`_.
 
-The process has now been simplified to::
+The process has now been simplified to:
 
-    local$ ssh okami
-    okami$ # Yay! Easy!
+.. code-block:: console
+
+    smithj@local$ ssh okami
+    smithj@okami$ # Yay! Easy!
 
 Using SSH as a Proxy
 --------------------
