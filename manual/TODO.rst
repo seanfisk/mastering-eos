@@ -2,6 +2,10 @@
  TODO
 ======
 
+* Add link to EOS basics: http://www.cis.gvsu.edu/Facilities/eosLabs/. Mention the caveat of not being up-to-date.
+* Rewrite build system using Waf.
+* Include technical details in contributing section.
+
 * Remote
     * SSHFS (Mac and Linux, suggest ExpandDrive for Windows)
     * rsync
@@ -14,7 +18,7 @@
     * Add prompt customization section
     * "Next class" Python module in prompt, e.g., ``<CIS452 in 01:42>``.
 
-* Add section on 'Mining Information'.
+* Add section on 'Mining Hardware/Software Information'.
     * Finding versions of programs
     * Finding OS versions
     * Hardware information
@@ -34,8 +38,6 @@
 * List of GUI libraries
 
 * HPC? (Threading, OpenMP, MPI, C++, Python)
-
-* Rewrite build system using Waf?
 
 * Later, tryout http://www.mremoteng.org/ and http://terminals.codeplex.com/.
 
