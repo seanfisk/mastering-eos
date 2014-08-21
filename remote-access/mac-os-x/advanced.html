@@ -157,8 +157,8 @@
 <div class="section" id="hostname-aliases">
 <h2>Hostname Aliases<a class="headerlink" href="#hostname-aliases" title="Permalink to this headline">¶</a></h2>
 <p>It&#8217;s useful not to have to type out the entire full-qualified domain names to EOS machines. What you might normally type would be something like this:</p>
-<div class="highlight-python"><div class="highlight"><pre>ssh smithj@eos02.cis.gvsu.edu
-# or
+<div class="highlight-bash"><div class="highlight"><pre>ssh smithj@eos02.cis.gvsu.edu
+<span class="c"># or</span>
 ssh smithj@arch04.cis.gvsu.edu
 </pre></div>
 </div>
@@ -171,8 +171,8 @@ ssh smithj@arch04.cis.gvsu.edu
 </pre></div>
 </div>
 <p>With this, now you need only type:</p>
-<div class="highlight-python"><div class="highlight"><pre>ssh eos02
-# or
+<div class="highlight-bash"><div class="highlight"><pre>ssh eos02
+<span class="c"># or</span>
 ssh arch04
 </pre></div>
 </div>
@@ -208,9 +208,9 @@ ssh arch04
 <div class="section" id="multi-hop-connections">
 <h2>Multi-Hop Connections<a class="headerlink" href="#multi-hop-connections" title="Permalink to this headline">¶</a></h2>
 <p>Oftentimes a machine is only available when SSH&#8217;ing into another machine. For example, this is the case with the DEN&#8217;s Okami server, used in CIS 677 High-Performance Computing. In addition, Okami&#8217;s SSH server is only available on a non-standard port. This typically results in the user going through this process:</p>
-<div class="highlight-python"><div class="highlight"><pre>local$ ssh smithj@eos01.cis.gvsu.edu
-eos01$ ssh -p 43022 okami
-okami$ # Finally here!
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">smithj@local$</span> ssh smithj@eos01.cis.gvsu.edu
+<span class="gp">smithj@eos01$</span> ssh -p 43022 okami
+<span class="gp">smithj@okami$</span> <span class="c"># Finally here!</span>
 </pre></div>
 </div>
 <p>This is annoying and unnecessary. By using the <tt class="docutils literal"><span class="pre">ProxyCommand</span></tt> keyword in our config file, we can automate this process:</p>
@@ -223,8 +223,8 @@ okami$ # Finally here!
 </div>
 <p>The <tt class="docutils literal"><span class="pre">-W</span></tt> flag allows us to hop through the first host to the host and port specified by the variables (<tt class="docutils literal"><span class="pre">okami:43022</span></tt>). Note that the use of <tt class="docutils literal"><span class="pre">eos01</span></tt> here requires presence of the aliases set up in <a class="reference internal" href="#hostname-aliases">Hostname Aliases</a>.</p>
 <p>The process has now been simplified to:</p>
-<div class="highlight-python"><div class="highlight"><pre>local$ ssh okami
-okami$ # Yay! Easy!
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">smithj@local$</span> ssh okami
+<span class="gp">smithj@okami$</span> <span class="c"># Yay! Easy!</span>
 </pre></div>
 </div>
 </div>
