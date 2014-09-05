@@ -7,6 +7,13 @@
 * Write a script which SSH'es into all the machines and checks for requisite software.
 * Include technical details in contributing section.
 
+* Raise awareness
+    * Add note to ``/etc/motd``
+        * ``eos-web-docs`` (use the script in ``scripts/``)
+        * ``man eos``
+        * ``info eos``
+    * Add shortcut to users' desktop?
+
 * Remote
     * SSHFS (Mac and Linux, suggest ExpandDrive for Windows)
     * rsync

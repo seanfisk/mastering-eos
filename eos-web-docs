@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+from __future__ import print_function
+import sys
+import webbrowser
+
+url = 'http://seanfisk.github.io/mastering-eos/'
+try:
+    webbrowser.open(url)
+except webbrowser.Error:
+    print(('Could not open docs in web browser.\n'
+           'Please visit {} in your own web browser.').format(url),
+          file=sys.stderr)
