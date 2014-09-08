@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+
+from __future__ import print_function
+import sys
+import argparse
+import webbrowser
+
+URL = 'http://seanfisk.github.io/mastering-eos/'
+
+
+def main(argv):
+    arg_parser = argparse.ArgumentParser(
+        description='Open the EOS Lab documentation in a web browser.')
+    arg_parser.parse_args(argv[1:])
+
+    try:
+        webbrowser.open(URL)
+    except webbrowser.Error:
+        print(('Could not open docs in web browser.\n'
+               'Please visit {0} in your own web browser.').format(URL),
+              file=sys.stderr)
+
+
+if __name__ == '__main__':
+    raise SystemExit(main(sys.argv))
