@@ -8,10 +8,10 @@ MarkupSafe==0.19
 docutils==0.11
 sphinx-rtd-theme==0.1.6
 
-# For the manual's reportlab builder
-rst2pdf==0.93
-reportlab==3.0
-pdfrw==0.1
+# For the manual's reportlab builder (not currently in use)
+#rst2pdf==0.93
+#reportlab==3.0
+#pdfrw==0.1
 
 # Deployment
 Fabric==1.8.3
