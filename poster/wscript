@@ -1,0 +1,68 @@
+# -*- mode: python; coding: utf-8; -*-
+
+import glob
+import os
+from os.path import join
+
+UBUNTU_FONTS_PATH = join('fonts', 'Ubuntu')
+
+def options(ctx):
+    ctx.load('tex')
+
+def configure(ctx):
+    ctx.find_program('lualatex')
+    ctx.find_program('pygmentize')
+    # Don't call 'configure' from the tex tool because we don't need to find
+    # any of these tools, just lualatex.
+    ctx.load('tex', funs=[])
+    # Override TeX program to use LuaLaTeX.
+    ctx.env.PDFLATEX = ctx.env.LUALATEX
+
+    ctx.env.append_unique('PDFLATEXFLAGS', [
+        # Enable SyncTeX. This is personal, but I use it, and I would recommend
+        # it to everybody.
+        '-synctex=1',
+        # Shell escape; needed by minted.
+        '-shell-escape',
+    ])
+
+
+def build(ctx):
+    sty_in_node = ctx.path.find_resource('beamerthemeEOS.sty.in')
+    sty_out_node = sty_in_node.change_ext(ext='.sty', ext_in='.sty.in')
+    # Before we used Waf, we ran our TeX program in the source directory. Waf
+    # runs it in the build directory and uses the TEXINPUTS environment
+    # variable to point the TeX program to the sources. Images and TeX files
+    # seem to do OK with this, but fonts and minted external files don't. The
+    # fonts have always been a bit finicky, so we substitute the absolute paths
+    # in to avoid any issues. We've moved the minted external files into the
+    # TeX source files themselves. Not elegant, but it works.
+    ctx(features='subst',
+        target=sty_out_node,
+        source=sty_in_node,
+        UBUNTU_FONT_PATH=(
+            # Add a trailing path separator so that LaTeX knows it's a
+            # directory.
+            ctx.path.find_dir(UBUNTU_FONTS_PATH).abspath() + os.sep),
+    )
+
+    # Make sure the style file is built before TeX is run.
+    ctx.add_group()
+
+    main_tex_node = ctx.path.find_resource('mastering-eos.tex')
+    ctx(features='tex',
+        type='pdflatex',
+        source=main_tex_node,
+        outs='pdf',
+        # The tex scanner finds all of TeX files in the blocks/ directory
+        # automatically. However, we need to manually include all filenames
+        # that aren't autodetected (these shouldn't include Node s).
+        deps=(
+            glob.glob(join(UBUNTU_FONTS_PATH, '*.ttf')) +
+            glob.glob('code/*.bash')
+          ),
+        # prompt=0, # batch mode; disables the avalanche of output
+        prompt=1,
+    )
+
+    ctx.add_manual_dependency(main_tex_node, sty_out_node)

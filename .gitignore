@@ -1,3 +1,14 @@
+# Waf
+## Build dir
+/build
+## Waflib
+## It's dot-hidden on Unix-like system, but on Windows it is just
+## labelled as a hidden directory (no dot).
+/.waf-*
+/waf-*
+## Waf lockfile
+/.lock-waf*
+
 # Emacs Rope projects
 .ropeproject
 

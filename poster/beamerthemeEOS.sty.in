@@ -10,7 +10,7 @@
 
 \RequirePackage{fontspec} % To use external fonts
 \setsansfont[
-Path=fonts/Ubuntu/,
+Path=@UBUNTU_FONT_PATH@,
 Extension=.ttf,
 Ligatures=TeX,
 UprightFont=*-R,
@@ -20,7 +20,7 @@ BoldItalicFont=*-BI,
 ]{Ubuntu}
 % IMPORTANT: Don't include ligatures for monospaced fonts. They will do things like join '--' to an en dash, etc.
 \setmonofont[
-Path=fonts/Ubuntu/,
+Path=@UBUNTU_FONT_PATH@,
 Extension=.ttf,
 UprightFont=*-R,
 BoldFont=*-B,

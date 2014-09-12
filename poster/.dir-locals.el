@@ -3,7 +3,6 @@
 
 ((latex-mode
   (TeX-master . "mastering-eos")
-  (TeX-command-default . "SCons")
   (eval . (add-to-list
            'TeX-style-path
            (expand-file-name
