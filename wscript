@@ -11,12 +11,13 @@ VERSION = '0.1'
 top = '.'
 out = 'build'
 
-SUBDIRS = ['poster'] # , 'manual'
+SUBDIRS = ['manual', 'poster']
 
 def options(ctx):
     ctx.recurse(SUBDIRS)
 
 def configure(ctx):
+    ctx.load('sphinx_internal', tooldir='waf_tools')
     ctx.recurse(SUBDIRS)
 
 def build(ctx):
