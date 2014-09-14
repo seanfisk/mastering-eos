@@ -12,12 +12,38 @@
 import os
 import sys
 import uuid
+import re
 
 import waflib
+from waflib.Configure import conf
+
+MAKEINFO_VERSION_RE = re.compile(r'makeinfo \(GNU texinfo\) (\d+)\.(\d+)')
+# http://svn.savannah.gnu.org/viewvc/*checkout*/trunk/NEWS?root=texinfo
+MAKEINFO_MIN_VERSION = (4, 13)
+
+def _version_tuple_to_string(version_tuple):
+    return '.'.join(str(x) for x in version_tuple)
+
+
+@conf
+def warn_about_old_makeinfo(ctx):
+    version_out = ctx.cmd_and_log([ctx.env.MAKEINFO, '--version'])
+    version_str = version_out.splitlines()[0].rstrip()
+    match = MAKEINFO_VERSION_RE.match(version_str)
+    if match is None:
+        ctx.fatal("Couldn't verify makeinfo version!")
+    version_tuple = tuple(int(x) for x in match.groups())
+    if version_tuple < MAKEINFO_MIN_VERSION:
+        waflib.Logs.warn(
+'''Your makeinfo version ({0}) is too old to support UTF-8.
+You will see warnings; upgrade to {1} to get UTF-8 support.'''.format(
+    _version_tuple_to_string(version_tuple),
+    _version_tuple_to_string(MAKEINFO_MIN_VERSION)))
 
 def configure(ctx):
     ctx.find_program('sphinx-build', var='SPHINX_BUILD')
-    ctx.find_program('makeinfo', mandatory=False)
+    if ctx.find_program('makeinfo', mandatory=False):
+        ctx.warn_about_old_makeinfo()
 
 class SphinxBuild(waflib.Task.Task):
     """Handle run of sphinx-build."""
