@@ -334,9 +334,6 @@ def apply_sphinx(task_gen):
         status=None,
     )
 
-    if requested_builder == 'info':
-        pass # TODO: finish the job
-
     # Prevent execution of process_source. We don't need it because we are
     # letting Sphinx decide on the sources.
     # Following the lead of code in waflib.
