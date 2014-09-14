@@ -172,14 +172,17 @@ class SphinxBuild(waflib.Task.Task):
         ]
         ret = self.exec_command(args)
 
-        # Add everything found in the output directory tree as an output. Not
-        # elegant, but pragmatic.
-        #
-        # quiet=True disables a warning printed in verbose mode.
+        # Add almost everything found in the output directory tree as an
+        # output. Not elegant, but pragmatic.
         #
         # Don't include generated Makefiles -- we're not using those.
+        excludes = ['Makefile']
+        if self.sphinx_builder == 'texinfo':
+            excludes.append('*.info')
+
+        # quiet=True disables a warning printed in verbose mode.
         self.outputs = self.out_dir_node.ant_glob(
-            '**', quiet=True, excl='Makefile')
+            '**', quiet=True, excl=excludes)
 
         self._maybe_add_info_task()
 
