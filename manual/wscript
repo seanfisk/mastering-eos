@@ -9,12 +9,11 @@ def configure(ctx):
     pass
 
 def build(ctx):
-    for builder in ['man', 'html', 'info']:
-        ctx(features='sphinx',
-            builder=builder,
-            source='conf.py',
-            # Turn warnings into errors. Helps them get fixed more quickly :)
-            warningiserror=True,
-            # Warn about all missing references.
-            nitpicky=True,
-        )
+    ctx(features='sphinx',
+        builders='html man info',
+        source='conf.py',
+        # Turn warnings into errors. Helps them get fixed more quickly :)
+        warningiserror=True,
+        # Warn about all missing references.
+        nitpicky=True,
+    )

@@ -74,7 +74,79 @@ class SphinxBuild(waflib.Task.Task):
             return self.uid_
 
     def scan(self):
-        return (self.sphinx_deps, [])
+        """Use Sphinx's internal environment to find the outdated dependencies."""
+        # Set up the Sphinx application instance.
+        app = Sphinx(
+            srcdir=self.src_dir_node.abspath(),
+            confdir=self.src_dir_node.abspath(),
+            outdir=self.out_dir_node.abspath(),
+            doctreedir=self.doctrees_node.abspath(),
+            buildername=self.sphinx_builder,
+            warningiserror=self.warning_is_error,
+            confoverrides=(
+                {'nitpicky': True} if self.nitpicky
+                else None),
+            # Indicates the file where status messages should be printed.
+            # Typically sys.stdout or sys.stderr, but can be None to disable.
+            # Since builds can happen in parallel, don't output anything.
+            status=None,
+        )
+
+        # Update dependencies dictionary by updating. From Sphinx
+        # BuildEnvironment.update() docstring: "(Re-)read all files new or
+        # changed since last update." Note that this only returns *doc names
+        # that have been updated*.
+        summary, num_docs_reread, updated_doc_names_iterator = app.env.update(
+            app.config,
+            app.srcdir,
+            app.doctreedir,
+            app,
+        )
+        # Avoid duplicates by using a set.
+        dependency_nodes = set()
+
+        # Add documents which have been updated and their dependencies. It's
+        # very important to add both of these, because their content needs to
+        # be tracked by Waf from the first build. Because we are using Sphinx's
+        # BuildEnvironment.update() method, each file will only be listed as a
+        # dependency *if it changed*.
+
+        # Add documents which have been updated.
+        for doc_name in updated_doc_names_iterator:
+            doc_path = doc_name + app.config.source_suffix
+            doc_node = self.src_dir_node.find_node([doc_path])
+            if doc_node is None:
+                raise waflib.Errors.WafError(
+                    'Could not find Sphinx document node: {0}'.format(
+                        doc_path))
+            dependency_nodes.add(doc_node)
+
+        # Add dependencies of documents which have been updated.
+        for dependency_paths in app.env.dependencies.values():
+            for dependency_path in dependency_paths:
+                node = (
+                    self.src_dir_node.find_node([dependency_path]) or
+                    # Try as absolute path if no success relative to
+                    # src_dir.
+                    self.src_dir_node.ctx.root.find_resource(dependency_path))
+                if node is None:
+                    raise waflib.Errors.WafError(
+                        'Could not find Sphinx document dependency node: {0}'
+                        .format(doc_path))
+                dependency_nodes.add(node)
+
+        # Sphinx's Builder.build() methods calls
+        # BuildEnvironment.check_dependents(...) to see if section numbers have
+        # changed. I don't think we need to call this, though, because this can
+        # only happen if an actual file changes. Waf is only reponsible for
+        # triggering the re-build, not for telling Sphinx what needs to be
+        # re-built.
+
+        # Return these sorted for a consistent ordering. Make sure to convert
+        # the nodes back to a list before returning (which sorted() does).
+        #
+        # The second list is for raw_deps, which we don't need at this point.
+        return (_sorted_nodes(dependency_nodes), [])
 
     def run(self):
         # After creating a Sphinx application, running Sphinx *should* be this
@@ -111,7 +183,8 @@ class SphinxBuild(waflib.Task.Task):
         # output. Not elegant, but pragmatic.
         #
         # Don't include generated Makefiles -- we're not using those.
-        excludes = ['Makefile']
+        # No .doctrees directory either.
+        excludes = ['Makefile', '.doctrees']
         if self.sphinx_builder == 'texinfo':
             excludes.append('*.info')
 
@@ -208,33 +281,33 @@ def apply_sphinx(task_gen):
     """
     # Initialize the keywords.
     try:
-        requested_builder = task_gen.builder
+        requested_builders = waflib.Utils.to_list(task_gen.builders)
     except AttributeError:
         raise waflib.Errors.WafError(
-            'Sphinx task generator missing necessary keyword: builder')
+            'Sphinx task generator missing necessary keyword: builders')
+
+    # Check for dupes.
+    if len(requested_builders) != len(set(requested_builders)):
+        raise waflib.Errors.WafError(
+            "Sphinx 'builder' keyword cannot contain duplicates.")
 
     # Make sure that 'makeinfo' is available if the 'info' builder was
     # requested.
-    if not task_gen.env.MAKEINFO:
+    if 'info' in requested_builders and not task_gen.env.MAKEINFO:
         raise waflib.Errors.WafError(
-            "Sphinx 'info' builder requested but 'makeinfo' program not found!"
-        )
+            "Sphinx 'info' builder requested "
+            "but 'makeinfo' program not found!")
 
+    source = getattr(task_gen, 'source', [])
+    target = getattr(task_gen, 'target', [])
     # Turning off quiet will print out all of the Sphinx output. The default is
     # to be quiet because builds can happen in parallel which will cause output
     # to be interleaved. However, it is feasible that turning on the output
     # might be useful for debugging. Note that not being quiet is not the same
     # as Sphinx being verbose.
-    source = getattr(task_gen, 'source', [])
-    target = getattr(task_gen, 'target', [])
     quiet = getattr(task_gen, 'quiet', True)
     warning_is_error = getattr(task_gen, 'warningiserror', False)
     nitpicky = getattr(task_gen, 'nitpicky', False)
-
-    # There is no builder called 'info', but if requested, we'll build the info
-    # manual just like the Sphinx Makefile.
-    sphinx_builder = (
-        requested_builder if requested_builder != 'info' else 'texinfo')
 
     # There is a helper method for inputs, so we may as well use it.
     in_nodes = task_gen.to_nodes(source)
@@ -247,124 +320,54 @@ def apply_sphinx(task_gen):
     conf_node = in_nodes[0]
     src_dir_node = conf_node.parent
 
-    # Outputs have no such helper...
+    # Outputs have no helper...
     if not target:
-        out_dir_node = src_dir_node.get_bld().find_or_declare(sphinx_builder)
+        out_dir_parent_node = src_dir_node.get_bld()
     else:
         outs = waflib.Utils.to_list(target)
         if len(outs) != 1:
             raise waflib.Errors.WafError(
-                'If specified, Sphinx task generator can only take one output.'
+                'If specified, Sphinx task generator '
+                'can only take one output.'
             )
-        out_dir_node = _node_or_bust(outs[0], task_gen.path.find_or_declare)
+        out_dir_node_parent_node = _node_or_bust(
+            outs[0], task_gen.path.find_or_declare)
 
-    # TODO: We're really not sure what the best approach is yet.
-    # Set up a shared doctrees directory, just like the Sphinx Makefile does.
-    # doctrees_node = out_dir_node.parent.find_or_declare('doctrees')
-    # Set up a private doctrees directory to avoid race conditions.
-    doctrees_node = out_dir_node.find_or_declare('.doctrees')
+    for requested_builder in requested_builders:
+        # There is no builder called 'info', but if requested, we'll build the
+        # info manual just like the Sphinx Makefile.
+        sphinx_builder = (
+            requested_builder if requested_builder != 'info' else 'texinfo')
 
-    # No targets; they will be assigned after Sphinx runs.
-    task = task_gen.create_task('SphinxBuild', src=conf_node)
-    # Assign attributes necessary for task methods.
-    task.requested_builder = requested_builder
-    task.sphinx_builder = sphinx_builder
-    task.src_dir_node = src_dir_node
-    task.out_dir_node = out_dir_node
-    task.doctrees_node = doctrees_node
-    task.quiet = quiet
-    task.warning_is_error = warning_is_error
-    task.nitpicky = nitpicky
+        out_dir_node = out_dir_parent_node.find_or_declare(sphinx_builder)
 
-    # Assign dependencies of this task. Note that we can't assign these as
-    # inputs because they are not *all dependencies of the documentation*, they
-    # are just *dependencies of the updated files*. Unfortunately, Sphinx
-    # doesn't provide an easy way to get all dependencies without re-reading
-    # all of the documents, which is exactly what we're trying not do to.
-    task.sphinx_deps = _get_sphinx_outdated_dependencies(
-        src_dir_node, out_dir_node, doctrees_node, warning_is_error, nitpicky)
+        # Although it usually doesn't happen, we had trouble with race
+        # conditions using a shared doctrees directory. Set up a private
+        # doctrees directory to avoid race conditions.
+        doctrees_node = out_dir_node.find_or_declare('.doctrees')
+
+        # No targets; they will be assigned after Sphinx runs.
+        #
+        # Our input is just the conf node. Note that we can't assign our
+        # dependencies as inputs because they are not *all of the dependencies
+        # of the documentation*, they are just *dependencies of the updated
+        # files*. Unfortunately, Sphinx doesn't provide an easy way to get all
+        # dependencies without re-reading all of the documents, which is
+        # exactly what we're trying not do to.
+        task = task_gen.create_task('SphinxBuild', src=conf_node)
+        # Assign attributes necessary for task methods.
+        task.requested_builder = requested_builder
+        task.sphinx_builder = sphinx_builder
+        task.src_dir_node = src_dir_node
+        task.out_dir_node = out_dir_node
+        task.doctrees_node = doctrees_node
+        task.quiet = quiet
+        task.warning_is_error = warning_is_error
+        task.nitpicky = nitpicky
 
     # Prevent execution of process_source. We don't need it because we are
     # letting Sphinx decide on the sources.
-    # Following the lead of code in waflib.
+    # Following the lead of code in waflib:
     task_gen.source = []
     # Also possible.
     # task_gen.meths.remove('process_source')
-
-def _get_sphinx_outdated_dependencies(
-        src_dir_node, out_dir_node, doctrees_node, warning_is_error, nitpicky):
-    """Use Sphinx's internal environment to find the outdated dependencies.
-    Because the dependencies are the same no matter what builder is used, we
-    can apply this to all builders.
-    """
-    # Set up the Sphinx application instance.
-    app = Sphinx(
-        srcdir=src_dir_node.abspath(),
-        confdir=src_dir_node.abspath(),
-        outdir=out_dir_node.abspath(),
-        doctreedir=doctrees_node.abspath(),
-        # Set buildername to None because it doesn't matter.
-        buildername=None,
-        warningiserror=warning_is_error,
-        confoverrides=(
-            {'nitpicky': True} if nitpicky
-            else None),
-        # Indicates the file where status messages should be printed. Typically
-        # sys.stdout or sys.stderr, but can be None to disable. Since builds
-        # can happen in parallel, don't output anything.
-        status=None,
-    )
-
-    # Update dependencies dictionary by updating. From Sphinx
-    # BuildEnvironment.update() docstring: "(Re-)read all files new or changed
-    # since last update." Note that this only returns *doc names that have been
-    # updated*.
-    summary, num_docs_reread, updated_doc_names_iterator = app.env.update(
-        app.config,
-        app.srcdir,
-        app.doctreedir,
-        app,
-    )
-    # Avoid duplicates by using a set.
-    dependency_nodes = set()
-
-    # Add documents which have been updated and their dependencies. It's very
-    # important to add both of these, because their content needs to be tracked
-    # by Waf from the first build. Because we are using Sphinx's
-    # BuildEnvironment.update() method, each file will only be listed as a
-    # dependency *if it changed*.
-
-    # Add documents which have been updated.
-    for doc_name in updated_doc_names_iterator:
-        doc_path = doc_name + app.config.source_suffix
-        doc_node = src_dir_node.find_node([doc_path])
-        if doc_node is None:
-            raise waflib.Errors.WafError(
-                'Could not find Sphinx document node: {0}'.format(
-                    doc_path))
-        dependency_nodes.add(doc_node)
-
-    # Add dependencies of documents which have been updated.
-    for dependency_paths in app.env.dependencies.values():
-        for dependency_path in dependency_paths:
-            node = (
-                src_dir_node.find_node([dependency_path]) or
-                # Try as absolute path if no success relative to
-                # src_dir.
-                src_dir_node.ctx.root.find_resource(dependency_path))
-            if node is None:
-                raise waflib.Errors.WafError(
-                    'Could not find Sphinx document dependency node: {0}'
-                    .format(doc_path))
-            dependency_nodes.add(node)
-
-    # Sphinx's Builder.build() methods calls
-    # BuildEnvironment.check_dependents(...) to see if section numbers have
-    # changed. I don't think we need to call this, though, because this can
-    # only happen if an actual file changes. Waf is only reponsible for
-    # triggering the re-build, not for telling Sphinx what needs to be
-    # re-built.
-
-    # Return these sorted for a consistent ordering. Make sure to convert the
-    # nodes back to a list before returning (which sorted() does).
-    return _sorted_nodes(dependency_nodes)
