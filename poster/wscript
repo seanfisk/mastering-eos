@@ -61,8 +61,7 @@ def build(ctx):
             glob.glob(join(UBUNTU_FONTS_PATH, '*.ttf')) +
             glob.glob('code/*.bash')
           ),
-        # prompt=0, # batch mode; disables the avalanche of output
-        prompt=1,
+        prompt=0, # batch mode; disables the avalanche of output
     )
 
     ctx.add_manual_dependency(main_tex_node, sty_out_node)
