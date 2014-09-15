@@ -133,7 +133,7 @@ def apply_sphinx(task_gen):
                 'If specified, Sphinx task generator '
                 'can only take one output.'
             )
-        out_dir_node_parent_node = _node_or_bust(
+        out_dir_parent_node = _node_or_bust(
             outs[0], task_gen.path.find_or_declare)
 
     for requested_builder in requested_builders:
