@@ -447,6 +447,10 @@ def apply_sphinx(task_gen):
         task.warning_is_error = warning_is_error
         task.nitpicky = nitpicky
 
+        # Set the task order if that was requested.
+        for attr in ['after', 'before']:
+            setattr(task, attr, getattr(task_gen, attr, []))
+
     # Prevent execution of process_source. We don't need it because we are
     # letting Sphinx decide on the sources.
     # Following the lead of code in waflib:

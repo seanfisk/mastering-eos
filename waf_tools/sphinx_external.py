@@ -166,6 +166,10 @@ def apply_sphinx(task_gen):
         task.warning_is_error = warning_is_error
         task.nitpicky = nitpicky
 
+        # Set the task order if that was requested.
+        for attr in ['after', 'before']:
+            setattr(task, attr, getattr(task_gen, attr, []))
+
         # The follow-up builders have an extra step -- we have to run a
         # Makefile in their output directories. Ugh :(
         if requested_builder in FOLLOWUP_BUILDERS:
