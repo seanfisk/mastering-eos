@@ -15,8 +15,6 @@ def options(ctx):
         '-m', '--no-ssh-auto-update',
         default=False, action='store_true',
     help='disable auto-update of ops requiring SSH')
-    # Allow overriding the SSH username.
-    ctx.add_option('-u', '--ssh-user', help='SSH username')
 
 def configure(ctx):
     ctx.find_program('make-ssh-fingerprints-table',
@@ -27,10 +25,6 @@ def configure(ctx):
     ctx.msg('Auto-update of SSH operations',
             'enabled' if ctx.env.SSH_AUTO_UPDATE else 'disabled',
             'GREEN' if ctx.env.SSH_AUTO_UPDATE else 'YELLOW')
-    if ctx.options.ssh_user:
-        ctx.msg('Setting EOS SSH user', ctx.options.ssh_user)
-        # Set as an environment variable so we can depend on it in vars=[...].
-        ctx.env.SSH_USER = ctx.options.ssh_user
 
 def build(ctx):
     fingerprints_table_path = (
@@ -55,7 +49,7 @@ def build(ctx):
         # ensue regardless of the value of auto-update.
         source=ctx.root.find_node(ctx.env.MAKE_SSH_FINGERPRINTS_TABLE),
         update_outputs=True,
-        vars=['MAKE_SSH_FINGERPRINTS_TABLE', 'SSH_USER'],
+        vars=['MAKE_SSH_FINGERPRINTS_TABLE'],
         **ssh_task_gen_extra_kwargs)
     def make_ssh_fingerprints_table(tsk):
         args = [ctx.env.MAKE_SSH_FINGERPRINTS_TABLE]

@@ -40,7 +40,6 @@ def main(argv):
     arg_parser.add_argument(
         'output_file', type=argparse.FileType('w'),
         help='output .rst file')
-    arg_parser.add_argument('-u', '--user', help='SSH user')
     args = arg_parser.parse_args(argv[1:])
     output_file = args.output_file
 
@@ -50,9 +49,8 @@ def main(argv):
     # skip_bad_hosts and parallel are, unfortunately, mutually exclusive. Don't
     # see why they have to be, but that's the way it is.
     env.skip_bad_hosts = True
-    # Set the username if provided.
-    if args.user:
-        env.user = args.user
+    # Use the SSH config file to determine username, etc.
+    env.use_ssh_config = True
 
     # Generate table.
     results_dict = execute(get_fingerprint, hosts=HOSTS)
