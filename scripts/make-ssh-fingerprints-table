@@ -36,8 +36,7 @@ def main(argv):
     arg_parser = argparse.ArgumentParser(
         prog=argv[0],
         description='Generate a table of SSH fingerprints in reStructuredText'
-        ' machines in the EOS and Arch Labs. Override the username used to '
-        'log in by setting the EOS_USER environment variable')
+        ' for machines in the EOS and Arch Labs.')
     arg_parser.add_argument(
         'output_file', type=argparse.FileType('w'),
         help='output .rst file')
