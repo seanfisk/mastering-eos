@@ -148,7 +148,12 @@ def apply_sphinx(task_gen):
         # Although it usually doesn't happen, we had trouble with race
         # conditions using a shared doctrees directory. Set up a private
         # doctrees directory to avoid race conditions.
-        doctrees_node = out_dir_node.find_or_declare('.doctrees')
+        doctrees_node = (
+            out_dir_node.find_or_declare('.doctrees')
+            # The epub builder spits out unknown mimetype warnings if we throw
+            # the doctree in its output directory.
+            if requested_builder != 'epub'
+            else out_dir_parent_node.find_or_declare('.epub-doctrees'))
 
         task = task_gen.create_task(
             'SphinxBuild', src=conf_node, tgt=out_dir_node)
