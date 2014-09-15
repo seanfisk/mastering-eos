@@ -53,8 +53,6 @@ def build(ctx):
         **ssh_task_gen_extra_kwargs)
     def make_ssh_fingerprints_table(tsk):
         args = [ctx.env.MAKE_SSH_FINGERPRINTS_TABLE]
-        if ctx.env.SSH_USER:
-            args += ['--user', ctx.env.SSH_USER]
         args.append(tsk.outputs[0].abspath())
         # Don't capture the standard streams is case we get prompts.
         tsk.exec_command(args, stdout=sys.stdout, stderr=sys.stderr)
