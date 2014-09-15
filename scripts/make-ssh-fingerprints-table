@@ -10,6 +10,7 @@ import argparse
 
 import six
 from fabric.api import env, execute, run
+from fabric.network import disconnect_all
 from texttable import Texttable
 
 HOSTS = [
@@ -53,7 +54,11 @@ def main(argv):
     env.use_ssh_config = True
 
     # Generate table.
-    results_dict = execute(get_fingerprint, hosts=HOSTS)
+    try:
+        results_dict = execute(get_fingerprint, hosts=HOSTS)
+    finally:
+        disconnect_all()
+
     table = Texttable()
     # The default decoration produces the correct table.
     table.header(['Host', 'Fingerprint'])
