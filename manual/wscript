@@ -1,14 +1,70 @@
 # -*- mode: python; coding: utf-8; -*-
 
+import os
 from os.path import join
+import sys
 
 def options(ctx):
-    pass
+    # This option tells our build system not to always run operations which use
+    # SSH to access EOS. Currently, this includes building the VNC and SSH
+    # fingerprints tables. Users building on their machines should probably
+    # disable auto-update, while automated builds leave auto-updated enabled.
+    # The default is to auto-update because it is safer.
+    ctx.add_option(
+        # -m for Manual update
+        '-m', '--no-ssh-auto-update',
+        default=False, action='store_true',
+    help='disable auto-update of ops requiring SSH')
+    # Allow overriding the SSH username.
+    ctx.add_option('-u', '--ssh-user', help='SSH username')
 
 def configure(ctx):
-    pass
+    ctx.find_program('make-ssh-fingerprints-table',
+                     var='MAKE_SSH_FINGERPRINTS_TABLE',
+                     path_list=[os.path.abspath('scripts')])
+    # Yay for double negatives!
+    ctx.env.SSH_AUTO_UPDATE = not ctx.options.no_ssh_auto_update
+    ctx.msg('Auto-update of SSH operations',
+            'enabled' if ctx.env.SSH_AUTO_UPDATE else 'disabled',
+            'GREEN' if ctx.env.SSH_AUTO_UPDATE else 'YELLOW')
+    if ctx.options.ssh_user:
+        ctx.msg('Setting EOS SSH user', ctx.options.ssh_user)
+        # Set as an environment variable so we can depend on it in vars=[...].
+        ctx.env.SSH_USER = ctx.options.ssh_user
 
 def build(ctx):
+    fingerprints_table_path = (
+        'manual/remote-access/common/fingerprints/table.rst')
+    # The generated tables may or may not already exist. Since we are creating
+    # a file in the source directory, it gets a little more complicated. Please
+    # see here for the "solution":
+    # <https://code.google.com/p/waf/issues/detail?id=1168>
+    # That issue deals with exactly our problem here.
+    fingerprints_table_node = (
+        ctx.srcnode.find_node(fingerprints_table_path) or
+        ctx.srcnode.make_node(fingerprints_table_path))
+
+    ssh_task_gen_extra_kwargs = {}
+    if ctx.env.SSH_AUTO_UPDATE:
+        ssh_task_gen_extra_kwargs['always'] = True
+
+    @ctx.rule(
+        name='make-ssh-fingerprints-table',
+        target=fingerprints_table_node,
+        # Make the script itself an input, so that when it changes updates
+        # ensue regardless of the value of auto-update.
+        source=ctx.root.find_node(ctx.env.MAKE_SSH_FINGERPRINTS_TABLE),
+        update_outputs=True,
+        vars=['MAKE_SSH_FINGERPRINTS_TABLE', 'SSH_USER'],
+        **ssh_task_gen_extra_kwargs)
+    def make_ssh_fingerprints_table(tsk):
+        args = [ctx.env.MAKE_SSH_FINGERPRINTS_TABLE]
+        if ctx.env.SSH_USER:
+            args += ['--user', ctx.env.SSH_USER]
+        args.append(tsk.outputs[0].abspath())
+        # Don't capture the standard streams is case we get prompts.
+        tsk.exec_command(args, stdout=sys.stdout, stderr=sys.stderr)
+
     ctx(features='sphinx',
         builders='html latexpdf epub man info',
         source='conf.py',
@@ -16,4 +72,6 @@ def build(ctx):
         warningiserror=True,
         # Warn about all missing references.
         nitpicky=True,
+        # Make sure that fingerprints are built before running.
+        after='make-ssh-fingerprints-table',
     )

@@ -7,6 +7,7 @@
 
 import os
 from os.path import join
+import textwrap
 
 import waflib
 
@@ -16,7 +17,9 @@ VERSION = '0.1'
 top = '.'
 out = 'build'
 
-SUBDIRS = ['manual', 'poster']
+# Process the poster first, as it takes more time to generate but has less
+# dependencies.
+SUBDIRS = ['poster', 'manual']
 
 def options(ctx):
     ctx.recurse(SUBDIRS)
