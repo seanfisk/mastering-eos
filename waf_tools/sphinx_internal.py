@@ -1,18 +1,24 @@
 # -*- mode: python; coding: utf-8; -*-
 
-# Based on
-# - https://github.com/hmgaudecker/econ-project-templates/blob/python/.mywaflib/waflib/extras/sphinx_build.py
-# - http://docs.waf.googlecode.com/git/book_17/single.html#_a_compiler_producing_source_files_with_names_unknown_in_advance
-#
-# Hans-Martin von Gaudecker, 2012
-# Sean Fisk, 2014
 
-"""Waf tool for building documentation with Sphinx."""
+"""Waf tool for building documentation with Sphinx.
+
+This version works really well with with Waf at the cost of staggering
+complexity.
+
+Based on
+- https://github.com/hmgaudecker/econ-project-templates/blob/python/.mywaflib/waflib/extras/sphinx_build.py
+- http://docs.waf.googlecode.com/git/book_17/single.html#_a_compiler_producing_source_files_with_names_unknown_in_advance
+
+Hans-Martin von Gaudecker, 2012
+Sean Fisk, 2014
+"""
 
 import os
 import sys
 import uuid
 import re
+import shutil
 
 import waflib
 from waflib.Configure import conf
@@ -22,6 +28,52 @@ from sphinx.application import Sphinx
 MAKEINFO_VERSION_RE = re.compile(r'makeinfo \(GNU texinfo\) (\d+)\.(\d+)')
 # http://svn.savannah.gnu.org/viewvc/*checkout*/trunk/NEWS?root=texinfo
 MAKEINFO_MIN_VERSION = (4, 13)
+
+class InfoBuilder(object):
+    tool_name = 'MAKEINFO'
+    in_suffix = '.texi'
+    out_suffix = '.info'
+    sphinx_builder = 'texinfo'
+
+    def create_task(self, task_gen, src, tgt):
+        return [task_gen.create_task('SphinxMakeinfo', src=src, tgt=tgt)]
+
+class PdflatexBuilder(object):
+    tool_name = 'PDFLATEX'
+    in_suffix = '.tex'
+    out_suffix = '.pdf'
+    sphinx_builder = 'latex'
+
+    def create_task(self, task_gen, src, tgt):
+        tasks = []
+        orig_tex_node = src[0]
+        dep_nodes = src[1:]
+        # We don't want to pollute the LaTeX sources directory (which is in the
+        # build directory) with all the extra files LaTeX generates because
+        # that will interfere with our Sphinx output detection. The Waf tex
+        # tool sets the cwd to the parent of the first input, but that only
+        # makes sense if the sources are not in the build directory. Hack
+        # around it by copying the .tex file to the desired output directory
+        # and setting TEXINPUTS. THIS IS UGLY.
+        copied_tex_node = tgt.change_ext('.tex')
+        copy_task = task_gen.create_task(
+            'CopyFile', src=orig_tex_node, tgt=copied_tex_node)
+        tasks.append(copy_task)
+        # The following code is based on apply_tex() from Waf tex tool.
+        latex_task = task_gen.create_task('pdflatex', src=copied_tex_node)
+        latex_task.env.TEXINPUTS = orig_tex_node.parent.abspath()
+        # Set the build order to prevent node signature issues.
+        latex_task.set_run_after(copy_task)
+        # Add manual dependencies.
+        task_gen.bld.node_deps[latex_task.uid()] = dep_nodes
+        tasks.append(latex_task)
+        return tasks
+
+FOLLOWUP_BUILDERS = {
+    'info': InfoBuilder(),
+    'latexpdf': PdflatexBuilder(),
+}
+"""Mapping of Sphinx composite builders."""
 
 def _version_tuple_to_string(version_tuple):
     return '.'.join(str(x) for x in version_tuple)
@@ -49,6 +101,15 @@ def configure(ctx):
     ctx.find_program('sphinx-build', var='SPHINX_BUILD')
     if ctx.find_program('makeinfo', mandatory=False):
         ctx.warn_about_old_makeinfo()
+    ctx.load('tex')
+
+class CopyFile(waflib.Task.Task):
+    """Copy a file. Used for building the LaTeX PDF in a different
+    directory.
+    """
+
+    def run(self):
+        shutil.copy(self.inputs[0].abspath(), self.outputs[0].abspath())
 
 class SphinxBuild(waflib.Task.Task):
     """Handle run of sphinx-build."""
@@ -184,16 +245,15 @@ class SphinxBuild(waflib.Task.Task):
         #
         # Don't include generated Makefiles -- we're not using those.
         # No .doctrees directory either.
-        excludes = ['Makefile', '.doctrees']
-        if self.sphinx_builder == 'texinfo':
-            excludes.append('*.info')
-
+        #
         # quiet=True disables a warning printed in verbose mode.
+        #
         # Return sorted to get a consistent ordering.
         self.outputs = _sorted_nodes(
-            self.out_dir_node.ant_glob('**', quiet=True, excl=excludes))
+            self.out_dir_node.ant_glob(
+                '**', quiet=True, excl=['Makefile', '.doctrees']))
 
-        self._maybe_add_info_task()
+        self._maybe_add_followup_task()
 
         # Set up the raw_deps list for later use in runnable_status(). This
         # will allow us to determine whether to rebuild.
@@ -219,36 +279,43 @@ class SphinxBuild(waflib.Task.Task):
                 if not os.path.exists(node.abspath()):
                     return waflib.Task.RUN_ME
 
-            # When this task can be skipped, force creation of the info task.
-            # That does not necessarily mean the info task will run.
+            # When this task can be skipped, force creation of follow-up tasks.
+            # That does not necessarily mean the follow-up tasks will run.
             self.outputs = out_nodes
-            self._maybe_add_info_task()
+            self._maybe_add_followup_task()
 
         return ret
 
-    def _maybe_add_info_task(self):
-        if self.requested_builder != 'info':
+    def _maybe_add_followup_task(self):
+        try:
+            followup_builder = FOLLOWUP_BUILDERS[self.requested_builder]
+        except KeyError:
             return
 
-        texi_node = None
+        main_in_node = None
         for in_node in self.outputs:
-            if in_node.suffix() == '.texi':
-                texi_node = in_node
+            if in_node.suffix() == followup_builder.in_suffix:
+                main_in_node = in_node
                 break
-        if texi_node is None:
+        if main_in_node is None:
             raise waflib.Errors.WafError(
-                'Could not find the texi file for Sphinx info builder!')
-        # Put the .texi node first to allow us to determine the input to
-        # makeinfo.
-        self.outputs.remove(texi_node)
-        self.outputs = [texi_node] + self.outputs
+                'Could not find the {0} file for Sphinx {1} builder!'.format(
+                    followup_builder.in_suffix, self.requested_builder))
+        # Put the main node first to allow us to easily determine the input.
+        self.outputs.remove(main_in_node)
+        self.outputs = [main_in_node] + self.outputs
 
-        # Create the task.
-        task = self.generator.create_task(
-            'SphinxMakeinfo',
-            src=self.outputs,
-            tgt=texi_node.change_ext('.info'))
-        self.more_tasks = [task]
+        out_dir_node = self.out_dir_node.parent.find_or_declare(
+            self.requested_builder)
+        out_dir_node.mkdir()
+
+        out_node = out_dir_node.find_or_declare(
+            os.path.splitext(main_in_node.name)[0] +
+            followup_builder.out_suffix)
+
+        # Create the tasks and add to more_tasks.
+        self.more_tasks = followup_builder.create_task(
+            self.generator, src=self.outputs, tgt=out_node)
 
 class SphinxMakeinfo(waflib.Task.Task):
     """Handle run of makeinfo for Sphinx's texinfo output."""
@@ -291,12 +358,20 @@ def apply_sphinx(task_gen):
         raise waflib.Errors.WafError(
             "Sphinx 'builder' keyword cannot contain duplicates.")
 
-    # Make sure that 'makeinfo' is available if the 'info' builder was
-    # requested.
-    if 'info' in requested_builders and not task_gen.env.MAKEINFO:
-        raise waflib.Errors.WafError(
-            "Sphinx 'info' builder requested "
-            "but 'makeinfo' program not found!")
+    # Make sure that the requisite tools are available if builders with
+    # follow-ups were requested.
+    for requested_builder in requested_builders:
+        try:
+            followup_builder = FOLLOWUP_BUILDERS[requested_builder]
+        except KeyError:
+            continue
+
+        tool = followup_builder.tool_name
+        if not task_gen.env[tool.upper()]:
+            raise waflib.Errors.WafError((
+                "Sphinx '{0}' builder requested "
+                "but '{1}' program not found!").format(
+                    requested_builder, tool))
 
     source = getattr(task_gen, 'source', [])
     target = getattr(task_gen, 'target', [])
@@ -334,10 +409,12 @@ def apply_sphinx(task_gen):
             outs[0], task_gen.path.find_or_declare)
 
     for requested_builder in requested_builders:
-        # There is no builder called 'info', but if requested, we'll build the
-        # info manual just like the Sphinx Makefile.
-        sphinx_builder = (
-            requested_builder if requested_builder != 'info' else 'texinfo')
+        # Get the real Sphinx builders for different follow-up builders given.
+        try:
+            sphinx_builder = (
+                FOLLOWUP_BUILDERS[requested_builder].sphinx_builder)
+        except KeyError:
+            sphinx_builder = requested_builder
 
         out_dir_node = out_dir_parent_node.find_or_declare(sphinx_builder)
 

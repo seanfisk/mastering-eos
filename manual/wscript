@@ -10,7 +10,7 @@ def configure(ctx):
 
 def build(ctx):
     ctx(features='sphinx',
-        builders='html man info',
+        builders='html man info latexpdf',
         source='conf.py',
         # Turn warnings into errors. Helps them get fixed more quickly :)
         warningiserror=True,

@@ -35,7 +35,9 @@ def configure(ctx):
             os.environ['MAKEINFO'] = possible_makeinfo_path
 
     # If there are problems with sphinx_internal not triggering builds
-    # correctly, switch to sphinx_external which always rebuilds.
+    # correctly, switch to sphinx_external which always rebuilds. IMPORTANT:
+    # This will change the output file paths, so that will have to be changed
+    # too...
     ctx.load('sphinx_internal', tooldir='waf_tools')
 
     ctx.recurse(SUBDIRS)

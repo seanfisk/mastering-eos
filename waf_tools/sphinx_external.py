@@ -1,20 +1,26 @@
 """Waf tool for building documentation with Sphinx.
 
-Using Sphinx from Waf is a little tricky. That's because Sphinx is not really a
-compiler -- it just produces a bunch of output files from a bunch of input
-files. This implementation leaves the dependency tracking to Sphinx (and the
-generated Makefile, for texinfo) and always runs their builds. It's not the
-most clever approach, but it *is* the most reliable.
+This version leaves the dependency tracking to Sphinx (and the generated
+Makefile s). It always runs the builds, which is somewhat less efficient.
+However, it has the virtue of being far simpler than the "internal"
+implementation.
 
-There are some ambitious approaches [#econ-project-templates]_ which use Sphinx
-internals to attempt to track Sphinx dependencies and bring them into Waf.
-
-.. [#econ-project-templates]: https://github.com/hmgaudecker/econ-project-templates/blob/python/.mywaflib/waflib/extras/sphinx_build.py
-
+sphinx-build touches the output files and causes their modification time to
+change regardless of the need to write them. But Make uses modification times
+(not file hashes) to check for modifications. Therefore, using Make for the
+purpose of follow-up builds is pointless anyway because it will force a build.
+I'm not sure if this is a bug, an oversight, or both. I could be wrong too, who
+knows.
 """
 
 import waflib
 from waflib.Configure import conf
+
+FOLLOWUP_BUILDERS = {
+    'info': 'texinfo',
+    'latexpdf': 'latex',
+}
+"""Mapping of builder to real Sphinx builder."""
 
 def _node_or_bust(node_or_path, node_func):
     return (node_or_path
@@ -26,10 +32,11 @@ def configure(ctx):
     # launch multiple simulatenous mains in different threads. Just to be safe,
     # use the executable to spawn new processes.
     ctx.find_program('sphinx-build', var='SPHINX_BUILD')
-    # For info docs.
+    # For follow-up builders.
     ctx.find_program('make', mandatory=False)
-    # Don't try to find makeinfo because the Makefile won't use the one select
-    # here anyway. It will use the 'makeinfo' on the path.
+    # Don't try to find makeinfo or pdflatex here because the Makefile won't
+    # respect those selected here anyway. It will use the executables on the
+    # PATH.
 
 class SphinxBuild(waflib.Task.Task):
     """Handle run of sphinx-build."""
@@ -55,16 +62,13 @@ class SphinxBuild(waflib.Task.Task):
         ]
         return self.exec_command(args)
 
-class SphinxMakeInfo(waflib.Task.Task):
+class SphinxRunMake(waflib.Task.Task):
     # Leave dependency processing to Sphinx's generated Makefile. Always build.
     always = True
-    # Run this after SphinxBuild only.
-    after = 'SphinxBuild'
 
     def run(self):
         return self.exec_command(
-            [self.env.MAKE, 'info'],
-            cwd=self.outputs[0].abspath())
+            [self.env.MAKE], cwd=self.outputs[0].abspath())
 
 @waflib.TaskGen.feature('sphinx')
 @waflib.TaskGen.before_method('process_source')
@@ -82,15 +86,20 @@ def apply_sphinx(task_gen):
             'Sphinx task generator missing necessary keyword: builders')
 
     # Check for dupes.
-    if len(requested_builders) != len(set(requested_builders)):
+    requested_builders_set = set(requested_builders)
+    if len(requested_builders) != len(requested_builders_set):
         raise waflib.Errors.WafError(
             "Sphinx 'builder' keyword cannot contain duplicates.")
 
-    # Make sure that 'make' is available if the 'info' builder was requested.
-    if 'info' in requested_builders and not task_gen.env.MAKE:
-        raise waflib.Errors.WafError(
-            "Sphinx 'info' builder requested "
-            "but 'make' program not found!")
+    # Make sure that 'make' is available if one of the follow-up builders was
+    # requested.
+    intersect = requested_builders_set.intersection(FOLLOWUP_BUILDERS.keys())
+    if intersect and not task_gen.env.MAKE:
+        raise waflib.Errors.WafError((
+            "Sphinx builder{0} {1} requested "
+            "but 'make' program not found!").format(
+                's' if len(intersect) > 1 else '',
+                ' and '.join("'{0}'".format(b) for b in intersect)))
 
     source = getattr(task_gen, 'source', [])
     target = getattr(task_gen, 'target', [])
@@ -128,10 +137,11 @@ def apply_sphinx(task_gen):
             outs[0], task_gen.path.find_or_declare)
 
     for requested_builder in requested_builders:
-        # There is no builder called 'info', but if requested, we'll build the
-        # info manual just like the Sphinx Makefile.
-        sphinx_builder = (
-            requested_builder if requested_builder != 'info' else 'texinfo')
+        # Get the real Sphinx builders for different follow-up builders given.
+        try:
+            sphinx_builder = FOLLOWUP_BUILDERS[requested_builder]
+        except KeyError:
+            sphinx_builder = requested_builder
 
         out_dir_node = out_dir_parent_node.find_or_declare(sphinx_builder)
 
@@ -151,15 +161,17 @@ def apply_sphinx(task_gen):
         task.warning_is_error = warning_is_error
         task.nitpicky = nitpicky
 
-        # The info builder requires some special considerations because it has
-        # an extra step -- we have to run a Makefile in the texinfo directory.
-        # Ugh :(
-        if requested_builder == 'info':
+        # The follow-up builders have an extra step -- we have to run a
+        # Makefile in their output directories. Ugh :(
+        if requested_builder in FOLLOWUP_BUILDERS:
             # Setting the target to the output directory unfortunately produces
             # a warning when the runner zone output is turned. We have to
             # declare an output else the task won't build, but we don't know
             # what the outputs are going to be!
-            task = task_gen.create_task('SphinxMakeInfo', tgt=out_dir_node)
+            make_task = task_gen.create_task(
+                'SphinxRunMake', tgt=out_dir_node)
+            # Set the build order.
+            make_task.set_run_after(task)
 
     # Prevent execution of process_source. We don't need it because we are
     # letting Sphinx decide on the sources.
