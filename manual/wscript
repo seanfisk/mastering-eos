@@ -56,7 +56,7 @@ def build(ctx):
 
     # This task takes a while, so start it first.
     @ctx.rule(
-        name='make-ssh-fingerprints-table',
+        name='make_ssh_fingerprints_table',
         target=fingerprints_table_node,
         # Make the script itself an input, so that when it changes updates
         # ensue regardless of the value of auto-update.
@@ -87,7 +87,7 @@ def build(ctx):
             stderr=sys.stderr)
 
     @ctx.rule(
-        name='make-vnc-table',
+        name='make_vnc_table',
         target=vnc_table_node,
         # Make the script itself an input, so that when it changes updates
         # ensue regardless of the value of auto-update.
@@ -110,5 +110,5 @@ def build(ctx):
         nitpicky=True,
         # Make sure that vnc and fingerprints tables are built before running.
         # The 'after' keyword means 'run this task after the listed tasks'.
-        after=['make-vnc-table', 'make-ssh-fingerprints-table'],
+        after=['make_vnc_table', 'make_ssh_fingerprints_table'],
     )

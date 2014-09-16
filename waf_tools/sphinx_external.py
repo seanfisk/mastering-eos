@@ -38,7 +38,7 @@ def configure(ctx):
     # respect those selected here anyway. It will use the executables on the
     # PATH.
 
-class SphinxBuild(waflib.Task.Task):
+class sphinx_build_task(waflib.Task.Task):
     """Handle run of sphinx-build."""
     # Leave dependency processing to Sphinx itself. Always build.
     always = True
@@ -62,7 +62,20 @@ class SphinxBuild(waflib.Task.Task):
         ]
         return self.exec_command(args)
 
-class SphinxRunMake(waflib.Task.Task):
+    def __str__(self):
+        """Make the output look a little nicer. Reimplemented from
+        :meth:`waflib.Task.Task.__str__`.
+        """
+        inputs_str = ' '.join([n.nice_path() for n in self.inputs])
+        outputs_str = ' '.join([n.nice_path() for n in self.outputs])
+        sep = ' -> ' if self.outputs else ''
+        return 'sphinx_build_{builder}: {inputs}{sep}{outputs}\n'.format(
+            builder=self.sphinx_builder,
+            inputs=inputs_str,
+            sep=sep,
+            outputs=outputs_str)
+
+class sphinx_run_make_task(waflib.Task.Task):
     # Leave dependency processing to Sphinx's generated Makefile. Always build.
     always = True
 
@@ -156,7 +169,7 @@ def apply_sphinx(task_gen):
             else out_dir_parent_node.find_or_declare('.epub-doctrees'))
 
         task = task_gen.create_task(
-            'SphinxBuild', src=conf_node, tgt=out_dir_node)
+            'sphinx_build', src=conf_node, tgt=out_dir_node)
         # Assign attributes necessary for task methods.
         task.requested_builder = requested_builder
         task.sphinx_builder = sphinx_builder
@@ -178,7 +191,7 @@ def apply_sphinx(task_gen):
             # declare an output else the task won't build, but we don't know
             # what the outputs are going to be!
             make_task = task_gen.create_task(
-                'SphinxRunMake', tgt=out_dir_node)
+                'sphinx_run_make', tgt=out_dir_node)
             # Set the build order.
             make_task.set_run_after(task)
 

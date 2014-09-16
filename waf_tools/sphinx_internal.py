@@ -36,7 +36,7 @@ class InfoBuilder(object):
     sphinx_builder = 'texinfo'
 
     def create_task(self, task_gen, src, tgt):
-        return [task_gen.create_task('SphinxMakeinfo', src=src, tgt=tgt)]
+        return [task_gen.create_task('sphinx_makeinfo', src=src, tgt=tgt)]
 
 class PdflatexBuilder(object):
     tool_name = 'PDFLATEX'
@@ -57,7 +57,7 @@ class PdflatexBuilder(object):
         # and setting TEXINPUTS. THIS IS UGLY.
         copied_tex_node = tgt.change_ext('.tex')
         copy_task = task_gen.create_task(
-            'CopyFile', src=orig_tex_node, tgt=copied_tex_node)
+            'copy_file', src=orig_tex_node, tgt=copied_tex_node)
         tasks.append(copy_task)
         # The following code is based on apply_tex() from Waf tex tool.
         latex_task = task_gen.create_task('pdflatex', src=copied_tex_node)
@@ -103,7 +103,11 @@ def configure(ctx):
         ctx.warn_about_old_makeinfo()
     ctx.load('tex')
 
-class CopyFile(waflib.Task.Task):
+# PEP8 dictates CamelCase class names, but the prevailing style with Waf seems
+# to be lowercase. Also, waflib.Task.Task.__str__ strips off a trailing '_task'
+# from the name.
+
+class copy_file_task(waflib.Task.Task):
     """Copy a file. Used for building the LaTeX PDF in a different
     directory.
     """
@@ -111,7 +115,7 @@ class CopyFile(waflib.Task.Task):
     def run(self):
         shutil.copy(self.inputs[0].abspath(), self.outputs[0].abspath())
 
-class SphinxBuild(waflib.Task.Task):
+class sphinx_build_task(waflib.Task.Task):
     """Handle run of sphinx-build."""
 
     vars = ['SPHINX_BUILD']
@@ -263,7 +267,7 @@ class SphinxBuild(waflib.Task.Task):
         return ret
 
     def runnable_status(self):
-        ret = super(SphinxBuild, self).runnable_status()
+        ret = super(sphinx_build_task, self).runnable_status()
         # Don't bother checking anything more if Waf already says this task
         # needs to be run.
         if ret == waflib.Task.SKIP_ME:
@@ -317,7 +321,16 @@ class SphinxBuild(waflib.Task.Task):
         self.more_tasks = followup_builder.create_task(
             self.generator, src=self.outputs, tgt=out_node)
 
-class SphinxMakeinfo(waflib.Task.Task):
+    def __str__(self):
+        """Make the output look a little nicer. Reimplemented from
+        :meth:`waflib.Task.Task.__str__`.
+        """
+        # These tasks will never have any declared targets, so don't bother.
+        return 'sphinx_build_{0}: {1}\n'.format(
+            self.sphinx_builder,
+            ' '.join(n.nice_path() for n in self.inputs))
+
+class sphinx_makeinfo_task(waflib.Task.Task):
     """Handle run of makeinfo for Sphinx's texinfo output."""
 
     vars = ['MAKEINFO']
@@ -436,7 +449,7 @@ def apply_sphinx(task_gen):
         # files*. Unfortunately, Sphinx doesn't provide an easy way to get all
         # dependencies without re-reading all of the documents, which is
         # exactly what we're trying not do to.
-        task = task_gen.create_task('SphinxBuild', src=conf_node)
+        task = task_gen.create_task('sphinx_build', src=conf_node)
         # Assign attributes necessary for task methods.
         task.requested_builder = requested_builder
         task.sphinx_builder = sphinx_builder
