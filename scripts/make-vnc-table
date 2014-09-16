@@ -33,7 +33,9 @@ class Service(peg.Namespace):
 class ConfigFile(peg.List):
     grammar = peg.some(Service)
 
-SERVER_ARGS_RE = re.compile(r'-geometry\s+(\d+x\d+)')
+# The front part is just so that things like 'not-really-geometry' don't match.
+# The end part is so that things like '1440x900abcd' don't match.
+SERVER_ARGS_RE = re.compile(r'(?:^|\s)-geometry\s+(\d+x\d+)(?:$|\s)')
 """Regex used to parse server_args."""
 
 def main(argv):
@@ -65,7 +67,7 @@ def main(argv):
             server_args = service['server_args']
         except KeyError:
             raise ValueError(
-                "Service '{0}' does not have 'server_args' property!".format(
+                "Service '{0}' does not have a 'server_args' property!".format(
                     service.name))
 
         match = SERVER_ARGS_RE.search(server_args)
