@@ -23,3 +23,6 @@ ghp-import==0.4.1
 # Table parsing/generation
 texttable==0.8.1
 pyPEG2==2.15.0
+
+# Generating motd
+colorama==0.3.1
