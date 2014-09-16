@@ -13,11 +13,17 @@ from fabric.api import env, execute, run
 from fabric.network import disconnect_all
 from texttable import Texttable
 
-HOSTS = [
+# Setup environment.
+env.hosts = [
     'eos{0:02}.cis.gvsu.edu'.format(num) for num in xrange(1, 24)
 ] + [
     'arch{0:02}.cis.gvsu.edu'.format(num) for num in xrange(1, 11)
 ]
+# skip_bad_hosts and parallel are, unfortunately, mutually exclusive. Don't
+# see why they have to be, but that's the way it is.
+env.skip_bad_hosts = True
+# Use the SSH config file to determine username, etc.
+env.use_ssh_config = True
 
 def get_fingerprint():
     """Retrieve the SSH fingerprint for a specific machine."""
@@ -43,18 +49,9 @@ def main(argv):
     args = arg_parser.parse_args(argv[1:])
     output_file = args.output_file
 
-    # These settings can only be set through the environment, otherwise we'd be
-    # passing it in through execute(...).
-
-    # skip_bad_hosts and parallel are, unfortunately, mutually exclusive. Don't
-    # see why they have to be, but that's the way it is.
-    env.skip_bad_hosts = True
-    # Use the SSH config file to determine username, etc.
-    env.use_ssh_config = True
-
     # Generate table.
     try:
-        results_dict = execute(get_fingerprint, hosts=HOSTS)
+        results_dict = execute(get_fingerprint)
     finally:
         disconnect_all()
 
