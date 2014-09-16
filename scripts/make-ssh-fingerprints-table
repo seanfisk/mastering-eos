@@ -65,7 +65,13 @@ def main(argv):
 
         fingerprint_text = (
             # Indicate that the host is down in the table.
-            'down for maintenance' if isinstance(command_output, Exception)
+            'down for maintenance' if (
+                # Fabric returns the exception if the task failed.
+                isinstance(command_output, Exception) or
+                # When NFS homes were not mounted, the task has returned just
+                # the string 'not'. Not really sure where it comes from, but
+                # it's obviously not right, so handle it.
+                command_output == 'not')
             # Use a fixed-width font for the fingerprint itself.
             else '``{0}``'.format(command_output))
         table.add_row((short_hostname, fingerprint_text))
