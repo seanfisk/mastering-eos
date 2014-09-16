@@ -6,12 +6,18 @@ machines.
 
 import sys
 import os
+import re
 import argparse
 
 import six
 from fabric.api import env, execute, run
 from fabric.network import disconnect_all
 from texttable import Texttable
+
+SSH_KEYGEN_RE = re.compile(
+    r'\d+\s+(?P<fingerprint>(?:(?:[0-9a-f]{2}):){15}[0-9a-f]{2})',
+    # Don't care about case for hex digits.
+    flags=re.IGNORECASE)
 
 # Setup environment.
 env.hosts = [
@@ -30,12 +36,13 @@ def get_fingerprint():
     output = run(
         'ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub', shell=False)
     # The second element is the fingerprint.
-    try:
-        fingerprint = output.split()[1]
-    except IndexError:
-        raise ValueError('Unexpected format for remote output of ssh-keygen.')
-    else:
-        return fingerprint
+    match = SSH_KEYGEN_RE.match(output)
+    if not match:
+        # Return (not raise) so that execution can continue when skip_bad_hosts
+        # is set. Our choice is between doing that and raising a NetworkError,
+        # which is recognized internally by Fabric.
+        return ValueError('Unexpected format for remote output of ssh-keygen.')
+    return match.group('fingerprint')
 
 def main(argv):
     # Parse args.
@@ -65,13 +72,9 @@ def main(argv):
 
         fingerprint_text = (
             # Indicate that the host is down in the table.
-            'down for maintenance' if (
-                # Fabric returns the exception if the task failed.
-                isinstance(command_output, Exception) or
-                # When NFS homes were not mounted, the task has returned just
-                # the string 'not'. Not really sure where it comes from, but
-                # it's obviously not right, so handle it.
-                command_output == 'not')
+            'down for maintenance' if
+            # Fabric returns the exception if the task failed.
+            isinstance(command_output, Exception)
             # Use a fixed-width font for the fingerprint itself.
             else '``{0}``'.format(command_output))
         table.add_row((short_hostname, fingerprint_text))
