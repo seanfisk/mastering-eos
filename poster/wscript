@@ -10,19 +10,10 @@ def options(ctx):
     ctx.load('tex')
 
 def configure(ctx):
-    ctx.find_program('lualatex')
+    # Pygments is a minted requirement.
     ctx.find_program('pygmentize')
-    # Don't call 'configure' from the tex tool because we don't need to find
-    # any of these tools, just lualatex.
-    ctx.load('tex', funs=[])
-    # Override TeX program to use LuaLaTeX. Keep in mind that this overrides
-    # PDFLATEX for everything using it, that is, the poster and the manual.
-    # That's OK, though.
-    ctx.env.PDFLATEX = ctx.env.LUALATEX
-
     ctx.env.append_unique('PDFLATEXFLAGS', [
-        # Enable SyncTeX. This is personal, but I use it, and I would recommend
-        # it to everybody.
+        # Enable SyncTeX.
         '-synctex=1',
         # Shell escape; needed by minted.
         '-shell-escape',
