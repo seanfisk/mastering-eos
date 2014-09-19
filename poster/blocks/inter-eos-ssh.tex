@@ -6,7 +6,7 @@
 # Generate SSH key
 ssh-keygen # Press Enter at each prompt
 # Add new SSH key to authorized_keys
-< ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 _trust_host() {
 	ssh -o StrictHostKeyChecking=no -o ConnectTimeout=2 "$1" exit
 }
