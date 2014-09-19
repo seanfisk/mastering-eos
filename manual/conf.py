@@ -21,7 +21,7 @@ from __future__ import unicode_literals
 # ones.
 extensions = [
     'sphinx.ext.todo',
-    'rst2pdf.pdfbuilder',
+    # 'rst2pdf.pdfbuilder',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
