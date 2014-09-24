@@ -78,6 +78,11 @@ FOLLOWUP_BUILDERS = {
 def _version_tuple_to_string(version_tuple):
     return '.'.join(str(x) for x in version_tuple)
 
+def _node_or_bust(node_or_path, node_func):
+    return (node_or_path
+            if isinstance(node_or_path, waflib.Node.Node)
+            else node_func(node_or_path))
+
 def _sorted_nodes(nodes):
     """Sort nodes on their names."""
     return sorted(nodes, key=lambda node: node.name)
