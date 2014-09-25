@@ -115,7 +115,7 @@ class copy_file_task(waflib.Task.Task):
     """
 
     def run(self):
-        shutil.copy(self.inputs[0].abspath(), self.outputs[0].abspath())
+        shutil.copyfile(self.inputs[0].abspath(), self.outputs[0].abspath())
 
 class sphinx_build_task(waflib.Task.Task):
     """Handle run of sphinx-build."""
