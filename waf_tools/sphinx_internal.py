@@ -257,7 +257,8 @@ class sphinx_build_task(waflib.Task.Task):
         # Return sorted to get a consistent ordering.
         self.outputs = _sorted_nodes(
             self.out_dir_node.ant_glob(
-                '**', quiet=True, excl=['Makefile', '.doctrees']))
+                '**', quiet=True, excl=['Makefile', '.doctrees', '.buildinfo'])
+        )
 
         self._maybe_add_followup_task()
 

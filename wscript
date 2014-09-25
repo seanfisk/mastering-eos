@@ -65,3 +65,27 @@ def configure(ctx):
 
 def build(ctx):
     ctx.recurse(SUBDIRS)
+
+# Archive context and command
+
+class ArchiveContext(waflib.Build.BuildContext):
+    cmd = 'archive'
+    fun = 'archive'
+
+def archive(ctx):
+    ctx.load('archive', tooldir='waf_tools')
+
+    archive_basename = 'mastering-eos-html'
+    html_build_dir = ctx.path.find_or_declare(['manual', 'html'])
+    sources = [
+        (node, join(archive_basename, node.path_from(html_build_dir)))
+        for node in html_build_dir.ant_glob(
+                '**',
+                excl=['Makefile', '.doctrees', '.buildinfo'],
+                quiet=True, # don't warn in verbose mode
+        )
+    ]
+    ctx(features='archive',
+        formats='gztar zip',
+        source=sources,
+        target=archive_basename)
