@@ -57,7 +57,10 @@ class PdflatexBuilder(object):
             'copy_file', src=orig_tex_node, tgt=copied_tex_node)
         tasks.append(copy_task)
         # The following code is based on apply_tex() from Waf tex tool.
-        latex_task = task_gen.create_task('pdflatex', src=copied_tex_node)
+        latex_task = task_gen.create_task(
+            'pdflatex',
+            src=copied_tex_node,
+            tgt=tgt)
         latex_task.env.TEXINPUTS = orig_tex_node.parent.abspath()
         # Set the build order to prevent node signature issues.
         latex_task.set_run_after(copy_task)
