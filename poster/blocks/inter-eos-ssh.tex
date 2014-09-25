@@ -2,21 +2,21 @@
   Secure Shell is a protocol that is used to remotely control machines. Under normal circumstances, you must type a password to log in. However, by setting up trust, no password is necessary to SSH between EOS machines.
   \begin{indented}
     {\scriptsize
-\begin{bashcode}
-# Generate SSH key
-ssh-keygen # Press Enter at each prompt
-# Add new SSH key to authorized_keys
-cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-_trust_host() {
-	ssh -o StrictHostKeyChecking=no -o ConnectTimeout=2 "$1" exit
-}
-# Trust all EOS machines
-for i in {1..24}; do _trust_host "eos$(printf '%02d' $i)"; done
-# Trust all Arch machines
-for i in {1..10}; do _trust_host "arch$(printf '%02d' $i)"; done
-ssh eos15 # Automatic login
-\end{bashcode}
-}
-\end{indented}
-For more security, use a passphrase and \clicode{ssh-agent}.
+      \begin{bashcode*}{gobble=8}
+        # Generate SSH key
+        ssh-keygen # Press Enter at each prompt
+        # Add new SSH key to authorized_keys
+        cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+        _trust_host() {
+            ssh -o StrictHostKeyChecking=no -o ConnectTimeout=2 "$1" exit
+        }
+        # Trust all EOS machines
+        for i in {1..24}; do _trust_host "eos$(printf '%02d' $i)"; done
+        # Trust all Arch machines
+        for i in {1..10}; do _trust_host "arch$(printf '%02d' $i)"; done
+        ssh eos15 # Automatic login
+      \end{bashcode*}
+    }
+  \end{indented}
+  For more security, use a passphrase and \clicode{ssh-agent}.
 \end{block}

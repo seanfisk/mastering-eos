@@ -1,15 +1,15 @@
 \begin{block}{Manipulating the \clicode{PATH}}
   When you execute a command, the shell searches for the executable using the \clicode{PATH} environment variable. \clicode{PATH} should be set to a colon-delimited list of directories containing executables. To view your \clicode{PATH}, type:
   \begin{indented}
-    \begin{bashcode}
+    \begin{bashcode*}{gobble=6}
       echo $PATH
-    \end{bashcode}
+    \end{bashcode*}
   \end{indented}
   For instance, to add a local scripts directory (conventionally \url{\~/bin}) to your \clicode{PATH}, run:
   \begin{indented}
-    \begin{bashcode}
+    \begin{bashcode*}{gobble=6}
       export PATH=~/bin:$PATH
-    \end{bashcode}
+    \end{bashcode*}
   \end{indented}
   Note that this causes the shell to find your scripts before system executables of the same name; however, this effect is usually desired. To make this setting persist, consider adding it to your \nolinkurl{~/.bash_profile}.
 \end{block}

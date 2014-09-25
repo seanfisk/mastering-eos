@@ -2,21 +2,21 @@
   Installs version 1.17.0 of aria2, a download utility similar to Wget but with more features. This install is typical of many programs using the GNU build system. The option of note is the \clicode{--prefix} option to \clicode{./configure}. You may install to any directory you like, but \url{\~/.local} is a common convention. \\
   \begin{indented}
     {\scriptsize
-\begin{bashcode}
-mkdir -p ~/.local/src                     # Create directory for source code
-cd ~/.local/src
-wget 'http://downloads.sourceforge.net/'\
-		 'project/aria2/stable/'\
-		 'aria2-1.17.0/aria2-1.17.0.tar.gz'   # Download aria2 source code
-tar -xf aria2-1.17.0.tar.gz               # Unarchive source code
-cd aria2-1.17.0
-./configure --prefix ~/.local             # Set up build configuration
-make                                      # Build the program
-make install                              # Install program to ~/.local/bin
-export PATH=~/.local/bin:$PATH            # Consider adding to ~/.bash_profile
-aria2c 'http://www.irs.gov/'\
-			 'pub/irs-pdf/fw4.pdf'              # Download the W4
-\end{bashcode}
-}
-\end{indented}
+      \begin{bashcode*}{gobble=8}
+        mkdir -p ~/.local/src                     # Create directory for source code
+        cd ~/.local/src
+        wget 'http://downloads.sourceforge.net/'\
+             'project/aria2/stable/'\
+             'aria2-1.17.0/aria2-1.17.0.tar.gz'   # Download aria2 source code
+        tar -xf aria2-1.17.0.tar.gz               # Unarchive source code
+        cd aria2-1.17.0
+        ./configure --prefix ~/.local             # Set up build configuration
+        make                                      # Build the program
+        make install                              # Install program to ~/.local/bin
+        export PATH=~/.local/bin:$PATH            # Consider adding to ~/.bash_profile
+        aria2c 'http://www.irs.gov/'\
+               'pub/irs-pdf/fw4.pdf'              # Download the W4
+      \end{bashcode*}
+    }
+  \end{indented}
 \end{block}

@@ -1,9 +1,9 @@
 \begin{block}{Downloading files}
   Both commands listed download a copy of the IRS W4 form. Wget is a general-purpose file downloader while curl is great at crafting custom requests. aria2 is another option but is not typically included with a base system (you must install it yourself).
   \begin{indented}
-    \begin{bashcode}
+    \begin{bashcode*}{gobble=6}
       wget 'http://www.irs.gov/pub/irs-pdf/fw4.pdf'
       curl 'http://www.irs.gov/pub/irs-pdf/fw4.pdf' > fw4.pdf
-    \end{bashcode}
+    \end{bashcode*}
   \end{indented}
 \end{block}

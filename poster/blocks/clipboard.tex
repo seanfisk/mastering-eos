@@ -1,12 +1,12 @@
 \begin{block}{Using the clipboard}
   When you copy or paste in a desktop environment, you use the X11 clipboard. The contents of the X11 clipboard can be accessed and modified through the terminal using a utility called xclip.
   \begin{indented}
-    \begin{bashcode}
+    \begin{bashcode*}{gobble=6}
       alias copy='xclip -selection clipboard -in'
       alias paste='xclip -selection clipboard -out'
       echo 'EOS Rocks' | copy # Set clipboard to 'EOS Rocks'
       copy < eos.txt          # Set clipboard to contents of eos.txt
       paste > eos.txt         # Write clipboard contents to eos.txt
-    \end{bashcode}
+    \end{bashcode*}
   \end{indented}
 \end{block}
