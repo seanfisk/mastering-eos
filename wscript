@@ -8,6 +8,7 @@
 import os
 from os.path import join
 import textwrap
+import shutil
 
 import waflib
 
@@ -68,24 +69,55 @@ def build(ctx):
 
 # Archive context and command
 
+def _copy_file(tsk):
+    shutil.copyfile(tsk.inputs[0].abspath(), tsk.outputs[0].abspath())
+
 class ArchiveContext(waflib.Build.BuildContext):
     cmd = 'archive'
     fun = 'archive'
 
 def archive(ctx):
+    # Prepare website directory
+    html_build_dir = ctx.path.find_or_declare(['manual', 'html'])
+    html_build_nodes = html_build_dir.ant_glob(
+        '**',
+        excl=['Makefile', '.doctrees', '.buildinfo'],
+        quiet=True, # don't warn in verbose mode
+    )
+
+    website_dir = ctx.path.find_or_declare('website')
+    website_dir.mkdir()
+
+    # Copy HTML assets.
+    for node in html_build_nodes:
+        ctx(rule=_copy_file,
+            source=node,
+            target=website_dir.find_or_declare(node.path_from(html_build_dir)))
+
+    # Copy PDF and EPUB.
+    ctx(rule=_copy_file,
+        source=ctx.bldnode.find_node([
+            'manual', 'latexpdf', 'mastering-eos.pdf']),
+        target=website_dir.find_or_declare('mastering-eos.pdf'))
+    ctx(rule=_copy_file,
+        source=ctx.bldnode.find_node([
+            'manual', 'epub', 'mastering-eos.epub']),
+        target=website_dir.find_or_declare('mastering-eos.epub'))
+
+    # Copy poster.
+    ctx(rule=_copy_file,
+        source=ctx.bldnode.find_node(['poster', 'mastering-eos.pdf']),
+        target=website_dir.find_or_declare('mastering-eos-poster.pdf'))
+
+    # Prepare archives
     ctx.load('archive', tooldir='waf_tools')
 
     archive_basename = 'mastering-eos-html'
-    html_build_dir = ctx.path.find_or_declare(['manual', 'html'])
-    sources = [
+    html_sources = [
         (node, join(archive_basename, node.path_from(html_build_dir)))
-        for node in html_build_dir.ant_glob(
-                '**',
-                excl=['Makefile', '.doctrees', '.buildinfo'],
-                quiet=True, # don't warn in verbose mode
-        )
+        for node in html_build_nodes
     ]
     ctx(features='archive',
         formats='gztar zip',
-        source=sources,
-        target=archive_basename)
+        source=html_sources,
+        target=join('website', archive_basename))
