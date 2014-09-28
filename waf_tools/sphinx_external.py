@@ -15,6 +15,7 @@ knows.
 
 import waflib
 from waflib.Configure import conf
+from waflib.Task import always_run
 
 FOLLOWUP_BUILDERS = {
     'info': 'texinfo',
@@ -38,10 +39,10 @@ def configure(ctx):
     # respect those selected here anyway. It will use the executables on the
     # PATH.
 
+# Leave dependency processing to Sphinx itself. Always build.
+@always_run
 class sphinx_build_task(waflib.Task.Task):
     """Handle run of sphinx-build."""
-    # Leave dependency processing to Sphinx itself. Always build.
-    always = True
 
     def run(self):
         conf_node = self.inputs[0]
@@ -75,10 +76,9 @@ class sphinx_build_task(waflib.Task.Task):
             sep=sep,
             outputs=outputs_str)
 
+# Leave dependency processing to Sphinx's generated Makefile. Always build.
+@always_run
 class sphinx_run_make_task(waflib.Task.Task):
-    # Leave dependency processing to Sphinx's generated Makefile. Always build.
-    always = True
-
     def run(self):
         return self.exec_command(
             [self.env.MAKE], cwd=self.outputs[0].abspath())

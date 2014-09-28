@@ -11,6 +11,7 @@ import textwrap
 import shutil
 
 import waflib
+from waflib.Task import always_run
 
 # Waf constants
 APPNAME = 'mastering-eos'
@@ -36,6 +37,10 @@ def options(ctx):
               "default is '{1}'").format(
                   ', '.join("'{0}'".format(e) for e in latex_engines),
                   default_latex_engine))
+
+    ctx.load('tex')
+    ctx.load('sphinx_internal', tooldir='waf_tools')
+    ctx.load('fabric', tooldir='waf_tools')
 
     ctx.recurse(SUBDIRS)
 
@@ -65,6 +70,10 @@ def configure(ctx):
     # This will change the output file paths, so that will have to be changed
     # too...
     ctx.load('sphinx_internal', tooldir='waf_tools')
+
+    # Deployment programs
+    ctx.find_program('ghp-import', var='GHP_IMPORT')
+    ctx.load('fabric', tooldir='waf_tools')
 
     ctx.recurse(SUBDIRS)
 
@@ -125,3 +134,44 @@ def archive(ctx):
         formats='gztar zip',
         source=html_sources,
         target=join('website', archive_basename))
+
+# Deploy context and command
+
+@always_run
+class ghp_import_task(waflib.Task.Task):
+    vars = ['GHP_IMPORT']
+
+    def __init__(self, dir_node, *args, **kwargs):
+        super(ghp_import_task, self).__init__(*args, **kwargs)
+        self._dir_node = dir_node
+
+    def run(self):
+        return self.exec_command([
+            self.env.GHP_IMPORT,
+            '-n', # Include a .nojekyll file in the branch
+            '-p', # Push the branch after import
+            self._dir_node.abspath(),
+        ])
+
+class DeployContext(waflib.Build.BuildContext):
+    cmd = 'deploy'
+    fun = 'deploy'
+
+def deploy(ctx):
+    # Deploy man and info docs
+    ctx(features='fabric',
+        fabfile=ctx.path.find_resource('fabfile.py'),
+        command='deploy_man_info',
+        args=dict(
+            manpage=ctx.bldnode.find_node([
+                'manual', 'man', 'eos.7']).abspath(),
+            infodoc=ctx.bldnode.find_node([
+                'manual', 'info', 'eos.info']).abspath(),
+        ),
+        always=True,
+    )
+
+    # Deploy GitHub pages
+    website_node = ctx.bldnode.find_dir('website')
+    ghp_task = ghp_import_task(website_node, env=ctx.env)
+    ctx.add_to_group(ghp_task)

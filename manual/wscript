@@ -18,12 +18,6 @@ def options(ctx):
 
 def configure(ctx):
     scripts_dir = os.path.abspath('scripts')
-    ctx.find_program('make-ssh-fingerprints-table',
-                     var='MAKE_SSH_FINGERPRINTS_TABLE',
-                     path_list=[scripts_dir])
-    ctx.find_program('download-vncts-file',
-                     var='DOWNLOAD_VNCTS_FILE',
-                     path_list=[scripts_dir])
     ctx.find_program('make-vnc-table',
                      var='MAKE_VNC_TABLE',
                      path_list=[scripts_dir])
@@ -54,37 +48,27 @@ def build(ctx):
     if ctx.env.SSH_AUTO_UPDATE:
         ssh_task_gen_extra_kwargs['always'] = True
 
+    fabfile_node = ctx.srcnode.find_resource('fabfile.py')
+
     # This task takes a while, so start it first.
-    @ctx.rule(
-        name='make_ssh_fingerprints_table',
-        target=fingerprints_table_node,
-        # Make the script itself an input, so that when it changes updates
-        # ensue regardless of the value of auto-update.
-        source=ctx.root.find_node(ctx.env.MAKE_SSH_FINGERPRINTS_TABLE),
-        update_outputs=True,
-        vars=['MAKE_SSH_FINGERPRINTS_TABLE'],
-        **ssh_task_gen_extra_kwargs)
-    def make_ssh_fingerprints_table(tsk):
-        return tsk.exec_command(
-            [ctx.env.MAKE_SSH_FINGERPRINTS_TABLE, tsk.outputs[0].abspath()],
-            # Don't capture the standard streams is case we get prompts.
-            stdout=sys.stdout,
-            stderr=sys.stderr)
+    # update_outputs=True,
+    ctx(name='make_ssh_fingerprints_table',
+        features='fabric',
+        fabfile=fabfile_node,
+        command='make_ssh_fingerprints_table',
+        args=dict(output=fingerprints_table_node.abspath()),
+        target=[fingerprints_table_node],
+        **ssh_task_gen_extra_kwargs
+    )
 
     vncts_node = ctx.path.find_or_declare('vncts')
-    @ctx.rule(
-        target=vncts_node,
-        # Make the script itself an input, so that when it changes updates
-        # ensue regardless of the value of auto-update.
-        source=ctx.root.find_node(ctx.env.DOWNLOAD_VNCTS_FILE),
-        vars=['DOWNLOAD_VNCTS_FILE'],
-        **ssh_task_gen_extra_kwargs)
-    def download_vncts_file(tsk):
-        return tsk.exec_command(
-            [ctx.env.DOWNLOAD_VNCTS_FILE, tsk.outputs[0].abspath()],
-            # Don't capture the standard streams is case we get prompts.
-            stdout=sys.stdout,
-            stderr=sys.stderr)
+    ctx(features='fabric',
+        fabfile=fabfile_node,
+        command='download_vncts_file',
+        args=dict(output=vncts_node.abspath()),
+        target=[vncts_node],
+        **ssh_task_gen_extra_kwargs
+    )
 
     @ctx.rule(
         name='make_vnc_table',

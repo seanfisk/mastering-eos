@@ -51,12 +51,17 @@ def apply_archive(task_gen):
     This method overrides the processing by
     :py:meth:`waflib.TaskGen.process_source`.
     """
-    # Initialize the keywords.
-    try:
-        formats = waflib.Utils.to_list(task_gen.formats)
-    except AttributeError:
-        raise waflib.Errors.WafError(
-            'Archive task generator missing necessary keyword: formats')
+    # Initialize the required keywords.
+    required_kwds = {}
+    for kwd in ['formats', 'target']:
+        try:
+            required_kwds[kwd] = getattr(task_gen, kwd)
+        except AttributeError:
+            raise waflib.Errors.WafError(
+                'Archive task generator missing necessary keyword: {0}'.format(
+                    kwd))
+
+    formats = waflib.Utils.to_list(required_kwds['formats'])
 
     # Check for dupes.
     if len(formats) != len(set(formats)):
@@ -80,11 +85,7 @@ def apply_archive(task_gen):
         in_nodes.append(node)
         in_node_archive_name_mapping[node] = archive_name
 
-    try:
-        outs = waflib.Utils.to_list(task_gen.target)
-    except AttributeError:
-        raise waflib.Errors.WafError(
-            'Archive task generator missing necessary keyword: target')
+    outs = waflib.Utils.to_list(required_kwds['target'])
     if len(outs) != 1:
         raise waflib.Errors.WafError(
             'If specified, archive task generator '
