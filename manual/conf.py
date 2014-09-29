@@ -420,8 +420,10 @@ pdf_fit_background_mode = 'scale'
 # -- Custom Options -------------------------------------------------------
 
 # Global substitutions, using rst_epilog.
-# Apparently we can't use the `text <link>`_ notation in here.
+# Apparently we can't use the `text <link>`_ notation in here, so see
+# <http://docutils.sourceforge.net/FAQ.html#is-nested-inline-markup-possible>.
 rst_epilog = '''
-.. |the-sysadmin| replace:: Ira Woodring
 .. |title| replace:: {0}
+.. |the-sysadmin| replace:: Ira Woodring
+.. _the-sysadmin: mailto:woodriir@gvsu.edu
 '''.format(project)

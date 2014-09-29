@@ -49,6 +49,6 @@ Note the following rules when creating a new password:
 * Yoru password must not be based on a dictionary word.
 * Your password should not be all numbers. The system will accept such a password, but it is incredibly insecure. Additionally, the system will often prevent login with such a password.
 
-Please take the time to memorize your password! Password resets are available by contacting |the-sysadmin|, but it often takes a day to get to it. Professors are also able to reset passwords via an SSH reset mechanism, though some are unaware of this mechanism.
+Please take the time to memorize your password! Password resets are available by contacting |the-sysadmin|_, but it often takes a day to get to it. Professors are also able to reset passwords via an SSH reset mechanism, though some are unaware of this mechanism.
 
 .. [#eligible-cis-courses] All CIS courses except 150, 160, 162, 231, or 253. These courses do not require access.
