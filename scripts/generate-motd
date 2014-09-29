@@ -25,7 +25,7 @@ LINES = [
         TEXT_ANSI + '$ ' + HIGHLIGHT_ANSI + cmd for cmd in [
             'eos-web-docs', 'man eos', 'info eos']]),
     '',
-    (TEXT_ANSI + 'Email ' + HIGHLIGHT_ANSI + 'woodriir@cis.gvsu.edu' +
+    (TEXT_ANSI + 'Please email ' + HIGHLIGHT_ANSI + 'woodriir@cis.gvsu.edu' +
      TEXT_ANSI + ' with questions.'),
     '',
 ]
