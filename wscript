@@ -161,12 +161,14 @@ def deploy(ctx):
     # Deploy man and info docs
     ctx(features='fabric',
         fabfile=ctx.path.find_resource('fabfile.py'),
-        command='deploy_man_info',
+        command='deploy_to_eos',
         args=dict(
             manpage=ctx.bldnode.find_node([
                 'manual', 'man', 'eos.7']).abspath(),
             infodoc=ctx.bldnode.find_node([
                 'manual', 'info', 'eos.info']).abspath(),
+            webscript=ctx.path.find_resource([
+                'scripts', 'eos-web-docs']).abspath(),
         ),
         always=True,
     )

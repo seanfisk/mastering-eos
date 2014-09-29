@@ -78,27 +78,36 @@ def download_vncts_file(output):
         local_path=output)
 
 @task
-def deploy_man_info(manpage, infodoc):
-    ('Upload the man page and info docs to each EOS machine. Requires root '
-     'access to said machines.')
+def deploy_to_eos(manpage, infodoc, webscript):
+    ('Upload the man page, info docs, and web docs script to each EOS machine.'
+     ' Requires root access to said machines.')
+    # Collect args and assign more sensible names. We will be doing a lot of
+    # path-munging, and having proper names helps.
+    man_source_path = manpage
+    info_source_path = infodoc
+    web_docs_source_path = webscript
+
     env.user = 'root'
 
     # Don't use os.path.join here, as we are always dealing with GNU/Linux on
     # the EOS machines.
 
-    prefix = '/usr/local/share'
+    prefix = '/usr/local'
+    share_dir = prefix + '/share'
 
-    man_source_path = ''
     man_base = os.path.basename(man_source_path)
     man_section = os.path.splitext(man_base)[1].lstrip('.')
-    man_dir = prefix + '/man/man' + man_section
+    man_dir = share_dir + '/man/man' + man_section
 
-    info_source_path = ''
     info_base = os.path.basename(info_source_path)
-    info_dir = prefix + '/info'
+    info_dir = share_dir + '/info'
+
+    web_docs_base = os.path.basename(web_docs_source_path)
+    bin_dir = prefix + '/bin'
 
     # Ensure the containing directories are creating, else upload will fail.
-    run('mkdir -p {0} {1}'.format(shquote(man_dir), shquote(info_dir)),
+    run('mkdir -p ' + ' '.join(map(shquote, [man_dir, info_dir, bin_dir])),
         shell=False)
     put(man_source_path, man_dir + '/' + man_base)
     put(info_source_path, info_dir + '/' + info_base)
+    put(web_docs_source_path, bin_path + '/' + web_docs_base)
