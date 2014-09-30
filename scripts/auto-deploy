@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -o errexit
+
+git pull
+pip install -r requirements.txt
+./waf build archive deploy
