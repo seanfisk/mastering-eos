@@ -68,3 +68,7 @@ The following examples showcase the typical use of ``pscp``. Each file can be pr
 .. note::
 
     Windows uses ``\`` as a path separator by default, while GNU/Linux uses ``/``. While Windows is generally forgiving and will accept ``/`` as well, GNU/Linux is not. *Always use* ``/`` *as a path separator when specifying GNU/Linux paths.*
+
+.. envvar:: Path
+
+    The Windows search path for executable files.

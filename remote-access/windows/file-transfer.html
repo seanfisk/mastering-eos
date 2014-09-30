@@ -174,11 +174,11 @@
 <div class="section" id="command-line-scp">
 <h2>Command Line (SCP)<a class="headerlink" href="#command-line-scp" title="Permalink to this headline">¶</a></h2>
 <p>Files can be transferred on the command line using a utility called SCP, implemented in PuTTY through a command called <tt class="docutils literal"><span class="pre">pscp</span></tt>. Because <tt class="docutils literal"><span class="pre">pscp</span></tt> uses PuTTY for authentication, if you have set up <a class="reference internal" href="ssh.html#win-ssh-keys"><em>Password-less Logins (SSH keys)</em></a>, you will not have to type any passwords. SCP stands for <em>Secure Copy</em> and works very similar to the GNU/Linux <tt class="docutils literal"><span class="pre">cp</span></tt> command, except that it can also transfer files across the network. Make sure you are familiar with the operation of <tt class="docutils literal"><span class="pre">cp</span></tt> before using SCP.</p>
-<p>PuTTY&#8217;s commands are not added to the Windows <a class="reference external" href="http://en.wikipedia.org/wiki/PATH_%28variable%29">Path</a> by default. To add them to the <span class="target" id="index-0"></span><tt class="xref std std-envvar docutils literal"><span class="pre">Path</span></tt>, open Windows PowerShell from the Start Menu and run the following command. If you installed PuTTY to a non-default location, you will need to change it in the command below.</p>
+<p>PuTTY&#8217;s commands are not added to the Windows <a class="reference external" href="http://en.wikipedia.org/wiki/PATH_%28variable%29">Path</a> by default. To add them to the <span class="target" id="index-0"></span><a class="reference internal" href="#envvar-Path"><tt class="xref std std-envvar docutils literal"><span class="pre">Path</span></tt></a>, open Windows PowerShell from the Start Menu and run the following command. If you installed PuTTY to a non-default location, you will need to change it in the command below.</p>
 <div class="highlight-powershell"><div class="highlight"><pre>$puttyInstallPath = &#39;C:\Program Files (x86)\PuTTY&#39;; [Environment]::SetEnvironmentVariable(&#39;Path&#39;, [Environment]::GetEnvironmentVariable(&#39;Path&#39;, &#39;User&#39;) + &#39;;&#39; + $puttyInstallPath, &#39;User&#39;)
 </pre></div>
 </div>
-<p>Restart PowerShell or your terminal emulator after running this command to allow your updates to the <span class="target" id="index-1"></span><tt class="xref std std-envvar docutils literal"><span class="pre">Path</span></tt> to take effect. The <tt class="docutils literal"><span class="pre">pscp</span></tt> utility may now be used from PowerShell by simply typing <tt class="docutils literal"><span class="pre">pscp</span></tt>.</p>
+<p>Restart PowerShell or your terminal emulator after running this command to allow your updates to the <span class="target" id="index-1"></span><a class="reference internal" href="#envvar-Path"><tt class="xref std std-envvar docutils literal"><span class="pre">Path</span></tt></a> to take effect. The <tt class="docutils literal"><span class="pre">pscp</span></tt> utility may now be used from PowerShell by simply typing <tt class="docutils literal"><span class="pre">pscp</span></tt>.</p>
 <p>The following examples showcase the typical use of <tt class="docutils literal"><span class="pre">pscp</span></tt>. Each file can be prefixed with a PuTTY session name or user/host, which tells <tt class="docutils literal"><span class="pre">pscp</span></tt> where it is or should be located. The session name &#8220;EOS&#8221; is used in these examples; change it to match your PuTTY session name if it is different. Files with no prefix are assumed to be on the local machine. Paths on the remote machine start at your home directory, so there is typically no need to include <tt class="file docutils literal"><span class="pre">/home/smithj</span></tt> in the path. Here are some examples of use of <tt class="docutils literal"><span class="pre">pscp</span></tt>:</p>
 <div class="highlight-powershell"><div class="highlight"><pre># Typical upload
 pscp classes\cis162\hw1.txt EOS:classes/cis162
@@ -194,6 +194,12 @@ pscp smithj@eos01.cis.gvsu.edu:classes/cis162/hw3.txt classes/cis162
 <p class="first admonition-title">Note</p>
 <p class="last">Windows uses <tt class="docutils literal"><span class="pre">\</span></tt> as a path separator by default, while GNU/Linux uses <tt class="docutils literal"><span class="pre">/</span></tt>. While Windows is generally forgiving and will accept <tt class="docutils literal"><span class="pre">/</span></tt> as well, GNU/Linux is not. <em>Always use</em> <tt class="docutils literal"><span class="pre">/</span></tt> <em>as a path separator when specifying GNU/Linux paths.</em></p>
 </div>
+<dl class="envvar">
+<dt id="envvar-Path">
+<tt class="descname">Path</tt><a class="headerlink" href="#envvar-Path" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Windows search path for executable files.</p>
+</dd></dl>
+
 </div>
 </div>
 
