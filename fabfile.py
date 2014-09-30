@@ -88,6 +88,9 @@ def deploy_to_eos(manpage, infodoc, webscript):
     web_docs_source_path = webscript
 
     env.user = 'root'
+    # skip_bad_hosts and parallel are, unfortunately, mutually exclusive. Don't
+    # see why they have to be, but that's the way it is.
+    env.skip_bad_hosts = True
 
     # Don't use os.path.join here, as we are always dealing with GNU/Linux on
     # the EOS machines.
@@ -110,4 +113,4 @@ def deploy_to_eos(manpage, infodoc, webscript):
         shell=False)
     put(man_source_path, man_dir + '/' + man_base)
     put(info_source_path, info_dir + '/' + info_base)
-    put(web_docs_source_path, bin_path + '/' + web_docs_base)
+    put(web_docs_source_path, bin_dir + '/' + web_docs_base,mode=0755)
