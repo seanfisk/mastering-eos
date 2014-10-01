@@ -1,0 +1,37 @@
+#!/usr/bin/env python
+
+import os
+import sys
+import logging
+import argparse
+import subprocess
+
+def _run_and_log(msg, cmd):
+    logging.info(msg, extra=dict(command=' '.join(cmd)))
+    subprocess.check_call(cmd)
+
+def main(argv):
+    arg_parser = argparse.ArgumentParser(
+        description='Fully deploy the project.')
+    arg_parser.parse_args(argv[1:])
+
+    # Use the default style.
+    logging.basicConfig(
+        format="%(asctime)s:%(levelname)s:%(message)s:command='%(command)s'",
+        level=logging.INFO)
+
+    _run_and_log('Updating sources from Git', ['git', 'pull'])
+
+    # Install Python requirements, as they may have changed.
+    _run_and_log('Installing Python requirements', [
+        'pip', 'install', '-r', 'requirements.txt'])
+
+    # Re-run the build. We re-configure as well, in case configuration changes
+    # have been made.
+    _run_and_log('Running the build', [
+        os.path.abspath('waf'), 'configure', 'build', 'archive', 'deploy'])
+
+    return 0
+
+if __name__ == '__main__':
+    raise SystemExit(main(sys.argv))

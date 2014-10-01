@@ -1,0 +1,87 @@
+#!/usr/bin/env python
+
+"""This script is intended generate deployment files on a Mac OS X computer.
+The deployment is organized in this convoluted way to avoid potential political
+issues, not because it is the most sensible deployment strategy.
+"""
+
+import os
+import sys
+import argparse
+from pipes import quote as shquote
+from collections import OrderedDict
+
+import six
+from colorama import Fore
+
+try:
+    # Python >= 3.4
+    from plistlib import dumps as plist_dump
+    # Don't sort the keys; that way we can keep our own order.
+    write_plist_to_file = lambda d: plist_dump(d, sort_keys=False)
+except ImportError:
+    # Python 2, 3.0-3.3
+    from plistlib import writePlist as write_plist_to_file
+
+LABEL = 'edu.gvsu.cis.mastering-eos-deploy'
+LAUNCH_AGENTS_DIR = os.path.expanduser('~/Library/LaunchAgents')
+LOGS_DIR = os.path.expanduser('~/Library/Logs')
+HOST = 'eos01.cis.gvsu.edu'
+
+def _green(text):
+    return Fore.GREEN + text + Fore.RESET
+
+def _draw_table(rows):
+    max_label_len = max(map(lambda row: len(row[0]), rows))
+    return '\n'.join(
+        '{0} : {1}'.format(label.ljust(max_label_len), _green(value))
+        for label, value in rows)
+
+def main(argv):
+    arg_parser = argparse.ArgumentParser(
+        description='Generate deployment files on Mac OS X.')
+    arg_parser.add_argument(
+        'remote_repo_path', help='path to deployment repo directory on EOS')
+    args = arg_parser.parse_args(argv[1:])
+
+    remote_repo_path = args.remote_repo_path
+    program_args = [
+        '/usr/bin/ssh',
+        HOST,
+        ' && '.join([
+            'cd {0}'.format(remote_repo_path),
+            'scripts/auto-deploy',
+        ]),
+    ]
+    plist_path = os.path.join(LAUNCH_AGENTS_DIR, LABEL + '.plist')
+    logfile_path = os.path.join(LOGS_DIR, LABEL + '.log')
+
+    with open(plist_path, 'w') as plist_file:
+        write_plist_to_file(OrderedDict([
+            ('Label', LABEL),
+            ('ProgramArguments', program_args),
+            # Run weekly on Sunday at 12:00 AM
+            ('StartCalendarInterval', OrderedDict([
+                ('Hour', 0),
+                ('Minute', 0),
+                ('Weekday', 0),
+            ])),
+            ('StandardOutPath', logfile_path),
+            ('StandardErrorPath', logfile_path),
+        ]), plist_file)
+
+    six.print_(_draw_table([
+        ('Remote EOS repo path set to', remote_repo_path),
+        ('Launch agent has been written to', plist_path),
+        ('Status of deployment task will be logged to',
+         '/var/log/system.log'),
+        ('STDOUT and STDERR of deployment task will be logged to',
+             logfile_path),
+        ('Load the new task with', ' '.join([
+            'launchctl', 'load', shquote(plist_path)])),
+    ]))
+
+    return 0
+
+if __name__ == '__main__':
+    raise SystemExit(main(sys.argv))
