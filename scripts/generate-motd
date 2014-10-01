@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
-from __future__ import print_function
+import argparse
 import sys
 import re
 
+import six
 import colorama
 from colorama import Fore, Back, Style
 colorama.init()
@@ -51,7 +52,11 @@ def _center(line):
 
 
 def main(argv):
-    print('\n'.join(_center(line) for line in LINES) + Style.RESET_ALL)
+    arg_parser = argparse.ArgumentParser(
+        description='Generate a message of the day for EOS machines.')
+    arg_parser.parse_args(argv[1:])
+
+    six.print_('\n'.join(_center(line) for line in LINES) + Style.RESET_ALL)
 
 
 if __name__ == '__main__':

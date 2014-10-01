@@ -42,7 +42,7 @@ def main(argv):
     # Parse args.
     arg_parser = argparse.ArgumentParser(
         prog=argv[0],
-        description='Generate a table of VNC ports and geometries from a'
+        description='Generate a table of VNC ports and geometries from a '
         "provided 'vncts' file.")
     arg_parser.add_argument(
         'input_file', type=argparse.FileType('r'),
