@@ -13,7 +13,7 @@ In addition to command-line and graphical access, you will likely need to transf
 .. _FUSE: http://en.wikipedia.org/wiki/Filesystem_in_Userspace
 .. _SSHFS: http://en.wikipedia.org/wiki/SSHFS
 
-The hostnames for the EOS machines are organized as follows: :samp:`eos{XX}.cis.gvsu.edu` where :samp:`{XX}` is 01 through 24 and :samp:`arch{XX}.cis.gvsu.edu` where :samp:`{XX}` is 01 through 10. Use these names to connect to a specific EOS machine.
+The hostnames for the EOS machines are organized as follows: :samp:`eos{XX}.cis.gvsu.edu` where :samp:`{XX}` is 01 through 32 and :samp:`arch{XX}.cis.gvsu.edu` where :samp:`{XX}` is 01 through 10. Use these names to connect to a specific EOS machine.
 
 Your SSH and VNC clients of choice depend on your machine's operating system.
 

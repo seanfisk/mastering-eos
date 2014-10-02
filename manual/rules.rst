@@ -8,7 +8,7 @@ It is important that some basic rules and procedures be established to help main
 Disk Space
 ==========
 
-You are given 10 gigabytes (GB) of disk space. Once you exceed this limit, you can no longer store data on the system. This often leads to being unable to login via a graphical session, as the desktop manager must be able to write to disk. You must then log in via a text-based console and delete files to make space.
+You are given 8 gigabytes (GB) of disk space. Once you exceed this limit, you can no longer store data on the system. This often leads to being unable to login via a graphical session, as the desktop manager must be able to write to disk. You must then log in via a text-based console and delete files to make space.
 
 Copyrighted Material
 ====================
@@ -44,4 +44,4 @@ The infrastructure provided by the EOS Labs includes very powerful tools that ca
 Games
 =====
 
-We encourage playing games in the lab. However, if you are playing games and all machines are currently in use, please be polite and yield your machine to students needing to complete coursework.
+We encourage playing games in the lab. However, if you are playing games and all machines are currently in use, please be polite and yield your machine to students needing to complete coursework.  Failure to do so may result in suspension of your account, or all games being removed from the system.

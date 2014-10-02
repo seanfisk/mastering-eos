@@ -23,7 +23,7 @@ When addressing this collections of labs, we often refer to it simply as *EOS*. 
 Physical Access (Keycards)
 ==========================
 
-The EOS Labs contain equipment specific to the CIS majors and are therefore closed to the general public. To access the labs, you are required to obtain a keycard. To be eligible for a keycard, you must be currently enrolled in a course which utiltizes the lab you'd like to access. After registration, visit the computing office in MAK C-2-100 to receive your card. A $25 deposit paid from your student account is charged upon receipt of the card. When the card is returned in acceptable condition, the deposit will be refunded.
+The EOS Labs contain equipment specific to the CIS majors and are therefore closed to the general public. To access the labs, you are required to obtain a keycard. To be eligible for a keycard, you must be currently enrolled in a course which utiltizes the lab you'd like to access. After registration, visit the computing office in MAK C-2-100 to receive your card. A $25 deposit paid from your student account is charged upon receipt of the card. When the card is returned in acceptable condition, the deposit will be refunded.  Please note that once the $25 deposit has been posted to your student account you must pay the balance.  Otherwise you will be charged a late fee.  The late fee will not be refunded once you return the keycard.
 
 This keycard grants access to the EOS and Architecture Labs. Simply swipe the card at the reader next to the door to open it. In addition, the card grants 24-hour access to Mackinac Hall. The courtyard door which is closest to the Architecture Lab possesses a reader which will open when the key is swiped. No other building doors are equipped with readers.
 
