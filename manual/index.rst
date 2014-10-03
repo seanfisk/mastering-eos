@@ -19,6 +19,7 @@
 
    intro
    rules
+   basics
    remote-access/index
    shells
    winserv
