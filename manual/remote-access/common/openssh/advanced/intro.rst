@@ -10,9 +10,7 @@ This section is based in large part on the `Smylers SSH Productivity Tips blog p
 Hostname Aliases
 ----------------
 
-It's useful not to have to type out the entire full-qualified domain names to EOS machines. What you might normally type would be something like this:
-
-.. code-block:: bash
+It's useful not to have to type out the entire full-qualified domain names to EOS machines. What you might normally type would be something like this::
 
     ssh smithj@eos02.cis.gvsu.edu
     # or
@@ -28,9 +26,7 @@ By adding a section to the config file, this becomes easier. Add this to your :f
     HostName %h.cis.gvsu.edu
     User smithj
 
-With this, now you need only type:
-
-.. code-block:: bash
+With this, now you need only type::
 
     ssh eos02
     # or

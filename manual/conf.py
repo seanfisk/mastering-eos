@@ -427,3 +427,6 @@ rst_epilog = '''
 .. |the-sysadmin| replace:: Ira Woodring
 .. _the-sysadmin: mailto:woodriir@gvsu.edu
 '''.format(project)
+
+# The default highlight language is Python; switch it to Bash.
+highlight_language = 'bash'
