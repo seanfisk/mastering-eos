@@ -8,7 +8,9 @@ It is important that some basic rules and procedures be established to help main
 Disk Space
 ==========
 
-You are given a limited amount of disk space with which to store files, which may be checked with the :command:`quota` command:
+You are given 8 gigabytes (GB) of disk space. Once you exceed this limit, you can no longer write new data to the filesystem. This often leads to being unable to login via a graphical session, as the desktop manager must be able to write to disk. You must then log in via a text-based console and delete files to make space.
+
+The amount of disk space you have currently used may be checked with the :command:`quota` command:
 
 .. code-block:: console
 
@@ -36,8 +38,6 @@ The output of this command is two sets of four columns. The first four refer to 
 |grace |The amount of time for which you can exceed the  |
 |      |soft limit.                                      |
 +------+-------------------------------------------------+
-
-Once you exceed the hard limit or the grace period, you can no longer write new data to the filesystem. This often leads to being unable to login via a graphical session, as the desktop manager must be able to write to disk. You must then log in via a text-based console and delete files to make space.
 
 For the previous output there is no grace period set, so the user is able to write files until reaching the hard limit. There is also no limit on the number of files the user can create, only a limit on the amount of space consumed.
 
