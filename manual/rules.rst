@@ -18,7 +18,7 @@ The amount of disk space you have currently used may be checked with the :comman
     Disk quotas for user smithj (uid 1234):
          Filesystem   space   quota   limit   grace   files   quota   limit   grace
     148.61.162.101:/home
-                      8989M   9728M  10240M            303k       0       0
+                      9728M*  8192M  10240M            303k       0       0
 
 The output of this command is two sets of four columns. The first four refer to physical disk space, while the second four refer to the number of files. The columns have the following meanings:
 
@@ -39,7 +39,10 @@ The output of this command is two sets of four columns. The first four refer to 
 |      |soft limit.                                      |
 +------+-------------------------------------------------+
 
-For the previous output there is no grace period set, so the user is able to write files until reaching the hard limit. There is also no limit on the number of files the user can create, only a limit on the amount of space consumed.
+For the previous output, the user has a soft limit of 8192 MiB / 1024 MiB/GiB = 8 GiB and a hard limit of 10240 MiB / 1024 MiB/GiB = 10 GiB. The user is currently using 9728 MiB / 1024 MiB/GiB = 9.5 GiB of disk space, and is over quota (indicated by the ``*``). The output is expressed in mebibytes_, which might be different than the megabytes_ to which you are accustomed. There is no grace period set, so the user is able to write files until reaching the hard limit. There is also no limit on the number of files the user can create, only a limit on the amount of space consumed.
+
+.. _mebibytes: http://en.wikipedia.org/wiki/Mebibyte
+.. _megabytes: http://en.wikipedia.org/wiki/Megabyte
 
 Copyrighted Material
 ====================
