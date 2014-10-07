@@ -12,6 +12,7 @@
         * ``eos-web-docs`` (use the script in ``scripts/``)
         * ``man eos``
         * ``info eos``
+    * Re-advertise the poster.
     * Add shortcut to users' desktop?
 
 * Remote
