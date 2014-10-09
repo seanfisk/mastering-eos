@@ -34,9 +34,7 @@
     * Web server details (info.php)
 
 * Installing software
-    * Manual compilation
-    * Linuxbrew
-    * Local install scripts
+    * Possibly make library dependencies section a real-life example (tmux?).
     * Specific environments
         * Python (https://github.com/yyuu/pyenv)
         * Ruby (https://github.com/sstephenson/rbenv)

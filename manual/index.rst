@@ -19,9 +19,11 @@
    rules
    remote-access/index
    shells
+   user-level-sw/index
    winserv
    databases
    ide
+   envvars
    contributing
 
 .. only:: build_html

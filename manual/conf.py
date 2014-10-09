@@ -68,7 +68,11 @@ release = '1.0'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['TODO.rst', '_build', '**/common']
+exclude_patterns = [
+    'TODO.rst',
+    'links.rst',
+    '_build',
+    '**/common']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
