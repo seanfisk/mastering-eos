@@ -428,6 +428,7 @@ pdf_fit_background_mode = 'scale'
 # <http://docutils.sourceforge.net/FAQ.html#is-nested-inline-markup-possible>.
 rst_epilog = '''
 .. |title| replace:: {0}
+.. |bold-title| replace:: **{0}**
 .. |the-sysadmin| replace:: Ira Woodring
 .. _the-sysadmin: mailto:woodriir@gvsu.edu
 '''.format(project)
