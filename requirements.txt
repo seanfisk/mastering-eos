@@ -2,10 +2,10 @@
 Pygments==1.6
 
 # Sphinx, for the manual
-Sphinx==1.2.2
-Jinja2==2.7.2
-MarkupSafe==0.19
-docutils==0.11
+Sphinx==1.2.3
+Jinja2==2.7.3
+MarkupSafe==0.23
+docutils==0.12
 sphinx-rtd-theme==0.1.6
 
 # For the manual's reportlab builder (not currently in use)
@@ -14,9 +14,9 @@ sphinx-rtd-theme==0.1.6
 #pdfrw==0.1
 
 # Fabric, used for fetching info from and deployment to EOS
-Fabric==1.8.3
+Fabric==1.10.0
 ecdsa==0.11
-paramiko==1.12.3
+paramiko==1.15.1
 pycrypto==2.6.1
 
 # GitHub pages deployment
@@ -27,7 +27,7 @@ texttable==0.8.1
 pyPEG2==2.15.0
 
 # Generating motd
-colorama==0.3.1
+colorama==0.3.2
 
 # For Python 2/3 compat
 six==1.8.0
