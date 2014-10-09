@@ -337,5 +337,3 @@ Conclusion
 ==========
 
 As you can see, manual installation of programs is a complex but predictable process. This is where package managers like :ref:`linuxbrew-section` become useful.
-
-.. include:: /links.rst

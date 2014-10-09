@@ -71,9 +71,9 @@ release = '1.0'
 # directories to ignore when looking for source files.
 exclude_patterns = [
     'TODO.rst',
-    'links.rst',
     '_build',
-    '**/common']
+    '**/common',
+]
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -424,15 +424,22 @@ pdf_fit_background_mode = 'scale'
 
 # -- Custom Options -------------------------------------------------------
 
-# Global substitutions, using rst_epilog.
+# Global substitutions and links, using rst_epilog.
 # Apparently we can't use the `text <link>`_ notation in here, so see
 # <http://docutils.sourceforge.net/FAQ.html#is-nested-inline-markup-possible>.
 rst_epilog = '''
-.. |title| replace:: {0}
-.. |bold-title| replace:: **{0}**
+.. |title| replace:: {title}
+.. |bold-title| replace:: **{title}**
 .. |the-sysadmin| replace:: Ira Woodring
 .. _the-sysadmin: mailto:woodriir@gvsu.edu
-'''.format(project)
+
+.. _The Linux Documentation Project article on Shared Libraries: http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
+.. _Russ Allbery's notes on Shared Library Search Paths: http://www.eyrie.org/~eagle/notes/rpath.html
+.. _Autoconf manual on Preset Output Variables: http://www.gnu.org/software/autoconf/manual/autoconf.html#Preset-Output-Variables
+.. _Wikipedia entry on rpath:
+.. _rpath:
+.. _run-time search path (rpath): http://en.wikipedia.org/wiki/Rpath
+'''.format(title=project)
 
 # The default highlight language is Python; switch it to Bash.
 highlight_language = 'bash'

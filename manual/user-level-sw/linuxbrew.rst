@@ -39,5 +39,3 @@ Enjoy installing packages using Linuxbrew!
 .. _libevent: http://libevent.org/
 .. _tmux: http://tmux.sourceforge.net/
 .. _patchelf: http://nixos.org/patchelf.html
-
-.. include:: /links.rst
