@@ -2,9 +2,7 @@
  Winserv
 =========
 
-Part of the department infrastructure is a Windows Server installation, called Winserv. Accounts for this machine are given as necessary --- for example, when taking a course that involves projects which require the Windows platform. This server is named ``winserv.cis.gvsu`` and can be accessed via the `Remote Desktop Protocol`_ (RDP). The following are methods for accessing Winserv from various RDP clients.
-
-.. _Remote Desktop Protocol: http://en.wikipedia.org/wiki/Remote_Desktop_Protocol
+Part of the department infrastructure is a Windows Server installation, called Winserv. Accounts for this machine are given as necessary --- for example, when taking a course that involves projects which require the Windows platform. This server is named ``winserv.cis.gvsu`` and can be accessed via the :wikipedia:`Remote Desktop Protocol <Remote_Desktop_Protocol>` (RDP). The following are methods for accessing Winserv from various RDP clients.
 
 Common Settings
 ===============

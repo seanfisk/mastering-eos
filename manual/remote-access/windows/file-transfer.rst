@@ -42,9 +42,7 @@ Command Line (SCP)
 
 Files can be transferred on the command line using a utility called SCP, implemented in PuTTY through a command called ``pscp``. Because ``pscp`` uses PuTTY for authentication, if you have set up :ref:`win-ssh-keys`, you will not have to type any passwords. SCP stands for *Secure Copy* and works very similar to the GNU/Linux ``cp`` command, except that it can also transfer files across the network. Make sure you are familiar with the operation of ``cp`` before using SCP.
 
-PuTTY's commands are not added to the Windows `Path`_ by default. To add them to the :envvar:`Path`, open Windows PowerShell from the Start Menu and run the following command. If you installed PuTTY to a non-default location, you will need to change it in the command below.
-
-.. _Path: http://en.wikipedia.org/wiki/PATH_%28variable%29
+PuTTY's commands are not added to the Windows :wikipedia:`Path <PATH_%28variable%29>` by default. To add them to the :envvar:`Path`, open Windows PowerShell from the Start Menu and run the following command. If you installed PuTTY to a non-default location, you will need to change it in the command below.
 
 .. code-block:: powershell
 

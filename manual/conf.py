@@ -21,6 +21,7 @@ from __future__ import unicode_literals
 # ones.
 extensions = [
     'sphinx.ext.todo',
+    'sphinx.ext.extlinks',
     # 'rst2pdf.pdfbuilder',
 ]
 
@@ -435,3 +436,8 @@ rst_epilog = '''
 
 # The default highlight language is Python; switch it to Bash.
 highlight_language = 'bash'
+
+# Shortcut for Wikipedia articles, see http://sphinx-doc.org/ext/extlinks.html
+extlinks = dict(
+    wikipedia=('http://en.wikipedia.org/wiki/%s', ''),
+)

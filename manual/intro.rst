@@ -32,9 +32,7 @@ It is important that you do not allow anyone else to use your card. In addition,
 Computer Access (Credentials)
 =============================
 
-The EOS system uses separate user accounts from the general university computing infrastructure. EOS uses the same network ID given by GVSU's IT department, but authenticates against the CIS department's own LDAP_ server. The accounts are not interchangeable and administrators for one account cannot reset passwords for the other.
-
-.. _LDAP: http://en.wikipedia.org/wiki/LDAP
+The EOS system uses separate user accounts from the general university computing infrastructure. EOS uses the same network ID given by GVSU's IT department, but authenticates against the CIS department's own :wikipedia:`LDAP <Lightweight_Directory_Access_Protocol>` server. The accounts are not interchangeable and administrators for one account cannot reset passwords for the other.
 
 If you are registered for one or more eligible CIS courses [#eligible-cis-courses], you qualify for an EOS account. On the Friday before the semester starts, an account will be automatically created for you and a temporary password sent to your GVSU email address. To activate your account, you need to log in to the system once, either at a physical machine or :ref:`remotely using SSH <remote-access>`, and follow these steps:
 

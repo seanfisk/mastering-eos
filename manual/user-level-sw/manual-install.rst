@@ -42,7 +42,7 @@ Let's download the source code for `GNU Bash`_, the default shell on the EOS sys
 
     cd ~/.local/src
 
-The latest version of Bash at this time of writing is 4.3, so that is what we will download. Start by visiting the `Bash home page`_. Under :guilabel:`Downloading Bash`, click the HTTP link. You will be taken to a `directory index`_ which contains a list of downloadable files. Scroll down to find a file named :file:`bash-4.3.tar.gz`.
+The latest version of Bash at this time of writing is 4.3, so that is what we will download. Start by visiting the `Bash home page`_. Under :guilabel:`Downloading Bash`, click the HTTP link. You will be taken to a :wikipedia:`directory index <Webserver_directory_index>` which contains a list of downloadable files. Scroll down to find a file named :file:`bash-4.3.tar.gz`.
 
 Although you can download this file directly using your browser, it is often easier to copy the URL and download on the command line. This is especially true if accessing EOS using SSH. Copy the URL by clicking :guilabel:`Copy Link Location` or similar in your browser, then download the source code using :command:`wget`::
 
@@ -81,7 +81,6 @@ You are now in the root of the GNU Bash source distribution.
 .. _Bash home page:
 .. _GNU Bash: http://www.gnu.org/software/bash/
 .. _GNU zip: http://www.gzip.org/
-.. _directory index: http://en.wikipedia.org/wiki/Webserver_directory_index
 
 Example: libgit2 and zip archives
 ---------------------------------
@@ -126,11 +125,9 @@ There are several build systems used by typical software on GNU/Linux. Read the 
 Autotools
 ---------
 
-Autotools_, also known as the GNU Build System, is the build system currently used by most programs on GNU/Linux. You can usually identify a program using Autotools by the presence of a :file:`configure` script in the root of the source distribution.
+:wikipedia:`Autotools <GNU_build_system>`, also known as the GNU Build System, is the build system currently used by most programs on GNU/Linux. You can usually identify a program using Autotools by the presence of a :file:`configure` script in the root of the source distribution.
 
 The software which makes up Autotools itself is usually not necessary to build a program using Autotools as a build system. Instead, the functionality is embedded into the :file:`configure` script itself. Autotools build systems typically only require the presence of Make.
-
-.. _Autotools: http://en.wikipedia.org/wiki/GNU_build_system
 
 Example: GNU Bash
 `````````````````
