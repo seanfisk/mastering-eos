@@ -13,7 +13,7 @@ Now that you have the source code, the first step in building the manual is to i
 
 For the technical details on what this is doing, please see the `Pip installation docs`_.
 
-Pip should now be installed to :file:`~/.local/bin/pip`. But we don't want to have to type that full path every time we want to run a program installed there. To remedy this, add the following to your :file:`~/.bash_profile`::
+Pip should now be installed to :file:`~/.local/bin/pip`. However, we don't want to have to type the full path every time we want to run :file:`pip` or any other executable installed there.. To remedy this, add the following to your :file:`~/.bash_profile`::
 
     export PATH=~/.local/bin:$PATH
 
@@ -40,7 +40,7 @@ The Python requirements for the project have now been met.
 Configure Your Editor
 =====================
 
-We use EditorConfig_ to maintain consistent formatting between developers. Our EditorConfig preferences are recorded in the :file:`.editorconfig` in the root of the repository.
+We use EditorConfig_ to maintain consistent formatting between developers. Our EditorConfig preferences are recorded in the :file:`.editorconfig` file in the root of the repository.
 
 If you do not have an editor preference, we suggest that you use gedit_ for the following reasons:
 
@@ -48,9 +48,9 @@ If you do not have an editor preference, we suggest that you use gedit_ for the 
 * It has EditorConfig support.
 * It is already installed on EOS.
 
-An editor is a very personal choice, so if you do have an editor preference, please use the editor with which you are comfortable. EditorConfig `has plugins for many different editors`_. If yours is listed, we suggest you take the time to get your editor's plugin working. If you cannot get it working or there is no EditorConfig support for your editor, please read the :file:`.editorconfig` file for the formatting standards --- they should be relatively easy to follow manually.
+An editor is a very personal choice, so if you do have an editor preference, please use the editor with which you are comfortable. There are `EditorConfig plugins`_ for many different editors. If yours is listed, we suggest you take the time to get your editor's plugin working. If you cannot get it working or there is no EditorConfig support for your editor, please read the :file:`.editorconfig` file for the formatting standards --- they should be relatively easy to follow manually.
 
-If you do choose gedit, we have a script to assist in installing EditorConfig support. To install the plugin, run::
+If you do choose gedit, we have a script to assist in installing EditorConfig support on EOS. To install the plugin, run::
 
     scripts/install-gedit-editorconfig-eos
 
@@ -68,7 +68,7 @@ Select the :guilabel:`Plugins` tab, then scroll down and check the :guilabel:`Ed
 .. image:: /images/gedit/plugins.png
    :alt: gedit Plugins Dialog
 
-The checkbox should become checked. If it turns to a red warning sign, please contact |the-sysadmin|_ for help. EditorConfig is now enabled for gedit!
+The checkbox should become checked. If it turns to a red warning sign, please `report an issue`_. EditorConfig is now enabled for gedit!
 
 Another step in setting up your editor is to configure it as the editor for Git commit messages. Do this with::
 
@@ -80,7 +80,7 @@ Your editor has now been set up for developing |title|!
 
 .. _gedit: https://wiki.gnome.org/Apps/Gedit
 .. _EditorConfig: http://editorconfig.org/
-.. _has plugins for many different editors: http://editorconfig.org/#download
+.. _EditorConfig plugins: http://editorconfig.org/#download
 
 SSH Setup
 =========

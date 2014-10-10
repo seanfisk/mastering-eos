@@ -5,11 +5,11 @@
 Configure the Build
 ===================
 
-For building the documents, we use Waf_ as a build system. Waf is similar to build systems like Autotools_ and CMake_ in that it has a separate configuration and build stages. To configure the project, run::
+For building the documents, we use Waf_ as a build system. Waf is similar to build systems like Autotools_ and CMake_ in that it has separate configuration and build stages. To configure the project, run::
 
     ./waf configure --no-ssh-auto-update
 
-Waf will check that all the requirements are met before preparing the build. If any are not met, please re-check your steps in :ref:`contributing-prereqs` or talk to |the-sysadmin|_. The ``--no-ssh-auto-update`` option disables re-building of the SSH fingerprints table. Since the deployment of |title| is automated, there is no reason for a contributor to leave auto-update on. A shortcut for this command is::
+Waf will check that all the requirements are met before preparing the build. If any are not met, please re-check your steps in :ref:`contributing-prereqs` or `report an issue`_. The ``--no-ssh-auto-update`` option disables re-building of the SSH fingerprints table. Since the deployment of |title| is automated, there is no reason for a contributor to leave auto-update turned on. A shortcut for this command is::
 
     ./waf configure -m
 

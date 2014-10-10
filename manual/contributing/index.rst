@@ -27,7 +27,6 @@ Continue reading to find out how to make your own contributions to |title|.
    pull-request
    writing-style
 
-.. _issue tracker: https://github.com/seanfisk/mastering-eos/issues
 .. _hosted on GitHub: https://github.com/seanfisk/mastering-eos
 .. _Git: http://git-scm.com/
 .. _GitHub: https://github.com/

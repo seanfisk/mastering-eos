@@ -28,16 +28,16 @@ Fire up your editor to open the file::
 
 Find the sentence and make the change.
 
-As shown in the previous section, you will want to :ref:`contributing-build-docs` and :ref:`contributing-view-results` after you make your changes. Once you are happy with how it looks, it is time to create a branch on which to commit your changes.
+As shown in the previous section, you will want to :ref:`contributing-build-docs` and :ref:`contributing-view-results` after you make your change. Once you are happy with how it looks, it is time to create a branch on which to commit your change.
 
 .. _Sphinx's reStructuredText Primer: http://sphinx-doc.org/rest.html
 
 Create a Feature Branch
 =======================
 
-The next step is to create a *feature branch* for your changes. A feature branch represents the addition of one cohesive set of changes. For example, a feature branch could contain related changes to sections on SSH and SCP, but should not contain unrelated changes to the personal website and VNC sections.
+The next step is to create a *feature branch* for your change. A feature branch represents the addition of one cohesive set of changes. For example, a feature branch could contain related changes to sections on SSH and SCP, but should not contain unrelated changes to the personal website and VNC sections.
 
-Try to pick a name for your branch that represents your changes. Create a new feature branch for our example with::
+Try to pick a name for your branch that represents your change. Create a new feature branch for our example with::
 
     git checkout -b bacon-rules-spinach-drools
 
@@ -45,10 +45,10 @@ Try to pick a name for your branch that represents your changes. Create a new fe
 
     In this example, we only make one commit on the feature branch. Although one commit is fine, you are free to make more commits on a feature branch as well.
 
-Commit Your Changes
-===================
+Commit Your Change
+==================
 
-Once you have made your changes, it's time to commit. First, let's ask Git for a status report:
+Once you have made your change, it's time to commit. First, let's ask Git for a status report:
 
 .. code-block:: console
 
@@ -60,7 +60,7 @@ Once you have made your changes, it's time to commit. First, let's ask Git for a
 
             modified:   manual/contributing/edit.rst
 
-As you can see, Git is aware of our changes, but we have not yet told Git that we intended to make them.
+As you can see, Git is aware of our change, but we have not yet told Git that we intended to make them.
 
 Assure Git of our intentions with::
 
@@ -77,17 +77,17 @@ Looking at the status now yields:
 
             modified:   manual/contributing/edit.rst
 
-We are now ready to commit our changes. As part of the commit, you will be asked for a commit message. The commit message should be a short (less than 50 characters), high-level summary of what has been done in this commit. Before writing a message for this commit, look back at commit messages for prior commits with::
+We are now ready to commit our change. As part of the commit, you will be asked for a commit message. The commit message should be a short (less than 50 characters), high-level summary of what has been done in this commit. Before writing a message for this commit, look back at commit messages for prior commits with::
 
     git log
 
-These messages should give you an idea of typical commit messages for this project. Press ``q`` to quit the log viewer. To commit your changes, run the following::
+These messages should give you an idea of what a typical commit message for this project looks like. Press ``q`` to quit the log viewer. To commit your change, run the following::
 
     git commit
 
-This should open gedit or another editor you have configured. Enter your commit message:
+This should open gedit, or another editor if you have configured one. Enter your commit message:
 
-    I like bacon, not spinach. Geez, get it right.
+    I like bacon, not spinach. Geez; get it right.
 
 Push The Branch
 ===============
