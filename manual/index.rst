@@ -6,7 +6,7 @@
 
    .. The poster is visible in the Architecture Lab and is also available `as a PDF <mastering-eos-poster.pdf>`_.
 
-   **Student contribution to** |bold-title| **is encouraged. This means you!** Please see the section :doc:`contributing` for more information.
+   **Student contribution to** |bold-title| **is encouraged. This means you!** Please see the section :ref:`contributing` for more information.
 
 **Contents:**
 
@@ -21,8 +21,8 @@
    winserv
    databases
    ide
+   contributing/index
    envvars
-   contributing
 
 .. only:: build_html
 

@@ -439,6 +439,11 @@ rst_epilog = '''
 .. _Wikipedia entry on rpath:
 .. _rpath:
 .. _run-time search path (rpath): http://en.wikipedia.org/wiki/Rpath
+.. _Waf: https://code.google.com/p/waf/
+.. _CMake: http://www.cmake.org/
+.. _Autotools: http://en.wikipedia.org/wiki/GNU_build_system
+.. _Sphinx: http://sphinx-doc.org/
+.. _reStructuredText: http://docutils.sourceforge.net/rst.html
 '''.format(title=project)
 
 # The default highlight language is Python; switch it to Bash.
