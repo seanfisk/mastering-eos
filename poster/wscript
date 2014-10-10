@@ -57,7 +57,7 @@ def build(ctx):
         deps=(
             glob.glob(join(UBUNTU_FONTS_PATH, '*.ttf')) +
             glob.glob('code/*.bash')
-          ),
+        ),
         # prompt=0 enables batch mode, which disables the avalanche of output
         # normally produced by LaTeX.
         prompt=0,
