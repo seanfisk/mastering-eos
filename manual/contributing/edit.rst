@@ -97,3 +97,11 @@ Your changes have now been committed. The last step in this section is to push t
     git push -u origin bacon-rules-spinach-drools
 
 Your branch has now been pushed to your forked repository! Continue on to the next section to find out how to propose them as changes to the |title| official repository.
+
+Git Resources
+=============
+
+This guide illustrates the bare minimum amount of Git commands that you will need to complete this task. For more guidance on using Git, please check out `GitHub's list of Git resources`_. In particular, GitHub's `Try Git`_ is great for beginners.
+
+.. _GitHub's list of Git resources: https://help.github.com/articles/what-are-other-good-resources-for-learning-git-and-github/
+.. _Try Git: https://try.github.com/
