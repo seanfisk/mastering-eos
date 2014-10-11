@@ -40,6 +40,9 @@ The Python requirements for the project have now been met.
 Configure Your Editor
 =====================
 
+EditorConfig
+------------
+
 We use EditorConfig_ to maintain consistent formatting between developers. Our EditorConfig preferences are recorded in the :file:`.editorconfig` file in the root of the repository.
 
 If you do not have an editor preference, we suggest that you use gedit_ for the following reasons:
@@ -70,11 +73,24 @@ Select the :guilabel:`Plugins` tab, then scroll down and check the :guilabel:`Ed
 
 The checkbox should become checked. If it turns to a red warning sign, please `report an issue`_. EditorConfig is now enabled for gedit!
 
-Another step in setting up your editor is to configure it as the editor for Git commit messages. Do this with::
+Git Configuration
+-----------------
+
+We want to set up gedit as the editor for Git commit messages. Do this with::
 
     git config --global core.editor 'gedit --wait'
 
 We use the ``--wait`` flag here because Git expects the editor to block until the commit message has been finished.
+
+gedit also creates backup files of each file that you save. These files end with a tilde (``~``) and get annoying when they clutter the output of ``git status``. Fortunately, we can tell Git to ignore them. Run the following:
+
+.. code-block:: console
+
+    $ cat > ~/.gitignore-global <<EOF
+    # gedit backup files
+    *~
+    EOF
+    $ git config --global core.excludesfile '~/.gitignore-global'
 
 Your editor has now been set up for developing |title|!
 
