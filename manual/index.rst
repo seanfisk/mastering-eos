@@ -19,12 +19,12 @@
    remote-access/index
    shells
    user-level-sw/index
+   sys-sw-info
    winserv
    databases
    ide
    envvars
    contributing
-   sys-sw-info
 
 .. only:: build_html
 
