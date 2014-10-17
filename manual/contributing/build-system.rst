@@ -24,17 +24,6 @@ After configuration, building is rather easy::
 
 You will see various build steps being executed as they are printed to the screen. This command builds both the manual and the poster and places the build artifacts in the :file:`build/manual` and :file:`build/poster` directories, respectively.
 
-.. warning::
-
-    From time to time, you may see a warning like this:
-
-    .. code::
-
-        Warning, treated as error:
-        WARNING: search index couldn't be loaded, but not all documents will be built: the index will be incomplete.
-
-    The error is spurious and we believe it is rooted with running the Sphinx EPUB builder in parallel with other builders. For now, the workaround is just to re-run the build.
-
 .. _contributing-view-results:
 
 View the Results
