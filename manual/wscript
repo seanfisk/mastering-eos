@@ -51,7 +51,6 @@ def build(ctx):
     fabfile_node = ctx.srcnode.find_resource('fabfile.py')
 
     # This task takes a while, so start it first.
-    # update_outputs=True,
     ctx(name='make_ssh_fingerprints_table',
         features='fabric',
         fabfile=fabfile_node,
