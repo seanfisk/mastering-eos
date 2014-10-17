@@ -2,7 +2,6 @@
  TODO
 ======
 
-* Add link to EOS basics: http://www.cis.gvsu.edu/Facilities/eosLabs/. Mention the caveat of not being up-to-date.
 * Write a script which SSH'es into all the machines and checks for requisite software.
 
 * Raise awareness

@@ -15,6 +15,7 @@
 
    intro
    rules
+   basics
    remote-access/index
    shells
    user-level-sw/index

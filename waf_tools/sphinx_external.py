@@ -181,7 +181,9 @@ def apply_sphinx(task_gen):
 
         # Set the task order if that was requested.
         for attr in ['after', 'before']:
-            setattr(task, attr, getattr(task_gen, attr, []))
+            # Append an underscore to the expected keyword so that Waf doesn't
+            # dump warnings in verbose mode.
+            setattr(task, attr, getattr(task_gen, attr + '_', []))
 
         # The follow-up builders have an extra step -- we have to run a
         # Makefile in their output directories. Ugh :(

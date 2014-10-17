@@ -19,4 +19,4 @@ Example
 
 For an example OpenSSH configuration file, see `Sean's SSH config`_.
 
-.. _Sean's SSH config: https://github.com/seanfisk/dotfiles/blob/master/.ssh/config
+.. _Sean's SSH config: https://github.com/seanfisk/dotfiles/blob/master/dotfiles/ssh/config

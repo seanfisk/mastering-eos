@@ -72,3 +72,6 @@ Job management
 - ps
 - jobs
 - backgrounding commands (&), fg, and bg
+
+Remote
+- Add section on firewall timeouts and VPN
