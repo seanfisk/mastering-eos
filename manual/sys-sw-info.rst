@@ -24,7 +24,7 @@ These tools show large amounts of information about the system, including but no
 inxi
 ````
 
-inxi_ is a full-featured Bash script that can be used to obtain information about many parts of the system including the operating system and hardware. inxi is unfortunately not installed on EOS computers by default, but is not difficult to install. It is unecessary but beneficial to be familiar with the steps involved in :ref:`manual-install` as well.
+inxi_ is a full-featured Bash script that can be used to obtain information about many parts of the system including the operating system and hardware. inxi is unfortunately not installed on EOS computers by default, but is not difficult to install. It is unnecessary but beneficial to be familiar with the steps involved in :ref:`manual-install` as well.
 
 First, follow the instructions in :ref:`ready-prefix`. Then run the following commands to install the inxi script and its man page::
 
@@ -54,7 +54,7 @@ HardInfo
 
 HardInfo_ is far and away the best tool to obtain organized information related to the system. HardInfo displays on the operating system, kernel, hardware, peripherals, network and more. Furthermore, it can also run benchmarks on the CPU, FPU, and GPU.
 
-Unfortunately, it is not installed by default on the EOS computers, so it must be compiled from source. Don't be afraid, though --- by following these steps, you should be able to install HardInfo quickly and simply. It is unecessary but beneficial to be familiar with the steps involved in :ref:`manual-install` as well.
+Unfortunately, it is not installed by default on the EOS computers, so it must be compiled from source. Don't be afraid, though --- by following these steps, you should be able to install HardInfo quickly and simply. It is unnecessary but beneficial to be familiar with the steps involved in :ref:`manual-install` as well.
 
 .. _HardInfo: http://hardinfo.org/
 
