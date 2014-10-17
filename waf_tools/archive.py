@@ -115,7 +115,9 @@ def apply_archive(task_gen):
 
         # Set the task order if that was requested.
         for attr in ['after', 'before']:
-            setattr(task, attr, getattr(task_gen, attr, []))
+            # Append an underscore to the expected keyword so that Waf doesn't
+            # dump warnings in verbose mode.
+            setattr(task, attr, getattr(task_gen, attr + '_', []))
 
     # Prevent execution of process_source. We don't want this to run because we
     # have our own format for the source list.

@@ -93,5 +93,5 @@ def build(ctx):
         nitpicky=True,
         # Make sure that vnc and fingerprints tables are built before running.
         # The 'after' keyword means 'run this task after the listed tasks'.
-        after=['make_vnc_table', 'make_ssh_fingerprints_table'],
+        after_=['make_vnc_table', 'make_ssh_fingerprints_table'],
     )
