@@ -26,12 +26,6 @@
     * Add prompt customization section
     * "Next class" Python module in prompt, e.g., ``<CIS452 in 01:42>``.
 
-* Add section on 'Mining Hardware/Software Information'.
-    * Finding versions of programs
-    * Finding OS versions
-    * Hardware information
-    * Web server details (info.php)
-
 * Installing software
     * Possibly make library dependencies section a real-life example (tmux?).
     * Specific environments

@@ -24,7 +24,7 @@
    ide
    envvars
    contributing
-   machine_os_sw_info
+   sys-sw-info
 
 .. only:: build_html
 
