@@ -2,7 +2,7 @@
 
 .. only:: builder_html
 
-   In addition to the HTML you are currently viewing, the |title| manual is also available in `PDF <mastering-eos.pdf>`_, `EPUB (e-book) <mastering-eos.epub>`_, and HTML archive (`.tar.gz <mastering-eos-html.tar.gz>`_ or `.zip <mastering-eos-html.zip>`_) formats, or by typing ``man eos`` or ``info eos`` on any EOS or Arch machine.
+   In addition to the HTML you are currently viewing, the |title| manual is also available in `PDF <mastering-eos.pdf>`_ and HTML archive (`.tar.gz <mastering-eos-html.tar.gz>`_ or `.zip <mastering-eos-html.zip>`_) formats, or by typing ``man eos`` or ``info eos`` on any EOS or Arch machine.
 
    .. The poster is visible in the Architecture Lab and is also available `as a PDF <mastering-eos-poster.pdf>`_.
 

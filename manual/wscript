@@ -85,7 +85,7 @@ def build(ctx):
         ])
 
     ctx(features='sphinx',
-        builders='latexpdf html epub man info',
+        builders='latexpdf html man info',
         source='conf.py',
         # Turn warnings into errors. Helps them get fixed more quickly :)
         warningiserror=True,
