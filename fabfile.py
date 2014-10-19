@@ -8,7 +8,7 @@ from texttable import Texttable
 
 # Allow being overridden from the command-line.
 env.hosts = [
-    'eos{0:02}.cis.gvsu.edu'.format(num) for num in xrange(1, 24)
+    'eos{0:02}.cis.gvsu.edu'.format(num) for num in xrange(1, 33)
 ] + [
     'arch{0:02}.cis.gvsu.edu'.format(num) for num in xrange(1, 11)
 ]

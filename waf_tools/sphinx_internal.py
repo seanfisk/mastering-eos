@@ -243,6 +243,12 @@ class sphinx_build_task(waflib.Task.Task):
             args.append('-n')
         if self.warning_is_error:
             args.append('-W')
+        # XXX: The Sphinx epub builder is buggy, and its brokenness causes it
+        # to output warnings about the search index. Build with a clean
+        # environment if we are building EPUB and warnings are errors to avoid
+        # this annoyance. It's a hack, but it's better than the task failing.
+        if self.warning_is_error and self.sphinx_builder == 'epub':
+            args.append('-E')
         args += [
             self.src_dir_node.abspath(),
             self.out_dir_node.abspath(),
@@ -437,9 +443,6 @@ def apply_sphinx(task_gen):
 
         out_dir_node = out_dir_parent_node.find_or_declare(sphinx_builder)
 
-        # Although it usually doesn't happen, we had trouble with race
-        # conditions using a shared doctrees directory. Set up a private
-        # doctrees directory to avoid race conditions.
         doctrees_node = (
             out_dir_node.find_or_declare('.doctrees')
             # The epub builder spits out unknown mimetype warnings if we throw
@@ -468,7 +471,9 @@ def apply_sphinx(task_gen):
 
         # Set the task order if that was requested.
         for attr in ['after', 'before']:
-            setattr(task, attr, getattr(task_gen, attr, []))
+            # Append an underscore to the expected keyword so that Waf doesn't
+            # dump warnings in verbose mode.
+            setattr(task, attr, getattr(task_gen, attr + '_', []))
 
     # Prevent execution of process_source. We don't need it because we are
     # letting Sphinx decide on the sources.
