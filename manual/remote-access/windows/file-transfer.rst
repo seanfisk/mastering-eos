@@ -5,7 +5,7 @@
 Graphical
 =========
 
-The recommend graphical client for file transfer on Mac OS X is WinSCP_, which can be found on the `WinSCP downloads page`_. We recommend downloading the latest stable installer, labeled *Installation package*. It should be near the top.
+The recommend graphical client for file transfer on Windows is WinSCP_, which can be found on the `WinSCP downloads page`_. We recommend downloading the latest stable installer, labeled *Installation package*. It should be near the top.
 
 .. _WinSCP: http://winscp.net/eng/index.php
 .. _WinSCP downloads page: http://winscp.net/eng/download.php
