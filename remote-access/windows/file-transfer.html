@@ -74,6 +74,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../rules.html#games">Games</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics.html">Command Line Basics</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Remote Access (SSH/VNC)</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mac-os-x/index.html">Mac OS X</a></li>
@@ -84,6 +85,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../shells.html#bash">Bash</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../shells.html#tcsh">Tcsh</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../shells.html#kornshell">Kornshell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-level-sw/index.html">User-level Software Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user-level-sw/manual-install.html">Manual Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user-level-sw/linuxbrew.html">Linuxbrew</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../winserv.html">Winserv</a><ul>
@@ -108,6 +115,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../ide.html#intellij">IntelliJ</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../envvars.html">Environment Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing to Mastering EOS</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../contributing.html#writing-style">Writing Style</a></li>
 </ul>
@@ -154,7 +162,7 @@
 <h1>File Transfer<a class="headerlink" href="#file-transfer" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="graphical">
 <h2>Graphical<a class="headerlink" href="#graphical" title="Permalink to this headline">¶</a></h2>
-<p>The recommend graphical client for file transfer on Mac OS X is <a class="reference external" href="http://winscp.net/eng/index.php">WinSCP</a>, which can be found on the <a class="reference external" href="http://winscp.net/eng/download.php">WinSCP downloads page</a>. We recommend downloading the latest stable installer, labeled <em>Installation package</em>. It should be near the top.</p>
+<p>The recommend graphical client for file transfer on Windows is <a class="reference external" href="http://winscp.net/eng/index.php">WinSCP</a>, which can be found on the <a class="reference external" href="http://winscp.net/eng/download.php">WinSCP downloads page</a>. We recommend downloading the latest stable installer, labeled <em>Installation package</em>. It should be near the top.</p>
 <p>After downloading, run the installer. The <em>Typical installation</em> is usually fine, but feel free to customize the installation options. You can choose either the <em>Commander</em> or <em>Explorer</em> interface, but keep in mind that most people use the <em>Commander</em> interface. Don&#8217;t forget to disable the sneaky Google Chrome installer included with this installer.</p>
 <p>After the installer copies its files, it may detect your sessions from PuTTY. If so, click <em class="guilabel">OK</em> to import them. Select the sessions you&#8217;d like to import and click <em class="guilabel">OK</em> again. This is the single easiest way to start quickly with WinSCP.</p>
 <p>At the end of the installer, leave the box labeled <em class="guilabel">Launch WinSCP</em> checked. You can choose to open the <em>Getting started</em> page as well, although there is really no need to do so.</p>
@@ -265,7 +273,19 @@ pscp smithj@eos01.cis.gvsu.edu:classes/cis162/hw3.txt classes/cis162
           SphinxRtdTheme.StickyNav.enable();
       });
   </script>
-   
+  
+ 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-19591513-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 
 </body>
 </html>

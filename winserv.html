@@ -30,7 +30,7 @@
   
     <link rel="top" title="Mastering EOS" href="index.html"/>
         <link rel="next" title="Databases" href="databases.html"/>
-        <link rel="prev" title="Shells" href="shells.html"/> 
+        <link rel="prev" title="Linuxbrew" href="user-level-sw/linuxbrew.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -73,6 +73,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rules.html#games">Games</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Command Line Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/windows/index.html">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/mac-os-x/index.html">Mac OS X</a></li>
@@ -83,6 +84,12 @@
 <li class="toctree-l2"><a class="reference internal" href="shells.html#bash">Bash</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shells.html#tcsh">Tcsh</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shells.html#kornshell">Kornshell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-level-sw/index.html">User-level Software Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-level-sw/manual-install.html">Manual Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-level-sw/linuxbrew.html">Linuxbrew</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Winserv</a><ul>
@@ -107,6 +114,7 @@
 <li class="toctree-l2"><a class="reference internal" href="ide.html#intellij">IntelliJ</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to Mastering EOS</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="contributing.html#writing-style">Writing Style</a></li>
 </ul>
@@ -180,11 +188,11 @@
 <div class="section" id="gnu-linux">
 <span id="winserv-gnu-linux"></span><h2>GNU/Linux<a class="headerlink" href="#gnu-linux" title="Permalink to this headline">¶</a></h2>
 <p>GNU/Linux systems usually have the <a class="reference external" href="http://www.rdesktop.org/">rdesktop</a> command-line tool in their repositories. If not, it can most likely be built from source. rdesktop provides a geometry flag that accepts both screen percentages or resolutions from the command-line to help adjust the client to an appropriate size. For instance, to allow the client to take up 90% of your screen:</p>
-<div class="highlight-python"><div class="highlight"><pre>rdekstop winserv.cis.gvsu.edu -g 90%
+<div class="highlight-bash"><div class="highlight"><pre>rdekstop winserv.cis.gvsu.edu -g 90%
 </pre></div>
 </div>
 <p>Alternatively, to force a resolution of 1024x768 pixels:</p>
-<div class="highlight-python"><div class="highlight"><pre>rdekstop winserv.cis.gvsu.edu -g 1024x768
+<div class="highlight-bash"><div class="highlight"><pre>rdekstop winserv.cis.gvsu.edu -g 1024x768
 </pre></div>
 </div>
 <p>For a graphical RDP client that can also be used for <a class="reference internal" href="remote-access/gnu-linux/vnc.html#gnu-linux-vnc"><em>VNC</em></a>, check out <a class="reference external" href="http://remmina.sourceforge.net/">Remmina</a>.</p>
@@ -200,7 +208,7 @@
         <a href="databases.html" class="btn btn-neutral float-right" title="Databases"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="shells.html" class="btn btn-neutral" title="Shells"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="user-level-sw/linuxbrew.html" class="btn btn-neutral" title="Linuxbrew"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -253,7 +261,19 @@
           SphinxRtdTheme.StickyNav.enable();
       });
   </script>
-   
+  
+ 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-19591513-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 
 </body>
 </html>

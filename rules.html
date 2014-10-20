@@ -29,7 +29,7 @@
 
   
     <link rel="top" title="Mastering EOS" href="index.html"/>
-        <link rel="next" title="Remote Access (SSH/VNC)" href="remote-access/index.html"/>
+        <link rel="next" title="Command Line Basics" href="basics.html"/>
         <link rel="prev" title="Introduction" href="intro.html"/> 
 
   
@@ -73,6 +73,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#games">Games</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Command Line Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/windows/index.html">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/mac-os-x/index.html">Mac OS X</a></li>
@@ -83,6 +84,12 @@
 <li class="toctree-l2"><a class="reference internal" href="shells.html#bash">Bash</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shells.html#tcsh">Tcsh</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shells.html#kornshell">Kornshell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-level-sw/index.html">User-level Software Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-level-sw/manual-install.html">Manual Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-level-sw/linuxbrew.html">Linuxbrew</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="winserv.html">Winserv</a><ul>
@@ -107,6 +114,7 @@
 <li class="toctree-l2"><a class="reference internal" href="ide.html#intellij">IntelliJ</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to Mastering EOS</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="contributing.html#writing-style">Writing Style</a></li>
 </ul>
@@ -150,7 +158,48 @@
 <p>It is important that some basic rules and procedures be established to help maintain the lab and aid in its shared use.  To those ends, please be aware of the following guidelines:</p>
 <div class="section" id="disk-space">
 <h2>Disk Space<a class="headerlink" href="#disk-space" title="Permalink to this headline">¶</a></h2>
-<p>You are given 8 gigabytes (GB) of disk space. Once you exceed this limit, you can no longer store data on the system. This often leads to being unable to login via a graphical session, as the desktop manager must be able to write to disk. You must then log in via a text-based console and delete files to make space.</p>
+<p>You are given 8 gigabytes (GB) of disk space. Once you exceed this limit, you can no longer write new data to the filesystem. This often leads to being unable to login via a graphical session, as the desktop manager must be able to write to disk. You must then log in via a text-based console and delete files to make space.</p>
+<p>The amount of disk space you have currently used may be checked with the <strong class="command">quota</strong> command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> quota --human-readable
+<span class="go">Disk quotas for user smithj (uid 1234):</span>
+<span class="go">     Filesystem   space   quota   limit   grace   files   quota   limit   grace</span>
+<span class="go">148.61.162.101:/home</span>
+<span class="go">                  9728M*  8192M  10240M            303k       0       0</span>
+</pre></div>
+</div>
+<p>The output of this command is two sets of four columns. The first four refer to physical disk space, while the second four refer to the number of files. The columns have the following meanings:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>space</td>
+<td>The amount of disk space you are currently using.</td>
+</tr>
+<tr class="row-odd"><td>files</td>
+<td>The number of files in your home directory.</td>
+</tr>
+<tr class="row-even"><td>quota</td>
+<td>The soft limit for space or files. You may exceed
+this for the time listed in the grace period.</td>
+</tr>
+<tr class="row-odd"><td>limit</td>
+<td>The hard limit for space or files. You may never
+exceed this limit.</td>
+</tr>
+<tr class="row-even"><td>grace</td>
+<td>The amount of time for which you can exceed the
+soft limit.</td>
+</tr>
+</tbody>
+</table>
+<p>For the previous output, the user has a soft limit of 8192 MiB / 1024 MiB/GiB = 8 GiB and a hard limit of 10240 MiB / 1024 MiB/GiB = 10 GiB. The user is currently using 9728 MiB / 1024 MiB/GiB = 9.5 GiB of disk space, and is over quota (indicated by the <tt class="docutils literal"><span class="pre">*</span></tt>). The output is expressed in <a class="reference external" href="http://en.wikipedia.org/wiki/Mebibyte">mebibytes</a>, which might be different than the <a class="reference external" href="http://en.wikipedia.org/wiki/Megabyte">megabytes</a> to which you are accustomed. There is no grace period set, so the user is able to write files until reaching the hard limit. There is also no limit on the number of files the user can create, only a limit on the amount of space consumed.</p>
 </div>
 <div class="section" id="copyrighted-material">
 <h2>Copyrighted Material<a class="headerlink" href="#copyrighted-material" title="Permalink to this headline">¶</a></h2>
@@ -161,7 +210,7 @@
 </div>
 <div class="section" id="food-and-drink">
 <h2>Food and Drink<a class="headerlink" href="#food-and-drink" title="Permalink to this headline">¶</a></h2>
-<p>You are encouraged to eat and drink in the labs &#8212; these labs were made for you and we want them to be as comfortable and useful as possible. Many restaraunts in the area deliver to the labs, including Papa John&#8217;s and Jimmy John&#8217;s. However, it is your responsibility to clean up after yourself. If the lab becomes too messy, policies to limit food and drinks will be instituted.</p>
+<p>You are allowed to eat and drink in the labs &#8212; these labs were made for you and we want them to be as comfortable and useful as possible. Many restaraunts in the area deliver to the labs. However, it is your responsibility to clean up after yourself. If the lab becomes too messy, policies to limit food and drinks will be instituted.</p>
 </div>
 <div class="section" id="overnight-parking">
 <h2>Overnight Parking<a class="headerlink" href="#overnight-parking" title="Permalink to this headline">¶</a></h2>
@@ -173,11 +222,11 @@
 </div>
 <div class="section" id="malicious-activity">
 <h2>Malicious Activity<a class="headerlink" href="#malicious-activity" title="Permalink to this headline">¶</a></h2>
-<p>The infrastructure provided by the EOS Labs includes very powerful tools that can be used to secure network infrastructure.  Unfortunately, these tools may also be used for malicious purposes. We provide these tools for you to learn to defend future systems it may be your job to secure. Under no circumstances should these tools be used to attack other students, machines, or entities. We do not provide these resources without reasonable oversight as to their use, and those using them illegally will be noticed and face strong consequences &#8212; possibly including removal from the university and criminal charges.</p>
+<p>The infrastructure provided by the EOS Labs includes very powerful tools that can be used to secure applications and network infrastructure.  Unfortunately, these tools may also be used for malicious purposes. We provide these tools for you to learn to defend future systems it may be your job to secure. Under no circumstances should these tools be used to attack other students, machines, or entities. We do not provide these resources without reasonable oversight as to their use, and those using them illegally will be noticed and face strong consequences &#8212; possibly including removal from the university and criminal charges.</p>
 </div>
 <div class="section" id="games">
 <h2>Games<a class="headerlink" href="#games" title="Permalink to this headline">¶</a></h2>
-<p>We encourage playing games in the lab. However, if you are playing games and all machines are currently in use, please be polite and yield your machine to students needing to complete coursework.  Failure to do so may result in suspension of your account, or all games being removed from the system.</p>
+<p>We allow playing games in the lab. However, if you are playing games and all machines are currently in use, please be polite and yield your machine to students needing to complete coursework.  Failure to do so may result in suspension of your account, or all games being removed from the system.</p>
 </div>
 </div>
 
@@ -187,7 +236,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="remote-access/index.html" class="btn btn-neutral float-right" title="Remote Access (SSH/VNC)"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="basics.html" class="btn btn-neutral float-right" title="Command Line Basics"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="intro.html" class="btn btn-neutral" title="Introduction"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -243,7 +292,19 @@
           SphinxRtdTheme.StickyNav.enable();
       });
   </script>
-   
+  
+ 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-19591513-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 
 </body>
 </html>

@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GUI Toolkits &mdash; Mastering EOS</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Mastering EOS" href="index.html"/>
+        <link rel="next" title="Environment Variables" href="envvars.html"/>
+        <link rel="prev" title="Integrated Development Environments" href="ide.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> Mastering EOS</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#physical-access-keycards">Physical Access (Keycards)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#computer-access-credentials">Computer Access (Credentials)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules and Procedures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#disk-space">Disk Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#copyrighted-material">Copyrighted Material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#food-and-drink">Food and Drink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#overnight-parking">Overnight Parking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#living-in-the-lab">Living in the Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#malicious-activity">Malicious Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#games">Games</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="remote-access/windows/index.html">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote-access/mac-os-x/index.html">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote-access/gnu-linux/index.html">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="shells.html">Shells</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#bash">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#tcsh">Tcsh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#kornshell">Kornshell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-level-sw/index.html">User-level Software Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-level-sw/manual-install.html">Manual Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-level-sw/linuxbrew.html">Linuxbrew</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="winserv.html">Winserv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="winserv.html#common-settings">Common Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="winserv.html#microsoft-windows">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="winserv.html#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="winserv.html#gnu-linux">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="databases.html">Databases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#mysql">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#oracle">Oracle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#oracle-apex">Oracle APEX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#mssql">MSSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#sqlite">SQLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#remote-database-connections">Remote Database Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ide.html">Integrated Development Environments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ide.html#bluej">BlueJ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ide.html#eclipse">Eclipse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ide.html#intellij">IntelliJ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">GUI Toolkits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#choosing-a-toolkit">Choosing a Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qt">Qt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wxwidgets">wxWidgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gtk">GTK+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tk">Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#swing">Swing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#swt">SWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#native-toolkits">Native Toolkits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to Mastering EOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#writing-style">Writing Style</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Mastering EOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>GUI Toolkits</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/gui-libs.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="gui-toolkits">
+<h1>GUI Toolkits<a class="headerlink" href="#gui-toolkits" title="Permalink to this headline">¶</a></h1>
+<p>For many programs, you may find that a console or command-line interface is not enough. In this case, consider using a library to build a graphical user interface (GUI). Below are the most common GUI toolkits and bindings to various languages. Though you may find bindings of various quality on the Net, care has been taken to include only official or high-quality maintained bindings in this list. Consider the listed bindings the ones recommended by the authors.</p>
+<p>Using a cross-platform toolkit is best when you need to target multiple platforms for your application. All of these toolkits support use of a common code base for multiple operating systems.</p>
+<p>Please see <a class="reference external" href="http://en.wikipedia.org/wiki/List_of_widget_toolkits">Wikipedia&#8217;s list of GUI toolkits</a> for a fuller list.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although you can use all of these toolkits on EOS systems, this information is not specific to EOS.</p>
+</div>
+<div class="section" id="choosing-a-toolkit">
+<h2>Choosing a Toolkit<a class="headerlink" href="#choosing-a-toolkit" title="Permalink to this headline">¶</a></h2>
+<p>Choosing a cross-platform toolkit can be a challenge. It is an important decision because it typically represents a commitment to a specific toolkit. There are a few different issues to consider before making this decision.</p>
+<p>The first consideration is whether the toolkit uses <em>native widgets</em>. Toolkits that use native widgets (native toolkits) call platform-specific APIs to render widgets on the screen. Since native APIs are used, these toolkits often produce applications which look closer to other applications on the platform. They also sometimes offer better system integration.</p>
+<p>Non-native toolkits draw their own widgets on the screen using graphics APIs. Because native APIs are not used, widgets typically have more consistent behavior between platforms.</p>
+<p>A second consideration is the language of development. You will typically want to choose a toolkit that has a binding for your language of choice. However, it is not uncommon for the GUI toolkit to <em>determine</em> the language of development.</p>
+<p>Third, some of the toolkits mentioned offer more that just GUI abstractions. Of these, Qt offers the most features beyond a GUI library. wxWidgets offers more features as well. GTK+, Tk, Swing, and SWT are purely GUI libraries (although GTK+ is typically used with <a class="reference external" href="https://developer.gnome.org/glib/">GLib</a>, while Swing and SWT are used with the Java standard library).</p>
+<p>The final (and possibly most important) consideration is the level of maintenance of the library binding and the library itself. Because GUI libraries and application are typically high in complexity, it is highly suggested that you choose an official or well-maintained binding. Choosing a subpar library typically results in many issues and general frustration.</p>
+</div>
+<div class="section" id="qt">
+<h2>Qt<a class="headerlink" href="#qt" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://qt-project.org/">Qt</a> is a high-quality cross-platform application framework which includes a full-featured GUI library. Qt applications run on Windows, Mac OS X, GNU/Linux, Android, and iOS. Qt is free to use for both open-source and commercial applications (though some of its bindings are not). The <a class="reference external" href="https://www.kde.org/">KDE</a> GNU/Linux desktop environment is developed using Qt. Qt does not use native widgets, but uses native style APIs to render its widgets for a look and feel that is usually consistent with the platform.</p>
+<div class="section" id="bindings">
+<h3>Bindings<a class="headerlink" href="#bindings" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>C++:</strong> Native (built-in)</li>
+<li><strong>JavaScript:</strong> <a class="reference external" href="http://qt-project.org/doc/qt-5/qmlapplications.html">QtQuick/QML</a> (built-in)</li>
+<li><strong>Python:</strong> <a class="reference external" href="http://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a> (free for open-source, but not commercial)</li>
+</ul>
+<p>Also see Wikipedia&#8217;s list of bindings for <a class="reference external" href="http://en.wikipedia.org/wiki/List_of_language_bindings_for_Qt_4">Qt 4</a> and <a class="reference external" href="http://en.wikipedia.org/wiki/List_of_language_bindings_for_Qt_5">Qt 5</a>.</p>
+</div>
+<div class="section" id="tools">
+<h3>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h3>
+<p>Qt has an official IDE, <a class="reference external" href="http://en.wikipedia.org/wiki/Qt_Creator">Qt Creator</a>, which includes a code editor and GUI designer.</p>
+</div>
+</div>
+<div class="section" id="wxwidgets">
+<h2>wxWidgets<a class="headerlink" href="#wxwidgets" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://wxwidgets.org/">wxWidgets</a> is a popular cross-platform GUI toolkit. wxWidgets applications run on Windows, Mac OS X, and GNU/Linux. wxWidgets and most of its bindings are free to use for both open-source and commercial applications. wxWidgets is a fully native toolkit, meaning that it uses native APIs for all of its widgets.</p>
+<div class="section" id="id3">
+<h3>Bindings<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>C++:</strong> Native</li>
+<li><strong>Python:</strong> <a class="reference external" href="http://wxpython.org/">wxPython</a></li>
+<li><strong>PHP:</strong> <a class="reference external" href="http://wxphp.org/">wxPHP</a></li>
+<li><strong>Haskell:</strong> <a class="reference external" href="http://www.haskell.org/haskellwiki/WxHaskell">wxHaskell</a></li>
+<li><strong>Perl:</strong> <a class="reference external" href="http://www.wxperl.it/">wxPerl</a></li>
+</ul>
+<p>Also see the <a class="reference external" href="http://en.wikipedia.org/wiki/List_of_language_bindings_for_wxWidgets">Wikipedia list of wxWidgets bindings</a>.</p>
+</div>
+<div class="section" id="id4">
+<h3>Tools<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://wxglade.sourceforge.net/">wxGlade</a> is the GUI designer tool for wxWidgets.</p>
+</div>
+</div>
+<div class="section" id="gtk">
+<h2>GTK+<a class="headerlink" href="#gtk" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.gtk.org/">GTK+</a> is a popular and complete cross-platform library for GUI programming. GTK+ applications run on Windows, Mac OS X, and GNU/Linux. GTK+ and most of its bindings are free to use for both open-source and commercial applications. Many popular GNU/Linux desktop environments are written using GTK+, including <a class="reference external" href="http://www.gnome.org/">GNOME</a>, <a class="reference external" href="http://xfce.org/">Xfce</a> and Ubuntu&#8217;s <a class="reference external" href="https://unity.ubuntu.com/">Unity</a>. GTK+ is a non-native toolkit, and renders its widgets using <a class="reference external" href="http://cairographics.org/">Cairo</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although GTK+ is purely a GUI library, it is typically used with <a class="reference external" href="https://developer.gnome.org/glib/">GLib</a>, which offers many other application features.</p>
+</div>
+<div class="section" id="id6">
+<h3>Bindings<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>The GTK+ Project maintains <a class="reference external" href="http://www.gtk.org/language-bindings.php">a list of language bindings and their status</a>. The more popular ones include:</p>
+<ul class="simple">
+<li><strong>C:</strong> Native (official)</li>
+<li><strong>C++:</strong> <a class="reference external" href="http://www.gtkmm.org/">gtkmm</a> (official)</li>
+<li><strong>Python:</strong> <a class="reference external" href="http://live.gnome.org/PyGObject">PyGObject</a> (official) [note: <a class="reference external" href="http://www.pygtk.org/">PyGTK</a> not recommended for new programs]</li>
+<li><strong>JavaScript:</strong> <a class="reference external" href="https://wiki.gnome.org/JavaScript">Gjs and Seed</a></li>
+<li><strong>C#:</strong> <a class="reference external" href="http://www.mono-project.com/docs/gui/gtksharp/">Gtk#</a> (official, but incomplete)</li>
+</ul>
+<p>Also see the <a class="reference external" href="http://en.wikipedia.org/wiki/List_of_language_bindings_for_GTK%2B">Wikipedia list of GTK+ bindings</a>.</p>
+</div>
+<div class="section" id="id8">
+<h3>Tools<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://glade.gnome.org/">Glade</a> is the official GUI designer tool for GTK+.</p>
+</div>
+</div>
+<div class="section" id="tk">
+<h2>Tk<a class="headerlink" href="#tk" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.tcl.tk/">Tk</a> is a relatively basic cross-platform GUI toolkit. Tk applications run on Windows, Mac OS X, and GNU/Linux. Tk and most of its bindings are free to use for both open-source and commercial applications. Tk is</p>
+<div class="section" id="id9">
+<h3>Bindings<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Tcl:</strong> Native</li>
+<li><strong>C:</strong> Native</li>
+<li><strong>Python:</strong> <a class="reference external" href="http://en.wikipedia.org/wiki/Tkinter">Tkinter</a></li>
+<li><strong>Perl:</strong> <a class="reference external" href="http://search.cpan.org/~ni-s/Tk-804.027/pod/UserGuide.pod">Perl/Tk</a></li>
+<li><strong>Ruby:</strong> <a class="reference external" href="http://ruby-doc.com/docs/ProgrammingRuby/html/ext_tk.html">Ruby/Tk</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="swing">
+<h2>Swing<a class="headerlink" href="#swing" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Swing_%28Java%29">Swing</a> is the most popular GUI toolkit for Java and is part of the Java standard library. As part of Java, Swing applications run for the most part wherever Java runs. Swing is a non-native toolkit, and draws all of its widgets using Java graphics APIs.</p>
+</div>
+<div class="section" id="swt">
+<h2>SWT<a class="headerlink" href="#swt" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.eclipse.org/swt/">SWT</a> (Standard Widget Toolkit) is cross-platform GUI toolkit for Java programs and an alternative to Swing. SWT applications run on Windows, Mac OS X, and GNU/Linux. The main difference between Swing and SWT is that SWT is a native toolkit, meaning that its widgets are wrappers around native APIs (using <a class="reference external" href="http://en.wikipedia.org/wiki/Java_Native_Interface">JNI</a>) whenever possible.</p>
+<p>SWT&#8217;s notable user and maintainer is the <a class="reference external" href="http://www.eclipse.org/">Eclipse</a> project, where it is used to create the GUI for the Eclipse IDE.</p>
+</div>
+<div class="section" id="native-toolkits">
+<h2>Native Toolkits<a class="headerlink" href="#native-toolkits" title="Permalink to this headline">¶</a></h2>
+<p>Native toolkits are libraries which are usually designed for one platform only. Use these when cross-platform portability is not a concern. We recommend considering <a class="reference external" href="http://en.wikipedia.org/wiki/Windows_Presentation_Foundation">Windows Presentation Foundation</a> on Windows and <a class="reference external" href="https://developer.apple.com/technologies/mac/cocoa.html">Cocoa</a> on Mac OS X. On GNU/Linux, depending on the desktop environment used, <a class="reference external" href="http://qt-project.org/">Qt</a> (for KDE) and <a class="reference external" href="http://www.gtk.org/">GTK+</a> (most others) <em>are the native toolkits</em>.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="envvars.html" class="btn btn-neutral float-right" title="Environment Variables"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ide.html" class="btn btn-neutral" title="Integrated Development Environments"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 Sean Fisk and Ira Woodring.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
