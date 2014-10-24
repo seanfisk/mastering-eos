@@ -84,37 +84,37 @@ You are now in the root of the GNU Bash source distribution.
 .. _GNU Bash: http://www.gnu.org/software/bash/
 .. _GNU zip: http://www.gzip.org/
 
-Example: libgit2 and zip archives
----------------------------------
+Example: EditorConfig and zip archives
+--------------------------------------
 
-For our zip example, we will download the source code for libgit2_, a linkable library providing Git functionality. First switch to the directory containing our source code::
+For our zip example, we will download the source code for the `EditorConfig C Core`_. EditorConfig is a project which helps developers establish formatting standards for a project (and is used by |title|!). First switch to the directory containing our source code::
 
     cd ~/.local/src
 
-The latest version of libgit2 at this time of writing is 0.21.1, so that is what we will download. Visit the `download page for libgit2 0.21.1`_ and scroll down to copy the link for the source code zip archive. GitHub also offers tarball downloads, but we will use the zip for the purposes of this example.
+The latest version of the EditorConfig C Core at this time of writing is 0.21.1, so that is what we will download. Visit the `download page for EditorConfig C Core 0.12.0`_ and select the link for the source code zip archive. The project also offers a tarball download, but we will use the zip for the purposes of this example.
 
 Download the file with :command:`wget` as shown in the earlier example::
 
-    wget --content-disposition https://github.com/libgit2/libgit2/archive/v0.21.1.zip
+    wget http://sourceforge.net/projects/editorconfig/files/EditorConfig-C-Core/0.12.0/source/editorconfig-core-c-0.12.0.zip
 
-We use the ``--content-disposition`` flag here to tell Wget to honor the filename suggested by GitHub. This should create a :file:`libgit2-0.21.1.zip` file in the current working directory. This file is a `zip archive`_ just like those you may have seen on your desktop operating system. This file can be extracted using the InfoZip_ :command:`unzip` utility::
+This should create a :file:`editorconfig-core-c-0.12.0.zip` file in the current working directory. This file is a `zip archive`_ just like those you may have seen on your desktop operating system. This file can be extracted using the InfoZip_ :command:`unzip` utility::
 
-    unzip libgit2-0.21.1.zip
+    unzip editorconfig-core-c-0.12.0.zip
 
 .. warning::
 
      Unlike source tarballs, zip files sometimes have all files in one directory or sometimes have all files immediately in the root directory. Again, however, this is convention --- make sure you trust the source of the archive before extracting the files. You can view the contents of a zip archive with :command:`less` built-in zip viewer::
 
-        less libgit2-0.21.1.zip
+        less editorconfig-core-c-0.12.0.zip
 
-This command should have created a :file:`libgit2-0.21.1` directory in the current working directory. Make that directory your working directory::
+This command should have created a :file:`editorconfig-core-c-0.12.0.zip` directory in the current working directory. Make that directory your working directory::
 
-    cd libgit2-0.21.1
+    cd editorconfig-core-c-0.12.0
 
-You are now in the root of the libgit2 source distribution.
+You are now in the root of the Editorconfig C Core source distribution.
 
-.. _libgit2: https://libgit2.github.com/
-.. _download page for libgit2 0.21.1: https://github.com/libgit2/libgit2/releases/tag/v0.21.1
+.. _EditorConfig C Core: https://github.com/editorconfig/editorconfig-core-c
+.. _download page for EditorConfig C Core 0.12.0: http://sourceforge.net/projects/editorconfig/files/EditorConfig-C-Core/0.12.0/source/
 .. _InfoZip: http://www.info-zip.org/
 
 Build the Software
@@ -134,7 +134,7 @@ The software which makes up Autotools itself is usually not necessary to build a
 Example: GNU Bash
 `````````````````
 
-An example of a piece of software that uses Autotools is GNU Bash, the subject of our earlier example. We will compile the version of GNU Bash that we extracted earlier. Start by switching to the source code root directory if not already there::
+An example of a piece of software that uses Autotools is `GNU Bash`_, the subject of our earlier example. We will compile the version of GNU Bash that we extracted earlier. Start by switching to the source code root directory if not already there::
 
     cd ~/.local/src/bash-4.3
 
@@ -206,12 +206,16 @@ CMake_ is a popular alternative to Autotools as a build system on GNU/Linux. You
 
 The :command:`cmake` program needs to be installed in order to build projects using CMake as a build system. It is installed by default on EOS.
 
-Example: libgit2
-````````````````
+.. _CMake: http://www.cmake.org/
 
-An example of a project that uses CMake as a build system is libgit2, the subject of our earlier example. We will compile the version of libgit2 that we extracted earlier. Start by switching to the source code root directory if not already there::
+Example: EditorConfig
+`````````````````````
 
-    cd ~/.local/src/libgit2-0.21.1
+.. Note: EditorConfig depends on libpcre, which is installed on EOS at this time of writing. If this changes, this example will need to change.
+
+An example of a project that uses CMake as a build system is the `EditorConfig C Core`_, the subject of our earlier example. We will compile the version of the EditorConfig C Core that we extracted earlier. Start by switching to the source code root directory if not already there::
+
+    cd ~/.local/src/editorconfig-core-c-0.12.0
 
 The next step is to create the build directory, which we'll create inside the source directory for convenience::
 
@@ -230,18 +234,16 @@ After configuring the software, it is time to build. This can be accomplished wi
 
 During the build, CMake will display which file is currently being built along with a percentage of files built on the left.
 
-After running this command, you should have a built version of the libgit2 shared library. Because libgit2 is a library, there is really no executable to run, but we can verify the file type with:
+After running this command, you should have a workable version of EditorConfig. Test this out by running:
 
 .. code-block:: console
 
-    $ file libgit2.so.0.21.0
-    libgit2.so.0.21.0: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, BuildID[sha1]=0x2db60c4b956f4bd0da30e3f646d9c17fa59e23f8, not stripped
+    $ bin/editorconfig --version
+    EditorConfig C Core Version 0.12.0
 
 The final step is to install the files generated by the build. Do this with::
 
     cmake --build . --target install
-
-libgit2 has now been installed to your home directory, and can be used in your C programs if you so desire.
 
 Other Build Systems
 -------------------
@@ -322,7 +324,7 @@ After restarting your shell, the commands at the beginning of this section shoul
 Library Dependencies
 ====================
 
-Bash and libgit2 both compile without issue on EOS. However, programs frequently have compile-time dependencies: libraries which need to be installed before compiling the program.
+Bash and the EditorConfig C Core both compile without issue on EOS. However, programs frequently have compile-time dependencies: libraries which need to be installed before compiling the program.
 
 As with the project itself, one option is to ask the |the-sysadmin|_ to install the library for you. If you would like to compile and install the dependency on your own, it is possible, but is currently out of the scope of this guide. Here are some hints:
 
