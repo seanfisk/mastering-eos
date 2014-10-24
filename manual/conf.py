@@ -446,6 +446,7 @@ rst_epilog = '''
 .. _reStructuredText: http://docutils.sourceforge.net/rst.html
 .. _report an issue:
 .. _issue tracker: https://github.com/seanfisk/mastering-eos/issues
+.. _ExpanDrive: http://www.expandrive.com/expandrive
 '''.format(title=project)
 
 # The default highlight language is Python; switch it to Bash.

@@ -54,10 +54,6 @@ def build(ctx):
     # Make sure the style file is built before TeX is run.
     ctx.add_group()
 
-    # Add the vendor directory to the TeX search path so that our vendored
-    # packages can be found.
-    ctx.env.TEXINPUTS = ctx.path.find_dir('vendor').abspath()
-
     main_tex_node = ctx.path.find_resource('mastering-eos.tex')
     ctx(features='tex',
         type='pdflatex',

@@ -61,7 +61,8 @@ class PdflatexBuilder(object):
             'pdflatex',
             src=copied_tex_node,
             tgt=tgt)
-        latex_task.env.TEXINPUTS = orig_tex_node.parent.abspath()
+        latex_task.env.TEXINPUTS = os.pathsep.join([
+            latex_task.env.TEXINPUTS, orig_tex_node.parent.abspath()])
         # Set the build order to prevent node signature issues.
         latex_task.set_run_after(copy_task)
         # Add manual dependencies.

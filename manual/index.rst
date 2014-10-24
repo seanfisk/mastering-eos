@@ -22,6 +22,7 @@
    winserv
    databases
    ide
+   gui-toolkits
    contributing/index
    envvars
 

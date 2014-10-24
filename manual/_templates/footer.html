@@ -1,0 +1,32 @@
+{# Copied and edited from https://github.com/snide/sphinx_rtd_theme/blob/master/sphinx_rtd_theme/footer.html #}
+<footer>
+  {% if next or prev %}
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      {% if next %}
+        <a href="{{ next.link|e }}" class="btn btn-neutral float-right" title="{{ next.title|striptags|e }}">Next <span class="fa fa-arrow-circle-right"></span></a>
+      {% endif %}
+      {% if prev %}
+        <a href="{{ prev.link|e }}" class="btn btn-neutral" title="{{ prev.title|striptags|e }}"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    {# Modified section #}
+    {%- if show_copyright %}
+      &copy; Copyright {{ copyright }}<br />
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
+      <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="{{ pathto('_static/apache-feather.png', 1) }}" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.
+    {%- endif %}
+
+    {%- if last_updated %}
+      {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
+    {%- endif %}
+    </p>
+  </div>
+
+  {% trans %}<a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>{% endtrans %}
+</footer>
