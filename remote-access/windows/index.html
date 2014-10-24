@@ -33,7 +33,7 @@
     <link rel="top" title="Mastering EOS" href="../../index.html"/>
         <link rel="up" title="Remote Access (SSH/VNC)" href="../index.html"/>
         <link rel="next" title="SSH" href="ssh.html"/>
-        <link rel="prev" title="Remote Access (SSH/VNC)" href="../index.html"/>
+        <link rel="prev" title="Inter-EOS SSH" href="../inter-eos.html"/>
  
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -90,6 +90,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../basics.html">Command Line Basics</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Remote Access (SSH/VNC)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mac-os-x/index.html">Mac OS X</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gnu-linux/index.html">GNU/Linux</a></li>
@@ -105,6 +106,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../user-level-sw/manual-install.html">Manual Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../user-level-sw/linuxbrew.html">Linuxbrew</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sys-sw-info.html">System and Software Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sys-sw-info.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sys-sw-info.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sys-sw-info.html#web-server">Web Server</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../winserv.html">Winserv</a><ul>
@@ -129,11 +136,27 @@
 <li class="toctree-l2"><a class="reference internal" href="../../ide.html#intellij">IntelliJ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../envvars.html">Environment Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing to Mastering EOS</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../contributing.html#writing-style">Writing Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gui-toolkits.html">GUI Toolkits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#choosing-a-toolkit">Choosing a Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#qt">Qt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#wxwidgets">wxWidgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#gtk">GTK+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#tk">Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#swing">Swing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#swt">SWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#native-toolkits">Native Toolkits</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing to Mastering EOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/repo-setup.html">Repository Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/prereqs.html">Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/build-system.html">Using the Build System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/edit.html">Editing the Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/writing-style.html">Writing Style</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../envvars.html">Environment Variables</a></li>
 </ul>
 
         
@@ -186,6 +209,7 @@
 <li class="toctree-l2"><a class="reference internal" href="file-transfer.html#graphical">Graphical</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file-transfer.html#automatic-synchronization">Automatic Synchronization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file-transfer.html#command-line-scp">Command Line (SCP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file-transfer.html#sshfs">SSHFS</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="alternatives.html">Alternative Clients</a></li>
@@ -195,14 +219,15 @@
 
 
           </div>
-          <footer>
+          
+<footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ssh.html" class="btn btn-neutral float-right" title="SSH"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ssh.html" class="btn btn-neutral float-right" title="SSH">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../index.html" class="btn btn-neutral" title="Remote Access (SSH/VNC)"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../inter-eos.html" class="btn btn-neutral" title="Inter-EOS SSH"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -211,7 +236,10 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014 Sean Fisk and Ira Woodring.
+    
+      &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
+      <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.
     </p>
   </div>
 

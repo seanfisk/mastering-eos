@@ -90,6 +90,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../basics.html">Command Line Basics</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Remote Access (SSH/VNC)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../windows/index.html">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mac-os-x/index.html">Mac OS X</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">GNU/Linux</a></li>
@@ -105,6 +106,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../user-level-sw/manual-install.html">Manual Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../user-level-sw/linuxbrew.html">Linuxbrew</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sys-sw-info.html">System and Software Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sys-sw-info.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sys-sw-info.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sys-sw-info.html#web-server">Web Server</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../winserv.html">Winserv</a><ul>
@@ -129,11 +136,27 @@
 <li class="toctree-l2"><a class="reference internal" href="../../ide.html#intellij">IntelliJ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../envvars.html">Environment Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing to Mastering EOS</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../contributing.html#writing-style">Writing Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gui-toolkits.html">GUI Toolkits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#choosing-a-toolkit">Choosing a Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#qt">Qt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#wxwidgets">wxWidgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#gtk">GTK+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#tk">Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#swing">Swing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#swt">SWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#native-toolkits">Native Toolkits</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing to Mastering EOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/repo-setup.html">Repository Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/prereqs.html">Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/build-system.html">Using the Build System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/edit.html">Editing the Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/writing-style.html">Writing Style</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../envvars.html">Environment Variables</a></li>
 </ul>
 
         
@@ -174,6 +197,27 @@
             
   <div class="section" id="file-transfer">
 <h1>File Transfer<a class="headerlink" href="#file-transfer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="graphical">
+<h2>Graphical<a class="headerlink" href="#graphical" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="gnome">
+<h3>GNOME<a class="headerlink" href="#gnome" title="Permalink to this headline">¶</a></h3>
+<p>The GNOME desktop features the <a class="reference external" href="https://wiki.gnome.org/action/show/Projects/gvfs">GNOME Virtual Filesystem</a> (GVFS), which has native support for SFTP. First, start up the file manager (<a class="reference external" href="http://en.wikipedia.org/wiki/GNOME_Files">GNOME Files</a>, formerly known as Nautilus). On the left pane, click <em class="menuselection">Network -‣ Connect to Server</em>. In the <em class="guilabel">Server Address</em> field, enter <tt class="samp docutils literal"><span class="pre">sftp://</span><em><span class="pre">smithj</span></em><span class="pre">&#64;eos01.cis.gvsu.edu</span></tt>. Your files on EOS should be displayed.</p>
+<p>If you need to access these files from the command line, you can find your EOS account mounted as a subdirectory of this directory:</p>
+<div class="highlight-bash"><div class="highlight"><pre>ls <span class="nv">$XDG_RUNTIME_DIR</span>/gvfs
+</pre></div>
+</div>
+</div>
+<div class="section" id="kde">
+<h3>KDE<a class="headerlink" href="#kde" title="Permalink to this headline">¶</a></h3>
+<p>KDE&#8217;s file manager, <a class="reference external" href="https://www.kde.org/applications/system/dolphin/">Dolphin</a>, also support SFTP URLs. First, click <em class="menuselection">Places -‣ Network</em> in the pane on the left. Then, click <em class="guilabel">Add Network Folder</em>. Select <em class="guilabel">Secure shell (ssh)</em> as the type and click <em class="guilabel">Next</em>. Fill out the form as follows, then click <em class="guilabel">Save &amp; Connect</em>:</p>
+<img alt="SSH file transfer with KDE Dolphin" src="../../_images/kde-file-transfer.png" />
+<p>Both the SFTP and FISH protocols <em>should</em> work, although we have had the most luck with the FISH protocol.</p>
+</div>
+<div class="section" id="other-desktop-managers">
+<h3>Other Desktop Managers<a class="headerlink" href="#other-desktop-managers" title="Permalink to this headline">¶</a></h3>
+<p>With desktop managers besides GNOME and KDE, you are on your own. However, many GNU/Linux file managers are very similar, and most offer support for SSH file transfer. Consult your desktop&#8217;s document for more information, or just try to figure it out on your own.</p>
+</div>
+</div>
 <div class="section" id="command-line-scp">
 <h2>Command Line (SCP)<a class="headerlink" href="#command-line-scp" title="Permalink to this headline">¶</a></h2>
 <p>Files can be transferred on the command line using a utility called SCP. Because SCP uses SSH for authentication, if you have set up <a class="reference internal" href="ssh.html#gnu-linux-ssh-keys"><em>Password-less Logins (SSH keys)</em></a>, you will not have to type any passwords. SCP stands for <em>Secure Copy</em> and works very similar to the <tt class="docutils literal"><span class="pre">cp</span></tt> command, except that it can also transfer files across the network. Make sure you are familiar with the operation of <tt class="docutils literal"><span class="pre">cp</span></tt> before using SCP.</p>
@@ -191,15 +235,67 @@ scp eos01:classes/cis162/hw4.txt classes/cis162
 </pre></div>
 </div>
 </div>
+<div class="section" id="sshfs">
+<h2>SSHFS<a class="headerlink" href="#sshfs" title="Permalink to this headline">¶</a></h2>
+<p>A further alternative to transferring files is to use the Secure Shell Filesystem, <a class="reference external" href="http://fuse.sourceforge.net/sshfs.html">SSHFS</a>. SSHFS is based on Filesystem in Userspace, <a class="reference external" href="http://fuse.sourceforge.net/">FUSE</a>. By using SSHFS, you can mount your EOS home directory on your local machine as a separate drive. This allows you to in effect run programs within your local machine on files within your EOS account. It is very similar to editing files on a flash drive. SSHFS can be used for any purpose, but is especially useful for web development on EOS.</p>
+<div class="section" id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<p>SSHFS is popular package and is usually available through your operating system&#8217;s package manager.</p>
+<p>On Debian-based systems (Ubuntu, Linux Mint, and friends), run the following command:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install sshfs
+</pre></div>
+</div>
+<p>On Red Hat-based systems (Fedora, CentOS, RHEL, and friends), run the following command:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo yum install fuse-sshfs
+</pre></div>
+</div>
+<p>With other distributions (Arch, etc.), you are on your own.</p>
+<p>To mount your EOS home directory, first create a mount point for it:</p>
+<div class="highlight-bash"><div class="highlight"><pre>mkdir ~/eos
+</pre></div>
+</div>
+<p>Next, mount your EOS home directory using SSHFS:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sshfs -o <span class="nv">volname</span><span class="o">=</span>EOS smithj@eos01.cis.gvsu.edu: ~/eos
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>If you set up Hostname Aliases as shown in Advanced OpenSSH, you can use these with SSHFS:</p>
+<div class="last highlight-bash"><div class="highlight"><pre>sshfs -o <span class="nv">volname</span><span class="o">=</span>EOS eos01: ~/eos
+</pre></div>
+</div>
+</div>
+<p>Test the mount point by listing your EOS files:</p>
+<div class="highlight-bash"><div class="highlight"><pre>ls ~/eos
+</pre></div>
+</div>
+<p>You should now be able to use files on your EOS account as if they were on your own machine. For example, you can open and browse your files using your file browser:</p>
+<div class="highlight-bash"><div class="highlight"><pre>xdg-open ~/eos
+</pre></div>
+</div>
+<p>Be aware that there may be some lag in the filesystem, especially when using programs which access the filesystem frequently.</p>
+<p>When finished with the mount point, make sure to unmount it:</p>
+<div class="highlight-bash"><div class="highlight"><pre>fusermount -u ~/eos
+</pre></div>
+</div>
+<p>SSHFS accepts many options which can be viewed with <tt class="docutils literal"><span class="pre">man</span> <span class="pre">ssh</span></tt> or <tt class="docutils literal"><span class="pre">sshfs</span> <span class="pre">--help</span></tt>. For example, to enable caching and automatic reconnection (recommended):</p>
+<div class="highlight-bash"><div class="highlight"><pre>sshfs -o auto_cache,reconnect smithj@eos01.cis.gvsu.edu: ~/eos
+</pre></div>
+</div>
+<p>If you use this command often, you may want to create script or alias for it.</p>
+<p>For another guide to SSHFS, check out <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh">DigitalOcean&#8217;s guide to SSHFS</a>.</p>
+</div>
+</div>
 </div>
 
 
           </div>
-          <footer>
+          
+<footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="advanced.html" class="btn btn-neutral float-right" title="Advanced OpenSSH"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="advanced.html" class="btn btn-neutral float-right" title="Advanced OpenSSH">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="vnc.html" class="btn btn-neutral" title="VNC"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -211,7 +307,10 @@ scp eos01:classes/cis162/hw4.txt classes/cis162
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014 Sean Fisk and Ira Woodring.
+    
+      &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
+      <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.
     </p>
   </div>
 

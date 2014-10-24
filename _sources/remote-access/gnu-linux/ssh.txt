@@ -20,6 +20,8 @@ With other distributions (Arch, etc.), you are on your own.
 
 .. include:: ../common/openssh/connect.rst
 
+.. _gnu-linux-fingerprints:
+
 .. include:: ../common/openssh/fingerprints.rst
 
 .. _gnu-linux-ssh-keys:

@@ -90,6 +90,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../basics.html">Command Line Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../remote-access/inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/windows/index.html">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/mac-os-x/index.html">Mac OS X</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/gnu-linux/index.html">GNU/Linux</a></li>
@@ -105,6 +106,12 @@
 <li class="toctree-l2"><a class="reference internal" href="std-hierarchy.html">The Standard Hierarchy</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Manual Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linuxbrew.html">Linuxbrew</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sys-sw-info.html">System and Software Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sys-sw-info.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sys-sw-info.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sys-sw-info.html#web-server">Web Server</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../winserv.html">Winserv</a><ul>
@@ -129,11 +136,27 @@
 <li class="toctree-l2"><a class="reference internal" href="../ide.html#intellij">IntelliJ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../envvars.html">Environment Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to Mastering EOS</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../contributing.html#writing-style">Writing Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui-toolkits.html">GUI Toolkits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#choosing-a-toolkit">Choosing a Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#qt">Qt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#wxwidgets">wxWidgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#gtk">GTK+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#tk">Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#swing">Swing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#swt">SWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#native-toolkits">Native Toolkits</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to Mastering EOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/repo-setup.html">Repository Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/prereqs.html">Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/build-system.html">Using the Build System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/edit.html">Editing the Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/writing-style.html">Writing Style</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../envvars.html">Environment Variables</a></li>
 </ul>
 
         
@@ -175,7 +198,7 @@
 <p>System package managers like Apt and Yum usually install pre-compiled software, binaries which are typically compiled on a build server infrastructure like <a class="reference external" href="https://launchpad.net/">Launchpad</a>. Mac OS X and Windows users are also used to pre-compiled software, as most downloadable programs are distributed as application bundles or ready-to-run EXEs, respectively.</p>
 <p>However, due to the myriad of different GNU/Linux distributions, software for GNU/Linux is often distributed in source code form only. This requires a potential user of the software to build the software from its source code, colloquially known as <em>compiling from source</em>. In addition, due to the lack of an accepted structure for installing user-level software, almost all software that is installed in a per-user fashion will need to be compiled from source.</p>
 <div class="section" id="ready-the-prefix">
-<h2>Ready the Prefix<a class="headerlink" href="#ready-the-prefix" title="Permalink to this headline">¶</a></h2>
+<span id="ready-prefix"></span><h2>Ready the Prefix<a class="headerlink" href="#ready-the-prefix" title="Permalink to this headline">¶</a></h2>
 <p>The hierarchy to which a program is installed is typically called its <em>prefix</em>. Most build systems will install by default to <tt class="file docutils literal"><span class="pre">/usr/local</span></tt>, the system hierarchy typically used for custom-installed programs or programs compiled from source. However, because a standard user cannot write to this prefix, we are required to change our installion prefix to a directory within our home directory.</p>
 <p>The prefix that we recommend for manually-installed user-level programs is <tt class="file docutils literal"><span class="pre">~/.local</span></tt>, which is the hidden <tt class="file docutils literal"><span class="pre">.local</span></tt> directory immediately within your home directory. This directory has some precedent, being <a class="reference external" href="http://legacy.python.org/dev/peps/pep-0370/#unix-notes">used by Python</a> and <a class="reference external" href="http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html#variables">in the Freedesktop specifications</a>. Setting this prefix is the primary step to successfully installing user-level software.</p>
 <p>To ready your prefix for downloading and compiling source code, run the following command:</p>
@@ -228,33 +251,33 @@
 <p class="last">Note that you must pass the compression algorithm to <strong class="command">tar</strong> because it is not able to detect the type by file extension when input is given through a pipe.</p>
 </div>
 </div>
-<div class="section" id="example-libgit2-and-zip-archives">
-<h3>Example: libgit2 and zip archives<a class="headerlink" href="#example-libgit2-and-zip-archives" title="Permalink to this headline">¶</a></h3>
-<p>For our zip example, we will download the source code for <a class="reference external" href="https://libgit2.github.com/">libgit2</a>, a linkable library providing Git functionality. First switch to the directory containing our source code:</p>
+<div class="section" id="example-editorconfig-and-zip-archives">
+<h3>Example: EditorConfig and zip archives<a class="headerlink" href="#example-editorconfig-and-zip-archives" title="Permalink to this headline">¶</a></h3>
+<p>For our zip example, we will download the source code for the <a class="reference external" href="https://github.com/editorconfig/editorconfig-core-c">EditorConfig C Core</a>. EditorConfig is a project which helps developers establish formatting standards for a project (and is used by Mastering EOS!). First switch to the directory containing our source code:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> ~/.local/src
 </pre></div>
 </div>
-<p>The latest version of libgit2 at this time of writing is 0.21.1, so that is what we will download. Visit the <a class="reference external" href="https://github.com/libgit2/libgit2/releases/tag/v0.21.1">download page for libgit2 0.21.1</a> and scroll down to copy the link for the source code zip archive. GitHub also offers tarball downloads, but we will use the zip for the purposes of this example.</p>
+<p>The latest version of the EditorConfig C Core at this time of writing is 0.21.1, so that is what we will download. Visit the <a class="reference external" href="http://sourceforge.net/projects/editorconfig/files/EditorConfig-C-Core/0.12.0/source/">download page for EditorConfig C Core 0.12.0</a> and select the link for the source code zip archive. The project also offers a tarball download, but we will use the zip for the purposes of this example.</p>
 <p>Download the file with <strong class="command">wget</strong> as shown in the earlier example:</p>
-<div class="highlight-bash"><div class="highlight"><pre>wget --content-disposition https://github.com/libgit2/libgit2/archive/v0.21.1.zip
+<div class="highlight-bash"><div class="highlight"><pre>wget http://sourceforge.net/projects/editorconfig/files/EditorConfig-C-Core/0.12.0/source/editorconfig-core-c-0.12.0.zip
 </pre></div>
 </div>
-<p>We use the <tt class="docutils literal"><span class="pre">--content-disposition</span></tt> flag here to tell Wget to honor the filename suggested by GitHub. This should create a <tt class="file docutils literal"><span class="pre">libgit2-0.21.1.zip</span></tt> file in the current working directory. This file is a <a class="reference external" href="http://en.wikipedia.org/wiki/Zip_%28file_format%29">zip archive</a> just like those you may have seen on your desktop operating system. This file can be extracted using the <a class="reference external" href="http://www.info-zip.org/">InfoZip</a> <strong class="command">unzip</strong> utility:</p>
-<div class="highlight-bash"><div class="highlight"><pre>unzip libgit2-0.21.1.zip
+<p>This should create a <tt class="file docutils literal"><span class="pre">editorconfig-core-c-0.12.0.zip</span></tt> file in the current working directory. This file is a <a class="reference external" href="http://en.wikipedia.org/wiki/Zip_%28file_format%29">zip archive</a> just like those you may have seen on your desktop operating system. This file can be extracted using the <a class="reference external" href="http://www.info-zip.org/">InfoZip</a> <strong class="command">unzip</strong> utility:</p>
+<div class="highlight-bash"><div class="highlight"><pre>unzip editorconfig-core-c-0.12.0.zip
 </pre></div>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>Unlike source tarballs, zip files sometimes have all files in one directory or sometimes have all files immediately in the root directory. Again, however, this is convention &#8212; make sure you trust the source of the archive before extracting the files. You can view the contents of a zip archive with <strong class="command">less</strong> built-in zip viewer:</p>
-<div class="last highlight-bash"><div class="highlight"><pre>less libgit2-0.21.1.zip
+<div class="last highlight-bash"><div class="highlight"><pre>less editorconfig-core-c-0.12.0.zip
 </pre></div>
 </div>
 </div>
-<p>This command should have created a <tt class="file docutils literal"><span class="pre">libgit2-0.21.1</span></tt> directory in the current working directory. Make that directory your working directory:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>libgit2-0.21.1
+<p>This command should have created a <tt class="file docutils literal"><span class="pre">editorconfig-core-c-0.12.0.zip</span></tt> directory in the current working directory. Make that directory your working directory:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>editorconfig-core-c-0.12.0
 </pre></div>
 </div>
-<p>You are now in the root of the libgit2 source distribution.</p>
+<p>You are now in the root of the Editorconfig C Core source distribution.</p>
 </div>
 </div>
 <div class="section" id="build-the-software">
@@ -267,7 +290,7 @@
 <p>The software which makes up Autotools itself is usually not necessary to build a program using Autotools as a build system. Instead, the functionality is embedded into the <tt class="file docutils literal"><span class="pre">configure</span></tt> script itself. Autotools build systems typically only require the presence of Make.</p>
 <div class="section" id="example-gnu-bash">
 <h4>Example: GNU Bash<a class="headerlink" href="#example-gnu-bash" title="Permalink to this headline">¶</a></h4>
-<p>An example of a piece of software that uses Autotools is GNU Bash, the subject of our earlier example. We will compile the version of GNU Bash that we extracted earlier. Start by switching to the source code root directory if not already there:</p>
+<p>An example of a piece of software that uses Autotools is <a class="reference external" href="http://www.gnu.org/software/bash/">GNU Bash</a>, the subject of our earlier example. We will compile the version of GNU Bash that we extracted earlier. Start by switching to the source code root directory if not already there:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> ~/.local/src/bash-4.3
 </pre></div>
 </div>
@@ -325,13 +348,13 @@
 </div>
 </div>
 <div class="section" id="cmake">
-<h3>CMake<a class="headerlink" href="#cmake" title="Permalink to this headline">¶</a></h3>
+<span id="cmake-section"></span><h3>CMake<a class="headerlink" href="#cmake" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://www.cmake.org/">CMake</a> is a popular alternative to Autotools as a build system on GNU/Linux. You can usually identify a CMake build system by the presence of a <tt class="file docutils literal"><span class="pre">CMakeLists.txt</span></tt> file in the root of the source distribution.</p>
 <p>The <strong class="command">cmake</strong> program needs to be installed in order to build projects using CMake as a build system. It is installed by default on EOS.</p>
-<div class="section" id="example-libgit2">
-<h4>Example: libgit2<a class="headerlink" href="#example-libgit2" title="Permalink to this headline">¶</a></h4>
-<p>An example of a project that uses CMake as a build system is libgit2, the subject of our earlier example. We will compile the version of libgit2 that we extracted earlier. Start by switching to the source code root directory if not already there:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> ~/.local/src/libgit2-0.21.1
+<div class="section" id="example-editorconfig">
+<h4>Example: EditorConfig<a class="headerlink" href="#example-editorconfig" title="Permalink to this headline">¶</a></h4>
+<p>An example of a project that uses CMake as a build system is the <a class="reference external" href="https://github.com/editorconfig/editorconfig-core-c">EditorConfig C Core</a>, the subject of our earlier example. We will compile the version of the EditorConfig C Core that we extracted earlier. Start by switching to the source code root directory if not already there:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> ~/.local/src/editorconfig-core-c-0.12.0
 </pre></div>
 </div>
 <p>The next step is to create the build directory, which we&#8217;ll create inside the source directory for convenience:</p>
@@ -349,16 +372,15 @@
 </pre></div>
 </div>
 <p>During the build, CMake will display which file is currently being built along with a percentage of files built on the left.</p>
-<p>After running this command, you should have a built version of the libgit2 shared library. Because libgit2 is a library, there is really no executable to run, but we can verify the file type with:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> file libgit2.so.0.21.0
-<span class="go">libgit2.so.0.21.0: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, BuildID[sha1]=0x2db60c4b956f4bd0da30e3f646d9c17fa59e23f8, not stripped</span>
+<p>After running this command, you should have a workable version of EditorConfig. Test this out by running:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> bin/editorconfig --version
+<span class="go">EditorConfig C Core Version 0.12.0</span>
 </pre></div>
 </div>
 <p>The final step is to install the files generated by the build. Do this with:</p>
 <div class="highlight-bash"><div class="highlight"><pre>cmake --build . --target install
 </pre></div>
 </div>
-<p>libgit2 has now been installed to your home directory, and can be used in your C programs if you so desire.</p>
 </div>
 </div>
 <div class="section" id="other-build-systems">
@@ -367,7 +389,7 @@
 </div>
 </div>
 <div class="section" id="adjusting-the-environment">
-<h2>Adjusting the Environment<a class="headerlink" href="#adjusting-the-environment" title="Permalink to this headline">¶</a></h2>
+<span id="adjust-env"></span><h2>Adjusting the Environment<a class="headerlink" href="#adjusting-the-environment" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="executable-path">
 <h3>Executable Path<a class="headerlink" href="#executable-path" title="Permalink to this headline">¶</a></h3>
 <p>You can always use executables installed to your home directory by typing the full path to the executable, for example:</p>
@@ -422,7 +444,7 @@ info bash
 </div>
 <div class="section" id="library-dependencies">
 <span id="lib-deps"></span><h2>Library Dependencies<a class="headerlink" href="#library-dependencies" title="Permalink to this headline">¶</a></h2>
-<p>Bash and libgit2 both compile without issue on EOS. However, programs frequently have compile-time dependencies: libraries which need to be installed before compiling the program.</p>
+<p>Bash and the EditorConfig C Core both compile without issue on EOS. However, programs frequently have compile-time dependencies: libraries which need to be installed before compiling the program.</p>
 <p>As with the project itself, one option is to ask the <a class="reference external" href="mailto:woodriir&#37;&#52;&#48;gvsu&#46;edu">Ira Woodring</a> to install the library for you. If you would like to compile and install the dependency on your own, it is possible, but is currently out of the scope of this guide. Here are some hints:</p>
 <ul>
 <li><p class="first">When compiling the program, you may need to set the <span class="target" id="index-4"></span><a class="reference internal" href="../envvars.html#envvar-CPPFLAGS"><tt class="xref std std-envvar docutils literal"><span class="pre">CPPFLAGS</span></tt></a> and <span class="target" id="index-5"></span><a class="reference internal" href="../envvars.html#envvar-LDFLAGS"><tt class="xref std std-envvar docutils literal"><span class="pre">LDFLAGS</span></tt></a> environment variables to allow the compiler to locate headers and libraries, respectively. See the <a class="reference external" href="http://www.gnu.org/software/autoconf/manual/autoconf.html#Preset-Output-Variables">Autoconf manual on Preset Output Variables</a> for descriptions of each of these variables. Some build systems are able to locate headers and libraries automatically in the specified install prefix.</p>
@@ -448,11 +470,12 @@ info bash
 
 
           </div>
-          <footer>
+          
+<footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="linuxbrew.html" class="btn btn-neutral float-right" title="Linuxbrew"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="linuxbrew.html" class="btn btn-neutral float-right" title="Linuxbrew">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="std-hierarchy.html" class="btn btn-neutral" title="The Standard Hierarchy"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -464,7 +487,10 @@ info bash
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014 Sean Fisk and Ira Woodring.
+    
+      &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
+      <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.
     </p>
   </div>
 

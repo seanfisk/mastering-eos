@@ -1,0 +1,353 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Pre-requisites &mdash; Mastering EOS</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Mastering EOS" href="../index.html"/>
+        <link rel="up" title="Contributing to Mastering EOS" href="index.html"/>
+        <link rel="next" title="Using the Build System" href="build-system.html"/>
+        <link rel="prev" title="Repository Setup" href="repo-setup.html"/>
+ 
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-19591513-4', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('send', 'pageview');
+  </script>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> Mastering EOS</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#physical-access-keycards">Physical Access (Keycards)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#computer-access-credentials">Computer Access (Credentials)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rules.html">Rules and Procedures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#disk-space">Disk Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#copyrighted-material">Copyrighted Material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#food-and-drink">Food and Drink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#overnight-parking">Overnight Parking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#living-in-the-lab">Living in the Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#malicious-activity">Malicious Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#games">Games</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../remote-access/inter-eos.html">Inter-EOS SSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../remote-access/windows/index.html">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../remote-access/mac-os-x/index.html">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../remote-access/gnu-linux/index.html">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../shells.html">Shells</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shells.html#bash">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shells.html#tcsh">Tcsh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shells.html#kornshell">Kornshell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user-level-sw/index.html">User-level Software Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user-level-sw/manual-install.html">Manual Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user-level-sw/linuxbrew.html">Linuxbrew</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sys-sw-info.html">System and Software Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sys-sw-info.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sys-sw-info.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sys-sw-info.html#web-server">Web Server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../winserv.html">Winserv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#common-settings">Common Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#microsoft-windows">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#gnu-linux">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../databases.html">Databases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#mysql">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#oracle">Oracle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#oracle-apex">Oracle APEX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#mssql">MSSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#sqlite">SQLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#remote-database-connections">Remote Database Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ide.html">Integrated Development Environments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ide.html#bluej">BlueJ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ide.html#eclipse">Eclipse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ide.html#intellij">IntelliJ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gui-toolkits.html">GUI Toolkits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#choosing-a-toolkit">Choosing a Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#qt">Qt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#wxwidgets">wxWidgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#gtk">GTK+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#tk">Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#swing">Swing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#swt">SWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#native-toolkits">Native Toolkits</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Contributing to Mastering EOS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="repo-setup.html">Repository Setup</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build-system.html">Using the Build System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="edit.html">Editing the Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing-style.html">Writing Style</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../envvars.html">Environment Variables</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Mastering EOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Contributing to Mastering EOS</a> &raquo;</li>
+      
+    <li>Pre-requisites</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/contributing/prereqs.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="pre-requisites">
+<span id="contributing-prereqs"></span><h1>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h1>
+<p>Before running any commands, make sure you change to the repository root directory. For example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> ~/mastering-eos
+</pre></div>
+</div>
+<p>All following commands will be run from this directory unless otherwise noted.</p>
+<div class="section" id="install-requirements">
+<h2>Install Requirements<a class="headerlink" href="#install-requirements" title="Permalink to this headline">¶</a></h2>
+<p>Now that you have the source code, the first step in building the manual is to install the Python requirements. For this, we need to install <a class="reference external" href="http://pip.readthedocs.org/en/latest/index.html">Pip</a>, the Python package manager, to our <a class="reference external" href="http://legacy.python.org/dev/peps/pep-0370/">user site</a>:</p>
+<div class="highlight-bash"><div class="highlight"><pre>wget https://bootstrap.pypa.io/get-pip.py -O - | python - --user
+</pre></div>
+</div>
+<p>For the technical details on what this is doing, please see the <a class="reference external" href="http://pip.readthedocs.org/en/latest/installing.html#install-pip">Pip installation docs</a>.</p>
+<p>Pip should now be installed to <tt class="file docutils literal"><span class="pre">~/.local/bin/pip</span></tt>. However, we don&#8217;t want to have to type the full path every time we want to run <tt class="file docutils literal"><span class="pre">pip</span></tt> or any other executable installed there.. To remedy this, add the following to your <tt class="file docutils literal"><span class="pre">~/.bash_profile</span></tt>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>~/.local/bin:<span class="nv">$PATH</span>
+</pre></div>
+</div>
+<p>Restart your shell to effect the changes to your <tt class="file docutils literal"><span class="pre">~/.bash_profile</span></tt> <em>by logging out and logging back in.</em> Run the following to ensure that this worked:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> pip --version
+<span class="go">pip 1.5.6 from /home/smithj/.local/lib/python2.7/site-packages (python 2.7)</span>
+</pre></div>
+</div>
+<p>After installing Pip, use Pip to install this project&#8217;s requirements to your user site:</p>
+<div class="highlight-bash"><div class="highlight"><pre>pip install --user -r requirements.txt --allow-external pyPEG2 --allow-unverified pyPEG2
+</pre></div>
+</div>
+<p>The extra options are required for <a class="reference external" href="https://pypi.python.org/pypi/pyPEG2">pyPEG2</a> to override certain checks recently added by Pip.</p>
+<p>The Python requirements for the project have now been met.</p>
+</div>
+<div class="section" id="configure-your-editor">
+<h2>Configure Your Editor<a class="headerlink" href="#configure-your-editor" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="editorconfig">
+<h3>EditorConfig<a class="headerlink" href="#editorconfig" title="Permalink to this headline">¶</a></h3>
+<p>We use <a class="reference external" href="http://editorconfig.org/">EditorConfig</a> to maintain consistent formatting between developers. Our EditorConfig preferences are recorded in the <tt class="file docutils literal"><span class="pre">.editorconfig</span></tt> file in the root of the repository.</p>
+<p>If you do not have an editor preference, we suggest that you use <a class="reference external" href="https://wiki.gnome.org/Apps/Gedit">gedit</a> for the following reasons:</p>
+<ul class="simple">
+<li>It is simple and lightweight.</li>
+<li>It has EditorConfig support.</li>
+<li>It is already installed on EOS.</li>
+</ul>
+<p>An editor is a very personal choice, so if you do have an editor preference, please use the editor with which you are comfortable. There are <a class="reference external" href="http://editorconfig.org/#download">EditorConfig plugins</a> for many different editors. If yours is listed, we suggest you take the time to get your editor&#8217;s plugin working. If you cannot get it working or there is no EditorConfig support for your editor, please read the <tt class="file docutils literal"><span class="pre">.editorconfig</span></tt> file for the formatting standards &#8212; they should be relatively easy to follow manually.</p>
+<p>If you do choose gedit, we have a script in our repository to assist in installing EditorConfig support on EOS. To install the plugin, run:</p>
+<div class="highlight-bash"><div class="highlight"><pre>scripts/install-gedit-editorconfig-eos
+</pre></div>
+</div>
+<p>This installs the gedit EditorConfig plugin, but we still need to enable it. Open gedit with:</p>
+<div class="highlight-bash"><div class="highlight"><pre>gedit
+</pre></div>
+</div>
+<p>Then open the gedit preferences by clicking the application&#8217;s icon (in GNOME):</p>
+<img alt="gedit Preferences" src="../_images/preferences.png" />
+<p>Select the <em class="guilabel">Plugins</em> tab, then scroll down and check the <em class="guilabel">EditorConfig</em> plugin to enable:</p>
+<img alt="gedit Plugins Dialog" src="../_images/plugins.png" />
+<p>The checkbox should become checked. If it turns to a red warning sign, please <a class="reference external" href="https://github.com/seanfisk/mastering-eos/issues">report an issue</a>. EditorConfig is now enabled for gedit!</p>
+</div>
+<div class="section" id="git-configuration">
+<h3>Git Configuration<a class="headerlink" href="#git-configuration" title="Permalink to this headline">¶</a></h3>
+<p>We want to set up gedit as the editor for Git commit messages. Do this with:</p>
+<div class="highlight-bash"><div class="highlight"><pre>git config --global core.editor <span class="s1">&#39;gedit --wait&#39;</span>
+</pre></div>
+</div>
+<p>We use the <tt class="docutils literal"><span class="pre">--wait</span></tt> flag here because Git expects the editor to block until the commit message has been finished.</p>
+<p>gedit also creates backup files of each file that you save. These files end with a tilde (<tt class="docutils literal"><span class="pre">~</span></tt>) and get annoying when they clutter the output of <tt class="docutils literal"><span class="pre">git</span> <span class="pre">status</span></tt>. Fortunately, we can tell Git to ignore them. Run the following:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> cat &gt; ~/.gitignore-global &lt;&lt;EOF
+<span class="gp">#</span> gedit backup files
+<span class="go">*~</span>
+<span class="go">EOF</span>
+<span class="gp">$</span> git config --global core.excludesfile <span class="s1">&#39;~/.gitignore-global&#39;</span>
+</pre></div>
+</div>
+<p>Your editor has now been set up for developing Mastering EOS!</p>
+</div>
+</div>
+<div class="section" id="ssh-setup">
+<h2>SSH Setup<a class="headerlink" href="#ssh-setup" title="Permalink to this headline">¶</a></h2>
+<p>Part of building the documentation is building the table of SSH fingerprints containing a fingerprint for each EOS machine. SSH is used to generate this table. Follow the directions in the following sections to correctly set up SSH to allow this.</p>
+<div class="section" id="shared-and-persistent-ssh-connections-optional">
+<h3>Shared and Persistent SSH Connections (optional)<a class="headerlink" href="#shared-and-persistent-ssh-connections-optional" title="Permalink to this headline">¶</a></h3>
+<p>In theory, you should never have to fully rebuild the manual. However, in practice, sometimes a full rebuild is necessary. With a full rebuild, you will have to wait while the SSH fingerprints table is rebuilt. Since this can take a long time, we recommend that you set up shared and persistent SSH connections as shown in <a class="reference internal" href="../remote-access/gnu-linux/advanced.html#gnu-linux-advanced-openssh"><em>Advanced OpenSSH</em></a>. These are known to dramatically decrease the build time if you have done a full rebuild within the time given to <tt class="docutils literal"><span class="pre">ControlPersist</span></tt>.</p>
+</div>
+<div class="section" id="inter-eos-ssh-trust">
+<h3>Inter-EOS SSH Trust<a class="headerlink" href="#inter-eos-ssh-trust" title="Permalink to this headline">¶</a></h3>
+<p>To be able to rebuild the fingerprints table without user intervention, please follow the steps in <a class="reference internal" href="../remote-access/inter-eos.html#inter-eos-trust"><em>Trust All EOS Machines</em></a> before continuing.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+<footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="build-system.html" class="btn btn-neutral float-right" title="Using the Build System">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="repo-setup.html" class="btn btn-neutral" title="Repository Setup"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    
+      &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
+      <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

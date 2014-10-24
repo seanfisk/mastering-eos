@@ -90,6 +90,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../basics.html">Command Line Basics</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Remote Access (SSH/VNC)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mac-os-x/index.html">Mac OS X</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gnu-linux/index.html">GNU/Linux</a></li>
@@ -105,6 +106,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../user-level-sw/manual-install.html">Manual Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../user-level-sw/linuxbrew.html">Linuxbrew</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sys-sw-info.html">System and Software Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sys-sw-info.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sys-sw-info.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sys-sw-info.html#web-server">Web Server</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../winserv.html">Winserv</a><ul>
@@ -129,11 +136,27 @@
 <li class="toctree-l2"><a class="reference internal" href="../../ide.html#intellij">IntelliJ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../envvars.html">Environment Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing to Mastering EOS</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../contributing.html#writing-style">Writing Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gui-toolkits.html">GUI Toolkits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#choosing-a-toolkit">Choosing a Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#qt">Qt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#wxwidgets">wxWidgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#gtk">GTK+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#tk">Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#swing">Swing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#swt">SWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#native-toolkits">Native Toolkits</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing to Mastering EOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/repo-setup.html">Repository Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/prereqs.html">Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/build-system.html">Using the Build System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/edit.html">Editing the Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/writing-style.html">Writing Style</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../envvars.html">Environment Variables</a></li>
 </ul>
 
         
@@ -223,15 +246,28 @@ pscp smithj@eos01.cis.gvsu.edu:classes/cis162/hw3.txt classes/cis162
 </dd></dl>
 
 </div>
+<div class="section" id="sshfs">
+<h2>SSHFS<a class="headerlink" href="#sshfs" title="Permalink to this headline">¶</a></h2>
+<p>A further alternative to transferring files is to use the Secure Shell Filesystem, <a class="reference external" href="http://fuse.sourceforge.net/sshfs.html">SSHFS</a>. SSHFS is based on Filesystem in Userspace, <a class="reference external" href="http://fuse.sourceforge.net/">FUSE</a>. By using SSHFS, you can mount your EOS home directory on your local machine as a separate drive. This allows you to in effect run programs within your local machine on files within your EOS account. It is very similar to editing files on a flash drive. SSHFS can be used for any purpose, but is especially useful for web development on EOS.</p>
+<p>Unfortunately, there are no stand-out options for SSHFS on Windows. The following programs are possible solutions of which we are aware:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.expandrive.com/expandrive">ExpanDrive</a> is a commercial product with a free trial available. While the product works well, the prices are in the expensive range.</li>
+<li><a class="reference external" href="https://code.google.com/p/win-sshfs/">win-sshfs</a> is an open-source SSHFS implementation for Windows. Unfortunately, it is not being maintained and therefore we cannot recommend it.</li>
+<li><a class="reference external" href="https://github.com/dimov-cz/win-sshfs">dimov-cz&#8217;s win-sshfs fork</a> is a maintained fork of win-sshfs. However, no binaries are provided, so it must be compiled from source. If you are familiar with compiling and installing .NET programs, this may be a viable alternative for you.</li>
+</ul>
+<p>Although none of these programs are supported, you are welcome to try them if they seem useful to you.</p>
+<p>For another guide to SSHFS, check out <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh">DigitalOcean&#8217;s guide to SSHFS</a>.</p>
+</div>
 </div>
 
 
           </div>
-          <footer>
+          
+<footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="alternatives.html" class="btn btn-neutral float-right" title="Alternative Clients"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="alternatives.html" class="btn btn-neutral float-right" title="Alternative Clients">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="vnc.html" class="btn btn-neutral" title="VNC"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -243,7 +279,10 @@ pscp smithj@eos01.cis.gvsu.edu:classes/cis162/hw3.txt classes/cis162
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014 Sean Fisk and Ira Woodring.
+    
+      &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
+      <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.
     </p>
   </div>
 

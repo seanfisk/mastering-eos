@@ -90,6 +90,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../basics.html">Command Line Basics</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Remote Access (SSH/VNC)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../windows/index.html">Microsoft Windows</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Mac OS X</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gnu-linux/index.html">GNU/Linux</a></li>
@@ -105,6 +106,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../user-level-sw/manual-install.html">Manual Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../user-level-sw/linuxbrew.html">Linuxbrew</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sys-sw-info.html">System and Software Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sys-sw-info.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sys-sw-info.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sys-sw-info.html#web-server">Web Server</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../winserv.html">Winserv</a><ul>
@@ -129,11 +136,27 @@
 <li class="toctree-l2"><a class="reference internal" href="../../ide.html#intellij">IntelliJ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../envvars.html">Environment Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing to Mastering EOS</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../contributing.html#writing-style">Writing Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gui-toolkits.html">GUI Toolkits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#choosing-a-toolkit">Choosing a Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#qt">Qt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#wxwidgets">wxWidgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#gtk">GTK+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#tk">Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#swing">Swing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#swt">SWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#native-toolkits">Native Toolkits</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing to Mastering EOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/repo-setup.html">Repository Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/prereqs.html">Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/build-system.html">Using the Build System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/edit.html">Editing the Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/writing-style.html">Writing Style</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../envvars.html">Environment Variables</a></li>
 </ul>
 
         
@@ -202,15 +225,64 @@ scp eos01:classes/cis162/hw4.txt classes/cis162
 </pre></div>
 </div>
 </div>
+<div class="section" id="sshfs">
+<h2>SSHFS<a class="headerlink" href="#sshfs" title="Permalink to this headline">¶</a></h2>
+<p>A further alternative to transferring files is to use the Secure Shell Filesystem, <a class="reference external" href="http://fuse.sourceforge.net/sshfs.html">SSHFS</a>. SSHFS is based on Filesystem in Userspace, <a class="reference external" href="http://fuse.sourceforge.net/">FUSE</a>. By using SSHFS, you can mount your EOS home directory on your local machine as a separate drive. This allows you to in effect run programs within your local machine on files within your EOS account. It is very similar to editing files on a flash drive. SSHFS can be used for any purpose, but is especially useful for web development on EOS.</p>
+<div class="section" id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="http://osxfuse.github.io/">OSXFUSE</a> project maintains high-quality packages of FUSE and SSHFS. Visit the homepage and download and install the stable versions of <em>both</em> OSXFUSE and SSHFS to get started.</p>
+</div>
+<div class="section" id="use">
+<h3>Use<a class="headerlink" href="#use" title="Permalink to this headline">¶</a></h3>
+<p>To mount your EOS home directory, first create a mount point for it:</p>
+<div class="highlight-bash"><div class="highlight"><pre>mkdir ~/eos
+</pre></div>
+</div>
+<p>Next, mount your EOS home directory using SSHFS:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sshfs -o <span class="nv">volname</span><span class="o">=</span>EOS smithj@eos01.cis.gvsu.edu: ~/eos
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>If you set up Hostname Aliases as shown in Advanced OpenSSH, you can use these with SSHFS:</p>
+<div class="last highlight-bash"><div class="highlight"><pre>sshfs -o <span class="nv">volname</span><span class="o">=</span>EOS eos01: ~/eos
+</pre></div>
+</div>
+</div>
+<p>Test the mount point by listing your EOS files:</p>
+<div class="highlight-bash"><div class="highlight"><pre>ls ~/eos
+</pre></div>
+</div>
+<p>You should now be able to use files on your EOS account as if they were on your own machine. For example, you can open and browse your files using Finder:</p>
+<div class="highlight-bash"><div class="highlight"><pre>open ~/eos
+</pre></div>
+</div>
+<p>Be aware that there may be some lag in the filesystem, especially when using Finder or other programs which access the filesystem frequently.</p>
+<p>When finished with the mount point, make sure to unmount it:</p>
+<div class="highlight-bash"><div class="highlight"><pre>diskutil unmount ~/eos
+</pre></div>
+</div>
+<p>The mount point can also be unmounted using Finder:</p>
+<img alt="Ejecting an SSHFS filesystem using Finder" src="../../_images/mac-sshfs-eject.png" />
+<p>SSHFS accepts many options which can be viewed with <tt class="docutils literal"><span class="pre">man</span> <span class="pre">ssh</span></tt> or <tt class="docutils literal"><span class="pre">sshfs</span> <span class="pre">--help</span></tt>. For example, to enable caching and automatic reconnection (recommended):</p>
+<div class="highlight-bash"><div class="highlight"><pre>sshfs -o auto_cache,reconnect,volname<span class="o">=</span>EOS smithj@eos01.cis.gvsu.edu: ~/eos
+</pre></div>
+</div>
+<p>If you use this command often, you may want to create script or alias for it.</p>
+<p>For another guide to SSHFS, check out <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh">DigitalOcean&#8217;s guide to SSHFS</a>.</p>
+<p>Another option for SSH file transfer on Mac OS X is <a class="reference external" href="http://www.expandrive.com/expandrive">ExpanDrive</a>, a commercial product.</p>
+</div>
+</div>
 </div>
 
 
           </div>
-          <footer>
+          
+<footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="advanced.html" class="btn btn-neutral float-right" title="Advanced OpenSSH"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="advanced.html" class="btn btn-neutral float-right" title="Advanced OpenSSH">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="vnc.html" class="btn btn-neutral" title="VNC"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -222,7 +294,10 @@ scp eos01:classes/cis162/hw4.txt classes/cis162
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014 Sean Fisk and Ira Woodring.
+    
+      &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
+      <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.
     </p>
   </div>
 

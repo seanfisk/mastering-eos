@@ -90,6 +90,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../basics.html">Command Line Basics</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Remote Access (SSH/VNC)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mac-os-x/index.html">Mac OS X</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gnu-linux/index.html">GNU/Linux</a></li>
@@ -105,6 +106,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../user-level-sw/manual-install.html">Manual Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../user-level-sw/linuxbrew.html">Linuxbrew</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sys-sw-info.html">System and Software Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sys-sw-info.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sys-sw-info.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sys-sw-info.html#web-server">Web Server</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../winserv.html">Winserv</a><ul>
@@ -129,11 +136,27 @@
 <li class="toctree-l2"><a class="reference internal" href="../../ide.html#intellij">IntelliJ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../envvars.html">Environment Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing to Mastering EOS</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../contributing.html#writing-style">Writing Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gui-toolkits.html">GUI Toolkits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#choosing-a-toolkit">Choosing a Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#qt">Qt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#wxwidgets">wxWidgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#gtk">GTK+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#tk">Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#swing">Swing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#swt">SWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#native-toolkits">Native Toolkits</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing to Mastering EOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/repo-setup.html">Repository Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/prereqs.html">Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/build-system.html">Using the Build System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/edit.html">Editing the Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/writing-style.html">Writing Style</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../envvars.html">Environment Variables</a></li>
 </ul>
 
         
@@ -245,7 +268,7 @@
 <td><tt class="docutils literal"><span class="pre">b5:c2:d4:40:23:d0:0c:af:32:28:36:b0:92:cc:86:da</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos06</td>
-<td>down for maintenance</td>
+<td><tt class="docutils literal"><span class="pre">8d:92:40:46:3b:47:53:c6:65:96:2f:9e:99:00:63:d7</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos07</td>
 <td><tt class="docutils literal"><span class="pre">86:c9:3f:a4:0c:33:42:db:66:a9:4d:88:43:6a:bc:98</span></tt></td>
@@ -257,7 +280,7 @@
 <td><tt class="docutils literal"><span class="pre">47:0e:ab:d3:9d:56:09:60:93:3f:7f:e1:75:da:4a:a9</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos10</td>
-<td><tt class="docutils literal"><span class="pre">47:23:74:5a:b4:f5:72:a9:29:41:02:cf:65:ef:c7:6e</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-even"><td>eos11</td>
 <td><tt class="docutils literal"><span class="pre">2b:2c:b6:e1:0e:23:62:d0:32:9a:60:64:98:c8:6e:1b</span></tt></td>
@@ -320,7 +343,7 @@
 <td><tt class="docutils literal"><span class="pre">2d:d1:63:05:69:39:32:77:49:bf:d7:f4:60:93:62:6a</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos31</td>
-<td>down for maintenance</td>
+<td><tt class="docutils literal"><span class="pre">53:9c:a6:98:b7:1e:55:55:29:92:06:75:4b:e3:23:46</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos32</td>
 <td><tt class="docutils literal"><span class="pre">c0:2a:f1:6c:41:52:f8:49:5f:5c:c7:bb:a6:f2:85:29</span></tt></td>
@@ -402,11 +425,12 @@
 
 
           </div>
-          <footer>
+          
+<footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="vnc.html" class="btn btn-neutral float-right" title="VNC"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="vnc.html" class="btn btn-neutral float-right" title="VNC">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="Microsoft Windows"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -418,7 +442,10 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014 Sean Fisk and Ira Woodring.
+    
+      &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
+      <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.
     </p>
   </div>
 

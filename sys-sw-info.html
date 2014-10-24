@@ -1,0 +1,450 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>System and Software Information &mdash; Mastering EOS</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Mastering EOS" href="index.html"/>
+        <link rel="next" title="Winserv" href="winserv.html"/>
+        <link rel="prev" title="Linuxbrew" href="user-level-sw/linuxbrew.html"/>
+ 
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-19591513-4', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('send', 'pageview');
+  </script>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> Mastering EOS</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#physical-access-keycards">Physical Access (Keycards)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#computer-access-credentials">Computer Access (Credentials)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules and Procedures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#disk-space">Disk Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#copyrighted-material">Copyrighted Material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#food-and-drink">Food and Drink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#overnight-parking">Overnight Parking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#living-in-the-lab">Living in the Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#malicious-activity">Malicious Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#games">Games</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="remote-access/inter-eos.html">Inter-EOS SSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote-access/windows/index.html">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote-access/mac-os-x/index.html">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote-access/gnu-linux/index.html">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="shells.html">Shells</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#bash">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#tcsh">Tcsh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#kornshell">Kornshell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-level-sw/index.html">User-level Software Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-level-sw/manual-install.html">Manual Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-level-sw/linuxbrew.html">Linuxbrew</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">System and Software Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#web-server">Web Server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="winserv.html">Winserv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="winserv.html#common-settings">Common Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="winserv.html#microsoft-windows">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="winserv.html#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="winserv.html#gnu-linux">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="databases.html">Databases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#mysql">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#oracle">Oracle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#oracle-apex">Oracle APEX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#mssql">MSSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#sqlite">SQLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#remote-database-connections">Remote Database Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ide.html">Integrated Development Environments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ide.html#bluej">BlueJ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ide.html#eclipse">Eclipse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ide.html#intellij">IntelliJ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gui-toolkits.html">GUI Toolkits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#choosing-a-toolkit">Choosing a Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#qt">Qt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#wxwidgets">wxWidgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#gtk">GTK+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#tk">Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#swing">Swing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#swt">SWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#native-toolkits">Native Toolkits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing/index.html">Contributing to Mastering EOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing/repo-setup.html">Repository Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/prereqs.html">Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/build-system.html">Using the Build System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/edit.html">Editing the Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/writing-style.html">Writing Style</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Mastering EOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>System and Software Information</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/sys-sw-info.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="system-and-software-information">
+<h1>System and Software Information<a class="headerlink" href="#system-and-software-information" title="Permalink to this headline">¶</a></h1>
+<p>For various reasons, it is sometimes necessary to know the version of a piece of hardware or software that you are using on EOS. Rather than list the versions of everything here, this section instructs you on <em>how to obtain version information</em> from the piece of software or operating system.</p>
+<div class="section" id="system">
+<h2>System<a class="headerlink" href="#system" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="all-in-one-tools">
+<h3>All-In-One Tools<a class="headerlink" href="#all-in-one-tools" title="Permalink to this headline">¶</a></h3>
+<p>These tools show large amounts of information about the system, including but not limited to information on the operating system, hardware, and network.</p>
+<div class="section" id="inxi">
+<h4>inxi<a class="headerlink" href="#inxi" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://code.google.com/p/inxi/">inxi</a> is a full-featured Bash script that can be used to obtain information about many parts of the system including the operating system and hardware. inxi is unfortunately not installed on EOS computers by default, but is not difficult to install. It is unnecessary but beneficial to be familiar with the steps involved in <a class="reference internal" href="user-level-sw/manual-install.html#manual-install"><em>Manual Installation</em></a> as well.</p>
+<p>First, follow the instructions in <a class="reference internal" href="user-level-sw/manual-install.html#ready-prefix"><em>Ready the Prefix</em></a>. Then run the following commands to install the inxi script and its man page:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">pushd</span> ~/.local
+<span class="o">(</span>mkdir -p bin <span class="o">&amp;&amp;</span> <span class="nb">cd </span>bin <span class="o">&amp;&amp;</span> wget http://smxi.org/inxi <span class="o">&amp;&amp;</span> chmod +x inxi<span class="o">)</span>
+<span class="o">(</span>mkdir -p share/man/man1 <span class="o">&amp;&amp;</span> <span class="nb">cd </span>share/man/man1 <span class="o">&amp;&amp;</span> wget http://inxi.googlecode.com/svn/trunk/inxi.1.gz<span class="o">)</span>
+<span class="nb">popd</span>
+</pre></div>
+</div>
+<p>After installing, follow the steps for <a class="reference internal" href="user-level-sw/manual-install.html#adjust-env"><em>Adjusting the Environment</em></a>. You should now be able to run <tt class="docutils literal"><span class="pre">inxi</span></tt> from the command line. inxi is a command-line program, so it can be run through SSH or a graphical terminal emulator.</p>
+<p>To show a basic, medium-length output:</p>
+<div class="highlight-bash"><div class="highlight"><pre>inxi -b
+</pre></div>
+</div>
+<p>To show most everything:</p>
+<div class="highlight-bash"><div class="highlight"><pre>inxi -v 7 -Z
+</pre></div>
+</div>
+<p>For more information on the options, run:</p>
+<div class="highlight-bash"><div class="highlight"><pre>man inxi
+</pre></div>
+</div>
+</div>
+<div class="section" id="hardinfo">
+<h4>HardInfo<a class="headerlink" href="#hardinfo" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="http://hardinfo.org/">HardInfo</a> is far and away the best tool to obtain organized information related to the system. HardInfo displays on the operating system, kernel, hardware, peripherals, network and more. Furthermore, it can also run benchmarks on the CPU, FPU, and GPU.</p>
+<p>Unfortunately, it is not installed by default on the EOS computers, so it must be compiled from source. Don&#8217;t be afraid, though &#8212; by following these steps, you should be able to install HardInfo quickly and simply. It is unnecessary but beneficial to be familiar with the steps involved in <a class="reference internal" href="user-level-sw/manual-install.html#manual-install"><em>Manual Installation</em></a> as well.</p>
+<p>First, follow the steps to <a class="reference internal" href="user-level-sw/manual-install.html#ready-prefix"><em>Ready the Prefix</em></a>. Then download the source code:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> ~/.local/src
+wget https://github.com/lpereira/hardinfo/archive/master.tar.gz -O - | tar -xz
+<span class="nb">cd </span>hardinfo-master
+</pre></div>
+</div>
+<p>HardInfo uses <a class="reference internal" href="user-level-sw/manual-install.html#cmake-section"><em>CMake</em></a> as a build system, so the steps will be very similar to those shown in that section. First, create the build directory and configure the build system:</p>
+<div class="highlight-bash"><div class="highlight"><pre>mkdir build
+<span class="nb">cd </span>build
+cmake -Wno-dev -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="s2">&quot;$HOME/.local&quot;</span> ..
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>If you use <a class="reference internal" href="user-level-sw/linuxbrew.html#linuxbrew-section"><em>Linuxbrew</em></a> as a package manager, CMake may find your locally-installed version of <a class="reference external" href="http://www.freedesktop.org/wiki/Software/pkg-config/">pkg-config</a> and fail. To remedy this, run:</p>
+<div class="last highlight-bash"><div class="highlight"><pre>cmake -Wno-dev -DPKG_CONFIG_EXECUTABLE<span class="o">=</span>/usr/bin/pkg-config -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="s2">&quot;$HOME/.local&quot;</span> ..
+</pre></div>
+</div>
+</div>
+<p>Next, build and install the program:</p>
+<div class="highlight-bash"><div class="highlight"><pre>cmake --build . --target install
+</pre></div>
+</div>
+<p>After installing, follow the steps for <a class="reference internal" href="user-level-sw/manual-install.html#adjust-env"><em>Adjusting the Environment</em></a>. Once this is done, run:</p>
+<div class="highlight-bash"><div class="highlight"><pre>hardinfo
+</pre></div>
+</div>
+<p>HardInfo is a graphical program, so make sure to run it at a physical machine or through VNC. A GUI should pop up containing copious amounts of information on different parts of the current system. Enjoy using HardInfo!</p>
+</div>
+</div>
+<div class="section" id="specific-tools">
+<h3>Specific Tools<a class="headerlink" href="#specific-tools" title="Permalink to this headline">¶</a></h3>
+<p>Although the all-in-one tools provide convenient ways to access lots of information about the system, sometimes all that is needed is one specific piece of information. This can be useful for scripts or when the other information simply isn&#8217;t needed.</p>
+<div class="section" id="gnu-linux-distribution">
+<h4>GNU/Linux Distribution<a class="headerlink" href="#gnu-linux-distribution" title="Permalink to this headline">¶</a></h4>
+<p>The <tt class="docutils literal"><span class="pre">lsb_release</span></tt> (Linux Standard Base) command will show you information regarding your distribution:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> lsb_release -a
+<span class="go">No LSB modules are available.</span>
+<span class="go">Distributor ID: CentOS</span>
+<span class="go">Description:    CentOS release 6.5 (Final)</span>
+<span class="go">Release:        6.5</span>
+<span class="go">Codename:       Final</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="linux-kernel">
+<h4>Linux Kernel<a class="headerlink" href="#linux-kernel" title="Permalink to this headline">¶</a></h4>
+<p>The <tt class="docutils literal"><span class="pre">uname</span></tt> command will tell you about the operating system, including the Linux kernel version:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> uname -a
+<span class="go">Linux eos04.cis.gvsu.edu 3.10.0-123.8.1.el7.x86_64 #1 SMP Mon Sep 22 19:06:58 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux</span>
+</pre></div>
+</div>
+<p>The third value is the Linux kernel version.</p>
+<p>For more information, please see the following nixCraft articles:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.cyberciti.biz/faq/command-to-show-linux-version/">Linux Command: Show Linux Version</a></li>
+<li><a class="reference external" href="http://www.cyberciti.biz/faq/find-linux-distribution-name-version-number/">HowTo: Find Out My Linux Distribution Name and Version</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<p>The following links contain many commands that can be used to obtain information from the operating system.</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.binarytides.com/linux-commands-hardware-info/">http://www.binarytides.com/linux-commands-hardware-info/</a></li>
+<li><a class="reference external" href="http://www.cyberciti.biz/tips/linux-command-to-gathers-up-information-about-a-linux-system.html">http://www.cyberciti.biz/tips/linux-command-to-gathers-up-information-about-a-linux-system.html</a></li>
+<li><a class="reference external" href="http://www.cyberciti.biz/faq/linux-list-hardware-information/">http://www.cyberciti.biz/faq/linux-list-hardware-information/</a></li>
+<li><a class="reference external" href="http://www.cyberciti.biz/faq/linux-display-information-about-installed-hardware/">http://www.cyberciti.biz/faq/linux-display-information-about-installed-hardware/</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="software">
+<h2>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h2>
+<p>Most programs respond to the <tt class="docutils literal"><span class="pre">--version</span></tt> option by printing their version, for example:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> bash --version
+<span class="hll"><span class="go">GNU bash, version 4.2.45(1)-release (x86_64-redhat-linux-gnu)</span>
+</span><span class="go">Copyright (C) 2011 Free Software Foundation, Inc.</span>
+<span class="go">License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;</span>
+
+<span class="go">This is free software; you are free to change and redistribute it.</span>
+<span class="go">There is NO WARRANTY, to the extent permitted by law.</span>
+</pre></div>
+</div>
+<p>However, this is a de-facto standard, and may not work for all programs. A notable example is Java:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> java --version
+<span class="go">Unrecognized option: --version</span>
+<span class="go">Error: Could not create the Java Virtual Machine.</span>
+<span class="go">Error: A fatal exception has occurred. Program will exit.</span>
+</pre></div>
+</div>
+<p>The correct way is to use the <tt class="docutils literal"><span class="pre">-version</span></tt> flag:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> java -version
+<span class="hll"><span class="go">java version &quot;1.7.0_65&quot;</span>
+</span><span class="go">OpenJDK Runtime Environment (rhel-2.5.1.2.el7_0-x86_64 u65-b17)</span>
+<span class="go">OpenJDK 64-Bit Server VM (build 24.65-b04, mixed mode)</span>
+</pre></div>
+</div>
+<p>Be aware that there is also no standard for displaying the version of the program, so other information may be provided.</p>
+<p>If the program was installed with a package manager, the package manager is able to output information about the program in a standard format. Yum is the package manager on CentOS and will print the following information on a package:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> yum info bash
+<span class="go">Loaded plugins: fastestmirror, langpacks</span>
+<span class="go">Loading mirror speeds from cached hostfile</span>
+<span class="go">Installed Packages</span>
+<span class="go">Name        : bash</span>
+<span class="go">Arch        : x86_64</span>
+<span class="hll"><span class="go">Version     : 4.2.45</span>
+</span><span class="go">Release     : 5.el7_0.4</span>
+<span class="go">Size        : 3.5 M</span>
+<span class="go">Repo        : installed</span>
+<span class="go">From repo   : updates</span>
+<span class="go">Summary     : The GNU Bourne Again shell</span>
+<span class="go">URL         : http://www.gnu.org/software/bash</span>
+<span class="go">License     : GPLv3+</span>
+<span class="go">Description : The GNU Bourne Again shell (Bash) is a shell or command language</span>
+<span class="go">            : interpreter that is compatible with the Bourne shell (sh). Bash</span>
+<span class="go">            : incorporates useful features from the Korn shell (ksh) and the C shell</span>
+<span class="go">            : (csh). Most sh scripts can be run by bash without modification.</span>
+</pre></div>
+</div>
+<p>If you use <a class="reference internal" href="user-level-sw/linuxbrew.html#linuxbrew-section"><em>Linuxbrew</em></a>, it will also print information about its packages:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> brew info bash
+<span class="go">bash: stable 4.3.30, HEAD</span>
+<span class="go">http://www.gnu.org/software/bash/</span>
+<span class="hll"><span class="go">/home/smithj/.linuxbrew/Cellar/bash/4.3.30 (59 files, 7.9M) *</span>
+</span><span class="go">  Built from source</span>
+<span class="go">From: https://github.com//homebrew/blob/master/Library/Formula/bash.rb</span>
+<span class="go">==&gt; Dependencies</span>
+<span class="go">Required: readline ✔</span>
+<span class="go">==&gt; Caveats</span>
+<span class="go">In order to use this build of bash as your login shell,</span>
+<span class="go">it must be added to /etc/shells.</span>
+</pre></div>
+</div>
+<p>Note that Linuxbrew shows the current version of the package (line 2) <em>and</em> the version that is installed (highlighted line) [if one is installed].</p>
+</div>
+<div class="section" id="web-server">
+<h2>Web Server<a class="headerlink" href="#web-server" title="Permalink to this headline">¶</a></h2>
+<p>For PHP development or general web development using EOS, it is sometimes necessary to obtain information about PHP and Apache, the web server. To do this, follow these steps to enable a so-called PHPInfo page:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">echo</span> <span class="s1">&#39;&lt;?php phpinfo(); ?&gt;&#39;</span> &gt; ~/public_html/info.php
+chmod o+x ~ ~/public_html
+chmod o+r ~/public_html/info.php
+</pre></div>
+</div>
+<p>Now visit <tt class="samp docutils literal"><span class="pre">http://cis.gvsu.edu/~</span><em><span class="pre">smithj</span></em><span class="pre">/info.php</span></tt> in your browser, replacing with your username where appropriate. Upon visiting the page, PHP will dump a large amount of information on itself and the web server.</p>
+<p>While this page in itself does not present a security risk, it can be a valuable tool for potential attackers. You are therefore requested to remove the page after you have obtained the necessary information:</p>
+<div class="highlight-bash"><div class="highlight"><pre>rm ~/public_html/info.php
+</pre></div>
+</div>
+<p>Please contact <a class="reference external" href="mailto:woodriir&#37;&#52;&#48;gvsu&#46;edu">Ira Woodring</a> with further questions about PHP and the web server.</p>
+</div>
+</div>
+
+
+          </div>
+          
+<footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="winserv.html" class="btn btn-neutral float-right" title="Winserv">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="user-level-sw/linuxbrew.html" class="btn btn-neutral" title="Linuxbrew"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    
+      &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
+      <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,350 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Editing the Manual &mdash; Mastering EOS</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Mastering EOS" href="../index.html"/>
+        <link rel="up" title="Contributing to Mastering EOS" href="index.html"/>
+        <link rel="next" title="Making a Pull Request" href="pull-request.html"/>
+        <link rel="prev" title="Using the Build System" href="build-system.html"/>
+ 
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-19591513-4', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('send', 'pageview');
+  </script>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> Mastering EOS</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#physical-access-keycards">Physical Access (Keycards)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#computer-access-credentials">Computer Access (Credentials)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rules.html">Rules and Procedures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#disk-space">Disk Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#copyrighted-material">Copyrighted Material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#food-and-drink">Food and Drink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#overnight-parking">Overnight Parking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#living-in-the-lab">Living in the Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#malicious-activity">Malicious Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#games">Games</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../remote-access/inter-eos.html">Inter-EOS SSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../remote-access/windows/index.html">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../remote-access/mac-os-x/index.html">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../remote-access/gnu-linux/index.html">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../shells.html">Shells</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shells.html#bash">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shells.html#tcsh">Tcsh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shells.html#kornshell">Kornshell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user-level-sw/index.html">User-level Software Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user-level-sw/manual-install.html">Manual Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user-level-sw/linuxbrew.html">Linuxbrew</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sys-sw-info.html">System and Software Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sys-sw-info.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sys-sw-info.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sys-sw-info.html#web-server">Web Server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../winserv.html">Winserv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#common-settings">Common Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#microsoft-windows">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#gnu-linux">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../databases.html">Databases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#mysql">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#oracle">Oracle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#oracle-apex">Oracle APEX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#mssql">MSSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#sqlite">SQLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#remote-database-connections">Remote Database Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ide.html">Integrated Development Environments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ide.html#bluej">BlueJ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ide.html#eclipse">Eclipse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ide.html#intellij">IntelliJ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gui-toolkits.html">GUI Toolkits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#choosing-a-toolkit">Choosing a Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#qt">Qt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#wxwidgets">wxWidgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#gtk">GTK+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#tk">Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#swing">Swing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#swt">SWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#native-toolkits">Native Toolkits</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Contributing to Mastering EOS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="repo-setup.html">Repository Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prereqs.html">Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build-system.html">Using the Build System</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Editing the Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing-style.html">Writing Style</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../envvars.html">Environment Variables</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Mastering EOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Contributing to Mastering EOS</a> &raquo;</li>
+      
+    <li>Editing the Manual</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/contributing/edit.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="editing-the-manual">
+<h1>Editing the Manual<a class="headerlink" href="#editing-the-manual" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sync-your-fork">
+<h2>Sync Your Fork<a class="headerlink" href="#sync-your-fork" title="Permalink to this headline">¶</a></h2>
+<p>Unless you have just forked the repository, always begin every editing session by <a class="reference external" href="https://help.github.com/articles/syncing-a-fork/">syncing your fork</a>.</p>
+</div>
+<div class="section" id="make-your-changes">
+<h2>Make Your Changes<a class="headerlink" href="#make-your-changes" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s start by making our actual changes to the document. As mentioned before, the manual is written using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> in the markup language <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>. Unless your changes are very minor, at least a surface understanding of reStructuredText is necessary. We recommend fully reading <a class="reference external" href="http://sphinx-doc.org/rest.html">Sphinx&#8217;s reStructuredText Primer</a> to start. Because Mastering EOS makes heavy use of Sphinx and reStructuredText features, you can also look around at existing source documents and their output to get an idea of how documents are written in Sphinx.</p>
+<p>Consider the following sentence:</p>
+<blockquote>
+<div>I like spinach.</div></blockquote>
+<p>Let&#8217;s change this very sentence. We&#8217;ll use this as an example throughout this section. Although we&#8217;re using this example, feel free to adapt the example to your actual changes.</p>
+<p>Everyone loves bacon, so we&#8217;ll change it to that instead.</p>
+<p>Fire up your editor to open the file:</p>
+<div class="highlight-bash"><div class="highlight"><pre>gedit manual/contributing/edit.rst
+</pre></div>
+</div>
+<p>Find the sentence and make the change.</p>
+<p>As shown in the previous section, you will want to <a class="reference internal" href="build-system.html#contributing-build-docs"><em>Build the Documentation</em></a> and <a class="reference internal" href="build-system.html#contributing-view-results"><em>View the Results</em></a> after you make your change. Once you are happy with how it looks, it is time to create a branch on which to commit your change.</p>
+</div>
+<div class="section" id="create-a-feature-branch">
+<h2>Create a Feature Branch<a class="headerlink" href="#create-a-feature-branch" title="Permalink to this headline">¶</a></h2>
+<p>The next step is to create a <em>feature branch</em> for your change. A feature branch represents the addition of one cohesive set of changes. For example, a feature branch could contain related changes to sections on SSH and SCP, but should not contain unrelated changes to the personal website and VNC sections.</p>
+<p>Try to pick a name for your branch that represents your change. Create a new feature branch for our example with:</p>
+<div class="highlight-bash"><div class="highlight"><pre>git checkout -b bacon-rules-spinach-drools
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">In this example, we only make one commit on the feature branch. Although one commit is fine, you are free to make more commits on a feature branch as well.</p>
+</div>
+</div>
+<div class="section" id="commit-your-change">
+<h2>Commit Your Change<a class="headerlink" href="#commit-your-change" title="Permalink to this headline">¶</a></h2>
+<p>Once you have made your change, it&#8217;s time to commit. First, let&#8217;s ask Git for a status report:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> git status
+<span class="go">On branch bacon-rules-spinach-drools</span>
+<span class="go">Changes not staged for commit:</span>
+<span class="go">  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)</span>
+<span class="go">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span>
+
+<span class="go">        modified:   manual/contributing/edit.rst</span>
+</pre></div>
+</div>
+<p>As you can see, Git is aware of our change, but we have not yet told Git that we intended to make them.</p>
+<p>Assure Git of our intentions with:</p>
+<div class="highlight-bash"><div class="highlight"><pre>git add manual/contributing/edit.rst
+</pre></div>
+</div>
+<p>Looking at the status now yields:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> git status
+<span class="go">On branch bacon-rules-spinach-drools</span>
+<span class="go">Changes to be committed:</span>
+<span class="go">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span>
+
+<span class="go">        modified:   manual/contributing/edit.rst</span>
+</pre></div>
+</div>
+<p>We are now ready to commit our change. As part of the commit, you will be asked for a commit message. The commit message should be a short (less than 50 characters), high-level summary of what has been done in this commit. Before writing a message for this commit, look back at commit messages for prior commits with:</p>
+<div class="highlight-bash"><div class="highlight"><pre>git log
+</pre></div>
+</div>
+<p>These messages should give you an idea of what a typical commit message for this project looks like. Press <tt class="docutils literal"><span class="pre">q</span></tt> to quit the log viewer. To commit your change, run the following:</p>
+<div class="highlight-bash"><div class="highlight"><pre>git commit
+</pre></div>
+</div>
+<p>This should open gedit, or another editor if you have configured one. Enter your commit message:</p>
+<blockquote>
+<div>I like bacon, not spinach. Geez; get it right.</div></blockquote>
+</div>
+<div class="section" id="push-the-branch">
+<h2>Push The Branch<a class="headerlink" href="#push-the-branch" title="Permalink to this headline">¶</a></h2>
+<p>Your changes have now been committed. The last step in this section is to push them to your fork. Do so with the following:</p>
+<div class="highlight-bash"><div class="highlight"><pre>git push -u origin bacon-rules-spinach-drools
+</pre></div>
+</div>
+<p>Your branch has now been pushed to your forked repository! Continue on to the next section to find out how to propose them as changes to the Mastering EOS official repository.</p>
+</div>
+<div class="section" id="git-resources">
+<h2>Git Resources<a class="headerlink" href="#git-resources" title="Permalink to this headline">¶</a></h2>
+<p>This guide illustrates the bare minimum amount of Git commands that you will need to complete this task. For more guidance on using Git, please check out <a class="reference external" href="https://help.github.com/articles/what-are-other-good-resources-for-learning-git-and-github/">GitHub&#8217;s list of Git resources</a>. In particular, GitHub&#8217;s <a class="reference external" href="https://try.github.com/">Try Git</a> is great for beginners.</p>
+</div>
+</div>
+
+
+          </div>
+          
+<footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pull-request.html" class="btn btn-neutral float-right" title="Making a Pull Request">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="build-system.html" class="btn btn-neutral" title="Using the Build System"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    
+      &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
+      <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
