@@ -4,6 +4,12 @@
  Pre-requisites
 ================
 
+Before running any commands, make sure you change to the repository root directory. For example::
+
+    cd ~/mastering-eos
+
+All following commands will be run from this directory unless otherwise noted.
+
 Install Requirements
 ====================
 
@@ -53,7 +59,7 @@ If you do not have an editor preference, we suggest that you use gedit_ for the 
 
 An editor is a very personal choice, so if you do have an editor preference, please use the editor with which you are comfortable. There are `EditorConfig plugins`_ for many different editors. If yours is listed, we suggest you take the time to get your editor's plugin working. If you cannot get it working or there is no EditorConfig support for your editor, please read the :file:`.editorconfig` file for the formatting standards --- they should be relatively easy to follow manually.
 
-If you do choose gedit, we have a script to assist in installing EditorConfig support on EOS. To install the plugin, run::
+If you do choose gedit, we have a script in our repository to assist in installing EditorConfig support on EOS. To install the plugin, run::
 
     scripts/install-gedit-editorconfig-eos
 
