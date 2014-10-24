@@ -70,3 +70,18 @@ The following examples showcase the typical use of ``pscp``. Each file can be pr
 .. envvar:: Path
 
     The Windows search path for executable files.
+
+.. include:: ../common/sshfs/intro.rst
+
+Unfortunately, there are no stand-out options for SSHFS on Windows. The following programs are possible solutions of which we are aware:
+
+* ExpanDrive_ is a commercial product with a free trial available. While the product works well, the prices are in the expensive range.
+* win-sshfs_ is an open-source SSHFS implementation for Windows. Unfortunately, it is not being maintained and therefore we cannot recommend it.
+* `dimov-cz's win-sshfs fork`_ is a maintained fork of win-sshfs. However, no binaries are provided, so it must be compiled from source. If you are familiar with compiling and installing .NET programs, this may be a viable alternative for you.
+
+Although none of these programs are supported, you are welcome to try them if they seem useful to you.
+
+.. _win-sshfs: https://code.google.com/p/win-sshfs/
+.. _dimov-cz's win-sshfs fork: https://github.com/dimov-cz/win-sshfs
+
+.. include:: ../common/sshfs/outro.rst

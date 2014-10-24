@@ -35,3 +35,59 @@ With desktop managers besides GNOME and KDE, you are on your own. However, many 
 
 .. |ssh-keys| replace:: :ref:`gnu-linux-ssh-keys`
 .. include:: ../common/openssh/scp.rst
+
+.. include:: ../common/sshfs/intro.rst
+
+Installation
+------------
+
+SSHFS is popular package and is usually available through your operating system's package manager.
+
+On Debian-based systems (Ubuntu, Linux Mint, and friends), run the following command::
+
+    sudo apt-get install sshfs
+
+On Red Hat-based systems (Fedora, CentOS, RHEL, and friends), run the following command::
+
+    sudo yum install fuse-sshfs
+
+With other distributions (Arch, etc.), you are on your own.
+
+To mount your EOS home directory, first create a mount point for it::
+
+    mkdir ~/eos
+
+Next, mount your EOS home directory using SSHFS::
+
+    sshfs -o volname=EOS smithj@eos01.cis.gvsu.edu: ~/eos
+
+.. TODO Link to hostname aliases once advanced section is split.
+.. tip::
+
+    If you set up Hostname Aliases as shown in Advanced OpenSSH, you can use these with SSHFS::
+
+        sshfs -o volname=EOS eos01: ~/eos
+
+Test the mount point by listing your EOS files::
+
+    ls ~/eos
+
+You should now be able to use files on your EOS account as if they were on your own machine. For example, you can open and browse your files using your file browser::
+
+    xdg-open ~/eos
+
+Be aware that there may be some lag in the filesystem, especially when using programs which access the filesystem frequently.
+
+When finished with the mount point, make sure to unmount it::
+
+    fusermount -u ~/eos
+
+SSHFS accepts many options which can be viewed with ``man ssh`` or ``sshfs --help``. For example, to enable caching and automatic reconnection (recommended)::
+
+    sshfs -o auto_cache,reconnect smithj@eos01.cis.gvsu.edu: ~/eos
+
+If you use this command often, you may want to create script or alias for it.
+
+.. TODO Link to aliases when shell section is done.
+
+.. include:: ../common/sshfs/outro.rst

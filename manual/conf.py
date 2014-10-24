@@ -439,6 +439,7 @@ rst_epilog = '''
 .. _Wikipedia entry on rpath:
 .. _rpath:
 .. _run-time search path (rpath): http://en.wikipedia.org/wiki/Rpath
+.. _ExpanDrive: http://www.expandrive.com/expandrive
 '''.format(title=project)
 
 # The default highlight language is Python; switch it to Bash.
