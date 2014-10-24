@@ -24,7 +24,9 @@ def main(argv):
 
     # Install Python requirements, as they may have changed.
     _run_and_log('Installing Python requirements', [
-        'pip', 'install', '-r', 'requirements.txt'])
+        'pip', 'install', '-r', 'requirements.txt',
+        '--allow-external', 'pyPEG2',
+	'--allow-unverified', 'pyPEG2'])
 
     # Re-run the build. We re-configure as well, in case configuration changes
     # have been made.

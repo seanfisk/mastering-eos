@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Script to install the gedit EditorConfig plugin.
+# https://github.com/editorconfig/editorconfig-gedit
+#
+# We don't use the provided 'install.sh' script because it patches the
+# EditorConfig plugin for Python 3. We are using Python 2 on EOS, so
+# we don't want this patch.
+
+set -o errexit
+set -o nounset
+
+readonly REPO_DIR=editorconfig-gedit-master
+readonly TEMP_DIR=$(mktemp -d)
+readonly INSTALL_DIR=~/.local/share/gedit/plugins
+
+pushd $TEMP_DIR
+
+wget https://github.com/editorconfig/editorconfig-gedit/archive/master.tar.gz -O - \
+	| tar -xz "$REPO_DIR"/editorconfig{_plugin,_gedit3.py,.plugin}
+
+mkdir -p "$INSTALL_DIR"
+# Use '-rFL' as the the 'install.sh' script does.
+cp -rfL "$REPO_DIR"/{*,.*} "$INSTALL_DIR"
+
+popd # $TEMP_DIR
+
+rm -r "$TEMP_DIR"

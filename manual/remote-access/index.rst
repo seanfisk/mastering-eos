@@ -17,6 +17,7 @@ Your SSH and VNC clients of choice depend on your machine's operating system.
 .. toctree::
    :maxdepth: 2
 
+   inter-eos
    windows/index
    mac-os-x/index
    gnu-linux/index

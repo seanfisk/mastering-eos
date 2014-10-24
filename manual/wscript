@@ -51,7 +51,6 @@ def build(ctx):
     fabfile_node = ctx.srcnode.find_resource('fabfile.py')
 
     # This task takes a while, so start it first.
-    # update_outputs=True,
     ctx(name='make_ssh_fingerprints_table',
         features='fabric',
         fabfile=fabfile_node,
@@ -85,8 +84,10 @@ def build(ctx):
             tsk.outputs[0].abspath(),
         ])
 
+    # TODO: The html document does not build under changes to
+    # _templates/footer.html.
     ctx(features='sphinx',
-        builders='latexpdf html epub man info',
+        builders='latexpdf html man info',
         source='conf.py',
         # Turn warnings into errors. Helps them get fixed more quickly :)
         warningiserror=True,
@@ -94,5 +95,5 @@ def build(ctx):
         nitpicky=True,
         # Make sure that vnc and fingerprints tables are built before running.
         # The 'after' keyword means 'run this task after the listed tasks'.
-        after=['make_vnc_table', 'make_ssh_fingerprints_table'],
+        after_=['make_vnc_table', 'make_ssh_fingerprints_table'],
     )

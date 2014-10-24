@@ -75,6 +75,10 @@ def configure(ctx):
     ctx.find_program('ghp-import', var='GHP_IMPORT')
     ctx.load('fabric', tooldir='waf_tools')
 
+    # Add the vendor directory to the TeX search path so that our vendored
+    # packages can be found.
+    ctx.env.TEXINPUTS = ctx.path.find_dir('vendor').abspath()
+
     ctx.recurse(SUBDIRS)
 
 def build(ctx):
@@ -107,15 +111,11 @@ def archive(ctx):
             source=node,
             target=website_dir.find_or_declare(node.path_from(html_build_dir)))
 
-    # Copy PDF and EPUB.
+    # Copy PDF.
     ctx(rule=_copy_file,
         source=ctx.bldnode.find_node([
             'manual', 'latexpdf', 'mastering-eos.pdf']),
         target=website_dir.find_or_declare('mastering-eos.pdf'))
-    ctx(rule=_copy_file,
-        source=ctx.bldnode.find_node([
-            'manual', 'epub', 'mastering-eos.epub']),
-        target=website_dir.find_or_declare('mastering-eos.epub'))
 
     # Copy poster.
     ctx(rule=_copy_file,

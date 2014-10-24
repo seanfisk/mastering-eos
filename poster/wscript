@@ -39,12 +39,20 @@ def build(ctx):
             ctx.path.find_dir(UBUNTU_FONTS_PATH).abspath() + os.sep),
     )
 
+    # Include the common inter-EOS file.
+    inter_eos_ssh_tex_in_node = ctx.path.find_resource([
+        'blocks', 'inter-eos-ssh.tex.in'])
+    inter_eos_ssh_tex_node = inter_eos_ssh_tex_in_node.change_ext(
+        ext='.tex', ext_in='.tex.in')
+    inter_eos_ssh_bash_node = ctx.srcnode.find_resource([
+        'common', 'inter-eos-ssh.bash'])
+    ctx(features='subst',
+        target=inter_eos_ssh_tex_node,
+        source=inter_eos_ssh_tex_in_node,
+        INTER_EOS_SSH_BASH_PATH=inter_eos_ssh_bash_node.abspath())
+
     # Make sure the style file is built before TeX is run.
     ctx.add_group()
-
-    # Add the vendor directory to the TeX search path so that our vendored
-    # packages can be found.
-    ctx.env.TEXINPUTS = ctx.path.find_dir('vendor').abspath()
 
     main_tex_node = ctx.path.find_resource('mastering-eos.tex')
     ctx(features='tex',
