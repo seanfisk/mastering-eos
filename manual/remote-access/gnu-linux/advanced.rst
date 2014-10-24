@@ -1,3 +1,5 @@
+.. _gnu-linux-advanced-openssh:
+
 .. include:: ../common/openssh/advanced/intro.rst
 
 Proxy configuration varies from distro to distro. These steps show how to configure a system-wide SOCKS proxy on Ubuntu 14.04, but other distros may be similar.

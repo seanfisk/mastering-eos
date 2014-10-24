@@ -1,3 +1,5 @@
+.. _remote-access-gnu-linux:
+
 ===========
  GNU/Linux
 ===========

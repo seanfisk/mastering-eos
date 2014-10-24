@@ -127,7 +127,7 @@ There are several build systems used by typical software on GNU/Linux. Read the 
 Autotools
 ---------
 
-:wikipedia:`Autotools <GNU_build_system>`, also known as the GNU Build System, is the build system currently used by most programs on GNU/Linux. You can usually identify a program using Autotools by the presence of a :file:`configure` script in the root of the source distribution.
+Autotools_, also known as the GNU Build System, is the build system currently used by most programs on GNU/Linux. You can usually identify a program using Autotools by the presence of a :file:`configure` script in the root of the source distribution.
 
 The software which makes up Autotools itself is usually not necessary to build a program using Autotools as a build system. Instead, the functionality is embedded into the :file:`configure` script itself. Autotools build systems typically only require the presence of Make.
 
@@ -205,8 +205,6 @@ CMake
 CMake_ is a popular alternative to Autotools as a build system on GNU/Linux. You can usually identify a CMake build system by the presence of a :file:`CMakeLists.txt` file in the root of the source distribution.
 
 The :command:`cmake` program needs to be installed in order to build projects using CMake as a build system. It is installed by default on EOS.
-
-.. _CMake: http://www.cmake.org/
 
 Example: libgit2
 ````````````````
