@@ -84,6 +84,8 @@ def build(ctx):
             tsk.outputs[0].abspath(),
         ])
 
+    # TODO: The html document does not build under changes to
+    # _templates/footer.html.
     ctx(features='sphinx',
         builders='latexpdf html man info',
         source='conf.py',
