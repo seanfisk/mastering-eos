@@ -464,7 +464,7 @@ extlinks = dict(
 # Git revision: custom option, for use in '_templates/footer.html'.
 _git_short_revision = subprocess.check_output([
     'git', 'rev-parse', '--short', 'HEAD']).decode('ascii').rstrip()
-# Inject the 'git_revision' keywork into the Jinja template.
+# Inject the 'git_revision' keyword into the Jinja template.
 html_context = dict(
     git_revision=(
         '<a href="{github_url}/commit/{rev}">'
