@@ -1,4 +1,4 @@
-.. _gnu-linux-vnc:
+.. _linux-vnc:
 .. include:: ../common/openssh/vnc-intro.rst
 
 There are a number of VNC clients for GNU/Linux, but the most capable and intuitive is Remmina_ (formerly tsclient_). Remmina also supports RDP, so you can use it with :ref:`Winserv <winserv-gnu-linux>`. It installed by default in Ubuntu 14.04. If it is not installed in your distribution, you should install from your package manager.

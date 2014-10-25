@@ -33,7 +33,7 @@ Other Desktop Managers
 
 With desktop managers besides GNOME and KDE, you are on your own. However, many GNU/Linux file managers are very similar, and most offer support for SSH file transfer. Consult your desktop's document for more information, or just try to figure it out on your own.
 
-.. |ssh-keys| replace:: :ref:`gnu-linux-ssh-keys`
+.. |ssh-keys| replace:: :ref:`linux-ssh-keys`
 .. include:: ../common/openssh/scp.rst
 
 .. include:: ../common/sshfs/intro.rst
@@ -61,10 +61,9 @@ Next, mount your EOS home directory using SSHFS::
 
     sshfs -o volname=EOS smithj@eos01.cis.gvsu.edu: ~/eos
 
-.. TODO Link to hostname aliases once advanced section is split.
 .. tip::
 
-    If you set up Hostname Aliases as shown in Advanced OpenSSH, you can use these with SSHFS::
+    If you set up :ref:`linux-ssh-aliases`, you can use these with SSHFS::
 
         sshfs -o volname=EOS eos01: ~/eos
 

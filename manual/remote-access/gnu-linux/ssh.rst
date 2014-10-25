@@ -20,11 +20,11 @@ With other distributions (Arch, etc.), you are on your own.
 
 .. include:: ../common/openssh/connect.rst
 
-.. _gnu-linux-fingerprints:
+.. _linux-fingerprints:
 
 .. include:: ../common/openssh/fingerprints.rst
 
-.. _gnu-linux-ssh-keys:
+.. _linux-ssh-keys:
 
 .. include:: ../common/keys/intro.rst
 
@@ -34,6 +34,6 @@ With other distributions (Arch, etc.), you are on your own.
 
 .. include:: ../common/keys/outro.rst
 
-.. _gnu-linux-ssh-tunnel:
+.. _linux-ssh-tunnel:
 .. |text-editor| replace:: gedit
 .. include:: ../common/openssh/forwarding.rst
