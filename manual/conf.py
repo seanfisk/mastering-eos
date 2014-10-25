@@ -425,6 +425,8 @@ pdf_fit_background_mode = 'scale'
 
 # -- Custom Options -------------------------------------------------------
 
+_github_url = 'https://github.com/seanfisk/mastering-eos'
+
 # Global substitutions and links, using rst_epilog.
 # Apparently we can't use the `text <link>`_ notation in here, so see
 # <http://docutils.sourceforge.net/FAQ.html#is-nested-inline-markup-possible>.
@@ -434,6 +436,7 @@ rst_epilog = '''
 .. |the-sysadmin| replace:: Ira Woodring
 .. _the-sysadmin: mailto:woodriir@gvsu.edu
 
+.. _Mastering EOS GitHub repository: {url}
 .. _The Linux Documentation Project article on Shared Libraries: http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
 .. _Russ Allbery's notes on Shared Library Search Paths: http://www.eyrie.org/~eagle/notes/rpath.html
 .. _Autoconf manual on Preset Output Variables: http://www.gnu.org/software/autoconf/manual/autoconf.html#Preset-Output-Variables
@@ -446,9 +449,9 @@ rst_epilog = '''
 .. _Sphinx: http://sphinx-doc.org/
 .. _reStructuredText: http://docutils.sourceforge.net/rst.html
 .. _report an issue:
-.. _issue tracker: https://github.com/seanfisk/mastering-eos/issues
+.. _issue tracker: {url}/issues
 .. _ExpanDrive: http://www.expandrive.com/expandrive
-'''.format(title=project)
+'''.format(title=project, url=_github_url)
 
 # The default highlight language is Python; switch it to Bash.
 highlight_language = 'bash'
@@ -460,10 +463,11 @@ extlinks = dict(
 
 # Git revision: custom option, for use in '_templates/footer.html'.
 _git_short_revision = subprocess.check_output([
-    'git', 'rev-parse', '--short', 'HEAD']).rstrip()
+    'git', 'rev-parse', '--short', 'HEAD']).decode('ascii').rstrip()
 # Inject the 'git_revision' keywork into the Jinja template.
 html_context = dict(
     git_revision=(
-        '<a href="https://github.com/seanfisk/mastering-eos/commit/{0}">'
-        '{0}</a>'.format(_git_short_revision)),
+        '<a href="{github_url}/commit/{rev}">'
+        '{rev}</a>'.format(github_url=_github_url, rev=_git_short_revision)
+    )
 )
