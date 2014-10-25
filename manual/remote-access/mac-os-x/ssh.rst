@@ -18,5 +18,4 @@ Mac OS X comes preinstalled with OpenSSH, the most popular implementation of the
 
 .. include:: ../common/keys/outro.rst
 
-.. |text-editor| replace:: open -t
 .. include:: ../common/openssh/forwarding.rst
