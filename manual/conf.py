@@ -10,6 +10,7 @@
 # serve to show the default.
 
 from __future__ import unicode_literals
+import subprocess
 
 # -- General configuration ------------------------------------------------
 
@@ -133,7 +134,7 @@ html_static_path = ['_static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
-# html_last_updated_fmt = '%b %d, %Y'
+html_last_updated_fmt = '%Y-%m-%d %H:%M:%S %Z'
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
@@ -455,4 +456,14 @@ highlight_language = 'bash'
 # Shortcut for Wikipedia articles, see http://sphinx-doc.org/ext/extlinks.html
 extlinks = dict(
     wikipedia=('http://en.wikipedia.org/wiki/%s', ''),
+)
+
+# Git revision: custom option, for use in '_templates/footer.html'.
+_git_short_revision = subprocess.check_output([
+    'git', 'rev-parse', '--short', 'HEAD']).rstrip()
+# Inject the 'git_revision' keywork into the Jinja template.
+html_context = dict(
+    git_revision=(
+        '<a href="https://github.com/seanfisk/mastering-eos/commit/{0}">'
+        '{0}</a>'.format(_git_short_revision)),
 )
