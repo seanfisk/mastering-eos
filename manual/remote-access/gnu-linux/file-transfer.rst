@@ -31,7 +31,7 @@ Both the SFTP and FISH protocols *should* work, although we have had the most lu
 Other Desktop Managers
 ----------------------
 
-With desktop managers besides GNOME and KDE, you are on your own. However, many GNU/Linux file managers are very similar, and most offer support for SSH file transfer. Consult your desktop's document for more information, or just try to figure it out on your own.
+This guide only covers GNOME and KDE. However, many GNU/Linux file managers are very similar, and most offer support for SSH file transfer. Consult your desktop's documentation for more information, or just try to figure it out on your own.
 
 .. |ssh-keys| replace:: :ref:`gnu-linux-ssh-keys`
 .. include:: ../common/openssh/scp.rst
@@ -51,7 +51,7 @@ On Red Hat-based systems (Fedora, CentOS, RHEL, and friends), run the following 
 
     sudo yum install fuse-sshfs
 
-With other distributions (Arch, etc.), you are on your own.
+For other distributions (Arch, etc.), the package name and command should be similar. Consult your package management tool for details.
 
 To mount your EOS home directory, first create a mount point for it::
 
