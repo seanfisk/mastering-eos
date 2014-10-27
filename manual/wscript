@@ -18,9 +18,6 @@ def options(ctx):
 
 def configure(ctx):
     scripts_dir = os.path.abspath('scripts')
-    ctx.find_program('make-vnc-table',
-                     var='MAKE_VNC_TABLE',
-                     path_list=[scripts_dir])
     # Yay for double negatives!
     ctx.env.SSH_AUTO_UPDATE = not ctx.options.no_ssh_auto_update
     ctx.msg('Auto-update of SSH operations',
@@ -69,20 +66,27 @@ def build(ctx):
         **ssh_task_gen_extra_kwargs
     )
 
+    parsers_dir = ctx.bldnode.find_dir('parsers')
     @ctx.rule(
         name='make_vnc_table',
         target=vnc_table_node,
-        # Make the script itself an input, so that when it changes updates
-        # ensue regardless of the value of auto-update.
-        source=[vncts_node, ctx.root.find_node(ctx.env.MAKE_VNC_TABLE)],
+        source=[vncts_node] +
+        # Make the parser nodes themselves inputs, so that when they
+        # updates ensue regardless of the value of auto-update.
+        parsers_dir.find_dir('vnc_table_generator').ant_glob(
+            '*.py', quiet=True),
         update_outputs=True,
-        vars=['MAKE_VNC_TABLE'])
+        vars=['PYTHON'])
     def make_vnc_table(tsk):
-        return tsk.exec_command([
-            ctx.env.MAKE_VNC_TABLE,
-            tsk.inputs[0].abspath(),
-            tsk.outputs[0].abspath(),
-        ])
+        return tsk.exec_command(
+            [
+                ctx.env.PYTHON,
+                '-m', 'vnc_table_generator',
+                tsk.inputs[0].abspath(),
+                tsk.outputs[0].abspath(),
+            ],
+            # Set the PYTHONPATH so that the module can be found.
+            env={'PYTHONPATH': parsers_dir.abspath()})
 
     # TODO: The html document does not build under changes to
     # _templates/footer.html.
