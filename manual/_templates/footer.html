@@ -19,11 +19,11 @@
     {%- if show_copyright %}
       &copy; Copyright {{ copyright }}<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
-      <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="{{ pathto('_static/apache-feather.png', 1) }}" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.
+      <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="{{ pathto('_static/apache-feather.png', 1) }}" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
     {%- endif %}
 
     {%- if last_updated %}
-      {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
+      Revision {{ git_revision }} built {{ last_updated }}.<br />
     {%- endif %}
     </p>
   </div>
