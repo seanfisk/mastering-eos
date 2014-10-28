@@ -23,10 +23,8 @@ def main(argv):
     _run_and_log('Updating sources from Git', ['git', 'pull'])
 
     # Install Python requirements, as they may have changed.
-    _run_and_log('Installing Python requirements', [
-        'pip', 'install', '-r', 'requirements.txt',
-        '--allow-external', 'pyPEG2',
-	'--allow-unverified', 'pyPEG2'])
+    _run_and_log('Installing Python requirements',
+                 ['pip', 'install', '-r', 'requirements.txt'])
 
     # Re-run the build. We re-configure as well, in case configuration changes
     # have been made.

@@ -21,7 +21,8 @@ out = 'build'
 
 # Process the poster first, as it takes more time to generate but has less
 # dependencies.
-SUBDIRS = ['poster', 'manual']
+SUBDIRS = ['parsers', 'poster', 'manual']
+WAF_TOOLS_DIR = 'waf_tools'
 
 def options(ctx):
     # We need to use XeLaTeX or LuaLaTeX to support custom fonts on our poster.
@@ -39,8 +40,9 @@ def options(ctx):
                   default_latex_engine))
 
     ctx.load('tex')
-    ctx.load('sphinx_internal', tooldir='waf_tools')
-    ctx.load('fabric', tooldir='waf_tools')
+    ctx.load('sphinx_internal', tooldir=WAF_TOOLS_DIR)
+    ctx.load('fabric', tooldir=WAF_TOOLS_DIR)
+    ctx.load('grako', tooldir=WAF_TOOLS_DIR)
 
     ctx.recurse(SUBDIRS)
 
@@ -65,15 +67,18 @@ def configure(ctx):
         if os.path.isfile(possible_makeinfo_path):
             os.environ['MAKEINFO'] = possible_makeinfo_path
 
+    # Grako
+    ctx.load('grako', tooldir=WAF_TOOLS_DIR)
+
     # If there are problems with sphinx_internal not triggering builds
     # correctly, switch to sphinx_external which always rebuilds. IMPORTANT:
     # This will change the output file paths, so that will have to be changed
     # too...
-    ctx.load('sphinx_internal', tooldir='waf_tools')
+    ctx.load('sphinx_internal', tooldir=WAF_TOOLS_DIR)
 
     # Deployment programs
     ctx.find_program('ghp-import', var='GHP_IMPORT')
-    ctx.load('fabric', tooldir='waf_tools')
+    ctx.load('fabric', tooldir=WAF_TOOLS_DIR)
 
     # Add the vendor directory to the TeX search path so that our vendored
     # packages can be found.
@@ -82,7 +87,12 @@ def configure(ctx):
     ctx.recurse(SUBDIRS)
 
 def build(ctx):
-    ctx.recurse(SUBDIRS)
+    # Parsers need to be build before anything else.
+    ctx.recurse('parsers')
+
+    ctx.add_group()
+
+    ctx.recurse(SUBDIRS[1:])
 
 # Archive context and command
 
@@ -123,7 +133,7 @@ def archive(ctx):
         target=website_dir.find_or_declare('mastering-eos-poster.pdf'))
 
     # Prepare archives
-    ctx.load('archive', tooldir='waf_tools')
+    ctx.load('archive', tooldir=WAF_TOOLS_DIR)
 
     archive_basename = 'mastering-eos-html'
     html_sources = [
