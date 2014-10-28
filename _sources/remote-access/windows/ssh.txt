@@ -68,8 +68,6 @@ As is obvious from these instructions, SSH key management is not a simple proces
 .. _PuTTY Guide to SSH Keys: http://the.earth.li/~sgtatham/putty/latest/htmldoc/Chapter8.html#pubkey
 .. _PuTTY Guide to Pageant: http://the.earth.li/~sgtatham/putty/latest/htmldoc/Chapter9.html#pageant
 
-.. _win-ssh-tunnel:
-
 .. include:: ../common/forwarding-intro.rst
 
 Fortunately, port forwarding with PuTTY is quite easy. Fire up PuTTY and select your saved session, then click the :guilabel:`Load`. In the configuration tree to the left, expand :menuselection:`Connection --> SSH` and click on :guilabel:`Tunnels`.

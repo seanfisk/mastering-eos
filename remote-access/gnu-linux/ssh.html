@@ -207,7 +207,7 @@
 <div class="highlight-bash"><div class="highlight"><pre>sudo yum install openssh-clients
 </pre></div>
 </div>
-<p>With other distributions (Arch, etc.), you are on your own.</p>
+<p>For other distributions (Arch, etc.), the package name and command should be similar. Consult your package management tool for details.</p>
 <div class="section" id="logging-in">
 <h2>Logging in<a class="headerlink" href="#logging-in" title="Permalink to this headline">¶</a></h2>
 <p>First, open your terminal emulator to start a shell. To connect to a specific machine, pass your username and hostname to the command-line client in the form <em>user&#64;host</em>. For example, where <tt class="samp docutils literal"><em><span class="pre">XX</span></em></tt> is the number of the chosen machine, run:</p>
@@ -383,7 +383,7 @@ Are you sure you want to continue connecting (yes/no)?
 <p class="first admonition-title">Note</p>
 <p class="last">In this setup, we created our public/private key pair without a passphrase, which is less secure. If you would like to use a passphrase, please see <a class="reference external" href="http://mah.everybody.org/docs/ssh">Mark Hershberger&#8217;s excellent guide to ssh-agent</a> and <a class="reference external" href="https://help.github.com/articles/working-with-ssh-key-passphrases#platform-mac">Github&#8217;s guide to SSH passphrases</a>.</p>
 </div>
-<span class="target" id="gnu-linux-ssh-tunnel"></span></div>
+</div>
 <div class="section" id="tunnelling-port-forwarding">
 <h2>Tunnelling / Port Forwarding<a class="headerlink" href="#tunnelling-port-forwarding" title="Permalink to this headline">¶</a></h2>
 <p>The SSH protocol possesses a special feature which allows it to tunnel other protocols within itself. This is called tunnelling or port forwarding. SSH can forward local ports (allowing the local machine access to resources on the remote machine) and remote ports (allowing the remote machine access to resources on the local machine).</p>
