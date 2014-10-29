@@ -1,11 +1,7 @@
-#!/usr/bin/env python
-
 """Generate a table of VNC ports and geometries by parsing the ``vncts``
 file.
 """
 
-import sys
-import os
 import re
 import argparse
 from collections import OrderedDict
@@ -35,7 +31,7 @@ def _dict_list_to_ordered_dict(d_list):
     :returns: the ordered dictionary
     :rtype: :class:`collections.OrderedDict`
     :raises: :exc:`grako.exceptions.FailedSemantics` when dictionary does not
-        have a ``name`` key or when duplicate name keys arise
+        have ``key`` or ``value`` keys or when duplicate ``key`` values arise
     """
     out = OrderedDict()
     for d in d_list:
@@ -44,14 +40,14 @@ def _dict_list_to_ordered_dict(d_list):
             value = d['value']
         except KeyError as e:
             missing_key = e.args[0]
-            # TODO Grako has a bug that causes FailedSemantics exceptions
+            # TODO: Grako has a bug that causes FailedSemantics exceptions
             # raised within a repeater to not be reported correctly. It will
             # need to be fixed in Grako itself.
             raise FailedSemantics(
                 "Dictionary has no {0!r} key: {1!r}".format(missing_key, d))
 
         if key in out:
-            # TODO Ditto from above
+            # TODO: Ditto from above
             raise FailedSemantics(
                 'Duplicate key {0!r} from previous dictionary found: {1!r}'
                 .format(key, d))
@@ -70,31 +66,27 @@ class Semantics(object):
             'value': _dict_list_to_ordered_dict(ast['value']),
         }
 
-def main(argv):
-    # Parse args.
-    arg_parser = argparse.ArgumentParser(
-        prog=argv[0],
-        description='Generate a table of VNC ports and geometries from a '
-        "provided 'vncts' file.")
-    arg_parser.add_argument(
-        'input_file', type=argparse.FileType('r'),
-        help='input vncts file')
-    arg_parser.add_argument(
-        'output_file', type=argparse.FileType('w'),
-        help='output file')
-    args = arg_parser.parse_args(argv[1:])
-    input_file = args.input_file
-    output_file = args.output_file
+def generate_vnc_table(input_file, output_file):
+    """Generate a table of VNC display, port, and resolution from an input
+    ``vncts`` file.
 
+    :param input_file: the ``vncts`` file object
+    :type input_file: :class:`file`
+    :param output_file: the output table file object
+    :type output_file: :class:`file`
+    """
     # Parse the config file.
-    vncts_parser = VnctsParser()
+    vncts_parser = VnctsParser(
+        eol_comments_re='#.*$',
+        semantics=Semantics(),
+    )
+    try:
+        kwargs = dict(filename=input_file.name)
+    except AttributeError:
+        kwargs = {}
     with input_file:
         result = vncts_parser.parse(
-            input_file.read(),
-            rule_name='file',
-            eol_comments_re='#.*?$',
-            semantics=Semantics(),
-        )
+            input_file.read(), rule_name='file', **kwargs)
 
     table = Texttable()
     # The default decoration produces the correct table.
@@ -120,8 +112,3 @@ def main(argv):
 
     with output_file:
         output_file.write(table.draw())
-
-    return 0
-
-if __name__ == '__main__':
-    raise SystemExit(main(sys.argv))

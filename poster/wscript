@@ -44,12 +44,16 @@ def build(ctx):
         'blocks', 'inter-eos-ssh.tex.in'])
     inter_eos_ssh_tex_node = inter_eos_ssh_tex_in_node.change_ext(
         ext='.tex', ext_in='.tex.in')
-    inter_eos_ssh_bash_node = ctx.srcnode.find_resource([
-        'common', 'inter-eos-ssh.bash'])
+    inter_eos_ssh_bash_node_path = ['common', 'inter-eos-ssh.bash']
+    inter_eos_ssh_bash_node = (
+        ctx.srcnode.find_node(inter_eos_ssh_bash_node_path) or
+        ctx.srcnode.make_node(inter_eos_ssh_bash_node_path))
     ctx(features='subst',
         target=inter_eos_ssh_tex_node,
         source=inter_eos_ssh_tex_in_node,
         INTER_EOS_SSH_BASH_PATH=inter_eos_ssh_bash_node.abspath())
+
+    ctx.add_manual_dependency(inter_eos_ssh_tex_node, inter_eos_ssh_bash_node)
 
     # Make sure the style file is built before TeX is run.
     ctx.add_group()

@@ -1,3 +1,6 @@
+# Fabric control file
+# See http://fabfile.org/
+
 import os
 from pipes import quote as shquote
 import re
@@ -6,12 +9,12 @@ import six
 from fabric.api import env, task, runs_once, execute, run, get, put
 from texttable import Texttable
 
-# Allow being overridden from the command-line.
-env.hosts = [
-    'eos{0:02}.cis.gvsu.edu'.format(num) for num in xrange(1, 33)
-] + [
-    'arch{0:02}.cis.gvsu.edu'.format(num) for num in xrange(1, 11)
-]
+# Allow being overridden from the command line.
+if env.hosts == []:
+    # Since the EOS hostnames are determined dynamically, set the only one
+    # we've determined we "know for sure". This host is used to obtain the
+    # '/etc/hosts' file for EOS.
+    env.hosts = ['eos01.cis.gvsu.edu']
 
 # Instruct Fabric to read the SSH config file, but only if it exists. Fabric
 # won't crash if we say to use it and it doesn't exist, but it will dump tons
@@ -35,6 +38,19 @@ def _get_fingerprint():
         # which is recognized internally by Fabric.
         return ValueError('Unexpected format for remote output of ssh-keygen.')
     return match.group('fingerprint')
+
+@task
+@runs_once
+def set_hosts(hostfile):
+    """Set the list of hosts from a file."""
+    # This assists in dynamically setting the list of hosts from a file. For
+    # example:
+    #
+    #     fab set_hosts:hostfile=/path/to/my/hosts my_task
+    #
+    # The file should contain a newline-separated list of hosts.
+    with open(hostfile) as host_file:
+        env.hosts = host_file.readlines()
 
 @task
 @runs_once
@@ -76,6 +92,11 @@ def download_vncts_file(output):
     get(remote_path='/etc/xinetd.d/vncts',
         # local_path can be a file-like object.
         local_path=output)
+
+@task
+@runs_once
+def download_hosts_file(output):
+    get(remote_path='/etc/hosts', local_path=output)
 
 @task
 def deploy_to_eos(manpage, infodoc, webscript):
