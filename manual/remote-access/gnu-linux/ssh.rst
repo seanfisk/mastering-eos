@@ -34,5 +34,7 @@ For other distributions (Arch, etc.), the package name and command should be sim
 
 .. include:: ../common/keys/outro.rst
 
+.. This label is used for BetterPlanner; do not remove.
+.. _linux-ssh-tunnel:
 .. |text-editor| replace:: gedit
 .. include:: ../common/openssh/forwarding.rst
