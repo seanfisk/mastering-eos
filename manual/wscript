@@ -6,24 +6,10 @@ import sys
 from collections import OrderedDict
 
 def options(ctx):
-    # This option tells our build system not to always run operations which use
-    # SSH to access EOS. Currently, this includes building the VNC and SSH
-    # fingerprints tables. Users building on their machines should probably
-    # disable auto-update, while automated builds leave auto-updated enabled.
-    # The default is to auto-update because it is safer.
-    ctx.add_option(
-        # -m for Manual update
-        '-m', '--no-ssh-auto-update',
-        default=False, action='store_true',
-    help='disable auto-update of ops requiring SSH')
+    pass
 
 def configure(ctx):
     ctx.find_program('python')
-    # Yay for double negatives!
-    ctx.env.SSH_AUTO_UPDATE = not ctx.options.no_ssh_auto_update
-    ctx.msg('Auto-update of SSH operations',
-            'enabled' if ctx.env.SSH_AUTO_UPDATE else 'disabled',
-            'GREEN' if ctx.env.SSH_AUTO_UPDATE else 'YELLOW')
 
 def build(ctx):
     fingerprints_table_path = (
@@ -42,9 +28,7 @@ def build(ctx):
         ctx.srcnode.find_node(vnc_table_path) or
         ctx.srcnode.make_node(vnc_table_path))
 
-    ssh_task_gen_extra_kwargs = {}
-    if ctx.env.SSH_AUTO_UPDATE:
-        ssh_task_gen_extra_kwargs['always'] = True
+    extra_kwargs = dict(always=True) if ctx.env.SSH_AUTO_UPDATE else {}
 
     fabfile_node = ctx.srcnode.find_resource('fabfile.py')
     hostnames_node = ctx.bldnode.find_or_declare('hostnames')
@@ -60,7 +44,7 @@ def build(ctx):
         ]),
         source=[hostnames_node],
         target=[fingerprints_table_node],
-        **ssh_task_gen_extra_kwargs
+        **extra_kwargs
     )
 
     vncts_node = ctx.path.find_or_declare('vncts')
@@ -68,7 +52,7 @@ def build(ctx):
         fabfile=fabfile_node,
         commands=dict(download_vncts_file=dict(output=vncts_node.abspath())),
         target=[vncts_node],
-        **ssh_task_gen_extra_kwargs
+        **extra_kwargs
     )
 
     parsers_dir = ctx.bldnode.find_dir('parsers')

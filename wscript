@@ -29,6 +29,17 @@ SUBDIRS = ['parsers', 'poster', 'manual']
 WAF_TOOLS_DIR = 'waf_tools'
 
 def options(ctx):
+    # This option tells our build system not to always run operations which use
+    # SSH to access EOS. Currently, this includes building the VNC and SSH
+    # fingerprints tables. Users building on their machines should probably
+    # disable auto-update, while automated builds leave auto-updated enabled.
+    # The default is to auto-update because it is safer.
+    ctx.add_option(
+        # -m for Manual update
+        '-m', '--no-ssh-auto-update',
+        default=False, action='store_true',
+    help='disable auto-update of ops requiring SSH')
+
     # We need to use XeLaTeX or LuaLaTeX to support custom fonts on our poster.
     # We'd like to use LuaLaTeX, as it's been named as the successor to pdfTeX.
     # However, our LuaLaTeX installation on EOS is broken at this time of
@@ -90,6 +101,12 @@ def configure(ctx):
 
     ctx.recurse(SUBDIRS)
 
+    # Yay for double negatives!
+    ctx.env.SSH_AUTO_UPDATE = not ctx.options.no_ssh_auto_update
+    ctx.msg('Auto-update of SSH operations',
+            'enabled' if ctx.env.SSH_AUTO_UPDATE else 'disabled',
+            'GREEN' if ctx.env.SSH_AUTO_UPDATE else 'YELLOW')
+
 def build(ctx):
     # Parsers (specifically the hosts parser) need to be build before anything
     # else.
@@ -103,6 +120,7 @@ def build(ctx):
         fabfile=fabfile_node,
         commands=dict(download_hosts_file=dict(output=hosts_node.abspath())),
         target=[hosts_node],
+        **(dict(always=True) if ctx.env.SSH_AUTO_UPDATE else {})
     )
 
     parsers_dir = ctx.bldnode.find_dir('parsers')
