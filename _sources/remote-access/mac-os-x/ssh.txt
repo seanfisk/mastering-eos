@@ -18,5 +18,7 @@ Mac OS X comes preinstalled with OpenSSH, the most popular implementation of the
 
 .. include:: ../common/keys/outro.rst
 
+.. This label is used for BetterPlanner; do not remove.
+.. _mac-ssh-tunnel:
 .. |text-editor| replace:: open -t
 .. include:: ../common/openssh/forwarding.rst
