@@ -14,7 +14,7 @@ On Red Hat-based systems (Fedora, CentOS, RHEL, and friends), run the following 
 
     sudo yum install openssh-clients
 
-With other distributions (Arch, etc.), you are on your own.
+For other distributions (Arch, etc.), the package name and command should be similar. Consult your package management tool for details.
 
 .. _OpenSSH: http://www.openssh.com/
 
@@ -33,5 +33,8 @@ With other distributions (Arch, etc.), you are on your own.
     ssh-copy-id smithj@eos01.cis.gvsu.edu
 
 .. include:: ../common/keys/outro.rst
+
+.. This label is used for BetterPlanner; do not remove.
+.. _linux-ssh-tunnel:
 
 .. include:: ../common/openssh/forwarding.rst

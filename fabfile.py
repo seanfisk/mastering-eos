@@ -113,4 +113,4 @@ def deploy_to_eos(manpage, infodoc, webscript):
         shell=False)
     put(man_source_path, man_dir + '/' + man_base)
     put(info_source_path, info_dir + '/' + info_base)
-    put(web_docs_source_path, bin_dir + '/' + web_docs_base,mode=0755)
+    put(web_docs_source_path, bin_dir + '/' + web_docs_base, mode=0755)

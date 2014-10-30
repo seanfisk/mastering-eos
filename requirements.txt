@@ -24,9 +24,9 @@ ghp-import==0.4.1
 
 # Table parsing/generation
 texttable==0.8.1
-pyPEG2==2.15.0
+grako==3.4.1
 
-# Generating motd
+# Generating motd, grako
 colorama==0.3.2
 
 # For Python 2/3 compat

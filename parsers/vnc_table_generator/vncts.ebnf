@@ -1,0 +1,5 @@
+file = { service }* $ ;
+service = 'service' key:symbol '{' value:{ property }* '}' ;
+property = key:symbol '=' value:value ;
+value = /.+/ ; (* rest of line *)
+symbol = /[\w-]+/ ;
