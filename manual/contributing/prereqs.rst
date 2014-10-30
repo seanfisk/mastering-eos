@@ -32,16 +32,13 @@ Restart your shell to effect the changes to your :file:`~/.bash_profile` *by log
 
 After installing Pip, use Pip to install this project's requirements to your user site::
 
-    pip install --user -r requirements.txt --allow-external pyPEG2 --allow-unverified pyPEG2
-
-The extra options are required for pyPEG2_ to override certain checks recently added by Pip.
+    pip install --user -r requirements.txt
 
 The Python requirements for the project have now been met.
 
 .. _Pip: http://pip.readthedocs.org/en/latest/index.html
 .. _user site: http://legacy.python.org/dev/peps/pep-0370/
 .. _Pip installation docs: http://pip.readthedocs.org/en/latest/installing.html#install-pip
-.. _pyPEG2: https://pypi.python.org/pypi/pyPEG2
 
 Configure Your Editor
 =====================
