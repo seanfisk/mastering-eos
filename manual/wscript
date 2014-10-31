@@ -51,7 +51,7 @@ def build(ctx):
     ctx(features='fabric',
         fabfile=fabfile_node,
         commands=dict(download_vncts_file=dict(output=vncts_node.abspath())),
-        targret=[vncts_node],
+        target=[vncts_node],
         **extra_kwargs
     )
 
