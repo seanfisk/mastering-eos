@@ -28,7 +28,7 @@ def build(ctx):
         ctx.srcnode.find_node(vnc_table_path) or
         ctx.srcnode.make_node(vnc_table_path))
 
-    extra_kwargs = dict(always=True) if ctx.env.SSH_AUTO_UPDATE else {}
+    extra_kwargs = {} if ctx.env.DEVELOPER_MODE else dict(always=True)
 
     fabfile_node = ctx.srcnode.find_resource('fabfile.py')
     hostnames_node = ctx.bldnode.find_or_declare('hostnames')
@@ -51,7 +51,7 @@ def build(ctx):
     ctx(features='fabric',
         fabfile=fabfile_node,
         commands=dict(download_vncts_file=dict(output=vncts_node.abspath())),
-        target=[vncts_node],
+        targret=[vncts_node],
         **extra_kwargs
     )
 
