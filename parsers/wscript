@@ -5,23 +5,40 @@ import os
 from os.path import join
 
 import waflib
+from waflib.Configure import conf
 
 def options(ctx):
     pass
 
 def configure(ctx):
-    # For use when depending on the parser files...
-    ctx.env.PARSER_FILES = [
-        base + '.py' for base in '__init__', '__main__', 'parser']
+    pass
 
 def build(ctx):
+    # Prepare an environment variable of parser output nodes, indexed by parser
+    # name.
+    ctx.env.PARSER_NODES = {}
+
     for dir, grammar_name in [
             ('hosts_file_parser', 'hosts'), ('vnc_table_generator', 'vncts')]:
-        ctx(source=ctx.path.find_resource([dir, grammar_name + '.ebnf']),
-            target=ctx.path.find_or_declare([dir, 'parser.py']))
+        dir_node = ctx.path.find_dir(dir)
+        parser_node = dir_node.find_or_declare('parser.py')
+        ctx(source=dir_node.find_resource(grammar_name + '.ebnf'),
+            target=parser_node)
 
-        to_copy = [join(dir, base) for base in ctx.env.PARSER_FILES[:-1]]
-        ctx(features='subst', source=to_copy, target=to_copy, is_copy=True)
+        copy_lsts = map('__{0}__.py'.format, ['init', 'main'])
+        copy_source_nodes = map(dir_node.find_node, copy_lsts)
+        # The 'subst' task will create output nodes for us, but we need them to
+        # use a dependencies of the parser outputs. As a result, we need to
+        # create them in this somewhat convoluted way.
+        copy_target_nodes = [
+            ctx.find_or_make(dir_node.get_bld(), lst) for lst in copy_lsts]
+        ctx(features='subst',
+            source=copy_source_nodes,
+            target=copy_target_nodes,
+            is_copy=True)
+
+        # Add the output nodes to the environment variable.
+        ctx.env.PARSER_NODES[dir] = [parser_node] + copy_target_nodes
 
     # Add the generated Python modules to the module search path.
     sys.path.append(ctx.path.get_bld().abspath())

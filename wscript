@@ -16,6 +16,7 @@ from tempfile import TemporaryFile
 import six
 import waflib
 from waflib.Task import always_run
+from waflib.Configure import conf
 
 # Waf constants
 APPNAME = 'mastering-eos'
@@ -27,6 +28,26 @@ out = 'build'
 # dependencies.
 SUBDIRS = ['parsers', 'poster', 'manual']
 WAF_TOOLS_DIR = 'waf_tools'
+
+@conf
+def find_or_make(self, parent, lst):
+    """Find or make a node. This looks for the node specified, and creates it
+    if it doesn't exist. The notable difference from
+    :meth:`waflib.Node.find_resource` and :meth:`waflib.Node.find_or_declare`
+    is that this doesn't look in the other of the source/build directory.
+    """
+    return parent.find_node(lst) or parent.make_node(lst)
+
+@conf
+def find_or_make_in_src(self, lst):
+    """Find or make a node in the source directory. It's like
+    :meth:`waflib.Node.find_or_declare()`, but for the source directory only.
+    """
+    # Since we are creating a file in the source directory, we can't use a
+    # built-in Waf method. Please see here for a "solution":
+    # <https://code.google.com/p/waf/issues/detail?id=1168>
+    # That issue deals with exactly our problem here.
+    return self.find_or_make(self.srcnode, lst)
 
 def options(ctx):
     # This option puts the project in developer mode, which causes the build
@@ -107,8 +128,7 @@ def configure(ctx):
              'YELLOW' if ctx.env.DEVELOPER_MODE else 'GREEN')
 
 def build(ctx):
-    # Parsers (specifically the hosts parser) need to be build before anything
-    # else.
+    # Parsers need to be declared build before anything else.
     ctx.recurse('parsers')
 
     # Fetch the host file from EOS.
@@ -127,10 +147,8 @@ def build(ctx):
     # Build the list of hostnames.
     @ctx.rule(
         name='get_eos_hostnames',
-        source=[hosts_node] + [
-            # Depend on the generated parser files as well.
-            parsers_dir.find_or_declare(['hosts_file_parser', base])
-            for base in ctx.env.PARSER_FILES],
+        # Depend on the generated parser files as well.
+        source=[hosts_node] + ctx.env.PARSER_NODES['hosts_file_parser'],
         target=hostnames_node,
         vars=['PYTHON'],
     )
@@ -138,7 +156,7 @@ def build(ctx):
         with open(tsk.outputs[0].abspath(), 'w') as out_file:
             # Note: colorama (from grako) has issues if we try to directly call
             # into the Python module from here.
-            tsk.exec_command(
+            return tsk.exec_command(
                 [
                 ctx.env.PYTHON,
                     '-m', 'hosts_file_parser',
@@ -154,16 +172,9 @@ def build(ctx):
         ['common', 'inter-eos-ssh.bash.in'],
         ['manual', 'remote-access', 'index.rst.in'],
     ])
-    # The generated files may or may not already exist. Since we are creating a
-    # file in the source directory, it gets a little more complicated. Please
-    # see here for the "solution":
-    # <https://code.google.com/p/waf/issues/detail?id=1168>
-    # That issue deals with exactly our problem here.
-    def find_or_make(node):
-        new_name = os.path.splitext(node.name)[0]
-        return (node.parent.find_node(new_name) or
-                node.parent.make_node(new_name))
-    out_nodes = map(find_or_make, in_nodes)
+    # Create the output nodes by stripping the '.in' extension.
+    out_nodes = [ctx.find_or_make_in_src(os.path.splitext(n.relpath())[0])
+                 for n in in_nodes]
     # Note: Can't use the 'fun' keyword for the 'subst' feature; it returns
     # after running.
 

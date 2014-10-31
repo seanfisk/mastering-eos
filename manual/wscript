@@ -16,17 +16,8 @@ def build(ctx):
         'manual/remote-access/common/fingerprints/table.rst')
     vnc_table_path = (
         'manual/remote-access/common/vnc-port-geometry-table.rst')
-    # The generated tables may or may not already exist. Since we are creating
-    # a file in the source directory, it gets a little more complicated. Please
-    # see here for the "solution":
-    # <https://code.google.com/p/waf/issues/detail?id=1168>
-    # That issue deals with exactly our problem here.
-    fingerprints_table_node = (
-        ctx.srcnode.find_node(fingerprints_table_path) or
-        ctx.srcnode.make_node(fingerprints_table_path))
-    vnc_table_node = (
-        ctx.srcnode.find_node(vnc_table_path) or
-        ctx.srcnode.make_node(vnc_table_path))
+    fingerprints_table_node = ctx.find_or_make_in_src(fingerprints_table_path)
+    vnc_table_node = ctx.find_or_make_in_src(vnc_table_path)
 
     extra_kwargs = {} if ctx.env.DEVELOPER_MODE else dict(always=True)
 
@@ -59,16 +50,14 @@ def build(ctx):
     @ctx.rule(
         name='make_vnc_table',
         target=vnc_table_node,
-        source=[vncts_node] + [
-            # Depend on the generated parser files as well.
-            parsers_dir.find_or_declare(['vnc_table_generator', base])
-            for base in ctx.env.PARSER_FILES],
+        # Depend on the generated parser files as well.
+        source=[vncts_node] + ctx.env.PARSER_NODES['vnc_table_generator'],
         vars=['PYTHON'],
         update_outputs=True)
     def make_vnc_table(tsk):
         # Note: colorama (from grako) has issues if we try to directly call
         # into the Python module from here.
-        tsk.exec_command(
+        return tsk.exec_command(
             [
                 ctx.env.PYTHON,
                 '-m', 'vnc_table_generator',
