@@ -24,6 +24,7 @@
    databases
    ide
    gui-toolkits
+   misc
    contributing/index
    envvars
 
