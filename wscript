@@ -29,16 +29,16 @@ SUBDIRS = ['parsers', 'poster', 'manual']
 WAF_TOOLS_DIR = 'waf_tools'
 
 def options(ctx):
-    # This option tells our build system not to always run operations which use
-    # SSH to access EOS. Currently, this includes building the VNC and SSH
-    # fingerprints tables. Users building on their machines should probably
-    # disable auto-update, while automated builds leave auto-updated enabled.
-    # The default is to auto-update because it is safer.
-    ctx.add_option(
-        # -m for Manual update
-        '-m', '--no-ssh-auto-update',
-        default=False, action='store_true',
-    help='disable auto-update of ops requiring SSH')
+    # This option puts the project in developer mode, which causes the build
+    # system to make certain assumptions which speed up the build (and hence
+    # development). The only thing that this option currently does is to tell
+    # our build system not to always run operations which use SSH to access
+    # EOS. At present this includes downloading the /etc/hosts file,
+    # downloading the the vncts file, and fetching the SSH fingerprints.
+    # Developers should turn this option on, while automated builds should
+    # leave it off. The default off because it is safer.
+    ctx.add_option('-d', '--dev-mode', default=False, action='store_true',
+                   help='put the project in developer mode')
 
     # We need to use XeLaTeX or LuaLaTeX to support custom fonts on our poster.
     # We'd like to use LuaLaTeX, as it's been named as the successor to pdfTeX.
@@ -101,11 +101,10 @@ def configure(ctx):
 
     ctx.recurse(SUBDIRS)
 
-    # Yay for double negatives!
-    ctx.env.SSH_AUTO_UPDATE = not ctx.options.no_ssh_auto_update
-    ctx.msg('Auto-update of SSH operations',
-            'enabled' if ctx.env.SSH_AUTO_UPDATE else 'disabled',
-            'GREEN' if ctx.env.SSH_AUTO_UPDATE else 'YELLOW')
+    ctx.env.DEVELOPER_MODE = ctx.options.dev_mode
+    ctx.msg('Developer mode',
+            'enabled' if ctx.env.DEVELOPER_MODE else 'disabled',
+             'YELLOW' if ctx.env.DEVELOPER_MODE else 'GREEN')
 
 def build(ctx):
     # Parsers (specifically the hosts parser) need to be build before anything
@@ -120,7 +119,7 @@ def build(ctx):
         fabfile=fabfile_node,
         commands=dict(download_hosts_file=dict(output=hosts_node.abspath())),
         target=[hosts_node],
-        **(dict(always=True) if ctx.env.SSH_AUTO_UPDATE else {})
+        **({} if ctx.env.DEVELOPER_MODE else dict(always=True))
     )
 
     parsers_dir = ctx.bldnode.find_dir('parsers')
