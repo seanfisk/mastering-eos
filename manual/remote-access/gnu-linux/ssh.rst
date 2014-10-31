@@ -20,11 +20,11 @@ For other distributions (Arch, etc.), the package name and command should be sim
 
 .. include:: ../common/openssh/connect.rst
 
-.. _gnu-linux-fingerprints:
+.. _linux-fingerprints:
 
 .. include:: ../common/openssh/fingerprints.rst
 
-.. _gnu-linux-ssh-keys:
+.. _linux-ssh-keys:
 
 .. include:: ../common/keys/intro.rst
 
