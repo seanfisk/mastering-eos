@@ -28,11 +28,15 @@ and visit http://localhost:5678/ in your local web browser. The CIS home page sh
 Forwarding in the Config File
 -----------------------------
 
-The command-line works well for one-off tunnels, but for frequently established tunnels, it pays to alter the OpenSSH client configuration file. The OpenSSH client configuration resides on your local machine in the file :file:`~/.ssh/config`. This is a file inside a hidden directory inside your home directory. The easiest way to open this file, creating it if it doesn't exist, is to run:
+The command-line works well for one-off tunnels, but for frequently established tunnels, it pays to alter the OpenSSH client configuration file. The OpenSSH client configuration resides on your local machine in the file :file:`~/.ssh/config`. This is a file inside a hidden directory inside your home directory. To setup this directory and file, please run the following commands::
 
-.. parsed-literal::
+    umask u=rwx,go=
+    mkdir -p ~/.ssh
+    touch ~/.ssh/config
 
-    umask u=rwx,go= && mkdir -p ~/.ssh && touch ~/.ssh/config && |text-editor| ~/.ssh/config
+The :wikipedia:`umask` command ensures that the directory and file are created with the correct permissions. This is important when dealing with SSH-related files.
+
+Now open the file :file:`~/.ssh/config` in a text editor.
 
 To establish the CIS web server forwarding shown in the last section, one could use the following configuration:
 
