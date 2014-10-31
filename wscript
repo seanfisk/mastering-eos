@@ -7,9 +7,13 @@
 
 import os
 from os.path import join
+import re
 import textwrap
 import shutil
+from collections import OrderedDict
+from tempfile import TemporaryFile
 
+import six
 import waflib
 from waflib.Task import always_run
 
@@ -25,6 +29,17 @@ SUBDIRS = ['parsers', 'poster', 'manual']
 WAF_TOOLS_DIR = 'waf_tools'
 
 def options(ctx):
+    # This option tells our build system not to always run operations which use
+    # SSH to access EOS. Currently, this includes building the VNC and SSH
+    # fingerprints tables. Users building on their machines should probably
+    # disable auto-update, while automated builds leave auto-updated enabled.
+    # The default is to auto-update because it is safer.
+    ctx.add_option(
+        # -m for Manual update
+        '-m', '--no-ssh-auto-update',
+        default=False, action='store_true',
+    help='disable auto-update of ops requiring SSH')
+
     # We need to use XeLaTeX or LuaLaTeX to support custom fonts on our poster.
     # We'd like to use LuaLaTeX, as it's been named as the successor to pdfTeX.
     # However, our LuaLaTeX installation on EOS is broken at this time of
@@ -41,8 +56,8 @@ def options(ctx):
 
     ctx.load('tex')
     ctx.load('sphinx_internal', tooldir=WAF_TOOLS_DIR)
-    ctx.load('fabric', tooldir=WAF_TOOLS_DIR)
-    ctx.load('grako', tooldir=WAF_TOOLS_DIR)
+    ctx.load('fabric_tool', tooldir=WAF_TOOLS_DIR)
+    ctx.load('grako_tool', tooldir=WAF_TOOLS_DIR)
 
     ctx.recurse(SUBDIRS)
 
@@ -68,7 +83,7 @@ def configure(ctx):
             os.environ['MAKEINFO'] = possible_makeinfo_path
 
     # Grako
-    ctx.load('grako', tooldir=WAF_TOOLS_DIR)
+    ctx.load('grako_tool', tooldir=WAF_TOOLS_DIR)
 
     # If there are problems with sphinx_internal not triggering builds
     # correctly, switch to sphinx_external which always rebuilds. IMPORTANT:
@@ -78,7 +93,7 @@ def configure(ctx):
 
     # Deployment programs
     ctx.find_program('ghp-import', var='GHP_IMPORT')
-    ctx.load('fabric', tooldir=WAF_TOOLS_DIR)
+    ctx.load('fabric_tool', tooldir=WAF_TOOLS_DIR)
 
     # Add the vendor directory to the TeX search path so that our vendored
     # packages can be found.
@@ -86,18 +101,102 @@ def configure(ctx):
 
     ctx.recurse(SUBDIRS)
 
+    # Yay for double negatives!
+    ctx.env.SSH_AUTO_UPDATE = not ctx.options.no_ssh_auto_update
+    ctx.msg('Auto-update of SSH operations',
+            'enabled' if ctx.env.SSH_AUTO_UPDATE else 'disabled',
+            'GREEN' if ctx.env.SSH_AUTO_UPDATE else 'YELLOW')
+
 def build(ctx):
-    # Parsers need to be build before anything else.
+    # Parsers (specifically the hosts parser) need to be build before anything
+    # else.
     ctx.recurse('parsers')
 
+    # Fetch the host file from EOS.
+    fabfile_node = ctx.srcnode.find_resource('fabfile.py')
+    hosts_node = ctx.path.find_or_declare('hosts')
+    ctx(name='download_hosts_file',
+        features='fabric',
+        fabfile=fabfile_node,
+        commands=dict(download_hosts_file=dict(output=hosts_node.abspath())),
+        target=[hosts_node],
+        **(dict(always=True) if ctx.env.SSH_AUTO_UPDATE else {})
+    )
+
+    parsers_dir = ctx.bldnode.find_dir('parsers')
+    hostnames_node = ctx.path.find_or_declare('hostnames')
+    # Build the list of hostnames.
+    @ctx.rule(
+        name='get_eos_hostnames',
+        source=[hosts_node] + [
+            # Depend on the generated parser files as well.
+            parsers_dir.find_or_declare(['hosts_file_parser', base])
+            for base in ctx.env.PARSER_FILES],
+        target=hostnames_node,
+        vars=['PYTHON'],
+    )
+    def get_eos_hostnames(tsk):
+        with open(tsk.outputs[0].abspath(), 'w') as out_file:
+            # Note: colorama (from grako) has issues if we try to directly call
+            # into the Python module from here.
+            tsk.exec_command(
+                [
+                ctx.env.PYTHON,
+                    '-m', 'hosts_file_parser',
+                    tsk.inputs[0].abspath(),
+                ],
+                stdout=out_file,
+                # Add the module to the Python search path.
+                env={'PYTHONPATH': parsers_dir.abspath()},
+            )
+
+    # Substitute max machine numbers into relevant files.
+    in_nodes = map(ctx.path.find_resource, [
+        ['common', 'inter-eos-ssh.bash.in'],
+        ['manual', 'remote-access', 'index.rst.in'],
+    ])
+    # The generated files may or may not already exist. Since we are creating a
+    # file in the source directory, it gets a little more complicated. Please
+    # see here for the "solution":
+    # <https://code.google.com/p/waf/issues/detail?id=1168>
+    # That issue deals with exactly our problem here.
+    def find_or_make(node):
+        new_name = os.path.splitext(node.name)[0]
+        return (node.parent.find_node(new_name) or
+                node.parent.make_node(new_name))
+    out_nodes = map(find_or_make, in_nodes)
+    # Note: Can't use the 'fun' keyword for the 'subst' feature; it returns
+    # after running.
+
+    # TODO: We can't use the 'subst' feature because it requires us to provide
+    # substitution values up-front, which is exactly what we can't do. That's
+    # why we've used this replace(...) solution. There's got to be a better
+    # way.
+    @ctx.rule(
+        name='subst_max_hostnames',
+        source=[hostnames_node] + in_nodes,
+        target=out_nodes,
+        update_outputs=True)
+    def subst_max_hostnames(tsk):
+        hostnames_node = tsk.inputs[0]
+        hostnames_content = hostnames_node.read()
+        maxes = dict(('MAX_' + lab.upper(),
+                      str(max(map(int, re.findall(
+                          lab + r'(\d+)', hostnames_content)))))
+                     for lab in ['eos', 'arch', 'dc'])
+        for in_node, out_node in zip(tsk.inputs[1:], tsk.outputs):
+            contents = in_node.read()
+            for var, value in six.iteritems(maxes):
+                contents = contents.replace('@{0}@'.format(var), value)
+            out_node.write(contents)
+
+    # Sphinx won't be able to detect that 'index.rst' hasn't been created yet,
+    # so add a group to make sure it's been created.
     ctx.add_group()
 
     ctx.recurse(SUBDIRS[1:])
 
 # Archive context and command
-
-def _copy_file(tsk):
-    shutil.copyfile(tsk.inputs[0].abspath(), tsk.outputs[0].abspath())
 
 class ArchiveContext(waflib.Build.BuildContext):
     cmd = 'archive'
@@ -116,21 +215,24 @@ def archive(ctx):
     website_dir.mkdir()
 
     # Copy HTML assets.
-    for node in html_build_nodes:
-        ctx(rule=_copy_file,
-            source=node,
-            target=website_dir.find_or_declare(node.path_from(html_build_dir)))
+    ctx(features='subst',
+        source=html_build_nodes,
+        target=[website_dir.find_or_declare(node.path_from(html_build_dir))
+                for node in html_build_nodes],
+        is_copy=True)
 
     # Copy PDF.
-    ctx(rule=_copy_file,
+    ctx(features='subst',
         source=ctx.bldnode.find_node([
             'manual', 'latexpdf', 'mastering-eos.pdf']),
-        target=website_dir.find_or_declare('mastering-eos.pdf'))
+        target=website_dir.find_or_declare('mastering-eos.pdf'),
+        is_copy=True)
 
     # Copy poster.
-    ctx(rule=_copy_file,
+    ctx(features='subst',
         source=ctx.bldnode.find_node(['poster', 'mastering-eos.pdf']),
-        target=website_dir.find_or_declare('mastering-eos-poster.pdf'))
+        target=website_dir.find_or_declare('mastering-eos-poster.pdf'),
+        is_copy=True)
 
     # Prepare archives
     ctx.load('archive', tooldir=WAF_TOOLS_DIR)
@@ -169,9 +271,13 @@ class DeployContext(waflib.Build.BuildContext):
 
 def deploy(ctx):
     # Deploy man and info docs
+    hostnames_node = ctx.path.find_or_declare('hostnames')
     ctx(features='fabric',
         fabfile=ctx.path.find_resource('fabfile.py'),
-        command='deploy_to_eos',
+        commands=OrderedDict([
+            ('set_hosts', dict(hostfile=hostnames_node.abspath())),
+            ('deploy_to_eos', {}),
+        ]),
         args=dict(
             manpage=ctx.bldnode.find_node([
                 'manual', 'man', 'eos.7']).abspath(),
@@ -180,6 +286,7 @@ def deploy(ctx):
             webscript=ctx.path.find_resource([
                 'scripts', 'eos-web-docs']).abspath(),
         ),
+        source=[hostnames_node],
         always=True,
     )
 

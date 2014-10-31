@@ -17,4 +17,4 @@ For certain tasks (e.g., :wikipedia:`MPI <Message_Passing_Interface>` for HPC, :
 
 .. note::
 
-    These commands temporarily disable ``StrictHostKeyChecking``, which refers to the showing of :ref:`this confirmation prompt <gnu-linux-fingerprints>`. Since we are operating within the EOS network, this is probably OK.
+    These commands temporarily disable ``StrictHostKeyChecking``, which refers to the showing of :ref:`this confirmation prompt <linux-fingerprints>`. Since we are operating within the EOS network, this is probably OK.
