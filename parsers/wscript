@@ -1,29 +1,27 @@
 # -*- mode: python; coding: utf-8; -*-
 
-import shutil
+import sys
+import os
+from os.path import join
 
-def _copy_file(tsk):
-    shutil.copyfile(tsk.inputs[0].abspath(), tsk.outputs[0].abspath())
+import waflib
 
 def options(ctx):
     pass
 
 def configure(ctx):
-    ctx.find_program('python')
+    # For use when depending on the parser files...
+    ctx.env.PARSER_FILES = [
+        base + '.py' for base in '__init__', '__main__', 'parser']
 
 def build(ctx):
-    ctx(source=ctx.path.find_resource(['vnc_table_generator', 'vncts.ebnf']),
-        target=ctx.path.find_or_declare(['vnc_table_generator', 'parser.py']))
+    for dir, grammar_name in [
+            ('hosts_file_parser', 'hosts'), ('vnc_table_generator', 'vncts')]:
+        ctx(source=ctx.path.find_resource([dir, grammar_name + '.ebnf']),
+            target=ctx.path.find_or_declare([dir, 'parser.py']))
 
-    # TODO: Ugly. We appended '.src' to the extension, because we couldn't get
-    # the file copy to work with files of the exact same name, using
-    # node.get_bld().
-    main_node = ctx.path.find_resource([
-        'vnc_table_generator', '__main__.py.src'])
-    ctx(rule=_copy_file, source=main_node,
-        target=main_node.change_ext(ext='.py', ext_in='.py.src'))
+        to_copy = [join(dir, base) for base in ctx.env.PARSER_FILES[:-1]]
+        ctx(features='subst', source=to_copy, target=to_copy, is_copy=True)
 
-    @ctx.rule(target=ctx.path.find_or_declare(
-        ['vnc_table_generator', '__init__.py']))
-    def _make_init(tsk):
-        open(tsk.outputs[0].abspath(), 'w').close()
+    # Add the generated Python modules to the module search path.
+    sys.path.append(ctx.path.get_bld().abspath())

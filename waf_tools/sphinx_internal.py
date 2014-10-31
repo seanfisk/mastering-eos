@@ -54,7 +54,7 @@ class PdflatexBuilder(object):
         # and setting TEXINPUTS. THIS IS UGLY.
         copied_tex_node = tgt.change_ext('.tex')
         copy_task = task_gen.create_task(
-            'copy_file', src=orig_tex_node, tgt=copied_tex_node)
+            'sphinx_copy_file', src=orig_tex_node, tgt=copied_tex_node)
         tasks.append(copy_task)
         # The following code is based on apply_tex() from Waf tex tool.
         latex_task = task_gen.create_task(
@@ -113,11 +113,14 @@ def configure(ctx):
 # to be lowercase. Also, waflib.Task.Task.__str__ strips off a trailing '_task'
 # from the name.
 
-class copy_file_task(waflib.Task.Task):
+class sphinx_copy_file_task(waflib.Task.Task):
     """Copy a file. Used for building the LaTeX PDF in a different
     directory.
-    """
 
+    Although the 'subst' feature can basically already do this, it requires
+    setting attributes on the task generator, which doesn't make much sense for
+    this tool.
+    """
     def run(self):
         shutil.copyfile(self.inputs[0].abspath(), self.outputs[0].abspath())
 

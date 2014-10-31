@@ -3,26 +3,13 @@
 import os
 from os.path import join
 import sys
+from collections import OrderedDict
 
 def options(ctx):
-    # This option tells our build system not to always run operations which use
-    # SSH to access EOS. Currently, this includes building the VNC and SSH
-    # fingerprints tables. Users building on their machines should probably
-    # disable auto-update, while automated builds leave auto-updated enabled.
-    # The default is to auto-update because it is safer.
-    ctx.add_option(
-        # -m for Manual update
-        '-m', '--no-ssh-auto-update',
-        default=False, action='store_true',
-    help='disable auto-update of ops requiring SSH')
+    pass
 
 def configure(ctx):
-    scripts_dir = os.path.abspath('scripts')
-    # Yay for double negatives!
-    ctx.env.SSH_AUTO_UPDATE = not ctx.options.no_ssh_auto_update
-    ctx.msg('Auto-update of SSH operations',
-            'enabled' if ctx.env.SSH_AUTO_UPDATE else 'disabled',
-            'GREEN' if ctx.env.SSH_AUTO_UPDATE else 'YELLOW')
+    ctx.find_program('python')
 
 def build(ctx):
     fingerprints_table_path = (
@@ -41,52 +28,56 @@ def build(ctx):
         ctx.srcnode.find_node(vnc_table_path) or
         ctx.srcnode.make_node(vnc_table_path))
 
-    ssh_task_gen_extra_kwargs = {}
-    if ctx.env.SSH_AUTO_UPDATE:
-        ssh_task_gen_extra_kwargs['always'] = True
+    extra_kwargs = dict(always=True) if ctx.env.SSH_AUTO_UPDATE else {}
 
     fabfile_node = ctx.srcnode.find_resource('fabfile.py')
+    hostnames_node = ctx.bldnode.find_or_declare('hostnames')
 
     # This task takes a while, so start it first.
     ctx(name='make_ssh_fingerprints_table',
         features='fabric',
         fabfile=fabfile_node,
-        command='make_ssh_fingerprints_table',
-        args=dict(output=fingerprints_table_node.abspath()),
+        commands=OrderedDict([
+            ('set_hosts', dict(hostfile=hostnames_node.abspath())),
+            ('make_ssh_fingerprints_table', dict(
+                output=fingerprints_table_node.abspath())),
+        ]),
+        source=[hostnames_node],
         target=[fingerprints_table_node],
-        **ssh_task_gen_extra_kwargs
+        **extra_kwargs
     )
 
     vncts_node = ctx.path.find_or_declare('vncts')
     ctx(features='fabric',
         fabfile=fabfile_node,
-        command='download_vncts_file',
-        args=dict(output=vncts_node.abspath()),
+        commands=dict(download_vncts_file=dict(output=vncts_node.abspath())),
         target=[vncts_node],
-        **ssh_task_gen_extra_kwargs
+        **extra_kwargs
     )
 
     parsers_dir = ctx.bldnode.find_dir('parsers')
     @ctx.rule(
         name='make_vnc_table',
         target=vnc_table_node,
-        source=[vncts_node] +
-        # Make the parser nodes themselves inputs, so that when they
-        # updates ensue regardless of the value of auto-update.
-        parsers_dir.find_dir('vnc_table_generator').ant_glob(
-            '*.py', quiet=True),
-        update_outputs=True,
-        vars=['PYTHON'])
+        source=[vncts_node] + [
+            # Depend on the generated parser files as well.
+            parsers_dir.find_or_declare(['vnc_table_generator', base])
+            for base in ctx.env.PARSER_FILES],
+        vars=['PYTHON'],
+        update_outputs=True)
     def make_vnc_table(tsk):
-        return tsk.exec_command(
+        # Note: colorama (from grako) has issues if we try to directly call
+        # into the Python module from here.
+        tsk.exec_command(
             [
                 ctx.env.PYTHON,
                 '-m', 'vnc_table_generator',
                 tsk.inputs[0].abspath(),
                 tsk.outputs[0].abspath(),
             ],
-            # Set the PYTHONPATH so that the module can be found.
-            env={'PYTHONPATH': parsers_dir.abspath()})
+            # Add the module to the Python search path.
+            env={'PYTHONPATH': parsers_dir.abspath()},
+        )
 
     # TODO: The html document does not build under changes to
     # _templates/footer.html.
