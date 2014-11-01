@@ -13,8 +13,6 @@ def configure(ctx):
     # Pygments is a minted requirement.
     ctx.find_program('pygmentize')
     ctx.env.append_unique('PDFLATEXFLAGS', [
-        # Enable SyncTeX.
-        '-synctex=1',
         # Shell escape; needed by minted.
         '-shell-escape',
     ])

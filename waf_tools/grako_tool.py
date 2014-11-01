@@ -1,4 +1,4 @@
-# -*- mode: python; coding: utf-8; -*-
+# -*- coding: utf-8 -*-
 """Tool for running Grako, the grammar compiler."""
 
 # Named 'grako_tool' so as to not collide with possible imports of the grako

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """Waf tool for building documentation with Sphinx.
 
 This version works really well with with Waf at the cost of staggering

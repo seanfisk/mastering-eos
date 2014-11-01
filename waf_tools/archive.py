@@ -1,4 +1,4 @@
-# -*- coding: utf-8; -*-
+# -*- coding: utf-8 -*-
 
 """Waf tool for creating various types of archives.
 

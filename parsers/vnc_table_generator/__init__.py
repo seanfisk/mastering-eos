@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """Generate a table of VNC ports and geometries by parsing the ``vncts``
 file.
 """

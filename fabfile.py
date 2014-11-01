@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Fabric control file
 # See http://fabfile.org/
 

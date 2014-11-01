@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """Waf tool for building documentation with Sphinx.
 
 This version leaves the dependency tracking to Sphinx (and the generated

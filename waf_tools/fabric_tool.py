@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """Waf tool for running Fabric tasks."""
 
 # Named 'fabric_tool' so as to not collide with possible imports of the fabric
