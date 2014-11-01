@@ -46,8 +46,7 @@ class sphinx_build_task(waflib.Task.Task):
 
     def run(self):
         conf_node = self.inputs[0]
-        args = [
-            self.env.SPHINX_BUILD,
+        args = self.env.SPHINX_BUILD + [
             '-b', self.sphinx_builder,
             '-d', self.doctrees_node.abspath(),
         ]
@@ -80,8 +79,7 @@ class sphinx_build_task(waflib.Task.Task):
 @always_run
 class sphinx_run_make_task(waflib.Task.Task):
     def run(self):
-        return self.exec_command(
-            [self.env.MAKE], cwd=self.outputs[0].abspath())
+        return self.exec_command(self.env.MAKE, cwd=self.outputs[0].abspath())
 
 @waflib.TaskGen.feature('sphinx')
 @waflib.TaskGen.before_method('process_source')

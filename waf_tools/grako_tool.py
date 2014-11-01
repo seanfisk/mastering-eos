@@ -23,11 +23,10 @@ class grako_task(waflib.Task.Task):
 
     def run(self):
         input_path = self.inputs[0].abspath()
-        self.exec_command([
-            self.env.GRAKO,
-            # The default name is the basename of the grammar file. However, we
-            # like to name our files lowercase, but the class name should be
-            # uppercase.
+        return self.exec_command(self.env.GRAKO + [
+            # The default name is the basename of the grammar file.
+            # However, we like to name our files lowercase, but the class
+            # name should be uppercase.
             '--name', os.path.splitext(
                 os.path.basename(input_path))[0].capitalize(),
             '--output', self.outputs[0].abspath(),

@@ -101,7 +101,7 @@ def configure(ctx):
     else:
         possible_makeinfo_path = join(texinfo_brew_prefix, 'bin', 'makeinfo')
         if os.path.isfile(possible_makeinfo_path):
-            os.environ['MAKEINFO'] = possible_makeinfo_path
+            ctx.env.MAKEINFO = possible_makeinfo_path
 
     # Grako
     ctx.load('grako_tool', tooldir=WAF_TOOLS_DIR)
@@ -157,8 +157,7 @@ def build(ctx):
             # Note: colorama (from grako) has issues if we try to directly call
             # into the Python module from here.
             return tsk.exec_command(
-                [
-                ctx.env.PYTHON,
+                ctx.env.PYTHON + [
                     '-m', 'hosts_file_parser',
                     tsk.inputs[0].abspath(),
                 ],
@@ -268,8 +267,7 @@ class ghp_import_task(waflib.Task.Task):
         self._dir_node = dir_node
 
     def run(self):
-        return self.exec_command([
-            self.env.GHP_IMPORT,
+        return self.exec_command(self.env.GHP_IMPORT + [
             '-n', # Include a .nojekyll file in the branch
             '-p', # Push the branch after import
             self._dir_node.abspath(),

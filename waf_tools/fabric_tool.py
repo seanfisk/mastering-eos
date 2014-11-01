@@ -80,8 +80,7 @@ class fabric_task(waflib.Task.Task):
 
     def run(self):
         return self.exec_command(
-            [
-                self.env.FAB,
+            self.env.FAB + [
                 '--fabfile',
                 self.fabfile_node.abspath(),
             ] + self.options + [

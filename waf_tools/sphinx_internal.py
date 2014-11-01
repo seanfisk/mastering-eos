@@ -42,33 +42,29 @@ class PdflatexBuilder(object):
     sphinx_builder = 'latex'
 
     def create_task(self, task_gen, src, tgt):
-        tasks = []
         orig_tex_node = src[0]
         dep_nodes = src[1:]
         # We don't want to pollute the LaTeX sources directory (which is in the
         # build directory) with all the extra files LaTeX generates because
         # that will interfere with our Sphinx output detection. The Waf tex
-        # tool sets the cwd to the parent of the first input, but that only
-        # makes sense if the sources are not in the build directory. Hack
-        # around it by copying the .tex file to the desired output directory
-        # and setting TEXINPUTS. THIS IS UGLY.
+        # tool sets the cwd to the build path of the parent of the first input,
+        # but that only makes sense if the sources are not already in the build
+        # directory. Hack around it by copying the .tex file to the desired
+        # output directory and setting TEXINPUTS. THIS IS UGLY.
         copied_tex_node = tgt.change_ext('.tex')
         copy_task = task_gen.create_task(
             'sphinx_copy_file', src=orig_tex_node, tgt=copied_tex_node)
-        tasks.append(copy_task)
         # The following code is based on apply_tex() from Waf tex tool.
         latex_task = task_gen.create_task(
             'pdflatex',
             src=copied_tex_node,
             tgt=tgt)
-        latex_task.env.TEXINPUTS = os.pathsep.join([
-            latex_task.env.TEXINPUTS, orig_tex_node.parent.abspath()])
+        latex_task.texinputs_nodes = [orig_tex_node.parent]
         # Set the build order to prevent node signature issues.
         latex_task.set_run_after(copy_task)
         # Add manual dependencies.
-        task_gen.bld.node_deps[latex_task.uid()] = dep_nodes
-        tasks.append(latex_task)
-        return tasks
+        latex_task.dep_nodes = dep_nodes
+        return [copy_task, latex_task]
 
 FOLLOWUP_BUILDERS = {
     'info': InfoBuilder(),
@@ -90,7 +86,7 @@ def _sorted_nodes(nodes):
 
 @conf
 def warn_about_old_makeinfo(ctx):
-    version_out = ctx.cmd_and_log([ctx.env.MAKEINFO, '--version'])
+    version_out = ctx.cmd_and_log(ctx.env.MAKEINFO + ['--version'])
     version_str = version_out.splitlines()[0].rstrip()
     match = MAKEINFO_VERSION_RE.match(version_str)
     if match is None:
@@ -236,8 +232,7 @@ class sphinx_build_task(waflib.Task.Task):
         # to do in parallel. It's not the best situation, but it's the best
         # we've got.
         conf_node = self.inputs[0]
-        args = [
-            self.env.SPHINX_BUILD,
+        args = self.env.SPHINX_BUILD + [
             '-b', self.sphinx_builder,
             '-d', self.doctrees_node.abspath(),
         ]
@@ -344,7 +339,7 @@ class sphinx_build_task(waflib.Task.Task):
         # These tasks will never have any declared targets, so don't bother.
         return 'sphinx_build_{0}: {1}\n'.format(
             self.sphinx_builder,
-            ' '.join(n.nice_path() for n in self.inputs))
+            ' '.join(n.srcpath() for n in self.inputs))
 
 class sphinx_makeinfo_task(waflib.Task.Task):
     """Handle run of makeinfo for Sphinx's texinfo output."""
@@ -357,8 +352,7 @@ class sphinx_makeinfo_task(waflib.Task.Task):
         # just reimplemented here.
         texi_node = self.inputs[0]
         return self.exec_command(
-            [
-                self.env.MAKEINFO,
+            self.env.MAKEINFO + [
                 '--no-split',
                 '-o', self.outputs[0].abspath(),
                 texi_node.abspath()
