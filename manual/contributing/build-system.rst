@@ -61,6 +61,6 @@ This command creates the directory :file:`build/website`, which contains all the
 
 It is also possible to run multiple commands at once, for example::
 
-    ./waf distclean configure -m build
+    ./waf distclean configure -d build
 
 This runs a full rebuild all in one command.
