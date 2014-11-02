@@ -128,6 +128,10 @@ def configure(ctx):
              'YELLOW' if ctx.env.DEVELOPER_MODE else 'GREEN')
 
 def build(ctx):
+    # This variable is for recording build nodes placed in the source directory
+    # for deletion using the 'clean' command.
+    ctx.env.SRC_DIR_BUILD_NODES = []
+
     # Parsers need to be declared build before anything else.
     ctx.recurse('parsers')
 
@@ -181,6 +185,7 @@ def build(ctx):
     # substitution values up-front, which is exactly what we can't do. That's
     # why we've used this replace(...) solution. There's got to be a better
     # way.
+    ctx.env.SRC_DIR_BUILD_NODES += out_nodes
     @ctx.rule(
         name='subst_max_hostnames',
         source=[hostnames_node] + in_nodes,
@@ -204,6 +209,13 @@ def build(ctx):
     ctx.add_group()
 
     ctx.recurse(SUBDIRS[1:])
+
+# Clean context and command
+class CleanContext(waflib.Build.CleanContext):
+    def clean(self):
+        super(CleanContext, self).clean()
+        for node in self.env.SRC_DIR_BUILD_NODES:
+            node.delete()
 
 # Archive context and command
 

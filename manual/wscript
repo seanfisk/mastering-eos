@@ -18,6 +18,7 @@ def build(ctx):
         'manual/remote-access/common/vnc-port-geometry-table.rst')
     fingerprints_table_node = ctx.find_or_make_in_src(fingerprints_table_path)
     vnc_table_node = ctx.find_or_make_in_src(vnc_table_path)
+    ctx.env.SRC_DIR_BUILD_NODES += [fingerprints_table_node, vnc_table_node]
 
     extra_kwargs = {} if ctx.env.DEVELOPER_MODE else dict(always=True)
 
