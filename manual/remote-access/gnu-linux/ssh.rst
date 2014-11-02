@@ -1,6 +1,6 @@
-=====
- SSH
-=====
+====================
+ Shell Access (SSH)
+====================
 
 The most popular implementation of the SSH protocol on GNU/Linux is OpenSSH_. The SSH client can be run from the command-line and is simply called :program:`ssh`.
 

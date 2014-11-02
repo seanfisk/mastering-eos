@@ -1,6 +1,6 @@
-=====
- SSH
-=====
+====================
+ Shell Access (SSH)
+====================
 
 The most popular SSH client for Windows is called PuTTY_. It can be installed by visiting the `PuTTY download page`_. We recommend installing via the Windows installer, labeled *A Windows installer for everything except PuTTYtel*.
 
