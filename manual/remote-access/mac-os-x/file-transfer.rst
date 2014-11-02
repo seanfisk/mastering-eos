@@ -27,6 +27,8 @@ Most of Cyberduck's action are available through the :guilabel:`File` menu or th
 .. |ssh-keys| replace:: :ref:`mac-ssh-keys`
 .. include:: ../common/openssh/scp.rst
 
+.. include:: ../common/rsync.rst
+
 .. include:: ../common/sshfs/intro.rst
 
 Installation

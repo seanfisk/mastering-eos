@@ -25,9 +25,9 @@ There is really no reason not to import your sites from PuTTY if you already hav
     You can create a desktop shortcut for your site by right-clicking your site in the WinSCP Login screen, then clicking :guilabel:`Desktop Icon`. This allows you to open your site directly without visiting the WinSCP Login screen. Creating a 'Send To' shortcut for Windows Explorer is similarly useful.
 
 Automatic Synchronization
-=========================
+-------------------------
 
-Automatic synchronization of local to remote directories is a very useful advanced feature of WinSCP. It is especially useful when developing a website on EOS. This partially makes up for the lack of a maintained free Windows SSHFS implementation.
+Automatic synchronization of local to remote directories is a very useful advanced feature of WinSCP. It is especially useful when developing a website on EOS. This partially makes up for the lack of a maintained free Windows SSHFS or rsync implementation.
 
 To start using it, click :menuselection:`Commands --> Keep Remote Directory up to Date...`. You can get more information about this task and its use in the `WinSCP Keep Remote Directory up to Date documentation`_.
 
