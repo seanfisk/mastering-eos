@@ -56,6 +56,32 @@ class PdflatexBuilder(object):
     out_suffix = '.pdf'
     sphinx_builder = 'latex'
 
+    def make_texinputs_nodes(self, task_gen, init_texinputs_nodes):
+        # We need to respect the existing values of 'os.environ["TEXINPUTS"]'
+        # and 'latex_task.env.TEXINPUTS' when setting
+        # 'latex_task.texinputs_nodes', as does 'apply_tex'. This code is
+        # basically copied from 'apply_tex'. Unfortunately, we don't see a way
+        # around copying this code.
+        texinputs_nodes = init_texinputs_nodes[:]
+        lst = os.environ.get('TEXINPUTS', '')
+        if task_gen.env.TEXINPUTS:
+            lst += os.pathsep + task_gen.env.TEXINPUTS
+        if lst:
+            lst = lst.split(os.pathsep)
+        for x in lst:
+            if x:
+                if os.path.isabs(x):
+                    p = task_gen.bld.root.find_node(x)
+                    if p:
+                        texinputs_nodes.append(p)
+                    else:
+                        waflib.Logs.error('Invalid TEXINPUTS folder %s' % x)
+                else:
+                    waflib.Logs.error(
+                        'Cannot resolve relative paths in TEXINPUTS %s' % x)
+
+        return texinputs_nodes
+
     def create_task(self, task_gen, src, tgt):
         orig_tex_node = src[0]
         dep_nodes = src[1:]
@@ -72,7 +98,9 @@ class PdflatexBuilder(object):
         # The following code is based on apply_tex() from Waf tex tool.
         latex_task = task_gen.create_task(
             'pdflatex', src=copied_tex_node, tgt=tgt)
-        latex_task.texinputs_nodes = [orig_tex_node.parent]
+        # Set 'texinputs_nodes' for the task.
+        latex_task.texinputs_nodes = self.make_texinputs_nodes(
+            task_gen, [orig_tex_node.parent])
         # Set the build order to prevent node signature issues.
         latex_task.set_run_after(copy_task)
         # Add manual dependencies.
