@@ -147,6 +147,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#native-toolkits">Native Toolkits</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc.html">Miscellaneous</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../misc.html#kill-the-x-server">Kill the X Server</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing to Mastering EOS</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../contributing/repo-setup.html">Repository Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../contributing/prereqs.html">Pre-requisites</a></li>
@@ -196,11 +200,11 @@
           <div role="main">
             
   <div class="section" id="advanced-openssh">
-<span id="gnu-linux-advanced-openssh"></span><h1>Advanced OpenSSH<a class="headerlink" href="#advanced-openssh" title="Permalink to this headline">¶</a></h1>
+<span id="linux-ssh-advanced"></span><h1>Advanced OpenSSH<a class="headerlink" href="#advanced-openssh" title="Permalink to this headline">¶</a></h1>
 <p>OpenSSH can do much more than simply allow the user to establish connections with remote servers. If you use OpenSSH, there are a great many neat tricks available to you.</p>
 <p>This section is based in large part on the <a class="reference external" href="http://blogs.perl.org/users/smylers/2011/08/ssh-productivity-tips.html">Smylers SSH Productivity Tips blog post</a>. Please visit this post for <em>even more SSH awesomeness!</em></p>
 <div class="section" id="hostname-aliases">
-<h2>Hostname Aliases<a class="headerlink" href="#hostname-aliases" title="Permalink to this headline">¶</a></h2>
+<span id="linux-ssh-aliases"></span><h2>Hostname Aliases<a class="headerlink" href="#hostname-aliases" title="Permalink to this headline">¶</a></h2>
 <p>It&#8217;s useful not to have to type out the entire full-qualified domain names to EOS machines. What you might normally type would be something like this:</p>
 <div class="highlight-bash"><div class="highlight"><pre>ssh smithj@eos02.cis.gvsu.edu
 <span class="c"># or</span>
@@ -223,7 +227,7 @@ ssh arch04
 </div>
 </div>
 <div class="section" id="shared-connections">
-<h2>Shared Connections<a class="headerlink" href="#shared-connections" title="Permalink to this headline">¶</a></h2>
+<span id="linux-ssh-shared"></span><h2>Shared Connections<a class="headerlink" href="#shared-connections" title="Permalink to this headline">¶</a></h2>
 <p>There is a about a minute timeout between allowed successive connnections to each individual EOS machine. This can prove very annoying when establishing multiple SSH connections to use <strong class="program">scp</strong> to copy files or opening multiple terminals (but see terminal multiplexing). One way to mitigate this annoyance is by using GVSU&#8217;s VPN. Another way is to used SSH shared connections. These solutions are also not mutually exclusive.</p>
 <p>Shared connections are established by creating a socket which multiplexes multiple connections. This socket is controlled by the <tt class="docutils literal"><span class="pre">ControlMaster</span></tt> and <tt class="docutils literal"><span class="pre">ControlPath</span></tt> keywords. The first connection is called the &#8220;master&#8221; and creates the socket. Subsequent connections use the already-created socket. This behavior can be automated by setting <tt class="docutils literal"><span class="pre">ControlMaster</span></tt> to the value <tt class="docutils literal"><span class="pre">auto</span></tt>. <tt class="docutils literal"><span class="pre">ControlPath</span></tt> specifies the path to the socket, with variables substituted as necessary. The following config amend the previous config to add connection sharing to EOS machines.</p>
 <div class="highlight-apacheconf"><div class="highlight"><pre><span class="c"># EOS</span>
@@ -242,7 +246,7 @@ ssh arch04
 <p>Connection sharing may be useful to enable for most hosts. However, it needs to be done with care because it typically conflicts with X forwarding and port forwarding.</p>
 </div>
 <div class="section" id="persistent-connections">
-<h2>Persistent Connections<a class="headerlink" href="#persistent-connections" title="Permalink to this headline">¶</a></h2>
+<span id="linux-ssh-persistent"></span><h2>Persistent Connections<a class="headerlink" href="#persistent-connections" title="Permalink to this headline">¶</a></h2>
 <p>It is often useful to keep connections open in the background even after the terminal has actually been closed. This is useful as it allows OpenSSH to reconnect to the server without re-establishing a connection. Turning this behavior on is trivially simple. Add the following line under the host for which you would like connections to persist:</p>
 <div class="highlight-apacheconf"><div class="highlight"><pre><span class="c"># Persist connections for 2 hours.</span>
 <span class="nb">ControlPersist</span> <span class="m">2</span>h
@@ -329,7 +333,7 @@ ssh arch04
       &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/e056a9a">e056a9a</a> built 2014-10-30 19:25:19 EDT.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/512f96a">512f96a</a> built 2014-11-09 00:00:00 EST.<br />
     </p>
   </div>
 

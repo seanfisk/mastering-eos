@@ -1,6 +1,20 @@
-.. _gnu-linux-advanced-openssh:
+.. _linux-ssh-advanced:
 
 .. include:: ../common/openssh/advanced/intro.rst
+
+.. _linux-ssh-aliases:
+
+.. include:: ../common/openssh/advanced/aliases.rst
+
+.. _linux-ssh-shared:
+
+.. include:: ../common/openssh/advanced/shared.rst
+
+.. _linux-ssh-persistent:
+
+.. include:: ../common/openssh/advanced/persistent.rst
+.. include:: ../common/openssh/advanced/multi-hop.rst
+.. include:: ../common/openssh/advanced/proxy/intro.rst
 
 Proxy configuration varies from distro to distro. These steps show how to configure a system-wide SOCKS proxy on Ubuntu 14.04, but other distros may be similar.
 
@@ -9,4 +23,4 @@ First, from the menu, select :menuselection:`System Settings --> Network --> Net
 .. image:: /images/socks-ieee/ubuntu-socks.png
    :alt: Ubuntu SOCKS Configuration
 
-.. include:: ../common/openssh/advanced/outro.rst
+.. include:: ../common/openssh/advanced/proxy/outro.rst

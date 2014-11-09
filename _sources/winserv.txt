@@ -61,7 +61,7 @@ Alternatively, to force a resolution of 1024x768 pixels::
 
     rdekstop winserv.cis.gvsu.edu -g 1024x768
 
-For a graphical RDP client that can also be used for :ref:`VNC <gnu-linux-vnc>`, check out Remmina_.
+For a graphical RDP client that can also be used for :ref:`VNC <linux-vnc>`, check out Remmina_.
 
 .. _rdesktop: http://www.rdesktop.org/
 .. _Remmina: http://remmina.sourceforge.net/

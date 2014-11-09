@@ -147,6 +147,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../gui-toolkits.html#native-toolkits">Native Toolkits</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc.html">Miscellaneous</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../misc.html#kill-the-x-server">Kill the X Server</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing to Mastering EOS</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../contributing/repo-setup.html">Repository Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../contributing/prereqs.html">Pre-requisites</a></li>
@@ -216,7 +220,7 @@
 </div>
 </div>
 <div class="section" id="checking-host-fingerprints">
-<span id="gnu-linux-fingerprints"></span><h2>Checking Host Fingerprints<a class="headerlink" href="#checking-host-fingerprints" title="Permalink to this headline">¶</a></h2>
+<span id="linux-fingerprints"></span><h2>Checking Host Fingerprints<a class="headerlink" href="#checking-host-fingerprints" title="Permalink to this headline">¶</a></h2>
 <p>When logging in to an EOS machine for the first time, you will see a message like this:</p>
 <div class="highlight-bash"><div class="highlight"><pre>The authenticity of host &#39;eos01.cis.gvsu.edu (148.61.162.101)&#39; can&#39;t be established.
 RSA key fingerprint is 6d:29:fd:23:c5:26:c7:c9:a5:6e:6e:c2:34:60:ea:54.
@@ -265,6 +269,78 @@ Are you sure you want to continue connecting (yes/no)?
 </tr>
 <tr class="row-odd"><td>arch10</td>
 <td><tt class="docutils literal"><span class="pre">9e:0c:a3:90:c1:12:79:72:92:c6:16:cd:06:77:78:2b</span></tt></td>
+</tr>
+<tr class="row-even"><td>dc01</td>
+<td><tt class="docutils literal"><span class="pre">ff:7b:d3:f0:35:3c:a9:58:e7:82:07:10:ba:0d:e1:24</span></tt></td>
+</tr>
+<tr class="row-odd"><td>dc02</td>
+<td><tt class="docutils literal"><span class="pre">b5:ce:1c:6e:58:ee:8b:cc:03:b1:1f:a0:8f:7d:c7:fa</span></tt></td>
+</tr>
+<tr class="row-even"><td>dc03</td>
+<td><tt class="docutils literal"><span class="pre">68:85:4d:d5:2f:c1:3b:88:ca:8c:f8:36:68:61:c4:54</span></tt></td>
+</tr>
+<tr class="row-odd"><td>dc04</td>
+<td><tt class="docutils literal"><span class="pre">f7:15:51:43:4b:a3:64:40:03:00:99:ce:68:db:8c:1d</span></tt></td>
+</tr>
+<tr class="row-even"><td>dc05</td>
+<td><tt class="docutils literal"><span class="pre">35:6a:ad:56:3a:94:94:3b:97:8b:2e:11:5d:6b:1f:bf</span></tt></td>
+</tr>
+<tr class="row-odd"><td>dc06</td>
+<td><tt class="docutils literal"><span class="pre">c8:f6:6a:b5:49:21:3e:ae:11:f7:66:e3:8e:19:47:41</span></tt></td>
+</tr>
+<tr class="row-even"><td>dc07</td>
+<td><tt class="docutils literal"><span class="pre">0e:70:b2:f5:71:aa:f5:a8:45:47:68:6d:93:1e:b9:68</span></tt></td>
+</tr>
+<tr class="row-odd"><td>dc08</td>
+<td><tt class="docutils literal"><span class="pre">b2:37:6c:6c:56:04:a0:44:b7:60:e4:41:7e:c2:6e:58</span></tt></td>
+</tr>
+<tr class="row-even"><td>dc09</td>
+<td><tt class="docutils literal"><span class="pre">14:5c:95:4d:f2:7c:10:8b:10:6c:f7:5d:f7:b0:57:6e</span></tt></td>
+</tr>
+<tr class="row-odd"><td>dc10</td>
+<td><tt class="docutils literal"><span class="pre">65:1c:eb:ca:91:0d:fe:b8:d6:e5:9d:26:83:c4:17:d8</span></tt></td>
+</tr>
+<tr class="row-even"><td>dc11</td>
+<td><tt class="docutils literal"><span class="pre">ab:ee:8d:64:cf:27:ec:eb:23:c9:a2:27:e9:ef:2e:e4</span></tt></td>
+</tr>
+<tr class="row-odd"><td>dc12</td>
+<td><tt class="docutils literal"><span class="pre">0f:9a:31:da:ad:2a:6c:be:a6:d1:f9:2c:89:29:fc:05</span></tt></td>
+</tr>
+<tr class="row-even"><td>dc13</td>
+<td><tt class="docutils literal"><span class="pre">b9:88:ec:49:ff:6a:18:bc:f7:d6:ca:d4:3b:3b:c9:17</span></tt></td>
+</tr>
+<tr class="row-odd"><td>dc14</td>
+<td><tt class="docutils literal"><span class="pre">10:58:24:90:13:a2:ad:2f:f6:2a:9e:b1:31:bb:f3:50</span></tt></td>
+</tr>
+<tr class="row-even"><td>dc15</td>
+<td><tt class="docutils literal"><span class="pre">4d:bb:a8:2b:16:60:90:a9:4f:34:06:bb:d5:99:c2:44</span></tt></td>
+</tr>
+<tr class="row-odd"><td>dc16</td>
+<td><tt class="docutils literal"><span class="pre">93:33:fe:09:ac:97:a4:e4:ec:19:84:ce:ea:2a:be:ae</span></tt></td>
+</tr>
+<tr class="row-even"><td>dc17</td>
+<td><tt class="docutils literal"><span class="pre">d4:3c:57:4a:ee:aa:13:da:b2:99:00:28:cf:86:7b:19</span></tt></td>
+</tr>
+<tr class="row-odd"><td>dc18</td>
+<td><tt class="docutils literal"><span class="pre">41:aa:1e:5b:d0:39:81:2a:36:19:fe:77:36:89:66:48</span></tt></td>
+</tr>
+<tr class="row-even"><td>dc19</td>
+<td><tt class="docutils literal"><span class="pre">6a:fb:89:63:30:cb:93:67:f3:3a:31:7e:99:71:56:20</span></tt></td>
+</tr>
+<tr class="row-odd"><td>dc20</td>
+<td><tt class="docutils literal"><span class="pre">f9:39:c3:02:18:4f:70:11:37:bc:f1:0e:f7:0a:7c:64</span></tt></td>
+</tr>
+<tr class="row-even"><td>dc21</td>
+<td><tt class="docutils literal"><span class="pre">65:77:1d:25:92:5e:0d:56:54:06:94:d0:bc:35:eb:68</span></tt></td>
+</tr>
+<tr class="row-odd"><td>dc22</td>
+<td><tt class="docutils literal"><span class="pre">1d:17:42:59:bc:92:d3:97:8c:d3:1e:82:a5:0f:77:ee</span></tt></td>
+</tr>
+<tr class="row-even"><td>dc23</td>
+<td><tt class="docutils literal"><span class="pre">b6:c2:ee:92:51:b4:60:06:36:d6:2d:f5:c1:cf:96:82</span></tt></td>
+</tr>
+<tr class="row-odd"><td>dc24</td>
+<td><tt class="docutils literal"><span class="pre">6d:42:2a:11:3c:27:bf:50:25:fa:6b:cc:c2:0c:99:57</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos01</td>
 <td><tt class="docutils literal"><span class="pre">6d:31:03:c3:d4:76:ff:cc:89:dc:39:90:07:09:18:0d</span></tt></td>
@@ -345,7 +421,7 @@ Are you sure you want to continue connecting (yes/no)?
 <td><tt class="docutils literal"><span class="pre">47:07:b9:d6:c5:a6:48:f7:7c:b5:3c:9a:48:d8:a0:c6</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos27</td>
-<td><tt class="docutils literal"><span class="pre">89:7a:06:61:87:b5:8e:df:9e:93:d2:26:a0:a4:b5:19</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-odd"><td>eos28</td>
 <td><tt class="docutils literal"><span class="pre">74:e2:00:99:ce:b1:ca:df:70:b5:6d:64:99:e4:1f:eb</span></tt></td>
@@ -357,7 +433,7 @@ Are you sure you want to continue connecting (yes/no)?
 <td><tt class="docutils literal"><span class="pre">2d:d1:63:05:69:39:32:77:49:bf:d7:f4:60:93:62:6a</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos31</td>
-<td>down for maintenance</td>
+<td><tt class="docutils literal"><span class="pre">53:9c:a6:98:b7:1e:55:55:29:92:06:75:4b:e3:23:46</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos32</td>
 <td><tt class="docutils literal"><span class="pre">c0:2a:f1:6c:41:52:f8:49:5f:5c:c7:bb:a6:f2:85:29</span></tt></td>
@@ -366,7 +442,7 @@ Are you sure you want to continue connecting (yes/no)?
 </table>
 </div>
 <div class="section" id="password-less-logins-ssh-keys">
-<span id="gnu-linux-ssh-keys"></span><h2>Password-less Logins (SSH keys)<a class="headerlink" href="#password-less-logins-ssh-keys" title="Permalink to this headline">¶</a></h2>
+<span id="linux-ssh-keys"></span><h2>Password-less Logins (SSH keys)<a class="headerlink" href="#password-less-logins-ssh-keys" title="Permalink to this headline">¶</a></h2>
 <p>It is often handy to be able to SSH into a host without having to type a password, for instance as part of a script. First, generate your public/private key pair with:</p>
 <div class="highlight-bash"><div class="highlight"><pre>ssh-keygen
 </pre></div>
@@ -383,9 +459,9 @@ Are you sure you want to continue connecting (yes/no)?
 <p class="first admonition-title">Note</p>
 <p class="last">In this setup, we created our public/private key pair without a passphrase, which is less secure. If you would like to use a passphrase, please see <a class="reference external" href="http://mah.everybody.org/docs/ssh">Mark Hershberger&#8217;s excellent guide to ssh-agent</a> and <a class="reference external" href="https://help.github.com/articles/working-with-ssh-key-passphrases#platform-mac">Github&#8217;s guide to SSH passphrases</a>.</p>
 </div>
-<span class="target" id="linux-ssh-tunnel"></span></div>
+</div>
 <div class="section" id="tunnelling-port-forwarding">
-<h2>Tunnelling / Port Forwarding<a class="headerlink" href="#tunnelling-port-forwarding" title="Permalink to this headline">¶</a></h2>
+<span id="linux-ssh-tunnel"></span><h2>Tunnelling / Port Forwarding<a class="headerlink" href="#tunnelling-port-forwarding" title="Permalink to this headline">¶</a></h2>
 <p>The SSH protocol possesses a special feature which allows it to tunnel other protocols within itself. This is called tunnelling or port forwarding. SSH can forward local ports (allowing the local machine access to resources on the remote machine) and remote ports (allowing the remote machine access to resources on the local machine).</p>
 <p>Local port forwarding is the more used feature, and is explained in the following sections. Remote port forwarding is similar but is outside the scope of this guide.</p>
 <p>Port forwarding can be accomplished with OpenSSH by passing arguments to the command-line client or by editing the client configuration file.</p>
@@ -412,10 +488,14 @@ Are you sure you want to continue connecting (yes/no)?
 </div>
 <div class="section" id="forwarding-in-the-config-file">
 <h3>Forwarding in the Config File<a class="headerlink" href="#forwarding-in-the-config-file" title="Permalink to this headline">¶</a></h3>
-<p>The command-line works well for one-off tunnels, but for frequently established tunnels, it pays to alter the OpenSSH client configuration file. The OpenSSH client configuration resides on your local machine in the file <tt class="file docutils literal"><span class="pre">~/.ssh/config</span></tt>. This is a file inside a hidden directory inside your home directory. The easiest way to open this file, creating it if it doesn&#8217;t exist, is to run:</p>
-<pre class="literal-block">
-umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; touch ~/.ssh/config &amp;&amp; gedit ~/.ssh/config
-</pre>
+<p>The command-line works well for one-off tunnels, but for frequently established tunnels, it pays to alter the OpenSSH client configuration file. The OpenSSH client configuration resides on your local machine in the file <tt class="file docutils literal"><span class="pre">~/.ssh/config</span></tt>. This is a file inside a hidden directory inside your home directory. To setup this directory and file, please run the following commands:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">umask </span><span class="nv">u</span><span class="o">=</span>rwx,go<span class="o">=</span>
+mkdir -p ~/.ssh
+touch ~/.ssh/config
+</pre></div>
+</div>
+<p>The <a class="reference external" href="http://en.wikipedia.org/wiki/umask">umask</a> command ensures that the directory and file are created with the correct permissions. This is important when dealing with SSH-related files.</p>
+<p>Now open the file <tt class="file docutils literal"><span class="pre">~/.ssh/config</span></tt> in a text editor.</p>
 <p>To establish the CIS web server forwarding shown in the last section, one could use the following configuration:</p>
 <div class="highlight-apacheconf"><div class="highlight"><pre><span class="nb">Host</span> eoscisweb
 <span class="nb">HostName</span> eos01.cis.gvsu.edu
@@ -454,7 +534,7 @@ umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; touch ~/.ssh/config &amp;&
       &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/e056a9a">e056a9a</a> built 2014-10-30 19:25:19 EDT.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/512f96a">512f96a</a> built 2014-11-09 00:00:00 EST.<br />
     </p>
   </div>
 

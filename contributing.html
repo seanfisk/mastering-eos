@@ -2,7 +2,6 @@
 
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -10,7 +9,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; Mastering EOS</title>
+  <title>Contributing to Mastering EOS &mdash; Mastering EOS</title>
   
 
   
@@ -32,6 +31,7 @@
 
   
     <link rel="top" title="Mastering EOS" href="index.html"/>
+        <link rel="prev" title="Environment Variables" href="envvars.html"/>
  
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -70,7 +70,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro.html#physical-access-keycards">Physical Access (Keycards)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intro.html#computer-access-credentials">Computer Access (Credentials)</a></li>
@@ -88,7 +88,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="basics.html">Command Line Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="remote-access/inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/windows/index.html">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/mac-os-x/index.html">Mac OS X</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/gnu-linux/index.html">GNU/Linux</a></li>
@@ -104,12 +103,6 @@
 <li class="toctree-l2"><a class="reference internal" href="user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user-level-sw/manual-install.html">Manual Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user-level-sw/linuxbrew.html">Linuxbrew</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="sys-sw-info.html">System and Software Information</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sys-sw-info.html#system">System</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sys-sw-info.html#software">Software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sys-sw-info.html#web-server">Web Server</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="winserv.html">Winserv</a><ul>
@@ -134,31 +127,11 @@
 <li class="toctree-l2"><a class="reference internal" href="ide.html#intellij">IntelliJ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="gui-toolkits.html">GUI Toolkits</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#choosing-a-toolkit">Choosing a Toolkit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#qt">Qt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#wxwidgets">wxWidgets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#gtk">GTK+</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#tk">Tk</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#swing">Swing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#swt">SWT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#native-toolkits">Native Toolkits</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="misc.html#kill-the-x-server">Kill the X Server</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="contributing/index.html">Contributing to Mastering EOS</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="contributing/repo-setup.html">Repository Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/prereqs.html">Pre-requisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/build-system.html">Using the Build System</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/edit.html">Editing the Manual</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/pull-request.html">Making a Pull Request</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/writing-style.html">Writing Style</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Contributing to Mastering EOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#writing-style">Writing Style</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -182,8 +155,10 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li></li>
+    <li>Contributing to Mastering EOS</li>
       <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/contributing.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -191,126 +166,46 @@
 </div>
           <div role="main">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- <a href="#C"><strong>C</strong></a>
- | <a href="#E"><strong>E</strong></a>
- | <a href="#I"><strong>I</strong></a>
- | <a href="#L"><strong>L</strong></a>
- | <a href="#M"><strong>M</strong></a>
- | <a href="#P"><strong>P</strong></a>
- 
+  <div class="section" id="contributing-to-title">
+<h1>Contributing to Mastering EOS<a class="headerlink" href="#contributing-to-title" title="Permalink to this headline">¶</a></h1>
+<p>This manual is a living document. It is maintained by its authors, but students (you!) are encouraged to contribute to the guide. The manual is written by GVSU CIS students for GVSU CIS students.</p>
+<p>The easiest way to to contribute is by reporting an issue or requesting a section with our <a class="reference external" href="https://github.com/seanfisk/mastering-eos/issues">issue tracker</a>. One of the authors should respond to your issue and give feedback.</p>
+<p>The Mastering EOS manual is written using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a>, an excellent multi-target documentation generator. The documentation is written in the markup language <a class="reference external" href="http://latex-project.org/">reStructuredText</a>. The poster is written in <a class="reference external" href="http://latex-project.org/">LaTeX</a> using <a class="reference external" href="http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php">Beamer</a> and <a class="reference external" href="http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php">beamerposter</a>, although contribution to that is not necessarily as useful for obvious reasons. All of our tooling is written in <a class="reference external" href="http://python.org/">Python</a>. Although these tools may seem overwhelming, intimate familiarity with them is not necessary for contribution.</p>
+<p>The source code for Mastering EOS is <a class="reference external" href="https://github.com/seanfisk/mastering-eos">hosted on GitHub</a>. GitHub is a popular site for hosting code repositories using <a class="reference external" href="http://git-scm.com/">Git</a>, a popular version control system. If you are familiar with the GitHub contribution process, contributing to Mastering EOS is exactly the same.</p>
+<p>For those unfamiliar with <a class="reference external" href="http://git-scm.com/">Git</a> and <a class="reference external" href="https://github.com/">GitHub</a>, contributing to Mastering EOS may seem rather involved. However, by following the steps outlined, it should be rather straightforward. We request that you first give it a try on your own, but failing that, please don&#8217;t hesitate to contact the authors. We want your contributions!</p>
+<p>To contribute to Mastering EOS, follow these steps:</p>
+<ul class="simple">
+<li>Read <a class="reference external" href="https://guides.github.com/activities/contributing-to-open-source/#contributing">GitHub&#8217;s guide to Contributing to a Project</a>.</li>
+<li><a class="reference external" href="https://help.github.com/articles/set-up-git">Set Up Git</a> if you have not already done so.</li>
+<li><a class="reference external" href="https://help.github.com/articles/fork-a-repo">Fork</a> the Mastering EOS repository and make your changes.</li>
+<li>Create a <a class="reference external" href="https://help.github.com/articles/using-pull-requests">pull request</a> to the original repo containing your changes.</li>
+</ul>
+<p>An author should respond to your pull request, and with any luck, your changes should go live! We look forward to seeing your contributions!</p>
+<div class="section" id="writing-style">
+<h2>Writing Style<a class="headerlink" href="#writing-style" title="Permalink to this headline">¶</a></h2>
+<p>When writing technical documentation, it is important to follow a consistent writing style. Within this manual, we attempt to follow the <a class="reference external" href="https://wiki.openstack.org/wiki/Documentation/Conventions/Writing_style#Writing_style">OpenStack writing conventions</a>. Their documentation presents a great summary of how to write coherent technical documentation.</p>
+<p>Sphinx uses <a class="reference external" href="http://daringfireball.net/projects/smartypants/">SmartyPants</a> to transform quotes, dashes, and ellipses into typographically correct entities for HTML output. You can use straight quotes, straight apostrophes, and three dots &#8212; they will be transformed into the correct characters. For dashes, first read up on <a class="reference external" href="http://csswizardry.com/2010/01/the-three-types-of-dash/">the three types of dash</a>. The transformations are as follows: Hyphens stay as is, two hyphens will be transformed into an en dash, and three hyphens will be transformed into an em dash.</p>
+<p>Please also see the following links for writing technical documentation:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.acs.edu.au/info/environment/bio-science/technical-documentation.aspx">ACS Distance Education Guidelines for Technical Writing</a></li>
+<li><a class="reference external" href="http://www.novell.com/documentation/osauthoring/ex_osstyle/data/ex_osstyle.html">Novell Open Source Documentation Style Quick Start</a></li>
+<li><a class="reference external" href="http://bluebream.zope.org/doc/1.0/dev/writing.html">BlueBream Documentation Guidelines</a></li>
+<li>Description of <a class="reference external" href="http://en.wikipedia.org/wiki/Imperative_mood">Imperative Mood on Wikipedia</a></li>
+</ul>
 </div>
-<h2 id="C">C</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="user-level-sw/manual-install.html#index-4">CPPFLAGS</a>
-  </dt>
-
-  </dl></td>
-</tr></table>
-
-<h2 id="E">E</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt>
-    environment variable
-  </dt>
-
-      <dd><dl>
-        
-  <dt><a href="envvars.html#envvar-CPPFLAGS">CPPFLAGS</a>, <a href="user-level-sw/manual-install.html#index-4">[1]</a>
-  </dt>
-
-        
-  <dt><a href="envvars.html#envvar-INFOPATH">INFOPATH</a>, <a href="user-level-sw/manual-install.html#index-3">[1]</a>
-  </dt>
-
-        
-  <dt><a href="envvars.html#envvar-LDFLAGS">LDFLAGS</a>, <a href="user-level-sw/manual-install.html#index-5">[1]</a>
-  </dt>
-
-        
-  <dt><a href="envvars.html#envvar-LD_LIBRARY_PATH">LD_LIBRARY_PATH</a>, <a href="user-level-sw/manual-install.html#index-6">[1]</a>
-  </dt>
-
-        
-  <dt><a href="envvars.html#envvar-MANPATH">MANPATH</a>, <a href="user-level-sw/manual-install.html#index-2">[1]</a>
-  </dt>
-
-        
-  <dt><a href="envvars.html#envvar-PATH">PATH</a>, <a href="user-level-sw/manual-install.html#index-0">[1]</a>, <a href="user-level-sw/manual-install.html#index-1">[2]</a>
-  </dt>
-
-        
-  <dt><a href="remote-access/windows/file-transfer.html#index-0">Path</a>, <a href="remote-access/windows/file-transfer.html#index-1">[1]</a>, <a href="remote-access/windows/file-transfer.html#envvar-Path">[2]</a>
-  </dt>
-
-      </dl></dd>
-  </dl></td>
-</tr></table>
-
-<h2 id="I">I</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="user-level-sw/manual-install.html#index-3">INFOPATH</a>
-  </dt>
-
-  </dl></td>
-</tr></table>
-
-<h2 id="L">L</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="user-level-sw/manual-install.html#index-6">LD_LIBRARY_PATH</a>
-  </dt>
-
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="user-level-sw/manual-install.html#index-5">LDFLAGS</a>
-  </dt>
-
-  </dl></td>
-</tr></table>
-
-<h2 id="M">M</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="user-level-sw/manual-install.html#index-2">MANPATH</a>
-  </dt>
-
-  </dl></td>
-</tr></table>
-
-<h2 id="P">P</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="remote-access/windows/file-transfer.html#index-0">Path</a>, <a href="remote-access/windows/file-transfer.html#index-1">[1]</a>
-  </dt>
-
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="user-level-sw/manual-install.html#index-0">PATH</a>, <a href="user-level-sw/manual-install.html#index-1">[1]</a>
-  </dt>
-
-  </dl></td>
-</tr></table>
-
+</div>
 
 
           </div>
           
 <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="envvars.html" class="btn btn-neutral" title="Environment Variables"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -320,8 +215,7 @@
     
       &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
-      <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/512f96a">512f96a</a> built 2014-11-09 00:00:00 EST.<br />
+      <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.
     </p>
   </div>
 

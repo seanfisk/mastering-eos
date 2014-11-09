@@ -147,6 +147,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#native-toolkits">Native Toolkits</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../misc.html">Miscellaneous</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#kill-the-x-server">Kill the X Server</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Contributing to Mastering EOS</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="repo-setup.html">Repository Setup</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Pre-requisites</a></li>
@@ -271,7 +275,7 @@
 <p>Part of building the documentation is building the table of SSH fingerprints containing a fingerprint for each EOS machine. SSH is used to generate this table. Follow the directions in the following sections to correctly set up SSH to allow this.</p>
 <div class="section" id="shared-and-persistent-ssh-connections-optional">
 <h3>Shared and Persistent SSH Connections (optional)<a class="headerlink" href="#shared-and-persistent-ssh-connections-optional" title="Permalink to this headline">¶</a></h3>
-<p>In theory, you should never have to fully rebuild the manual. However, in practice, sometimes a full rebuild is necessary. With a full rebuild, you will have to wait while the SSH fingerprints table is rebuilt. Since this can take a long time, we recommend that you set up shared and persistent SSH connections as shown in <a class="reference internal" href="../remote-access/gnu-linux/advanced.html#gnu-linux-advanced-openssh"><em>Advanced OpenSSH</em></a>. These are known to dramatically decrease the build time if you have done a full rebuild within the time given to <tt class="docutils literal"><span class="pre">ControlPersist</span></tt>.</p>
+<p>In theory, you should never have to fully rebuild the manual. However, in practice, sometimes a full rebuild is necessary. With a full rebuild, you will have to wait while the SSH fingerprints table is rebuilt. Since this can take a long time, we recommend that you set up <a class="reference internal" href="../remote-access/gnu-linux/advanced.html#linux-ssh-shared"><em>Shared Connections</em></a> and <a class="reference internal" href="../remote-access/gnu-linux/advanced.html#linux-ssh-persistent"><em>Persistent Connections</em></a> as shown in <a class="reference internal" href="../remote-access/gnu-linux/advanced.html#linux-ssh-advanced"><em>Advanced OpenSSH</em></a>. These are known to dramatically decrease the build time if you have done a full rebuild within the time given to <tt class="docutils literal"><span class="pre">ControlPersist</span></tt>.</p>
 </div>
 <div class="section" id="inter-eos-ssh-trust">
 <h3>Inter-EOS SSH Trust<a class="headerlink" href="#inter-eos-ssh-trust" title="Permalink to this headline">¶</a></h3>
@@ -303,7 +307,7 @@
       &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/e056a9a">e056a9a</a> built 2014-10-30 19:25:19 EDT.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/512f96a">512f96a</a> built 2014-11-09 00:00:00 EST.<br />
     </p>
   </div>
 
