@@ -126,7 +126,7 @@ Glade_ is the official GUI designer tool for GTK+.
 Tk
 ===
 
-Tk_ is a relatively basic cross-platform GUI toolkit. Tk applications run on Windows, Mac OS X, and GNU/Linux. Tk and most of its bindings are free to use for both open-source and commercial applications. Tk is
+Tk_ is a relatively basic cross-platform GUI toolkit, and its applications run on Windows, Mac OS X, and GNU/Linux. Tk and most of its bindings are free to use for both open-source and commercial applications. Tk is a non-native toolkit, but does include the option to emulate the styles of certain platforms.
 
 Bindings
 --------
