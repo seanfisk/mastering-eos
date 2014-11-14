@@ -11,7 +11,7 @@ sphinx-build touches the output files and causes their modification time to
 change regardless of the need to write them. But Make uses modification times
 (not file hashes) to check for modifications. Therefore, using Make for the
 purpose of follow-up builds is pointless anyway because it will force a build.
-I'm not sure if this is a bug, an oversight, or both. I could be wrong too; who
+I'm not sure if this is a bug, an oversight, or both. I could be wrong too, who
 knows.
 """
 
@@ -108,9 +108,9 @@ def apply_sphinx(task_gen):
     # requested.
     intersect = requested_builders_set.intersection(FOLLOWUP_BUILDERS.keys())
     if intersect and not task_gen.env.MAKE:
-        raise waflib.Errors.WafError(
-            "Sphinx builder{0} {1} requested but 'make' program not found!"
-            .format(
+        raise waflib.Errors.WafError((
+            "Sphinx builder{0} {1} requested "
+            "but 'make' program not found!").format(
                 's' if len(intersect) > 1 else '',
                 ' and '.join("'{0}'".format(b) for b in intersect)))
 
@@ -158,13 +158,13 @@ def apply_sphinx(task_gen):
 
         out_dir_node = out_dir_parent_node.find_or_declare(sphinx_builder)
 
-        # Using a shared doctrees directory can cause race conditions and
-        # subsequent errors when the builds run in parallel. Set up a private
-        # doctrees directory to avoid this.
+        # Although it usually doesn't happen, we had trouble with race
+        # conditions using a shared doctrees directory. Set up a private
+        # doctrees directory to avoid race conditions.
         doctrees_node = (
             out_dir_node.find_or_declare('.doctrees')
-            # XXX: The epub builder spits out unknown mimetype warnings if we
-            # throw the doctree in its output directory.
+            # The epub builder spits out unknown mimetype warnings if we throw
+            # the doctree in its output directory.
             if requested_builder != 'epub'
             else out_dir_parent_node.find_or_declare('.epub-doctrees'))
 

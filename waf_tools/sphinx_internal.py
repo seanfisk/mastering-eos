@@ -141,6 +141,7 @@ You will see warnings; upgrade to {1} to get UTF-8 support.'''.format(
     _version_tuple_to_string(MAKEINFO_MIN_VERSION)))
 
 def configure(ctx):
+    ctx.find_program('sphinx-build', var='SPHINX_BUILD')
     if ctx.find_program('makeinfo', mandatory=False):
         ctx.warn_about_old_makeinfo()
     ctx.load('tex')
@@ -161,7 +162,9 @@ class sphinx_copy_file_task(waflib.Task.Task):
         shutil.copyfile(self.inputs[0].abspath(), self.outputs[0].abspath())
 
 class sphinx_build_task(waflib.Task.Task):
-    """Handle running of a Sphinx builder."""
+    """Handle run of sphinx-build."""
+
+    vars = ['SPHINX_BUILD']
 
     def uid(self):
         # Tasks are not allowed to have the same uid. The default uid is
@@ -182,13 +185,28 @@ class sphinx_build_task(waflib.Task.Task):
             return self.uid_
 
     def scan(self):
-        """Use Sphinx's internal environment to find the outdated dependencies.
-        """
+        """Use Sphinx's internal environment to find the outdated dependencies."""
+        # Set up the Sphinx application instance.
+        app = Sphinx(
+            srcdir=self.src_dir_node.abspath(),
+            confdir=self.src_dir_node.abspath(),
+            outdir=self.out_dir_node.abspath(),
+            doctreedir=self.doctrees_node.abspath(),
+            buildername=self.sphinx_builder,
+            warningiserror=self.warning_is_error,
+            confoverrides=(
+                {'nitpicky': True} if self.nitpicky
+                else None),
+            # Indicates the file where status messages should be printed.
+            # Typically sys.stdout or sys.stderr, but can be None to disable.
+            # Since builds can happen in parallel, don't output anything.
+            status=None,
+        )
+
         # Update dependencies dictionary by updating. From Sphinx
         # BuildEnvironment.update() docstring: "(Re-)read all files new or
         # changed since last update." Note that this only returns *doc names
         # that have been updated*.
-        app = self.sphinx_app
         summary, num_docs_reread, updated_doc_names_iterator = app.env.update(
             app.config,
             app.srcdir,
@@ -242,7 +260,42 @@ class sphinx_build_task(waflib.Task.Task):
         return (_sorted_nodes(dependency_nodes), [])
 
     def run(self):
-        self.sphinx_app.build()
+        # XXX: After creating a Sphinx application, running Sphinx *should* be
+        # this easy:
+        #
+        #     sphinx_app.build()
+        #
+        # However, building simultaneously using multiple instances of
+        # Application from the application API appears to be unsafe. We have
+        # seen multiple instances of 'duplicate label' errors that only seem to
+        # manifest in parallel builds. That sort of goes against one of the
+        # major points of Waf.
+        #
+        # Calling the 'sphinx-build' executable, on the other hand, seems fine
+        # to do in parallel. It's not the best situation, but it's the best
+        # we've got.
+        conf_node = self.inputs[0]
+        args = self.env.SPHINX_BUILD + [
+            '-b', self.sphinx_builder,
+            '-d', self.doctrees_node.abspath(),
+        ]
+        if self.quiet:
+            args.append('-q')
+        if self.nitpicky:
+            args.append('-n')
+        if self.warning_is_error:
+            args.append('-W')
+        # XXX: The Sphinx epub builder is buggy, and its brokenness causes it
+        # to output warnings about the search index. Build with a clean
+        # environment if we are building EPUB and warnings are errors to avoid
+        # this annoyance. It's a hack, but it's better than the task failing.
+        if self.warning_is_error and self.sphinx_builder == 'epub':
+            args.append('-E')
+        args += [
+            self.src_dir_node.abspath(),
+            self.out_dir_node.abspath(),
+        ]
+        ret = self.exec_command(args)
 
         # Add almost everything found in the output directory tree as an
         # output. Not elegant, but pragmatic.
@@ -265,10 +318,7 @@ class sphinx_build_task(waflib.Task.Task):
         self.generator.bld.raw_deps[self.uid()] = (
             [self.signature()] + self.outputs)
 
-        # Because this method calls Sphinx internal methods, it will raise
-        # exceptions if it fails. In this case, always indicate success if we
-        # got to here.
-        return 0
+        return ret
 
     def runnable_status(self):
         ret = super(sphinx_build_task, self).runnable_status()
@@ -434,9 +484,9 @@ def apply_sphinx(task_gen):
 
         out_dir_node = out_dir_parent_node.find_or_declare(sphinx_builder)
 
-        # Using a shared doctrees directory can cause race conditions and
+        # XXX: Using a shared doctrees directory can cause race conditions and
         # subsequent errors when the builds run in parallel. Set up a private
-        # doctrees directory to avoid this.
+        # doctrees directory for each builder to avoid this.
         doctrees_node = (
             out_dir_node.find_or_declare('.doctrees')
             # XXX: The epub builder spits out unknown mimetype warnings if we
@@ -453,34 +503,15 @@ def apply_sphinx(task_gen):
         # dependencies without re-reading all of the documents, which is
         # exactly what we're trying not do to.
         task = task_gen.create_task('sphinx_build', src=conf_node)
-        # Set up the Sphinx application instance. Although this would be a bit
-        # nicer to set up in the task's initializer, that's impossible because
-        # the application instance needs information not available at that time
-        # (like the source directory path).
-        task.sphinx_app = Sphinx(
-            srcdir=src_dir_node.abspath(),
-            confdir=src_dir_node.abspath(),
-            outdir=out_dir_node.abspath(),
-            doctreedir=doctrees_node.abspath(),
-            buildername=sphinx_builder,
-            warningiserror=warning_is_error,
-            confoverrides=({'nitpicky': True} if nitpicky else None),
-            # Indicates the file where status messages should be printed.
-            # Typically sys.stdout or sys.stderr, but can be None to disable.
-            # Since builds can happen in parallel, don't output anything.
-            status=None,
-            # XXX: The Sphinx epub builder is buggy, and its brokenness causes
-            # it to output warnings about the search index. Build with a clean
-            # environment if we are building EPUB and warnings are errors to
-            # avoid this annoyance. It's a hack, but it's better than the task
-            # failing.
-            freshenv=(sphinx_builder == 'epub' and warning_is_error),
-        )
         # Assign attributes necessary for task methods.
         task.requested_builder = requested_builder
         task.sphinx_builder = sphinx_builder
         task.src_dir_node = src_dir_node
         task.out_dir_node = out_dir_node
+        task.doctrees_node = doctrees_node
+        task.quiet = quiet
+        task.warning_is_error = warning_is_error
+        task.nitpicky = nitpicky
 
         # Set the task order if that was requested.
         for attr in ['after', 'before']:
