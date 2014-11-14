@@ -451,6 +451,7 @@ rst_epilog = '''
 .. _report an issue:
 .. _issue tracker: {url}/issues
 .. _ExpanDrive: http://www.expandrive.com/expandrive
+.. _X.Org: http://www.x.org/
 '''.format(title=project, url=_github_url)
 
 # The default highlight language is Python; switch it to Bash.

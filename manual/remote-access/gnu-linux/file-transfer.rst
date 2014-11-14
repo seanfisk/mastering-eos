@@ -36,6 +36,8 @@ This guide only covers GNOME and KDE. However, many GNU/Linux file managers are 
 .. |ssh-keys| replace:: :ref:`linux-ssh-keys`
 .. include:: ../common/openssh/scp.rst
 
+.. include:: ../common/rsync.rst
+
 .. include:: ../common/sshfs/intro.rst
 
 Installation

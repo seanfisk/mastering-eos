@@ -1,6 +1,6 @@
-=====
- SSH
-=====
+====================
+ Shell Access (SSH)
+====================
 
 The most popular SSH client for Windows is called PuTTY_. It can be installed by visiting the `PuTTY download page`_. We recommend installing via the Windows installer, labeled *A Windows installer for everything except PuTTYtel*.
 
@@ -104,3 +104,5 @@ Restart PuTTY, load your session, and navigate back to the :guilabel:`Tunnels` s
 +-----------+-------------------+
 
 Click :guilabel:`Add` and :guilabel:`Open`, then visit http://localhost:5678/ in your local web browser. The CIS home page should appear!
+
+For a guide to using PuTTY and SSH as a proxy for *all* your web traffic, check out `this TechRepublic article <http://www.techrepublic.com/blog/it-security/use-putty-as-a-secure-proxy-on-windows/>`_.
