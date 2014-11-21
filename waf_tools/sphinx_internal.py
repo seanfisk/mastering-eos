@@ -19,6 +19,9 @@ before creating the task (creating potentially incorrect results) or caching
 the results of the scan (which would result in concurrency control, and be ugly
 and error-prone).
 
+TODO: We don't currently call makeindex as the Sphinx-generated LaTeX Makefile
+does. This needs to be added.
+
 Hans-Martin von Gaudecker, 2012
 Sean Fisk, 2014
 
