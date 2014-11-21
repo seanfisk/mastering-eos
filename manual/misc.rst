@@ -32,3 +32,8 @@ dirs
 ----
 
 ``dirs`` allows you to see what directories you have stored on the stack. The far left directory is the most recently saved. Another way to view the directory from most recent to least recent is by using the commmand ``dirs -v``.
+
+Uptime
+======
+
+The command ``uptime`` will display the following information in one line. The current time, the amount of time the system has been running, the number of users currently logged in, and system load averages for the past 1, 5, and 15 minutes.
