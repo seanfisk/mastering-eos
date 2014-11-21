@@ -9,7 +9,9 @@ For building the documents, we use Waf_ as a build system. Waf is similar to bui
 
     ./waf configure --dev-mode
 
-Waf will check that all the requirements are met before preparing the build. If any are not met, please re-check your steps in :ref:`contributing-prereqs` or `report an issue`_. The ``--dev-mode`` disables auto-update of operations that require SSH. Since the deployment of |title| is automated, there is no reason for a contributor to leave auto-update on. A shortcut for this command is::
+.. important:: Waf may warn about a missing ``makeglossaries`` tool. This is safe to ignore.
+
+Waf will check that all the requirements are met before preparing the build. If any besides ``makeglossaries`` are not met, please re-check your steps in :ref:`contributing-prereqs` or `report an issue`_. The ``--dev-mode`` disables auto-update of operations that require SSH. Since the deployment of |title| is automated, there is no reason for a contributor to leave auto-update on. A shortcut for this command is::
 
     ./waf configure -d
 
