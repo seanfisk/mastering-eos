@@ -19,7 +19,7 @@ This is annoying and unnecessary. By using the ``ProxyCommand`` keyword in our c
     Port 43022
     ProxyCommand ssh eos01 -W %h:%p
 
-.. We use the standard rST syntax `Section`_ instead of :ref:`Section` here because we *want* to link only within this document. Otherwise Sphinx yells at us because the file is included multiple times and the label is therefore duplicated. See here <http://sphinx-doc.org/markup/inline.html#role-ref>.
+.. We use the standard rST syntax `My Section`_ instead of :ref:`My Section` here because we *want* to link only within this document. Otherwise Sphinx yells at us because the file is included multiple times and the label is therefore duplicated. See here <http://sphinx-doc.org/markup/inline.html#role-ref>.
 
 The ``-W`` flag allows us to hop through the first host to the host and port specified by the variables (``okami:43022``). Note that the use of ``eos01`` here requires presence of the aliases set up in `Hostname Aliases`_.
 

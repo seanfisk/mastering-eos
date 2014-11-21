@@ -19,7 +19,7 @@ Click :guilabel:`Connect` to begin your VNC session with EOS. To connect in the 
 X Forwarding
 ============
 
-Mac OS X has a high-quality X server called XQuartz_. It is based on `X.Org`_, and is partially maintained by Apple. Visit the XQuartz website to download and install the latest release.
+Mac OS X has a high-quality X server called XQuartz_. It is based on X.Org_, and is partially maintained by Apple. Visit the XQuartz website to download and install the latest release.
 
 .. _XQuartz: http://xquartz.macosforge.org/
 

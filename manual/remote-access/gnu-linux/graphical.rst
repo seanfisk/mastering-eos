@@ -24,7 +24,7 @@ To configure Remmina for VNC with automatic SSH tunneling, open Remmina and sele
 X Forwarding
 ============
 
-Almost all GNU/Linux distributions come pre-installed with a fully functional X server (typically `X.Org`_), so no installation is needed.
+Almost all GNU/Linux distributions come pre-installed with a fully functional X server (typically X.Org_), so no installation is needed.
 
 .. include:: ../common/openssh/x-forwarding.rst
 
