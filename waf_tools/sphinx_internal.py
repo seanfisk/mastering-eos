@@ -105,6 +105,10 @@ class PdflatexBuilder(object):
         latex_task.set_run_after(copy_task)
         # Add manual dependencies.
         latex_task.dep_nodes = dep_nodes
+        # Uncomment this to enable full LaTeX output. We've considered making
+        # this an option as with the regular TeX builder, but we haven't needed
+        # it that much yet.
+        #latex_task.env.PROMPT_LATEX = 1
         return [copy_task, latex_task]
 
 FOLLOWUP_BUILDERS = {
