@@ -29,14 +29,15 @@ In general, please be respectful and intelligent. If you would like to use our m
 .. _Creative Commons BY-NC-SA 4.0 License: http://creativecommons.org/licenses/by-nc-sa/4.0/
 .. _Apache 2.0 License: http://www.apache.org/licenses/LICENSE-2.0
 
-History
-=======
+..
+   History
+   =======
 
-|title| started in Winter 2013 when grad student Sean Fisk spotted two duplicate posters hung in the Arch Lab. It was then that he had the idea to compile a poster of little-known advanced commands to replace one of the duplicate posters. Sean approached Ira Woodring, the EOS lab system administrator, with the idea. Ira approved, and the two began working on poster, originally titled *EOS Cheatsheet*.
+   |title| started in Winter 2013 when grad student Sean Fisk spotted two duplicate posters hung in the Arch Lab. It was then that he had the idea to compile a poster of little-known advanced commands to replace one of the duplicate posters. Sean approached Ira Woodring, the EOS lab system administrator, with the idea. Ira approved, and the two began working on poster, originally titled *EOS Cheatsheet*.
 
-They worked on the poster off and on for the rest of 2013. In Winter 2014, the number of ideas for the poster was beginning to overwhelm the available real estate, and the two had the idea to create an online manual to which the excess ideas could spill over. The manual was created using Sphinx, a piece of software Sean had begun using at the time. Ira then took the idea farther and added a few new sections explaining lab prodecures, and it was decided to turn the documentation into a full manual for the EOS system. The entire project was then renamed to *Mastering EOS*.
+   They worked on the poster off and on for the rest of 2013. In Winter 2014, the number of ideas for the poster was beginning to overwhelm the available real estate, and the two had the idea to create an online manual to which the excess ideas could spill over. The manual was created using Sphinx, a piece of software Sean had begun using at the time. Ira then took the idea farther and added a few new sections explaining lab prodecures, and it was decided to turn the documentation into a full manual for the EOS system. The entire project was then renamed to *Mastering EOS*.
 
-The poster was finished and hung at the end of the Winter 2014 semester, and focus moved to developing the manual. Ira and Sean continued work on the manual through Summer 2014. In Fall 2014, Mick and April Lautenbach joined the team to maintain the manual and work on a poster of command-line basics for the EOS Lab.
+   The poster was finished and hung at the end of the Winter 2014 semester, and focus moved to developing the manual. Ira and Sean continued work on the manual through Summer 2014. In Fall 2014, Mick and April Lautenbach joined the team to maintain the manual and work on a poster of command-line basics for the EOS Lab.
 
 Special Thanks
 ==============
