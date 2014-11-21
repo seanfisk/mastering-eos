@@ -125,7 +125,7 @@ def configure(ctx):
     ctx.env.DEVELOPER_MODE = ctx.options.dev_mode
     ctx.msg('Developer mode',
             'enabled' if ctx.env.DEVELOPER_MODE else 'disabled',
-             'YELLOW' if ctx.env.DEVELOPER_MODE else 'GREEN')
+             color=('YELLOW' if ctx.env.DEVELOPER_MODE else 'GREEN'))
 
 def build(ctx):
     # This variable is for recording build nodes placed in the source directory
