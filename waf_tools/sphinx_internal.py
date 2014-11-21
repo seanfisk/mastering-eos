@@ -5,7 +5,7 @@
 This version works really well with with Waf at the cost of staggering
 complexity.
 
-Tested with Waf 1.8.5 and Sphinx 1.2.3.
+Tested with Waf 1.8.4 and Sphinx 1.2.3.
 
 Based on
 - https://github.com/hmgaudecker/econ-project-templates/blob/python/.mywaflib/waflib/extras/sphinx_build.py
