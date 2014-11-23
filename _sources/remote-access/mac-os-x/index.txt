@@ -6,7 +6,7 @@
    :maxdepth: 2
 
    ssh
-   vnc
+   graphical
    file-transfer
    advanced
    alternatives

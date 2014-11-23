@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>SSH &mdash; Mastering EOS</title>
+  <title>Shell Access (SSH) &mdash; Mastering EOS</title>
   
 
   
@@ -30,9 +30,11 @@
   
 
   
+        <link rel="author" title="About these documents"
+              href="../../about.html"/>
     <link rel="top" title="Mastering EOS" href="../../index.html"/>
         <link rel="up" title="Mac OS X" href="index.html"/>
-        <link rel="next" title="VNC" href="vnc.html"/>
+        <link rel="next" title="Graphical Access (VNC/X11)" href="graphical.html"/>
         <link rel="prev" title="Mac OS X" href="index.html"/>
  
   <script>
@@ -149,6 +151,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../misc.html">Miscellaneous</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../misc.html#kill-the-x-server">Kill the X Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../misc.html#directory-navigation">Directory Navigation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing to Mastering EOS</a><ul>
@@ -161,6 +164,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../envvars.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About This Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../about.html#people">People</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about.html#licensing">Licensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about.html#special-thanks">Special Thanks</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -188,7 +197,7 @@
       
           <li><a href="index.html">Mac OS X</a> &raquo;</li>
       
-    <li>SSH</li>
+    <li>Shell Access (SSH)</li>
       <li class="wy-breadcrumbs-aside">
         
           <a href="../../_sources/remote-access/mac-os-x/ssh.txt" rel="nofollow"> View page source</a>
@@ -199,8 +208,8 @@
 </div>
           <div role="main">
             
-  <div class="section" id="ssh">
-<h1>SSH<a class="headerlink" href="#ssh" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="shell-access-ssh">
+<h1>Shell Access (SSH)<a class="headerlink" href="#shell-access-ssh" title="Permalink to this headline">¶</a></h1>
 <p>Mac OS X comes preinstalled with OpenSSH, the most popular implementation of the SSH protocol. The client can be run from the command-line and is simply called <tt class="docutils literal"><span class="pre">ssh</span></tt>.</p>
 <div class="section" id="logging-in">
 <h2>Logging in<a class="headerlink" href="#logging-in" title="Permalink to this headline">¶</a></h2>
@@ -399,7 +408,7 @@ Are you sure you want to continue connecting (yes/no)?
 <td><tt class="docutils literal"><span class="pre">6e:1c:31:0b:37:12:56:32:e4:0d:7c:52:9f:3f:3d:ef</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos23</td>
-<td><tt class="docutils literal"><span class="pre">03:d0:ec:be:74:75:c7:b9:e6:b3:bc:b1:b2:db:10:cf</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-odd"><td>eos24</td>
 <td><tt class="docutils literal"><span class="pre">4c:b4:c5:36:ee:f2:5c:87:55:4f:a6:28:7b:80:c2:af</span></tt></td>
@@ -411,7 +420,7 @@ Are you sure you want to continue connecting (yes/no)?
 <td><tt class="docutils literal"><span class="pre">47:07:b9:d6:c5:a6:48:f7:7c:b5:3c:9a:48:d8:a0:c6</span></tt></td>
 </tr>
 <tr class="row-even"><td>eos27</td>
-<td>down for maintenance</td>
+<td><tt class="docutils literal"><span class="pre">89:7a:06:61:87:b5:8e:df:9e:93:d2:26:a0:a4:b5:19</span></tt></td>
 </tr>
 <tr class="row-odd"><td>eos28</td>
 <td><tt class="docutils literal"><span class="pre">74:e2:00:99:ce:b1:ca:df:70:b5:6d:64:99:e4:1f:eb</span></tt></td>
@@ -508,7 +517,7 @@ touch ~/.ssh/config
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="vnc.html" class="btn btn-neutral float-right" title="VNC">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="graphical.html" class="btn btn-neutral float-right" title="Graphical Access (VNC/X11)">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="Mac OS X"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -524,7 +533,7 @@ touch ~/.ssh/config
       &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/512f96a">512f96a</a> built 2014-11-09 00:00:00 EST.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/ee8113e">ee8113e</a> built 2014-11-23 00:00:02 EST.<br />
     </p>
   </div>
 

@@ -27,6 +27,7 @@
    misc
    contributing/index
    envvars
+   about
 
 .. only:: build_html
 

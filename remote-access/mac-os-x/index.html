@@ -30,9 +30,11 @@
   
 
   
+        <link rel="author" title="About these documents"
+              href="../../about.html"/>
     <link rel="top" title="Mastering EOS" href="../../index.html"/>
         <link rel="up" title="Remote Access (SSH/VNC)" href="../index.html"/>
-        <link rel="next" title="SSH" href="ssh.html"/>
+        <link rel="next" title="Shell Access (SSH)" href="ssh.html"/>
         <link rel="prev" title="Alternative Clients" href="../windows/alternatives.html"/>
  
   <script>
@@ -149,6 +151,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../misc.html">Miscellaneous</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../misc.html#kill-the-x-server">Kill the X Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../misc.html#directory-navigation">Directory Navigation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing to Mastering EOS</a><ul>
@@ -161,6 +164,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../envvars.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About This Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../about.html#people">People</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about.html#licensing">Licensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about.html#special-thanks">Special Thanks</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -201,17 +210,22 @@
 <h1>Mac OS X<a class="headerlink" href="#mac-os-x" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="ssh.html">SSH</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="ssh.html">Shell Access (SSH)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ssh.html#logging-in">Logging in</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ssh.html#checking-host-fingerprints">Checking Host Fingerprints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ssh.html#password-less-logins-ssh-keys">Password-less Logins (SSH keys)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ssh.html#tunnelling-port-forwarding">Tunnelling / Port Forwarding</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="vnc.html">VNC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphical.html">Graphical Access (VNC/X11)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graphical.html#vnc">VNC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphical.html#x-forwarding">X Forwarding</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="file-transfer.html">File Transfer</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="file-transfer.html#graphical">Graphical</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file-transfer.html#command-line-scp">Command Line (SCP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file-transfer.html#rsync">rsync</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file-transfer.html#sshfs">SSHFS</a></li>
 </ul>
 </li>
@@ -236,7 +250,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ssh.html" class="btn btn-neutral float-right" title="SSH">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ssh.html" class="btn btn-neutral float-right" title="Shell Access (SSH)">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../windows/alternatives.html" class="btn btn-neutral" title="Alternative Clients"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -252,7 +266,7 @@
       &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/512f96a">512f96a</a> built 2014-11-09 00:00:00 EST.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/ee8113e">ee8113e</a> built 2014-11-23 00:00:02 EST.<br />
     </p>
   </div>
 

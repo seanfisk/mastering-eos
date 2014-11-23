@@ -30,6 +30,8 @@
   
 
   
+        <link rel="author" title="About these documents"
+              href="../about.html"/>
     <link rel="top" title="Mastering EOS" href="../index.html"/>
         <link rel="next" title="Inter-EOS SSH" href="inter-eos.html"/>
         <link rel="prev" title="Command Line Basics" href="../basics.html"/>
@@ -148,6 +150,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../misc.html">Miscellaneous</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../misc.html#kill-the-x-server">Kill the X Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#directory-navigation">Directory Navigation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to Mastering EOS</a><ul>
@@ -160,6 +163,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../envvars.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About This Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../about.html#people">People</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about.html#licensing">Licensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about.html#special-thanks">Special Thanks</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -197,10 +206,11 @@
   <div class="section" id="remote-access-ssh-vnc">
 <span id="remote-access"></span><h1>Remote Access (SSH/VNC)<a class="headerlink" href="#remote-access-ssh-vnc" title="Permalink to this headline">¶</a></h1>
 <p>When not sitting at a physical machine in the EOS, Arch, or Datacomm labs, EOS can be accessed from home using a protocol called Secure Shell (SSH). SSH gives you a prompt open to <a class="reference internal" href="../shells.html#bash"><em>Bash</em></a>, the default shell on EOS. From this shell, you can run commands as you would inside a normal terminal emulator in an EOS desktop session. The commands will be run on the EOS machine to which you have connected.</p>
-<p>SSH is a command-line-only technology. However, graphical remote access is available through a protocol called Virtual Network Computing (VNC). VNC allows access to a graphical desktop as if sitting at an EOS machine. Because the VNC protocol has no security of its own, our lab setup requires tunnelling VNC traffic through the SSH protocol. Each respective guide describes how to do this, but remember that you will first need to successfully set up SSH before attempting to use VNC.</p>
+<p>SSH is a command-line-only technology. However, a graphical remote desktop session is available through a protocol called Virtual Network Computing (VNC). VNC allows access to a graphical desktop as if sitting at an EOS machine. Because the VNC protocol has no security of its own, our lab setup requires tunnelling VNC traffic through the SSH protocol. Each respective guide describes how to do this, but remember that you will first need to successfully set up SSH before attempting to use VNC.</p>
+<p>An alternative to starting an entire desktop session is to run individual graphical applications from an SSH session using the <a class="reference external" href="http://en.wikipedia.org/wiki/X_Window_System">X Window System</a>. This takes advantage of X&#8217;s <a class="reference external" href="http://en.wikipedia.org/wiki/X_Window_System#Purpose_and_abilities">network transparency feature</a> and SSH&#8217;s X forwarding capabilities to render on your local machine applications running on an EOS machine.</p>
 <p>In addition to command-line and graphical access, you will likely need to transfer files between your local machine and EOS. This can be accomplished using the protocols Secure Copy (SCP) and Secure File Transfer Protocol (SFTP). Using these protocols, files can be transferred to and from EOS as well as synced between EOS and your local machine. In addition, the use of software <a class="reference external" href="http://en.wikipedia.org/wiki/Filesystem_in_Userspace">FUSE</a> and <a class="reference external" href="http://en.wikipedia.org/wiki/SSHFS">SSHFS</a> allows you to treat files on EOS as if they were located on your local machine.</p>
 <p>The hostnames for the EOS machines are organized as follows: <tt class="samp docutils literal"><span class="pre">eos</span><em><span class="pre">XX</span></em><span class="pre">.cis.gvsu.edu</span></tt> where <tt class="samp docutils literal"><em><span class="pre">XX</span></em></tt> is 01 through 32, <tt class="samp docutils literal"><span class="pre">arch</span><em><span class="pre">XX</span></em><span class="pre">.cis.gvsu.edu</span></tt> where <tt class="samp docutils literal"><em><span class="pre">XX</span></em></tt> is 01 through 10, and <tt class="samp docutils literal"><span class="pre">dc</span><em><span class="pre">XX</span></em><span class="pre">.cis.gvsu.edu</span></tt> where <tt class="samp docutils literal"><em><span class="pre">XX</span></em></tt> is 01 through 24. Use these names to connect to a specific EOS machine.</p>
-<p>Your SSH and VNC clients of choice depend on your machine&#8217;s operating system.</p>
+<p>Your SSH client, VNC client, and X server of choice depend on your machine&#8217;s operating system.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="inter-eos.html">Inter-EOS SSH</a><ul>
@@ -208,23 +218,23 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="windows/index.html">Microsoft Windows</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="windows/ssh.html">SSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windows/vnc.html">VNC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows/ssh.html">Shell Access (SSH)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows/graphical.html">Graphical Access (VNC/X11)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="windows/file-transfer.html">File Transfer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="windows/alternatives.html">Alternative Clients</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="mac-os-x/index.html">Mac OS X</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="mac-os-x/ssh.html">SSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mac-os-x/vnc.html">VNC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mac-os-x/ssh.html">Shell Access (SSH)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mac-os-x/graphical.html">Graphical Access (VNC/X11)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mac-os-x/file-transfer.html">File Transfer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mac-os-x/advanced.html">Advanced OpenSSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mac-os-x/alternatives.html">Alternative Clients</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="gnu-linux/index.html">GNU/Linux</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="gnu-linux/ssh.html">SSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gnu-linux/vnc.html">VNC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gnu-linux/ssh.html">Shell Access (SSH)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gnu-linux/graphical.html">Graphical Access (VNC/X11)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gnu-linux/file-transfer.html">File Transfer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gnu-linux/advanced.html">Advanced OpenSSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gnu-linux/alternatives.html">Alternative Clients</a></li>
@@ -257,7 +267,7 @@
       &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/512f96a">512f96a</a> built 2014-11-09 00:00:00 EST.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/ee8113e">ee8113e</a> built 2014-11-23 00:00:02 EST.<br />
     </p>
   </div>
 

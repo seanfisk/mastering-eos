@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>File Transfer &mdash; Mastering EOS</title>
+  <title>Graphical Access (VNC/X11) &mdash; Mastering EOS</title>
   
 
   
@@ -33,9 +33,9 @@
         <link rel="author" title="About these documents"
               href="../../about.html"/>
     <link rel="top" title="Mastering EOS" href="../../index.html"/>
-        <link rel="up" title="Microsoft Windows" href="index.html"/>
-        <link rel="next" title="Alternative Clients" href="alternatives.html"/>
-        <link rel="prev" title="Graphical Access (VNC/X11)" href="graphical.html"/>
+        <link rel="up" title="Mac OS X" href="index.html"/>
+        <link rel="next" title="File Transfer" href="file-transfer.html"/>
+        <link rel="prev" title="Shell Access (SSH)" href="ssh.html"/>
  
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -93,8 +93,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../basics.html">Command Line Basics</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Remote Access (SSH/VNC)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../inter-eos.html">Inter-EOS SSH</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">Microsoft Windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../mac-os-x/index.html">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../windows/index.html">Microsoft Windows</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Mac OS X</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gnu-linux/index.html">GNU/Linux</a></li>
 </ul>
 </li>
@@ -195,12 +195,12 @@
       
           <li><a href="../index.html">Remote Access (SSH/VNC)</a> &raquo;</li>
       
-          <li><a href="index.html">Microsoft Windows</a> &raquo;</li>
+          <li><a href="index.html">Mac OS X</a> &raquo;</li>
       
-    <li>File Transfer</li>
+    <li>Graphical Access (VNC/X11)</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../../_sources/remote-access/windows/file-transfer.txt" rel="nofollow"> View page source</a>
+          <a href="../../_sources/remote-access/mac-os-x/graphical.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -208,62 +208,137 @@
 </div>
           <div role="main">
             
-  <div class="section" id="file-transfer">
-<h1>File Transfer<a class="headerlink" href="#file-transfer" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="graphical">
-<h2>Graphical<a class="headerlink" href="#graphical" title="Permalink to this headline">¶</a></h2>
-<p>The recommend graphical client for file transfer on Windows is <a class="reference external" href="http://winscp.net/eng/index.php">WinSCP</a>, which can be found on the <a class="reference external" href="http://winscp.net/eng/download.php">WinSCP downloads page</a>. We recommend downloading the latest stable installer, labeled <em>Installation package</em>. It should be near the top.</p>
-<p>After downloading, run the installer. The <em>Typical installation</em> is usually fine, but feel free to customize the installation options. You can choose either the <em>Commander</em> or <em>Explorer</em> interface, but keep in mind that most people use the <em>Commander</em> interface. Don&#8217;t forget to disable the sneaky Google Chrome installer included with this installer.</p>
-<p>After the installer copies its files, it may detect your sessions from PuTTY. If so, click <em class="guilabel">OK</em> to import them. Select the sessions you&#8217;d like to import and click <em class="guilabel">OK</em> again. This is the single easiest way to start quickly with WinSCP.</p>
-<p>At the end of the installer, leave the box labeled <em class="guilabel">Launch WinSCP</em> checked. You can choose to open the <em>Getting started</em> page as well, although there is really no need to do so.</p>
-<p>If you didn&#8217;t choose to import your sites from PuTTY in the installer, you can also import them from the WinSCP Login screen by clicking <em class="menuselection">Tools ‣ Import Sites...</em>, selecting the sites, and clicking <em class="guilabel">OK</em>.</p>
-<p>There is really no reason not to import your sites from PuTTY if you already have them configured (you should). However, if you&#8217;d like to create a custom site, click <em class="guilabel">New Site</em>. Choose SFTP as the protocol, and enter in the EOS machine for <em class="guilabel">Host name</em> as well as your username. For authentication, you can use a password or SSH keys. To select a key, click <em class="guilabel">Advanced...</em>, then <em class="menuselection">SSH ‣ Authentication ‣ Authentication parameters ‣ Private key file</em> to select the private key file. Click <em class="guilabel">Save</em> to save your site.</p>
-<div class="admonition tip">
-<p class="first admonition-title">Tip</p>
-<p class="last">You can create a desktop shortcut for your site by right-clicking your site in the WinSCP Login screen, then clicking <em class="guilabel">Desktop Icon</em>. This allows you to open your site directly without visiting the WinSCP Login screen. Creating a &#8216;Send To&#8217; shortcut for Windows Explorer is similarly useful.</p>
-</div>
-<div class="section" id="automatic-synchronization">
-<h3>Automatic Synchronization<a class="headerlink" href="#automatic-synchronization" title="Permalink to this headline">¶</a></h3>
-<p>Automatic synchronization of local to remote directories is a very useful advanced feature of WinSCP. It is especially useful when developing a website on EOS. This partially makes up for the lack of a maintained free Windows SSHFS or rsync implementation.</p>
-<p>To start using it, click <em class="menuselection">Commands ‣ Keep Remote Directory up to Date...</em>. You can get more information about this task and its use in the <a class="reference external" href="http://winscp.net/eng/docs/task_keep_up_to_date">WinSCP Keep Remote Directory up to Date documentation</a>.</p>
-<p>For more information on using WinSCP, consult the excellent <a class="reference external" href="http://winscp.net/eng/docs/start">WinSCP Documentation</a>.</p>
-</div>
-</div>
-<div class="section" id="command-line-scp">
-<h2>Command Line (SCP)<a class="headerlink" href="#command-line-scp" title="Permalink to this headline">¶</a></h2>
-<p>Files can be transferred on the command line using a utility called SCP, implemented in PuTTY through a command called <tt class="docutils literal"><span class="pre">pscp</span></tt>. Because <tt class="docutils literal"><span class="pre">pscp</span></tt> uses PuTTY for authentication, if you have set up <a class="reference internal" href="ssh.html#win-ssh-keys"><em>Password-less Logins (SSH keys)</em></a>, you will not have to type any passwords. SCP stands for <em>Secure Copy</em> and works very similar to the GNU/Linux <tt class="docutils literal"><span class="pre">cp</span></tt> command, except that it can also transfer files across the network. Make sure you are familiar with the operation of <tt class="docutils literal"><span class="pre">cp</span></tt> before using SCP.</p>
-<p>PuTTY&#8217;s commands are not added to the Windows <span class="target" id="index-0"></span><a class="reference internal" href="../../envvars.html#envvar-Path"><tt class="xref std std-envvar docutils literal"><span class="pre">Path</span></tt></a> by default. To add them to the <span class="target" id="index-1"></span><a class="reference internal" href="../../envvars.html#envvar-Path"><tt class="xref std std-envvar docutils literal"><span class="pre">Path</span></tt></a>, open Windows PowerShell from the Start Menu and run the following command. If you installed PuTTY to a non-default location, you will need to change it in the command below.</p>
-<div class="highlight-powershell"><div class="highlight"><pre>$puttyInstallPath = &#39;C:\Program Files (x86)\PuTTY&#39;; [Environment]::SetEnvironmentVariable(&#39;Path&#39;, [Environment]::GetEnvironmentVariable(&#39;Path&#39;, &#39;User&#39;) + &#39;;&#39; + $puttyInstallPath, &#39;User&#39;)
+  <div class="section" id="graphical-access-vnc-x11">
+<h1>Graphical Access (VNC/X11)<a class="headerlink" href="#graphical-access-vnc-x11" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="vnc">
+<h2>VNC<a class="headerlink" href="#vnc" title="Permalink to this headline">¶</a></h2>
+<p>First, we need to create a tunnel in order to forward VNC through our SSH connection. The remote port to which we must connect depends on the desired resolution of the remote desktop. Select a desired resolution from the following table, and note the port to which it corresponds.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="23%" />
+<col width="42%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Display</th>
+<th class="head">Port</th>
+<th class="head">Geometry</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>5900</td>
+<td>1280x1024</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>5901</td>
+<td>1024x768</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>5902</td>
+<td>800x600</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>5903</td>
+<td>640x480</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>5904</td>
+<td>1440x900</td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td>5905</td>
+<td>1280x800</td>
+</tr>
+<tr class="row-even"><td>6</td>
+<td>5906</td>
+<td>1152x864</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>5907</td>
+<td>1680x1050</td>
+</tr>
+<tr class="row-even"><td>8</td>
+<td>5908</td>
+<td>1920x1200</td>
+</tr>
+<tr class="row-odd"><td>9</td>
+<td>5909</td>
+<td>1400x1050</td>
+</tr>
+<tr class="row-even"><td>10</td>
+<td>5910</td>
+<td>1440x1000</td>
+</tr>
+<tr class="row-odd"><td>11</td>
+<td>5911</td>
+<td>1024x600</td>
+</tr>
+<tr class="row-even"><td>12</td>
+<td>5912</td>
+<td>1600x900</td>
+</tr>
+<tr class="row-odd"><td>13</td>
+<td>5913</td>
+<td>1920x1080</td>
+</tr>
+<tr class="row-even"><td>14</td>
+<td>5914</td>
+<td>1360x768</td>
+</tr>
+</tbody>
+</table>
+<p>In the following instructions, replace <tt class="docutils literal"><span class="pre">REMOTE_PORT</span></tt> with the port that you have selected.</p>
+<p>To create the tunnel, use the following command line:</p>
+<div class="highlight-bash"><div class="highlight"><pre>ssh -L 5900:eosXX.cis.gvsu.edu:REMOTE_PORT smithj@eosXX.cis.gvsu.edu
 </pre></div>
 </div>
-<p>Restart PowerShell or your terminal emulator after running this command to allow your updates to the <span class="target" id="index-2"></span><a class="reference internal" href="../../envvars.html#envvar-Path"><tt class="xref std std-envvar docutils literal"><span class="pre">Path</span></tt></a> to take effect. The <tt class="docutils literal"><span class="pre">pscp</span></tt> utility may now be used from PowerShell by simply typing <tt class="docutils literal"><span class="pre">pscp</span></tt>.</p>
-<p>The following examples showcase the typical use of <tt class="docutils literal"><span class="pre">pscp</span></tt>. Each file can be prefixed with a PuTTY session name or user/host, which tells <tt class="docutils literal"><span class="pre">pscp</span></tt> where it is or should be located. The session name &#8220;EOS&#8221; is used in these examples; change it to match your PuTTY session name if it is different. Files with no prefix are assumed to be on the local machine. Paths on the remote machine start at your home directory, so there is typically no need to include <tt class="file docutils literal"><span class="pre">/home/smithj</span></tt> in the path. Here are some examples of use of <tt class="docutils literal"><span class="pre">pscp</span></tt>:</p>
-<div class="highlight-powershell"><div class="highlight"><pre># Typical upload
-pscp classes\cis162\hw1.txt EOS:classes/cis162
-# Typical download
-pscp EOS:classes/cis162/hw2.txt classes\cis162
-# Upload a directory
-pscp -r projects EOS:classes/cis163
-# User/host instead of EOS session name (will likely require password)
-pscp smithj@eos01.cis.gvsu.edu:classes/cis162/hw3.txt classes/cis162
+<p>Or the following configuration file:</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="nb">Host</span> eosvnc
+<span class="nb">HostName</span> eosXX.cis.gvsu.edu
+<span class="nb">User</span> smithj
+<span class="nb">LocalForward</span> <span class="m">5900</span> eosXX.cis.gvsu.edu:REMOTE_PORT
 </pre></div>
 </div>
+<p>If you used the configuration file, run the following to create the tunnel:</p>
+<div class="highlight-bash"><div class="highlight"><pre>ssh eosvnc
+</pre></div>
+</div>
+<p>You are now ready to tunnel your VNC session.</p>
+<p>The recommended VNC client for OS X is <a class="reference external" href="http://sourceforge.net/projects/chicken/">Chicken</a>, which is free and open-source software. Visit the website to download, install as you would any other Mac OS X application, and open.</p>
+<p>You will be prompted to create a new server. If not prompted, click <em class="menuselection">Connection ‣ Open Connection...</em> from the menu bar. Double click &#8220;New Server&#8221; in the list on the left and rename it to &#8220;EOS&#8221;, or create a new session with the <em class="guilabel">+</em> button if none exist. Leave the <em class="guilabel">Host</em> field as <tt class="docutils literal"><span class="pre">localhost</span></tt> or fill it in if missing. Leave the <em class="guilabel">Display or port</em> field at 0 or fill it in if missing.</p>
+<p>Chicken has had some problems with the ZRLE encoding with our server. As this can cause a premature end to your session, our recommendation is to manually disable this encoding. To do this, first click the drop-down menu next to <em class="guilabel">Profile</em>, and click <em class="guilabel">Edit Connection Profiles...</em>. The <em class="guilabel">Profile Manager</em> configuration window will open. In the bottom left, enter &#8220;EOS&#8221; into the field and click the <em class="guilabel">+</em> button. Now click the checkbox next to the ZRLE encoding to disable it for EOS sessions. Close the <em class="guilabel">Profile Manager</em> window.</p>
+<p>Click <em class="guilabel">Connect</em> to begin your VNC session with EOS. To connect in the future, select <em class="menuselection">Connection ‣ Open Connection...</em> from the menu, select your EOS configuration, and click <em class="guilabel">Connect</em>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Windows uses <tt class="docutils literal"><span class="pre">\</span></tt> as a path separator by default, while GNU/Linux uses <tt class="docutils literal"><span class="pre">/</span></tt>. While Windows is generally forgiving and will accept <tt class="docutils literal"><span class="pre">/</span></tt> as well, GNU/Linux is not. <em>Always use</em> <tt class="docutils literal"><span class="pre">/</span></tt> <em>as a path separator when specifying GNU/Linux paths.</em></p>
+<p class="last">Although Chicken offers an option to tunnel directly through SSH, we have not had luck using this option with our setup. We recommend sticking with the traditional SSH tunnel, as it is tested and works well.</p>
 </div>
 </div>
-<div class="section" id="sshfs">
-<h2>SSHFS<a class="headerlink" href="#sshfs" title="Permalink to this headline">¶</a></h2>
-<p>A further alternative to transferring files is to use the Secure Shell Filesystem, <a class="reference external" href="http://fuse.sourceforge.net/sshfs.html">SSHFS</a>. SSHFS is based on Filesystem in Userspace, <a class="reference external" href="http://fuse.sourceforge.net/">FUSE</a>. By using SSHFS, you can mount your EOS home directory on your local machine as a separate drive. This allows you to in effect run programs within your local machine on files within your EOS account. It is very similar to editing files on a flash drive. SSHFS can be used for any purpose, but is especially useful for web development on EOS.</p>
-<p>Unfortunately, there are no stand-out options for SSHFS on Windows. The following programs are possible solutions of which we are aware:</p>
-<ul class="simple">
-<li><a class="reference external" href="http://www.expandrive.com/expandrive">ExpanDrive</a> is a commercial product with a free trial available. While the product works well, the prices are in the expensive range.</li>
-<li><a class="reference external" href="https://code.google.com/p/win-sshfs/">win-sshfs</a> is an open-source SSHFS implementation for Windows. Unfortunately, it is not being maintained and therefore we cannot recommend it.</li>
-<li><a class="reference external" href="https://github.com/dimov-cz/win-sshfs">dimov-cz&#8217;s win-sshfs fork</a> is a maintained fork of win-sshfs. However, no binaries are provided, so it must be compiled from source. If you are familiar with compiling and installing .NET programs, this may be a viable alternative for you.</li>
-</ul>
-<p>Although none of these programs are supported, you are welcome to try them if they seem useful to you.</p>
-<p>For another guide to SSHFS, check out <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh">DigitalOcean&#8217;s guide to SSHFS</a>.</p>
+<div class="section" id="x-forwarding">
+<h2>X Forwarding<a class="headerlink" href="#x-forwarding" title="Permalink to this headline">¶</a></h2>
+<p>Mac OS X has a high-quality X server called <a class="reference external" href="http://xquartz.macosforge.org/">XQuartz</a>. It is based on <a class="reference external" href="http://www.x.org/">X.Org</a>, and is partially maintained by Apple. Visit the XQuartz website to download and install the latest release.</p>
+<p>The <tt class="docutils literal"><span class="pre">ssh</span></tt> program needs to be told to initiate X forwarding when the connection is started. This can be done with the <tt class="docutils literal"><span class="pre">-X</span></tt> command-line flag:</p>
+<div class="highlight-bash"><div class="highlight"><pre>ssh -X smithj@eosXX.cis.gvsu.edu
+</pre></div>
+</div>
+<p>This can also be accomplished in the SSH configuration file:</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="nb">Host</span> eosx
+<span class="nb">HostName</span> eos01.cis.gvsu.edu
+<span class="nb">User</span> smithj
+<span class="nb">ForwardX11</span> yes
+</pre></div>
+</div>
+<p>Upon establishing the connection, you should see the XQuartz app launch (it has the X.Org logo). All remote applications will be rendered within the XQuartz app.</p>
+<p>From your remote shell, try running a graphical program:</p>
+<div class="highlight-bash"><div class="highlight"><pre>gedit
+</pre></div>
+</div>
+<p>You may want to send the program to the background to regain use of the shell:</p>
+<div class="highlight-bash"><div class="highlight"><pre>gedit &amp;
+</pre></div>
+</div>
+<p>X11 is a heavyweight protocol, and X11 sessions function best on high bandwidth, low latency connections. Remote applications running through X forwarding will typically be much less responsive than if they were running on an EOS machine. If you experience performance problems (and you probably will, depending on the applications that you use), consider using VNC. X forwarding is good for one-off applications, like viewing images or PDFs, but typically not good for editing text, web browsing, or running full desktop sessions. Always keep this in mind when using this technology.</p>
+<p>XQuartz will stay open even after your SSH session has ended. Feel free to quit XQuartz when you are finished using it.</p>
 </div>
 </div>
 
@@ -274,10 +349,10 @@ pscp smithj@eos01.cis.gvsu.edu:classes/cis162/hw3.txt classes/cis162
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="alternatives.html" class="btn btn-neutral float-right" title="Alternative Clients">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="file-transfer.html" class="btn btn-neutral float-right" title="File Transfer">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="graphical.html" class="btn btn-neutral" title="Graphical Access (VNC/X11)"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ssh.html" class="btn btn-neutral" title="Shell Access (SSH)"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

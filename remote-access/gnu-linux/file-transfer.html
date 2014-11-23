@@ -30,10 +30,12 @@
   
 
   
+        <link rel="author" title="About these documents"
+              href="../../about.html"/>
     <link rel="top" title="Mastering EOS" href="../../index.html"/>
         <link rel="up" title="GNU/Linux" href="index.html"/>
         <link rel="next" title="Advanced OpenSSH" href="advanced.html"/>
-        <link rel="prev" title="VNC" href="vnc.html"/>
+        <link rel="prev" title="Graphical Access (VNC/X11)" href="graphical.html"/>
  
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -149,6 +151,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../misc.html">Miscellaneous</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../misc.html#kill-the-x-server">Kill the X Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../misc.html#directory-navigation">Directory Navigation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing to Mastering EOS</a><ul>
@@ -161,6 +164,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../envvars.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About This Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../about.html#people">People</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about.html#licensing">Licensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about.html#special-thanks">Special Thanks</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -239,6 +248,36 @@ scp eos01:classes/cis162/hw4.txt classes/cis162
 </pre></div>
 </div>
 </div>
+<div class="section" id="rsync">
+<h2>rsync<a class="headerlink" href="#rsync" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://rsync.samba.org/">rsync</a> is the go-to tool for remote synchronization. rsync is the best choice for file transfer when the desire is to mirror a large file or directory of data, transferring it between your local machine and an EOS system. The rsync program is almost always installed by default.</p>
+<p>Operation of rsync is very similar to SCP. The main difference between rsync and SCP is that rsync features a remote-update protocol which transfers only the differences between the local and remote files, decreasing sync time and bandwidth.</p>
+<p>A typical use of rsync is as follows:</p>
+<div class="highlight-bash"><div class="highlight"><pre>rsync <span class="se">\</span>
+    --verbose <span class="se">\</span>
+    --archive <span class="se">\</span>
+    --compress <span class="se">\</span>
+    classes/cis163/projects <span class="se">\</span>
+    eos01.cis.gvsu.edu:classes/cis163/projects
+</pre></div>
+</div>
+<p>This syncs a local projects directory with a remote one. The <tt class="docutils literal"><span class="pre">--verbose</span></tt> option instructs rsync to tell you what it is doing, the <tt class="docutils literal"><span class="pre">--archive</span></tt> option tells rsync to duplicate the files almost exactly, and the <tt class="docutils literal"><span class="pre">--compress</span></tt> option tells rsync to use compression within the protocol.</p>
+<p>Here is another example for deploying a website. Specifically, this deploys a Mastering EOS build to your user&#8217;s personal website:</p>
+<div class="highlight-bash"><div class="highlight"><pre>rsync <span class="se">\</span>
+    --verbose <span class="se">\</span>
+    --archive <span class="se">\</span>
+    --compress <span class="se">\</span>
+    --delete <span class="se">\</span>
+    --chmod<span class="o">=</span><span class="nv">go</span><span class="o">=</span>rX <span class="se">\</span>
+    build/website <span class="se">\</span>
+    eos01.cis.gvsu.edu:public_html/mastering-eos
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">--delete</span></tt> option tells rsync to delete files on the remote machine not present on the local machine. This allows true synchronization of the two directories. However, be careful with this option, as it will delete files without confirmation!</p>
+<p>The <tt class="docutils literal"><span class="pre">--chmod=go=rX</span></tt> option tells rsync to set the permissions of the files to represent the correct permissions for use on a website.</p>
+<p>Because rsync command lines can get quite long, it is often useful to record them in a script. See <em class="manpage">rsync(1)</em> by running <tt class="docutils literal"><span class="pre">man</span> <span class="pre">rsync</span></tt> for more information on the use of rsync.</p>
+<p>There is also an rsync GUI available called <a class="reference external" href="http://www.opbyte.it/grsync/">Grsync</a>, though we cannot attest to its effectiveness.</p>
+</div>
 <div class="section" id="sshfs">
 <h2>SSHFS<a class="headerlink" href="#sshfs" title="Permalink to this headline">¶</a></h2>
 <p>A further alternative to transferring files is to use the Secure Shell Filesystem, <a class="reference external" href="http://fuse.sourceforge.net/sshfs.html">SSHFS</a>. SSHFS is based on Filesystem in Userspace, <a class="reference external" href="http://fuse.sourceforge.net/">FUSE</a>. By using SSHFS, you can mount your EOS home directory on your local machine as a separate drive. This allows you to in effect run programs within your local machine on files within your EOS account. It is very similar to editing files on a flash drive. SSHFS can be used for any purpose, but is especially useful for web development on EOS.</p>
@@ -302,7 +341,7 @@ scp eos01:classes/cis162/hw4.txt classes/cis162
         <a href="advanced.html" class="btn btn-neutral float-right" title="Advanced OpenSSH">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="vnc.html" class="btn btn-neutral" title="VNC"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="graphical.html" class="btn btn-neutral" title="Graphical Access (VNC/X11)"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -315,7 +354,7 @@ scp eos01:classes/cis162/hw4.txt classes/cis162
       &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/512f96a">512f96a</a> built 2014-11-09 00:00:00 EST.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/ee8113e">ee8113e</a> built 2014-11-23 00:00:02 EST.<br />
     </p>
   </div>
 
