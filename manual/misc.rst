@@ -36,4 +36,43 @@ dirs
 Uptime
 ======
 
-The command ``uptime`` will display the following information in one line. The current time, the amount of time the system has been running, the number of users currently logged in, and system load averages for the past 1, 5, and 15 minutes.
+The command ``uptime`` will display the following information in one line: the current time, the amount of time the system has been running, the number of users currently logged in, and system load averages for the past 1, 5, and 15 minutes.
+
+User Interactions
+=================
+
+w
+-
+
+The ``w`` command provides a summary of the current users on the machine. The header displays the same information as the ``uptime`` command.
+
+last
+----
+
+``last`` displays all the users that have logged into the machine since the creation of the wtemp log file. The date and time that file was created is shown at the bottom of the output.
+
+To show the output without the hostname field::
+
+	last -R
+
+To limit the number of rows to output use::
+
+	last -num
+
+For more information and options run::
+
+	man last
+
+users
+-----
+
+``users`` prints a list of all the users currently logged in to a host.
+
+write
+-----
+
+The ``write`` command allows communication with other users through the terminal.
+
+The usual syntax is::
+
+	write user [tty]
