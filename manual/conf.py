@@ -430,28 +430,37 @@ _github_url = 'https://github.com/seanfisk/mastering-eos'
 # Global substitutions and links, using rst_epilog.
 # Apparently we can't use the `text <link>`_ notation in here, so see
 # <http://docutils.sourceforge.net/FAQ.html#is-nested-inline-markup-possible>.
+# See here for the nbsp trick: http://stackoverflow.com/a/12145490
 rst_epilog = '''
 .. |title| replace:: {title}
 .. |bold-title| replace:: **{title}**
 .. |the-sysadmin| replace:: Ira Woodring
 .. _the-sysadmin: mailto:woodriir@gvsu.edu
+.. |nbsp| unicode:: 0xA0
 
-.. _Mastering EOS GitHub repository: {url}
-.. _The Linux Documentation Project article on Shared Libraries: http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
-.. _Russ Allbery's notes on Shared Library Search Paths: http://www.eyrie.org/~eagle/notes/rpath.html
 .. _Autoconf manual on Preset Output Variables: http://www.gnu.org/software/autoconf/manual/autoconf.html#Preset-Output-Variables
-.. _Wikipedia entry on rpath:
-.. _rpath:
-.. _run-time search path (rpath): http://en.wikipedia.org/wiki/Rpath
-.. _Waf: https://code.google.com/p/waf/
-.. _CMake: http://www.cmake.org/
 .. _Autotools: http://en.wikipedia.org/wiki/GNU_build_system
+.. _CMake: http://www.cmake.org/
+.. _EditorConfig: http://editorconfig.org/
+.. _ExpanDrive: http://www.expandrive.com/expandrive
+.. _GNOME: http://www.gnome.org/
+.. _KDE: https://www.kde.org/
+.. _LXDE: http://lxde.org/
+.. _Mastering EOS GitHub repository: {url}
+.. _Qt: http://qt-project.org/
+.. _QtQuick/QML: http://qt-project.org/doc/qt-5/qmlapplications.html
+.. _Russ Allbery's notes on Shared Library Search Paths: http://www.eyrie.org/~eagle/notes/rpath.html
 .. _Sphinx: http://sphinx-doc.org/
+.. _The Linux Documentation Project article on Shared Libraries: http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
+.. _Waf: https://code.google.com/p/waf/
+.. _Wikipedia entry on rpath:
+.. _X.Org: http://www.x.org/
+.. _Xfce: http://xfce.org/
+.. _issue tracker: {url}/issues
 .. _reStructuredText: http://docutils.sourceforge.net/rst.html
 .. _report an issue:
-.. _issue tracker: {url}/issues
-.. _ExpanDrive: http://www.expandrive.com/expandrive
-.. _X.Org: http://www.x.org/
+.. _rpath:
+.. _run-time search path (rpath): http://en.wikipedia.org/wiki/Rpath
 '''.format(title=project, url=_github_url)
 
 # The default highlight language is Python; switch it to Bash.
