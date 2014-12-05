@@ -32,3 +32,11 @@ dirs
 ----
 
 ``dirs`` allows you to see what directories you have stored on the stack. The far left directory is the most recently saved. Another way to view the directory from most recent to least recent is by using the commmand ``dirs -v``.
+
+xdg-open
+========
+
+`xdg-open`_ is a command that can be used to open a file or URL in the user's preffered application.
+Example: :samp:`xdg-open /build/manual/html/index.html`
+
+.. _xdg-open: http://portland.freedesktop.org/xdg-utils-1.0/xdg-open.html
