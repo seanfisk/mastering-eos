@@ -19,6 +19,9 @@ def configure(ctx):
 
 
 def build(ctx):
+    if not ctx.should_build('poster'):
+        return
+
     sty_in_node = ctx.path.find_resource('beamerthemeEOS.sty.in')
     sty_out_node = sty_in_node.change_ext(ext='.sty', ext_in='.sty.in')
     # Before we used Waf, we ran our TeX program in the source directory. Waf
@@ -73,3 +76,8 @@ def build(ctx):
     )
 
     ctx.add_manual_dependency(main_tex_node, sty_out_node)
+
+    if ctx.env.OPEN_SPECIFIC_TARGET:
+        def _open_poster(ctx):
+            ctx.open_file(main_tex_node.change_ext('.pdf'))
+        ctx.add_post_fun(_open_poster)

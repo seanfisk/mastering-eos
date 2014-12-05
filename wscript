@@ -29,6 +29,27 @@ out = 'build'
 SUBDIRS = ['parsers', 'poster', 'manual']
 WAF_TOOLS_DIR = 'waf_tools'
 
+# Specific targets allow building a subset of the entire build. Generate two
+# commands for each specific target:
+#
+# - 'tgt', which builds only the specified target
+# - 'otgt', which builds the specified target then opens it
+#
+SPECIFIC_TARGETS = ['pdf', 'html', 'man', 'info', 'poster']
+for target in SPECIFIC_TARGETS:
+    for cmd in [target, 'o' + target]:
+        type(target.capitalize() + 'Context',
+             (waflib.Build.BuildContext,),
+             dict(cmd=cmd))
+
+@conf
+def should_build(self, target):
+    """Indicate whether the target should build."""
+    # If we don't have a specific target, always build. If we have a specific
+    # target, build if that target matches the provided target.
+    spec_target = self.env.SPECIFIC_TARGET
+    return not spec_target or spec_target == target
+
 @conf
 def find_or_make(self, parent, lst):
     """Find or make a node. This looks for the node specified, and creates it
@@ -76,9 +97,8 @@ def options(ctx):
                   default_latex_engine))
 
     ctx.load('tex')
-    ctx.load('sphinx_internal', tooldir=WAF_TOOLS_DIR)
-    ctx.load('fabric_tool', tooldir=WAF_TOOLS_DIR)
-    ctx.load('grako_tool', tooldir=WAF_TOOLS_DIR)
+    ctx.load(['sphinx_internal', 'fabric_tool', 'grako_tool', 'open'],
+             tooldir=WAF_TOOLS_DIR)
 
     ctx.recurse(SUBDIRS)
 
@@ -103,18 +123,19 @@ def configure(ctx):
         if os.path.isfile(possible_makeinfo_path):
             ctx.env.MAKEINFO = possible_makeinfo_path
 
-    # Grako
-    ctx.load('grako_tool', tooldir=WAF_TOOLS_DIR)
-
-    # If there are problems with sphinx_internal not triggering builds
-    # correctly, switch to sphinx_external which always rebuilds. IMPORTANT:
-    # This will change the output file paths, so that will have to be changed
-    # too...
-    ctx.load('sphinx_internal', tooldir=WAF_TOOLS_DIR)
-
-    # Deployment programs
+    ctx.load(
+        [
+            # If there are problems with sphinx_internal not triggering builds
+            # correctly, switch to sphinx_external which always rebuilds.
+            # IMPORTANT: This will change the output file paths, so that will
+            # have to be changed too...
+            'sphinx_internal',
+            'fabric_tool',
+            'grako_tool',
+            'open'
+        ],
+        tooldir=WAF_TOOLS_DIR)
     ctx.find_program('ghp-import', var='GHP_IMPORT')
-    ctx.load('fabric_tool', tooldir=WAF_TOOLS_DIR)
 
     # Add the vendor directory to the TeX search path so that our vendored
     # packages can be found.
@@ -128,6 +149,18 @@ def configure(ctx):
              color=('YELLOW' if ctx.env.DEVELOPER_MODE else 'GREEN'))
 
 def build(ctx):
+    # Set the specific "base" target if one exists, else set to None.
+    cmd = ctx.cmd
+    if cmd in SPECIFIC_TARGETS:
+        tgt = (cmd, False)
+    else:
+        suffix = cmd[1:]
+        if cmd.startswith('o') and suffix in SPECIFIC_TARGETS:
+            tgt = (suffix, True)
+        else:
+            tgt = (None, False)
+    ctx.env.SPECIFIC_TARGET, ctx.env.OPEN_SPECIFIC_TARGET = tgt
+
     # This variable is for recording build nodes placed in the source directory
     # for deletion using the 'clean' command.
     ctx.env.SRC_DIR_BUILD_NODES = []
