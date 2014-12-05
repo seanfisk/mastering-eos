@@ -16,13 +16,13 @@ Bash
 Tcsh
 ====
 
-`Tcsh`_ (TENEX C SHell) is a C style shell that adds a few extra features such as command line completion.
+Tcsh_ (TENEX C SHell) is a C style shell that adds a few extra features such as command line completion.
 
 .. _Tcsh: http://www.tcsh.org
 
 Kornshell
 =========
 
-`Kornshell`_ is a shell developed at AT&T Bell Laboratories. It has features of both the Bash and Korn shells, as well as additional features.
+Kornshell_ is a shell developed at AT&T Bell Laboratories. It has features of both the Bash and Korn shells, as well as additional features.
 
 .. _Kornshell: http://www.kornshell.org

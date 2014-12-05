@@ -5,7 +5,7 @@
 This version works really well with with Waf at the cost of staggering
 complexity.
 
-Tested with Waf 1.8.5 and Sphinx 1.2.3.
+Tested with Waf 1.8.4 and Sphinx 1.2.3.
 
 Based on
 - https://github.com/hmgaudecker/econ-project-templates/blob/python/.mywaflib/waflib/extras/sphinx_build.py
@@ -18,6 +18,9 @@ decrease parallelism. Other options would be to run the dependency scanner
 before creating the task (creating potentially incorrect results) or caching
 the results of the scan (which would result in concurrency control, and be ugly
 and error-prone).
+
+TODO: We don't currently call makeindex as the Sphinx-generated LaTeX Makefile
+does. This needs to be added.
 
 Hans-Martin von Gaudecker, 2012
 Sean Fisk, 2014
@@ -105,6 +108,10 @@ class PdflatexBuilder(object):
         latex_task.set_run_after(copy_task)
         # Add manual dependencies.
         latex_task.dep_nodes = dep_nodes
+        # Uncomment this to enable full LaTeX output. We've considered making
+        # this an option as with the regular TeX builder, but we haven't needed
+        # it that much yet.
+        #latex_task.env.PROMPT_LATEX = 1
         return [copy_task, latex_task]
 
 FOLLOWUP_BUILDERS = {

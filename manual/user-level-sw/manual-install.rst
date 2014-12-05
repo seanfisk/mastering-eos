@@ -30,12 +30,7 @@ This command creates a ``src`` directory inside of your :file:`~/.local` prefix.
 Download and Extract
 ====================
 
-To compile and install software, you must first obtain the source code. The first step is to visit the project's web site and ascertain the location of its source code. The source code is typically distributed in a tar_ or zip_ archive, so look for files ending in ``.tar.gz``, ``.tar.bz2``, or ``.zip``. After downloading, the files should be extracted to the source code directory, :file:`~/.local/src`.
-
-.. _zip:
-.. _zip archive: http://en.wikipedia.org/wiki/Zip_%28file_format%29
-.. _tar:
-.. _tar archive: http://en.wikipedia.org/wiki/Tar_%28computing%29
+To compile and install software, you must first obtain the source code. The first step is to visit the project's web site and ascertain the location of its source code. The source code is typically distributed in a :wikipedia:`tar <Tar_%28computing%29>` or :wikipedia:`zip <Zip_%28file_format%29>` archive, so look for files ending in ``.tar.gz``, ``.tar.bz2``, or ``.zip``. After downloading, the files should be extracted to the source code directory, :file:`~/.local/src`.
 
 Example: GNU Bash and tar archives
 ----------------------------------
@@ -50,9 +45,9 @@ Although you can download this file directly using your browser, it is often eas
 
     wget http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz
 
-This should create a :file:`bash-4.3.tar.gz` file in the current working directory. This file is a `tar archive`_ which has been compressed with the `GNU zip`_ compression algorithm. A file of this type typically has a ``.tar.gz`` or ``.tgz`` file extension and is colloquially known as a *tarball* [*tarball* refers to tar archives of any or no compression scheme].
+This should create a :file:`bash-4.3.tar.gz` file in the current working directory. This file is a :wikipedia:`tar archive <Tar_%28computing%29>` which has been compressed with the `GNU zip`_ compression algorithm. A file of this type typically has a ``.tar.gz`` or ``.tgz`` file extension and is colloquially known as a *tarball* [*tarball* refers to tar archives of any or no compression scheme].
 
-The contents of this archive can be extracted using the :command:`tar` program as follows::
+The contents of this archive can be extracted using the ``tar`` program as follows::
 
     tar -xf bash-4.3.tar.gz
 
@@ -97,7 +92,7 @@ Download the file with :command:`wget` as shown in the earlier example::
 
     wget http://sourceforge.net/projects/editorconfig/files/EditorConfig-C-Core/0.12.0/source/editorconfig-core-c-0.12.0.zip
 
-This should create a :file:`editorconfig-core-c-0.12.0.zip` file in the current working directory. This file is a `zip archive`_ just like those you may have seen on your desktop operating system. This file can be extracted using the InfoZip_ :command:`unzip` utility::
+This should create a :file:`editorconfig-core-c-0.12.0.zip` file in the current working directory. This file is a :wikipedia:`zip archive <Zip_%28file_format%29>` just like those you may have seen on your desktop operating system. This file can be extracted using the InfoZip_ :command:`unzip` utility::
 
     unzip editorconfig-core-c-0.12.0.zip
 

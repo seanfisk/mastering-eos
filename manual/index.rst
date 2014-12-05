@@ -22,11 +22,12 @@
    sys-sw-info
    winserv
    databases
-   ide
+   editors
    gui-toolkits
    misc
    contributing/index
    envvars
+   about
 
 .. only:: build_html
 

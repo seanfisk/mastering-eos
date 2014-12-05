@@ -5,6 +5,19 @@ from os.path import join
 import sys
 from collections import OrderedDict
 
+import waflib
+
+OPENERS = dict(
+    pdf=('open_file', waflib.Context.g_module.APPNAME + '.pdf'),
+    html=('open_html_file', 'index.html'),
+    man=('open_manpage', 'eos.7'),
+    info=('open_info', 'eos.info'),
+)
+SPHINX_TARGETS = OPENERS.keys()
+
+def _get_sphinx_builder(target):
+    return 'latexpdf' if target == 'pdf' else target
+
 def options(ctx):
     pass
 
@@ -12,6 +25,9 @@ def configure(ctx):
     ctx.find_program('python')
 
 def build(ctx):
+    if not any(map(ctx.should_build, SPHINX_TARGETS)):
+        return
+
     fingerprints_table_path = (
         'manual/remote-access/common/fingerprints/table.rst')
     vnc_table_path = (
@@ -71,7 +87,8 @@ def build(ctx):
     # TODO: The html document does not build under changes to
     # _templates/footer.html.
     ctx(features='sphinx',
-        builders='latexpdf html man info',
+        builders=map(_get_sphinx_builder, [ctx.env.SPECIFIC_TARGET]
+                     if ctx.env.SPECIFIC_TARGET else SPHINX_TARGETS),
         source='conf.py',
         # Turn warnings into errors. Helps them get fixed more quickly :)
         warningiserror=True,
@@ -81,3 +98,12 @@ def build(ctx):
         # The 'after' keyword means 'run this task after the listed tasks'.
         after_=['make_vnc_table', 'make_ssh_fingerprints_table'],
     )
+
+    if ctx.env.OPEN_SPECIFIC_TARGET:
+        def _open_target(ctx):
+            open_fn_name, node_basename = OPENERS[ctx.env.SPECIFIC_TARGET]
+            getattr(ctx, open_fn_name)(ctx.bldnode.find_node([
+                'manual',
+                _get_sphinx_builder(ctx.env.SPECIFIC_TARGET),
+                node_basename]))
+        ctx.add_post_fun(_open_target)
