@@ -27,7 +27,7 @@ out = 'build'
 # Process the poster first, as it takes more time to generate but has less
 # dependencies.
 SUBDIRS = ['parsers', 'poster', 'manual']
-WAF_TOOLS_DIR = 'waf_tools'
+WAF_TOOLS_DIR = 'waf-tools'
 
 # Specific targets allow building a subset of the entire build. Generate two
 # commands for each specific target:
