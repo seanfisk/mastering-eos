@@ -27,7 +27,7 @@ For future connections, simply start TightVNC and click :guilabel:`Connect`. Alt
 X Forwarding
 ============
 
-There are a few X servers available for Windows, but the most popular is Xming_, a native Windows X server based on `X.Org`_. Download and install the public domain release from the `Xming release page`_. During installation, feel free to choose not to install an SSH client if you already have PuTTY installed (which you should).
+There are a few X servers available for Windows, but the most popular is Xming_, a native Windows X server based on X.Org_. Download and install the public domain release from the `Xming release page`_. During installation, feel free to choose not to install an SSH client if you already have PuTTY installed (which you should).
 
 First, start up the Xming server by simply opening it. Next, open PuTTY and load your EOS session.
 

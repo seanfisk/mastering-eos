@@ -137,7 +137,7 @@ Atom
     :alt: Atom logo
     :target: Atom_
 
-Atom_ is an open-source, customizable text editor produced by GitHub_. As an editor, it seems to be in the spirit of Vim or Emacs, but using modern design principles and technologies. Atom comes with many useful features out-of-the box, including a fuzzy-finder, multiple cursors, and a package manager. Atom is based on the `Atom Shell`_, which is in turn based on `node.js`_ and Chromium_.
+Atom_ is an open-source, customizable text editor produced by GitHub_. As an editor, it seems to be in the spirit of Vim or Emacs, but using modern design principles and technologies. Atom comes with many useful features out-of-the box, including a fuzzy-finder, multiple cursors, and a package manager. Atom is based on the `Atom Shell`_, which is in turn based on node.js_ and Chromium_.
 
 Atom is available on Windows, Mac OS X, GNU/Linux, and FreeBSD.
 
