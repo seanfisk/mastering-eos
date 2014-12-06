@@ -481,3 +481,17 @@ html_context = dict(
         '{rev}</a>'.format(github_url=_github_url, rev=_git_short_revision)
     )
 )
+
+# The :command: role defaults to displaying in bold. However, we think that
+# literal text looks more appropriate, so we've created our own role, :cmd:,
+# which displays them as such.
+#
+# Code adapated from the Sphinx source tree: 'sphinx/roles.py'
+def _override_command_role():
+    from docutils.parsers.rst import roles
+    from docutils import nodes
+    rolename = 'cmd'
+    generic = roles.GenericRole(rolename, nodes.literal)
+    role = roles.CustomRole(rolename, generic, {'classes': [rolename]})
+    roles.register_local_role(rolename, role)
+_override_command_role()

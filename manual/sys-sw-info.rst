@@ -33,7 +33,7 @@ First, follow the instructions in :ref:`ready-prefix`. Then run the following co
     (mkdir -p share/man/man1 && cd share/man/man1 && wget http://inxi.googlecode.com/svn/trunk/inxi.1.gz)
     popd
 
-After installing, follow the steps for :ref:`adjust-env`. You should now be able to run ``inxi`` from the command line. inxi is a command-line program, so it can be run through SSH or a graphical terminal emulator.
+After installing, follow the steps for :ref:`adjust-env`. You should now be able to run :cmd:`inxi` from the command line. inxi is a command-line program, so it can be run through SSH or a graphical terminal emulator.
 
 To show a basic, medium-length output::
 
@@ -96,7 +96,7 @@ Although the all-in-one tools provide convenient ways to access lots of informat
 GNU/Linux Distribution
 ``````````````````````
 
-The ``lsb_release`` (Linux Standard Base) command will show you information regarding your distribution:
+The :cmd:`lsb_release` Standard Base) command will show you information regarding your distribution:
 
 .. code-block:: console
 
@@ -110,7 +110,7 @@ The ``lsb_release`` (Linux Standard Base) command will show you information rega
 Linux Kernel
 ````````````
 
-The ``uname`` command will tell you about the operating system, including the Linux kernel version:
+The :cmd:`uname` command will tell you about the operating system, including the Linux kernel version:
 
 .. code-block:: console
 

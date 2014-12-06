@@ -81,7 +81,7 @@ We are now ready to commit our change. As part of the commit, you will be asked 
 
     git log
 
-These messages should give you an idea of what a typical commit message for this project looks like. Press ``q`` to quit the log viewer. To commit your change, run the following::
+These messages should give you an idea of what a typical commit message for this project looks like. Press :kbd:`q` to quit the log viewer. To commit your change, run the following::
 
     git commit
 

@@ -1,4 +1,4 @@
-The ``ssh`` program needs to be told to initiate X forwarding when the connection is started. This can be done with the ``-X`` command-line flag::
+The :cmd:`ssh` program needs to be told to initiate X forwarding when the connection is started. This can be done with the ``-X`` command-line flag::
 
     ssh -X smithj@eosXX.cis.gvsu.edu
 

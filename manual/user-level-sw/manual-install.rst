@@ -21,7 +21,7 @@ To ready your prefix for downloading and compiling source code, run the followin
 
     mkdir -p ~/.local/src
 
-This command creates a ``src`` directory inside of your :file:`~/.local` prefix. We will use this directory later for housing downloaded program source code.
+This command creates a :file:`src` directory inside of your :file:`~/.local` prefix. We will use this directory later for housing downloaded program source code.
 
 .. _Launchpad: https://launchpad.net/
 .. _used by Python: http://legacy.python.org/dev/peps/pep-0370/#unix-notes
@@ -41,23 +41,23 @@ Let's download the source code for `GNU Bash`_, the default shell on the EOS sys
 
 The latest version of Bash at this time of writing is 4.3, so that is what we will download. Start by visiting the `Bash home page`_. Under :guilabel:`Downloading Bash`, click the HTTP link. You will be taken to a :wikipedia:`directory index <Webserver_directory_index>` which contains a list of downloadable files. Scroll down to find a file named :file:`bash-4.3.tar.gz`.
 
-Although you can download this file directly using your browser, it is often easier to copy the URL and download on the command line. This is especially true if accessing EOS using SSH. Copy the URL by clicking :guilabel:`Copy Link Location` or similar in your browser, then download the source code using :command:`wget`::
+Although you can download this file directly using your browser, it is often easier to copy the URL and download on the command line. This is especially true if accessing EOS using SSH. Copy the URL by clicking :guilabel:`Copy Link Location` or similar in your browser, then download the source code using :cmd:`wget`::
 
     wget http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz
 
 This should create a :file:`bash-4.3.tar.gz` file in the current working directory. This file is a :wikipedia:`tar archive <Tar_%28computing%29>` which has been compressed with the `GNU zip`_ compression algorithm. A file of this type typically has a ``.tar.gz`` or ``.tgz`` file extension and is colloquially known as a *tarball* [*tarball* refers to tar archives of any or no compression scheme].
 
-The contents of this archive can be extracted using the ``tar`` program as follows::
+The contents of this archive can be extracted using the :cmd:`tar` program as follows::
 
     tar -xf bash-4.3.tar.gz
 
 .. hint::
 
-    :command:`tar` can automatically detect the compression format by the extension, so passing the compression algorithm as you may see elsewhere is usually unnecessary.
+    :cmd:`tar` can automatically detect the compression format by the extension, so passing the compression algorithm as you may see elsewhere is usually unnecessary.
 
 .. warning::
 
-    Most source code tarballs are "well-behaved", meaning that they create one directory which matches the name of the tarball. This is a convention, but is by no means required. Make sure you trust the source of the tarball before extracting the files. You can view the contents of a tarball with the :command:`less` built-in tar viewer::
+    Most source code tarballs are "well-behaved", meaning that they create one directory which matches the name of the tarball. This is a convention, but is by no means required. Make sure you trust the source of the tarball before extracting the files. You can view the contents of a tarball with the :cmd:`less` built-in tar viewer::
 
         less bash-4.3.tar.gz
 
@@ -73,7 +73,7 @@ You are now in the root of the GNU Bash source distribution.
 
         wget http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz -O - | tar -xz
 
-   Note that you must pass the compression algorithm to :command:`tar` because it is not able to detect the type by file extension when input is given through a pipe.
+   Note that you must pass the compression algorithm to :cmd:`tar` because it is not able to detect the type by file extension when input is given through a pipe.
 
 .. _Bash home page:
 .. _GNU Bash: http://www.gnu.org/software/bash/
@@ -88,17 +88,17 @@ For our zip example, we will download the source code for the `EditorConfig C Co
 
 The latest version of the EditorConfig C Core at this time of writing is 0.21.1, so that is what we will download. Visit the `download page for EditorConfig C Core 0.12.0`_ and select the link for the source code zip archive. The project also offers a tarball download, but we will use the zip for the purposes of this example.
 
-Download the file with :command:`wget` as shown in the earlier example::
+Download the file with :cmd:`wget` as shown in the earlier example::
 
     wget http://sourceforge.net/projects/editorconfig/files/EditorConfig-C-Core/0.12.0/source/editorconfig-core-c-0.12.0.zip
 
-This should create a :file:`editorconfig-core-c-0.12.0.zip` file in the current working directory. This file is a :wikipedia:`zip archive <Zip_%28file_format%29>` just like those you may have seen on your desktop operating system. This file can be extracted using the InfoZip_ :command:`unzip` utility::
+This should create a :file:`editorconfig-core-c-0.12.0.zip` file in the current working directory. This file is a :wikipedia:`zip archive <Zip_%28file_format%29>` just like those you may have seen on your desktop operating system. This file can be extracted using the InfoZip_ :cmd:`unzip` utility::
 
     unzip editorconfig-core-c-0.12.0.zip
 
 .. warning::
 
-     Unlike source tarballs, zip files sometimes have all files in one directory or sometimes have all files immediately in the root directory. Again, however, this is convention --- make sure you trust the source of the archive before extracting the files. You can view the contents of a zip archive with :command:`less` built-in zip viewer::
+     Unlike source tarballs, zip files sometimes have all files in one directory or sometimes have all files immediately in the root directory. Again, however, this is convention --- make sure you trust the source of the archive before extracting the files. You can view the contents of a zip archive with :cmd:`less` built-in zip viewer::
 
         less editorconfig-core-c-0.12.0.zip
 
@@ -148,7 +148,7 @@ You will see many lines printed to the terminal, which is the script doing vario
 
     ../configure --help | less
 
-Passing other options is typically unnecessary unless you would like to customize the build. Piping to :command:`less` is recommended due to the usual length of the output.
+Passing other options is typically unnecessary unless you would like to customize the build. Piping to :cmd:`less` is recommended due to the usual length of the output.
 
 .. warning::
 
@@ -199,7 +199,7 @@ CMake
 
 CMake_ is a popular alternative to Autotools as a build system on GNU/Linux. You can usually identify a CMake build system by the presence of a :file:`CMakeLists.txt` file in the root of the source distribution.
 
-The :command:`cmake` program needs to be installed in order to build projects using CMake as a build system. It is installed by default on EOS.
+The :cmd:`cmake` program needs to be installed in order to build projects using CMake as a build system. It is installed by default on EOS.
 
 .. _CMake: http://www.cmake.org/
 
@@ -305,7 +305,7 @@ Although you are now able to run your new Bash without typing the full path, the
     man bash
     info bash
 
-still show the Bash documentation for the system Bash. Although this may not seem like a big deal, small changes between versions of the same program can be the difference between an working and non-working script. To allow :command:`man` and :command:`info` to find locally-installed documentation, add the following lines to your :file:`~/.bash_profile`::
+still show the Bash documentation for the system Bash. Although this may not seem like a big deal, small changes between versions of the same program can be the difference between an working and non-working script. To allow :cmd:`man` and :cmd:`info` to find locally-installed documentation, add the following lines to your :file:`~/.bash_profile`::
 
     export MANPATH=~/.local/share/man:~/.local/man:$MANPATH
     export INFOPATH=~/.local/share/info:$INFOPATH

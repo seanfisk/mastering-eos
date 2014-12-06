@@ -10,7 +10,7 @@ Disk Space
 
 You are given 8 gigabytes (GB) of disk space. Once you exceed this limit, you can no longer write new data to the filesystem. This often leads to being unable to login via a graphical session, as the desktop manager must be able to write to disk. You must then log in via a text-based console and delete files to make space.
 
-The amount of disk space you have currently used may be checked with the :command:`quota` command:
+The amount of disk space you have currently used may be checked with the :cmd:`quota` command:
 
 .. code-block:: console
 

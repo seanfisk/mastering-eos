@@ -42,3 +42,28 @@ When creating hyperlinks in rST, do not use backticks when they are not necessar
 
 * **Good:** ``abcd_``, ``ab-cd_``, ``ab.cd_``, ```ab cd`_``, ```ab+cd`_``
 * **Bad:** ```abcd`_``, ```ab-cd_```, ```ab.cd_```
+
+Correct Usage of Roles
+----------------------
+
+- When referring to a command or program, use our project-specific ``:cmd:`` role:
+
+  .. code-block:: rst
+
+      The :cmd:`ls` command lists files in a directory.
+
+  However, when referring inline to a command line to be run, use the inline literal syntax:
+
+  .. code-block:: rst
+
+      The ``ls -l`` command lists files in a directory in a long format.
+
+  Never use the `:command:`_ or `:program:`_ roles.
+- Use the `:envvar:`_ role when appropriate, and create a corresponding entry in :ref:`env-vars`.
+- Do not use the `:option:`_ role, as it emits a warning if a corresponding `.. option::`_ directive is not found. This would be fine, but we want to remain warning free. Instead, just use normal literal text.
+
+.. _\:command\:: http://sphinx-doc.org/markup/inline.html#role-command
+.. _\:program\:: http://sphinx-doc.org/markup/inline.html#role-program
+.. _\:envvar\:: http://sphinx-doc.org/markup/inline.html#role-envvar
+.. _\:option\:: http://sphinx-doc.org/markup/inline.html#role-option
+.. _.. option\:\:: http://sphinx-doc.org/domains.html#directive-option

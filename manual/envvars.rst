@@ -1,3 +1,5 @@
+.. _env-vars:
+
 =======================
  Environment Variables
 =======================
@@ -10,11 +12,11 @@ This page contains a list of all environment variables referred to in the manual
 
 .. envvar:: MANPATH
 
-    The search path for manual pages readable by :command:`man`.
+    The search path for manual pages readable by :cmd:`man`.
 
 .. envvar:: INFOPATH
 
-    The search path for manual pages readable by :command:`info`.
+    The search path for manual pages readable by :cmd:`info`.
 
 .. envvar:: CPPFLAGS
 
