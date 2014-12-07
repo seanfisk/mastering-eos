@@ -8,12 +8,13 @@ from collections import OrderedDict
 import waflib
 
 OPENERS = dict(
-    pdf=('open_file', waflib.Context.g_module.APPNAME + '.pdf'),
-    html=('open_html_file', 'index.html'),
-    man=('open_manpage', 'eos.7'),
-    info=('open_info', 'eos.info'),
+    opdf=('open_file', waflib.Context.g_module.APPNAME + '.pdf'),
+    ohtml=('open_html_file', 'index.html'),
+    oman=('open_manpage', 'eos.7'),
+    oinfo=('open_info', 'eos.info'),
+    oeinfo=('open_info_emacs', 'eos.info'),
 )
-SPHINX_TARGETS = OPENERS.keys()
+SPHINX_TARGETS = ['pdf', 'html', 'man', 'info']
 
 def _get_sphinx_builder(target):
     return 'latexpdf' if target == 'pdf' else target
@@ -101,7 +102,7 @@ def build(ctx):
 
     if ctx.env.OPEN_SPECIFIC_TARGET:
         def _open_target(ctx):
-            open_fn_name, node_basename = OPENERS[ctx.env.SPECIFIC_TARGET]
+            open_fn_name, node_basename = OPENERS[ctx.cmd]
             getattr(ctx, open_fn_name)(ctx.bldnode.find_node([
                 'manual',
                 _get_sphinx_builder(ctx.env.SPECIFIC_TARGET),

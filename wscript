@@ -42,6 +42,10 @@ for target in SPECIFIC_TARGETS:
              (waflib.Build.BuildContext,),
              dict(cmd=cmd))
 
+# Special case: open info docs in Emacs
+class OeinfoContext(waflib.Build.BuildContext):
+    cmd = 'oeinfo'
+
 @conf
 def should_build(self, target):
     """Indicate whether the target should build."""
@@ -153,6 +157,8 @@ def build(ctx):
     cmd = ctx.cmd
     if cmd in SPECIFIC_TARGETS:
         tgt = (cmd, False)
+    elif cmd == 'oeinfo':
+        tgt = ('info', True)
     else:
         suffix = cmd[1:]
         if cmd.startswith('o') and suffix in SPECIFIC_TARGETS:

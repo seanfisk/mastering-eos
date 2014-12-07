@@ -22,6 +22,7 @@ def configure(ctx):
         pass
     ctx.find_program('man', mandatory=False)
     ctx.find_program('info', mandatory=False)
+    ctx.find_program('emacsclient', mandatory=False)
 
 @conf
 def open_file(self, node):
@@ -40,12 +41,55 @@ def open_file(self, node):
 
 @conf
 def open_html_file(self, node):
-    """Open an HTML in a web browser. Although :func:`open_file` will generally
-    work for this as well, this function uses the :mod:`webbrowser` module.
+    """Open an HTML node in a web browser. Although :func:`open_file` will
+    generally work for this as well, this function uses the :mod:`webbrowser`
+    module.
     """
     webbrowser.open('file://' + node.abspath())
 
-def _open_man_info(ctx, prog, format, node):
+@conf
+def open_manpage(self, node):
+    _open_man_info(self, 'man', 'manpage', node)
+
+@conf
+def open_info(self, node):
+    _open_man_info(self, 'info', 'info document', node)
+
+@conf
+def open_info_emacs(self, node):
+    """Open an info node in Emacs."""
+    emacsclient = self.env.EMACSCLIENT
+    if emacsclient:
+        # We attempt to make this to work as best as it can with differing
+        # setups.
+        self.exec_command(
+            emacsclient + [
+                # Start Emacs in daemon mode if we can't connect.
+                '--alternate-editor=',
+                # If we choose not to create a new frame and the Emacs server
+                # isn't started, the command will start Emacs in daemon mode
+                # and not create a frame. We don't want this. If the Emacs
+                # server is started, this command will still create a new frame
+                # in this terminal, which may or may not be the desired
+                # behavior. It's a bit of a compromise, but we've put the
+                # highest priority on *something* working most of the time.
+                '--create-frame',
+                # Open an info bufffer. The escaping is somewhat sketchy.
+                '--eval', '(info "{}")'.format(
+                    node.abspath().replace('"', r'\"')),
+            ],
+            # Don't capture the standard streams so that the program can run
+            # successfully.
+            stdout=sys.stdout,
+            stderr=sys.stderr,
+        )
+    else:
+        _tool_not_found(self, 'info document', 'emacsclient')
+
+def _tool_not_found(ctx, prog, fmt):
+    ctx.fatal("Opening {} failed, '{}' not found".format(fmt, prog))
+
+def _open_man_info(ctx, prog, fmt, node):
     exe = ctx.env[prog.upper()]
     if exe:
         ctx.exec_command(
@@ -56,12 +100,4 @@ def _open_man_info(ctx, prog, format, node):
             stderr=sys.stderr,
         )
     else:
-        ctx.fatal("Opening {} failed, '{}' not found".format(format, prog))
-
-@conf
-def open_manpage(self, node):
-    _open_man_info(self, 'man', 'manpage', node)
-
-@conf
-def open_info(self, node):
-    _open_man_info(self, 'info', 'info document', node)
+        _tool_not_found(ctx, prog, fmt)
