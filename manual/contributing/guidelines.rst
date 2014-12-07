@@ -84,14 +84,6 @@ The 3-space indent is used because it looks better than 2 or 4 when using the di
 
 .. _Indentation in reStructuredText: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#indentation
 
-Backticks and Hyperlinks
-------------------------
-
-When creating hyperlinks in rST, do not use backticks when they are not necessary:
-
-* **Good:** ``abcd_``, ``ab-cd_``, ``ab.cd_``, ```ab cd`_``, ```ab+cd`_``
-* **Bad:** ```abcd`_``, ```ab-cd_```, ```ab.cd_```
-
 Correct Usage of Roles
 ----------------------
 
@@ -107,12 +99,32 @@ Correct Usage of Roles
 
      The ``ls -l`` command lists files in a directory in a long format.
 
-  Never use the `:command:`_ or `:program:`_ roles.
-- Use the `:envvar:`_ role when appropriate, and create a corresponding entry in :ref:`env-vars`.
-- Do not use the `:option:`_ role, as it emits a warning if a corresponding `.. option::`_ directive is not found. This would be fine, but we want to remain warning free. Instead, just use normal literal text.
+  Never use the :sphinx-role:`command role <command>` or :sphinx-role:`program role <program>`.
+- Use the :sphinx-role:`envvar role <envvar>`  when appropriate, and create a corresponding entry in :ref:`env-vars`.
+- Do not use the :sphinx-role:`option role <option>`, as it emits a warning if a corresponding :sphinx-directive:`option directive <option>` is not found. This would be fine, but we want to remain warning free. Instead, just use normal literal text.
 
-.. _\:command\:: http://sphinx-doc.org/markup/inline.html#role-command
-.. _\:program\:: http://sphinx-doc.org/markup/inline.html#role-program
-.. _\:envvar\:: http://sphinx-doc.org/markup/inline.html#role-envvar
-.. _\:option\:: http://sphinx-doc.org/markup/inline.html#role-option
-.. _.. option\:\:: http://sphinx-doc.org/domains.html#directive-option
+Backticks and Hyperlinks
+------------------------
+
+When creating hyperlinks in rST, do not use backticks when they are not necessary:
+
+.. code-block:: rest
+
+   .. Good
+   abcd_
+   ab-cd_
+   ab.cd_
+   `ab cd`_
+   `ab+cd`_
+
+   .. Bad
+   `abcd`_
+   `ab-cd`_
+   `ab.cd`_
+
+Linking to Sections
+-------------------
+
+Although regular reST supports `implicit hyperlink targets`_ to section titles, etc., we recommend using the Sphinx-specific :sphinx-role:`ref role <ref>` for cross-referencing. See the last sentence of the :sphinx-role:`ref` documentation if you are curious as to why.
+
+.. _implicit hyperlink targets: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#implicit-hyperlink-targets

@@ -11,6 +11,7 @@
 
 from __future__ import unicode_literals
 import subprocess
+from urlparse import urljoin
 
 # -- General configuration ------------------------------------------------
 
@@ -466,10 +467,15 @@ rst_epilog = '''
 # The default highlight language is Python; switch it to Bash.
 highlight_language = 'bash'
 
-# Shortcut for Wikipedia articles, see http://sphinx-doc.org/ext/extlinks.html
+# Shortcut for various links, see http://sphinx-doc.org/ext/extlinks.html
+_sphinx_base_url = 'http://sphinx-doc.org'
 extlinks = {
     'wikipedia': ('http://en.wikipedia.org/wiki/%s', ''),
-    'rest-primer': ('http://sphinx-doc.org/rest.html#%s', ''),
+    'rest-primer': (urljoin(_sphinx_base_url, 'rest.html#%s'), ''),
+    'sphinx-role': (
+        urljoin(_sphinx_base_url, 'markup/inline.html#role-%s'), ''),
+    'sphinx-directive': (
+        urljoin(_sphinx_base_url, 'domains.html#directive-%s'), ''),
 }
 
 # Git revision: custom option, for use in '_templates/footer.html'.
