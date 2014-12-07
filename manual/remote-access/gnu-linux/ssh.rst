@@ -8,11 +8,11 @@ Many GNU/Linux distributions come with OpenSSH_ pre-installed. If your GNU/Linux
 
 On Debian-based systems (Ubuntu, Linux Mint, and friends), run the following command::
 
-    sudo apt-get install openssh-client
+   sudo apt-get install openssh-client
 
 On Red Hat-based systems (Fedora, CentOS, RHEL, and friends), run the following command::
 
-    sudo yum install openssh-clients
+   sudo yum install openssh-clients
 
 For other distributions (Arch, etc.), the package name and command should be similar. Consult your package management tool for details.
 
@@ -30,7 +30,7 @@ For other distributions (Arch, etc.), the package name and command should be sim
 
 ::
 
-    ssh-copy-id smithj@eos01.cis.gvsu.edu
+   ssh-copy-id smithj@eos01.cis.gvsu.edu
 
 .. include:: ../common/keys/outro.rst
 

@@ -11,7 +11,7 @@ If another user has a session on a computer you would like to use, it is possibl
 
 .. warning::
 
-    Be advised that any of the current user's unsaved data will be lost.
+   Be advised that any of the current user's unsaved data will be lost.
 
 Directory Navigation
 ====================

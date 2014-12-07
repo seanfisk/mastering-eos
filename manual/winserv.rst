@@ -55,11 +55,11 @@ GNU/Linux
 
 GNU/Linux systems usually have the rdesktop_ command-line tool in their repositories. If not, it can most likely be built from source. rdesktop provides a geometry flag that accepts both screen percentages or resolutions from the command-line to help adjust the client to an appropriate size. For instance, to allow the client to take up 90% of your screen::
 
-    rdekstop winserv.cis.gvsu.edu -g 90%
+   rdekstop winserv.cis.gvsu.edu -g 90%
 
 Alternatively, to force a resolution of 1024x768 pixels::
 
-    rdekstop winserv.cis.gvsu.edu -g 1024x768
+   rdekstop winserv.cis.gvsu.edu -g 1024x768
 
 For a graphical RDP client that can also be used for :ref:`VNC <linux-vnc>`, check out Remmina_.
 

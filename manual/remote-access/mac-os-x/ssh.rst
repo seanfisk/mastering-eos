@@ -14,7 +14,7 @@ Mac OS X comes preinstalled with OpenSSH, the most popular implementation of the
 
 .. code-block:: bash
 
-    ssh smithj@eos01.cis.gvsu.edu 'umask u=rwx,go= && mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_rsa.pub
+   ssh smithj@eos01.cis.gvsu.edu 'umask u=rwx,go= && mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_rsa.pub
 
 .. include:: ../common/keys/outro.rst
 

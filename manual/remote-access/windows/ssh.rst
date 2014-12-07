@@ -24,7 +24,7 @@ Checking Host Fingerprints
 When logging in to an EOS machine for the first time, you will see a dialog like this:
 
 .. image:: /images/putty-security-alert.png
-    :alt: PuTTY Security Alert
+   :alt: PuTTY Security Alert
 
 .. include:: ../common/fingerprints/checking.rst
 
@@ -41,7 +41,7 @@ Copy the text from the field labelled :guilabel:`Public key for pasting into Ope
 
 .. code-block:: powershell
 
-    $puttySessionName = 'EOS'; Get-Content "$env:USERPROFILE\Desktop\id_rsa.pub" | & "$env:SYSTEMDRIVE\Program Files (x86)\PuTTY\plink" -pw ([Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($(Read-Host -AsSecureString Password)))) $puttySessionName 'umask u=rwx,go= && mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys'
+   $puttySessionName = 'EOS'; Get-Content "$env:USERPROFILE\Desktop\id_rsa.pub" | & "$env:SYSTEMDRIVE\Program Files (x86)\PuTTY\plink" -pw ([Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($(Read-Host -AsSecureString Password)))) $puttySessionName 'umask u=rwx,go= && mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys'
 
 Your public key has now been uploaded to EOS. The file :file:`id_rsa.pub` may be deleted now.
 
@@ -49,7 +49,7 @@ However, we still need to be able to tell PuTTY to use your private key to log i
 
 .. note::
 
-    If you would like to use a passphrase for your key, see the `PuTTY Guide to Pageant`_ after completing this guide. Setting up an SSH agent is out of the scope of this guide.
+   If you would like to use a passphrase for your key, see the `PuTTY Guide to Pageant`_ after completing this guide. Setting up an SSH agent is out of the scope of this guide.
 
 Now start up PuTTY, select your saved session, then click :guilabel:`Load`. This loads our previously configured session for editing. In the configuration tree to the left, expand :menuselection:`Connection --> SSH` and click on :guilabel:`Auth`. Click :guilabel:`Browse...` to the right of the field labelled :guilabel:`Private key file for authentication`. Select the PPK file you saved earlier.
 
@@ -57,11 +57,11 @@ Go back to :guilabel:`Session` and click :guilabel:`Save`. PuTTY is now configur
 
 .. important::
 
-    When you make changes to your configuration, make sure to go back to :guilabel:`Session` and click :guilabel:`Save`. If you click :guilabel:`Open` after making changes, those changes will be applied to the current session but will not be saved for the next time you open PuTTY.
+   When you make changes to your configuration, make sure to go back to :guilabel:`Session` and click :guilabel:`Save`. If you click :guilabel:`Open` after making changes, those changes will be applied to the current session but will not be saved for the next time you open PuTTY.
 
 .. hint::
 
-    You can also save a modified configuration under another name by editing the session name in the text box under :guilabel:`Saved Sessions` and clicking :guilabel:`Save`.
+   You can also save a modified configuration under another name by editing the session name in the text box under :guilabel:`Saved Sessions` and clicking :guilabel:`Save`.
 
 As is obvious from these instructions, SSH key management is not a simple process. We recommend reading the `PuTTY Guide to SSH Keys`_, which is the source for much of this information. If you would like to use a passphrase with your key, please see the `PuTTY Guide to Pageant`_, PuTTY's SSH agent.
 
@@ -89,7 +89,7 @@ Click :guilabel:`Add` to add this as a forwarded port, then click :guilabel:`Ope
 
 You can test the forwarding by running this in the SSH prompt::
 
-    python -m SimpleHTTPServer
+   python -m SimpleHTTPServer
 
 and opening http://localhost:5555/ in your local web browser. You should see a web listing of your home directory! Press :kbd:`Control-C` to kill the web server.
 

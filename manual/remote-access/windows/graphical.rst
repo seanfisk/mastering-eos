@@ -16,7 +16,7 @@ Go back to :guilabel:`Session` and click :guilabel:`Save`. You are now ready to 
 
 .. hint::
 
-    If you clone a session for an EOS machine (using :guilabel:`Load` and :guilabel:`Save`), don't forget to change the tunnel to forward ports to that machine.
+   If you clone a session for an EOS machine (using :guilabel:`Load` and :guilabel:`Save`), don't forget to change the tunnel to forward ports to that machine.
 
 The recommended VNC client for Windows is TightVNC_. Download it, install, then open. In the field labelled :guilabel:`Remote Host`, type ``localhost``. Click :guilabel:`Connect` to start the connection.
 

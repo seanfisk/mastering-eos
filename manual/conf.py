@@ -467,9 +467,10 @@ rst_epilog = '''
 highlight_language = 'bash'
 
 # Shortcut for Wikipedia articles, see http://sphinx-doc.org/ext/extlinks.html
-extlinks = dict(
-    wikipedia=('http://en.wikipedia.org/wiki/%s', ''),
-)
+extlinks = {
+    'wikipedia': ('http://en.wikipedia.org/wiki/%s', ''),
+    'rest-primer': ('http://sphinx-doc.org/rest.html#%s', ''),
+}
 
 # Git revision: custom option, for use in '_templates/footer.html'.
 _git_short_revision = subprocess.check_output([

@@ -35,6 +35,55 @@ When using the first two header styles, pad the title with a space on both sides
 
 .. _reStructuredText Sections: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#sections
 
+Indentation
+-----------
+
+`Indentation in reStructuredText`_ is both simple and complex. Instead of dictating that the indent must be a certain number of spaces, or use tabs, indentation is always relative to the prior input. Unfortunately, this tends to make things confusing, so we've set some conventions.
+
+Default indentation is 3 spaces, and should be used for almost everything including :rest-primer:`literal blocks <source-code>`, :rest-primer:`directives`, and :rest-primer:`comments`:
+
+.. code-block:: rest
+
+   This is some Python::
+
+      print('This is Python')
+      if True:
+          print('so we still indent 4 spaces *within* the code')
+
+   .. toctree::
+      :maxdepth: 2
+
+      one
+      two
+      three
+
+   ..
+
+      Here is a comment.
+      And a second line.
+
+The 3-space indent is used because it looks better than 2 or 4 when using the directive syntax.
+
+:rest-primer:`Lists <lists-and-quote-like-blocks>` differ from the 3-space indent. Each item should include one space after its delimiting character, and the contents of the item should be lined up with that, as shown in the primer example. Here is another example:
+
+.. code-block:: rest
+
+   - First item
+   - Some Bash:
+
+     .. code-block::
+
+        ls -l
+
+   - Here we have
+     two lines.
+
+   #. This list
+   #. has a different
+      indent
+
+.. _Indentation in reStructuredText: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#indentation
+
 Backticks and Hyperlinks
 ------------------------
 
@@ -50,13 +99,13 @@ Correct Usage of Roles
 
   .. code-block:: rst
 
-      The :cmd:`ls` command lists files in a directory.
+     The :cmd:`ls` command lists files in a directory.
 
   However, when referring inline to a command line to be run, use the inline literal syntax:
 
   .. code-block:: rst
 
-      The ``ls -l`` command lists files in a directory in a long format.
+     The ``ls -l`` command lists files in a directory in a long format.
 
   Never use the `:command:`_ or `:program:`_ roles.
 - Use the `:envvar:`_ role when appropriate, and create a corresponding entry in :ref:`env-vars`.

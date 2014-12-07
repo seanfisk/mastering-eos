@@ -7,16 +7,16 @@ Shared connections are established by creating a socket which multiplexes multip
 
 .. code-block:: apacheconf
 
-    # EOS
-    # Match all eos01, eos11, arch08, etc.
-    Host eos?? arch??
-    HostName %h.cis.gvsu.edu
-    User smithj
-    ControlMaster auto
-    #                       Host
-    #                         |Port
-    #                         |  | Username
-    #                         V  V  V
-    ControlPath /tmp/ssh_mux_%h_%p_%r
+   # EOS
+   # Match all eos01, eos11, arch08, etc.
+   Host eos?? arch??
+   HostName %h.cis.gvsu.edu
+   User smithj
+   ControlMaster auto
+   #                       Host
+   #                         |Port
+   #                         |  | Username
+   #                         V  V  V
+   ControlPath /tmp/ssh_mux_%h_%p_%r
 
 Connection sharing may be useful to enable for most hosts. However, it needs to be done with care because it typically conflicts with X forwarding and port forwarding.

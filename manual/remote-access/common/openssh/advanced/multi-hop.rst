@@ -5,19 +5,19 @@ Oftentimes a machine is only available when SSH'ing into another machine. For ex
 
 .. code-block:: console
 
-    smithj@local$ ssh smithj@eos01.cis.gvsu.edu
-    smithj@eos01$ ssh -p 43022 okami
-    smithj@okami$ # Finally here!
+   smithj@local$ ssh smithj@eos01.cis.gvsu.edu
+   smithj@eos01$ ssh -p 43022 okami
+   smithj@okami$ # Finally here!
 
 This is annoying and unnecessary. By using the ``ProxyCommand`` keyword in our config file, we can automate this process:
 
 .. code-block:: apacheconf
 
-    # DEN Okami
-    Host okami
-    User smithj
-    Port 43022
-    ProxyCommand ssh eos01 -W %h:%p
+   # DEN Okami
+   Host okami
+   User smithj
+   Port 43022
+   ProxyCommand ssh eos01 -W %h:%p
 
 .. We use the standard rST syntax `My Section`_ instead of :ref:`My Section` here because we *want* to link only within this document. Otherwise Sphinx yells at us because the file is included multiple times and the label is therefore duplicated. See here <http://sphinx-doc.org/markup/inline.html#role-ref>.
 
@@ -27,5 +27,5 @@ The process has now been simplified to:
 
 .. code-block:: console
 
-    smithj@local$ ssh okami
-    smithj@okami$ # Yay! Easy!
+   smithj@local$ ssh okami
+   smithj@okami$ # Yay! Easy!

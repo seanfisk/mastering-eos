@@ -14,11 +14,11 @@ The amount of disk space you have currently used may be checked with the :cmd:`q
 
 .. code-block:: console
 
-    $ quota --human-readable
-    Disk quotas for user smithj (uid 1234):
-         Filesystem   space   quota   limit   grace   files   quota   limit   grace
-    148.61.162.101:/home
-                      9728M*  8192M  10240M            303k       0       0
+   $ quota --human-readable
+   Disk quotas for user smithj (uid 1234):
+        Filesystem   space   quota   limit   grace   files   quota   limit   grace
+   148.61.162.101:/home
+                     9728M*  8192M  10240M            303k       0       0
 
 The output of this command is two sets of four columns. The first four refer to physical disk space, while the second four refer to the number of files. The columns have the following meanings:
 
