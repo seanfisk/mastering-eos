@@ -159,7 +159,7 @@ def build(ctx):
     try:
         tgt = SPECIFIC_COMMAND_TARGETS[ctx.cmd]
     except KeyError:
-        tgt = (None, False)
+        tgt = SpecificTarget(None, False)
     ctx.env.SPECIFIC_TARGET = tgt
 
     # This variable is for recording build nodes placed in the source directory

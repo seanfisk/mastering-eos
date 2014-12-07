@@ -89,7 +89,7 @@ def build(ctx):
     # _templates/footer.html.
     fmt, is_open = ctx.env.SPECIFIC_TARGET
     builder = None
-    builders = SPHINX_TARGET_BUILDERS.keys()
+    builders = SPHINX_TARGET_BUILDERS.values()
     if fmt:
         try:
             builder = SPHINX_TARGET_BUILDERS[fmt]
