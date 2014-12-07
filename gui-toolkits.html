@@ -34,7 +34,7 @@
               href="about.html"/>
     <link rel="top" title="Mastering EOS" href="index.html"/>
         <link rel="next" title="Miscellaneous" href="misc.html"/>
-        <link rel="prev" title="Integrated Development Environments" href="ide.html"/>
+        <link rel="prev" title="Editors" href="editors.html"/>
  
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -131,10 +131,11 @@
 <li class="toctree-l2"><a class="reference internal" href="databases.html#remote-database-connections">Remote Database Connections</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ide.html">Integrated Development Environments</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ide.html#bluej">BlueJ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ide.html#eclipse">Eclipse</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ide.html#intellij">IntelliJ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="editors.html">Editors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="editors.html#basic-text-editors">Basic Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editors.html#advanced-text-editors">Advanced Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editors.html#integrated-development-environments">Integrated Development Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editors.html#editorconfig">EditorConfig</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">GUI Toolkits</a><ul>
@@ -151,6 +152,8 @@
 <li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="misc.html#kill-the-x-server">Kill the X Server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="misc.html#directory-navigation">Directory Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#uptime">Uptime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#user-interactions">User Interactions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contributing/index.html">Contributing to Mastering EOS</a><ul>
@@ -222,7 +225,7 @@
 <p>The final (and possibly most important) consideration is the level of maintenance of the library binding and the library itself. Because GUI libraries and application are typically high in complexity, it is highly suggested that you choose an official or well-maintained binding. Choosing a subpar library typically results in many issues and general frustration.</p>
 </div>
 <div class="section" id="qt">
-<h2>Qt<a class="headerlink" href="#qt" title="Permalink to this headline">¶</a></h2>
+<span id="qt-section"></span><h2>Qt<a class="headerlink" href="#qt" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://qt-project.org/">Qt</a> is a high-quality cross-platform application framework which includes a full-featured GUI library. Qt applications run on Windows, Mac OS X, GNU/Linux, Android, and iOS. Qt is free to use for both open-source and commercial applications (though some of its bindings are not). The <a class="reference external" href="https://www.kde.org/">KDE</a> GNU/Linux desktop environment is developed using Qt. Qt does not use native widgets, but uses native style APIs to render its widgets for a look and feel that is usually consistent with the platform.</p>
 <div class="section" id="bindings">
 <h3>Bindings<a class="headerlink" href="#bindings" title="Permalink to this headline">¶</a></h3>
@@ -235,14 +238,14 @@
 </div>
 <div class="section" id="tools">
 <h3>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h3>
-<p>Qt has an official IDE, <a class="reference external" href="http://en.wikipedia.org/wiki/Qt_Creator">Qt Creator</a>, which includes a code editor and GUI designer.</p>
+<p>Qt has an official IDE, <a class="reference internal" href="editors.html#qt-creator"><em>Qt Creator</em></a>, which includes a code editor and GUI designer among other features.</p>
 </div>
 </div>
 <div class="section" id="wxwidgets">
 <h2>wxWidgets<a class="headerlink" href="#wxwidgets" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://wxwidgets.org/">wxWidgets</a> is a popular cross-platform GUI toolkit. wxWidgets applications run on Windows, Mac OS X, and GNU/Linux. wxWidgets and most of its bindings are free to use for both open-source and commercial applications. wxWidgets is a fully native toolkit, meaning that it uses native APIs for all of its widgets.</p>
-<div class="section" id="id3">
-<h3>Bindings<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>Bindings<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>C++:</strong> Native</li>
 <li><strong>Python:</strong> <a class="reference external" href="http://wxpython.org/">wxPython</a></li>
@@ -252,8 +255,8 @@
 </ul>
 <p>Also see the <a class="reference external" href="http://en.wikipedia.org/wiki/List_of_language_bindings_for_wxWidgets">Wikipedia list of wxWidgets bindings</a>.</p>
 </div>
-<div class="section" id="id4">
-<h3>Tools<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>Tools<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://wxglade.sourceforge.net/">wxGlade</a> is the GUI designer tool for wxWidgets.</p>
 </div>
 </div>
@@ -264,8 +267,8 @@
 <p class="first admonition-title">Note</p>
 <p class="last">Although GTK+ is purely a GUI library, it is typically used with <a class="reference external" href="https://developer.gnome.org/glib/">GLib</a>, which offers many other application features.</p>
 </div>
-<div class="section" id="id6">
-<h3>Bindings<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>Bindings<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>The GTK+ Project maintains <a class="reference external" href="http://www.gtk.org/language-bindings.php">a list of language bindings and their status</a>. The more popular ones include:</p>
 <ul class="simple">
 <li><strong>C:</strong> Native (official)</li>
@@ -276,16 +279,16 @@
 </ul>
 <p>Also see the <a class="reference external" href="http://en.wikipedia.org/wiki/List_of_language_bindings_for_GTK%2B">Wikipedia list of GTK+ bindings</a>.</p>
 </div>
-<div class="section" id="id8">
-<h3>Tools<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>Tools<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://glade.gnome.org/">Glade</a> is the official GUI designer tool for GTK+.</p>
 </div>
 </div>
 <div class="section" id="tk">
 <h2>Tk<a class="headerlink" href="#tk" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://www.tcl.tk/">Tk</a> is a relatively basic cross-platform GUI toolkit, and its applications run on Windows, Mac OS X, and GNU/Linux. Tk and most of its bindings are free to use for both open-source and commercial applications. Tk is a non-native toolkit, but does include the option to emulate the styles of certain platforms.</p>
-<div class="section" id="id9">
-<h3>Bindings<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>Bindings<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>Tcl:</strong> Native</li>
 <li><strong>C:</strong> Native</li>
@@ -320,7 +323,7 @@
         <a href="misc.html" class="btn btn-neutral float-right" title="Miscellaneous">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ide.html" class="btn btn-neutral" title="Integrated Development Environments"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="editors.html" class="btn btn-neutral" title="Editors"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -333,7 +336,7 @@
       &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/ee8113e">ee8113e</a> built 2014-11-23 00:00:02 EST.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/3a409d8">3a409d8</a> built 2014-12-06 23:59:33 EST.<br />
     </p>
   </div>
 

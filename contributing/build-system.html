@@ -132,10 +132,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../databases.html#remote-database-connections">Remote Database Connections</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../ide.html">Integrated Development Environments</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ide.html#bluej">BlueJ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ide.html#eclipse">Eclipse</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ide.html#intellij">IntelliJ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editors.html">Editors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../editors.html#basic-text-editors">Basic Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editors.html#advanced-text-editors">Advanced Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editors.html#integrated-development-environments">Integrated Development Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editors.html#editorconfig">EditorConfig</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../gui-toolkits.html">GUI Toolkits</a><ul>
@@ -152,6 +153,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../misc.html">Miscellaneous</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../misc.html#kill-the-x-server">Kill the X Server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc.html#directory-navigation">Directory Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#uptime">Uptime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#user-interactions">User Interactions</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Contributing to Mastering EOS</a><ul class="current">
@@ -218,29 +221,42 @@
 <p class="first admonition-title">Important</p>
 <p class="last">Waf may warn about a missing <tt class="docutils literal"><span class="pre">makeglossaries</span></tt> tool. This is safe to ignore.</p>
 </div>
-<p>Waf will check that all the requirements are met before preparing the build. If any besides <tt class="docutils literal"><span class="pre">makeglossaries</span></tt> are not met, please re-check your steps in <a class="reference internal" href="prereqs.html#contributing-prereqs"><em>Pre-requisites</em></a> or <a class="reference external" href="https://github.com/seanfisk/mastering-eos/issues">report an issue</a>. The <tt class="docutils literal"><span class="pre">--dev-mode</span></tt> disables auto-update of operations that require SSH. Since the deployment of Mastering EOS is automated, there is no reason for a contributor to leave auto-update on. A shortcut for this command is:</p>
+<p>Waf will check that all the requirements are met before preparing the build. If any besides <tt class="docutils literal"><span class="pre">makeglossaries</span></tt> are not met, please re-check your steps in <a class="reference internal" href="prereqs.html#contributing-prereqs"><em>Pre-requisites</em></a> or <a class="reference external" href="http://en.wikipedia.org/wiki/Rpath">report an issue</a>. The <tt class="docutils literal"><span class="pre">--dev-mode</span></tt> disables auto-update of operations that require SSH. Since the deployment of Mastering EOS is automated, there is no reason for a contributor to leave auto-update on. A shortcut for this command is:</p>
 <div class="highlight-bash"><div class="highlight"><pre>./waf configure -d
 </pre></div>
 </div>
 </div>
 <div class="section" id="build-the-documentation">
 <span id="contributing-build-docs"></span><h2>Build the Documentation<a class="headerlink" href="#build-the-documentation" title="Permalink to this headline">¶</a></h2>
-<p>After configuration, building is rather easy:</p>
+<p>The entire project can be built with:</p>
 <div class="highlight-bash"><div class="highlight"><pre>./waf build
 </pre></div>
 </div>
 <p>You will see various build steps being executed as they are printed to the screen. This command builds both the manual and the poster and places the build artifacts in the <tt class="file docutils literal"><span class="pre">build/manual</span></tt> and <tt class="file docutils literal"><span class="pre">build/poster</span></tt> directories, respectively.</p>
+<p>If you are only interested in one output, you can restrict the build by running <em>one</em> of the following:</p>
+<div class="highlight-bash"><div class="highlight"><pre>./waf html
+./waf pdf
+./waf man
+./waf info
+./waf poster
+</pre></div>
+</div>
 </div>
 <div class="section" id="view-the-results">
 <span id="contributing-view-results"></span><h2>View the Results<a class="headerlink" href="#view-the-results" title="Permalink to this headline">¶</a></h2>
-<p>The build will create outputs in various formats, which may viewed with the following commands:</p>
-<div class="highlight-bash"><div class="highlight"><pre>xdg-open build/manual/html/index.html             <span class="c"># HTML</span>
-man build/manual/man/eos.7                        <span class="c"># Man page</span>
-info build/manual/info/eos.info                   <span class="c"># Info docs</span>
-xdg-open build/manual/latexpdf/mastering-eos.pdf  <span class="c"># PDF</span>
+<p>The build will create outputs in various formats. Run <em>one</em> of the following commands to build the specific format, then open it in the operating system&#8217;s preferred viewer:</p>
+<div class="highlight-bash"><div class="highlight"><pre>./waf ohtml
+./waf opdf
+./waf oman
+./waf oinfo
+./waf oposter
 </pre></div>
 </div>
-<p>Although we&#8217;d like all the outputs to look good, we primarily focus on the HTML output. The build also produces an e-book (EPUB) output, but EOS does not currently have an e-book reader installed.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">It is not necessary to run <tt class="docutils literal"><span class="pre">./waf</span> <span class="pre">build</span></tt> before running any of these commands &#8212; for example, <tt class="docutils literal"><span class="pre">./waf</span> <span class="pre">ohtml</span></tt> will build the HTML docs, then open them in a browser. However, it will not update the poster, PDF, etc.</p>
+</div>
+<p>Although we&#8217;d like all the outputs to look good, we primarily focus on the HTML output.</p>
 </div>
 <div class="section" id="other-commands">
 <h2>Other commands<a class="headerlink" href="#other-commands" title="Permalink to this headline">¶</a></h2>
@@ -292,7 +308,7 @@ xdg-open build/manual/latexpdf/mastering-eos.pdf  <span class="c"># PDF</span>
       &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/ee8113e">ee8113e</a> built 2014-11-23 00:00:02 EST.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/3a409d8">3a409d8</a> built 2014-12-06 23:59:33 EST.<br />
     </p>
   </div>
 

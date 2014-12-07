@@ -131,10 +131,11 @@
 <li class="toctree-l2"><a class="reference internal" href="databases.html#remote-database-connections">Remote Database Connections</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ide.html">Integrated Development Environments</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ide.html#bluej">BlueJ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ide.html#eclipse">Eclipse</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ide.html#intellij">IntelliJ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="editors.html">Editors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="editors.html#basic-text-editors">Basic Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editors.html#advanced-text-editors">Advanced Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editors.html#integrated-development-environments">Integrated Development Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editors.html#editorconfig">EditorConfig</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="gui-toolkits.html">GUI Toolkits</a><ul>
@@ -151,6 +152,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="">Miscellaneous</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#kill-the-x-server">Kill the X Server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#directory-navigation">Directory Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uptime">Uptime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-interactions">User Interactions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contributing/index.html">Contributing to Mastering EOS</a><ul>
@@ -230,6 +233,45 @@
 <p><tt class="docutils literal"><span class="pre">dirs</span></tt> allows you to see what directories you have stored on the stack. The far left directory is the most recently saved. Another way to view the directory from most recent to least recent is by using the commmand <tt class="docutils literal"><span class="pre">dirs</span> <span class="pre">-v</span></tt>.</p>
 </div>
 </div>
+<div class="section" id="uptime">
+<h2>Uptime<a class="headerlink" href="#uptime" title="Permalink to this headline">¶</a></h2>
+<p>The command <tt class="docutils literal"><span class="pre">uptime</span></tt> will display the following information in one line: the current time, the amount of time the system has been running, the number of users currently logged in, and system load averages for the past 1, 5, and 15 minutes.</p>
+</div>
+<div class="section" id="user-interactions">
+<h2>User Interactions<a class="headerlink" href="#user-interactions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="w">
+<h3>w<a class="headerlink" href="#w" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">w</span></tt> command provides a summary of the current users on the machine. The header displays the same information as the <tt class="docutils literal"><span class="pre">uptime</span></tt> command.</p>
+</div>
+<div class="section" id="last">
+<h3>last<a class="headerlink" href="#last" title="Permalink to this headline">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">last</span></tt> displays all the users that have logged into the machine since the creation of the wtemp log file. The date and time that file was created is shown at the bottom of the output.</p>
+<p>To show the output without the hostname field:</p>
+<div class="highlight-bash"><div class="highlight"><pre>last -R
+</pre></div>
+</div>
+<p>To limit the number of rows to output use:</p>
+<div class="highlight-bash"><div class="highlight"><pre>last -num
+</pre></div>
+</div>
+<p>For more information and options run:</p>
+<div class="highlight-bash"><div class="highlight"><pre>man last
+</pre></div>
+</div>
+</div>
+<div class="section" id="users">
+<h3>users<a class="headerlink" href="#users" title="Permalink to this headline">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">users</span></tt> prints a list of all the users currently logged in to a host.</p>
+</div>
+<div class="section" id="write">
+<h3>write<a class="headerlink" href="#write" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">write</span></tt> command allows communication with other users through the terminal.</p>
+<p>The usual syntax is:</p>
+<div class="highlight-bash"><div class="highlight"><pre>write user <span class="o">[</span>tty<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -255,7 +297,7 @@
       &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/ee8113e">ee8113e</a> built 2014-11-23 00:00:02 EST.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/3a409d8">3a409d8</a> built 2014-12-06 23:59:33 EST.<br />
     </p>
   </div>
 

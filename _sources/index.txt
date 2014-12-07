@@ -22,7 +22,7 @@
    sys-sw-info
    winserv
    databases
-   ide
+   editors
    gui-toolkits
    misc
    contributing/index

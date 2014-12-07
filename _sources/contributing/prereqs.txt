@@ -98,7 +98,6 @@ gedit also creates backup files of each file that you save. These files end with
 Your editor has now been set up for developing |title|!
 
 .. _gedit: https://wiki.gnome.org/Apps/Gedit
-.. _EditorConfig: http://editorconfig.org/
 .. _EditorConfig plugins: http://editorconfig.org/#download
 
 SSH Setup

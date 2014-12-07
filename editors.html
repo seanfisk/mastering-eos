@@ -1,0 +1,467 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Editors &mdash; Mastering EOS</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+        <link rel="author" title="About these documents"
+              href="about.html"/>
+    <link rel="top" title="Mastering EOS" href="index.html"/>
+        <link rel="next" title="GUI Toolkits" href="gui-toolkits.html"/>
+        <link rel="prev" title="Databases" href="databases.html"/>
+ 
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-19591513-4', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('send', 'pageview');
+  </script>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> Mastering EOS</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#physical-access-keycards">Physical Access (Keycards)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#computer-access-credentials">Computer Access (Credentials)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules and Procedures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#disk-space">Disk Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#copyrighted-material">Copyrighted Material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#food-and-drink">Food and Drink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#overnight-parking">Overnight Parking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#living-in-the-lab">Living in the Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#malicious-activity">Malicious Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#games">Games</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="remote-access/inter-eos.html">Inter-EOS SSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote-access/windows/index.html">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote-access/mac-os-x/index.html">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote-access/gnu-linux/index.html">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="shells.html">Shells</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#bash">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#tcsh">Tcsh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#kornshell">Kornshell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-level-sw/index.html">User-level Software Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-level-sw/manual-install.html">Manual Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-level-sw/linuxbrew.html">Linuxbrew</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sys-sw-info.html">System and Software Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sys-sw-info.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sys-sw-info.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sys-sw-info.html#web-server">Web Server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="winserv.html">Winserv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="winserv.html#common-settings">Common Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="winserv.html#microsoft-windows">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="winserv.html#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="winserv.html#gnu-linux">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="databases.html">Databases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#mysql">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#oracle">Oracle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#oracle-apex">Oracle APEX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#mssql">MSSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#sqlite">SQLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html#remote-database-connections">Remote Database Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Editors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-text-editors">Basic Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-text-editors">Advanced Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#integrated-development-environments">Integrated Development Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#editorconfig">EditorConfig</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gui-toolkits.html">GUI Toolkits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#choosing-a-toolkit">Choosing a Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#qt">Qt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#wxwidgets">wxWidgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#gtk">GTK+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#tk">Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#swing">Swing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#swt">SWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#native-toolkits">Native Toolkits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#kill-the-x-server">Kill the X Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#directory-navigation">Directory Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#uptime">Uptime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#user-interactions">User Interactions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing/index.html">Contributing to Mastering EOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing/repo-setup.html">Repository Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/prereqs.html">Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/build-system.html">Using the Build System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/edit.html">Editing the Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/writing-style.html">Writing Style</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About This Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="about.html#people">People</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about.html#licensing">Licensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about.html#special-thanks">Special Thanks</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Mastering EOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Editors</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/editors.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="editors">
+<h1>Editors<a class="headerlink" href="#editors" title="Permalink to this headline">¶</a></h1>
+<p>Choosing an editor is an important step for any programmer. As the task of programming is composed primarily of writing code, you will be spending a lot of time in your editor. We encourage you to try out many different editors before choosing the one that is right for you. Once you have chosen an editor, we encourage you to spend time becoming proficient with it &#8212; it will reward you throughout your career.</p>
+<p>This section lists various editors and explains the different classes under which they fall. These classes are not official; they are used only for the purposes of grouping like options together. All editors listed directly under their class are available on EOS; editors listed under the <em>Other</em> sections are not available on EOS but can be downloaded for other platforms (or in some cases, self-installed on EOS).</p>
+<div class="section" id="basic-text-editors">
+<h2>Basic Text Editors<a class="headerlink" href="#basic-text-editors" title="Permalink to this headline">¶</a></h2>
+<p>Basic text editors are a class of editors that usually include only simple text editing features. Some include syntax highlighting for languages, but do not usually include code completion. Their extensibility is usually minimal.</p>
+<div class="section" id="gnu-nano">
+<h3>GNU nano<a class="headerlink" href="#gnu-nano" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://www.nano-editor.org/overview.php">GNU nano</a> is an improved clone of the <a class="reference external" href="http://en.wikipedia.org/wiki/Pico_(text_editor)">Pico</a> text editor. Editing takes place entirely within the terminal in its text user interface. Its features are very basic, with many of the controls outlined at the bottom of its screen.</p>
+<p>GNU nano is best suited for small edits, for example, editing your <tt class="file docutils literal"><span class="pre">.bashrc</span></tt> or other configuration files. It is also useful over an SSH session because it operates full within the terminal.</p>
+</div>
+<div class="section" id="gedit-kwrite-and-leafpad">
+<h3>gedit, KWrite, and Leafpad<a class="headerlink" href="#gedit-kwrite-and-leafpad" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://wiki.gnome.org/Apps/Gedit">gedit</a> (<a class="reference external" href="http://www.gnome.org/">GNOME</a>), <a class="reference external" href="https://www.kde.org/applications/utilities/kwrite/">KWrite</a> (<a class="reference external" href="https://www.kde.org/">KDE</a>), and <a class="reference external" href="http://tarot.freeshell.org/leafpad/">Leafpad</a> (<a class="reference external" href="http://xfce.org/">Xfce</a> and <a class="reference external" href="http://lxde.org/">LXDE</a>) are the default text editors for their respective desktop environments. All have a similar feature set, including syntax highlighting and other expected features of a text editor. They are useful for simple editing tasks, but we don&#8217;t recommend using any of them as a full-time code editor.</p>
+</div>
+<div class="section" id="others">
+<h3>Others<a class="headerlink" href="#others" title="Permalink to this headline">¶</a></h3>
+<p>Other basic text editors not available on EOS, listed here for completeness:</p>
+<ul class="simple">
+<li>Microsoft Windows&#8217; <a class="reference external" href="http://en.wikipedia.org/wiki/Notepad_%28software%29">Notepad</a> and <a class="reference external" href="http://en.wikipedia.org/wiki/WordPad">WordPad</a></li>
+<li>Mac OS X&#8217;s <a class="reference external" href="http://en.wikipedia.org/wiki/TextEdit">TextEdit</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="advanced-text-editors">
+<h2>Advanced Text Editors<a class="headerlink" href="#advanced-text-editors" title="Permalink to this headline">¶</a></h2>
+<p>Advanced text editors are a class of editor which excel in editing quickly and efficiently. They usually allow extensive user customization and configuration, and have packages to augment their base features.</p>
+<p>Vim and Emacs are two classic editors known to programmers everywhere. Both have a reputation for steep learning curves and massive extensibility. However, advanced users of each of these editors also have a reputation for being extremely productive.</p>
+<p>Advanced text editors are recommended for those who have the time to learn how to be efficient with an editor. Effective use requires dedication of time <em>specifically to learning the editor</em>.</p>
+<div class="section" id="vim">
+<h3>Vim<a class="headerlink" href="#vim" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="http://www.vim.org/"><img alt="Vim logo" class="align-left" src="_images/vim.png" /></a>
+<p><a class="reference external" href="http://www.vim.org/">Vim</a> (Vi IMmproved) is an editor inspired by the classic <a class="reference external" href="http://en.wikipedia.org/wiki/vi">vi</a> editor. One of the most popular editors of all time, Vim is included with many operating systems and available for many others. Vim is unique as compared to other popular editors in that it features a modal interface in which different keys execute different actions. Vim is customizable through <a class="reference external" href="http://en.wikipedia.org/wiki/Vim_script">Vim script</a> as well as other languages. The first version of Vim was released in 1991, while the first version of vi was released in 1976.</p>
+<p>As mentioned, Vim is available for many platforms including Windows, Mac OS X, and GNU/Linux.</p>
+<p><div class="clearfix"></div></p>
+</div>
+<div class="section" id="gnu-emacs">
+<h3>GNU Emacs<a class="headerlink" href="#gnu-emacs" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="https://gnu.org/software/emacs/"><img alt="Emacs logo" class="align-left" src="_images/emacs.png" /></a>
+<p><a class="reference external" href="https://gnu.org/software/emacs/">GNU Emacs</a> (Editor MACroS) is an extensible and programmable editor. It is one of the oldest and most popular editors of all time. Emacs features almost infinite customizability of almost all of its features. GNU Emacs was initially released in 1985, with an initial version of Emacs released in 1976.</p>
+<p><div class="clearfix"></div></p>
+<p>Before using Emacs, check out GNU&#8217;s <a class="reference external" href="http://www.gnu.org/software/emacs/tour/">guided tour of Emacs features</a>. You can also check out <a class="reference external" href="http://emacsmovies.org/blog/where_to_begin/">EmacsMovies</a> (basic) and <a class="reference external" href="http://emacsrocks.com/">Emacs Rocks!</a> (advanced) for screencasts showcasing what the editor can do. After starting Emacs, press <tt class="kbd docutils literal"><span class="pre">C-h</span> <span class="pre">t</span></tt> (that&#8217;s Emacs parlance for <tt class="kbd docutils literal"><span class="pre">Control-h</span></tt>, then <tt class="kbd docutils literal"><span class="pre">t</span></tt>) for the in-application Emacs tutorial. Another great guide is <a class="reference external" href="http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/">Jessica Hamrick&#8217;s Absolute Beginner&#8217;s Guide to Emacs</a>.</p>
+<p>Like most GNU software, Emacs has a very detailed and complete manual that is <a class="reference external" href="https://gnu.org/software/emacs/manual/html_node/emacs/index.html">available online</a>, as well within Emacs by entering <tt class="kbd docutils literal"><span class="pre">C-h</span> <span class="pre">r</span></tt> (that&#8217;s <tt class="kbd docutils literal"><span class="pre">Control-h</span></tt>, then <tt class="kbd docutils literal"><span class="pre">r</span></tt>). No mention of Emacs would be complete without mentioning the gigantic resource that is <a class="reference external" href="http://www.emacswiki.org/">EmacsWiki</a>.</p>
+<p>Emacs is not difficult to use out-of-the-box, but requires customization and commitment to use effectively. We recommend using vanilla Emacs for a bit, then moving on to customization when you are comfortable. A great way to get started is to use a so-called <em>starter kit</em>, a collection of packages that include useful Emacs packages and turn on useful Emacs functionality disabled by default. Xah Lee maintains a <a class="reference external" href="http://ergoemacs.org/misc/list_of_emacs_starter_kits.html">list of Emacs starter kits</a>. Although all of these are good, we recommend <a class="reference external" href="https://github.com/bbatsov/prelude">Emacs Prelude</a> because it is full-featured and always up-to-date.</p>
+<p>Emacs 24 includes a package manager called <a class="reference external" href="http://www.emacswiki.org/emacs/ELPA">ELPA</a> (Emacs Lisp Package Archive). Its use is highly recommended. Two additional package archives that any Emacs user needs to know about are <a class="reference external" href="https://marmalade-repo.org/">Marmalade</a> and <a class="reference external" href="http://melpa.org/">MELPA</a>.</p>
+<p>Emacs is available for many platforms including Windows, Mac OS X, and GNU/Linux.</p>
+</div>
+<div class="section" id="kate">
+<h3>Kate<a class="headerlink" href="#kate" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="http://kate-editor.org/"><img alt="Kate mascot" class="align-left" src="_images/kate.png" /></a>
+<p><a class="reference external" href="http://kate-editor.org/">Kate</a> (KDE Advanced Text Editor) is KDE&#8217;s entry into the field of advanced text editors. Kate&#8217;s <a class="reference external" href="http://kate-editor.org/about-kate/">list of features</a> is comparable to other editors of its class.</p>
+<p>Although Kate is primarily used on GNU/Linux through <a class="reference external" href="https://www.kde.org/">KDE</a>, it is also available for Windows and Mac OS X.</p>
+<p><div class="clearfix"></div></p>
+</div>
+<div class="section" id="id5">
+<h3>Others<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>The following are other advanced text editors not available on EOS. You can use these on your personal machine, and you may be able to install them on EOS manually.</p>
+<div class="section" id="atom">
+<h4>Atom<a class="headerlink" href="#atom" title="Permalink to this headline">¶</a></h4>
+<a class="reference external image-reference" href="https://atom.io/"><img alt="Atom logo" class="align-left" src="_images/atom.png" /></a>
+<p><a class="reference external" href="https://atom.io/">Atom</a> is an open-source, customizable text editor produced by <a class="reference external" href="https://github.com/">GitHub</a>. As an editor, it seems to be in the spirit of Vim or Emacs, but using modern design principles and technologies. Atom comes with many useful features out-of-the box, including a fuzzy-finder, multiple cursors, and a package manager. Atom is based on the <a class="reference external" href="https://github.com/atom/atom-shell">Atom Shell</a>, which is in turn based on <a class="reference external" href="http://nodejs.org/">node.js</a> and <a class="reference external" href="http://www.chromium.org/">Chromium</a>.</p>
+<p>Atom is available on Windows, Mac OS X, GNU/Linux, and FreeBSD.</p>
+<p><div class="clearfix"></div></p>
+</div>
+<div class="section" id="sublime-text">
+<h4>Sublime Text<a class="headerlink" href="#sublime-text" title="Permalink to this headline">¶</a></h4>
+<a class="reference external image-reference" href="http://www.sublimetext.com/"><img alt="Sublime Text logo" class="align-left" src="_images/sublime-text.png" /></a>
+<p><a class="reference external" href="http://www.sublimetext.com/">Sublime Text</a> is a free, proprietary, shareware advanced text editor. It features easy navigation within files, multiple selections, split panes, and a package manager, among other features. Sublime Text is very customizable and features a Python API.</p>
+<p>Sublime Text is available for Windows, Mac OS X, and GNU/Linux.</p>
+<p><div class="clearfix"></div></p>
+</div>
+<div class="section" id="notepad">
+<h4>Notepad++<a class="headerlink" href="#notepad" title="Permalink to this headline">¶</a></h4>
+<a class="reference external image-reference" href="http://notepad-plus-plus.org/"><img alt="Notepad++ logo" class="align-left" src="_images/notepad-plus-plus.png" /></a>
+<p><a class="reference external" href="http://notepad-plus-plus.org/">Notepad++</a> is a simple open-source editor for Windows. It supports split editing, syntax highlighting, and many other features come to be expected by an editor of this class.</p>
+<p><div class="clearfix"></div></p>
+</div>
+<div class="section" id="textmate">
+<h4>TextMate<a class="headerlink" href="#textmate" title="Permalink to this headline">¶</a></h4>
+<a class="reference external image-reference" href="http://macromates.com/"><img alt="TextMate logo" class="align-left" src="_images/textmate.png" /></a>
+<p><a class="reference external" href="http://macromates.com/">TextMate</a> is a popular advanced text editor for Mac OS X. Originally a proprietary product, TextMate is now free and open-source software. TextMate has been called the &#8220;culmination of Emacs and OS X&#8221; and features a slick but minimal interface, file browser, auto-pairing, simple completion, and many more features. TextMate has been particularly popular in the <a class="reference external" href="http://rubyonrails.org/">Ruby on Rails</a> community.</p>
+<p><div class="clearfix"></div></p>
+</div>
+</div>
+</div>
+<div class="section" id="integrated-development-environments">
+<h2>Integrated Development Environments<a class="headerlink" href="#integrated-development-environments" title="Permalink to this headline">¶</a></h2>
+<p>Integrated development environments (IDEs) are the most complex class of text editors. Although editing is usually still at the forefront, the IDE&#8217;s text editor is only a <em>component</em> of the larger program. Like advanced text editors, IDEs typically feature syntax highlighting, multiple panes, and many other editing features. Unlike advanced text editors, IDEs often feature deep integration with certain environments, such as semantic code completion, support for refactoring, graphical user interface (GUI) composers, and ability invoke test harnesses or debuggers directly from the editing interface. IDEs also have a focus on projects as opposed to individual files.</p>
+<p>IDEs often focus on a specific language or environment. As such, for people who work in multiple environments, the choice is often between use of a single advanced text editor for all environments or use of an individual IDE for each environment.</p>
+<div class="section" id="bluej">
+<h3>BlueJ<a class="headerlink" href="#bluej" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="http://www.bluej.org/"><img alt="BlueJ logo" class="align-left" src="_images/bluej.png" /></a>
+<p><a class="reference external" href="http://www.bluej.org/">BlueJ</a> is a beginner&#8217;s IDE for Java. Its interface offers the ability to selectively instantiate classes and run methods with different parameters, making it excellent for learning. BlueJ also features an object inspector which allows examination of objects as they progress through a software instance&#8217;s life cycle.</p>
+<p>BlueJ is available for Windows, Mac OS X, and GNU/Linux.</p>
+<p><div class="clearfix"></div></p>
+</div>
+<div class="section" id="eclipse">
+<h3>Eclipse<a class="headerlink" href="#eclipse" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="https://www.eclipse.org/home/index.php"><img alt="Eclipse logo" class="align-left" src="_images/eclipse.png" /></a>
+<p><a class="reference external" href="https://www.eclipse.org/home/index.php">Eclipse</a> is an extensible, feature-complete, free and open-source IDE. Although Eclipse is written in and was initially written for Java, it also supports many other languages and environments. By default, Eclipse on EOS supports Java, PHP, Python, C, C++, and Android.</p>
+<p><div class="clearfix"></div></p>
+<p>Popular language/environment plugins for Eclipse include:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.eclipse.org/jdt/">Eclipse JDT</a> (Java Development Tools)</li>
+<li><a class="reference external" href="http://www.eclipse.org/cdt/">Eclipse CDT</a> (C/C++ Development Tooling)</li>
+<li><a class="reference external" href="http://www.eclipse.org/pdt/">Eclipse PDT</a> (PHP Development Tools)</li>
+<li><a class="reference external" href="http://pydev.org/">PyDev</a> (Python)</li>
+<li><a class="reference external" href="http://www.nodeclipse.org/">NodeClipse</a> (JavaScript and Node.JS)</li>
+<li><a class="reference external" href="http://developer.android.com/tools/sdk/eclipse-adt.html">ADT</a> (Android Development Tools)</li>
+<li><a class="reference external" href="http://www.aptana.com/index.html">Aptana Studio</a> (HTML5, CSS3, JavaScript, Ruby, Rails, PHP, Python)</li>
+</ul>
+<p>Eclipse is available for Windows, Mac OS X, and GNU/Linux.</p>
+</div>
+<div class="section" id="intellij-idea">
+<h3>IntelliJ IDEA<a class="headerlink" href="#intellij-idea" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="https://www.jetbrains.com/idea/"><img alt="IntelliJ IDEA logo" class="align-left" src="_images/intellij.png" /></a>
+<p><a class="reference external" href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a> (colloquially known as &#8220;IntelliJ&#8221;) is a professional IDE for Java and other languages developed by developer tool company <a class="reference external" href="https://www.jetbrains.com/">JetBrains</a>. IntelliJ&#8217;s primary advantage over other IDEs and editors is deep integration with many specific languages and technologies. IntelliJ is available in two versions: Community and Ultimate. The Community edition is free and open-source software, while the Ultimate edition includes more features for a price. For details on specific features, consult <a class="reference external" href="https://www.jetbrains.com/idea/features/">IntelliJ&#8217;s advertised feature list</a> or <a class="reference external" href="http://en.wikipedia.org/wiki/IntelliJ_IDEA#Features">Wikipedia&#8217;s list of IntelliJ features</a>.</p>
+<p><div class="clearfix"></div></p>
+<p>IntelliJ is available for Windows, Mac OS X, and GNU/Linux. On EOS, IntelliJ may be started from the command line with:</p>
+<div class="highlight-bash"><div class="highlight"><pre>idea.sh
+</pre></div>
+</div>
+</div>
+<div class="section" id="visual-studio">
+<h3>Visual Studio<a class="headerlink" href="#visual-studio" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="http://www.visualstudio.com/"><img alt="Visual Studio logo" class="align-left" src="_images/visual-studio.png" /></a>
+<p><a class="reference external" href="http://www.visualstudio.com/">Visual Studio</a> is an IDE for Windows developed and maintained by <a class="reference external" href="http://www.microsoft.com/">Microsoft</a>. It is primarily aimed at development of applications and libraries for Microsoft platforms, including <a class="reference external" href="http://windows.microsoft.com/">Windows</a>, <a class="reference external" href="http://www.windowsphone.com/">Windows Phone</a>, <a class="reference external" href="http://www.microsoft.com/silverlight/">Microsoft Silverlight</a>, and <a class="reference external" href="http://www.iis.net/">IIS</a>. Visual Studio&#8217;s supported languages include C, C++, C#, F#, and Visual Basic. Visual Studio also supports Python through <a class="reference external" href="http://pytools.codeplex.com/">PyTools</a> and web development with HTML, CSS, JavaScript, and <a class="reference external" href="http://www.asp.net/">ASP.NET</a>. The IDE has almost all modern features including IntelliSense code completion, refactoring support, and integrated debugger, graphical interface and web design tools, and a database editor. <a class="reference external" href="https://www.jetbrains.com/resharper/">ReSharper</a> by <a class="reference external" href="https://www.jetbrains.com/">JetBrains</a> is a Visual Studio add-on considered necessary by many .NET developers.</p>
+<p>Visual Studio is the recommended IDE when developing exclusively for Microsoft platforms.</p>
+<p><div class="clearfix"></div></p>
+</div>
+<div class="section" id="xcode">
+<h3>Xcode<a class="headerlink" href="#xcode" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="https://developer.apple.com/xcode/"><img alt="Xcode logo" class="align-left" src="_images/xcode.png" /></a>
+<p><a class="reference external" href="https://developer.apple.com/xcode/">Xcode</a> is an IDE for Mac OS X developed and maintained by <a class="reference external" href="http://www.apple.com/">Apple</a>. It is primarily aimed at development of Mac OS X and iOS <a class="reference external" href="https://developer.apple.com/technologies/mac/cocoa.html">Cocoa</a> applications written in Objective-C and/or <a class="reference external" href="https://developer.apple.com/swift/">Swift</a>. Xcode includes <a class="reference external" href="http://en.wikipedia.org/wiki/Interface_Builder">Interface Builder</a> for composition of user interfaces, the <a class="reference external" href="https://developer.apple.com/Library/mac/documentation/CompilerTools/Conceptual/LLVMCompilerOverview/index.html">Apple LLVM Compiler</a> based on <a class="reference external" href="http://clang.llvm.org/">Clang</a> and <a class="reference external" href="http://llvm.org/">LLVM</a>, a graphical debugger based on <a class="reference external" href="http://lldb.llvm.org/">LLDB</a>, and <a class="reference external" href="https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Introduction/Introduction.html">Instruments</a>, a tracing and profiling tool based on <a class="reference external" href="http://en.wikipedia.org/wiki/DTrace">DTrace</a>. It also features excellent code completion, also implemented using <a class="reference external" href="http://clang.llvm.org/">Clang</a>. For more information, see the <a class="reference external" href="https://developer.apple.com/xcode/features/">full list of Xcode features</a>.</p>
+<p>In addition to Objective-C and Swift, Xcode supports development in C, C++, Python, Ruby, and AppleScript. <a class="footnote-reference" href="#xcode-langs" id="id14">[1]</a></p>
+<p>If you are developing native Mac OS X or iOS applications, Xcode is the recommended IDE.</p>
+<p><div class="clearfix"></div></p>
+</div>
+<div class="section" id="qt-creator">
+<span id="id16"></span><h3>Qt Creator<a class="headerlink" href="#qt-creator" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="http://qt-project.org/wiki/Category:Tools::QtCreator"><img alt="Qt Creator logo" class="align-left" src="_images/qt-creator.png" /></a>
+<p><a class="reference external" href="http://qt-project.org/wiki/Category:Tools::QtCreator">Qt Creator</a> is an IDE for developing applications using the <a class="reference internal" href="gui-toolkits.html#qt-section"><em>Qt</em></a> cross-platform framework. Qt Creator supports C++ and <a class="reference external" href="http://qt-project.org/doc/qt-5/qmlapplications.html">QtQuick/QML</a> (JavaScript), two languages used for developing Qt applications. It also includes project navigation tools, code completion, an integrated debugger based on <a class="reference external" href="http://www.gnu.org/software/gdb/">GDB</a>, and a drag-and-drop interface designer (formerly known as Qt Designer). Additionally, Qt Designer supports integration with various build systems. A full feature list is available on the homepage.</p>
+<p><div class="clearfix"></div></p>
+<p>Qt Creator is the recommended IDE if you are developing cross-platform applications in <a class="reference internal" href="gui-toolkits.html#qt-section"><em>Qt</em></a>. Qt Creator is available on all platforms Qt is available, which includes Windows, Mac OS X, and GNU/Linux.</p>
+</div>
+<div class="section" id="geany">
+<h3>Geany<a class="headerlink" href="#geany" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="http://geany.org/"><img alt="Geany logo" class="align-left" src="_images/geany.png" /></a>
+<p><a class="reference external" href="http://geany.org/">Geany</a> is a lightweight IDE based on <a class="reference external" href="http://www.scintilla.org/">Scintilla</a>. It includes syntax highlighting of numerous languages, project support, simple code completion, and code navigation. In addition, Geany includes support for invoking build systems through external tools. Geany is a good choice if you want to use a consistent interface for many different languages and basic IDE features for development.</p>
+<p><div class="clearfix"></div></p>
+<p>Geany is available for Windows, Mac OS X, and GNU/Linux.</p>
+</div>
+<div class="section" id="bluefish">
+<h3>Bluefish<a class="headerlink" href="#bluefish" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="http://bluefish.openoffice.nl/"><img alt="Bluefish logo" class="align-left" src="_images/bluefish.png" /></a>
+<p><a class="reference external" href="http://bluefish.openoffice.nl/">Bluefish</a> is a lightweight IDE primarily aimed at web development. On the web development side, Bluefish supports PHP, ASP.NET, ColdFusion, Java Server Pages (JSP), and Wordpress as well as the standard HTML, CSS, and JavaScript. In addition to that, Bluefish includes support for C, C++, Python, Ruby, and SVG, among others. One of Bluefish&#8217;s interesting features is integration of external scripts by sending the document text through a pipe to the script. For more information, see the <a class="reference external" href="http://bluefish.openoffice.nl/features.html">full list of Bluefish features</a>.</p>
+<p>Bluefish is available for Windows, Mac OS X, and GNU/Linux.</p>
+<p><div class="clearfix"></div></p>
+<p>For a full list of text editors, please see Wikipedia&#8217;s <a class="reference external" href="http://en.wikipedia.org/wiki/List_of_text_editors">list of text editors</a> and <a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_text_editors">comparison of text editors</a>.</p>
+</div>
+<div class="section" id="id20">
+<h3>Others<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<p>The following are other IDEs not available on EOS. You can use these on your personal machine, and you may be able to install them on EOS manually.</p>
+<div class="section" id="netbeans">
+<h4>NetBeans<a class="headerlink" href="#netbeans" title="Permalink to this headline">¶</a></h4>
+<a class="reference external image-reference" href="https://netbeans.org/"><img alt="NetBeans logo" class="align-left" src="_images/netbeans.png" /></a>
+<p><a class="reference external" href="https://netbeans.org/">NetBeans</a> is a free and open-source IDE for Java and others sponsored by <a class="reference external" href="http://www.oracle.com/index.html">Oracle</a>. Although Java is the main focus of NetBeans, it also supports PHP, C and C++, and web development. One of the more popular features of NetBeans is its integrated GUI builder for Java/<a class="reference external" href="http://en.wikipedia.org/wiki/Swing_(Java)">Swing</a>.</p>
+<p><div class="clearfix"></div></p>
+<p>NetBeans is available for Windows, Mac OS X, and GNU/Linux.</p>
+</div>
+</div>
+</div>
+<div class="section" id="editorconfig">
+<h2>EditorConfig<a class="headerlink" href="#editorconfig" title="Permalink to this headline">¶</a></h2>
+<a class="reference external image-reference" href="http://editorconfig.org/"><img alt="EditorConfig logo" class="align-left" src="_images/editorconfig.png" /></a>
+<p>If your project is developed by a team or you work with multiple editors, consider using <a class="reference external" href="http://editorconfig.org/">EditorConfig</a>. EditorConfig plugins for various editors allow developers to maintain a consistent formatting style throughout the projects, supporting such things as tabs vs. spaces, tab width, end of line characters, and character encoding, among others (<a class="reference external" href="http://editorconfig.org/#supported-properties">full list here</a>). Many editors listed in this section are supported.</p>
+<p><div class="clearfix"></div></p>
+<p><em>All logos are copyrights of their respective projects.</em></p>
+<table class="docutils footnote" frame="void" id="xcode-langs" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id14">[1]</a></td><td>According to the <a class="reference external" href="http://en.wikipedia.org/wiki/Xcode#Composition">Wikipedia Xcode article</a>.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+          
+<footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gui-toolkits.html" class="btn btn-neutral float-right" title="GUI Toolkits">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="databases.html" class="btn btn-neutral" title="Databases"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    
+      &copy; Copyright 2014 Sean Fisk and Ira Woodring<br />
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
+      <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/3a409d8">3a409d8</a> built 2014-12-06 23:59:33 EST.<br />
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

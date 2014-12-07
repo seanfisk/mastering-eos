@@ -27,6 +27,8 @@ Third, some of the toolkits mentioned offer more that just GUI abstractions. Of 
 
 The final (and possibly most important) consideration is the level of maintenance of the library binding and the library itself. Because GUI libraries and application are typically high in complexity, it is highly suggested that you choose an official or well-maintained binding. Choosing a subpar library typically results in many issues and general frustration.
 
+.. _qt-section:
+
 Qt
 ===
 
@@ -44,11 +46,8 @@ Also see Wikipedia's list of bindings for :wikipedia:`Qt 4 <List_of_language_bin
 Tools
 -----
 
-Qt has an official IDE, :wikipedia:`Qt Creator <Qt_Creator>`, which includes a code editor and GUI designer.
+Qt has an official IDE, :ref:`qt-creator`, which includes a code editor and GUI designer among other features.
 
-.. _Qt: http://qt-project.org/
-.. _KDE: https://www.kde.org/
-.. _QtQuick/QML: http://qt-project.org/doc/qt-5/qmlapplications.html
 .. _PyQt: http://www.riverbankcomputing.com/software/pyqt/intro
 
 wxWidgets
@@ -91,8 +90,6 @@ GTK+
     Although GTK+ is purely a GUI library, it is typically used with GLib_, which offers many other application features.
 
 .. _GTK+: http://www.gtk.org/
-.. _GNOME: http://www.gnome.org/
-.. _Xfce: http://xfce.org/
 .. _Unity: https://unity.ubuntu.com/
 .. _GLib: https://developer.gnome.org/glib/
 .. _Cairo: http://cairographics.org/
