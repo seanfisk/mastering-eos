@@ -77,7 +77,7 @@ def build(ctx):
 
     ctx.add_manual_dependency(main_tex_node, sty_out_node)
 
-    if ctx.env.OPEN_SPECIFIC_TARGET:
+    if ctx.env.SPECIFIC_TARGET.is_open:
         def _open_poster(ctx):
             ctx.open_file(main_tex_node.change_ext('.pdf'))
         ctx.add_post_fun(_open_poster)

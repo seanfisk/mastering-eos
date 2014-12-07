@@ -10,7 +10,7 @@ from os.path import join
 import re
 import textwrap
 import shutil
-from collections import OrderedDict
+from collections import OrderedDict, namedtuple
 from tempfile import TemporaryFile
 
 import six
@@ -29,30 +29,32 @@ out = 'build'
 SUBDIRS = ['parsers', 'poster', 'manual']
 WAF_TOOLS_DIR = 'waf-tools'
 
-# Specific targets allow building a subset of the entire build. Generate two
-# commands for each specific target:
+# Specific commands/targets allow building a subset of the entire build. In
+# general, we generate two commands for each specific target:
 #
 # - 'tgt', which builds only the specified target
 # - 'otgt', which builds the specified target then opens it
 #
-SPECIFIC_TARGETS = ['pdf', 'html', 'man', 'info', 'poster']
-for target in SPECIFIC_TARGETS:
-    for cmd in [target, 'o' + target]:
-        type(target.capitalize() + 'Context',
-             (waflib.Build.BuildContext,),
-             dict(cmd=cmd))
-
+SpecificTarget = namedtuple('SpecificTarget', ['format', 'is_open'])
 # Special case: open info docs in Emacs
-class OeinfoContext(waflib.Build.BuildContext):
-    cmd = 'oeinfo'
+SPECIFIC_COMMAND_TARGETS = {'oeinfo': SpecificTarget('info', True)}
+# Most formats
+for fmt in ['pdf', 'html', 'man', 'info', 'poster']:
+    SPECIFIC_COMMAND_TARGETS[fmt] = SpecificTarget(fmt, False)
+    SPECIFIC_COMMAND_TARGETS['o' + fmt] = SpecificTarget(fmt, True)
+
+for cmd in SPECIFIC_COMMAND_TARGETS.keys():
+    type(cmd.capitalize() + 'Context',
+         (waflib.Build.BuildContext,),
+         dict(cmd=cmd))
 
 @conf
-def should_build(self, target):
-    """Indicate whether the target should build."""
+def should_build(self, format):
+    """Indicate whether the specified format should build."""
     # If we don't have a specific target, always build. If we have a specific
     # target, build if that target matches the provided target.
-    spec_target = self.env.SPECIFIC_TARGET
-    return not spec_target or spec_target == target
+    spec_format = self.env.SPECIFIC_TARGET.format
+    return not spec_format or spec_format == format
 
 @conf
 def find_or_make(self, parent, lst):
@@ -153,19 +155,12 @@ def configure(ctx):
              color=('YELLOW' if ctx.env.DEVELOPER_MODE else 'GREEN'))
 
 def build(ctx):
-    # Set the specific "base" target if one exists, else set to None.
-    cmd = ctx.cmd
-    if cmd in SPECIFIC_TARGETS:
-        tgt = (cmd, False)
-    elif cmd == 'oeinfo':
-        tgt = ('info', True)
-    else:
-        suffix = cmd[1:]
-        if cmd.startswith('o') and suffix in SPECIFIC_TARGETS:
-            tgt = (suffix, True)
-        else:
-            tgt = (None, False)
-    ctx.env.SPECIFIC_TARGET, ctx.env.OPEN_SPECIFIC_TARGET = tgt
+    # Set the specific target if one exists.
+    try:
+        tgt = SPECIFIC_COMMAND_TARGETS[ctx.cmd]
+    except KeyError:
+        tgt = (None, False)
+    ctx.env.SPECIFIC_TARGET = tgt
 
     # This variable is for recording build nodes placed in the source directory
     # for deletion using the 'clean' command.

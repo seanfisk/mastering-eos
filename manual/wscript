@@ -14,10 +14,10 @@ OPENERS = dict(
     oinfo=('open_info', 'eos.info'),
     oeinfo=('open_info_emacs', 'eos.info'),
 )
-SPHINX_TARGETS = ['pdf', 'html', 'man', 'info']
-
-def _get_sphinx_builder(target):
-    return 'latexpdf' if target == 'pdf' else target
+# Special case: we shortened 'latexpdf' to 'pdf'
+SPHINX_TARGET_BUILDERS = {'pdf': 'latexpdf'}
+for tgt in ['html', 'man', 'info']:
+    SPHINX_TARGET_BUILDERS[tgt] = tgt
 
 def options(ctx):
     pass
@@ -26,7 +26,7 @@ def configure(ctx):
     ctx.find_program('python')
 
 def build(ctx):
-    if not any(map(ctx.should_build, SPHINX_TARGETS)):
+    if not any(map(ctx.should_build, SPHINX_TARGET_BUILDERS.keys())):
         return
 
     fingerprints_table_path = (
@@ -87,9 +87,17 @@ def build(ctx):
 
     # TODO: The html document does not build under changes to
     # _templates/footer.html.
+    fmt, is_open = ctx.env.SPECIFIC_TARGET
+    builder = None
+    builders = SPHINX_TARGET_BUILDERS.keys()
+    if fmt:
+        try:
+            builder = SPHINX_TARGET_BUILDERS[fmt]
+            builders = [builder]
+        except AttributeError:
+            pass
     ctx(features='sphinx',
-        builders=map(_get_sphinx_builder, [ctx.env.SPECIFIC_TARGET]
-                     if ctx.env.SPECIFIC_TARGET else SPHINX_TARGETS),
+        builders=builders,
         source='conf.py',
         # Turn warnings into errors. Helps them get fixed more quickly :)
         warningiserror=True,
@@ -100,11 +108,9 @@ def build(ctx):
         after_=['make_vnc_table', 'make_ssh_fingerprints_table'],
     )
 
-    if ctx.env.OPEN_SPECIFIC_TARGET:
+    if is_open:
         def _open_target(ctx):
             open_fn_name, node_basename = OPENERS[ctx.cmd]
-            getattr(ctx, open_fn_name)(ctx.bldnode.find_node([
-                'manual',
-                _get_sphinx_builder(ctx.env.SPECIFIC_TARGET),
-                node_basename]))
+            getattr(ctx, open_fn_name)(
+                ctx.bldnode.find_node(['manual', builder, node_basename]))
         ctx.add_post_fun(_open_target)
