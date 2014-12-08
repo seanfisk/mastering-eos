@@ -49,6 +49,8 @@ For more information on the options, run::
 
 .. _inxi: https://code.google.com/p/inxi/
 
+.. _hardinfo-section:
+
 HardInfo
 ````````
 
