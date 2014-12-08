@@ -12,14 +12,12 @@ A: This tool allows setting of the archive name of files in the archive. In
    addition, it sets the owner and group to 'root' in the tar files.
 """
 
-import os
 from abc import ABCMeta, abstractmethod
 import tarfile
 import zipfile
 
 import six
 import waflib
-from waflib.Configure import conf
 
 TAR_FORMAT_COMPRESSION_MAPPING = {
     'tar': None,
@@ -27,10 +25,12 @@ TAR_FORMAT_COMPRESSION_MAPPING = {
     'bztar': 'bz2',
 }
 
-source_element_error = waflib.Errors.WafError(
+SOURCE_ELEMENT_ERROR = waflib.Errors.WafError(
     'Archive source element must be in the form (node, archive_name)')
 
 class make_archive_task(waflib.Task.Task):
+    """Archive creation task"""
+    # pylint: disable=no-member
     def run(self):
         out_path = self.outputs[0].abspath()
         archive = (ZipArchive(out_path) if self.format == 'zip'
@@ -76,11 +76,11 @@ def apply_archive(task_gen):
         # If source is a tuple, it should be a tuple of (node, archive_name)
         # where archive name is the file's name in the archive.
         if not isinstance(source_tuple, tuple):
-            raise source_element_error
+            raise SOURCE_ELEMENT_ERROR
         try:
             node, archive_name = source_tuple
         except ValueError:
-            raise source_element_error
+            raise SOURCE_ELEMENT_ERROR
 
         in_nodes.append(node)
         in_node_archive_name_mapping[node] = archive_name
@@ -93,23 +93,23 @@ def apply_archive(task_gen):
         )
     out_base = outs[0]
 
-    for format in formats:
-        if format == 'zip':
+    for fmt in formats:
+        if fmt == 'zip':
             extension = '.zip'
             compression = None # Not used for zip
         else:
             try:
-                compression = TAR_FORMAT_COMPRESSION_MAPPING[format]
+                compression = TAR_FORMAT_COMPRESSION_MAPPING[fmt]
             except KeyError:
                 raise waflib.Errors.WafError(
-                    'Archive format not recognized: {0}'.format(self.format))
+                    'Archive format not recognized: {0}'.format(fmt))
             extension = '.tar' + ('.' + compression if compression else '')
 
         out_node = task_gen.path.find_or_declare(out_base + extension)
 
         task = task_gen.create_task('make_archive', src=in_nodes, tgt=out_node)
         # Assign attributes necessary for task methods.
-        task.format = format
+        task.format = fmt
         task.compression = compression
         task.in_node_archive_name_mapping = in_node_archive_name_mapping
 
@@ -127,14 +127,18 @@ def apply_archive(task_gen):
     # task_gen.meths.remove('process_source')
 
 class Archive(six.with_metaclass(ABCMeta, object)):
+    """Base archive class"""
     @abstractmethod
     def add_file(self, node, archive_name):
+        """Add a node to this archive with the specified name."""
         raise NotImplementedError()
 
     def close(self):
+        """Close this archive."""
         pass
 
 class TarArchive(Archive):
+    """Tar archive wrapper"""
     def __init__(self, path, compression):
         mode = 'w' + (':' + compression if compression else '')
         self._archive = tarfile.open(path, mode=mode)
@@ -160,6 +164,7 @@ class TarArchive(Archive):
         self._archive.close()
 
 class ZipArchive(Archive):
+    """Zip archive wrapper"""
     def __init__(self, path):
         self._archive = zipfile.ZipFile(path, mode='w')
 

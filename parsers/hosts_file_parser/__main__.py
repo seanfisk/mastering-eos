@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""Hosts file parser entry point."""
+
 import sys
 import argparse
 
@@ -9,7 +11,7 @@ import six
 from hosts_file_parser import get_eos_hostnames
 
 def main(argv):
-    # Parse args.
+    """Entry point"""
     arg_parser = argparse.ArgumentParser(
         prog=argv[0],
         description='Extract EOS hostnames from an EOS /etc/hosts file.')

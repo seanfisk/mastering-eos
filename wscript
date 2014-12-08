@@ -1,17 +1,15 @@
 # -*- mode: python; coding: utf-8; -*-
 
-# Waf build file
-#
+"""Waf main build script"""
+
 # Keep this file and all Waf files Python 2/3 single-source compatible (using
 # six when necessary).
 
 import os
 from os.path import join
 import re
-import textwrap
-import shutil
 from collections import OrderedDict, namedtuple
-from tempfile import TemporaryFile
+import fnmatch
 
 import six
 import waflib
@@ -21,8 +19,8 @@ from waflib.Configure import conf
 # Waf constants
 APPNAME = 'mastering-eos'
 VERSION = '0.1'
-top = '.'
-out = 'build'
+top = '.' # pylint: disable=invalid-name
+out = 'build' # pylint: disable=invalid-name
 
 # Process the poster first, as it takes more time to generate but has less
 # dependencies.
@@ -39,25 +37,25 @@ SpecificTarget = namedtuple('SpecificTarget', ['format', 'is_open'])
 # Special case: open info docs in Emacs
 SPECIFIC_COMMAND_TARGETS = {'oeinfo': SpecificTarget('info', True)}
 # Most formats
-for fmt in ['pdf', 'html', 'man', 'info', 'poster']:
-    SPECIFIC_COMMAND_TARGETS[fmt] = SpecificTarget(fmt, False)
-    SPECIFIC_COMMAND_TARGETS['o' + fmt] = SpecificTarget(fmt, True)
+for _fmt in ['pdf', 'html', 'man', 'info', 'poster']:
+    SPECIFIC_COMMAND_TARGETS[_fmt] = SpecificTarget(_fmt, False)
+    SPECIFIC_COMMAND_TARGETS['o' + _fmt] = SpecificTarget(_fmt, True)
 
-for cmd in SPECIFIC_COMMAND_TARGETS.keys():
-    type(cmd.capitalize() + 'Context',
+for _cmd in SPECIFIC_COMMAND_TARGETS.keys():
+    type(_cmd.capitalize() + 'Context',
          (waflib.Build.BuildContext,),
-         dict(cmd=cmd))
+         dict(cmd=_cmd))
 
 @conf
-def should_build(self, format):
+def should_build(self, fmt):
     """Indicate whether the specified format should build."""
     # If we don't have a specific target, always build. If we have a specific
     # target, build if that target matches the provided target.
     spec_format = self.env.SPECIFIC_TARGET.format
-    return not spec_format or spec_format == format
+    return not spec_format or spec_format == fmt
 
 @conf
-def find_or_make(self, parent, lst):
+def find_or_make(self, parent, lst): # pylint: disable=unused-argument
     """Find or make a node. This looks for the node specified, and creates it
     if it doesn't exist. The notable difference from
     :meth:`waflib.Node.find_resource` and :meth:`waflib.Node.find_or_declare`
@@ -109,6 +107,8 @@ def options(ctx):
     ctx.recurse(SUBDIRS)
 
 def configure(ctx):
+    ctx.find_program('pylint')
+
     ctx.load('tex')
     latex_engine_path = ctx.find_program(ctx.options.latex_engine)
 
@@ -138,7 +138,9 @@ def configure(ctx):
             'sphinx_internal',
             'fabric_tool',
             'grako_tool',
-            'open'
+            'open',
+            'log',
+            'git',
         ],
         tooldir=WAF_TOOLS_DIR)
     ctx.find_program('ghp-import', var='GHP_IMPORT')
@@ -152,7 +154,7 @@ def configure(ctx):
     ctx.env.DEVELOPER_MODE = ctx.options.dev_mode
     ctx.msg('Developer mode',
             'enabled' if ctx.env.DEVELOPER_MODE else 'disabled',
-             color=('YELLOW' if ctx.env.DEVELOPER_MODE else 'GREEN'))
+            color=('YELLOW' if ctx.env.DEVELOPER_MODE else 'GREEN'))
 
 def build(ctx):
     # Set the specific target if one exists.
@@ -177,8 +179,7 @@ def build(ctx):
         fabfile=fabfile_node,
         commands=dict(download_hosts_file=dict(output=hosts_node.abspath())),
         target=[hosts_node],
-        **({} if ctx.env.DEVELOPER_MODE else dict(always=True))
-    )
+        **({} if ctx.env.DEVELOPER_MODE else dict(always=True)))
 
     parsers_dir = ctx.bldnode.find_dir('parsers')
     hostnames_node = ctx.path.find_or_declare('hostnames')
@@ -190,7 +191,7 @@ def build(ctx):
         target=hostnames_node,
         vars=['PYTHON'],
     )
-    def get_eos_hostnames(tsk):
+    def _get_eos_hostnames(tsk):
         with open(tsk.outputs[0].abspath(), 'w') as out_file:
             # Note: colorama (from grako) has issues if we try to directly call
             # into the Python module from here.
@@ -215,7 +216,7 @@ def build(ctx):
     # Note: Can't use the 'fun' keyword for the 'subst' feature; it returns
     # after running.
 
-    # TODO: We can't use the 'subst' feature because it requires us to provide
+    # FIXME: We can't use the 'subst' feature because it requires us to provide
     # substitution values up-front, which is exactly what we can't do. That's
     # why we've used this replace(...) solution. There's got to be a better
     # way.
@@ -225,7 +226,7 @@ def build(ctx):
         source=[hostnames_node] + in_nodes,
         target=out_nodes,
         update_outputs=True)
-    def subst_max_hostnames(tsk):
+    def _subst_max_hostnames(tsk):
         hostnames_node = tsk.inputs[0]
         hostnames_content = hostnames_node.read()
         maxes = dict(('MAX_' + lab.upper(),
@@ -258,6 +259,8 @@ class ArchiveContext(waflib.Build.BuildContext):
     fun = 'archive'
 
 def archive(ctx):
+    """prepares the project for distribution"""
+
     # Prepare website directory
     html_build_dir = ctx.path.find_or_declare(['manual', 'html'])
     html_build_nodes = html_build_dir.ant_glob(
@@ -306,6 +309,8 @@ def archive(ctx):
 
 @always_run
 class ghp_import_task(waflib.Task.Task):
+    """Handle run of ghp-import."""
+
     vars = ['GHP_IMPORT']
 
     def __init__(self, dir_node, *args, **kwargs):
@@ -324,6 +329,7 @@ class DeployContext(waflib.Build.BuildContext):
     fun = 'deploy'
 
 def deploy(ctx):
+    """deploys the docs to the website and EOS"""
     # Deploy man and info docs
     hostnames_node = ctx.path.find_or_declare('hostnames')
     ctx(features='fabric',
@@ -341,10 +347,63 @@ def deploy(ctx):
                 'scripts', 'eos-web-docs']).abspath(),
         ),
         source=[hostnames_node],
-        always=True,
-    )
+        always=True)
 
     # Deploy GitHub pages
     website_node = ctx.bldnode.find_dir('website')
     ghp_task = ghp_import_task(website_node, env=ctx.env)
     ctx.add_to_group(ghp_task)
+
+class LintContext(waflib.Build.BuildContext):
+    cmd = 'lint'
+    fun = 'lint'
+
+def lint(ctx):
+    """runs Pylint to check Python style/common errors"""
+    # Pylint can take a while to run, so print a message.
+    ctx.to_log('Running pylint...\n')
+    def _is_py_file(path):
+        base, ext = os.path.splitext(os.path.basename(path))
+        return ext == '.py' or base == 'wscript'
+    # Waf will take care of colors on Windows with its ansiterm module.
+    checkers_dir_path = ctx.path.find_dir('pylint-checkers').abspath()
+    retcode = ctx.exec_command(
+        ctx.env.PYLINT +
+        ['--load-plugins',
+         ','.join(_python_modules_in_dir(checkers_dir_path))] +
+        list(filter(_is_py_file, ctx.get_git_files())),
+        # Add the current directory so that we can find our checkers modules.
+        # Add the Waf modules dir so that pylint can find those modules.
+        env={
+            'PYTHONPATH': os.pathsep.join([
+                waflib.Context.waf_dir, checkers_dir_path]),
+        })
+
+    if retcode == 0:
+        # http://patorjk.com/software/taag/#p=display&f=Small&t=PASSED
+        ctx.log_success(r'''  ___  _   ___ ___ ___ ___
+ | _ \/_\ / __/ __| __|   \
+ |  _/ _ \\__ \__ \ _|| |) |
+ |_|/_/ \_\___/___/___|___/
+''')
+    else:
+        # http://patorjk.com/software/taag/#p=display&f=Small&t=FAILED
+        ctx.log_failure(r'''  ___ _   ___ _    ___ ___
+ | __/_\ |_ _| |  | __|   \
+ | _/ _ \ | || |__| _|| |) |
+ |_/_/ \_\___|____|___|___/
+''')
+
+def _python_modules_in_dir(dirpath):
+    """Find all Python modules within a directory.
+
+    :param dirpath: path to directory
+    :type dirpath: :class:`str`
+    :return: list of Python module files
+    :rtype: :class:`list` of :class:`str`
+    """
+    # Sort to guarantee a stable order for the build. Different orders returned
+    # from os.listdir() can cause data structures to be built in different ways
+    # and cause unnecessary builds.
+    return sorted(os.path.splitext(name)[0] for name
+                  in fnmatch.filter(os.listdir(dirpath), '*.py'))

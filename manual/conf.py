@@ -1,5 +1,7 @@
-# -*- coding: utf-8 -*-
-#
+# -*- coding: utf-8 -*- pylint: disable=invalid-name
+
+"""Sphinx configuration file"""
+
 # This file is execfile()d with the current directory set to its
 # containing dir.
 #
@@ -44,7 +46,7 @@ unix_name = 'mastering-eos'
 authors = ['Sean Fisk', 'Ira Woodring']
 authors_str = ' and '.join(authors)
 from datetime import date
-copyright = '{year} {authors_str}'.format(
+copyright = '{year} {authors_str}'.format( # pylint: disable=redefined-builtin
     year=date.today().year, authors_str=authors_str)
 # Name of the man page and info docs.
 man_info_name = 'eos'
@@ -71,7 +73,6 @@ release = '1.0'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 exclude_patterns = [
-    'TODO.rst',
     '_build',
     '**/common',
 ]

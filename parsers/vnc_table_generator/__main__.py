@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""VNC parser entry point"""
+
 import sys
 import argparse
 
 from vnc_table_generator import generate_vnc_table
 
 def main(argv):
-    # Parse args.
+    """Entry point"""
     arg_parser = argparse.ArgumentParser(
         prog=argv[0],
         description='Generate a table of VNC ports and geometries from a '

@@ -2,6 +2,7 @@
 
 """Open various filetypes."""
 
+import os
 import sys
 import platform
 import webbrowser
@@ -31,7 +32,7 @@ def open_file(self, node):
     if self.env.OPEN:
         self.exec_command(self.env.OPEN + [path])
     elif SYSTEM == 'Windows':
-        os.startfile(path)
+        os.startfile(path) # pylint: disable=no-member
     else:
         try:
             msg = "'{}' not found".format(OPEN_PROG[SYSTEM])
@@ -40,7 +41,7 @@ def open_file(self, node):
         self.fatal('Opening file failed, ' + msg)
 
 @conf
-def open_html_file(self, node):
+def open_html_file(self, node): # pylint: disable=unused-argument
     """Open an HTML node in a web browser. Although :func:`open_file` will
     generally work for this as well, this function uses the :mod:`webbrowser`
     module.
@@ -49,10 +50,12 @@ def open_html_file(self, node):
 
 @conf
 def open_manpage(self, node):
+    """Open a manual page."""
     _open_man_info(self, 'man', 'manpage', node)
 
 @conf
 def open_info(self, node):
+    """Open a set of info documentation."""
     _open_man_info(self, 'info', 'info document', node)
 
 @conf
