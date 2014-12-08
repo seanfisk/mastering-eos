@@ -6,15 +6,15 @@
 # six when necessary).
 
 import os
-from os.path import join
+# Don't do this else it will be found by Waf for help screen.
+#from os.path import join
 import re
-from collections import OrderedDict, namedtuple
+import collections
 import fnmatch
 
 import six
 import waflib
 from waflib.Task import always_run
-from waflib.Configure import conf
 
 # Waf constants
 APPNAME = 'mastering-eos'
@@ -33,7 +33,8 @@ WAF_TOOLS_DIR = 'waf-tools'
 # - 'tgt', which builds only the specified target
 # - 'otgt', which builds the specified target then opens it
 #
-SpecificTarget = namedtuple('SpecificTarget', ['format', 'is_open'])
+SpecificTarget = collections.namedtuple(
+    'SpecificTarget', ['format', 'is_open'])
 # Special case: open info docs in Emacs
 SPECIFIC_COMMAND_TARGETS = {'oeinfo': SpecificTarget('info', True)}
 # Most formats
@@ -41,38 +42,12 @@ for _fmt in ['pdf', 'html', 'man', 'info', 'poster']:
     SPECIFIC_COMMAND_TARGETS[_fmt] = SpecificTarget(_fmt, False)
     SPECIFIC_COMMAND_TARGETS['o' + _fmt] = SpecificTarget(_fmt, True)
 
-for _cmd in SPECIFIC_COMMAND_TARGETS.keys():
+for _cmd, (_fmt, _is_open) in six.iteritems(SPECIFIC_COMMAND_TARGETS):
     type(_cmd.capitalize() + 'Context',
          (waflib.Build.BuildContext,),
-         dict(cmd=_cmd))
-
-@conf
-def should_build(self, fmt):
-    """Indicate whether the specified format should build."""
-    # If we don't have a specific target, always build. If we have a specific
-    # target, build if that target matches the provided target.
-    spec_format = self.env.SPECIFIC_TARGET.format
-    return not spec_format or spec_format == fmt
-
-@conf
-def find_or_make(self, parent, lst): # pylint: disable=unused-argument
-    """Find or make a node. This looks for the node specified, and creates it
-    if it doesn't exist. The notable difference from
-    :meth:`waflib.Node.find_resource` and :meth:`waflib.Node.find_or_declare`
-    is that this doesn't look in the other of the source/build directory.
-    """
-    return parent.find_node(lst) or parent.make_node(lst)
-
-@conf
-def find_or_make_in_src(self, lst):
-    """Find or make a node in the source directory. It's like
-    :meth:`waflib.Node.find_or_declare()`, but for the source directory only.
-    """
-    # Since we are creating a file in the source directory, we can't use a
-    # built-in Waf method. Please see here for a "solution":
-    # <https://code.google.com/p/waf/issues/detail?id=1168>
-    # That issue deals with exactly our problem here.
-    return self.find_or_make(self.srcnode, lst)
+         dict(cmd=_cmd, __doc__=('builds {}the {} docs'.format(
+             'and opens ' if _is_open else '',
+             _fmt))))
 
 def options(ctx):
     # This option puts the project in developer mode, which causes the build
@@ -125,7 +100,8 @@ def configure(ctx):
     except waflib.Errors.WafError:
         pass
     else:
-        possible_makeinfo_path = join(texinfo_brew_prefix, 'bin', 'makeinfo')
+        possible_makeinfo_path = os.path.join(
+            texinfo_brew_prefix, 'bin', 'makeinfo')
         if os.path.isfile(possible_makeinfo_path):
             ctx.env.MAKEINFO = possible_makeinfo_path
 
@@ -141,6 +117,7 @@ def configure(ctx):
             'open',
             'log',
             'git',
+            'extra',
         ],
         tooldir=WAF_TOOLS_DIR)
     ctx.find_program('ghp-import', var='GHP_IMPORT')
@@ -297,13 +274,13 @@ def archive(ctx):
 
     archive_basename = 'mastering-eos-html'
     html_sources = [
-        (node, join(archive_basename, node.path_from(html_build_dir)))
+        (node, os.path.join(archive_basename, node.path_from(html_build_dir)))
         for node in html_build_nodes
     ]
     ctx(features='archive',
         formats='gztar zip',
         source=html_sources,
-        target=join('website', archive_basename))
+        target=os.path.join('website', archive_basename))
 
 # Deploy context and command
 
@@ -334,7 +311,7 @@ def deploy(ctx):
     hostnames_node = ctx.path.find_or_declare('hostnames')
     ctx(features='fabric',
         fabfile=ctx.path.find_resource('fabfile.py'),
-        commands=OrderedDict([
+        commands=collections.OrderedDict([
             ('set_hosts', dict(hostfile=hostnames_node.abspath())),
             ('deploy_to_eos', {}),
         ]),
