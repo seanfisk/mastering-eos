@@ -48,6 +48,9 @@ for cmd in SPECIFIC_COMMAND_TARGETS.keys():
          (waflib.Build.BuildContext,),
          dict(cmd=cmd))
 
+class LinkcheckContext(waflib.Build.BuildContext):
+    cmd = 'linkcheck'
+
 @conf
 def should_build(self, format):
     """Indicate whether the specified format should build."""

@@ -77,3 +77,9 @@ It is also possible to run multiple commands at once, for example::
     ./waf distclean configure -d build
 
 This runs a full rebuild all in one command.
+
+Another helpful task is::
+
+    ./waf linkcheck
+
+This checks the Sphinx manual for broken links, redirects, and missing anchors. It's not enabled by default because there will be many false positives, including localhost links (obviously valid only in a certain context) and some URLs which are actually fine. Nevertheless, it's a useful tool for detecting broken and outdated links. Use your best judgment. You can find the full output in :file:`build/manual/linkcheck/output.txt`.
