@@ -86,7 +86,7 @@ For our zip example, we will download the source code for the `EditorConfig C Co
 
     cd ~/.local/src
 
-The latest version of the EditorConfig C Core at this time of writing is 0.21.1, so that is what we will download. Visit the `download page for EditorConfig C Core 0.12.0`_ and select the link for the source code zip archive. The project also offers a tarball download, but we will use the zip for the purposes of this example.
+The latest version of the EditorConfig C Core at this time of writing is 0.12.0, so that is what we will download. Visit the `download page for EditorConfig C Core 0.12.0`_ and select the link for the source code zip archive. The project also offers a tarball download, but we will use the zip for the purposes of this example.
 
 Download the file with :command:`wget` as shown in the earlier example::
 
