@@ -438,6 +438,18 @@ rst_epilog = '''
 .. _the-sysadmin: mailto:woodriir@gvsu.edu
 .. |nbsp| unicode:: 0xA0
 
+.. Keep these in order
+
+.. _report an issue:
+.. _issue tracker: {url}/issues
+.. _rpath:
+.. _Wikipedia entry on rpath:
+.. _run-time search path (rpath): http://en.wikipedia.org/wiki/Rpath
+.. _pull requests:
+.. _making a pull request: https://help.github.com/articles/using-pull-requests/
+
+.. Sort these
+
 .. _Autoconf manual on Preset Output Variables: http://www.gnu.org/software/autoconf/manual/autoconf.html#Preset-Output-Variables
 .. _Autotools: http://en.wikipedia.org/wiki/GNU_build_system
 .. _CMake: http://www.cmake.org/
@@ -453,14 +465,9 @@ rst_epilog = '''
 .. _Sphinx: http://sphinx-doc.org/
 .. _The Linux Documentation Project article on Shared Libraries: http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
 .. _Waf: https://code.google.com/p/waf/
-.. _Wikipedia entry on rpath:
 .. _X.Org: http://www.x.org/
 .. _Xfce: http://xfce.org/
-.. _issue tracker: {url}/issues
 .. _reStructuredText: http://docutils.sourceforge.net/rst.html
-.. _report an issue:
-.. _rpath:
-.. _run-time search path (rpath): http://en.wikipedia.org/wiki/Rpath
 '''.format(title=project, url=_github_url)
 
 # The default highlight language is Python; switch it to Bash.

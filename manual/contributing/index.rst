@@ -24,8 +24,9 @@ Continue reading to find out how to make your own contributions to |title|.
    prereqs
    build-system
    edit
-   pull-request
+   make-pull-request
    writing-style
+   review-pull-request
 
 .. _Git: http://git-scm.com/
 .. _GitHub: https://github.com/
