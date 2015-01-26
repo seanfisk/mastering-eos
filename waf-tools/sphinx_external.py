@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+# TODO: Fix duplicate code from sphinx_internal
+
 """Waf tool for building documentation with Sphinx.
 
 This version leaves the dependency tracking to Sphinx (and the generated
@@ -16,7 +18,6 @@ knows.
 """
 
 import waflib
-from waflib.Configure import conf
 from waflib.Task import always_run
 
 FOLLOWUP_BUILDERS = {
@@ -45,6 +46,7 @@ def configure(ctx):
 @always_run
 class sphinx_build_task(waflib.Task.Task):
     """Handle run of sphinx-build."""
+    # pylint: disable=no-member
 
     def run(self):
         conf_node = self.inputs[0]
@@ -80,6 +82,8 @@ class sphinx_build_task(waflib.Task.Task):
 # Leave dependency processing to Sphinx's generated Makefile. Always build.
 @always_run
 class sphinx_run_make_task(waflib.Task.Task):
+    """Run the Sphinx-generated Makefile."""
+
     def run(self):
         return self.exec_command(self.env.MAKE, cwd=self.outputs[0].abspath())
 

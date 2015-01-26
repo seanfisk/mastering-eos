@@ -5,7 +5,7 @@ It is often useful to keep connections open in the background even after the ter
 
 .. code-block:: apacheconf
 
-    # Persist connections for 2 hours.
-    ControlPersist 2h
+   # Persist connections for 2 hours.
+   ControlPersist 2h
 
 For GitHub users, this is especially useful when using Git over SSH. Within this period, OpenSSH does not need to re-establish a connection to the Git server, which makes pushes and pulls much faster.

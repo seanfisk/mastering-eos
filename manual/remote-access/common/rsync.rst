@@ -9,25 +9,25 @@ Operation of rsync is very similar to SCP. The main difference between rsync and
 
 A typical use of rsync is as follows::
 
-    rsync \
-        --verbose \
-        --archive \
-        --compress \
-        classes/cis163/projects \
-        eos01.cis.gvsu.edu:classes/cis163/projects
+   rsync \
+       --verbose \
+       --archive \
+       --compress \
+       classes/cis163/projects \
+       eos01.cis.gvsu.edu:classes/cis163/projects
 
 This syncs a local projects directory with a remote one. The ``--verbose`` option instructs rsync to tell you what it is doing, the ``--archive`` option tells rsync to duplicate the files almost exactly, and the ``--compress`` option tells rsync to use compression within the protocol.
 
 Here is another example for deploying a website. Specifically, this deploys a |title| build to your user's personal website::
 
-    rsync \
-        --verbose \
-        --archive \
-        --compress \
-        --delete \
-        --chmod=go=rX \
-        build/website \
-        eos01.cis.gvsu.edu:public_html/mastering-eos
+   rsync \
+       --verbose \
+       --archive \
+       --compress \
+       --delete \
+       --chmod=go=rX \
+       build/website \
+       eos01.cis.gvsu.edu:public_html/mastering-eos
 
 The ``--delete`` option tells rsync to delete files on the remote machine not present on the local machine. This allows true synchronization of the two directories. However, be careful with this option, as it will delete files without confirmation!
 

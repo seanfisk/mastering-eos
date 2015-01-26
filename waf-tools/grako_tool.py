@@ -35,6 +35,7 @@ class grako_task(waflib.Task.Task):
 
 @waflib.TaskGen.extension(EXT_IN)
 def process_ebnf(task_gen, in_node):
+    """Handle ebnf files."""
     # Allow the user to override the default output file.
     # TODO: For now, we are forcing the 'target' attribute to be a node.
     out_node = getattr(task_gen, 'target') or in_node.change_ext(EXT_OUT)
