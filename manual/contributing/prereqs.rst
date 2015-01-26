@@ -6,7 +6,7 @@
 
 Before running any commands, make sure you change to the repository root directory. For example::
 
-    cd ~/mastering-eos
+   cd ~/mastering-eos
 
 All following commands will be run from this directory unless otherwise noted.
 
@@ -15,24 +15,24 @@ Install Requirements
 
 Now that you have the source code, the first step in building the manual is to install the Python requirements. For this, we need to install Pip_, the Python package manager, to our `user site`_::
 
-    wget https://bootstrap.pypa.io/get-pip.py -O - | python - --user
+   wget https://bootstrap.pypa.io/get-pip.py -O - | python - --user
 
 For the technical details on what this is doing, please see the `Pip installation docs`_.
 
 Pip should now be installed to :file:`~/.local/bin/pip`. However, we don't want to have to type the full path every time we want to run :file:`pip` or any other executable installed there.. To remedy this, add the following to your :file:`~/.bash_profile`::
 
-    export PATH=~/.local/bin:$PATH
+   export PATH=~/.local/bin:$PATH
 
 Restart your shell to effect the changes to your :file:`~/.bash_profile` *by logging out and logging back in.* Run the following to ensure that this worked:
 
 .. code-block:: console
 
-    $ pip --version
-    pip 1.5.6 from /home/smithj/.local/lib/python2.7/site-packages (python 2.7)
+   $ pip --version
+   pip 1.5.6 from /home/smithj/.local/lib/python2.7/site-packages (python 2.7)
 
 After installing Pip, use Pip to install this project's requirements to your user site::
 
-    pip install --user -r requirements.txt
+   pip install --user -r requirements.txt
 
 The Python requirements for the project have now been met.
 
@@ -58,11 +58,11 @@ An editor is a very personal choice, so if you do have an editor preference, ple
 
 If you do choose gedit, we have a script in our repository to assist in installing EditorConfig support on EOS. To install the plugin, run::
 
-    scripts/install-gedit-editorconfig-eos
+   scripts/install-gedit-editorconfig-eos
 
 This installs the gedit EditorConfig plugin, but we still need to enable it. Open gedit with::
 
-    gedit
+   gedit
 
 Then open the gedit preferences by clicking the application's icon (in GNOME):
 
@@ -81,7 +81,7 @@ Git Configuration
 
 We want to set up gedit as the editor for Git commit messages. Do this with::
 
-    git config --global core.editor 'gedit --wait'
+   git config --global core.editor 'gedit --wait'
 
 We use the ``--wait`` flag here because Git expects the editor to block until the commit message has been finished.
 
@@ -89,11 +89,11 @@ gedit also creates backup files of each file that you save. These files end with
 
 .. code-block:: console
 
-    $ cat > ~/.gitignore-global <<EOF
-    # gedit backup files
-    *~
-    EOF
-    $ git config --global core.excludesfile '~/.gitignore-global'
+   $ cat > ~/.gitignore-global <<EOF
+   # gedit backup files
+   *~
+   EOF
+   $ git config --global core.excludesfile '~/.gitignore-global'
 
 Your editor has now been set up for developing |title|!
 

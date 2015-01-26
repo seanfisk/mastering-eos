@@ -13,6 +13,7 @@
 
 from __future__ import unicode_literals
 import subprocess
+from urlparse import urljoin
 
 # -- General configuration ------------------------------------------------
 
@@ -467,10 +468,16 @@ rst_epilog = '''
 # The default highlight language is Python; switch it to Bash.
 highlight_language = 'bash'
 
-# Shortcut for Wikipedia articles, see http://sphinx-doc.org/ext/extlinks.html
-extlinks = dict(
-    wikipedia=('http://en.wikipedia.org/wiki/%s', ''),
-)
+# Shortcut for various links, see http://sphinx-doc.org/ext/extlinks.html
+_sphinx_base_url = 'http://sphinx-doc.org'
+extlinks = {
+    'wikipedia': ('http://en.wikipedia.org/wiki/%s', ''),
+    'rest-primer': (urljoin(_sphinx_base_url, 'rest.html#%s'), ''),
+    'sphinx-role': (
+        urljoin(_sphinx_base_url, 'markup/inline.html#role-%s'), ''),
+    'sphinx-directive': (
+        urljoin(_sphinx_base_url, 'domains.html#directive-%s'), ''),
+}
 
 # Git revision: custom option, for use in '_templates/footer.html'.
 _git_short_revision = subprocess.check_output([
@@ -482,3 +489,17 @@ html_context = dict(
         '{rev}</a>'.format(github_url=_github_url, rev=_git_short_revision)
     )
 )
+
+# The :command: role defaults to displaying in bold. However, we think that
+# literal text looks more appropriate, so we've created our own role, :cmd:,
+# which displays them as such.
+#
+# Code adapated from the Sphinx source tree: 'sphinx/roles.py'
+def _override_command_role():
+    from docutils.parsers.rst import roles
+    from docutils import nodes
+    rolename = 'cmd'
+    generic = roles.GenericRole(rolename, nodes.literal)
+    role = roles.CustomRole(rolename, generic, {'classes': [rolename]})
+    roles.register_local_role(rolename, role)
+_override_command_role()

@@ -3,7 +3,7 @@
 
 .. |clearfix| raw:: html
 
-    <div class="clearfix"></div>
+   <div class="clearfix"></div>
 
 .. _editors:
 
@@ -60,9 +60,9 @@ Vim
 
 .. Extracted from 'runtime/vimlogo.pdf' in the Vim source tree.
 .. image:: /images/editors/vim.png
-    :align: left
-    :alt: Vim logo
-    :target: Vim_
+   :align: left
+   :alt: Vim logo
+   :target: Vim_
 
 Vim_ (Vi IMmproved) is an editor inspired by the classic :wikipedia:`vi` editor. One of the most popular editors of all time, Vim is included with many operating systems and available for many others. Vim is unique as compared to other popular editors in that it features a modal interface in which different keys execute different actions. Vim is customizable through `Vim script`_ as well as other languages. The first version of Vim was released in 1991, while the first version of vi was released in 1976.
 
@@ -78,9 +78,9 @@ GNU Emacs
 
 .. Adapted from 'etc/images/icons/hicolor/128x128/apps/emacs.png' in the Emacs source tree.
 .. image:: /images/editors/emacs.png
-    :align: left
-    :alt: Emacs logo
-    :target: `GNU Emacs`_
+   :align: left
+   :alt: Emacs logo
+   :target: `GNU Emacs`_
 
 `GNU Emacs`_ (Editor MACroS) is an extensible and programmable editor. It is one of the oldest and most popular editors of all time. Emacs features almost infinite customizability of almost all of its features. GNU Emacs was initially released in 1985, with an initial version of Emacs released in 1976.
 
@@ -113,9 +113,9 @@ Kate
 
 .. Adapted from the "Kate's Mascot" blog post: http://kate-editor.org/2014/10/12/kates-mascot-kate-the-woodpecker/
 .. image:: /images/editors/kate.png
-    :align: left
-    :alt: Kate mascot
-    :target: Kate_
+   :align: left
+   :alt: Kate mascot
+   :target: Kate_
 
 Kate_ (KDE Advanced Text Editor) is KDE's entry into the field of advanced text editors. Kate's `list of features <http://kate-editor.org/about-kate/>`_ is comparable to other editors of its class.
 
@@ -135,11 +135,11 @@ Atom
 
 .. Adapted from 'resources/atom.png' in the Atom source tree.
 .. image:: /images/editors/atom.png
-    :align: left
-    :alt: Atom logo
-    :target: Atom_
+   :align: left
+   :alt: Atom logo
+   :target: Atom_
 
-Atom_ is an open-source, customizable text editor produced by GitHub_. As an editor, it seems to be in the spirit of Vim or Emacs, but using modern design principles and technologies. Atom comes with many useful features out-of-the box, including a fuzzy-finder, multiple cursors, and a package manager. Atom is based on the `Atom Shell`_, which is in turn based on `node.js`_ and Chromium_.
+Atom_ is an open-source, customizable text editor produced by GitHub_. As an editor, it seems to be in the spirit of Vim or Emacs, but using modern design principles and technologies. Atom comes with many useful features out-of-the box, including a fuzzy-finder, multiple cursors, and a package manager. Atom is based on the `Atom Shell`_, which is in turn based on node.js_ and Chromium_.
 
 Atom is available on Windows, Mac OS X, GNU/Linux, and FreeBSD.
 
@@ -155,9 +155,9 @@ Sublime Text
 ~~~~~~~~~~~~
 
 .. image:: /images/editors/sublime-text.png
-    :align: left
-    :alt: Sublime Text logo
-    :target: `Sublime Text`_
+   :align: left
+   :alt: Sublime Text logo
+   :target: `Sublime Text`_
 
 `Sublime Text`_ is a free, proprietary, shareware advanced text editor. It features easy navigation within files, multiple selections, split panes, and a package manager, among other features. Sublime Text is very customizable and features a Python API.
 
@@ -171,9 +171,9 @@ Notepad++
 ~~~~~~~~~
 
 .. image:: /images/editors/notepad-plus-plus.png
-    :align: left
-    :alt: Notepad++ logo
-    :target: `Notepad++`_
+   :align: left
+   :alt: Notepad++ logo
+   :target: `Notepad++`_
 
 `Notepad++`_ is a simple open-source editor for Windows. It supports split editing, syntax highlighting, and many other features come to be expected by an editor of this class.
 
@@ -185,9 +185,9 @@ TextMate
 ~~~~~~~~
 
 .. image:: /images/editors/textmate.png
-    :align: left
-    :alt: TextMate logo
-    :target: TextMate_
+   :align: left
+   :alt: TextMate logo
+   :target: TextMate_
 
 TextMate_ is a popular advanced text editor for Mac OS X. Originally a proprietary product, TextMate is now free and open-source software. TextMate has been called the "culmination of Emacs and OS X" and features a slick but minimal interface, file browser, auto-pairing, simple completion, and many more features. TextMate has been particularly popular in the `Ruby on Rails`_ community.
 
@@ -208,9 +208,9 @@ BlueJ
 
 .. From http://blueroom.bluej.org/
 .. image:: /images/editors/bluej.png
-    :align: left
-    :alt: BlueJ logo
-    :target: BlueJ_
+   :align: left
+   :alt: BlueJ logo
+   :target: BlueJ_
 
 BlueJ_ is a beginner's IDE for Java. Its interface offers the ability to selectively instantiate classes and run methods with different parameters, making it excellent for learning. BlueJ also features an object inspector which allows examination of objects as they progress through a software instance's life cycle.
 
@@ -226,9 +226,9 @@ Eclipse
 .. Old logo from http://help.eclipse.org/juno/index.jsp?topic=%2Forg.eclipse.platform.doc.user%2FwhatsNew%2Fplatform_whatsnew.html
 .. New logo cropped from http://www.eclipse.org/artwork/
 .. image:: /images/editors/eclipse.png
-    :align: left
-    :alt: Eclipse logo
-    :target: Eclipse_
+   :align: left
+   :alt: Eclipse logo
+   :target: Eclipse_
 
 Eclipse_ is an extensible, feature-complete, free and open-source IDE. Although Eclipse is written in and was initially written for Java, it also supports many other languages and environments. By default, Eclipse on EOS supports Java, PHP, Python, C, C++, and Android.
 
@@ -260,9 +260,9 @@ IntelliJ IDEA
 
 .. Cropped from the SVG at https://www.jetbrains.com/company/press/materials.html#idea
 .. image:: /images/editors/intellij.png
-    :align: left
-    :alt: IntelliJ IDEA logo
-    :target: `IntelliJ IDEA`_
+   :align: left
+   :alt: IntelliJ IDEA logo
+   :target: `IntelliJ IDEA`_
 
 `IntelliJ IDEA`_ (colloquially known as "IntelliJ") is a professional IDE for Java and other languages developed by developer tool company JetBrains_. IntelliJ's primary advantage over other IDEs and editors is deep integration with many specific languages and technologies. IntelliJ is available in two versions: Community and Ultimate. The Community edition is free and open-source software, while the Ultimate edition includes more features for a price. For details on specific features, consult `IntelliJ's advertised feature list`_ or :wikipedia:`Wikipedia's list of IntelliJ features <IntelliJ_IDEA#Features>`.
 
@@ -270,7 +270,7 @@ IntelliJ IDEA
 
 IntelliJ is available for Windows, Mac OS X, and GNU/Linux. On EOS, IntelliJ may be started from the command line with::
 
-    idea.sh
+   idea.sh
 
 .. _IntelliJ IDEA: https://www.jetbrains.com/idea/
 .. _JetBrains: https://www.jetbrains.com/
@@ -281,9 +281,9 @@ Visual Studio
 
 .. From http://flakshack.deviantart.com/art/Visual-Studio-2012-icon-342054061
 .. image:: /images/editors/visual-studio.png
-    :align: left
-    :alt: Visual Studio logo
-    :target: `Visual Studio`_
+   :align: left
+   :alt: Visual Studio logo
+   :target: `Visual Studio`_
 
 `Visual Studio`_ is an IDE for Windows developed and maintained by Microsoft_. It is primarily aimed at development of applications and libraries for Microsoft platforms, including Windows_, `Windows Phone`_, `Microsoft Silverlight`_, and IIS_. Visual Studio's supported languages include C, C++, C#, F#, and Visual Basic. Visual Studio also supports Python through PyTools_ and web development with HTML, CSS, JavaScript, and ASP.NET_. The IDE has almost all modern features including IntelliSense code completion, refactoring support, and integrated debugger, graphical interface and web design tools, and a database editor. ReSharper_ by JetBrains_ is a Visual Studio add-on considered necessary by many .NET developers.
 
@@ -307,9 +307,9 @@ Xcode
 .. From https://itunes.apple.com/us/app/xcode/id497799835?mt=12
 .. Had to remove the built-in color profile to get it to export correctly in Gimp after resizing; see https://bugs.archlinux.org/task/35363
 .. image:: /images/editors/xcode.png
-    :align: left
-    :alt: Xcode logo
-    :target: Xcode_
+   :align: left
+   :alt: Xcode logo
+   :target: Xcode_
 
 Xcode_ is an IDE for Mac OS X developed and maintained by Apple_. It is primarily aimed at development of Mac OS X and iOS Cocoa_ applications written in Objective-C and/or Swift_. Xcode includes :wikipedia:`Interface Builder <Interface_Builder>` for composition of user interfaces, the `Apple LLVM Compiler`_ based on Clang_ and LLVM_, a graphical debugger based on LLDB_, and Instruments_, a tracing and profiling tool based on :wikipedia:`DTrace`. It also features excellent code completion, also implemented using Clang_. For more information, see the `full list of Xcode features`_.
 
@@ -337,9 +337,9 @@ Qt Creator
 
 .. Extracted and rendered from 'src/tools/icons/applicationicons.svg' in the Qt Creator source tree
 .. image:: /images/editors/qt-creator.png
-    :align: left
-    :alt: Qt Creator logo
-    :target: `Qt Creator`_
+   :align: left
+   :alt: Qt Creator logo
+   :target: `Qt Creator`_
 
 `Qt Creator`_ is an IDE for developing applications using the :ref:`qt-section` cross-platform framework. Qt Creator supports C++ and `QtQuick/QML`_ (JavaScript), two languages used for developing Qt applications. It also includes project navigation tools, code completion, an integrated debugger based on GDB_, and a drag-and-drop interface designer (formerly known as Qt Designer). Additionally, Qt Designer supports integration with various build systems. A full feature list is available on the homepage.
 
@@ -355,9 +355,9 @@ Geany
 
 .. Rendered from 'geany/icons/scalable/geany.svg' in the Geany source tree
 .. image:: /images/editors/geany.png
-    :align: left
-    :alt: Geany logo
-    :target: Geany_
+   :align: left
+   :alt: Geany logo
+   :target: Geany_
 
 Geany_ is a lightweight IDE based on Scintilla_. It includes syntax highlighting of numerous languages, project support, simple code completion, and code navigation. In addition, Geany includes support for invoking build systems through external tools. Geany is a good choice if you want to use a consistent interface for many different languages and basic IDE features for development.
 
@@ -373,9 +373,9 @@ Bluefish
 
 .. Rendered from 'bluefish/images/bluefish-icon.svg' in the Bluefish source tree
 .. image:: /images/editors/bluefish.png
-    :align: left
-    :alt: Bluefish logo
-    :target: Bluefish_
+   :align: left
+   :alt: Bluefish logo
+   :target: Bluefish_
 
 Bluefish_ is a lightweight IDE primarily aimed at web development. On the web development side, Bluefish supports PHP, ASP.NET, ColdFusion, Java Server Pages (JSP), and Wordpress as well as the standard HTML, CSS, and JavaScript. In addition to that, Bluefish includes support for C, C++, Python, Ruby, and SVG, among others. One of Bluefish's interesting features is integration of external scripts by sending the document text through a pipe to the script. For more information, see the `full list of Bluefish features`_.
 
@@ -398,9 +398,9 @@ NetBeans
 
 .. Grabbed one of the vectors from here, imported to Inkscape and cropped: https://netbeans.org/community/teams/evangelism/collateral.html#logos
 .. image:: /images/editors/netbeans.png
-    :align: left
-    :alt: NetBeans logo
-    :target: NetBeans_
+   :align: left
+   :alt: NetBeans logo
+   :target: NetBeans_
 
 NetBeans_ is a free and open-source IDE for Java and others sponsored by Oracle_. Although Java is the main focus of NetBeans, it also supports PHP, C and C++, and web development. One of the more popular features of NetBeans is its integrated GUI builder for Java/:wikipedia:`Swing <Swing_(Java)>`.
 
@@ -416,9 +416,9 @@ EditorConfig
 
 .. From http://editorconfig.org/logo.png
 .. image:: /images/editors/editorconfig.png
-    :align: left
-    :alt: EditorConfig logo
-    :target: EditorConfig_
+   :align: left
+   :alt: EditorConfig logo
+   :target: EditorConfig_
 
 If your project is developed by a team or you work with multiple editors, consider using EditorConfig_. EditorConfig plugins for various editors allow developers to maintain a consistent formatting style throughout the projects, supporting such things as tabs vs. spaces, tab width, end of line characters, and character encoding, among others (`full list here <http://editorconfig.org/#supported-properties>`_). Many editors listed in this section are supported.
 

@@ -11,7 +11,7 @@ MySQL
 
 MySQL is a powerful open-source database. To access it via the command-line, login to an EOS machine and enter::
 
-    mysql -u smithj -p -h cis.gvsu.edu
+   mysql -u smithj -p -h cis.gvsu.edu
 
 This attempts to log you in with the provided username, using a password, to the host cis.gvsu.edu (our MySQL server).
 
@@ -20,7 +20,7 @@ Oracle
 
 Oracle is a very powerful and complex enterprise quality system. Once you have been granted access, you can access it with the command::
 
-    sqlplus smithj@orcl
+   sqlplus smithj@orcl
 
 Please note that when you change your password for Oracle that you must not use the ``@`` character. Oracle will accept this but you will be unable to login.
 
@@ -53,7 +53,7 @@ The SQLite system is a relational database that can exist within your home direc
 
 Outside of a programming context, SQLite can be accessed from the commandline with::
 
-    sqlite3
+   sqlite3
 
 This will provide you with a command-line interface from which you can work using SQL statements.
 

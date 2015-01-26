@@ -25,7 +25,7 @@ Continue reading to find out how to make your own contributions to |title|.
    build-system
    edit
    pull-request
-   writing-style
+   guidelines
    maintenance
 
 .. _Git: http://git-scm.com/
