@@ -1,3 +1,7 @@
+============================
+ Graphical Access (VNC/X11)
+============================
+
 .. include:: ../common/openssh/vnc-intro.rst
 
 The recommended VNC client for OS X is Chicken_, which is free and open-source software. Visit the website to download, install as you would any other Mac OS X application, and open.
@@ -11,3 +15,18 @@ Click :guilabel:`Connect` to begin your VNC session with EOS. To connect in the 
 .. note:: Although Chicken offers an option to tunnel directly through SSH, we have not had luck using this option with our setup. We recommend sticking with the traditional SSH tunnel, as it is tested and works well.
 
 .. _Chicken: http://sourceforge.net/projects/chicken/
+
+X Forwarding
+============
+
+Mac OS X has a high-quality X server called XQuartz_. It is based on X.Org_, and is partially maintained by Apple. Visit the XQuartz website to download and install the latest release.
+
+.. _XQuartz: http://xquartz.macosforge.org/
+
+.. include:: ../common/openssh/x-forwarding.rst
+
+Upon establishing the connection, you should see the XQuartz app launch (it has the X.Org logo). All remote applications will be rendered within the XQuartz app.
+
+.. include:: ../common/x-forwarding-test.rst
+
+XQuartz will stay open even after your SSH session has ended. Feel free to quit XQuartz when you are finished using it.

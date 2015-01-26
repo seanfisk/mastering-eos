@@ -27,3 +27,7 @@ This page contains a list of all environment variables referred to in the manual
 .. envvar:: LD_LIBRARY_PATH
 
     Additional paths in which the dynamic linker should search for shared libraries. See `Russ Allbery's notes on Shared Library Search Paths`_, the `Autoconf manual on Preset Output Variables`_, and the `Wikipedia entry on rpath`_.
+
+.. envvar:: Path
+
+    The Windows search path for executable files.

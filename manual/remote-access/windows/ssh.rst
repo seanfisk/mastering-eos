@@ -1,6 +1,6 @@
-=====
- SSH
-=====
+====================
+ Shell Access (SSH)
+====================
 
 The most popular SSH client for Windows is called PuTTY_. It can be installed by visiting the `PuTTY download page`_. We recommend installing via the Windows installer, labeled *A Windows installer for everything except PuTTYtel*.
 
@@ -68,6 +68,9 @@ As is obvious from these instructions, SSH key management is not a simple proces
 .. _PuTTY Guide to SSH Keys: http://the.earth.li/~sgtatham/putty/latest/htmldoc/Chapter8.html#pubkey
 .. _PuTTY Guide to Pageant: http://the.earth.li/~sgtatham/putty/latest/htmldoc/Chapter9.html#pageant
 
+.. This label is used for BetterPlanner; do not remove.
+.. _win-ssh-tunnel:
+
 .. include:: ../common/forwarding-intro.rst
 
 Fortunately, port forwarding with PuTTY is quite easy. Fire up PuTTY and select your saved session, then click the :guilabel:`Load`. In the configuration tree to the left, expand :menuselection:`Connection --> SSH` and click on :guilabel:`Tunnels`.
@@ -101,3 +104,5 @@ Restart PuTTY, load your session, and navigate back to the :guilabel:`Tunnels` s
 +-----------+-------------------+
 
 Click :guilabel:`Add` and :guilabel:`Open`, then visit http://localhost:5678/ in your local web browser. The CIS home page should appear!
+
+For a guide to using PuTTY and SSH as a proxy for *all* your web traffic, check out `this TechRepublic article <http://www.techrepublic.com/blog/it-security/use-putty-as-a-secure-proxy-on-windows/>`_.

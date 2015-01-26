@@ -1,14 +1,30 @@
+# -*- coding: utf-8 -*-
+
 """Waf tool for building documentation with Sphinx.
 
 This version works really well with with Waf at the cost of staggering
 complexity.
 
+Tested with Waf 1.8.4 and Sphinx 1.2.3.
+
 Based on
 - https://github.com/hmgaudecker/econ-project-templates/blob/python/.mywaflib/waflib/extras/sphinx_build.py
 - http://docs.waf.googlecode.com/git/book_17/single.html#_a_compiler_producing_source_files_with_names_unknown_in_advance
 
+TODO: Multiple builders could potentially use a shared doctrees directory and
+also share scanner method results. Unfortunately, that would likely mean
+combining all of the builders into one task, which is ugly and would probably
+decrease parallelism. Other options would be to run the dependency scanner
+before creating the task (creating potentially incorrect results) or caching
+the results of the scan (which would result in concurrency control, and be ugly
+and error-prone).
+
+TODO: We don't currently call makeindex as the Sphinx-generated LaTeX Makefile
+does. This needs to be added.
+
 Hans-Martin von Gaudecker, 2012
 Sean Fisk, 2014
+
 """
 
 import os
@@ -23,6 +39,8 @@ from sphinx.application import Sphinx
 
 
 MAKEINFO_VERSION_RE = re.compile(r'makeinfo \(GNU texinfo\) (\d+)\.(\d+)')
+# UTF-8 support was introduced in this version. See the
+# 'warn_about_old_makeinfo' method.
 # http://svn.savannah.gnu.org/viewvc/*checkout*/trunk/NEWS?root=texinfo
 MAKEINFO_MIN_VERSION = (4, 13)
 
@@ -41,34 +59,60 @@ class PdflatexBuilder(object):
     out_suffix = '.pdf'
     sphinx_builder = 'latex'
 
+    def make_texinputs_nodes(self, task_gen, init_texinputs_nodes):
+        # We need to respect the existing values of 'os.environ["TEXINPUTS"]'
+        # and 'latex_task.env.TEXINPUTS' when setting
+        # 'latex_task.texinputs_nodes', as does 'apply_tex'. This code is
+        # basically copied from 'apply_tex'. Unfortunately, we don't see a way
+        # around copying this code.
+        texinputs_nodes = init_texinputs_nodes[:]
+        lst = os.environ.get('TEXINPUTS', '')
+        if task_gen.env.TEXINPUTS:
+            lst += os.pathsep + task_gen.env.TEXINPUTS
+        if lst:
+            lst = lst.split(os.pathsep)
+        for x in lst:
+            if x:
+                if os.path.isabs(x):
+                    p = task_gen.bld.root.find_node(x)
+                    if p:
+                        texinputs_nodes.append(p)
+                    else:
+                        waflib.Logs.error('Invalid TEXINPUTS folder %s' % x)
+                else:
+                    waflib.Logs.error(
+                        'Cannot resolve relative paths in TEXINPUTS %s' % x)
+
+        return texinputs_nodes
+
     def create_task(self, task_gen, src, tgt):
-        tasks = []
         orig_tex_node = src[0]
         dep_nodes = src[1:]
         # We don't want to pollute the LaTeX sources directory (which is in the
         # build directory) with all the extra files LaTeX generates because
         # that will interfere with our Sphinx output detection. The Waf tex
-        # tool sets the cwd to the parent of the first input, but that only
-        # makes sense if the sources are not in the build directory. Hack
-        # around it by copying the .tex file to the desired output directory
-        # and setting TEXINPUTS. THIS IS UGLY.
+        # tool sets the cwd to the build path of the parent of the first input,
+        # but that only makes sense if the sources are not already in the build
+        # directory. Hack around it by copying the .tex file to the desired
+        # output directory and setting TEXINPUTS. THIS IS UGLY.
         copied_tex_node = tgt.change_ext('.tex')
         copy_task = task_gen.create_task(
-            'copy_file', src=orig_tex_node, tgt=copied_tex_node)
-        tasks.append(copy_task)
+            'sphinx_copy_file', src=orig_tex_node, tgt=copied_tex_node)
         # The following code is based on apply_tex() from Waf tex tool.
         latex_task = task_gen.create_task(
-            'pdflatex',
-            src=copied_tex_node,
-            tgt=tgt)
-        latex_task.env.TEXINPUTS = os.pathsep.join([
-            latex_task.env.TEXINPUTS, orig_tex_node.parent.abspath()])
+            'pdflatex', src=copied_tex_node, tgt=tgt)
+        # Set 'texinputs_nodes' for the task.
+        latex_task.texinputs_nodes = self.make_texinputs_nodes(
+            task_gen, [orig_tex_node.parent])
         # Set the build order to prevent node signature issues.
         latex_task.set_run_after(copy_task)
         # Add manual dependencies.
-        task_gen.bld.node_deps[latex_task.uid()] = dep_nodes
-        tasks.append(latex_task)
-        return tasks
+        latex_task.dep_nodes = dep_nodes
+        # Uncomment this to enable full LaTeX output. We've considered making
+        # this an option as with the regular TeX builder, but we haven't needed
+        # it that much yet.
+        #latex_task.env.PROMPT_LATEX = 1
+        return [copy_task, latex_task]
 
 FOLLOWUP_BUILDERS = {
     'info': InfoBuilder(),
@@ -90,7 +134,7 @@ def _sorted_nodes(nodes):
 
 @conf
 def warn_about_old_makeinfo(ctx):
-    version_out = ctx.cmd_and_log([ctx.env.MAKEINFO, '--version'])
+    version_out = ctx.cmd_and_log(ctx.env.MAKEINFO + ['--version'])
     version_str = version_out.splitlines()[0].rstrip()
     match = MAKEINFO_VERSION_RE.match(version_str)
     if match is None:
@@ -113,11 +157,14 @@ def configure(ctx):
 # to be lowercase. Also, waflib.Task.Task.__str__ strips off a trailing '_task'
 # from the name.
 
-class copy_file_task(waflib.Task.Task):
+class sphinx_copy_file_task(waflib.Task.Task):
     """Copy a file. Used for building the LaTeX PDF in a different
     directory.
-    """
 
+    Although the 'subst' feature can basically already do this, it requires
+    setting attributes on the task generator, which doesn't make much sense for
+    this tool.
+    """
     def run(self):
         shutil.copyfile(self.inputs[0].abspath(), self.outputs[0].abspath())
 
@@ -220,21 +267,22 @@ class sphinx_build_task(waflib.Task.Task):
         return (_sorted_nodes(dependency_nodes), [])
 
     def run(self):
-        # After creating a Sphinx application, running Sphinx *should* be this
-        # easy:
+        # XXX: After creating a Sphinx application, running Sphinx *should* be
+        # this easy:
         #
         #     sphinx_app.build()
         #
-        # However, its build using the Application API is not thread-safe
-        # (apparently, because we've had problems). That sort of goes against
-        # one of the major points of Waf.
+        # However, building simultaneously using multiple instances of
+        # Application from the application API appears to be unsafe. We have
+        # seen multiple instances of 'duplicate label' errors that only seem to
+        # manifest in parallel builds. That sort of goes against one of the
+        # major points of Waf.
         #
         # Calling the 'sphinx-build' executable, on the other hand, seems fine
         # to do in parallel. It's not the best situation, but it's the best
         # we've got.
         conf_node = self.inputs[0]
-        args = [
-            self.env.SPHINX_BUILD,
+        args = self.env.SPHINX_BUILD + [
             '-b', self.sphinx_builder,
             '-d', self.doctrees_node.abspath(),
         ]
@@ -341,7 +389,7 @@ class sphinx_build_task(waflib.Task.Task):
         # These tasks will never have any declared targets, so don't bother.
         return 'sphinx_build_{0}: {1}\n'.format(
             self.sphinx_builder,
-            ' '.join(n.nice_path() for n in self.inputs))
+            ' '.join(n.srcpath() for n in self.inputs))
 
 class sphinx_makeinfo_task(waflib.Task.Task):
     """Handle run of makeinfo for Sphinx's texinfo output."""
@@ -354,8 +402,7 @@ class sphinx_makeinfo_task(waflib.Task.Task):
         # just reimplemented here.
         texi_node = self.inputs[0]
         return self.exec_command(
-            [
-                self.env.MAKEINFO,
+            self.env.MAKEINFO + [
                 '--no-split',
                 '-o', self.outputs[0].abspath(),
                 texi_node.abspath()
@@ -444,10 +491,13 @@ def apply_sphinx(task_gen):
 
         out_dir_node = out_dir_parent_node.find_or_declare(sphinx_builder)
 
+        # XXX: Using a shared doctrees directory can cause race conditions and
+        # subsequent errors when the builds run in parallel. Set up a private
+        # doctrees directory for each builder to avoid this.
         doctrees_node = (
             out_dir_node.find_or_declare('.doctrees')
-            # The epub builder spits out unknown mimetype warnings if we throw
-            # the doctree in its output directory.
+            # XXX: The epub builder spits out unknown mimetype warnings if we
+            # throw the doctree in its output directory.
             if requested_builder != 'epub'
             else out_dir_parent_node.find_or_declare('.epub-doctrees'))
 

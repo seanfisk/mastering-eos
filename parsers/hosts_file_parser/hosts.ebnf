@@ -1,0 +1,12 @@
+(*
+    Grammar for /etc/hosts file on EOS. See 'man hosts' on EOS for
+    more information.
+
+    We don't need to verify the contents of the hosts file, so this
+    file doesn't explicity try to match IP addresses, host names, etc.
+    The goal is simply to extract information.
+*)
+newline = '\n' ;
+record = ip:field hostname:field aliases:{ field }* { >newline }*;
+field = /\S+/ ;
+file = { >newline } * { @:record }* $ ;

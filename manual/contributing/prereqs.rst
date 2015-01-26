@@ -98,7 +98,6 @@ gedit also creates backup files of each file that you save. These files end with
 Your editor has now been set up for developing |title|!
 
 .. _gedit: https://wiki.gnome.org/Apps/Gedit
-.. _EditorConfig: http://editorconfig.org/
 .. _EditorConfig plugins: http://editorconfig.org/#download
 
 SSH Setup
@@ -109,7 +108,7 @@ Part of building the documentation is building the table of SSH fingerprints con
 Shared and Persistent SSH Connections (optional)
 ------------------------------------------------
 
-In theory, you should never have to fully rebuild the manual. However, in practice, sometimes a full rebuild is necessary. With a full rebuild, you will have to wait while the SSH fingerprints table is rebuilt. Since this can take a long time, we recommend that you set up shared and persistent SSH connections as shown in :ref:`gnu-linux-advanced-openssh`. These are known to dramatically decrease the build time if you have done a full rebuild within the time given to ``ControlPersist``.
+In theory, you should never have to fully rebuild the manual. However, in practice, sometimes a full rebuild is necessary. With a full rebuild, you will have to wait while the SSH fingerprints table is rebuilt. Since this can take a long time, we recommend that you set up :ref:`linux-ssh-shared` and :ref:`linux-ssh-persistent` as shown in :ref:`linux-ssh-advanced`. These are known to dramatically decrease the build time if you have done a full rebuild within the time given to ``ControlPersist``.
 
 Inter-EOS SSH Trust
 -------------------

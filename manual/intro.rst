@@ -13,7 +13,7 @@ The Exploratory Operating Systems Labs (EOS Labs) are a collection of computer l
 |Architecture Lab (Arch Lab)                 |MAK A-1-101                   |studying computer architectures; |
 |                                            |                              |general CIS computing use        |
 +--------------------------------------------+------------------------------+---------------------------------+
-|Data Communications Lab (Datacom Lab)       |MAK 1-1-167                   |studying networking              |
+|Data Communications Lab (Datacomm Lab)      |MAK 1-1-167                   |studying networking              |
 +--------------------------------------------+------------------------------+---------------------------------+
 |Hardware Lab                                |MAK 1-1-105                   |studying hardware; multi-purpose |
 +--------------------------------------------+------------------------------+---------------------------------+

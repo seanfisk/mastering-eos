@@ -7,11 +7,16 @@
 
 import os
 from os.path import join
+import re
 import textwrap
 import shutil
+from collections import OrderedDict, namedtuple
+from tempfile import TemporaryFile
 
+import six
 import waflib
 from waflib.Task import always_run
+from waflib.Configure import conf
 
 # Waf constants
 APPNAME = 'mastering-eos'
@@ -22,9 +27,67 @@ out = 'build'
 # Process the poster first, as it takes more time to generate but has less
 # dependencies.
 SUBDIRS = ['parsers', 'poster', 'manual']
-WAF_TOOLS_DIR = 'waf_tools'
+WAF_TOOLS_DIR = 'waf-tools'
+
+# Specific commands/targets allow building a subset of the entire build. In
+# general, we generate two commands for each specific target:
+#
+# - 'tgt', which builds only the specified target
+# - 'otgt', which builds the specified target then opens it
+#
+SpecificTarget = namedtuple('SpecificTarget', ['format', 'is_open'])
+# Special case: open info docs in Emacs
+SPECIFIC_COMMAND_TARGETS = {'oeinfo': SpecificTarget('info', True)}
+# Most formats
+for fmt in ['pdf', 'html', 'man', 'info', 'poster']:
+    SPECIFIC_COMMAND_TARGETS[fmt] = SpecificTarget(fmt, False)
+    SPECIFIC_COMMAND_TARGETS['o' + fmt] = SpecificTarget(fmt, True)
+
+for cmd in SPECIFIC_COMMAND_TARGETS.keys():
+    type(cmd.capitalize() + 'Context',
+         (waflib.Build.BuildContext,),
+         dict(cmd=cmd))
+
+@conf
+def should_build(self, format):
+    """Indicate whether the specified format should build."""
+    # If we don't have a specific target, always build. If we have a specific
+    # target, build if that target matches the provided target.
+    spec_format = self.env.SPECIFIC_TARGET.format
+    return not spec_format or spec_format == format
+
+@conf
+def find_or_make(self, parent, lst):
+    """Find or make a node. This looks for the node specified, and creates it
+    if it doesn't exist. The notable difference from
+    :meth:`waflib.Node.find_resource` and :meth:`waflib.Node.find_or_declare`
+    is that this doesn't look in the other of the source/build directory.
+    """
+    return parent.find_node(lst) or parent.make_node(lst)
+
+@conf
+def find_or_make_in_src(self, lst):
+    """Find or make a node in the source directory. It's like
+    :meth:`waflib.Node.find_or_declare()`, but for the source directory only.
+    """
+    # Since we are creating a file in the source directory, we can't use a
+    # built-in Waf method. Please see here for a "solution":
+    # <https://code.google.com/p/waf/issues/detail?id=1168>
+    # That issue deals with exactly our problem here.
+    return self.find_or_make(self.srcnode, lst)
 
 def options(ctx):
+    # This option puts the project in developer mode, which causes the build
+    # system to make certain assumptions which speed up the build (and hence
+    # development). The only thing that this option currently does is to tell
+    # our build system not to always run operations which use SSH to access
+    # EOS. At present this includes downloading the /etc/hosts file,
+    # downloading the the vncts file, and fetching the SSH fingerprints.
+    # Developers should turn this option on, while automated builds should
+    # leave it off. The default off because it is safer.
+    ctx.add_option('-d', '--dev-mode', default=False, action='store_true',
+                   help='put the project in developer mode')
+
     # We need to use XeLaTeX or LuaLaTeX to support custom fonts on our poster.
     # We'd like to use LuaLaTeX, as it's been named as the successor to pdfTeX.
     # However, our LuaLaTeX installation on EOS is broken at this time of
@@ -40,9 +103,8 @@ def options(ctx):
                   default_latex_engine))
 
     ctx.load('tex')
-    ctx.load('sphinx_internal', tooldir=WAF_TOOLS_DIR)
-    ctx.load('fabric', tooldir=WAF_TOOLS_DIR)
-    ctx.load('grako', tooldir=WAF_TOOLS_DIR)
+    ctx.load(['sphinx_internal', 'fabric_tool', 'grako_tool', 'open'],
+             tooldir=WAF_TOOLS_DIR)
 
     ctx.recurse(SUBDIRS)
 
@@ -65,20 +127,21 @@ def configure(ctx):
     else:
         possible_makeinfo_path = join(texinfo_brew_prefix, 'bin', 'makeinfo')
         if os.path.isfile(possible_makeinfo_path):
-            os.environ['MAKEINFO'] = possible_makeinfo_path
+            ctx.env.MAKEINFO = possible_makeinfo_path
 
-    # Grako
-    ctx.load('grako', tooldir=WAF_TOOLS_DIR)
-
-    # If there are problems with sphinx_internal not triggering builds
-    # correctly, switch to sphinx_external which always rebuilds. IMPORTANT:
-    # This will change the output file paths, so that will have to be changed
-    # too...
-    ctx.load('sphinx_internal', tooldir=WAF_TOOLS_DIR)
-
-    # Deployment programs
+    ctx.load(
+        [
+            # If there are problems with sphinx_internal not triggering builds
+            # correctly, switch to sphinx_external which always rebuilds.
+            # IMPORTANT: This will change the output file paths, so that will
+            # have to be changed too...
+            'sphinx_internal',
+            'fabric_tool',
+            'grako_tool',
+            'open'
+        ],
+        tooldir=WAF_TOOLS_DIR)
     ctx.find_program('ghp-import', var='GHP_IMPORT')
-    ctx.load('fabric', tooldir=WAF_TOOLS_DIR)
 
     # Add the vendor directory to the TeX search path so that our vendored
     # packages can be found.
@@ -86,18 +149,109 @@ def configure(ctx):
 
     ctx.recurse(SUBDIRS)
 
+    ctx.env.DEVELOPER_MODE = ctx.options.dev_mode
+    ctx.msg('Developer mode',
+            'enabled' if ctx.env.DEVELOPER_MODE else 'disabled',
+             color=('YELLOW' if ctx.env.DEVELOPER_MODE else 'GREEN'))
+
 def build(ctx):
-    # Parsers need to be build before anything else.
+    # Set the specific target if one exists.
+    try:
+        tgt = SPECIFIC_COMMAND_TARGETS[ctx.cmd]
+    except KeyError:
+        tgt = SpecificTarget(None, False)
+    ctx.env.SPECIFIC_TARGET = tgt
+
+    # This variable is for recording build nodes placed in the source directory
+    # for deletion using the 'clean' command.
+    ctx.env.SRC_DIR_BUILD_NODES = []
+
+    # Parsers need to be declared build before anything else.
     ctx.recurse('parsers')
 
+    # Fetch the host file from EOS.
+    fabfile_node = ctx.srcnode.find_resource('fabfile.py')
+    hosts_node = ctx.path.find_or_declare('hosts')
+    ctx(name='download_hosts_file',
+        features='fabric',
+        fabfile=fabfile_node,
+        commands=dict(download_hosts_file=dict(output=hosts_node.abspath())),
+        target=[hosts_node],
+        **({} if ctx.env.DEVELOPER_MODE else dict(always=True))
+    )
+
+    parsers_dir = ctx.bldnode.find_dir('parsers')
+    hostnames_node = ctx.path.find_or_declare('hostnames')
+    # Build the list of hostnames.
+    @ctx.rule(
+        name='get_eos_hostnames',
+        # Depend on the generated parser files as well.
+        source=[hosts_node] + ctx.env.PARSER_NODES['hosts_file_parser'],
+        target=hostnames_node,
+        vars=['PYTHON'],
+    )
+    def get_eos_hostnames(tsk):
+        with open(tsk.outputs[0].abspath(), 'w') as out_file:
+            # Note: colorama (from grako) has issues if we try to directly call
+            # into the Python module from here.
+            return tsk.exec_command(
+                ctx.env.PYTHON + [
+                    '-m', 'hosts_file_parser',
+                    tsk.inputs[0].abspath(),
+                ],
+                stdout=out_file,
+                # Add the module to the Python search path.
+                env={'PYTHONPATH': parsers_dir.abspath()},
+            )
+
+    # Substitute max machine numbers into relevant files.
+    in_nodes = map(ctx.path.find_resource, [
+        ['common', 'inter-eos-ssh.bash.in'],
+        ['manual', 'remote-access', 'index.rst.in'],
+    ])
+    # Create the output nodes by stripping the '.in' extension.
+    out_nodes = [ctx.find_or_make_in_src(os.path.splitext(n.relpath())[0])
+                 for n in in_nodes]
+    # Note: Can't use the 'fun' keyword for the 'subst' feature; it returns
+    # after running.
+
+    # TODO: We can't use the 'subst' feature because it requires us to provide
+    # substitution values up-front, which is exactly what we can't do. That's
+    # why we've used this replace(...) solution. There's got to be a better
+    # way.
+    ctx.env.SRC_DIR_BUILD_NODES += out_nodes
+    @ctx.rule(
+        name='subst_max_hostnames',
+        source=[hostnames_node] + in_nodes,
+        target=out_nodes,
+        update_outputs=True)
+    def subst_max_hostnames(tsk):
+        hostnames_node = tsk.inputs[0]
+        hostnames_content = hostnames_node.read()
+        maxes = dict(('MAX_' + lab.upper(),
+                      str(max(map(int, re.findall(
+                          lab + r'(\d+)', hostnames_content)))))
+                     for lab in ['eos', 'arch', 'dc'])
+        for in_node, out_node in zip(tsk.inputs[1:], tsk.outputs):
+            contents = in_node.read()
+            for var, value in six.iteritems(maxes):
+                contents = contents.replace('@{0}@'.format(var), value)
+            out_node.write(contents)
+
+    # Sphinx won't be able to detect that 'index.rst' hasn't been created yet,
+    # so add a group to make sure it's been created.
     ctx.add_group()
 
     ctx.recurse(SUBDIRS[1:])
 
-# Archive context and command
+# Clean context and command
+class CleanContext(waflib.Build.CleanContext):
+    def clean(self):
+        super(CleanContext, self).clean()
+        for node in self.env.SRC_DIR_BUILD_NODES:
+            node.delete()
 
-def _copy_file(tsk):
-    shutil.copyfile(tsk.inputs[0].abspath(), tsk.outputs[0].abspath())
+# Archive context and command
 
 class ArchiveContext(waflib.Build.BuildContext):
     cmd = 'archive'
@@ -116,21 +270,24 @@ def archive(ctx):
     website_dir.mkdir()
 
     # Copy HTML assets.
-    for node in html_build_nodes:
-        ctx(rule=_copy_file,
-            source=node,
-            target=website_dir.find_or_declare(node.path_from(html_build_dir)))
+    ctx(features='subst',
+        source=html_build_nodes,
+        target=[website_dir.find_or_declare(node.path_from(html_build_dir))
+                for node in html_build_nodes],
+        is_copy=True)
 
     # Copy PDF.
-    ctx(rule=_copy_file,
+    ctx(features='subst',
         source=ctx.bldnode.find_node([
             'manual', 'latexpdf', 'mastering-eos.pdf']),
-        target=website_dir.find_or_declare('mastering-eos.pdf'))
+        target=website_dir.find_or_declare('mastering-eos.pdf'),
+        is_copy=True)
 
     # Copy poster.
-    ctx(rule=_copy_file,
+    ctx(features='subst',
         source=ctx.bldnode.find_node(['poster', 'mastering-eos.pdf']),
-        target=website_dir.find_or_declare('mastering-eos-poster.pdf'))
+        target=website_dir.find_or_declare('mastering-eos-poster.pdf'),
+        is_copy=True)
 
     # Prepare archives
     ctx.load('archive', tooldir=WAF_TOOLS_DIR)
@@ -156,8 +313,7 @@ class ghp_import_task(waflib.Task.Task):
         self._dir_node = dir_node
 
     def run(self):
-        return self.exec_command([
-            self.env.GHP_IMPORT,
+        return self.exec_command(self.env.GHP_IMPORT + [
             '-n', # Include a .nojekyll file in the branch
             '-p', # Push the branch after import
             self._dir_node.abspath(),
@@ -169,9 +325,13 @@ class DeployContext(waflib.Build.BuildContext):
 
 def deploy(ctx):
     # Deploy man and info docs
+    hostnames_node = ctx.path.find_or_declare('hostnames')
     ctx(features='fabric',
         fabfile=ctx.path.find_resource('fabfile.py'),
-        command='deploy_to_eos',
+        commands=OrderedDict([
+            ('set_hosts', dict(hostfile=hostnames_node.abspath())),
+            ('deploy_to_eos', {}),
+        ]),
         args=dict(
             manpage=ctx.bldnode.find_node([
                 'manual', 'man', 'eos.7']).abspath(),
@@ -180,6 +340,7 @@ def deploy(ctx):
             webscript=ctx.path.find_resource([
                 'scripts', 'eos-web-docs']).abspath(),
         ),
+        source=[hostnames_node],
         always=True,
     )
 

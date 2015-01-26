@@ -2,7 +2,7 @@
 
 .. only:: builder_html
 
-   In addition to the HTML you are currently viewing, the |title| manual is also available in `PDF <mastering-eos.pdf>`_ and HTML archive (`.tar.gz <mastering-eos-html.tar.gz>`_ or `.zip <mastering-eos-html.zip>`_) formats, or by typing ``man eos`` or ``info eos`` on any EOS or Arch machine.
+   In addition to the HTML you are currently viewing, the |title| manual is also available in `PDF <mastering-eos.pdf>`_ and HTML archive (`.tar.gz <mastering-eos-html.tar.gz>`_ or `.zip <mastering-eos-html.zip>`_) formats, or by typing ``man eos`` or ``info eos`` on any EOS machine.
 
    .. The poster is visible in the Architecture Lab and is also available `as a PDF <mastering-eos-poster.pdf>`_.
 
@@ -22,10 +22,12 @@
    sys-sw-info
    winserv
    databases
-   ide
+   editors
    gui-toolkits
+   misc
    contributing/index
    envvars
+   about
 
 .. only:: build_html
 

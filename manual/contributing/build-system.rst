@@ -7,36 +7,49 @@ Configure the Build
 
 For building the documents, we use Waf_ as a build system. Waf is similar to build systems like Autotools_ and CMake_ in that it has separate configuration and build stages. To configure the project, run::
 
-    ./waf configure --no-ssh-auto-update
+    ./waf configure --dev-mode
 
-Waf will check that all the requirements are met before preparing the build. If any are not met, please re-check your steps in :ref:`contributing-prereqs` or `report an issue`_. The ``--no-ssh-auto-update`` option disables re-building of the SSH fingerprints table. Since the deployment of |title| is automated, there is no reason for a contributor to leave auto-update turned on. A shortcut for this command is::
+.. important:: Waf may warn about a missing ``makeglossaries`` tool. This is safe to ignore.
 
-    ./waf configure -m
+Waf will check that all the requirements are met before preparing the build. If any besides ``makeglossaries`` are not met, please re-check your steps in :ref:`contributing-prereqs` or `report an issue`_. The ``--dev-mode`` disables auto-update of operations that require SSH. Since the deployment of |title| is automated, there is no reason for a contributor to leave auto-update on. A shortcut for this command is::
+
+    ./waf configure -d
 
 .. _contributing-build-docs:
 
 Build the Documentation
 =======================
 
-After configuration, building is rather easy::
+The entire project can be built with::
 
     ./waf build
 
 You will see various build steps being executed as they are printed to the screen. This command builds both the manual and the poster and places the build artifacts in the :file:`build/manual` and :file:`build/poster` directories, respectively.
+
+If you are only interested in one output, you can restrict the build by running *one* of the following::
+
+    ./waf html
+    ./waf pdf
+    ./waf man
+    ./waf info
+    ./waf poster
 
 .. _contributing-view-results:
 
 View the Results
 ================
 
-The build will create outputs in various formats, which may viewed with the following commands::
+The build will create outputs in various formats. Run *one* of the following commands to build the specific format, then open it in the operating system's preferred viewer::
 
-    xdg-open build/manual/html/index.html             # HTML
-    man build/manual/man/eos.7                        # Man page
-    info build/manual/info/eos.info                   # Info docs
-    xdg-open build/manual/latexpdf/mastering-eos.pdf  # PDF
+    ./waf ohtml
+    ./waf opdf
+    ./waf oman
+    ./waf oinfo
+    ./waf oposter
 
-Although we'd like all the outputs to look good, we primarily focus on the HTML output. The build also produces an e-book (EPUB) output, but EOS does not currently have an e-book reader installed.
+.. hint:: It is not necessary to run ``./waf build`` before running any of these commands --- for example, ``./waf ohtml`` will build the HTML docs, then open them in a browser. However, it will not update the poster, PDF, etc.
+
+Although we'd like all the outputs to look good, we primarily focus on the HTML output.
 
 Other commands
 ==============
@@ -61,6 +74,6 @@ This command creates the directory :file:`build/website`, which contains all the
 
 It is also possible to run multiple commands at once, for example::
 
-    ./waf distclean configure -m build
+    ./waf distclean configure -d build
 
 This runs a full rebuild all in one command.

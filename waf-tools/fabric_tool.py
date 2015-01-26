@@ -1,4 +1,9 @@
+# -*- coding: utf-8 -*-
+
 """Waf tool for running Fabric tasks."""
+
+# Named 'fabric_tool' so as to not collide with possible imports of the fabric
+# module.
 
 import sys
 
@@ -17,14 +22,11 @@ def apply_fabric(task_gen):
     :py:meth:`waflib.TaskGen.process_source`.
     """
     # Initialize keywords.
-    required_kwds = {}
-    for kwd in ['command', 'args']:
-        try:
-            required_kwds[kwd] = getattr(task_gen, kwd)
-        except AttributeError:
-            raise waflib.Errors.WafError(
-                'Archive task generator missing necessary keyword: {0}'.format(
-                    kwd))
+    try:
+        commands = getattr(task_gen, 'commands')
+    except AttributeError:
+        raise waflib.Errors.WafError(
+            'Fabric task generator missing necessary keyword: commands')
 
     fabfile = getattr(task_gen, 'fabfile', 'fabfile.py')
     fabfile_node = _node_or_bust(fabfile, task_gen.path.find_resource)
@@ -53,8 +55,8 @@ def apply_fabric(task_gen):
     task = task_gen.create_task(name, src=in_nodes, tgt=out_nodes)
     # Assign attributes necessary for task methods.
     task.fabfile_node = fabfile_node
-    task.command = required_kwds['command']
-    task.args = required_kwds['args']
+    task.options = getattr(task_gen, 'options', [])
+    task.commands = commands
     task.always = getattr(task_gen, 'always', False)
 
     # Set the task order if that was requested.
@@ -78,22 +80,20 @@ def _escape(value):
 class fabric_task(waflib.Task.Task):
     vars = ['FAB']
 
-    def _format_args(self):
-        return '{0}:{1}'.format(
-            self.command,
-            ','.join('{0}={1}'.format(_escape(key), _escape(val))
-                     for key, val in six.iteritems(self.args))
-        )
-
     def run(self):
         return self.exec_command(
-            [
-                self.env.FAB,
+            self.env.FAB + [
                 '--fabfile',
                 self.fabfile_node.abspath(),
-                self._format_args(),
+            ] + self.options + [
+                '{0}:{1}'.format(
+                    command,
+                    ','.join(
+                        '{0}={1}'.format(_escape(key), _escape(val))
+                        for key, val in six.iteritems(args)))
+                for command, args in six.iteritems(self.commands)
             ],
-            # Don't capture the standard streams is case we get prompts.
+            # Don't capture the standard streams in case we get prompts.
             stdout=sys.stdout,
             stderr=sys.stderr,
         )

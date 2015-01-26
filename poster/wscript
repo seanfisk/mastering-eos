@@ -13,14 +13,15 @@ def configure(ctx):
     # Pygments is a minted requirement.
     ctx.find_program('pygmentize')
     ctx.env.append_unique('PDFLATEXFLAGS', [
-        # Enable SyncTeX.
-        '-synctex=1',
         # Shell escape; needed by minted.
         '-shell-escape',
     ])
 
 
 def build(ctx):
+    if not ctx.should_build('poster'):
+        return
+
     sty_in_node = ctx.path.find_resource('beamerthemeEOS.sty.in')
     sty_out_node = sty_in_node.change_ext(ext='.sty', ext_in='.sty.in')
     # Before we used Waf, we ran our TeX program in the source directory. Waf
@@ -44,12 +45,15 @@ def build(ctx):
         'blocks', 'inter-eos-ssh.tex.in'])
     inter_eos_ssh_tex_node = inter_eos_ssh_tex_in_node.change_ext(
         ext='.tex', ext_in='.tex.in')
-    inter_eos_ssh_bash_node = ctx.srcnode.find_resource([
-        'common', 'inter-eos-ssh.bash'])
+    inter_eos_ssh_bash_node_path = ['common', 'inter-eos-ssh.bash']
+    inter_eos_ssh_bash_node = ctx.find_or_make_in_src(
+        inter_eos_ssh_bash_node_path)
     ctx(features='subst',
         target=inter_eos_ssh_tex_node,
         source=inter_eos_ssh_tex_in_node,
         INTER_EOS_SSH_BASH_PATH=inter_eos_ssh_bash_node.abspath())
+
+    ctx.add_manual_dependency(inter_eos_ssh_tex_node, inter_eos_ssh_bash_node)
 
     # Make sure the style file is built before TeX is run.
     ctx.add_group()
@@ -72,3 +76,8 @@ def build(ctx):
     )
 
     ctx.add_manual_dependency(main_tex_node, sty_out_node)
+
+    if ctx.env.SPECIFIC_TARGET.is_open:
+        def _open_poster(ctx):
+            ctx.open_file(main_tex_node.change_ext('.pdf'))
+        ctx.add_post_fun(_open_poster)

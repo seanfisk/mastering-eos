@@ -1,4 +1,9 @@
-.. _gnu-linux-vnc:
+============================
+ Graphical Access (VNC/X11)
+============================
+
+.. _linux-vnc:
+
 .. include:: ../common/openssh/vnc-intro.rst
 
 There are a number of VNC clients for GNU/Linux, but the most capable and intuitive is Remmina_ (formerly tsclient_). Remmina also supports RDP, so you can use it with :ref:`Winserv <winserv-gnu-linux>`. It installed by default in Ubuntu 14.04. If it is not installed in your distribution, you should install from your package manager.
@@ -15,3 +20,12 @@ To configure Remmina for VNC with automatic SSH tunneling, open Remmina and sele
 
 .. image:: /images/vnc/remmina/ssh.png
    :alt: Remmina SSH Tab
+
+X Forwarding
+============
+
+Almost all GNU/Linux distributions come pre-installed with a fully functional X server (typically X.Org_), so no installation is needed.
+
+.. include:: ../common/openssh/x-forwarding.rst
+
+.. include:: ../common/x-forwarding-test.rst

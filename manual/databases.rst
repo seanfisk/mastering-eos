@@ -7,7 +7,7 @@ Learning to setup and maintain a database is essential to any Computer Science c
 MySQL
 =====
 
-MySQL is a powerful open-source database. To access it via the command-line, login to an EOS/Arch machine and enter::
+MySQL is a powerful open-source database. To access it via the command-line, login to an EOS machine and enter::
 
     mysql -u smithj -p -h cis.gvsu.edu
 

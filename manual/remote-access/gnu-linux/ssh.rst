@@ -1,6 +1,6 @@
-=====
- SSH
-=====
+====================
+ Shell Access (SSH)
+====================
 
 The most popular implementation of the SSH protocol on GNU/Linux is OpenSSH_. The SSH client can be run from the command-line and is simply called :program:`ssh`.
 
@@ -20,11 +20,11 @@ For other distributions (Arch, etc.), the package name and command should be sim
 
 .. include:: ../common/openssh/connect.rst
 
-.. _gnu-linux-fingerprints:
+.. _linux-fingerprints:
 
 .. include:: ../common/openssh/fingerprints.rst
 
-.. _gnu-linux-ssh-keys:
+.. _linux-ssh-keys:
 
 .. include:: ../common/keys/intro.rst
 
@@ -34,5 +34,7 @@ For other distributions (Arch, etc.), the package name and command should be sim
 
 .. include:: ../common/keys/outro.rst
 
-.. |text-editor| replace:: gedit
+.. This label is used for BetterPlanner; do not remove.
+.. _linux-ssh-tunnel:
+
 .. include:: ../common/openssh/forwarding.rst

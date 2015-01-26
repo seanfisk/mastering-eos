@@ -1,6 +1,6 @@
-=====
- SSH
-=====
+====================
+ Shell Access (SSH)
+====================
 
 Mac OS X comes preinstalled with OpenSSH, the most popular implementation of the SSH protocol. The client can be run from the command-line and is simply called ``ssh``.
 
@@ -18,5 +18,7 @@ Mac OS X comes preinstalled with OpenSSH, the most popular implementation of the
 
 .. include:: ../common/keys/outro.rst
 
-.. |text-editor| replace:: open -t
+.. This label is used for BetterPlanner; do not remove.
+.. _mac-ssh-tunnel:
+
 .. include:: ../common/openssh/forwarding.rst

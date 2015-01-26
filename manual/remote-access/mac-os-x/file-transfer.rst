@@ -27,6 +27,8 @@ Most of Cyberduck's action are available through the :guilabel:`File` menu or th
 .. |ssh-keys| replace:: :ref:`mac-ssh-keys`
 .. include:: ../common/openssh/scp.rst
 
+.. include:: ../common/rsync.rst
+
 .. include:: ../common/sshfs/intro.rst
 
 Installation
@@ -47,10 +49,9 @@ Next, mount your EOS home directory using SSHFS::
 
     sshfs -o volname=EOS smithj@eos01.cis.gvsu.edu: ~/eos
 
-.. TODO Link to hostname aliases once advanced section is split.
 .. tip::
 
-    If you set up Hostname Aliases as shown in Advanced OpenSSH, you can use these with SSHFS::
+    If you set up :ref:`mac-ssh-aliases`, you can use these with SSHFS::
 
         sshfs -o volname=EOS eos01: ~/eos
 

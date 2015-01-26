@@ -2,20 +2,32 @@
 
 # EditorConfig is awesome: http://EditorConfig.org
 
-# top-most EditorConfig file
+# Top-most EditorConfig file
 root = true
 
-# defaults
+# Defaults
 [*]
 insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Set default encoding to 'utf-8'. We've set the default encoding for
+# Sphinx to 'utf-8' (default is 'utf-8-sig'), and the default encoding
+# for XeTeX is UTF-8. We don't set the default encoding for Python,
+# because that needs to be encoded using a cookie to be recognized by
+# Python.
+[*.{tex,tex.in,sty,sty.in,rst,rst.in}]
+charset = utf-8
 
 # 2-space indentation
-[*.{tex,sty,sty.in,el,html}]
+# We want 2-space indentation for Bash so that it looks good on the
+# poster. If we use tabs, they will be expanded to 8 spaces. Better
+# just to guarantee consistency.
+[*.{tex,tex.in,sty,sty.in,el,html,bash.in}]
 indent_style = space
 indent_size = 2
 
 # 4-space indentation
-[*.{rst,py,md}]
+[*.{rst,rst.in,py,md,ebnf}]
 indent_style = space
 indent_size = 4
 [wscript]
