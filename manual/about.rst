@@ -5,6 +5,8 @@
 People
 ======
 
+.. _maintainers:
+
 The current maintainers of |title| are:
 
 - **Sean Fisk**; GVSU '14 Master of Computer Information Systems, GVSU '12 Bachelor of Computer Science

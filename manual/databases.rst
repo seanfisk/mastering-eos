@@ -1,3 +1,5 @@
+.. _databases:
+
 ===========
  Databases
 ===========
@@ -21,6 +23,8 @@ Oracle is a very powerful and complex enterprise quality system. Once you have b
     sqlplus smithj@orcl
 
 Please note that when you change your password for Oracle that you must not use the ``@`` character. Oracle will accept this but you will be unable to login.
+
+.. _oracle-apex:
 
 Oracle APEX
 ===========

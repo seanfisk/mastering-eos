@@ -26,6 +26,7 @@ Continue reading to find out how to make your own contributions to |title|.
    edit
    pull-request
    writing-style
+   maintenance
 
 .. _Git: http://git-scm.com/
 .. _GitHub: https://github.com/
