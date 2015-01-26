@@ -53,7 +53,7 @@ CoRD_ is an open-source rdesktop-based RDP implementation for Mac OS X. Although
 GNU/Linux
 =========
 
-GNU/Linux systems usually have the rdesktop_ command-line tool in their repositories. If not, it can most likely be built from source. rdesktop provides a geometry flag that accepts both screen percentages or resolutions from the command-line to help adjust the client to an appropriate size. For instance, to allow the client to take up 90% of your screen::
+GNU/Linux systems usually have the xfreerdp_ command-line tool in their repositories. If not, it can most likely be built from source. xfreerdp provides a geometry flag that accepts both screen percentages or resolutions from the command-line to help adjust the client to an appropriate size. For instance, to allow the client to take up 90% of your screen::
 
     xfreerdp winserv.cis.gvsu.edu -g 90%
 
@@ -63,5 +63,5 @@ Alternatively, to force a resolution of 1024x768 pixels::
 
 For a graphical RDP client that can also be used for :ref:`VNC <linux-vnc>`, check out Remmina_.
 
-.. _rdesktop: http://www.rdesktop.org/
+.. _xfreerdp: http://www.freerdp.com/
 .. _Remmina: http://remmina.sourceforge.net/
