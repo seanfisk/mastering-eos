@@ -4,6 +4,7 @@
 
 It is important that some basic rules and procedures be established to help maintain the lab and aid in its shared use.  To those ends, please be aware of the following guidelines:
 
+.. _quota:
 
 Disk Space
 ==========

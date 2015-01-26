@@ -1,31 +1,31 @@
 # -*- mode: python; coding: utf-8; -*-
 
-import os
-from os.path import join
-import sys
+"""Manual build script"""
+
 from collections import OrderedDict
 
 import waflib
 
 OPENERS = dict(
-    pdf=('open_file', waflib.Context.g_module.APPNAME + '.pdf'),
-    html=('open_html_file', 'index.html'),
-    man=('open_manpage', 'eos.7'),
-    info=('open_info', 'eos.info'),
+    opdf=('open_file', waflib.Context.g_module.APPNAME + '.pdf'),
+    ohtml=('open_html_file', 'index.html'),
+    oman=('open_manpage', 'eos.7'),
+    oinfo=('open_info', 'eos.info'),
+    oeinfo=('open_info_emacs', 'eos.info'),
 )
-SPHINX_TARGETS = OPENERS.keys()
+# Special case: we shortened 'latexpdf' to 'pdf'
+SPHINX_TARGET_BUILDERS = {'pdf': 'latexpdf'}
+for tgt in ['html', 'man', 'info']:
+    SPHINX_TARGET_BUILDERS[tgt] = tgt
 
-def _get_sphinx_builder(target):
-    return 'latexpdf' if target == 'pdf' else target
-
-def options(ctx):
+def options(ctx): # pylint: disable=unused-argument
     pass
 
 def configure(ctx):
     ctx.find_program('python')
 
 def build(ctx):
-    if not any(map(ctx.should_build, SPHINX_TARGETS)):
+    if not any(map(ctx.should_build, SPHINX_TARGET_BUILDERS.keys())):
         return
 
     fingerprints_table_path = (
@@ -52,16 +52,14 @@ def build(ctx):
         ]),
         source=[hostnames_node],
         target=[fingerprints_table_node],
-        **extra_kwargs
-    )
+        **extra_kwargs)
 
     vncts_node = ctx.path.find_or_declare('vncts')
     ctx(features='fabric',
         fabfile=fabfile_node,
         commands=dict(download_vncts_file=dict(output=vncts_node.abspath())),
         target=[vncts_node],
-        **extra_kwargs
-    )
+        **extra_kwargs)
 
     parsers_dir = ctx.bldnode.find_dir('parsers')
     @ctx.rule(
@@ -71,7 +69,7 @@ def build(ctx):
         source=[vncts_node] + ctx.env.PARSER_NODES['vnc_table_generator'],
         vars=['PYTHON'],
         update_outputs=True)
-    def make_vnc_table(tsk):
+    def _make_vnc_table(tsk):
         # Note: colorama (from grako) has issues if we try to directly call
         # into the Python module from here.
         return tsk.exec_command(
@@ -84,11 +82,19 @@ def build(ctx):
             env={'PYTHONPATH': parsers_dir.abspath()},
         )
 
-    # TODO: The html document does not build under changes to
+    # FIXME: The html document does not build under changes to
     # _templates/footer.html.
+    fmt, is_open = ctx.env.SPECIFIC_TARGET
+    builder = None
+    builders = SPHINX_TARGET_BUILDERS.values()
+    if fmt:
+        try:
+            builder = SPHINX_TARGET_BUILDERS[fmt]
+            builders = [builder]
+        except AttributeError:
+            pass
     ctx(features='sphinx',
-        builders=map(_get_sphinx_builder, [ctx.env.SPECIFIC_TARGET]
-                     if ctx.env.SPECIFIC_TARGET else SPHINX_TARGETS),
+        builders=builders,
         source='conf.py',
         # Turn warnings into errors. Helps them get fixed more quickly :)
         warningiserror=True,
@@ -96,14 +102,11 @@ def build(ctx):
         nitpicky=True,
         # Make sure that vnc and fingerprints tables are built before running.
         # The 'after' keyword means 'run this task after the listed tasks'.
-        after_=['make_vnc_table', 'make_ssh_fingerprints_table'],
-    )
+        after_=['make_vnc_table', 'make_ssh_fingerprints_table'])
 
-    if ctx.env.OPEN_SPECIFIC_TARGET:
+    if is_open:
         def _open_target(ctx):
-            open_fn_name, node_basename = OPENERS[ctx.env.SPECIFIC_TARGET]
-            getattr(ctx, open_fn_name)(ctx.bldnode.find_node([
-                'manual',
-                _get_sphinx_builder(ctx.env.SPECIFIC_TARGET),
-                node_basename]))
+            open_fn_name, node_basename = OPENERS[ctx.cmd]
+            getattr(ctx, open_fn_name)(
+                ctx.bldnode.find_node(['manual', builder, node_basename]))
         ctx.add_post_fun(_open_target)

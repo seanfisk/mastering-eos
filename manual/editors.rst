@@ -5,6 +5,8 @@
 
    <div class="clearfix"></div>
 
+.. _editors:
+
 =========
  Editors
 =========

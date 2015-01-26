@@ -8,28 +8,25 @@ complexity.
 Tested with Waf 1.8.4 and Sphinx 1.2.3.
 
 Based on
-- https://github.com/hmgaudecker/econ-project-templates/blob/python/.mywaflib/waflib/extras/sphinx_build.py
-- http://docs.waf.googlecode.com/git/book_17/single.html#_a_compiler_producing_source_files_with_names_unknown_in_advance
-
-TODO: Multiple builders could potentially use a shared doctrees directory and
-also share scanner method results. Unfortunately, that would likely mean
-combining all of the builders into one task, which is ugly and would probably
-decrease parallelism. Other options would be to run the dependency scanner
-before creating the task (creating potentially incorrect results) or caching
-the results of the scan (which would result in concurrency control, and be ugly
-and error-prone).
-
-TODO: We don't currently call makeindex as the Sphinx-generated LaTeX Makefile
-does. This needs to be added.
+https://github.com/hmgaudecker/econ-project-templates/blob/python/.mywaflib/waflib/extras/sphinx_build.py
+http://docs.waf.googlecode.com/git/book_17/single.html#_a_compiler_producing_source_files_with_names_unknown_in_advance
 
 Hans-Martin von Gaudecker, 2012
 Sean Fisk, 2014
-
 """
 
+# FIXME: We don't currently call makeindex as the Sphinx-generated LaTeX
+# Makefile does. This needs to be added.
+
+# XXX: Multiple builders could potentially use a shared doctrees directory and
+# also share scanner method results. Unfortunately, that would likely mean
+# combining all of the builders into one task, which is ugly and would probably
+# decrease parallelism. Other options would be to run the dependency scanner
+# before creating the task (creating potentially incorrect results) or caching
+# the results of the scan (which would result in concurrency control, and be
+# ugly and error-prone).
+
 import os
-import sys
-import uuid
 import re
 import shutil
 
@@ -45,47 +42,53 @@ MAKEINFO_VERSION_RE = re.compile(r'makeinfo \(GNU texinfo\) (\d+)\.(\d+)')
 MAKEINFO_MIN_VERSION = (4, 13)
 
 class InfoBuilder(object):
+    """Handle run of makeinfo."""
     tool_name = 'MAKEINFO'
     in_suffix = '.texi'
     out_suffix = '.info'
     sphinx_builder = 'texinfo'
 
-    def create_task(self, task_gen, src, tgt):
+    def create_task(self, task_gen, src, tgt): # pylint: disable=no-self-use
+        """Create Sphinx makeinfo task."""
         return [task_gen.create_task('sphinx_makeinfo', src=src, tgt=tgt)]
 
+def _make_texinputs_nodes(task_gen, init_texinputs_nodes):
+    # We need to respect the existing values of 'os.environ["TEXINPUTS"]'
+    # and 'latex_task.env.TEXINPUTS' when setting
+    # 'latex_task.texinputs_nodes', as does 'apply_tex'. This code is
+    # basically copied from 'apply_tex'. Unfortunately, we don't see a way
+    # around copying this code.
+    texinputs_nodes = init_texinputs_nodes[:]
+    val = os.environ.get('TEXINPUTS', '')
+    if task_gen.env.TEXINPUTS:
+        val += os.pathsep + task_gen.env.TEXINPUTS
+    if val:
+        paths = val.split(os.pathsep)
+    for path in paths:
+        if path:
+            if os.path.isabs(path):
+                node = task_gen.bld.root.find_node(path)
+                if node:
+                    texinputs_nodes.append(node)
+                else:
+                    waflib.Logs.error(
+                        'Invalid TEXINPUTS folder {}'.format(path))
+            else:
+                waflib.Logs.error(
+                    'Cannot resolve relative paths in TEXINPUTS {}'.format(
+                        path))
+
+    return texinputs_nodes
+
 class PdflatexBuilder(object):
+    """Handle run of pdflatex."""
     tool_name = 'PDFLATEX'
     in_suffix = '.tex'
     out_suffix = '.pdf'
     sphinx_builder = 'latex'
 
-    def make_texinputs_nodes(self, task_gen, init_texinputs_nodes):
-        # We need to respect the existing values of 'os.environ["TEXINPUTS"]'
-        # and 'latex_task.env.TEXINPUTS' when setting
-        # 'latex_task.texinputs_nodes', as does 'apply_tex'. This code is
-        # basically copied from 'apply_tex'. Unfortunately, we don't see a way
-        # around copying this code.
-        texinputs_nodes = init_texinputs_nodes[:]
-        lst = os.environ.get('TEXINPUTS', '')
-        if task_gen.env.TEXINPUTS:
-            lst += os.pathsep + task_gen.env.TEXINPUTS
-        if lst:
-            lst = lst.split(os.pathsep)
-        for x in lst:
-            if x:
-                if os.path.isabs(x):
-                    p = task_gen.bld.root.find_node(x)
-                    if p:
-                        texinputs_nodes.append(p)
-                    else:
-                        waflib.Logs.error('Invalid TEXINPUTS folder %s' % x)
-                else:
-                    waflib.Logs.error(
-                        'Cannot resolve relative paths in TEXINPUTS %s' % x)
-
-        return texinputs_nodes
-
-    def create_task(self, task_gen, src, tgt):
+    def create_task(self, task_gen, src, tgt): # pylint: disable=no-self-use
+        """Create pdflatex task."""
         orig_tex_node = src[0]
         dep_nodes = src[1:]
         # We don't want to pollute the LaTeX sources directory (which is in the
@@ -102,7 +105,7 @@ class PdflatexBuilder(object):
         latex_task = task_gen.create_task(
             'pdflatex', src=copied_tex_node, tgt=tgt)
         # Set 'texinputs_nodes' for the task.
-        latex_task.texinputs_nodes = self.make_texinputs_nodes(
+        latex_task.texinputs_nodes = _make_texinputs_nodes(
             task_gen, [orig_tex_node.parent])
         # Set the build order to prevent node signature issues.
         latex_task.set_run_after(copy_task)
@@ -133,19 +136,21 @@ def _sorted_nodes(nodes):
     return sorted(nodes, key=lambda node: node.name)
 
 @conf
-def warn_about_old_makeinfo(ctx):
-    version_out = ctx.cmd_and_log(ctx.env.MAKEINFO + ['--version'])
+def warn_about_old_makeinfo(self):
+    """Warn the user if their version of makeinfo is too old."""
+    version_out = self.cmd_and_log(self.env.MAKEINFO + ['--version'])
     version_str = version_out.splitlines()[0].rstrip()
     match = MAKEINFO_VERSION_RE.match(version_str)
     if match is None:
-        ctx.fatal("Couldn't verify makeinfo version!")
+        self.fatal("Couldn't verify makeinfo version!")
     version_tuple = tuple(int(x) for x in match.groups())
     if version_tuple < MAKEINFO_MIN_VERSION:
         waflib.Logs.warn(
-'''Your makeinfo version ({0}) is too old to support UTF-8.
-You will see warnings; upgrade to {1} to get UTF-8 support.'''.format(
-    _version_tuple_to_string(version_tuple),
-    _version_tuple_to_string(MAKEINFO_MIN_VERSION)))
+            ('Your makeinfo version ({0}) is too old to support UTF-8.\n'
+             'You will see warnings; upgrade to {1} to get UTF-8 support.')
+            .format(
+                _version_tuple_to_string(version_tuple),
+                _version_tuple_to_string(MAKEINFO_MIN_VERSION)))
 
 def configure(ctx):
     ctx.find_program('sphinx-build', var='SPHINX_BUILD')
@@ -169,6 +174,7 @@ class sphinx_copy_file_task(waflib.Task.Task):
         shutil.copyfile(self.inputs[0].abspath(), self.outputs[0].abspath())
 
 class sphinx_build_task(waflib.Task.Task):
+    # pylint: disable=no-member,attribute-defined-outside-init
     """Handle run of sphinx-build."""
 
     vars = ['SPHINX_BUILD']
@@ -182,17 +188,18 @@ class sphinx_build_task(waflib.Task.Task):
             return self.uid_
         except AttributeError:
             # Based on Task.uid()
-            m = waflib.Utils.md5()
-            up = m.update
-            up(self.__class__.__name__.encode())
-            for x in self.inputs:
-                up(x.abspath().encode())
-            up(self.requested_builder.encode())
-            self.uid_ = m.digest()
+            hash_ = waflib.Utils.md5()
+            update = hash_.update
+            update(self.__class__.__name__.encode())
+            for node in self.inputs:
+                update(node.abspath().encode())
+            update(self.requested_builder.encode())
+            self.uid_ = hash_.digest()
             return self.uid_
 
     def scan(self):
-        """Use Sphinx's internal environment to find the outdated dependencies."""
+        """Use Sphinx's internal environment to find the outdated dependencies.
+        """
         # Set up the Sphinx application instance.
         app = Sphinx(
             srcdir=self.src_dir_node.abspath(),
