@@ -25,7 +25,9 @@ def configure(ctx):
     ctx.find_program('python')
 
 def build(ctx):
-    if not any(map(ctx.should_build, SPHINX_TARGET_BUILDERS.keys())):
+    is_linkcheck = ctx.cmd == 'linkcheck'
+    if not (any(map(ctx.should_build, SPHINX_TARGET_BUILDERS.keys())) or
+            is_linkcheck):
         return
 
     fingerprints_table_path = (
@@ -84,29 +86,44 @@ def build(ctx):
 
     # FIXME: The html document does not build under changes to
     # _templates/footer.html.
-    fmt, is_open = ctx.env.SPECIFIC_TARGET
-    builder = None
-    builders = SPHINX_TARGET_BUILDERS.values()
-    if fmt:
-        try:
-            builder = SPHINX_TARGET_BUILDERS[fmt]
-            builders = [builder]
-        except AttributeError:
-            pass
+    if is_linkcheck:
+        sphinx_kwds = dict(
+            builders=['linkcheck'],
+            # Don't turn on warningiserror if linkcheck is running, else it
+            # will crash out on the first dead link. We have internal links
+            # that we know it will fail on, so we want it to run to completion.
+            warningiserror=False,
+        )
+    else:
+        fmt, is_open = ctx.env.SPECIFIC_TARGET
+        builder = None
+        builders = SPHINX_TARGET_BUILDERS.values()
+
+        if fmt:
+            try:
+                builder = SPHINX_TARGET_BUILDERS[fmt]
+                builders = [builder]
+            except AttributeError:
+                pass
+
+        if is_open:
+            def _open_target(ctx):
+                open_fn_name, node_basename = OPENERS[ctx.cmd]
+                getattr(ctx, open_fn_name)(
+                    ctx.bldnode.find_node(['manual', builder, node_basename]))
+            ctx.add_post_fun(_open_target)
+
+        sphinx_kwds = dict(
+            builders=builders,
+            # Turn warnings into errors. Helps them get fixed more quickly :)
+            warningiserror=True,
+        )
+
     ctx(features='sphinx',
-        builders=builders,
         source='conf.py',
-        # Turn warnings into errors. Helps them get fixed more quickly :)
-        warningiserror=True,
         # Warn about all missing references.
         nitpicky=True,
         # Make sure that vnc and fingerprints tables are built before running.
         # The 'after' keyword means 'run this task after the listed tasks'.
-        after_=['make_vnc_table', 'make_ssh_fingerprints_table'])
-
-    if is_open:
-        def _open_target(ctx):
-            open_fn_name, node_basename = OPENERS[ctx.cmd]
-            getattr(ctx, open_fn_name)(
-                ctx.bldnode.find_node(['manual', builder, node_basename]))
-        ctx.add_post_fun(_open_target)
+        after_=['make_vnc_table', 'make_ssh_fingerprints_table'],
+        **sphinx_kwds)

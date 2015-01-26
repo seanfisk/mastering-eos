@@ -49,6 +49,9 @@ for _cmd, (_fmt, _is_open) in six.iteritems(SPECIFIC_COMMAND_TARGETS):
              'and opens ' if _is_open else '',
              _fmt))))
 
+class LinkcheckContext(waflib.Build.BuildContext):
+    cmd = 'linkcheck'
+
 def options(ctx):
     # This option puts the project in developer mode, which causes the build
     # system to make certain assumptions which speed up the build (and hence
