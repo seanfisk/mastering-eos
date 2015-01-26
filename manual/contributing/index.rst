@@ -25,8 +25,9 @@ Continue reading to find out how to make your own contributions to |title|.
    build-system
    edit
    make-pull-request
-   writing-style
+   guidelines
    review-pull-request
+   maintenance
 
 .. _Git: http://git-scm.com/
 .. _GitHub: https://github.com/

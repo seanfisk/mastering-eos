@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""/etc/hosts file parser"""
+
 import re
 from collections import namedtuple
 
-from hosts_file_parser.parser import HostsParser
+from hosts_file_parser.parser import HostsParser # pylint: disable=import-error,no-name-in-module
 
 Record = namedtuple('Record', ['ip', 'hostname', 'aliases'])
 
@@ -12,7 +14,9 @@ EOS_HOSTNAME_RE = re.compile(
     r'(?:eos|arch|dc)\d+\.cis\.gvsu\.edu$')
 
 class Semantics(object):
-    def record(self, ast):
+    """Transformations for AST nodes."""
+    def record(self, ast): # pylint: disable=no-self-use
+        """Handle a record node."""
         try:
             aliases = ast['aliases']
         except KeyError:
@@ -45,5 +49,5 @@ def get_eos_hostnames(hosts_file):
         records = hosts_parser.parse(
             hosts_file.read(), rule_name='file', **kwargs)
 
-    return filter(lambda hostname: EOS_HOSTNAME_RE.match(hostname),
-                  map(lambda record: record.hostname, records))
+    return [record.hostname for record in records if
+            EOS_HOSTNAME_RE.match(record.hostname)]

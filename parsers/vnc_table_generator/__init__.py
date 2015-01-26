@@ -10,9 +10,9 @@ from collections import OrderedDict
 
 import six
 from texttable import Texttable
-from grako.exceptions import FailedSemantics
+from grako.exceptions import FailedSemantics # pylint: disable=import-error
 
-from vnc_table_generator.parser import VnctsParser
+from vnc_table_generator.parser import VnctsParser # pylint: disable=import-error,no-name-in-module
 
 # The front part is just so that things like 'not-really-geometry' don't match.
 # The end part is so that things like '1440x900abcd' don't match.
@@ -36,20 +36,20 @@ def _dict_list_to_ordered_dict(d_list):
         have ``key`` or ``value`` keys or when duplicate ``key`` values arise
     """
     out = OrderedDict()
-    for d in d_list:
+    for d in d_list: # pylint: disable=invalid-name
         try:
             key = d['key']
             value = d['value']
-        except KeyError as e:
-            missing_key = e.args[0]
-            # TODO: Grako has a bug that causes FailedSemantics exceptions
+        except KeyError as exc:
+            missing_key = exc.args[0]
+            # FIXME: Grako has a bug that causes FailedSemantics exceptions
             # raised within a repeater to not be reported correctly. It will
             # need to be fixed in Grako itself.
             raise FailedSemantics(
                 "Dictionary has no {0!r} key: {1!r}".format(missing_key, d))
 
         if key in out:
-            # TODO: Ditto from above
+            # FIXME: Ditto from above
             raise FailedSemantics(
                 'Duplicate key {0!r} from previous dictionary found: {1!r}'
                 .format(key, d))
@@ -59,10 +59,14 @@ def _dict_list_to_ordered_dict(d_list):
     return out
 
 class Semantics(object):
+     # pylint: disable=no-self-use
+    """Transformations for AST nodes."""
     def file(self, ast):
+        """Handle a file node."""
         return _dict_list_to_ordered_dict(ast)
 
     def service(self, ast):
+        """Handle a service node."""
         return {
             'key': ast['key'],
             'value': _dict_list_to_ordered_dict(ast['value']),

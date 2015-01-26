@@ -4,7 +4,7 @@
 
 .. warning::
 
-    If you were following along with the bacon example, don't actually create a pull request.
+   If you were following along with the bacon example, don't actually create a pull request.
 
 Once your branch has been pushed to your fork, follow the GitHub instructions on `making a pull request`_.
 

@@ -10,7 +10,7 @@ Please see :wikipedia:`Wikipedia's list of GUI toolkits <List_of_widget_toolkits
 
 .. note::
 
-    Although you can use all of these toolkits on EOS systems, this information is not specific to EOS.
+   Although you can use all of these toolkits on EOS systems, this information is not specific to EOS.
 
 Choosing a Toolkit
 ==================
@@ -87,7 +87,7 @@ GTK+
 
 .. note::
 
-    Although GTK+ is purely a GUI library, it is typically used with GLib_, which offers many other application features.
+   Although GTK+ is purely a GUI library, it is typically used with GLib_, which offers many other application features.
 
 .. _GTK+: http://www.gtk.org/
 .. _Unity: https://unity.ubuntu.com/
