@@ -1,16 +1,13 @@
 # -*- mode: python; coding: utf-8; -*-
 
+"""Parsers build script"""
+
 import sys
-import os
-from os.path import join
 
-import waflib
-from waflib.Configure import conf
-
-def options(ctx):
+def options(ctx): # pylint: disable=unused-argument
     pass
 
-def configure(ctx):
+def configure(ctx): # pylint: disable=unused-argument
     pass
 
 def build(ctx):
@@ -18,9 +15,9 @@ def build(ctx):
     # name.
     ctx.env.PARSER_NODES = {}
 
-    for dir, grammar_name in [
+    for dir_, grammar_name in [
             ('hosts_file_parser', 'hosts'), ('vnc_table_generator', 'vncts')]:
-        dir_node = ctx.path.find_dir(dir)
+        dir_node = ctx.path.find_dir(dir_)
         parser_node = dir_node.find_or_declare('parser.py')
         ctx(source=dir_node.find_resource(grammar_name + '.ebnf'),
             target=parser_node)
@@ -38,7 +35,7 @@ def build(ctx):
             is_copy=True)
 
         # Add the output nodes to the environment variable.
-        ctx.env.PARSER_NODES[dir] = [parser_node] + copy_target_nodes
+        ctx.env.PARSER_NODES[dir_] = [parser_node] + copy_target_nodes
 
     # Add the generated Python modules to the module search path.
     sys.path.append(ctx.path.get_bld().abspath())

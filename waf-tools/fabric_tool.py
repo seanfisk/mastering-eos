@@ -78,6 +78,9 @@ def _escape(value):
     return value.replace('=', r'\=').replace(',', r'\,')
 
 class fabric_task(waflib.Task.Task):
+    """Task to run a Fabric command"""
+    # pylint: disable=no-member
+
     vars = ['FAB']
 
     def run(self):
