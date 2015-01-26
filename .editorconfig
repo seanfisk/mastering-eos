@@ -26,8 +26,13 @@ charset = utf-8
 indent_style = space
 indent_size = 2
 
+# 3-space indentation
+[*.{rst,rst.in}]
+indent_style = space
+indent_size = 3
+
 # 4-space indentation
-[*.{rst,rst.in,py,md,ebnf}]
+[*.{py,md,ebnf}]
 indent_style = space
 indent_size = 4
 [wscript]
