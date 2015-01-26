@@ -36,8 +36,8 @@ dirs
 xdg-open
 ========
 
-`xdg-open`_ is a command that can be used to open a file or URL in the user's preffered application.
-Example: :samp:`xdg-open /build/manual/html/index.html`
+xdg-open_ is a command that can be used to open a file or URL in the user's preferred application.
+Example:``xdg-open myfile.pdf``
 
 .. _xdg-open: http://portland.freedesktop.org/xdg-utils-1.0/xdg-open.html
 
@@ -84,4 +84,3 @@ The ``write`` command allows communication with other users through the terminal
 The usual syntax is::
 
 	write user [tty]
-
