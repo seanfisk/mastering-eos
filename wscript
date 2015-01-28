@@ -50,6 +50,7 @@ for _cmd, (_fmt, _is_open) in six.iteritems(SPECIFIC_COMMAND_TARGETS):
              _fmt))))
 
 class LinkcheckContext(waflib.Build.BuildContext):
+    """runs the Sphinx link checker"""
     cmd = 'linkcheck'
 
 def options(ctx):
