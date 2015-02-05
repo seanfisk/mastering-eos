@@ -14,6 +14,7 @@
 from __future__ import unicode_literals
 import subprocess
 from urlparse import urljoin
+import locale
 
 # -- General configuration ------------------------------------------------
 
@@ -488,7 +489,8 @@ extlinks = {
 
 # Git revision: custom option, for use in '_templates/footer.html'.
 _git_short_revision = subprocess.check_output([
-    'git', 'rev-parse', '--short', 'HEAD']).decode('ascii').rstrip()
+    'git', 'rev-parse', '--short', 'HEAD']).decode(
+        locale.getpreferredencoding()).rstrip()
 # Inject the 'git_revision' keyword into the Jinja template.
 html_context = dict(
     git_revision=(
