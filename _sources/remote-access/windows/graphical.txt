@@ -16,7 +16,7 @@ Go back to :guilabel:`Session` and click :guilabel:`Save`. You are now ready to 
 
 .. hint::
 
-    If you clone a session for an EOS machine (using :guilabel:`Load` and :guilabel:`Save`), don't forget to change the tunnel to forward ports to that machine.
+   If you clone a session for an EOS machine (using :guilabel:`Load` and :guilabel:`Save`), don't forget to change the tunnel to forward ports to that machine.
 
 The recommended VNC client for Windows is TightVNC_. Download it, install, then open. In the field labelled :guilabel:`Remote Host`, type ``localhost``. Click :guilabel:`Connect` to start the connection.
 
@@ -27,7 +27,7 @@ For future connections, simply start TightVNC and click :guilabel:`Connect`. Alt
 X Forwarding
 ============
 
-There are a few X servers available for Windows, but the most popular is Xming_, a native Windows X server based on `X.Org`_. Download and install the public domain release from the `Xming release page`_. During installation, feel free to choose not to install an SSH client if you already have PuTTY installed (which you should).
+There are a few X servers available for Windows, but the most popular is Xming_, a native Windows X server based on X.Org_. Download and install the public domain release from the `Xming release page`_. During installation, feel free to choose not to install an SSH client if you already have PuTTY installed (which you should).
 
 First, start up the Xming server by simply opening it. Next, open PuTTY and load your EOS session.
 

@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Writing Style &mdash; Mastering EOS</title>
+  <title>Writing Guidelines &mdash; Mastering EOS</title>
   
 
   
@@ -34,8 +34,8 @@
               href="../about.html"/>
     <link rel="top" title="Mastering EOS" href="../index.html"/>
         <link rel="up" title="Contributing to Mastering EOS" href="index.html"/>
-        <link rel="next" title="Environment Variables" href="../envvars.html"/>
-        <link rel="prev" title="Making a Pull Request" href="pull-request.html"/>
+        <link rel="next" title="Reviewing Pull Requests" href="review-pull-request.html"/>
+        <link rel="prev" title="Making a Pull Request" href="make-pull-request.html"/>
  
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -90,18 +90,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../rules.html#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shell/index.html">Using the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shell/basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/shells.html">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/interactive.html">Interactive Shell Use</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/windows/index.html">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/mac-os-x/index.html">Mac OS X</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/gnu-linux/index.html">GNU/Linux</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#kornshell">Kornshell</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../user-level-sw/index.html">User-level Software Installation</a><ul>
@@ -153,7 +152,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../misc.html">Miscellaneous</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../misc.html#kill-the-x-server">Kill the X Server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc.html#directory-navigation">Directory Navigation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../misc.html#uptime">Uptime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#xdg-open">xdg-open</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#uptime">uptime</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc.html#user-interactions">User Interactions</a></li>
 </ul>
 </li>
@@ -162,8 +162,10 @@
 <li class="toctree-l2"><a class="reference internal" href="prereqs.html">Pre-requisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="build-system.html">Using the Build System</a></li>
 <li class="toctree-l2"><a class="reference internal" href="edit.html">Editing the Manual</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pull-request.html">Making a Pull Request</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Writing Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="make-pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Writing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="review-pull-request.html">Reviewing Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.html">Maintenance Tasks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../envvars.html">Environment Variables</a></li>
@@ -198,10 +200,10 @@
       
           <li><a href="index.html">Contributing to Mastering EOS</a> &raquo;</li>
       
-    <li>Writing Style</li>
+    <li>Writing Guidelines</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/contributing/writing-style.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/contributing/guidelines.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -209,8 +211,10 @@
 </div>
           <div role="main">
             
-  <div class="section" id="writing-style">
-<h1>Writing Style<a class="headerlink" href="#writing-style" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="writing-guidelines">
+<h1>Writing Guidelines<a class="headerlink" href="#writing-guidelines" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="writing-style">
+<h2>Writing Style<a class="headerlink" href="#writing-style" title="Permalink to this headline">¶</a></h2>
 <p>When writing technical documentation, it is important to follow a consistent writing style. Within this manual, we attempt to follow the <a class="reference external" href="https://wiki.openstack.org/wiki/Documentation/Conventions/Writing_style#Writing_style">OpenStack writing conventions</a>. Their documentation presents a great summary of how to write coherent technical documentation.</p>
 <p>Sphinx uses <a class="reference external" href="http://daringfireball.net/projects/smartypants/">SmartyPants</a> to transform quotes, dashes, and ellipses into typographically correct entities for HTML output. You can use straight quotes, straight apostrophes, and three dots &#8212; they will be transformed into the correct characters. For dashes, first read up on <a class="reference external" href="http://csswizardry.com/2010/01/the-three-types-of-dash/">the three types of dash</a>. The transformations are as follows: Hyphens stay as is, two hyphens will be transformed into an en dash, and three hyphens will be transformed into an em dash.</p>
 <p>Please also see the following links for writing technical documentation:</p>
@@ -221,6 +225,97 @@
 <li>Description of <a class="reference external" href="http://en.wikipedia.org/wiki/Imperative_mood">Imperative Mood on Wikipedia</a></li>
 </ul>
 </div>
+<div class="section" id="restructuredtext-conventions">
+<h2>reStructuredText Conventions<a class="headerlink" href="#restructuredtext-conventions" title="Permalink to this headline">¶</a></h2>
+<p>Because there are many ways to write reStructuredText, we have set some conventions to be followed when editing the documentation.</p>
+<div class="section" id="section-headers">
+<h3>Section Headers<a class="headerlink" href="#section-headers" title="Permalink to this headline">¶</a></h3>
+<p>Although docutils avoids &#8220;imposing a fixed number and order of section title adornment styles&#8221;, adhering to conventions produces results of higher quality and greater consistency. Please use <em>the exact order</em> used in the description of <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#sections">reStructuredText Sections</a> when writing documentation. See the source code of this page for an example.</p>
+<p>When using the first two header styles, pad the title with a space on both sides as shown in <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#sections">reStructuredText Sections</a> (typing a space is not necessary on the right; just make it look correct).</p>
+</div>
+<div class="section" id="indentation">
+<h3>Indentation<a class="headerlink" href="#indentation" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#indentation">Indentation in reStructuredText</a> is both simple and complex. Instead of dictating that the indent must be a certain number of spaces, or use tabs, indentation is always relative to the prior input. Unfortunately, this tends to make things confusing, so we&#8217;ve set some conventions.</p>
+<p>Default indentation is 3 spaces, and should be used for almost everything including <a class="reference external" href="http://sphinx-doc.org/rest.html#source-code">literal blocks</a>, <a class="reference external" href="http://sphinx-doc.org/rest.html#directives">directives</a>, and <a class="reference external" href="http://sphinx-doc.org/rest.html#comments">comments</a>:</p>
+<div class="highlight-rest"><div class="highlight"><pre>This is some Python<span class="se">::</span>
+
+<span class="s">   print(&#39;This is Python&#39;)</span>
+<span class="s">   if True:</span>
+<span class="s">       print(&#39;so we still indent 4 spaces *within* the code&#39;)</span>
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:maxdepth:</span> <span class="nf">2</span>
+
+   one
+   two
+   three
+
+<span class="cp">..</span>
+
+<span class="cp">   Here is a comment.</span>
+<span class="cp">   And a second line.</span>
+</pre></div>
+</div>
+<p>The 3-space indent is used because it looks better than 2 or 4 when using the directive syntax.</p>
+<p><a class="reference external" href="http://sphinx-doc.org/rest.html#lists-and-quote-like-blocks">Lists</a> differ from the 3-space indent. Each item should include one space after its delimiting character, and the contents of the item should be lined up with that, as shown in the primer example. Here is another example:</p>
+<div class="highlight-rest"><div class="highlight"><pre><span class="m">-</span> First item
+<span class="m">-</span> Some Bash:
+
+<span class="p">  ..</span> <span class="ow">code-block</span><span class="p">::</span>
+
+     ls -l
+
+<span class="m">-</span> Here we have
+  two lines.
+
+<span class="m">#.</span> This list
+<span class="m">#.</span> has a different
+   indent
+</pre></div>
+</div>
+</div>
+<div class="section" id="correct-usage-of-roles">
+<h3>Correct Usage of Roles<a class="headerlink" href="#correct-usage-of-roles" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">When referring to a command or program, use our project-specific <tt class="docutils literal"><span class="pre">:cmd:</span></tt> role:</p>
+<div class="highlight-rst"><div class="highlight"><pre>The <span class="na">:cmd:</span><span class="nv">`ls`</span> command lists files in a directory.
+</pre></div>
+</div>
+<p>However, when referring inline to a command line to be run, use the inline literal syntax:</p>
+<div class="highlight-rst"><div class="highlight"><pre>The <span class="s">``ls -l``</span> command lists files in a directory in a long format.
+</pre></div>
+</div>
+<p>Never use the <a class="reference external" href="http://sphinx-doc.org/markup/inline.html#role-command">command role</a> or <a class="reference external" href="http://sphinx-doc.org/markup/inline.html#role-program">program role</a>.</p>
+</li>
+<li><p class="first">Use the <a class="reference external" href="http://sphinx-doc.org/markup/inline.html#role-envvar">envvar role</a>  when appropriate, and create a corresponding entry in <a class="reference internal" href="../envvars.html#env-vars"><em>Environment Variables</em></a>.</p>
+</li>
+<li><p class="first">Do not use the <a class="reference external" href="http://sphinx-doc.org/markup/inline.html#role-option">option role</a>, as it emits a warning if a corresponding <a class="reference external" href="http://sphinx-doc.org/domains.html#directive-option">option directive</a> is not found. This would be fine, but we want to remain warning-free. Instead, just use normal literal text.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="backticks-and-hyperlinks">
+<h3>Backticks and Hyperlinks<a class="headerlink" href="#backticks-and-hyperlinks" title="Permalink to this headline">¶</a></h3>
+<p>When creating hyperlinks in rST, do not use backticks when they are not necessary:</p>
+<div class="highlight-rest"><div class="highlight"><pre><span class="cp">.. Good</span>
+abcd_
+ab-cd_
+ab.cd_
+<span class="s">`ab cd`_</span>
+<span class="s">`ab+cd`_</span>
+
+<span class="cp">.. Bad</span>
+<span class="s">`abcd`_</span>
+<span class="s">`ab-cd`_</span>
+<span class="s">`ab.cd`_</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="linking-to-sections">
+<h3>Linking to Sections<a class="headerlink" href="#linking-to-sections" title="Permalink to this headline">¶</a></h3>
+<p>Although regular reST supports <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#implicit-hyperlink-targets">implicit hyperlink targets</a> to section titles, etc., we recommend using the Sphinx-specific <a class="reference external" href="http://sphinx-doc.org/markup/inline.html#role-ref">ref role</a> for cross-referencing. See the last sentence of the <a class="reference external" href="http://sphinx-doc.org/markup/inline.html#role-ref">ref</a> documentation if you are curious as to why.</p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -229,10 +324,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../envvars.html" class="btn btn-neutral float-right" title="Environment Variables">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="review-pull-request.html" class="btn btn-neutral float-right" title="Reviewing Pull Requests">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pull-request.html" class="btn btn-neutral" title="Making a Pull Request"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="make-pull-request.html" class="btn btn-neutral" title="Making a Pull Request"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -245,7 +340,7 @@
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/2960335">2960335</a> built 2015-01-03 23:57:42 EST.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/ef1ead3">ef1ead3</a> built 2015-02-05 18:07:38 EST.<br />
     </p>
   </div>
 

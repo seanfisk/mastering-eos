@@ -1,0 +1,474 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Interactive Shell Use &mdash; Mastering EOS</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+        <link rel="author" title="About these documents"
+              href="../about.html"/>
+    <link rel="top" title="Mastering EOS" href="../index.html"/>
+        <link rel="up" title="Using the Command Line" href="index.html"/>
+        <link rel="next" title="Remote Access (SSH/VNC)" href="../remote-access/index.html"/>
+        <link rel="prev" title="Available Shells" href="shells.html"/>
+ 
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-19591513-4', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('send', 'pageview');
+  </script>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> Mastering EOS</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#physical-access-keycards">Physical Access (Keycards)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#computer-access-credentials">Computer Access (Credentials)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rules.html">Rules and Procedures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#disk-space">Disk Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#copyrighted-material">Copyrighted Material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#food-and-drink">Food and Drink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#overnight-parking">Overnight Parking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#living-in-the-lab">Living in the Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#malicious-activity">Malicious Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#games">Games</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Using the Command Line</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shells.html">Available Shells</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Interactive Shell Use</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../remote-access/inter-eos.html">Inter-EOS SSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../remote-access/windows/index.html">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../remote-access/mac-os-x/index.html">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../remote-access/gnu-linux/index.html">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user-level-sw/index.html">User-level Software Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user-level-sw/manual-install.html">Manual Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user-level-sw/linuxbrew.html">Linuxbrew</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sys-sw-info.html">System and Software Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sys-sw-info.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sys-sw-info.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sys-sw-info.html#web-server">Web Server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../winserv.html">Winserv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#common-settings">Common Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#microsoft-windows">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#gnu-linux">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../databases.html">Databases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#mysql">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#oracle">Oracle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#oracle-apex">Oracle APEX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#mssql">MSSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#sqlite">SQLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#remote-database-connections">Remote Database Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../editors.html">Editors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../editors.html#basic-text-editors">Basic Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editors.html#advanced-text-editors">Advanced Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editors.html#integrated-development-environments">Integrated Development Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editors.html#editorconfig">EditorConfig</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gui-toolkits.html">GUI Toolkits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#choosing-a-toolkit">Choosing a Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#qt">Qt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#wxwidgets">wxWidgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#gtk">GTK+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#tk">Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#swing">Swing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#swt">SWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#native-toolkits">Native Toolkits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../misc.html">Miscellaneous</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#kill-the-x-server">Kill the X Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#directory-navigation">Directory Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#xdg-open">xdg-open</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#uptime">uptime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#user-interactions">User Interactions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to Mastering EOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/repo-setup.html">Repository Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/prereqs.html">Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/build-system.html">Using the Build System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/edit.html">Editing the Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/make-pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/guidelines.html">Writing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/review-pull-request.html">Reviewing Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/maintenance.html">Maintenance Tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../envvars.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About This Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../about.html#people">People</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about.html#licensing">Licensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about.html#special-thanks">Special Thanks</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Mastering EOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Using the Command Line</a> &raquo;</li>
+      
+    <li>Interactive Shell Use</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/shell/interactive.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="interactive-shell-use">
+<h1>Interactive Shell Use<a class="headerlink" href="#interactive-shell-use" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="aliases">
+<span id="shell-aliases"></span><h2>Aliases<a class="headerlink" href="#aliases" title="Permalink to this headline">¶</a></h2>
+<p>An alias can be a shortcut to typing a frequently-used command. For example, if you visit a certain directory often:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> <span class="nb">alias </span><span class="nv">hw</span><span class="o">=</span><span class="s1">&#39;cd ~/classes/cis452/hw/01&#39;</span>
+<span class="gp">$</span> <span class="nb">pwd</span>
+<span class="go">/home/smithj</span>
+<span class="gp">$</span> hw
+<span class="gp">$</span> <span class="nb">pwd</span>
+<span class="go">/home/smithj/classes/cis452/hw/01</span>
+</pre></div>
+</div>
+<p>After running the <tt class="cmd docutils literal"><span class="pre">alias</span></tt> command, <tt class="cmd docutils literal"><span class="pre">hw</span></tt> will now switch to that directory when typed.</p>
+<p>An alias can also be used to remember a lesser-used command. For example:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> <span class="nb">alias </span><span class="nv">extract</span><span class="o">=</span><span class="s1">&#39;tar -xvf&#39;</span>
+<span class="gp">$</span> extract bash-4.3.tar.gz
+<span class="go">bash-4.3/</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<p>Notice that we can still pass arguments to the alias. In fact, it almost exactly like typing those characters at the command-line.</p>
+</div>
+<div class="section" id="built-ins">
+<h2>Built-Ins<a class="headerlink" href="#built-ins" title="Permalink to this headline">¶</a></h2>
+<p>For a typical command, the shell finds an executable file on the system and executes it. An example is the <tt class="cmd docutils literal"><span class="pre">ls</span></tt> command, which is an executable on the system, typically located at <tt class="file docutils literal"><span class="pre">/usr/bin/ls</span></tt>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> /usr/bin/ls mydir
+<span class="go">file1.txt  file2.txt</span>
+</pre></div>
+</div>
+<p>However, some commands are actually part of the shell, called <em>shell built-ins</em>. A shell built-in differs from a normal command in that it typically operates on things <em>within the shell itself</em>, rather than just for one command. A prime example is <tt class="cmd docutils literal"><span class="pre">cd</span></tt>, which changes the current working directory within the shell, affecting all subsequent commands:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> <span class="nb">pwd</span>
+<span class="go">/home/smithj</span>
+<span class="gp">$</span> <span class="nb">cd </span>mydir
+<span class="gp">$</span> <span class="nb">pwd</span>
+<span class="go">/home/smithj/mydir</span>
+</pre></div>
+</div>
+<p>To find out if a command is an executable or a shell built-in, use the <tt class="cmd docutils literal"><span class="pre">type</span></tt> command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> <span class="nb">type </span>ls
+<span class="go">ls is /usr/bin/ls</span>
+<span class="gp">$</span> <span class="nb">type cd</span>
+<span class="go">cd is a shell builtin</span>
+<span class="gp">$</span> <span class="nb">type type</span>
+<span class="go">type is a shell builtin</span>
+</pre></div>
+</div>
+<p>The <tt class="cmd docutils literal"><span class="pre">type</span></tt> command is also a shell built-in!</p>
+<p>To see all shell built-ins, <a class="reference external" href="http://www.gnu.org/software/bash/manual/bash.html#Shell-Builtin-Commands">consult the Bash manual</a>.</p>
+</div>
+<div class="section" id="quoting">
+<h2>Quoting<a class="headerlink" href="#quoting" title="Permalink to this headline">¶</a></h2>
+<p>In certain cases, Bash will interpret the command you give it in a different way than you might expect:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> ls directory name with spaces
+<span class="go">ls: directory: No such file or directory</span>
+<span class="go">ls: name: No such file or directory</span>
+<span class="go">ls: spaces: No such file or directory</span>
+<span class="go">ls: with: No such file or directory</span>
+</pre></div>
+</div>
+<p>This is because Bash splits the command line it is given based upon spaces, and passes each argument to the program in question. To get Bash to interpret the spaces as an actual character, use <a class="reference external" href="http://www.gnu.org/software/bash/manual/bash.html#Single-Quotes">single quotes</a>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> ls <span class="s1">&#39;directory with spaces&#39;</span>
+<span class="go">file1.txt  file2.txt</span>
+</pre></div>
+</div>
+<p>Single quotes remove any special meaning from all the characters inside them. <em>Always use single quotes when the characters inside the quotes should not be interpreted by the shell.</em></p>
+<p><a class="reference external" href="http://www.gnu.org/software/bash/manual/bash.html#Double-Quotes">Double quotes</a> may be used to expand only the meaning of certain shell metacharacters. They are most often used for variable substitution. For example, to print your current working directory:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">&quot;My current directory is: $PWD&quot;</span>
+<span class="go">My current directory is: /home/smithj/awesome directory</span>
+</pre></div>
+</div>
+<p>Double quotes are very frequently used, but it is easy to use them incorrectly. Know their behavior and test your commands with different values to make sure they are behaving correctly.</p>
+</div>
+<div class="section" id="environment-variables">
+<span id="shell-env-vars"></span><h2>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Environment_variable">A process&#8217; environment</a> is a mapping of key-value pairs possesed by every running process in the system. They are typically used to modify the behavior of programs. You are probably familiar with some common ones; for example, <tt class="docutils literal"><span class="pre">PATH</span></tt>, <tt class="docutils literal"><span class="pre">EDITOR</span></tt>, and <tt class="docutils literal"><span class="pre">PWD</span></tt>. Environment variable names on Linux are case-sensitive and can contain most characters, although by convention they are usually named in all caps with words separated by underscores.</p>
+<p>Bash supports manipulation of the environment variables for programs it runs (<em>child processes</em>) in various ways. To see what environment variables Bash is giving to its child processes, use the <tt class="cmd docutils literal"><span class="pre">env</span></tt> program:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> env
+<span class="go">...</span>
+</pre></div>
+</div>
+<p>You should see a list of <tt class="docutils literal"><span class="pre">VAR=value</span></tt> printed. These are the variables and values Bash is giving to its child processes.</p>
+<p>In Bash, regular variables can be set in any shell session rather easily:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> <span class="nv">GVSU_CS</span><span class="o">=</span><span class="s1">&#39;Computer Science&#39;</span>
+<span class="gp">$</span> <span class="nv">GVSU_IS</span><span class="o">=</span><span class="s1">&#39;Information Systems&#39;</span>
+</pre></div>
+</div>
+<p>However, these variables are only seen by commands and operations built into the shell. After settings these variables, verify this with <tt class="cmd docutils literal"><span class="pre">env</span></tt>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> env | egrep <span class="s1">&#39;^GVSU&#39;</span>
+</pre></div>
+</div>
+<p>However, you can instruct Bash to send these variables to child processes by using the <tt class="cmd docutils literal"><span class="pre">export</span></tt> built-in:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> <span class="nb">export </span>GVSU_CIS
+<span class="gp">$</span> env | egrep <span class="s1">&#39;^GVSU&#39;</span>
+<span class="go">GVSU_CS=Computer Science</span>
+</pre></div>
+</div>
+<p>Notice that <tt class="docutils literal"><span class="pre">GVSU_CS</span></tt> has been sent to the program, but <tt class="docutils literal"><span class="pre">GVSU_IS</span></tt> has not. When the value of the variable is changed, the value sent to the child processes is also changed. It does not need to be exported again:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> <span class="nv">GVSU_CS</span><span class="o">=</span><span class="s1">&#39;Cool Stuff&#39;</span>
+<span class="gp">$</span> env | egrep <span class="s1">&#39;^GVSU&#39;</span>
+<span class="go">GVSU_CS=Cool Stuff</span>
+</pre></div>
+</div>
+<p>To see all variables in Bash marked for export, use the following command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> <span class="nb">declare</span> -x
+<span class="go">...</span>
+<span class="go">declare -x GVSU_CS=&quot;Cool Stuff&quot;</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<p>Here some other shortcuts to do with environment variables:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> <span class="nb">export </span><span class="nv">GVSU_CS</span><span class="o">=</span><span class="s1">&#39;Cool Stuff&#39;</span> <span class="c"># Set and export in one line</span>
+<span class="gp">$</span> <span class="nv">GVSU_CS</span><span class="o">=</span><span class="s1">&#39;Not my major&#39;</span> env | egrep <span class="s1">&#39;^GVSU&#39;</span> <span class="c"># Set for one command only</span>
+<span class="go">GVSU_CS=Not my major</span>
+</pre></div>
+</div>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>A real-life example of an environment variable in use is the <tt class="docutils literal"><span class="pre">EDITOR</span></tt> environment variable. Various programs use this variable to determine what editor they should use when a file needs to be edited. An example is the <tt class="docutils literal"><span class="pre">crontab</span> <span class="pre">-e</span></tt> command. Try the following commands:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> <span class="nv">EDITOR</span><span class="o">=</span>nano crontab -e <span class="c"># type Ctrl-X to exit</span>
+<span class="gp">$</span> <span class="nv">EDITOR</span><span class="o">=</span>vim  crontab -e <span class="c"># type :q&lt;Enter&gt; to exit</span>
+</pre></div>
+</div>
+<p>You should see each respective editor open up when the command is run!</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><a class="reference external" href="http://en.wikipedia.org/wiki/Cron">Cron</a> is not set up for GVSU students; this command just edits your Cron configuration file. You do not need to modify it.</p>
+</div>
+</div>
+</div>
+<div class="section" id="path-manipulation">
+<span id="shell-path-manip"></span><h2>Path Manipulation<a class="headerlink" href="#path-manipulation" title="Permalink to this headline">¶</a></h2>
+<p>Coming soon!</p>
+</div>
+<div class="section" id="startup-files">
+<h2>Startup Files<a class="headerlink" href="#startup-files" title="Permalink to this headline">¶</a></h2>
+<p>The behavior of Bash can be customized by modifying its rc (runtime configuration) files. These are files which contain Bash commands, are run at different points throughout the program.</p>
+<p>Although there are more files which are run, two of the most important Bash rc files are <tt class="file docutils literal"><span class="pre">.bashrc</span></tt> and <tt class="file docutils literal"><span class="pre">.bash_profile</span></tt>. There is a lot of confusion about when these files are run. However, for an interactive Bash session, the answer is simple:</p>
+<ul class="simple">
+<li><tt class="file docutils literal"><span class="pre">.bash_profile</span></tt> is run for login shells.</li>
+<li><tt class="file docutils literal"><span class="pre">.bashrc</span></tt> is run for non-login shells.</li>
+</ul>
+<p>So what is a login shell? A login shell is a shell that is run when you first log into the computer. For example, when you SSH into EOS, you have started a login shell. All subsequent shells started from that shell are non-login shells (unless otherwise specified by the <tt class="docutils literal"><span class="pre">--login</span></tt> option).</p>
+<p>Here is a table describing where your shell customizations should go:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="57%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Customization</th>
+<th class="head">File</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference internal" href="#shell-env-vars"><em>Exported variables</em></a></td>
+<td><tt class="file docutils literal"><span class="pre">.bash_profile</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Non-exported variables</td>
+<td><tt class="file docutils literal"><span class="pre">.bashrc</span></tt></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#shell-aliases"><em>Aliases</em></a></td>
+<td><tt class="file docutils literal"><span class="pre">.bashrc</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Functions</td>
+<td><tt class="file docutils literal"><span class="pre">.bashrc</span></tt></td>
+</tr>
+<tr class="row-even"><td>Key bindings</td>
+<td><tt class="file docutils literal"><span class="pre">.bashrc</span></tt></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://en.wikipedia.org/wiki/Umask">Umask</a></td>
+<td><tt class="file docutils literal"><span class="pre">.bash_profile</span></tt></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#shell-prompt"><em>Prompt Customization</em></a> (same
+as non-exported variables)</td>
+<td><tt class="file docutils literal"><span class="pre">.bashrc</span></tt></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#shell-path-manip"><em>Path Manipulation</em></a>
+(same as exported variables)</td>
+<td><tt class="file docutils literal"><span class="pre">.bash_profile</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="prompt-customization">
+<span id="shell-prompt"></span><h2>Prompt Customization<a class="headerlink" href="#prompt-customization" title="Permalink to this headline">¶</a></h2>
+<p>Coming soon!</p>
+</div>
+</div>
+
+
+          </div>
+          
+<footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../remote-access/index.html" class="btn btn-neutral float-right" title="Remote Access (SSH/VNC)">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="shells.html" class="btn btn-neutral" title="Available Shells"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    
+      &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
+      <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/ef1ead3">ef1ead3</a> built 2015-02-05 18:07:38 EST.<br />
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

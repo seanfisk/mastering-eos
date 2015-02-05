@@ -1,0 +1,65 @@
+==================
+ Available Shells
+==================
+
+.. _bash:
+
+GNU Bash
+========
+
+`GNU Bash`_ is the default shell on many UNIX-like systems, including most GNU/Linux distributions and OS X. It is a full-featured shell with many capabilities. Although other shells exist, we recommend first learning Bash well. You will then have a better understanding of how other shells with more or less capabilities work.
+
+The `GNU Bash Manual`_ is the comprehensive guide to all of the workings of the shell. It is a reference manual, so it does not provide a lot of examples. However, it is clear and concise and recommended reading for Bash users. It is also available for the version specific to EOS by typing ``info bash`` on any EOS computer.
+
+.. _GNU Bash: http://www.gnu.org/software/bash/
+.. _GNU Bash Manual: http://www.gnu.org/software/bash/manual/bash.html
+
+.. _sh:
+
+sh (Bourne shell)
+=================
+
+On many systems, the command :cmd:`sh` actually activates :ref:`bash` in an sh-emulation mode. Because Bash is so prevalent on many systems and offers significant benefits over sh, we recommend that you script on the EOS machines using Bash. You will certainly get differing recommendations on this, but we feel Bash's features and wide availability justify its use.
+
+.. _zsh:
+
+Z Shell
+=======
+
+`Z shell`_ (Zsh) is a shell that is not directly related to Bash_, but very similar. In many ways, it can be seen as a superset of Bash. Zsh is an excellent shell, and is recommended for those who have already become proficient in Bash.
+
+.. _Z shell: http://zsh.sourceforge.net/
+
+Others
+======
+
+Two other traditional shells are Tcsh and Kornshell. Tcsh_ (TENEX C SHell) is a C-style shell that adds a few extra features such as command line completion. Kornshell_ is an older shell developed at AT&T Bell Laboratories based on the best features of the Bourne and C shells.
+
+Another interesting shell is fish_, the friendly interactive shell. It is meant to feature many interactive capabilities, such as syntax highlighting and completion for many commands.
+
+The concept of a shell is neither complex nor set in stone. Many projects have striven to create alternative shells. These are usually based on enhanced interaction with a specific programming language or environment, yet retain some of the usage and concepts of traditional shells:
+
++--------+-----------+
+|Shell   |Environment|
++========+===========+
+|Eshell_ |Emacs_     |
++--------+-----------+
+|IPython_|Python_    |
++--------+-----------+
+|ShellJS_|NodeJS_    |
++--------+-----------+
+|Pry_    |Ruby_      |
++--------+-----------+
+
+.. TODO Note Windows' cmd.exe and PowerShell
+
+For a more complete list, see :wikipedia:`Wikipedia's Shell Comparison <Comparison_of_command_shells>`.
+
+.. _Tcsh: http://www.tcsh.org
+.. _Kornshell: http://www.kornshell.org
+.. _fish: http://fishshell.com/
+.. _Eshell: http://www.gnu.org/software/emacs/manual/html_mono/eshell.html
+.. _IPython: http://ipython.org/ipython-doc/2/interactive/shell.html
+.. _ShellJS: http://documentup.com/arturadib/shelljs
+.. _NodeJS: http://nodejs.org/
+.. _Pry: http://pryrepl.org/

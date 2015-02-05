@@ -90,18 +90,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../../rules.html#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../shell/index.html">Using the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../shell/basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shell/shells.html">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../shell/interactive.html">Interactive Shell Use</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Remote Access (SSH/VNC)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mac-os-x/index.html">Mac OS X</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gnu-linux/index.html">GNU/Linux</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../shells.html#kornshell">Kornshell</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user-level-sw/index.html">User-level Software Installation</a><ul>
@@ -153,7 +152,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../misc.html">Miscellaneous</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../misc.html#kill-the-x-server">Kill the X Server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../misc.html#directory-navigation">Directory Navigation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../misc.html#uptime">Uptime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../misc.html#xdg-open">xdg-open</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../misc.html#uptime">uptime</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../misc.html#user-interactions">User Interactions</a></li>
 </ul>
 </li>
@@ -162,8 +162,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../contributing/prereqs.html">Pre-requisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../contributing/build-system.html">Using the Build System</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../contributing/edit.html">Editing the Manual</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../contributing/pull-request.html">Making a Pull Request</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../contributing/writing-style.html">Writing Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/make-pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/guidelines.html">Writing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/review-pull-request.html">Reviewing Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/maintenance.html">Maintenance Tasks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../envvars.html">Environment Variables</a></li>
@@ -234,13 +236,13 @@
 </div>
 <div class="section" id="command-line-scp">
 <h2>Command Line (SCP)<a class="headerlink" href="#command-line-scp" title="Permalink to this headline">¶</a></h2>
-<p>Files can be transferred on the command line using a utility called SCP, implemented in PuTTY through a command called <tt class="docutils literal"><span class="pre">pscp</span></tt>. Because <tt class="docutils literal"><span class="pre">pscp</span></tt> uses PuTTY for authentication, if you have set up <a class="reference internal" href="ssh.html#win-ssh-keys"><em>Password-less Logins (SSH keys)</em></a>, you will not have to type any passwords. SCP stands for <em>Secure Copy</em> and works very similar to the GNU/Linux <tt class="docutils literal"><span class="pre">cp</span></tt> command, except that it can also transfer files across the network. Make sure you are familiar with the operation of <tt class="docutils literal"><span class="pre">cp</span></tt> before using SCP.</p>
+<p>Files can be transferred on the command line using a utility called SCP, implemented in PuTTY through a command called <tt class="cmd docutils literal"><span class="pre">pscp</span></tt>. Because <tt class="docutils literal"><span class="pre">pscp</span></tt> uses PuTTY for authentication, if you have set up <a class="reference internal" href="ssh.html#win-ssh-keys"><em>Password-less Logins (SSH keys)</em></a>, you will not have to type any passwords. SCP stands for <em>Secure Copy</em> and works very similar to the GNU/Linux <tt class="docutils literal"><span class="pre">cp</span></tt> command, except that it can also transfer files across the network. Make sure you are familiar with the operation of <tt class="docutils literal"><span class="pre">cp</span></tt> before using SCP.</p>
 <p>PuTTY&#8217;s commands are not added to the Windows <span class="target" id="index-0"></span><a class="reference internal" href="../../envvars.html#envvar-Path"><tt class="xref std std-envvar docutils literal"><span class="pre">Path</span></tt></a> by default. To add them to the <span class="target" id="index-1"></span><a class="reference internal" href="../../envvars.html#envvar-Path"><tt class="xref std std-envvar docutils literal"><span class="pre">Path</span></tt></a>, open Windows PowerShell from the Start Menu and run the following command. If you installed PuTTY to a non-default location, you will need to change it in the command below.</p>
 <div class="highlight-powershell"><div class="highlight"><pre>$puttyInstallPath = &#39;C:\Program Files (x86)\PuTTY&#39;; [Environment]::SetEnvironmentVariable(&#39;Path&#39;, [Environment]::GetEnvironmentVariable(&#39;Path&#39;, &#39;User&#39;) + &#39;;&#39; + $puttyInstallPath, &#39;User&#39;)
 </pre></div>
 </div>
-<p>Restart PowerShell or your terminal emulator after running this command to allow your updates to the <span class="target" id="index-2"></span><a class="reference internal" href="../../envvars.html#envvar-Path"><tt class="xref std std-envvar docutils literal"><span class="pre">Path</span></tt></a> to take effect. The <tt class="docutils literal"><span class="pre">pscp</span></tt> utility may now be used from PowerShell by simply typing <tt class="docutils literal"><span class="pre">pscp</span></tt>.</p>
-<p>The following examples showcase the typical use of <tt class="docutils literal"><span class="pre">pscp</span></tt>. Each file can be prefixed with a PuTTY session name or user/host, which tells <tt class="docutils literal"><span class="pre">pscp</span></tt> where it is or should be located. The session name &#8220;EOS&#8221; is used in these examples; change it to match your PuTTY session name if it is different. Files with no prefix are assumed to be on the local machine. Paths on the remote machine start at your home directory, so there is typically no need to include <tt class="file docutils literal"><span class="pre">/home/smithj</span></tt> in the path. Here are some examples of use of <tt class="docutils literal"><span class="pre">pscp</span></tt>:</p>
+<p>Restart PowerShell or your terminal emulator after running this command to allow your updates to the <span class="target" id="index-2"></span><a class="reference internal" href="../../envvars.html#envvar-Path"><tt class="xref std std-envvar docutils literal"><span class="pre">Path</span></tt></a> to take effect. The <tt class="cmd docutils literal"><span class="pre">pscp</span></tt> utility may now be used from PowerShell by simply typing <tt class="cmd docutils literal"><span class="pre">pscp</span></tt>.</p>
+<p>The following examples showcase the typical use of <tt class="cmd docutils literal"><span class="pre">pscp</span></tt>. Each file can be prefixed with a PuTTY session name or user/host, which tells <tt class="cmd docutils literal"><span class="pre">pscp</span></tt> where it is or should be located. The session name &#8220;EOS&#8221; is used in these examples; change it to match your PuTTY session name if it is different. Files with no prefix are assumed to be on the local machine. Paths on the remote machine start at your home directory, so there is typically no need to include <tt class="file docutils literal"><span class="pre">/home/smithj</span></tt> in the path. Here are some examples of use of <tt class="cmd docutils literal"><span class="pre">pscp</span></tt>:</p>
 <div class="highlight-powershell"><div class="highlight"><pre># Typical upload
 pscp classes\cis162\hw1.txt EOS:classes/cis162
 # Typical download
@@ -293,7 +295,7 @@ pscp smithj@eos01.cis.gvsu.edu:classes/cis162/hw3.txt classes/cis162
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/2960335">2960335</a> built 2015-01-03 23:57:42 EST.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/ef1ead3">ef1ead3</a> built 2015-02-05 18:07:38 EST.<br />
     </p>
   </div>
 

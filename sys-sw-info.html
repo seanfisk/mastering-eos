@@ -89,18 +89,17 @@
 <li class="toctree-l2"><a class="reference internal" href="rules.html#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell/index.html">Using the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shell/basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell/shells.html">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell/interactive.html">Interactive Shell Use</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/windows/index.html">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/mac-os-x/index.html">Mac OS X</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/gnu-linux/index.html">GNU/Linux</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#kornshell">Kornshell</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="user-level-sw/index.html">User-level Software Installation</a><ul>
@@ -152,7 +151,8 @@
 <li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="misc.html#kill-the-x-server">Kill the X Server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="misc.html#directory-navigation">Directory Navigation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="misc.html#uptime">Uptime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#xdg-open">xdg-open</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#uptime">uptime</a></li>
 <li class="toctree-l2"><a class="reference internal" href="misc.html#user-interactions">User Interactions</a></li>
 </ul>
 </li>
@@ -161,8 +161,10 @@
 <li class="toctree-l2"><a class="reference internal" href="contributing/prereqs.html">Pre-requisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/build-system.html">Using the Build System</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/edit.html">Editing the Manual</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/pull-request.html">Making a Pull Request</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/writing-style.html">Writing Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/make-pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/guidelines.html">Writing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/review-pull-request.html">Reviewing Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/maintenance.html">Maintenance Tasks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
@@ -224,7 +226,7 @@
 <span class="nb">popd</span>
 </pre></div>
 </div>
-<p>After installing, follow the steps for <a class="reference internal" href="user-level-sw/manual-install.html#adjust-env"><em>Adjusting the Environment</em></a>. You should now be able to run <tt class="docutils literal"><span class="pre">inxi</span></tt> from the command line. inxi is a command-line program, so it can be run through SSH or a graphical terminal emulator.</p>
+<p>After installing, follow the steps for <a class="reference internal" href="user-level-sw/manual-install.html#adjust-env"><em>Adjusting the Environment</em></a>. You should now be able to run <tt class="cmd docutils literal"><span class="pre">inxi</span></tt> from the command line. inxi is a command-line program, so it can be run through SSH or a graphical terminal emulator.</p>
 <p>To show a basic, medium-length output:</p>
 <div class="highlight-bash"><div class="highlight"><pre>inxi -b
 </pre></div>
@@ -239,7 +241,7 @@
 </div>
 </div>
 <div class="section" id="hardinfo">
-<h4>HardInfo<a class="headerlink" href="#hardinfo" title="Permalink to this headline">¶</a></h4>
+<span id="hardinfo-section"></span><h4>HardInfo<a class="headerlink" href="#hardinfo" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference external" href="http://hardinfo.org/">HardInfo</a> is far and away the best tool to obtain organized information related to the system. HardInfo displays on the operating system, kernel, hardware, peripherals, network and more. Furthermore, it can also run benchmarks on the CPU, FPU, and GPU.</p>
 <p>Unfortunately, it is not installed by default on the EOS computers, so it must be compiled from source. Don&#8217;t be afraid, though &#8212; by following these steps, you should be able to install HardInfo quickly and simply. It is unnecessary but beneficial to be familiar with the steps involved in <a class="reference internal" href="user-level-sw/manual-install.html#manual-install"><em>Manual Installation</em></a> as well.</p>
 <p>First, follow the steps to <a class="reference internal" href="user-level-sw/manual-install.html#ready-prefix"><em>Ready the Prefix</em></a>. Then download the source code:</p>
@@ -277,7 +279,7 @@ cmake -Wno-dev -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="s2">&q
 <p>Although the all-in-one tools provide convenient ways to access lots of information about the system, sometimes all that is needed is one specific piece of information. This can be useful for scripts or when the other information simply isn&#8217;t needed.</p>
 <div class="section" id="gnu-linux-distribution">
 <h4>GNU/Linux Distribution<a class="headerlink" href="#gnu-linux-distribution" title="Permalink to this headline">¶</a></h4>
-<p>The <tt class="docutils literal"><span class="pre">lsb_release</span></tt> (Linux Standard Base) command will show you information regarding your distribution:</p>
+<p>The <tt class="cmd docutils literal"><span class="pre">lsb_release</span></tt> Standard Base) command will show you information regarding your distribution:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> lsb_release -a
 <span class="go">No LSB modules are available.</span>
 <span class="go">Distributor ID: CentOS</span>
@@ -289,7 +291,7 @@ cmake -Wno-dev -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="s2">&q
 </div>
 <div class="section" id="linux-kernel">
 <h4>Linux Kernel<a class="headerlink" href="#linux-kernel" title="Permalink to this headline">¶</a></h4>
-<p>The <tt class="docutils literal"><span class="pre">uname</span></tt> command will tell you about the operating system, including the Linux kernel version:</p>
+<p>The <tt class="cmd docutils literal"><span class="pre">uname</span></tt> command will tell you about the operating system, including the Linux kernel version:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> uname -a
 <span class="go">Linux eos04.cis.gvsu.edu 3.10.0-123.8.1.el7.x86_64 #1 SMP Mon Sep 22 19:06:58 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux</span>
 </pre></div>
@@ -417,7 +419,7 @@ chmod o+r ~/public_html/info.php
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/2960335">2960335</a> built 2015-01-03 23:57:42 EST.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/ef1ead3">ef1ead3</a> built 2015-02-05 18:07:38 EST.<br />
     </p>
   </div>
 

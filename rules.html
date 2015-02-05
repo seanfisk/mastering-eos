@@ -33,7 +33,7 @@
         <link rel="author" title="About these documents"
               href="about.html"/>
     <link rel="top" title="Mastering EOS" href="index.html"/>
-        <link rel="next" title="Command Line Basics" href="basics.html"/>
+        <link rel="next" title="Using the Command Line" href="shell/index.html"/>
         <link rel="prev" title="Introduction" href="intro.html"/>
  
   <script>
@@ -89,18 +89,17 @@
 <li class="toctree-l2"><a class="reference internal" href="#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell/index.html">Using the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shell/basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell/shells.html">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell/interactive.html">Interactive Shell Use</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/windows/index.html">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/mac-os-x/index.html">Mac OS X</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/gnu-linux/index.html">GNU/Linux</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#kornshell">Kornshell</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="user-level-sw/index.html">User-level Software Installation</a><ul>
@@ -152,7 +151,8 @@
 <li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="misc.html#kill-the-x-server">Kill the X Server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="misc.html#directory-navigation">Directory Navigation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="misc.html#uptime">Uptime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#xdg-open">xdg-open</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#uptime">uptime</a></li>
 <li class="toctree-l2"><a class="reference internal" href="misc.html#user-interactions">User Interactions</a></li>
 </ul>
 </li>
@@ -161,8 +161,10 @@
 <li class="toctree-l2"><a class="reference internal" href="contributing/prereqs.html">Pre-requisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/build-system.html">Using the Build System</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/edit.html">Editing the Manual</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/pull-request.html">Making a Pull Request</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/writing-style.html">Writing Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/make-pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/guidelines.html">Writing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/review-pull-request.html">Reviewing Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/maintenance.html">Maintenance Tasks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
@@ -210,9 +212,9 @@
 <h1>Rules and Procedures<a class="headerlink" href="#rules-and-procedures" title="Permalink to this headline">¶</a></h1>
 <p>It is important that some basic rules and procedures be established to help maintain the lab and aid in its shared use.  To those ends, please be aware of the following guidelines:</p>
 <div class="section" id="disk-space">
-<h2>Disk Space<a class="headerlink" href="#disk-space" title="Permalink to this headline">¶</a></h2>
+<span id="quota"></span><h2>Disk Space<a class="headerlink" href="#disk-space" title="Permalink to this headline">¶</a></h2>
 <p>You are given 8 gigabytes (GB) of disk space. Once you exceed this limit, you can no longer write new data to the filesystem. This often leads to being unable to login via a graphical session, as the desktop manager must be able to write to disk. You must then log in via a text-based console and delete files to make space.</p>
-<p>The amount of disk space you have currently used may be checked with the <strong class="command">quota</strong> command:</p>
+<p>The amount of disk space you have currently used may be checked with the <tt class="cmd docutils literal"><span class="pre">quota</span></tt> command:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> quota --human-readable
 <span class="go">Disk quotas for user smithj (uid 1234):</span>
 <span class="go">     Filesystem   space   quota   limit   grace   files   quota   limit   grace</span>
@@ -290,7 +292,7 @@ soft limit.</td>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="basics.html" class="btn btn-neutral float-right" title="Command Line Basics">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="shell/index.html" class="btn btn-neutral float-right" title="Using the Command Line">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="intro.html" class="btn btn-neutral" title="Introduction"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -306,7 +308,7 @@ soft limit.</td>
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/2960335">2960335</a> built 2015-01-03 23:57:42 EST.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/ef1ead3">ef1ead3</a> built 2015-02-05 18:07:38 EST.<br />
     </p>
   </div>
 

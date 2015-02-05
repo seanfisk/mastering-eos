@@ -43,31 +43,31 @@ Use
 
 To mount your EOS home directory, first create a mount point for it::
 
-    mkdir ~/eos
+   mkdir ~/eos
 
 Next, mount your EOS home directory using SSHFS::
 
-    sshfs -o volname=EOS smithj@eos01.cis.gvsu.edu: ~/eos
+   sshfs -o volname=EOS smithj@eos01.cis.gvsu.edu: ~/eos
 
 .. tip::
 
-    If you set up :ref:`mac-ssh-aliases`, you can use these with SSHFS::
+   If you set up :ref:`mac-ssh-aliases`, you can use these with SSHFS::
 
-        sshfs -o volname=EOS eos01: ~/eos
+      sshfs -o volname=EOS eos01: ~/eos
 
 Test the mount point by listing your EOS files::
 
-    ls ~/eos
+   ls ~/eos
 
 You should now be able to use files on your EOS account as if they were on your own machine. For example, you can open and browse your files using Finder::
 
-    open ~/eos
+   open ~/eos
 
 Be aware that there may be some lag in the filesystem, especially when using Finder or other programs which access the filesystem frequently.
 
 When finished with the mount point, make sure to unmount it::
 
-    diskutil unmount ~/eos
+   diskutil unmount ~/eos
 
 The mount point can also be unmounted using Finder:
 
@@ -76,7 +76,7 @@ The mount point can also be unmounted using Finder:
 
 SSHFS accepts many options which can be viewed with ``man ssh`` or ``sshfs --help``. For example, to enable caching and automatic reconnection (recommended)::
 
-    sshfs -o auto_cache,reconnect,volname=EOS smithj@eos01.cis.gvsu.edu: ~/eos
+   sshfs -o auto_cache,reconnect,volname=EOS smithj@eos01.cis.gvsu.edu: ~/eos
 
 If you use this command often, you may want to create script or alias for it.
 

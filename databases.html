@@ -89,18 +89,17 @@
 <li class="toctree-l2"><a class="reference internal" href="rules.html#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell/index.html">Using the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shell/basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell/shells.html">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell/interactive.html">Interactive Shell Use</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/windows/index.html">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/mac-os-x/index.html">Mac OS X</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/gnu-linux/index.html">GNU/Linux</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#kornshell">Kornshell</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="user-level-sw/index.html">User-level Software Installation</a><ul>
@@ -152,7 +151,8 @@
 <li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="misc.html#kill-the-x-server">Kill the X Server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="misc.html#directory-navigation">Directory Navigation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="misc.html#uptime">Uptime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#xdg-open">xdg-open</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#uptime">uptime</a></li>
 <li class="toctree-l2"><a class="reference internal" href="misc.html#user-interactions">User Interactions</a></li>
 </ul>
 </li>
@@ -161,8 +161,10 @@
 <li class="toctree-l2"><a class="reference internal" href="contributing/prereqs.html">Pre-requisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/build-system.html">Using the Build System</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/edit.html">Editing the Manual</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/pull-request.html">Making a Pull Request</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/writing-style.html">Writing Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/make-pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/guidelines.html">Writing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/review-pull-request.html">Reviewing Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/maintenance.html">Maintenance Tasks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
@@ -207,7 +209,7 @@
           <div role="main">
             
   <div class="section" id="databases">
-<h1>Databases<a class="headerlink" href="#databases" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Databases<a class="headerlink" href="#databases" title="Permalink to this headline">¶</a></h1>
 <p>Learning to setup and maintain a database is essential to any Computer Science curriculum. The EOS infrastructure supports multiple database variants depending on the your needs. To save space and setup time database accounts are only given to those who need them for a course or a specific project. Contact your professor and <a class="reference external" href="mailto:woodriir&#37;&#52;&#48;gvsu&#46;edu">Ira Woodring</a> if you need a database account for any reason.</p>
 <div class="section" id="mysql">
 <h2>MySQL<a class="headerlink" href="#mysql" title="Permalink to this headline">¶</a></h2>
@@ -226,7 +228,7 @@
 <p>Please note that when you change your password for Oracle that you must not use the <tt class="docutils literal"><span class="pre">&#64;</span></tt> character. Oracle will accept this but you will be unable to login.</p>
 </div>
 <div class="section" id="oracle-apex">
-<h2>Oracle APEX<a class="headerlink" href="#oracle-apex" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>Oracle APEX<a class="headerlink" href="#oracle-apex" title="Permalink to this headline">¶</a></h2>
 <p>Oracle also provides the APEX system for web based database development. An APEX account is separate from the normal Oracle account; a password for one will not work for the other. You may login to APEX once you have been granted access by opening your web browser to the URL</p>
 <p><a class="reference external" href="http://dbserv.cis.gvsu.edu:5560/apex">http://dbserv.cis.gvsu.edu:5560/apex</a></p>
 <p>You will need to provide a workspace name, username, and password.  If your username is <tt class="samp docutils literal"><span class="pre">smithj</span></tt>, a sample login would be</p>
@@ -286,7 +288,7 @@
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/2960335">2960335</a> built 2015-01-03 23:57:42 EST.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/ef1ead3">ef1ead3</a> built 2015-02-05 18:07:38 EST.<br />
     </p>
   </div>
 

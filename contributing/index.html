@@ -89,18 +89,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../rules.html#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shell/index.html">Using the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shell/basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/shells.html">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/interactive.html">Interactive Shell Use</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/windows/index.html">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/mac-os-x/index.html">Mac OS X</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/gnu-linux/index.html">GNU/Linux</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#kornshell">Kornshell</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../user-level-sw/index.html">User-level Software Installation</a><ul>
@@ -152,7 +151,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../misc.html">Miscellaneous</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../misc.html#kill-the-x-server">Kill the X Server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc.html#directory-navigation">Directory Navigation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../misc.html#uptime">Uptime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#xdg-open">xdg-open</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#uptime">uptime</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc.html#user-interactions">User Interactions</a></li>
 </ul>
 </li>
@@ -161,8 +161,10 @@
 <li class="toctree-l2"><a class="reference internal" href="prereqs.html">Pre-requisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="build-system.html">Using the Build System</a></li>
 <li class="toctree-l2"><a class="reference internal" href="edit.html">Editing the Manual</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pull-request.html">Making a Pull Request</a></li>
-<li class="toctree-l2"><a class="reference internal" href="writing-style.html">Writing Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="make-pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guidelines.html">Writing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="review-pull-request.html">Reviewing Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.html">Maintenance Tasks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../envvars.html">Environment Variables</a></li>
@@ -210,7 +212,7 @@
 <span id="contributing"></span><h1>Contributing to Mastering EOS<a class="headerlink" href="#contributing-to-title" title="Permalink to this headline">¶</a></h1>
 <p>This manual is a living document. It is maintained by its authors, but both students and faculty (you!) are encouraged to contribute to the guide. The manual is written by GVSU CIS students and faculty for GVSU CIS students and faculty.</p>
 <p>The easiest way to to contribute is by reporting an issue or requesting a section with our <a class="reference external" href="https://github.com/seanfisk/mastering-eos/issues">issue tracker</a>. One of the authors should respond to your issue and give feedback.</p>
-<p>The Mastering EOS manual is written using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a>, an excellent multi-target documentation generator. The documentation is written in the markup language <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>. The poster is written in <a class="reference external" href="http://latex-project.org/">LaTeX</a> using <a class="reference external" href="http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php">Beamer</a> and <a class="reference external" href="http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php">beamerposter</a>, although contribution to the poster is not necessarily as useful for obvious reasons. Our build system is <a class="reference external" href="https://code.google.com/p/waf/">Waf</a>, and all of our tooling is written in <a class="reference external" href="http://python.org/">Python</a>. Although these tools may seem overwhelming, intimate familiarity with them is fortunately not necessary for contribution.</p>
+<p>The Mastering EOS manual is written using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a>, an excellent multi-target documentation generator. The documentation is written in the markup language <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>. The poster is written in <a class="reference external" href="http://latex-project.org/">LaTeX</a> using <a class="reference external" href="https://bitbucket.org/rivanvx/beamer">Beamer</a> and <a class="reference external" href="http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php">beamerposter</a>, although contribution to the poster is not necessarily as useful for obvious reasons. Our build system is <a class="reference external" href="https://code.google.com/p/waf/">Waf</a>, and all of our tooling is written in <a class="reference external" href="http://python.org/">Python</a>. Although these tools may seem overwhelming, intimate familiarity with them is fortunately not necessary for contribution.</p>
 <p>The source code can be found at the <a class="reference external" href="https://github.com/seanfisk/mastering-eos">Mastering EOS GitHub repository</a>. GitHub is a popular site for hosting code repositories using <a class="reference external" href="http://git-scm.com/">Git</a>, a popular version control system. If you are familiar with the GitHub contribution process, contributing to Mastering EOS is exactly the same.</p>
 <p>Mastering EOS is intended to be developed on the EOS Lab computers! This means that you don&#8217;t have to install <a class="reference external" href="http://git-scm.com/">Git</a> or do any complicated setup of <a class="reference external" href="http://python.org/">Python</a> or <a class="reference external" href="http://latex-project.org/">LaTeX</a> environments &#8212; just use your EOS account! The contribution guide is frequently used and tested on EOS, but please let us know of any problems with our <a class="reference external" href="https://github.com/seanfisk/mastering-eos/issues">issue tracker</a>.</p>
 <p>For those unfamiliar with <a class="reference external" href="http://git-scm.com/">Git</a> and <a class="reference external" href="https://github.com/">GitHub</a>, contributing to Mastering EOS may seem rather involved. However, by following the steps outlined, it should be rather straightforward. We request that you first give it a try on your own, but failing that, please don&#8217;t hesitate to contact the authors. We want your contributions!</p>
@@ -248,8 +250,31 @@
 <li class="toctree-l2"><a class="reference internal" href="edit.html#git-resources">Git Resources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pull-request.html">Making a Pull Request</a></li>
-<li class="toctree-l1"><a class="reference internal" href="writing-style.html">Writing Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="make-pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guidelines.html">Writing Guidelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guidelines.html#writing-style">Writing Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guidelines.html#restructuredtext-conventions">reStructuredText Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#section-headers">Section Headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#indentation">Indentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#correct-usage-of-roles">Correct Usage of Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#backticks-and-hyperlinks">Backticks and Hyperlinks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#linking-to-sections">Linking to Sections</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="review-pull-request.html">Reviewing Pull Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maintenance.html">Maintenance Tasks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.html#automated">Automated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.html#documentation">Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maintenance.html#project-infrastructure">Project Infrastructure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="maintenance.html#build-system">Build System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="maintenance.html#python-requirements">Python Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="maintenance.html#python-3">Python 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -277,7 +302,7 @@
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/2960335">2960335</a> built 2015-01-03 23:57:42 EST.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/ef1ead3">ef1ead3</a> built 2015-02-05 18:07:38 EST.<br />
     </p>
   </div>
 

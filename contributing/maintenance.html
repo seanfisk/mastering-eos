@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Making a Pull Request &mdash; Mastering EOS</title>
+  <title>Maintenance Tasks &mdash; Mastering EOS</title>
   
 
   
@@ -34,8 +34,8 @@
               href="../about.html"/>
     <link rel="top" title="Mastering EOS" href="../index.html"/>
         <link rel="up" title="Contributing to Mastering EOS" href="index.html"/>
-        <link rel="next" title="Writing Style" href="writing-style.html"/>
-        <link rel="prev" title="Editing the Manual" href="edit.html"/>
+        <link rel="next" title="Environment Variables" href="../envvars.html"/>
+        <link rel="prev" title="Reviewing Pull Requests" href="review-pull-request.html"/>
  
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -90,18 +90,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../rules.html#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shell/index.html">Using the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shell/basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/shells.html">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/interactive.html">Interactive Shell Use</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/windows/index.html">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/mac-os-x/index.html">Mac OS X</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/gnu-linux/index.html">GNU/Linux</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#kornshell">Kornshell</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../user-level-sw/index.html">User-level Software Installation</a><ul>
@@ -153,7 +152,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../misc.html">Miscellaneous</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../misc.html#kill-the-x-server">Kill the X Server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc.html#directory-navigation">Directory Navigation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../misc.html#uptime">Uptime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#xdg-open">xdg-open</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#uptime">uptime</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc.html#user-interactions">User Interactions</a></li>
 </ul>
 </li>
@@ -162,8 +162,10 @@
 <li class="toctree-l2"><a class="reference internal" href="prereqs.html">Pre-requisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="build-system.html">Using the Build System</a></li>
 <li class="toctree-l2"><a class="reference internal" href="edit.html">Editing the Manual</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Making a Pull Request</a></li>
-<li class="toctree-l2"><a class="reference internal" href="writing-style.html">Writing Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="make-pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guidelines.html">Writing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="review-pull-request.html">Reviewing Pull Requests</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Maintenance Tasks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../envvars.html">Environment Variables</a></li>
@@ -198,10 +200,10 @@
       
           <li><a href="index.html">Contributing to Mastering EOS</a> &raquo;</li>
       
-    <li>Making a Pull Request</li>
+    <li>Maintenance Tasks</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/contributing/pull-request.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/contributing/maintenance.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -209,15 +211,53 @@
 </div>
           <div role="main">
             
-  <div class="section" id="making-a-pull-request">
-<h1>Making a Pull Request<a class="headerlink" href="#making-a-pull-request" title="Permalink to this headline">¶</a></h1>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">If you were following along with the bacon example, don&#8217;t actually create a pull request.</p>
+  <div class="section" id="maintenance-tasks">
+<h1>Maintenance Tasks<a class="headerlink" href="#maintenance-tasks" title="Permalink to this headline">¶</a></h1>
+<p>The Mastering EOS project is written and organized to minimize the amount maintenance required to keep it up-to-date. However, like any other project, some maintenance is required. This page attempts to document many of ways in which Mastering EOS needs to be maintained.</p>
+<div class="section" id="automated">
+<h2>Automated<a class="headerlink" href="#automated" title="Permalink to this headline">¶</a></h2>
+<p>The following tasks are automated, and should not have to be closely maintained:</p>
+<ul class="simple">
+<li>The number and list of EOS hosts. All <tt class="docutils literal"><span class="pre">eos</span></tt>, <tt class="docutils literal"><span class="pre">arch</span></tt>, and <tt class="docutils literal"><span class="pre">dc</span></tt> hosts are read from the <tt class="file docutils literal"><span class="pre">/etc/hosts</span></tt> file on <tt class="docutils literal"><span class="pre">eos01</span></tt>.</li>
+<li>SSH fingerprints. Fingerprints are read from each EOS host detected in the last step.</li>
+<li>The VNC port/geometry mappings. These are read from the <tt class="file docutils literal"><span class="pre">/etc/xinetd.d/vncts</span></tt> file on <tt class="docutils literal"><span class="pre">eos01</span></tt>.</li>
+</ul>
+<p>The automation implies external maintenance of said files. Coordinate with Ira Woodring to manage changes. In addition, the automated tasks themselves may need to be updated if for some reason they break.</p>
 </div>
-<p>Once your branch has been pushed to your fork, follow the GitHub instructions on <a class="reference external" href="https://help.github.com/articles/using-pull-requests">making a pull request</a>.</p>
-<p>After you&#8217;ve made the request, you&#8217;re almost done! An author should respond to your pull request soon. They may respond with approval, at which time they may merge your pull request. They may also respond with some discussion, at which time you may want to go back and revise your changes.</p>
-<p>With any luck, once resolved, your changes should go live! We look forward to seeing your contributions, and please let us know of any problems through our <a class="reference external" href="https://github.com/seanfisk/mastering-eos/issues">issue tracker</a>!</p>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>Although everything in the manual having to do with EOS needs to be kept up-to-date, we&#8217;ve identified some pieces that are likely to become out-of-date. These should be checked periodically.</p>
+<ul class="simple">
+<li>The quota in the <a class="reference internal" href="../rules.html#quota"><em>Disk Space</em></a> section. We have considered automating this.</li>
+<li>Update versions of the example programs (Bash and EditorConfig) in <a class="reference internal" href="../user-level-sw/manual-install.html#manual-install"><em>Manual Installation</em></a>.</li>
+<li>Ensure the software in <a class="reference internal" href="../user-level-sw/manual-install.html#manual-install"><em>Manual Installation</em></a> still compiles without issue.</li>
+<li>Ensure that <a class="reference internal" href="../user-level-sw/linuxbrew.html#linuxbrew-section"><em>Linuxbrew</em></a> is still working as advertised.</li>
+<li>Ensure that <a class="reference internal" href="../sys-sw-info.html#hardinfo-section"><em>HardInfo</em></a> still compiles without issue.</li>
+<li>If the system administrator changes, update the name and email address in the Sphinx configuration file.</li>
+<li>Ensure that we still run each of the <a class="reference internal" href="../databases.html#databases"><em>Databases</em></a> and that the login mechanisms still work.</li>
+<li>Ensure that the URL for <a class="reference internal" href="../databases.html#oracle-apex"><em>Oracle APEX</em></a> is still accurate.</li>
+<li>Ensure that all advertised <a class="reference internal" href="../editors.html#editors"><em>Editors</em></a> are still available on EOS. Those that aren&#8217;t should be placed in their respective section&#8217;s <em>Other</em> subsection.</li>
+<li>Ensure that all the steps outlined in <a class="reference internal" href="index.html#contributing"><em>Contributing to Mastering EOS</em></a> still work.</li>
+<li>Ensure that the <a class="reference internal" href="../about.html#maintainers"><em>list of maintainers</em></a> stays up-to-date.</li>
+</ul>
+<div class="section" id="project-infrastructure">
+<h3>Project Infrastructure<a class="headerlink" href="#project-infrastructure" title="Permalink to this headline">¶</a></h3>
+<p>Producing great documentation is the main aim of Mastering EOS. However, certain project infrastructure is needed to maintain documentation of this complexity. Maintenance of this infrastructure is key to the project&#8217;s continued success. Here are some areas of the project that need to be kept up-to-date.</p>
+</div>
+<div class="section" id="build-system">
+<h3>Build System<a class="headerlink" href="#build-system" title="Permalink to this headline">¶</a></h3>
+<p>Our build system is <a class="reference external" href="https://code.google.com/p/waf/">Waf</a>. The Waf build system itself is bundled with the repository in the <tt class="file docutils literal"><span class="pre">waf</span></tt> file in the project root. We try to keep our version of Waf at the newest version, and it should be checked for updates periodically. Sometimes the updates break part of the build system, which then requires fixing. See the <a class="reference external" href="https://code.google.com/p/waf/source/browse/ChangeLog">Waf changelog</a> for a list of changes.</p>
+</div>
+<div class="section" id="python-requirements">
+<h3>Python Requirements<a class="headerlink" href="#python-requirements" title="Permalink to this headline">¶</a></h3>
+<p>Our Python package requirements file, <tt class="file docutils literal"><span class="pre">requirements.txt</span></tt>, contains a list of Python packages upon which our build depends. All of these requirements need to be periodically checked for updates. Application of the updates may break our build, which then of course needs to be fixed.</p>
+</div>
+<div class="section" id="python-3">
+<h3>Python 3<a class="headerlink" href="#python-3" title="Permalink to this headline">¶</a></h3>
+<p>We would like to transition to Python 3 in the near future. The only thing currently preventing us from doing so is <a class="reference external" href="http://www.fabfile.org/">Fabric</a>. Fabric is an integral part of our build and to remove or replace it would be a significant disadvantage. <a class="reference external" href="http://www.fabfile.org/roadmap.html#invoke-fabric-2-x-and-patchwork">Fabric 2.x</a> is already in the works, and it appears that Python 3 compatibility will be added with this release.</p>
+<p>When the project runs successfully under Python 3, use of the <a class="reference external" href="http://pythonhosted.org/six/">six</a> module may be removed.</p>
+</div>
+</div>
 </div>
 
 
@@ -227,10 +267,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="writing-style.html" class="btn btn-neutral float-right" title="Writing Style">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../envvars.html" class="btn btn-neutral float-right" title="Environment Variables">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="edit.html" class="btn btn-neutral" title="Editing the Manual"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="review-pull-request.html" class="btn btn-neutral" title="Reviewing Pull Requests"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -243,7 +283,7 @@
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/2960335">2960335</a> built 2015-01-03 23:57:42 EST.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/ef1ead3">ef1ead3</a> built 2015-02-05 18:07:38 EST.<br />
     </p>
   </div>
 

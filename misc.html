@@ -89,18 +89,17 @@
 <li class="toctree-l2"><a class="reference internal" href="rules.html#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell/index.html">Using the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shell/basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell/shells.html">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell/interactive.html">Interactive Shell Use</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/windows/index.html">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/mac-os-x/index.html">Mac OS X</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/gnu-linux/index.html">GNU/Linux</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#kornshell">Kornshell</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="user-level-sw/index.html">User-level Software Installation</a><ul>
@@ -152,7 +151,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="">Miscellaneous</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#kill-the-x-server">Kill the X Server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#directory-navigation">Directory Navigation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#uptime">Uptime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xdg-open">xdg-open</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uptime">uptime</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#user-interactions">User Interactions</a></li>
 </ul>
 </li>
@@ -161,8 +161,10 @@
 <li class="toctree-l2"><a class="reference internal" href="contributing/prereqs.html">Pre-requisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/build-system.html">Using the Build System</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/edit.html">Editing the Manual</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/pull-request.html">Making a Pull Request</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/writing-style.html">Writing Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/make-pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/guidelines.html">Writing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/review-pull-request.html">Reviewing Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/maintenance.html">Maintenance Tasks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
@@ -222,54 +224,47 @@
 <p>These tools help you navigate directories quickly.</p>
 <div class="section" id="pushd">
 <h3>pushd<a class="headerlink" href="#pushd" title="Permalink to this headline">¶</a></h3>
-<p>The command <tt class="samp docutils literal"><span class="pre">pushd</span> <em><span class="pre">dir</span></em></tt> will save your current directory on the stack and move you to <tt class="docutils literal"><span class="pre">dir</span></tt>.</p>
+<p>The command <tt class="samp docutils literal"><span class="pre">pushd</span> <em><span class="pre">dir</span></em></tt> will save your current directory on the stack and move you to <tt class="cmd docutils literal"><span class="pre">dir</span></tt>.</p>
 </div>
 <div class="section" id="popd">
 <h3>popd<a class="headerlink" href="#popd" title="Permalink to this headline">¶</a></h3>
-<p>After you have used <tt class="docutils literal"><span class="pre">pushd</span></tt> and stored one or more directories on the stack, you can use <tt class="docutils literal"><span class="pre">popd</span></tt> to move back to your previous directory.</p>
+<p>After you have used <tt class="cmd docutils literal"><span class="pre">pushd</span></tt> and stored one or more directories on the stack, you can use <tt class="cmd docutils literal"><span class="pre">popd</span></tt> to move back to your previous directory.</p>
 </div>
 <div class="section" id="dirs">
 <h3>dirs<a class="headerlink" href="#dirs" title="Permalink to this headline">¶</a></h3>
-<p><tt class="docutils literal"><span class="pre">dirs</span></tt> allows you to see what directories you have stored on the stack. The far left directory is the most recently saved. Another way to view the directory from most recent to least recent is by using the commmand <tt class="docutils literal"><span class="pre">dirs</span> <span class="pre">-v</span></tt>.</p>
+<p><tt class="cmd docutils literal"><span class="pre">dirs</span></tt> allows you to see what directories you have stored on the stack. The far left directory is the most recently saved. Another way to view the directory from most recent to least recent is by using the commmand <tt class="docutils literal"><span class="pre">dirs</span> <span class="pre">-v</span></tt>.</p>
 </div>
+</div>
+<div class="section" id="xdg-open">
+<h2>xdg-open<a class="headerlink" href="#xdg-open" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://portland.freedesktop.org/xdg-utils-1.0/xdg-open.html">xdg-open</a> is a command that can be used to open a file or URL in the user&#8217;s preferred application.
+Example:<tt class="docutils literal"><span class="pre">xdg-open</span> <span class="pre">myfile.pdf</span></tt></p>
 </div>
 <div class="section" id="uptime">
-<h2>Uptime<a class="headerlink" href="#uptime" title="Permalink to this headline">¶</a></h2>
-<p>The command <tt class="docutils literal"><span class="pre">uptime</span></tt> will display the following information in one line: the current time, the amount of time the system has been running, the number of users currently logged in, and system load averages for the past 1, 5, and 15 minutes.</p>
+<span id="id2"></span><h2>uptime<a class="headerlink" href="#uptime" title="Permalink to this headline">¶</a></h2>
+<p>The command <tt class="cmd docutils literal"><span class="pre">uptime</span></tt> will display the following information in one line: the current time, the amount of time the system has been running, the number of users currently logged in, and system load averages for the past 1, 5, and 15 minutes.</p>
 </div>
 <div class="section" id="user-interactions">
 <h2>User Interactions<a class="headerlink" href="#user-interactions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="w">
 <h3>w<a class="headerlink" href="#w" title="Permalink to this headline">¶</a></h3>
-<p>The <tt class="docutils literal"><span class="pre">w</span></tt> command provides a summary of the current users on the machine. The header displays the same information as the <tt class="docutils literal"><span class="pre">uptime</span></tt> command.</p>
+<p>The <tt class="cmd docutils literal"><span class="pre">w</span></tt> command provides a summary of the current users on the machine. The header displays the same information as the <a class="reference internal" href="#uptime"><em>uptime</em></a> command.</p>
 </div>
 <div class="section" id="last">
 <h3>last<a class="headerlink" href="#last" title="Permalink to this headline">¶</a></h3>
-<p><tt class="docutils literal"><span class="pre">last</span></tt> displays all the users that have logged into the machine since the creation of the wtemp log file. The date and time that file was created is shown at the bottom of the output.</p>
-<p>To show the output without the hostname field:</p>
-<div class="highlight-bash"><div class="highlight"><pre>last -R
-</pre></div>
-</div>
-<p>To limit the number of rows to output use:</p>
-<div class="highlight-bash"><div class="highlight"><pre>last -num
-</pre></div>
-</div>
-<p>For more information and options run:</p>
-<div class="highlight-bash"><div class="highlight"><pre>man last
-</pre></div>
-</div>
+<p><tt class="cmd docutils literal"><span class="pre">last</span></tt> displays all the users that have logged into the machine since the creation of the <a class="reference external" href="http://en.wikipedia.org/wiki/Utmp">wtmp log file</a>. The date and time that file was created is shown at the bottom of the output. To limit the output to the last 10 logins, use <tt class="docutils literal"><span class="pre">last</span> <span class="pre">-10</span></tt>.</p>
 </div>
 <div class="section" id="users">
 <h3>users<a class="headerlink" href="#users" title="Permalink to this headline">¶</a></h3>
-<p><tt class="docutils literal"><span class="pre">users</span></tt> prints a list of all the users currently logged in to a host.</p>
+<p><tt class="cmd docutils literal"><span class="pre">users</span></tt> displays a list of all the users currently logged in to a host.</p>
 </div>
 <div class="section" id="write">
-<h3>write<a class="headerlink" href="#write" title="Permalink to this headline">¶</a></h3>
-<p>The <tt class="docutils literal"><span class="pre">write</span></tt> command allows communication with other users through the terminal.</p>
-<p>The usual syntax is:</p>
-<div class="highlight-bash"><div class="highlight"><pre>write user <span class="o">[</span>tty<span class="o">]</span>
-</pre></div>
+<span id="id3"></span><h3>write<a class="headerlink" href="#write" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="cmd docutils literal"><span class="pre">write</span></tt> command allows communication with other logged-in users through the terminal. It copies typed lines from your terminal to theirs, and if they wish to reply they must also use the <tt class="cmd docutils literal"><span class="pre">write</span></tt> command. The usual syntax is <tt class="samp docutils literal"><span class="pre">write</span> <em><span class="pre">username</span></em></tt>. Any subsequent lines entered will be copied to the user&#8217;s terminal. To terminate <tt class="cmd docutils literal"><span class="pre">write</span></tt> use <tt class="kbd docutils literal"><span class="pre">Control-D</span></tt>.</p>
 </div>
+<div class="section" id="mesg">
+<h3>mesg<a class="headerlink" href="#mesg" title="Permalink to this headline">¶</a></h3>
+<p>To control whether someone can <a class="reference internal" href="#write"><em>write</em></a> to your terminal use the <tt class="cmd docutils literal"><span class="pre">mesg</span></tt> command. By default <tt class="cmd docutils literal"><span class="pre">write</span></tt> is allowed, to turn it off use <tt class="docutils literal"><span class="pre">mesg</span> <span class="pre">n</span></tt>.</p>
 </div>
 </div>
 </div>
@@ -297,7 +292,7 @@
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/2960335">2960335</a> built 2015-01-03 23:57:42 EST.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/ef1ead3">ef1ead3</a> built 2015-02-05 18:07:38 EST.<br />
     </p>
   </div>
 

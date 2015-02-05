@@ -1,0 +1,229 @@
+.. highlight:: console
+
+=======================
+ Interactive Shell Use
+=======================
+
+.. _shell-aliases:
+
+Aliases
+=======
+
+An alias can be a shortcut to typing a frequently-used command. For example, if you visit a certain directory often::
+
+   $ alias hw='cd ~/classes/cis452/hw/01'
+   $ pwd
+   /home/smithj
+   $ hw
+   $ pwd
+   /home/smithj/classes/cis452/hw/01
+
+After running the :cmd:`alias` command, :cmd:`hw` will now switch to that directory when typed.
+
+An alias can also be used to remember a lesser-used command. For example::
+
+   $ alias extract='tar -xvf'
+   $ extract bash-4.3.tar.gz
+   bash-4.3/
+   ...
+
+Notice that we can still pass arguments to the alias. In fact, it almost exactly like typing those characters at the command-line.
+
+Built-Ins
+=========
+
+For a typical command, the shell finds an executable file on the system and executes it. An example is the :cmd:`ls` command, which is an executable on the system, typically located at :file:`/usr/bin/ls`::
+
+   $ /usr/bin/ls mydir
+   file1.txt  file2.txt
+
+However, some commands are actually part of the shell, called *shell built-ins*. A shell built-in differs from a normal command in that it typically operates on things *within the shell itself*, rather than just for one command. A prime example is :cmd:`cd`, which changes the current working directory within the shell, affecting all subsequent commands::
+
+   $ pwd
+   /home/smithj
+   $ cd mydir
+   $ pwd
+   /home/smithj/mydir
+
+To find out if a command is an executable or a shell built-in, use the :cmd:`type` command::
+
+   $ type ls
+   ls is /usr/bin/ls
+   $ type cd
+   cd is a shell builtin
+   $ type type
+   type is a shell builtin
+
+The :cmd:`type` command is also a shell built-in!
+
+To see all shell built-ins, :bash:`consult the Bash manual <Shell-Builtin-Commands>`.
+
+Quoting
+=======
+
+In certain cases, Bash will interpret the command you give it in a different way than you might expect:
+
+.. code-block:: console
+
+   $ ls directory name with spaces
+   ls: directory: No such file or directory
+   ls: name: No such file or directory
+   ls: spaces: No such file or directory
+   ls: with: No such file or directory
+
+This is because Bash splits the command line it is given based upon spaces, and passes each argument to the program in question. To get Bash to interpret the spaces as an actual character, use :bash:`single quotes <Single-Quotes>`:
+
+.. code-block:: console
+
+   $ ls 'directory with spaces'
+   file1.txt  file2.txt
+
+Single quotes remove any special meaning from all the characters inside them. *Always use single quotes when the characters inside the quotes should not be interpreted by the shell.*
+
+:bash:`Double quotes <Double-Quotes>` may be used to expand only the meaning of certain shell metacharacters. They are most often used for variable substitution. For example, to print your current working directory:
+
+.. code-block:: console
+
+   $ echo "My current directory is: $PWD"
+   My current directory is: /home/smithj/awesome directory
+
+Double quotes are very frequently used, but it is easy to use them incorrectly. Know their behavior and test your commands with different values to make sure they are behaving correctly.
+
+.. _shell-env-vars:
+
+Environment Variables
+=====================
+
+:wikipedia:`A process' environment <Environment_variable>` is a mapping of key-value pairs possesed by every running process in the system. They are typically used to modify the behavior of programs. You are probably familiar with some common ones; for example, ``PATH``, ``EDITOR``, and ``PWD``. Environment variable names on Linux are case-sensitive and can contain most characters, although by convention they are usually named in all caps with words separated by underscores.
+
+Bash supports manipulation of the environment variables for programs it runs (*child processes*) in various ways. To see what environment variables Bash is giving to its child processes, use the :cmd:`env` program::
+
+   $ env
+   ...
+
+You should see a list of ``VAR=value`` printed. These are the variables and values Bash is giving to its child processes.
+
+In Bash, regular variables can be set in any shell session rather easily::
+
+   $ GVSU_CS='Computer Science'
+   $ GVSU_IS='Information Systems'
+
+However, these variables are only seen by commands and operations built into the shell. After settings these variables, verify this with :cmd:`env`::
+
+   $ env | egrep '^GVSU'
+
+However, you can instruct Bash to send these variables to child processes by using the :cmd:`export` built-in::
+
+   $ export GVSU_CIS
+   $ env | egrep '^GVSU'
+   GVSU_CS=Computer Science
+
+Notice that ``GVSU_CS`` has been sent to the program, but ``GVSU_IS`` has not. When the value of the variable is changed, the value sent to the child processes is also changed. It does not need to be exported again::
+
+   $ GVSU_CS='Cool Stuff'
+   $ env | egrep '^GVSU'
+   GVSU_CS=Cool Stuff
+
+To see all variables in Bash marked for export, use the following command::
+
+   $ declare -x
+   ...
+   declare -x GVSU_CS="Cool Stuff"
+   ...
+
+Here some other shortcuts to do with environment variables::
+
+   $ export GVSU_CS='Cool Stuff' # Set and export in one line
+   $ GVSU_CS='Not my major' env | egrep '^GVSU' # Set for one command only
+   GVSU_CS=Not my major
+
+Example
+-------
+
+A real-life example of an environment variable in use is the ``EDITOR`` environment variable. Various programs use this variable to determine what editor they should use when a file needs to be edited. An example is the ``crontab -e`` command. Try the following commands::
+
+   $ EDITOR=nano crontab -e # type Ctrl-X to exit
+   $ EDITOR=vim  crontab -e # type :q<Enter> to exit
+
+You should see each respective editor open up when the command is run!
+
+.. note::
+
+   :wikipedia:`Cron` is not set up for GVSU students; this command just edits your Cron configuration file. You do not need to modify it.
+
+..
+   Piping
+   ======
+
+..
+   Redirection
+   ===========
+
+.. _shell-path-manip:
+
+Path Manipulation
+=================
+
+Coming soon!
+
+..
+   The :wikipedia:`PATH <PATH_(variable)>` environment variable is a very important variable on UNIX-like systems, both for interactive and scripted commands.
+
+Startup Files
+=============
+
+The behavior of Bash can be customized by modifying its rc (runtime configuration) files. These are files which contain Bash commands, are run at different points throughout the program.
+
+Although there are more files which are run, two of the most important Bash rc files are :file:`.bashrc` and :file:`.bash_profile`. There is a lot of confusion about when these files are run. However, for an interactive Bash session, the answer is simple:
+
+- :file:`.bash_profile` is run for login shells.
+- :file:`.bashrc` is run for non-login shells.
+
+So what is a login shell? A login shell is a shell that is run when you first log into the computer. For example, when you SSH into EOS, you have started a login shell. All subsequent shells started from that shell are non-login shells (unless otherwise specified by the ``--login`` option).
+
+Here is a table describing where your shell customizations should go:
+
++----------------------------+---------------------+
+|Customization               |File                 |
++============================+=====================+
+|:ref:`Exported variables    |:file:`.bash_profile`|
+|<shell-env-vars>`           |                     |
++----------------------------+---------------------+
+|Non-exported variables      |:file:`.bashrc`      |
++----------------------------+---------------------+
+|:ref:`shell-aliases`        |:file:`.bashrc`      |
++----------------------------+---------------------+
+|Functions                   |:file:`.bashrc`      |
++----------------------------+---------------------+
+|Key bindings                |:file:`.bashrc`      |
++----------------------------+---------------------+
+|:wikipedia:`Umask`          |:file:`.bash_profile`|
++----------------------------+---------------------+
+|:ref:`shell-prompt` (same   |:file:`.bashrc`      |
+|as non-exported variables)  |                     |
++----------------------------+---------------------+
+|:ref:`shell-path-manip`     |:file:`.bash_profile`|
+|(same as exported variables)|                     |
++----------------------------+---------------------+
+
+..
+   Frameworks
+   ==========
+
+.. _shell-prompt:
+
+Prompt Customization
+====================
+
+..
+   The Bash prompt can be customized by changing the contents of the ``PS1`` environment variable.
+
+Coming soon!
+
+..
+   Utilities
+   =========
+
+   autojump
+   z
+   fasd

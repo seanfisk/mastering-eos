@@ -90,18 +90,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../rules.html#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shell/index.html">Using the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shell/basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/shells.html">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/interactive.html">Interactive Shell Use</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/windows/index.html">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/mac-os-x/index.html">Mac OS X</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/gnu-linux/index.html">GNU/Linux</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#kornshell">Kornshell</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">User-level Software Installation</a><ul class="current">
@@ -153,7 +152,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../misc.html">Miscellaneous</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../misc.html#kill-the-x-server">Kill the X Server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc.html#directory-navigation">Directory Navigation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../misc.html#uptime">Uptime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#xdg-open">xdg-open</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#uptime">uptime</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc.html#user-interactions">User Interactions</a></li>
 </ul>
 </li>
@@ -162,8 +162,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../contributing/prereqs.html">Pre-requisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../contributing/build-system.html">Using the Build System</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../contributing/edit.html">Editing the Manual</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing/pull-request.html">Making a Pull Request</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing/writing-style.html">Writing Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/make-pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/guidelines.html">Writing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/review-pull-request.html">Reviewing Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/maintenance.html">Maintenance Tasks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../envvars.html">Environment Variables</a></li>
@@ -221,7 +223,7 @@
 <div class="highlight-bash"><div class="highlight"><pre>mkdir -p ~/.local/src
 </pre></div>
 </div>
-<p>This command creates a <tt class="docutils literal"><span class="pre">src</span></tt> directory inside of your <tt class="file docutils literal"><span class="pre">~/.local</span></tt> prefix. We will use this directory later for housing downloaded program source code.</p>
+<p>This command creates a <tt class="file docutils literal"><span class="pre">src</span></tt> directory inside of your <tt class="file docutils literal"><span class="pre">~/.local</span></tt> prefix. We will use this directory later for housing downloaded program source code.</p>
 </div>
 <div class="section" id="download-and-extract">
 <h2>Download and Extract<a class="headerlink" href="#download-and-extract" title="Permalink to this headline">¶</a></h2>
@@ -233,22 +235,22 @@
 </pre></div>
 </div>
 <p>The latest version of Bash at this time of writing is 4.3, so that is what we will download. Start by visiting the <a class="reference external" href="http://www.gnu.org/software/bash/">Bash home page</a>. Under <em class="guilabel">Downloading Bash</em>, click the HTTP link. You will be taken to a <a class="reference external" href="http://en.wikipedia.org/wiki/Webserver_directory_index">directory index</a> which contains a list of downloadable files. Scroll down to find a file named <tt class="file docutils literal"><span class="pre">bash-4.3.tar.gz</span></tt>.</p>
-<p>Although you can download this file directly using your browser, it is often easier to copy the URL and download on the command line. This is especially true if accessing EOS using SSH. Copy the URL by clicking <em class="guilabel">Copy Link Location</em> or similar in your browser, then download the source code using <strong class="command">wget</strong>:</p>
+<p>Although you can download this file directly using your browser, it is often easier to copy the URL and download on the command line. This is especially true if accessing EOS using SSH. Copy the URL by clicking <em class="guilabel">Copy Link Location</em> or similar in your browser, then download the source code using <tt class="cmd docutils literal"><span class="pre">wget</span></tt>:</p>
 <div class="highlight-bash"><div class="highlight"><pre>wget http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz
 </pre></div>
 </div>
 <p>This should create a <tt class="file docutils literal"><span class="pre">bash-4.3.tar.gz</span></tt> file in the current working directory. This file is a <a class="reference external" href="http://en.wikipedia.org/wiki/Tar_%28computing%29">tar archive</a> which has been compressed with the <a class="reference external" href="http://www.gzip.org/">GNU zip</a> compression algorithm. A file of this type typically has a <tt class="docutils literal"><span class="pre">.tar.gz</span></tt> or <tt class="docutils literal"><span class="pre">.tgz</span></tt> file extension and is colloquially known as a <em>tarball</em> [<em>tarball</em> refers to tar archives of any or no compression scheme].</p>
-<p>The contents of this archive can be extracted using the <tt class="docutils literal"><span class="pre">tar</span></tt> program as follows:</p>
+<p>The contents of this archive can be extracted using the <tt class="cmd docutils literal"><span class="pre">tar</span></tt> program as follows:</p>
 <div class="highlight-bash"><div class="highlight"><pre>tar -xf bash-4.3.tar.gz
 </pre></div>
 </div>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
-<p class="last"><strong class="command">tar</strong> can automatically detect the compression format by the extension, so passing the compression algorithm as you may see elsewhere is usually unnecessary.</p>
+<p class="last"><tt class="cmd docutils literal"><span class="pre">tar</span></tt> can automatically detect the compression format by the extension, so passing the compression algorithm as you may see elsewhere is usually unnecessary.</p>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>Most source code tarballs are &#8220;well-behaved&#8221;, meaning that they create one directory which matches the name of the tarball. This is a convention, but is by no means required. Make sure you trust the source of the tarball before extracting the files. You can view the contents of a tarball with the <strong class="command">less</strong> built-in tar viewer:</p>
+<p>Most source code tarballs are &#8220;well-behaved&#8221;, meaning that they create one directory which matches the name of the tarball. This is a convention, but is by no means required. Make sure you trust the source of the tarball before extracting the files. You can view the contents of a tarball with the <tt class="cmd docutils literal"><span class="pre">less</span></tt> built-in tar viewer:</p>
 <div class="last highlight-bash"><div class="highlight"><pre>less bash-4.3.tar.gz
 </pre></div>
 </div>
@@ -264,7 +266,7 @@
 <div class="highlight-bash"><div class="highlight"><pre>wget http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz -O - | tar -xz
 </pre></div>
 </div>
-<p class="last">Note that you must pass the compression algorithm to <strong class="command">tar</strong> because it is not able to detect the type by file extension when input is given through a pipe.</p>
+<p class="last">Note that you must pass the compression algorithm to <tt class="cmd docutils literal"><span class="pre">tar</span></tt> because it is not able to detect the type by file extension when input is given through a pipe.</p>
 </div>
 </div>
 <div class="section" id="example-editorconfig-and-zip-archives">
@@ -274,17 +276,17 @@
 </pre></div>
 </div>
 <p>The latest version of the EditorConfig C Core at this time of writing is 0.12.0, so that is what we will download. Visit the <a class="reference external" href="http://sourceforge.net/projects/editorconfig/files/EditorConfig-C-Core/0.12.0/source/">download page for EditorConfig C Core 0.12.0</a> and select the link for the source code zip archive. The project also offers a tarball download, but we will use the zip for the purposes of this example.</p>
-<p>Download the file with <strong class="command">wget</strong> as shown in the earlier example:</p>
+<p>Download the file with <tt class="cmd docutils literal"><span class="pre">wget</span></tt> as shown in the earlier example:</p>
 <div class="highlight-bash"><div class="highlight"><pre>wget http://sourceforge.net/projects/editorconfig/files/EditorConfig-C-Core/0.12.0/source/editorconfig-core-c-0.12.0.zip
 </pre></div>
 </div>
-<p>This should create a <tt class="file docutils literal"><span class="pre">editorconfig-core-c-0.12.0.zip</span></tt> file in the current working directory. This file is a <a class="reference external" href="http://en.wikipedia.org/wiki/Zip_%28file_format%29">zip archive</a> just like those you may have seen on your desktop operating system. This file can be extracted using the <a class="reference external" href="http://www.info-zip.org/">InfoZip</a> <strong class="command">unzip</strong> utility:</p>
+<p>This should create a <tt class="file docutils literal"><span class="pre">editorconfig-core-c-0.12.0.zip</span></tt> file in the current working directory. This file is a <a class="reference external" href="http://en.wikipedia.org/wiki/Zip_%28file_format%29">zip archive</a> just like those you may have seen on your desktop operating system. This file can be extracted using the <a class="reference external" href="http://www.info-zip.org/">InfoZip</a> <tt class="cmd docutils literal"><span class="pre">unzip</span></tt> utility:</p>
 <div class="highlight-bash"><div class="highlight"><pre>unzip editorconfig-core-c-0.12.0.zip
 </pre></div>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>Unlike source tarballs, zip files sometimes have all files in one directory or sometimes have all files immediately in the root directory. Again, however, this is convention &#8212; make sure you trust the source of the archive before extracting the files. You can view the contents of a zip archive with <strong class="command">less</strong> built-in zip viewer:</p>
+<p>Unlike source tarballs, zip files sometimes have all files in one directory or sometimes have all files immediately in the root directory. Again, however, this is convention &#8212; make sure you trust the source of the archive before extracting the files. You can view the contents of a zip archive with <tt class="cmd docutils literal"><span class="pre">less</span></tt> built-in zip viewer:</p>
 <div class="last highlight-bash"><div class="highlight"><pre>less editorconfig-core-c-0.12.0.zip
 </pre></div>
 </div>
@@ -324,7 +326,7 @@
 <div class="highlight-bash"><div class="highlight"><pre>../configure --help | less
 </pre></div>
 </div>
-<p>Passing other options is typically unnecessary unless you would like to customize the build. Piping to <strong class="command">less</strong> is recommended due to the usual length of the output.</p>
+<p>Passing other options is typically unnecessary unless you would like to customize the build. Piping to <tt class="cmd docutils literal"><span class="pre">less</span></tt> is recommended due to the usual length of the output.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>Note that:</p>
@@ -366,7 +368,7 @@
 <div class="section" id="cmake">
 <span id="cmake-section"></span><h3>CMake<a class="headerlink" href="#cmake" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://www.cmake.org/">CMake</a> is a popular alternative to Autotools as a build system on GNU/Linux. You can usually identify a CMake build system by the presence of a <tt class="file docutils literal"><span class="pre">CMakeLists.txt</span></tt> file in the root of the source distribution.</p>
-<p>The <strong class="command">cmake</strong> program needs to be installed in order to build projects using CMake as a build system. It is installed by default on EOS.</p>
+<p>The <tt class="cmd docutils literal"><span class="pre">cmake</span></tt> program needs to be installed in order to build projects using CMake as a build system. It is installed by default on EOS.</p>
 <div class="section" id="example-editorconfig">
 <h4>Example: EditorConfig<a class="headerlink" href="#example-editorconfig" title="Permalink to this headline">¶</a></h4>
 <p>An example of a project that uses CMake as a build system is the <a class="reference external" href="https://github.com/editorconfig/editorconfig-core-c">EditorConfig C Core</a>, the subject of our earlier example. We will compile the version of the EditorConfig C Core that we extracted earlier. Start by switching to the source code root directory if not already there:</p>
@@ -449,7 +451,7 @@
 info bash
 </pre></div>
 </div>
-<p>still show the Bash documentation for the system Bash. Although this may not seem like a big deal, small changes between versions of the same program can be the difference between an working and non-working script. To allow <strong class="command">man</strong> and <strong class="command">info</strong> to find locally-installed documentation, add the following lines to your <tt class="file docutils literal"><span class="pre">~/.bash_profile</span></tt>:</p>
+<p>still show the Bash documentation for the system Bash. Although this may not seem like a big deal, small changes between versions of the same program can be the difference between an working and non-working script. To allow <tt class="cmd docutils literal"><span class="pre">man</span></tt> and <tt class="cmd docutils literal"><span class="pre">info</span></tt> to find locally-installed documentation, add the following lines to your <tt class="file docutils literal"><span class="pre">~/.bash_profile</span></tt>:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nb">export </span><span class="nv">MANPATH</span><span class="o">=</span>~/.local/share/man:~/.local/man:<span class="nv">$MANPATH</span>
 <span class="nb">export </span><span class="nv">INFOPATH</span><span class="o">=</span>~/.local/share/info:<span class="nv">$INFOPATH</span>
 </pre></div>
@@ -462,21 +464,19 @@ info bash
 <span id="lib-deps"></span><h2>Library Dependencies<a class="headerlink" href="#library-dependencies" title="Permalink to this headline">¶</a></h2>
 <p>Bash and the EditorConfig C Core both compile without issue on EOS. However, programs frequently have compile-time dependencies: libraries which need to be installed before compiling the program.</p>
 <p>As with the project itself, one option is to ask the <a class="reference external" href="mailto:woodriir&#37;&#52;&#48;gvsu&#46;edu">Ira Woodring</a> to install the library for you. If you would like to compile and install the dependency on your own, it is possible, but is currently out of the scope of this guide. Here are some hints:</p>
-<ul>
-<li><p class="first">When compiling the program, you may need to set the <span class="target" id="index-4"></span><a class="reference internal" href="../envvars.html#envvar-CPPFLAGS"><tt class="xref std std-envvar docutils literal"><span class="pre">CPPFLAGS</span></tt></a> and <span class="target" id="index-5"></span><a class="reference internal" href="../envvars.html#envvar-LDFLAGS"><tt class="xref std std-envvar docutils literal"><span class="pre">LDFLAGS</span></tt></a> environment variables to allow the compiler to locate headers and libraries, respectively. See the <a class="reference external" href="http://www.gnu.org/software/autoconf/manual/autoconf.html#Preset-Output-Variables">Autoconf manual on Preset Output Variables</a> for descriptions of each of these variables. Some build systems are able to locate headers and libraries automatically in the specified install prefix.</p>
-</li>
-<li><p class="first">If you installed the libraries to your home directory, the operating system will not know to search for them there when running a program (even if that program is in your home directory). To allow the program to find its shared library dependencies at runtime, you must either set its <a class="reference external" href="http://en.wikipedia.org/wiki/Rpath">rpath</a> (recommended) or use the <span class="target" id="index-6"></span><a class="reference internal" href="../envvars.html#envvar-LD_LIBRARY_PATH"><tt class="xref std std-envvar docutils literal"><span class="pre">LD_LIBRARY_PATH</span></tt></a> environment variable (not recommended). See the following links for hints on this topic:</p>
 <ul class="simple">
+<li>When compiling the program, you may need to set the <span class="target" id="index-4"></span><a class="reference internal" href="../envvars.html#envvar-CPPFLAGS"><tt class="xref std std-envvar docutils literal"><span class="pre">CPPFLAGS</span></tt></a> and <span class="target" id="index-5"></span><a class="reference internal" href="../envvars.html#envvar-LDFLAGS"><tt class="xref std std-envvar docutils literal"><span class="pre">LDFLAGS</span></tt></a> environment variables to allow the compiler to locate headers and libraries, respectively. See the <a class="reference external" href="http://www.gnu.org/software/autoconf/manual/autoconf.html#Preset-Output-Variables">Autoconf manual on Preset Output Variables</a> for descriptions of each of these variables. Some build systems are able to locate headers and libraries automatically in the specified install prefix.</li>
+<li>If you installed the libraries to your home directory, the operating system will not know to search for them there when running a program (even if that program is in your home directory). To allow the program to find its shared library dependencies at runtime, you must either set its <a class="reference external" href="http://en.wikipedia.org/wiki/Rpath">rpath</a> (recommended) or use the <span class="target" id="index-6"></span><a class="reference internal" href="../envvars.html#envvar-LD_LIBRARY_PATH"><tt class="xref std std-envvar docutils literal"><span class="pre">LD_LIBRARY_PATH</span></tt></a> environment variable (not recommended). See the following links for hints on this topic:<ul>
 <li><a class="reference external" href="http://www.eyrie.org/~eagle/notes/rpath.html">Russ Allbery&#8217;s notes on Shared Library Search Paths</a></li>
 <li>The <a class="reference external" href="http://www.gnu.org/software/autoconf/manual/autoconf.html#Preset-Output-Variables">Autoconf manual on Preset Output Variables</a></li>
-<li>The <a class="reference external" href="http://www.x.org/">Wikipedia entry on rpath</a></li>
+<li>The <a class="reference external" href="http://en.wikipedia.org/wiki/Rpath">Wikipedia entry on rpath</a></li>
+</ul>
+</li>
 </ul>
 <p>You can see the default paths in which the system looks for libraries by running:</p>
 <div class="highlight-bash"><div class="highlight"><pre>ldconfig -v | less
 </pre></div>
 </div>
-</li>
-</ul>
 </div>
 <div class="section" id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
@@ -507,7 +507,7 @@ info bash
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/2960335">2960335</a> built 2015-01-03 23:57:42 EST.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/ef1ead3">ef1ead3</a> built 2015-02-05 18:07:38 EST.<br />
     </p>
   </div>
 

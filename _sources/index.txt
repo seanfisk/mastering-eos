@@ -15,9 +15,8 @@
 
    intro
    rules
-   basics
+   shell/index
    remote-access/index
-   shells
    user-level-sw/index
    sys-sw-info
    winserv
@@ -31,8 +30,8 @@
 
 .. only:: build_html
 
-    Indices and tables
-    ==================
+   Indices and tables
+   ==================
 
-    * :ref:`genindex`
-    * :ref:`search`
+   * :ref:`genindex`
+   * :ref:`search`

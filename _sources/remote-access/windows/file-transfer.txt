@@ -22,7 +22,7 @@ There is really no reason not to import your sites from PuTTY if you already hav
 
 .. tip::
 
-    You can create a desktop shortcut for your site by right-clicking your site in the WinSCP Login screen, then clicking :guilabel:`Desktop Icon`. This allows you to open your site directly without visiting the WinSCP Login screen. Creating a 'Send To' shortcut for Windows Explorer is similarly useful.
+   You can create a desktop shortcut for your site by right-clicking your site in the WinSCP Login screen, then clicking :guilabel:`Desktop Icon`. This allows you to open your site directly without visiting the WinSCP Login screen. Creating a 'Send To' shortcut for Windows Explorer is similarly useful.
 
 Automatic Synchronization
 -------------------------
@@ -40,32 +40,32 @@ For more information on using WinSCP, consult the excellent `WinSCP Documentatio
 Command Line (SCP)
 ==================
 
-Files can be transferred on the command line using a utility called SCP, implemented in PuTTY through a command called ``pscp``. Because ``pscp`` uses PuTTY for authentication, if you have set up :ref:`win-ssh-keys`, you will not have to type any passwords. SCP stands for *Secure Copy* and works very similar to the GNU/Linux ``cp`` command, except that it can also transfer files across the network. Make sure you are familiar with the operation of ``cp`` before using SCP.
+Files can be transferred on the command line using a utility called SCP, implemented in PuTTY through a command called :cmd:`pscp`. Because ``pscp`` uses PuTTY for authentication, if you have set up :ref:`win-ssh-keys`, you will not have to type any passwords. SCP stands for *Secure Copy* and works very similar to the GNU/Linux ``cp`` command, except that it can also transfer files across the network. Make sure you are familiar with the operation of ``cp`` before using SCP.
 
 PuTTY's commands are not added to the Windows :envvar:`Path` by default. To add them to the :envvar:`Path`, open Windows PowerShell from the Start Menu and run the following command. If you installed PuTTY to a non-default location, you will need to change it in the command below.
 
 .. code-block:: powershell
 
-    $puttyInstallPath = 'C:\Program Files (x86)\PuTTY'; [Environment]::SetEnvironmentVariable('Path', [Environment]::GetEnvironmentVariable('Path', 'User') + ';' + $puttyInstallPath, 'User')
+   $puttyInstallPath = 'C:\Program Files (x86)\PuTTY'; [Environment]::SetEnvironmentVariable('Path', [Environment]::GetEnvironmentVariable('Path', 'User') + ';' + $puttyInstallPath, 'User')
 
-Restart PowerShell or your terminal emulator after running this command to allow your updates to the :envvar:`Path` to take effect. The ``pscp`` utility may now be used from PowerShell by simply typing ``pscp``.
+Restart PowerShell or your terminal emulator after running this command to allow your updates to the :envvar:`Path` to take effect. The :cmd:`pscp` utility may now be used from PowerShell by simply typing :cmd:`pscp`.
 
-The following examples showcase the typical use of ``pscp``. Each file can be prefixed with a PuTTY session name or user/host, which tells ``pscp`` where it is or should be located. The session name "EOS" is used in these examples; change it to match your PuTTY session name if it is different. Files with no prefix are assumed to be on the local machine. Paths on the remote machine start at your home directory, so there is typically no need to include :file:`/home/smithj` in the path. Here are some examples of use of ``pscp``:
+The following examples showcase the typical use of :cmd:`pscp`. Each file can be prefixed with a PuTTY session name or user/host, which tells :cmd:`pscp` where it is or should be located. The session name "EOS" is used in these examples; change it to match your PuTTY session name if it is different. Files with no prefix are assumed to be on the local machine. Paths on the remote machine start at your home directory, so there is typically no need to include :file:`/home/smithj` in the path. Here are some examples of use of :cmd:`pscp`:
 
 .. code-block:: powershell
 
-    # Typical upload
-    pscp classes\cis162\hw1.txt EOS:classes/cis162
-    # Typical download
-    pscp EOS:classes/cis162/hw2.txt classes\cis162
-    # Upload a directory
-    pscp -r projects EOS:classes/cis163
-    # User/host instead of EOS session name (will likely require password)
-    pscp smithj@eos01.cis.gvsu.edu:classes/cis162/hw3.txt classes/cis162
+   # Typical upload
+   pscp classes\cis162\hw1.txt EOS:classes/cis162
+   # Typical download
+   pscp EOS:classes/cis162/hw2.txt classes\cis162
+   # Upload a directory
+   pscp -r projects EOS:classes/cis163
+   # User/host instead of EOS session name (will likely require password)
+   pscp smithj@eos01.cis.gvsu.edu:classes/cis162/hw3.txt classes/cis162
 
 .. note::
 
-    Windows uses ``\`` as a path separator by default, while GNU/Linux uses ``/``. While Windows is generally forgiving and will accept ``/`` as well, GNU/Linux is not. *Always use* ``/`` *as a path separator when specifying GNU/Linux paths.*
+   Windows uses ``\`` as a path separator by default, while GNU/Linux uses ``/``. While Windows is generally forgiving and will accept ``/`` as well, GNU/Linux is not. *Always use* ``/`` *as a path separator when specifying GNU/Linux paths.*
 
 .. include:: ../common/sshfs/intro.rst
 
