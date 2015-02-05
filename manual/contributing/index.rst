@@ -32,6 +32,6 @@ Continue reading to find out how to make your own contributions to |title|.
 .. _Git: http://git-scm.com/
 .. _GitHub: https://github.com/
 .. _LaTeX: http://latex-project.org/
-.. _Beamer:
+.. _Beamer: https://bitbucket.org/rivanvx/beamer
 .. _beamerposter: http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php
 .. _Python: http://python.org/
