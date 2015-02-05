@@ -101,7 +101,7 @@ Correct Usage of Roles
 
   Never use the :sphinx-role:`command role <command>` or :sphinx-role:`program role <program>`.
 - Use the :sphinx-role:`envvar role <envvar>`  when appropriate, and create a corresponding entry in :ref:`env-vars`.
-- Do not use the :sphinx-role:`option role <option>`, as it emits a warning if a corresponding :sphinx-directive:`option directive <option>` is not found. This would be fine, but we want to remain warning free. Instead, just use normal literal text.
+- Do not use the :sphinx-role:`option role <option>`, as it emits a warning if a corresponding :sphinx-directive:`option directive <option>` is not found. This would be fine, but we want to remain warning-free. Instead, just use normal literal text.
 
 Backticks and Hyperlinks
 ------------------------
