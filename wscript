@@ -317,16 +317,14 @@ def deploy(ctx):
         fabfile=ctx.path.find_resource('fabfile.py'),
         commands=collections.OrderedDict([
             ('set_hosts', dict(hostfile=hostnames_node.abspath())),
-            ('deploy_to_eos', {}),
+            ('deploy_to_eos', dict(
+                manpage=ctx.bldnode.find_node([
+                    'manual', 'man', 'eos.7']).abspath(),
+                infodoc=ctx.bldnode.find_node([
+                    'manual', 'info', 'eos.info']).abspath(),
+                webscript=ctx.path.find_resource([
+                    'scripts', 'eos-web-docs']).abspath())),
         ]),
-        args=dict(
-            manpage=ctx.bldnode.find_node([
-                'manual', 'man', 'eos.7']).abspath(),
-            infodoc=ctx.bldnode.find_node([
-                'manual', 'info', 'eos.info']).abspath(),
-            webscript=ctx.path.find_resource([
-                'scripts', 'eos-web-docs']).abspath(),
-        ),
         source=[hostnames_node],
         always=True)
 
