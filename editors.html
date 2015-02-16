@@ -89,17 +89,18 @@
 <li class="toctree-l2"><a class="reference internal" href="rules.html#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="shell/index.html">Using the Command Line</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="shell/basics.html">Command-Line Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shell/shells.html">Available Shells</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shell/interactive.html">Interactive Shell Use</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Command Line Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/windows/index.html">Microsoft Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/mac-os-x/index.html">Mac OS X</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/gnu-linux/index.html">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="shells.html">Shells</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#bash">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#tcsh">Tcsh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#kornshell">Kornshell</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="user-level-sw/index.html">User-level Software Installation</a><ul>
@@ -263,8 +264,8 @@
 <p>Although Kate is primarily used on GNU/Linux through <a class="reference external" href="https://www.kde.org/">KDE</a>, it is also available for Windows and Mac OS X.</p>
 <p><div class="clearfix"></div></p>
 </div>
-<div class="section" id="id5">
-<h3>Others<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>Others<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>The following are other advanced text editors not available on EOS. You can use these on your personal machine, and you may be able to install them on EOS manually.</p>
 <div class="section" id="atom">
 <h4>Atom<a class="headerlink" href="#atom" title="Permalink to this headline">¶</a></h4>
@@ -343,12 +344,12 @@
 <h3>Xcode<a class="headerlink" href="#xcode" title="Permalink to this headline">¶</a></h3>
 <a class="reference external image-reference" href="https://developer.apple.com/xcode/"><img alt="Xcode logo" class="align-left" src="_images/xcode.png" /></a>
 <p><a class="reference external" href="https://developer.apple.com/xcode/">Xcode</a> is an IDE for Mac OS X developed and maintained by <a class="reference external" href="http://www.apple.com/">Apple</a>. It is primarily aimed at development of Mac OS X and iOS <a class="reference external" href="https://developer.apple.com/technologies/mac/cocoa.html">Cocoa</a> applications written in Objective-C and/or <a class="reference external" href="https://developer.apple.com/swift/">Swift</a>. Xcode includes <a class="reference external" href="http://en.wikipedia.org/wiki/Interface_Builder">Interface Builder</a> for composition of user interfaces, the <a class="reference external" href="https://developer.apple.com/Library/mac/documentation/CompilerTools/Conceptual/LLVMCompilerOverview/index.html">Apple LLVM Compiler</a> based on <a class="reference external" href="http://clang.llvm.org/">Clang</a> and <a class="reference external" href="http://llvm.org/">LLVM</a>, a graphical debugger based on <a class="reference external" href="http://lldb.llvm.org/">LLDB</a>, and <a class="reference external" href="https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Introduction/Introduction.html">Instruments</a>, a tracing and profiling tool based on <a class="reference external" href="http://en.wikipedia.org/wiki/DTrace">DTrace</a>. It also features excellent code completion, also implemented using <a class="reference external" href="http://clang.llvm.org/">Clang</a>. For more information, see the <a class="reference external" href="https://developer.apple.com/xcode/features/">full list of Xcode features</a>.</p>
-<p>In addition to Objective-C and Swift, Xcode supports development in C, C++, Python, Ruby, and AppleScript. <a class="footnote-reference" href="#xcode-langs" id="id14">[1]</a></p>
+<p>In addition to Objective-C and Swift, Xcode supports development in C, C++, Python, Ruby, and AppleScript. <a class="footnote-reference" href="#xcode-langs" id="id15">[1]</a></p>
 <p>If you are developing native Mac OS X or iOS applications, Xcode is the recommended IDE.</p>
 <p><div class="clearfix"></div></p>
 </div>
 <div class="section" id="qt-creator">
-<span id="id16"></span><h3>Qt Creator<a class="headerlink" href="#qt-creator" title="Permalink to this headline">¶</a></h3>
+<span id="id17"></span><h3>Qt Creator<a class="headerlink" href="#qt-creator" title="Permalink to this headline">¶</a></h3>
 <a class="reference external image-reference" href="http://qt-project.org/wiki/Category:Tools::QtCreator"><img alt="Qt Creator logo" class="align-left" src="_images/qt-creator.png" /></a>
 <p><a class="reference external" href="http://qt-project.org/wiki/Category:Tools::QtCreator">Qt Creator</a> is an IDE for developing applications using the <a class="reference internal" href="gui-toolkits.html#qt-section"><em>Qt</em></a> cross-platform framework. Qt Creator supports C++ and <a class="reference external" href="http://qt-project.org/doc/qt-5/qmlapplications.html">QtQuick/QML</a> (JavaScript), two languages used for developing Qt applications. It also includes project navigation tools, code completion, an integrated debugger based on <a class="reference external" href="http://www.gnu.org/software/gdb/">GDB</a>, and a drag-and-drop interface designer (formerly known as Qt Designer). Additionally, Qt Designer supports integration with various build systems. A full feature list is available on the homepage.</p>
 <p><div class="clearfix"></div></p>
@@ -369,8 +370,8 @@
 <p><div class="clearfix"></div></p>
 <p>For a full list of text editors, please see Wikipedia&#8217;s <a class="reference external" href="http://en.wikipedia.org/wiki/List_of_text_editors">list of text editors</a> and <a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_text_editors">comparison of text editors</a>.</p>
 </div>
-<div class="section" id="id20">
-<h3>Others<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id21">
+<h3>Others<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <p>The following are other IDEs not available on EOS. You can use these on your personal machine, and you may be able to install them on EOS manually.</p>
 <div class="section" id="netbeans">
 <h4>NetBeans<a class="headerlink" href="#netbeans" title="Permalink to this headline">¶</a></h4>
@@ -390,7 +391,7 @@
 <table class="docutils footnote" frame="void" id="xcode-langs" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id14">[1]</a></td><td>According to the <a class="reference external" href="http://en.wikipedia.org/wiki/Xcode#Composition">Wikipedia Xcode article</a>.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id15">[1]</a></td><td>According to the <a class="reference external" href="http://en.wikipedia.org/wiki/Xcode#Composition">Wikipedia Xcode article</a>.</td></tr>
 </tbody>
 </table>
 </div>
@@ -419,7 +420,7 @@
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/ef1ead3">ef1ead3</a> built 2015-02-16 14:48:10 EST.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/97c092e">97c092e</a> built 2015-02-16 15:01:01 EST.<br />
     </p>
   </div>
 

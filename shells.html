@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Mastering EOS &mdash; Mastering EOS</title>
+  <title>Shells &mdash; Mastering EOS</title>
   
 
   
@@ -32,8 +32,9 @@
   
         <link rel="author" title="About these documents"
               href="about.html"/>
-    <link rel="top" title="Mastering EOS" href="#"/>
-        <link rel="next" title="Introduction" href="intro.html"/>
+    <link rel="top" title="Mastering EOS" href="index.html"/>
+        <link rel="next" title="User-level Software Installation" href="user-level-sw/index.html"/>
+        <link rel="prev" title="Alternative Clients" href="remote-access/gnu-linux/alternatives.html"/>
  
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -59,7 +60,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-nav-search">
-        <a href="#" class="fa fa-home"> Mastering EOS</a>
+        <a href="index.html" class="fa fa-home"> Mastering EOS</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -72,7 +73,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro.html#physical-access-keycards">Physical Access (Keycards)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intro.html#computer-access-credentials">Computer Access (Credentials)</a></li>
@@ -96,10 +97,10 @@
 <li class="toctree-l2"><a class="reference internal" href="remote-access/gnu-linux/index.html">GNU/Linux</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#kornshell">Kornshell</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Shells</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#bash">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tcsh">Tcsh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kornshell">Kornshell</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="user-level-sw/index.html">User-level Software Installation</a><ul>
@@ -186,7 +187,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="#">Mastering EOS</a>
+        <a href="index.html">Mastering EOS</a>
       </nav>
 
 
@@ -195,12 +196,12 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="#">Docs</a> &raquo;</li>
+    <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Mastering EOS</li>
+    <li>Shells</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/index.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/shells.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -208,121 +209,20 @@
 </div>
           <div role="main">
             
-  <div class="section" id="mastering-eos">
-<h1>Mastering EOS<a class="headerlink" href="#mastering-eos" title="Permalink to this headline">¶</a></h1>
-<p>Mastering EOS is an initiative to produce better documentation for the Grand Valley State University School of Computer and Information Systems Exploratory Operating System Labs (GVSU CIS EOS Labs). It is intended to augment the <a class="reference external" href="http://www.cis.gvsu.edu/facilities/eos">original EOS documentation</a> located on the School of CIS website.</p>
-<p>Mastering EOS is written by:</p>
-<ul class="simple">
-<li>Sean Fisk, BS and MS in Computer Science from GVSU</li>
-<li>Ira Woodring, GVSU EOS Lab system administrator</li>
-</ul>
-<p>In addition to the HTML you are currently viewing, the Mastering EOS manual is also available in <a class="reference external" href="mastering-eos.pdf">PDF</a> and HTML archive (<a class="reference external" href="mastering-eos-html.tar.gz">.tar.gz</a> or <a class="reference external" href="mastering-eos-html.zip">.zip</a>) formats, or by typing <tt class="docutils literal"><span class="pre">man</span> <span class="pre">eos</span></tt> or <tt class="docutils literal"><span class="pre">info</span> <span class="pre">eos</span></tt> on any EOS machine.</p>
-<p><strong>Student and faculty contribution to</strong> <strong>Mastering EOS</strong> <strong>is encouraged. This means you!</strong> Please see the section <a class="reference internal" href="contributing/index.html#contributing"><em>Contributing to Mastering EOS</em></a> for more information.</p>
-<p><strong>Contents:</strong></p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#physical-access-keycards">Physical Access (Keycards)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#computer-access-credentials">Computer Access (Credentials)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules and Procedures</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rules.html#disk-space">Disk Space</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rules.html#copyrighted-material">Copyrighted Material</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rules.html#food-and-drink">Food and Drink</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rules.html#overnight-parking">Overnight Parking</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rules.html#living-in-the-lab">Living in the Lab</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rules.html#malicious-activity">Malicious Activity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rules.html#games">Games</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="basics.html">Command Line Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="remote-access/inter-eos.html">Inter-EOS SSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="remote-access/windows/index.html">Microsoft Windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="remote-access/mac-os-x/index.html">Mac OS X</a></li>
-<li class="toctree-l2"><a class="reference internal" href="remote-access/gnu-linux/index.html">GNU/Linux</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#kornshell">Kornshell</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="user-level-sw/index.html">User-level Software Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user-level-sw/manual-install.html">Manual Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user-level-sw/linuxbrew.html">Linuxbrew</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="sys-sw-info.html">System and Software Information</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sys-sw-info.html#system">System</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sys-sw-info.html#software">Software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sys-sw-info.html#web-server">Web Server</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="winserv.html">Winserv</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="winserv.html#common-settings">Common Settings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="winserv.html#microsoft-windows">Microsoft Windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="winserv.html#mac-os-x">Mac OS X</a></li>
-<li class="toctree-l2"><a class="reference internal" href="winserv.html#gnu-linux">GNU/Linux</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="databases.html">Databases</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="databases.html#mysql">MySQL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="databases.html#oracle">Oracle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="databases.html#oracle-apex">Oracle APEX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="databases.html#mssql">MSSQL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="databases.html#sqlite">SQLite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="databases.html#remote-database-connections">Remote Database Connections</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="editors.html">Editors</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="editors.html#basic-text-editors">Basic Text Editors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="editors.html#advanced-text-editors">Advanced Text Editors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="editors.html#integrated-development-environments">Integrated Development Environments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="editors.html#editorconfig">EditorConfig</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="gui-toolkits.html">GUI Toolkits</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#choosing-a-toolkit">Choosing a Toolkit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#qt">Qt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#wxwidgets">wxWidgets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#gtk">GTK+</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#tk">Tk</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#swing">Swing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#swt">SWT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gui-toolkits.html#native-toolkits">Native Toolkits</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="misc.html#kill-the-x-server">Kill the X Server</a></li>
-<li class="toctree-l2"><a class="reference internal" href="misc.html#directory-navigation">Directory Navigation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="misc.html#xdg-open">xdg-open</a></li>
-<li class="toctree-l2"><a class="reference internal" href="misc.html#uptime">uptime</a></li>
-<li class="toctree-l2"><a class="reference internal" href="misc.html#user-interactions">User Interactions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="contributing/index.html">Contributing to Mastering EOS</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="contributing/repo-setup.html">Repository Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/prereqs.html">Pre-requisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/build-system.html">Using the Build System</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/edit.html">Editing the Manual</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/make-pull-request.html">Making a Pull Request</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/guidelines.html">Writing Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/review-pull-request.html">Reviewing Pull Requests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing/maintenance.html">Maintenance Tasks</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About This Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="about.html#people">People</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about.html#licensing">Licensing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about.html#special-thanks">Special Thanks</a></li>
-</ul>
-</li>
-</ul>
+  <div class="section" id="shells">
+<h1>Shells<a class="headerlink" href="#shells" title="Permalink to this headline">¶</a></h1>
+<p>A shell is a textual user interface that allows you to control the operating system and run programs. The EOS Labs have a variety of different shell options from which you can choose. The default is Bash, but you may use any of the following provided shells.</p>
+<div class="section" id="bash">
+<span id="id1"></span><h2>Bash<a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://gnu.org/s/bash">GNU Bash</a> (Bourne Again SHell) is setup for you automatically. It is the default shell for the GNU Project and is widely the standard shell for most distributions of GNU/Linux.</p>
+</div>
+<div class="section" id="tcsh">
+<h2>Tcsh<a class="headerlink" href="#tcsh" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.tcsh.org">Tcsh</a> (TENEX C SHell) is a C style shell that adds a few extra features such as command line completion.</p>
+</div>
+<div class="section" id="kornshell">
+<h2>Kornshell<a class="headerlink" href="#kornshell" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.kornshell.org">Kornshell</a> is a shell developed at AT&amp;T Bell Laboratories. It has features of both the Bash and Korn shells, as well as additional features.</p>
 </div>
 </div>
 
@@ -333,8 +233,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="intro.html" class="btn btn-neutral float-right" title="Introduction">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="user-level-sw/index.html" class="btn btn-neutral float-right" title="User-level Software Installation">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+      
+        <a href="remote-access/gnu-linux/alternatives.html" class="btn btn-neutral" title="Alternative Clients"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
