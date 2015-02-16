@@ -5,6 +5,8 @@
 People
 ======
 
+.. _maintainers:
+
 The current maintainers of |title| are:
 
 - **Sean Fisk**; GVSU '14 Master of Computer Information Systems, GVSU '12 Bachelor of Computer Science
@@ -57,8 +59,8 @@ Thanks to GVSU students:
 Thanks to GVSU faculty:
 
 - Carl Strebel for teaching me about system administration, Bash, VNC, and xinetd.
-- Dr. Zach Kurmas for teaching me about SSH keys, version control, and other advice.
-- Dr. Hans Dulimarta for teaching me about C++, Qt, and other advice.
+- Dr. Zach Kurmas for teaching me about SSH keys and version control, and for other advice.
+- Dr. Hans Dulimarta for teaching me about C++ and Qt, and for other advice.
 - Dr. Christian Trefftz for advising and encouragement.
 - Dr. Greg Wolffe for advising me throughout my last 3 years of college.
 - Ira Woodring for supporting me in countless ventures including |title|.

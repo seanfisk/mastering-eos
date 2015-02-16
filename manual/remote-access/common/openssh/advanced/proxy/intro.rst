@@ -14,6 +14,6 @@ By using a proxy through the EOS machines, we can transparently access the IEEE 
 
 OpenSSH support the SOCKS protocol for proxying. Activating the SOCKS feature is accomplished with the ``-D`` flag like so::
 
-    ssh -D 5555 eos01
+   ssh -D 5555 eos01
 
 This establishes a SOCKS proxy with EOS01 served up on the local machine on port 5555. Now we must configure our operating system or browser to use this proxy.

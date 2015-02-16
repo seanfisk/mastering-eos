@@ -1,5 +1,7 @@
 # -*- mode: python; coding: utf-8; -*-
 
+"""Poster build script"""
+
 import glob
 import os
 from os.path import join
@@ -37,8 +39,7 @@ def build(ctx):
         UBUNTU_FONT_PATH=(
             # Add a trailing path separator so that LaTeX knows it's a
             # directory.
-            ctx.path.find_dir(UBUNTU_FONTS_PATH).abspath() + os.sep),
-    )
+            ctx.path.find_dir(UBUNTU_FONTS_PATH).abspath() + os.sep))
 
     # Include the common inter-EOS file.
     inter_eos_ssh_tex_in_node = ctx.path.find_resource([
@@ -73,7 +74,7 @@ def build(ctx):
         # prompt=0 enables batch mode, which disables the avalanche of output
         # normally produced by LaTeX.
         prompt=0,
-    )
+       )
 
     ctx.add_manual_dependency(main_tex_node, sty_out_node)
 

@@ -19,9 +19,9 @@ The prefix that we recommend for manually-installed user-level programs is :file
 
 To ready your prefix for downloading and compiling source code, run the following command::
 
-    mkdir -p ~/.local/src
+   mkdir -p ~/.local/src
 
-This command creates a ``src`` directory inside of your :file:`~/.local` prefix. We will use this directory later for housing downloaded program source code.
+This command creates a :file:`src` directory inside of your :file:`~/.local` prefix. We will use this directory later for housing downloaded program source code.
 
 .. _Launchpad: https://launchpad.net/
 .. _used by Python: http://legacy.python.org/dev/peps/pep-0370/#unix-notes
@@ -37,33 +37,33 @@ Example: GNU Bash and tar archives
 
 Let's download the source code for `GNU Bash`_, the default shell on the EOS system. First, begin by switching to the directory containing our source code::
 
-    cd ~/.local/src
+   cd ~/.local/src
 
 The latest version of Bash at this time of writing is 4.3, so that is what we will download. Start by visiting the `Bash home page`_. Under :guilabel:`Downloading Bash`, click the HTTP link. You will be taken to a :wikipedia:`directory index <Webserver_directory_index>` which contains a list of downloadable files. Scroll down to find a file named :file:`bash-4.3.tar.gz`.
 
-Although you can download this file directly using your browser, it is often easier to copy the URL and download on the command line. This is especially true if accessing EOS using SSH. Copy the URL by clicking :guilabel:`Copy Link Location` or similar in your browser, then download the source code using :command:`wget`::
+Although you can download this file directly using your browser, it is often easier to copy the URL and download on the command line. This is especially true if accessing EOS using SSH. Copy the URL by clicking :guilabel:`Copy Link Location` or similar in your browser, then download the source code using :cmd:`wget`::
 
-    wget http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz
+   wget http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz
 
 This should create a :file:`bash-4.3.tar.gz` file in the current working directory. This file is a :wikipedia:`tar archive <Tar_%28computing%29>` which has been compressed with the `GNU zip`_ compression algorithm. A file of this type typically has a ``.tar.gz`` or ``.tgz`` file extension and is colloquially known as a *tarball* [*tarball* refers to tar archives of any or no compression scheme].
 
-The contents of this archive can be extracted using the ``tar`` program as follows::
+The contents of this archive can be extracted using the :cmd:`tar` program as follows::
 
-    tar -xf bash-4.3.tar.gz
+   tar -xf bash-4.3.tar.gz
 
 .. hint::
 
-    :command:`tar` can automatically detect the compression format by the extension, so passing the compression algorithm as you may see elsewhere is usually unnecessary.
+   :cmd:`tar` can automatically detect the compression format by the extension, so passing the compression algorithm as you may see elsewhere is usually unnecessary.
 
 .. warning::
 
-    Most source code tarballs are "well-behaved", meaning that they create one directory which matches the name of the tarball. This is a convention, but is by no means required. Make sure you trust the source of the tarball before extracting the files. You can view the contents of a tarball with the :command:`less` built-in tar viewer::
+   Most source code tarballs are "well-behaved", meaning that they create one directory which matches the name of the tarball. This is a convention, but is by no means required. Make sure you trust the source of the tarball before extracting the files. You can view the contents of a tarball with the :cmd:`less` built-in tar viewer::
 
-        less bash-4.3.tar.gz
+      less bash-4.3.tar.gz
 
 This command should have created a :file:`bash-4.3` directory in the current working directory. Make that directory your working directory::
 
-    cd bash-4.3
+   cd bash-4.3
 
 You are now in the root of the GNU Bash source distribution.
 
@@ -71,9 +71,9 @@ You are now in the root of the GNU Bash source distribution.
 
    If you do not care about saving the original source tarball, you can download and extract simultaneously with::
 
-        wget http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz -O - | tar -xz
+      wget http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz -O - | tar -xz
 
-   Note that you must pass the compression algorithm to :command:`tar` because it is not able to detect the type by file extension when input is given through a pipe.
+   Note that you must pass the compression algorithm to :cmd:`tar` because it is not able to detect the type by file extension when input is given through a pipe.
 
 .. _Bash home page:
 .. _GNU Bash: http://www.gnu.org/software/bash/
@@ -84,27 +84,27 @@ Example: EditorConfig and zip archives
 
 For our zip example, we will download the source code for the `EditorConfig C Core`_. EditorConfig is a project which helps developers establish formatting standards for a project (and is used by |title|!). First switch to the directory containing our source code::
 
-    cd ~/.local/src
+   cd ~/.local/src
 
 The latest version of the EditorConfig C Core at this time of writing is 0.12.0, so that is what we will download. Visit the `download page for EditorConfig C Core 0.12.0`_ and select the link for the source code zip archive. The project also offers a tarball download, but we will use the zip for the purposes of this example.
 
-Download the file with :command:`wget` as shown in the earlier example::
+Download the file with :cmd:`wget` as shown in the earlier example::
 
-    wget http://sourceforge.net/projects/editorconfig/files/EditorConfig-C-Core/0.12.0/source/editorconfig-core-c-0.12.0.zip
+   wget http://sourceforge.net/projects/editorconfig/files/EditorConfig-C-Core/0.12.0/source/editorconfig-core-c-0.12.0.zip
 
-This should create a :file:`editorconfig-core-c-0.12.0.zip` file in the current working directory. This file is a :wikipedia:`zip archive <Zip_%28file_format%29>` just like those you may have seen on your desktop operating system. This file can be extracted using the InfoZip_ :command:`unzip` utility::
+This should create a :file:`editorconfig-core-c-0.12.0.zip` file in the current working directory. This file is a :wikipedia:`zip archive <Zip_%28file_format%29>` just like those you may have seen on your desktop operating system. This file can be extracted using the InfoZip_ :cmd:`unzip` utility::
 
-    unzip editorconfig-core-c-0.12.0.zip
+   unzip editorconfig-core-c-0.12.0.zip
 
 .. warning::
 
-     Unlike source tarballs, zip files sometimes have all files in one directory or sometimes have all files immediately in the root directory. Again, however, this is convention --- make sure you trust the source of the archive before extracting the files. You can view the contents of a zip archive with :command:`less` built-in zip viewer::
+   Unlike source tarballs, zip files sometimes have all files in one directory or sometimes have all files immediately in the root directory. Again, however, this is convention --- make sure you trust the source of the archive before extracting the files. You can view the contents of a zip archive with :cmd:`less` built-in zip viewer::
 
-        less editorconfig-core-c-0.12.0.zip
+      less editorconfig-core-c-0.12.0.zip
 
 This command should have created a :file:`editorconfig-core-c-0.12.0.zip` directory in the current working directory. Make that directory your working directory::
 
-    cd editorconfig-core-c-0.12.0
+   cd editorconfig-core-c-0.12.0
 
 You are now in the root of the Editorconfig C Core source distribution.
 
@@ -131,46 +131,46 @@ Example: GNU Bash
 
 An example of a piece of software that uses Autotools is `GNU Bash`_, the subject of our earlier example. We will compile the version of GNU Bash that we extracted earlier. Start by switching to the source code root directory if not already there::
 
-    cd ~/.local/src/bash-4.3
+   cd ~/.local/src/bash-4.3
 
 The next step is to create the build directory, which we'll create inside the source directory for convenience::
 
-    mkdir build
-    cd build
+   mkdir build
+   cd build
 
 Now, we must configure the software by running the :file:`configure` script.  It is to the :file:`configure` script that we must also pass the all-important ``--prefix`` option. Run the following::
 
-    ../configure --prefix ~/.local
+   ../configure --prefix ~/.local
 
 You will see many lines printed to the terminal, which is the script doing various checks on the system and compiler and adjusting the build to our specific system.
 
 :file:`configure` scripts typically also accept a myriad of other options, which can be viewed with::
 
-    ../configure --help | less
+   ../configure --help | less
 
-Passing other options is typically unnecessary unless you would like to customize the build. Piping to :command:`less` is recommended due to the usual length of the output.
+Passing other options is typically unnecessary unless you would like to customize the build. Piping to :cmd:`less` is recommended due to the usual length of the output.
 
 .. warning::
 
-    Note that::
+   Note that::
 
-        ../configure --prefix=~/.local
+      ../configure --prefix=~/.local
 
-    will *not* work, as Bash will not `expand the tilde`_ properly unless the path is its own argument.
+   will *not* work, as Bash will not `expand the tilde`_ properly unless the path is its own argument.
 
-    .. _expand the tilde: http://www.gnu.org/software/bash/manual/html_node/Tilde-Expansion.html#Tilde-Expansion
+   .. _expand the tilde: http://www.gnu.org/software/bash/manual/html_node/Tilde-Expansion.html#Tilde-Expansion
 
 .. important::
 
-    Many build systems (including Autotools) support both *in-source* and *out-of-source* builds. In-source builds take place when the :file:`configure` script is run in the same directory as the source code, that is::
+   Many build systems (including Autotools) support both *in-source* and *out-of-source* builds. In-source builds take place when the :file:`configure` script is run in the same directory as the source code, that is::
 
-        ./configure
+      ./configure
 
-    Running the :file:`configure` script in any other directory is referred to as an out-of-source build. Out-of-source builds are generally preferred because they allow separation of build artifacts from the source code. However, not all build systems or projects support out-of-source builds. The build illustrated in this example is an out-of-source build.
+   Running the :file:`configure` script in any other directory is referred to as an out-of-source build. Out-of-source builds are generally preferred because they allow separation of build artifacts from the source code. However, not all build systems or projects support out-of-source builds. The build illustrated in this example is an out-of-source build.
 
 After configuring the software, it is time to build. This can be accomplished with::
 
-    make
+   make
 
 Running this command typically produces an avalanche of output. The lines that you see printed are primarily compiler commands, which are printed as they are being run.
 
@@ -178,17 +178,17 @@ After running this command, you should have a workable version of the Bash shell
 
 .. code-block:: console
 
-    $ ./bash --version
-    GNU bash, version 4.3.0(1)-release (x86_64-unknown-linux-gnu)
-    Copyright (C) 2013 Free Software Foundation, Inc.
-    License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+   $ ./bash --version
+   GNU bash, version 4.3.0(1)-release (x86_64-unknown-linux-gnu)
+   Copyright (C) 2013 Free Software Foundation, Inc.
+   License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 
-    This is free software; you are free to change and redistribute it.
-    There is NO WARRANTY, to the extent permitted by law.
+   This is free software; you are free to change and redistribute it.
+   There is NO WARRANTY, to the extent permitted by law.
 
 The final step is to install the files generated by the build. Do this with::
 
-    make install
+   make install
 
 GNU Bash has now been installed to your home directory! Continue reading to find out how to make your locally-installed version override the system version.
 
@@ -199,7 +199,7 @@ CMake
 
 CMake_ is a popular alternative to Autotools as a build system on GNU/Linux. You can usually identify a CMake build system by the presence of a :file:`CMakeLists.txt` file in the root of the source distribution.
 
-The :command:`cmake` program needs to be installed in order to build projects using CMake as a build system. It is installed by default on EOS.
+The :cmd:`cmake` program needs to be installed in order to build projects using CMake as a build system. It is installed by default on EOS.
 
 .. _CMake: http://www.cmake.org/
 
@@ -210,22 +210,22 @@ Example: EditorConfig
 
 An example of a project that uses CMake as a build system is the `EditorConfig C Core`_, the subject of our earlier example. We will compile the version of the EditorConfig C Core that we extracted earlier. Start by switching to the source code root directory if not already there::
 
-    cd ~/.local/src/editorconfig-core-c-0.12.0
+   cd ~/.local/src/editorconfig-core-c-0.12.0
 
 The next step is to create the build directory, which we'll create inside the source directory for convenience::
 
-    mkdir build
-    cd build
+   mkdir build
+   cd build
 
 Now, we must configure the software by running CMake. Similar to the :file:`configure` script, we tell CMake the install prefix at this stage. Run the following::
 
-    cmake -DCMAKE_INSTALL_PREFIX="$HOME/.local" ..
+   cmake -DCMAKE_INSTALL_PREFIX="$HOME/.local" ..
 
 You will see various checks on the system and compiler printed to the terminal as with Autotools.
 
 After configuring the software, it is time to build. This can be accomplished with::
 
-    cmake --build .
+   cmake --build .
 
 During the build, CMake will display which file is currently being built along with a percentage of files built on the left.
 
@@ -233,12 +233,12 @@ After running this command, you should have a workable version of EditorConfig. 
 
 .. code-block:: console
 
-    $ bin/editorconfig --version
-    EditorConfig C Core Version 0.12.0
+   $ bin/editorconfig --version
+   EditorConfig C Core Version 0.12.0
 
 The final step is to install the files generated by the build. Do this with::
 
-    cmake --build . --target install
+   cmake --build . --target install
 
 Other Build Systems
 -------------------
@@ -257,13 +257,13 @@ You can always use executables installed to your home directory by typing the fu
 
 .. code-block:: console
 
-    $ ~/.local/bin/bash --version
-    GNU bash, version 4.3.0(1)-release (x86_64-unknown-linux-gnu)
-    Copyright (C) 2013 Free Software Foundation, Inc.
-    License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+   $ ~/.local/bin/bash --version
+   GNU bash, version 4.3.0(1)-release (x86_64-unknown-linux-gnu)
+   Copyright (C) 2013 Free Software Foundation, Inc.
+   License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 
-    This is free software; you are free to change and redistribute it.
-    There is NO WARRANTY, to the extent permitted by law.
+   This is free software; you are free to change and redistribute it.
+   There is NO WARRANTY, to the extent permitted by law.
 
 For obvious reasons, typing the full path can get tedious if you are using the executable frequently. In addition, other utilities may assume that the executable in question is available on the :envvar:`PATH` and not in a custom prefix.
 
@@ -273,14 +273,14 @@ To illustrate this, note that when typing:
 
 .. code-block:: console
 
-    $ which bash
-    /usr/bin/bash
+   $ which bash
+   /usr/bin/bash
 
 the shell will still default to using the system Bash, which happens to be :file:`/usr/bin/bash`.
 
 To resolve both of these issues, we can add the executable's parent directory to executable search path, stored in the environment variable :envvar:`PATH`. Open your :file:`~/.bash_profile` in an editor and add the following line to the end::
 
-    export PATH=~/.local/bin:$PATH
+   export PATH=~/.local/bin:$PATH
 
 This line prepends the path of your locally-installed executables to the executable search path. Your executable will now not only be accesible without typing the full path, but it will also override any executables of the same name in system hierarchies.
 
@@ -288,12 +288,12 @@ This line prepends the path of your locally-installed executables to the executa
 
 .. code-block:: console
 
-    $ which bash
-    ~/.local/bin/bash
+   $ which bash
+   ~/.local/bin/bash
 
 Now you should be able to simply type::
 
-    bash
+   bash
 
 to start the GNU Bash installed to your home directory!
 
@@ -302,13 +302,13 @@ Man and Info Paths
 
 Although you are now able to run your new Bash without typing the full path, the commands::
 
-    man bash
-    info bash
+   man bash
+   info bash
 
-still show the Bash documentation for the system Bash. Although this may not seem like a big deal, small changes between versions of the same program can be the difference between an working and non-working script. To allow :command:`man` and :command:`info` to find locally-installed documentation, add the following lines to your :file:`~/.bash_profile`::
+still show the Bash documentation for the system Bash. Although this may not seem like a big deal, small changes between versions of the same program can be the difference between an working and non-working script. To allow :cmd:`man` and :cmd:`info` to find locally-installed documentation, add the following lines to your :file:`~/.bash_profile`::
 
-    export MANPATH=~/.local/share/man:~/.local/man:$MANPATH
-    export INFOPATH=~/.local/share/info:$INFOPATH
+   export MANPATH=~/.local/share/man:~/.local/man:$MANPATH
+   export INFOPATH=~/.local/share/info:$INFOPATH
 
 There is unfortunately some inconsistency with the location of installed man pages, which why we added both directories to the :envvar:`MANPATH`. :envvar:`INFOPATH` does not have these problems.
 
@@ -330,9 +330,9 @@ As with the project itself, one option is to ask the |the-sysadmin|_ to install 
   - The `Autoconf manual on Preset Output Variables`_
   - The `Wikipedia entry on rpath`_
 
-  You can see the default paths in which the system looks for libraries by running::
+You can see the default paths in which the system looks for libraries by running::
 
-      ldconfig -v | less
+   ldconfig -v | less
 
 Conclusion
 ==========

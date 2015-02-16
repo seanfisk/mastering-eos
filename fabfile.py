@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 
-# Fabric control file
-# See http://fabfile.org/
+"""Fabric control file
+
+See <http://fabfile.org/>
+"""
 
 import os
 from pipes import quote as shquote
 import re
 
 import six
-from fabric.api import env, task, runs_once, execute, run, get, put
+from fabric.api import ( # pylint: disable=import-error
+    env, task, runs_once, execute, run, get, put)
 from texttable import Texttable
 
 # Allow being overridden from the command line.
@@ -91,6 +94,7 @@ def make_ssh_fingerprints_table(output):
 @task
 @runs_once
 def download_vncts_file(output):
+    """Download the ``vncts`` file from EOS."""
     get(remote_path='/etc/xinetd.d/vncts',
         # local_path can be a file-like object.
         local_path=output)
@@ -98,6 +102,7 @@ def download_vncts_file(output):
 @task
 @runs_once
 def download_hosts_file(output):
+    """Download the ``hosts`` file from EOS."""
     get(remote_path='/etc/hosts', local_path=output)
 
 @task
