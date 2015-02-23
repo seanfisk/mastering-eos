@@ -1,5 +1,5 @@
 # For the poster, LaTeX minted package
-Pygments==1.6
+Pygments==2.0.2
 
 # Sphinx, for the manual
 Sphinx==1.2.3
@@ -14,28 +14,28 @@ sphinx-rtd-theme==0.1.6
 #pdfrw==0.1
 
 # Fabric, used for fetching info from and deployment to EOS
-Fabric==1.10.0
+Fabric==1.10.1
 ecdsa==0.11
-paramiko==1.15.1
+paramiko==1.15.2
 pycrypto==2.6.1
 
 # GitHub pages deployment
 ghp-import==0.4.1
 
 # Table parsing/generation
-texttable==0.8.1
-grako==3.4.1
+texttable==0.8.2
+grako==3.4.3
 
 # Generating motd, grako
-colorama==0.3.2
+colorama==0.3.3
 
-# For Python 2/3 compat
-six==1.8.0
+# For Python 2/3 compat, and a dependency of astroid
+six==1.9.0
 
 # EditorConfig; see .editorconfig
-EditorConfig==0.11.4
+EditorConfig==0.12.0
 
 # pylint
-pylint==1.4.0
-astroid==1.3.2
+pylint==1.4.1
 logilab-common==0.63.2
+astroid==1.3.4

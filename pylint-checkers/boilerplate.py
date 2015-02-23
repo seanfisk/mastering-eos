@@ -2,6 +2,10 @@
 
 """Pylint module boilerplate checker."""
 
+# Uses file API; Python 2 only
+
+import codecs
+
 from pylint.interfaces import IRawChecker
 from pylint.checkers import BaseChecker
 from pylint.checkers.utils import check_messages
@@ -26,28 +30,23 @@ class BoilerplateChecker(BaseChecker):
     def process_module(self, module):
         """Ensure the module has the correct boilerplate."""
         add_msg = lambda l: self.add_message('source-encoding', line=l)
-        stream = module.file_stream
-        # TODO: When astroid gets updated, change to stop seeking.
-        stream.seek(0) # Make sure we are at the beginning of the file
-        # 'module.file_stream' is a 'io.BufferedReader', so any reads will be
-        # in binary mode. We would like to wrap it with 'io.TextIOWrapper' read
-        # it in text mode [this is basically what open(...) does]; however,
-        # this apparently closes the file afterward which is a problem.
+        # 'module.file_stream' is a file object opened in binary mode. We need
+        # text mode, so we open it using a decoder.
         #
         # Following the lead of EncodingChecker in 'checkers/misc.py' in the
         # pylint source tree, we default to ASCII. This is also specified under
         # 'Defining the Encoding' in PEP 263. Funny enough, this is the exact
         # problem this checker is designed to solve.
-        encoding = module.file_encoding or 'ascii'
-        readline = lambda: next(stream).decode(encoding)
+        stream = codecs.getreader(module.file_encoding or 'ascii')(
+            module.file_stream)
         try:
-            first_line = readline()
+            first_line = next(stream)
         except StopIteration:
             return # Empty file, always valid
         else:
             if REQUIRED_CODING not in first_line:
                 try:
-                    second_line = readline()
+                    second_line = next(stream)
                 except StopIteration:
                     # One-line file; did not contain required declaration
                     add_msg(1)
