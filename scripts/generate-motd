@@ -9,7 +9,8 @@ import colorama
 from colorama import Fore, Back, Style
 colorama.init()
 
-ANSI_RE = colorama.ansitowin32.AnsiToWin32.ANSI_RE
+# Copied from colorama/ansitowin32.py
+ANSI_RE = re.compile('\033\[((?:\d|;)*)([a-zA-Z])')
 WIDTH = 80
 
 TEXT_ANSI = Fore.WHITE
