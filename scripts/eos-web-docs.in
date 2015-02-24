@@ -5,8 +5,7 @@ import sys
 import argparse
 import webbrowser
 
-URL = 'http://seanfisk.github.io/mastering-eos/'
-
+URL = @URL@
 
 def main(argv):
     arg_parser = argparse.ArgumentParser(

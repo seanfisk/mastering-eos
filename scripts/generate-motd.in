@@ -21,7 +21,7 @@ LINES = [
     'faculty, students, and other authorized users.',
     '',
     TEXT_ANSI + 'EOS Lab documentation is available by visiting',
-    HIGHLIGHT_ANSI + 'http://seanfisk.github.io/mastering-eos/',
+    HIGHLIGHT_ANSI + @URL@,
     TEXT_ANSI + 'or by running',
     (TEXT_ANSI + '  -or-  ').join([
         TEXT_ANSI + '$ ' + HIGHLIGHT_ANSI + cmd for cmd in [
