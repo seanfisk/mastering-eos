@@ -33,6 +33,8 @@ def build(ctx):
     # fonts have always been a bit finicky, so we substitute the absolute paths
     # in to avoid any issues. We've moved the minted external files into the
     # TeX source files themselves. Not elegant, but it works.
+    #
+    # This also substitutes in the value of the project's URL.
     ctx(features='subst',
         target=sty_out_node,
         source=sty_in_node,

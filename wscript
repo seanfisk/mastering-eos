@@ -86,6 +86,9 @@ def options(ctx):
     ctx.recurse(SUBDIRS)
 
 def configure(ctx):
+    # Assign the URL for substitution in various places.
+    ctx.env.URL = 'http://seanfisk.com/mastering-eos/'
+
     ctx.find_program('pylint')
 
     ctx.load('tex')
@@ -219,6 +222,16 @@ def build(ctx):
             for var, value in six.iteritems(maxes):
                 contents = contents.replace('@{0}@'.format(var), value)
             out_node.write(contents)
+
+    # Build the script with URLs in them.
+    url = repr(ctx.env.URL)
+    for script_basename in ['eos-web-docs', 'generate-motd']:
+        in_node = ctx.path.find_resource(['scripts', script_basename + '.in'])
+        ctx(features='subst',
+            target=in_node.change_ext(''),
+            source=in_node,
+            chmod=waflib.Utils.O755,
+            URL=url)
 
     # Sphinx won't be able to detect that 'index.rst' hasn't been created yet,
     # so add a group to make sure it's been created.
