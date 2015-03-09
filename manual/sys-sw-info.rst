@@ -200,6 +200,7 @@ If the program was installed with a package manager, the package manager is able
 If you use :ref:`linuxbrew-section`, it will also print information about its packages:
 
 .. code-block:: console
+   :linenos:
    :emphasize-lines: 4
 
    $ brew info bash
@@ -214,7 +215,7 @@ If you use :ref:`linuxbrew-section`, it will also print information about its pa
    In order to use this build of bash as your login shell,
    it must be added to /etc/shells.
 
-Note that Linuxbrew shows the current version of the package (line 2) *and* the version that is installed (highlighted line) [if one is installed].
+Note that Linuxbrew shows the current version of the package (line 2) *and* the version that is installed (highlighted line 4) [if one is installed].
 
 Web Server
 ==========
