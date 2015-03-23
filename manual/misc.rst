@@ -77,3 +77,20 @@ mesg
 ----
 
 To control whether someone can :ref:`write` to your terminal use the :cmd:`mesg` command. By default :cmd:`write` is allowed, to turn it off use ``mesg n``.
+
+xclip
+=====
+
+X Windows is the graphical subsytem underlying GNU/Linux desktop managers such as GNOME and KDE. X Windos has two clipboards: ``PRIMARY`` and ``CLIPBOARD``. Data is stored to ``PRIMARY`` when it is highlighted. Data is stored to ``CLIPBOARD`` when it is highlighted and explicitly copied. xsel is another program that can be used simularly to xclip but is not covered here.
+ 
+* To display the information in clipboard use ``xclip -selection clipboard -out``.
+* To display the information stored in primary use :cmd:`xclip -out` because it
+  is default or ``xclip -selection primary -out``. 
+* Clicking the middle mouse button will also paste what is in the clipboard. 
+* To save the contents of the clipboard to a file use
+  ``xclip -out > ~/filename.txt``. 
+* A full list of commands can be found by using ``man xclip``.
+* It is recomended to use aliases with xclip.
+* Alias to paste clipboard ``alias clipout='xclip -selection clipboard -out'``.
+* Alias to copy to clipboard ``alias clipin='xclip -selection clipboard -in'``.
+
