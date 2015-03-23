@@ -12,3 +12,4 @@ Begin by reading about the :ref:`std-hierarchy`, and then try your hand at :ref:
    std-hierarchy
    manual-install
    linuxbrew
+   user-hierarchies

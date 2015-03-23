@@ -1,0 +1,43 @@
+#!/usr/bin/env python
+
+from __future__ import print_function
+import subprocess
+from os.path import join
+import argparse
+from tempfile import NamedTemporaryFile
+
+SHELL_DIR = join('manual', 'shell')
+PROFILE_PATH = join(SHELL_DIR, 'profile.bash')
+RC_PATH = join(SHELL_DIR, 'rc.bash')
+RC_SOURCE_LINE = 'source ~/.bashrc\n'
+
+def main():
+    arg_parser = argparse.ArgumentParser(
+        description='Run Bash with the example profile and rc.')
+    arg_parser.parse_args()
+
+    profile_lines = []
+    with open(PROFILE_PATH) as profile_file:
+        # Comment out sourcing of the rc file from the profile file.
+        for line in profile_file:
+            if line == RC_SOURCE_LINE:
+                line = '#' + line
+            profile_lines.append(line)
+    with NamedTemporaryFile(suffix='.bash', prefix='meos-rc-') as new_rc_file:
+        new_rc_file.write(''.join(profile_lines))
+        print(file=new_rc_file)
+        with open(RC_PATH) as rc_file:
+            for line in rc_file:
+                new_rc_file.write(line)
+        new_rc_file.flush()
+        print('using rc file: {}'.format(new_rc_file.name))
+        subprocess.check_call(
+            # TODO: This should probably have '--login', but if it does it
+            # won't source the rc file...
+            ['bash', '--noprofile', '--rcfile', new_rc_file.name],
+            # TODO: Probably not completely accurate to give it a *blank*
+            # environment.
+            env={})
+
+if __name__ == '__main__':
+    main()

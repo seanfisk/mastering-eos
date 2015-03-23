@@ -33,7 +33,7 @@ First, follow the instructions in :ref:`ready-prefix`. Then run the following co
    (mkdir -p share/man/man1 && cd share/man/man1 && wget http://inxi.googlecode.com/svn/trunk/inxi.1.gz)
    popd
 
-After installing, follow the steps for :ref:`adjust-env`. You should now be able to run :cmd:`inxi` from the command line. inxi is a command-line program, so it can be run through SSH or a graphical terminal emulator.
+After installing, follow the steps for using software installed to :ref:`user-hierarchies`. You should now be able to run :cmd:`inxi` from the command line. inxi is a command-line program, so it can be run through SSH or a graphical terminal emulator.
 
 To show a basic, medium-length output::
 
@@ -84,7 +84,7 @@ Next, build and install the program::
 
    cmake --build . --target install
 
-After installing, follow the steps for :ref:`adjust-env`. Once this is done, run::
+After installing, follow the steps for using software installed to :ref:`user-hierarchies`. Once this is done, run::
 
    hardinfo
 

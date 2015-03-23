@@ -96,7 +96,6 @@ Emacs 24 includes a package manager called ELPA_ (Emacs Lisp Package Archive). I
 
 Emacs is available for many platforms including Windows, Mac OS X, and GNU/Linux.
 
-.. _GNU Emacs: https://gnu.org/software/emacs/
 .. _guided tour of Emacs features: http://www.gnu.org/software/emacs/tour/
 .. _EmacsMovies: http://emacsmovies.org/blog/where_to_begin/
 .. _Emacs Rocks!: http://emacsrocks.com/
