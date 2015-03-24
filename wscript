@@ -68,7 +68,7 @@ def options(ctx):
     # We need to use XeLaTeX or LuaLaTeX to support custom fonts on our poster.
     # We'd like to use LuaLaTeX, as it's been named as the successor to pdfTeX.
     # However, our LuaLaTeX installation on EOS is broken at this time of
-    # writing (2014-09-25). XeLaTex works fine, so we've made it the default.
+    # writing (2014-09-25). XeLaTeX works fine, so we've made it the default.
     latex_engines = ['xelatex', 'lualatex']
     default_latex_engine = latex_engines[0]
     ctx.add_option(
