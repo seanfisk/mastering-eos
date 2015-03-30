@@ -48,11 +48,12 @@ Special Thanks
 
 Thanks to GVSU students:
 
-- James Donely for getting me into programming, user-level installation, and far more than I could possibly remember or list here.
+- James Donley for getting me into programming, user-level installation, and far more than I could possibly remember or list here.
 - Dave Medawar for teaching me about SSH, Bash, VNC, remote printing, the VPN, web servers, and much more.
 - John Roys and James Vanderzouwem for advice and encouragement.
 - Paul Wand for learning to program with me.
 - Joseph Roth for teaching me how to use Git.
+- Sam DeHaan for working for many hours on various projects with me in the Arch lab.
 - Kurt O'Hearn for showing me LaTeX and helping me with system administration.
 - Taylor Countryman, Chelsea Champion, and Robb Nemecek for listening to endless amounts of technobabble from me.
 
