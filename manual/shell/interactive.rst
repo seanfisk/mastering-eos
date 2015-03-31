@@ -41,7 +41,7 @@ An alias can also be used to remember a lesser-used command. For example::
    bash-4.3/
    ...
 
-Notice that we can still pass arguments to the alias. In fact, it almost exactly like typing those characters at the command-line.
+Notice that we can still pass arguments to the alias. In fact, it is almost exactly like typing those characters at the command-line.
 
 .. _shell-builtins:
 
@@ -87,7 +87,7 @@ In certain cases, Bash will interpret the command you give it in a different way
 
 This is because Bash splits the command line it is given based upon spaces, and passes each argument to the program in question. To get Bash to interpret the spaces as an actual character, use :bash:`single quotes <Single-Quotes>`::
 
-   $ ls 'directory with spaces'
+   $ ls 'directory name with spaces'
    file1.txt  file2.txt
 
 Single quotes remove any special meaning from all the characters inside them. *Always use single quotes when the characters inside the quotes should not be interpreted by the shell.*
@@ -95,7 +95,7 @@ Single quotes remove any special meaning from all the characters inside them. *A
 :bash:`Double quotes <Double-Quotes>` may be used to expand only the meaning of certain shell metacharacters. They are most often used for variable substitution. For example, to print your current working directory::
 
    $ echo "My current directory is: $PWD"
-   My current directory is: /home/smithj/awesome directory
+   My current directory is: /home/smithj/directory name with spaces
 
 Double quotes are very frequently used, but it is easy to use them incorrectly. Know their behavior and test your commands with different values to make sure they are behaving correctly.
 
@@ -104,7 +104,7 @@ Double quotes are very frequently used, but it is easy to use them incorrectly. 
 Environment Variables
 =====================
 
-:wikipedia:`A process' environment <Environment_variable>` is a mapping of key-value pairs possesed by every running process in the system. They are typically used to modify the behavior of programs. You are probably familiar with some common ones; for example, :envvar:`PATH`, :envvar:`EDITOR`, and :envvar:`PWD`. Environment variable names on Linux are case-sensitive and can contain most characters, although by convention they are usually named in all caps with words separated by underscores.
+:wikipedia:`A process' environment <Environment_variable>` is a mapping of key-value pairs possessed by every running process in the system. They are typically used to modify the behavior of programs. You are probably familiar with some common ones; for example, :envvar:`PATH`, :envvar:`EDITOR`, and :envvar:`PWD`. Environment variable names on Linux are case-sensitive and can contain most characters, although by convention they are usually named in all caps with words separated by underscores.
 
 Bash supports manipulation of the environment variables for programs it runs (*child processes*) in various ways. To see what environment variables Bash is giving to its child processes, use the :cmd:`env` program::
 
@@ -118,20 +118,20 @@ In Bash, regular variables can be set in any shell session rather easily::
    $ GVSU_CS='Computer Science'
    $ GVSU_IS='Information Systems'
 
-However, these variables are only seen by commands and operations built into the shell. After settings these variables, verify this with :cmd:`env`::
+However, these variables are only seen by commands built into the shell. After settings these variables, verify this with :cmd:`env`::
 
-   $ env | egrep '^GVSU'
+   $ env | grep -E '^GVSU'
 
-However, you can instruct Bash to send these variables to child processes by using the :cmd:`export` built-in::
+You should see no output. However, you can instruct Bash to send these variables to child processes by using the :cmd:`export` built-in::
 
-   $ export GVSU_CIS
-   $ env | egrep '^GVSU'
+   $ export GVSU_CS
+   $ env | grep -E '^GVSU'
    GVSU_CS=Computer Science
 
 Notice that ``GVSU_CS`` has been sent to the program, but ``GVSU_IS`` has not. When the value of the variable is changed, the value sent to the child processes is also changed. It does not need to be exported again::
 
    $ GVSU_CS='Cool Stuff'
-   $ env | egrep '^GVSU'
+   $ env | grep -E '^GVSU'
    GVSU_CS=Cool Stuff
 
 To see all variables in Bash marked for export, use the following command::
@@ -144,8 +144,10 @@ To see all variables in Bash marked for export, use the following command::
 Here some other shortcuts to do with environment variables::
 
    $ export GVSU_CS='Cool Stuff' # Set and export in one line
-   $ GVSU_CS='Not my major' env | egrep '^GVSU' # Set for one command only
+   $ GVSU_CS='Not my major' env | grep -E '^GVSU' # Set for one command only
    GVSU_CS=Not my major
+
+.. _shell-env-vars-example:
 
 Example
 -------
@@ -164,9 +166,9 @@ You should see each respective editor open up when the command is run!
 Pipelines
 =========
 
-The concept of a :wikipedia:`pipeline <Pipeline_(Unix)>` is central to the philosophy of UNIX-like operating systems. A pipeline is typically used to combine the capabilities of multiple programs to perform a task. This is accomplished by sending the output of each program to the next program in the series. Pipelines can be formed easily using the shell with the vertical bar (aka pipe) character::
+The concept of a :wikipedia:`pipeline <Pipeline_(Unix)>` is central to the philosophy of Unix-like operating systems. A pipeline is typically used to combine the capabilities of multiple programs to perform a task. This is accomplished by sending the output of each program to the next program in the series. Pipelines can be formed easily using the shell with the vertical bar (aka pipe) character::
 
-   $ ls | grep -F cis162
+   $ ls | grep -F cis162 # Look for files/directories with 'cis162' in the name
 
 Example: Paging
 ---------------
@@ -186,11 +188,11 @@ Often times, a command will produce output which fills the screen. The :cmd:`dme
    [    0.000000] BIOS-e820: [mem 0x0000000000100000-0x000000001fffffff] usable
    ...
 
-If you want to see anything besides the last screenful of output, one option is to use the scrollback feature provided by most terminal emulators (just scroll up). However, scrollback is limited and does not work under multiplexers such as tmux. Another option is to use a pager. A *pager* is a program that allows you to browse and scroll through the output of a command, much like opening the output of the command in an editor. Two defaults pagers available on most UNIX-like systems are :cmd:`less` and :cmd:`more`. While :cmd:`more` allows only paging forward, :cmd:`less` allows scrolling forward and back, making :cmd:`less` the preferred choice for most tasks. To page the output of :cmd:`dmesg`, type::
+If you want to see anything besides the last screenful of output, one option is to use the scrollback feature provided by most terminal emulators (just scroll up). However, scrollback is limited and does not work under multiplexers such as tmux (although tmux has its own scrollback buffer). Another option is to use a pager. A *pager* is a program that allows you to browse and scroll through the output of a command, much like opening the output of the command in an editor. Two default pagers available on most Unix-like systems are :cmd:`less` and :cmd:`more`. While :cmd:`more` allows only paging forward, :cmd:`less` allows scrolling forward and back, making :cmd:`less` the preferred choice for most tasks. To page the output of :cmd:`dmesg`, type::
 
    $ dmesg | less
 
-You will be taken into a text-based user interface in which you can use arrow keys, Vim keys, or Emacs keys to scroll around. You can press ``q`` to quit.
+You will be taken into a text-based user interface in which you can use arrow keys, Vim keys, or Emacs keys to scroll around. Press ``q`` to quit.
 
 Example: Filtering
 ------------------
@@ -428,6 +430,10 @@ Because :cmd:`find` tries to look in all subdirectories, you will likely see an 
 
 The output should now be much more reasonable, and not include any *Permission denied* errors!
 
+.. warning::
+
+   Be aware that redirecting stderr to :file:`/dev/null` discards *all* error messages, not just *Permission denied* errors. For example, if the :file:`/var` directory did not exist (unlikely, but possible), the error message reporting that would not be shown.
+
 Appending Files
 ---------------
 
@@ -451,9 +457,9 @@ However, this gets unwieldy quickly. Fortunately, the operating system (which th
    $ ls mydir
    file1.txt  file2.txt
 
-This feature is the the :envvar:`PATH` environment variable, and it is a very important concept on Unix-like systems, both for interactive and scripted commands. Despite its importance, the concept is rather simple: the :envvar:`PATH` environment variable contains a list of paths to search for binaries.
+This feature is the the :envvar:`PATH` environment variable, and it is a very important concept on Unix-like systems, both for interactive and scripted commands. Despite its importance, the concept is rather simple: the :envvar:`PATH` environment variable contains a list of paths to search for executables.
 
-The :envvar:`PATH` variable contains a list of paths separated by colons (``:``). When instructed to do so, the shell searches through these paths looking for a binary with the given relative path. You can view your :envvar:`PATH` with::
+The :envvar:`PATH` variable contains a list of paths separated by colons (``:``). When instructed to do so, the shell searches through these paths looking for a executable with the given relative path. You can view your :envvar:`PATH` with::
 
    $ echo $PATH
    /usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
@@ -476,7 +482,7 @@ Your output will probably contain more paths, and trying to decipher them from a
       /usr/bin
       /usr/local/sbin
       /usr/sbin
-      $ alias path-print='(IFS='"$'\n'"'; echo "${path[*]}")'
+      $ alias path-print='(IFS='"$'\n'"'; echo "${path[*]}")' # similar to the Bash technique
       $ echo "${PATH//:/\n}"
       /usr/local/bin
       /usr/bin
@@ -652,7 +658,7 @@ Various utilities can help streamline your use of the shell. Although they take 
 Directory Navigation
 --------------------
 
-One frequent task which can be expidited by utilities is changing directories. There are a few different tools which are popular for this task.
+One frequent task which can be expedited by utilities is changing directories. There are a few different tools which are popular for this task.
 
 The first entry in this field is autojump_. autojump is *a cd command that learns*. By simply changing directories with :cmd:`cd` as usual, you can teach autojump to learn your most frequently-used directories. You can then jump to a frequently-used directory with the :cmd:`j` command. autojump uses Python and is available under a `variety of shells <https://github.com/joelthelion/autojump#requirements>`_.
 
@@ -683,7 +689,7 @@ Frameworks
 
 There are a great many frameworks out there for shell enhancement and customization. One of the first to become popular was `Oh My Zsh`_, a giant framework of functions, themes, and plugins for :ref:`zsh`. Zsh also has a number of other frameworks, listed in unixorn's list of awesome-zsh-plugins_, which includes a list of frameworks, many based on Oh My Zsh. Oh My Zsh has spawned a number of frameworks for other shells, including `Bash it`_ for :ref:`bash` and `Oh My Fish!`_ for :ref:`fish`.
 
-Because the so-called "dotfiles" are an important part of customizing your terminal experience, many people use version control to track and store their dotfiles. We recommend visiting dotfiles.github.io_, an unofficial guide to storing your dotfiles on GitHub_ using Git_. This site includes example dotfiles, lists of frameworks for shells and editors, and dotfile management utilities. For anything more than trivial customizations, tracking your dotfiles with a version control system is highly recommended.abc
+Because the so-called "dotfiles" are an important part of customizing your terminal experience, many people use version control to track and store their dotfiles. We recommend visiting dotfiles.github.io_, an unofficial guide to storing your dotfiles on GitHub_ using Git_. This site includes example dotfiles, lists of frameworks for shells and editors, and dotfile management utilities. For anything more than trivial customizations, tracking your dotfiles with a version control system is highly recommended.
 
 .. _Oh My Zsh: http://ohmyz.sh/
 .. _awesome-zsh-plugins: https://github.com/unixorn/awesome-zsh-plugins

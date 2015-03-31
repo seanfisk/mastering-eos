@@ -7,7 +7,7 @@ $ '
 
 # Aliases and functions
 alias ll='ls -l' # long format
-alias la='ls -la' # long format, show all including hidden files
+alias la='ls -la' # long format; show all including hidden files
 alias u='cd ..' # go up a directory
 alias path-print='echo "${PATH//:/'$'\n''}"'
 cdl() { cd "$1" && ls; } # cd then list

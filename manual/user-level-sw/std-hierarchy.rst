@@ -4,9 +4,9 @@
  The Standard Hierarchy
 ========================
 
-Before installing software on your own, it is important to understand the concept of the standard hierarchy. The standard hierarchy is a way of organizing files on the filesystem such that it may be used cohesively by multiple programs. If you are a Windows or Mac OS X user, you may be used to programs having their own subdirectories of :file:`C:\\Program Files` or :file:`/Applications`, respectively. However, UNIX-like machines do not typically work in this way, electing instead to separate installed files by type or purpose.
+Before installing software on your own, it is important to understand the concept of the standard hierarchy. The standard hierarchy is a way of organizing files on the filesystem such that it may be used cohesively by multiple programs. If you are a Windows or Mac OS X user, you may be used to programs having their own subdirectories in :file:`C:\\Program Files` or :file:`/Applications`, respectively. However, Unix-like machines do not typically work in this way, electing instead to separate installed files by type or purpose.
 
-The root hierarchy, :file:`/`, is the directory which contains all other files. Files which are absolutely essential to the system's operation may be installed here. The primary hierarchy for programs used by a typical user is the :file:`/usr` hierarchy. Both these hierarchies can contain each of the following directories:
+The root hierarchy, :file:`/`, is the directory which contains all other files. Files which are absolutely essential to the system's operation may be installed here. The primary hierarchy for programs used by a standard user is the :file:`/usr` hierarchy. Both these hierarchies can contain each of the following directories:
 
 +----------------------+------------------------------------------------------------------------------------------+
 |Name                  |Purpose                                                                                   |
@@ -35,7 +35,7 @@ For more information on the standard hierarchy, please see the very well-written
 .. _Filesystem Hierarchy Standard: http://www.pathname.com/fhs/
 .. [#etc] Unlike most hierarchy directories which contain files related to other files in their hierarchy, configuration files in :file:`/etc` are usually used to configure programs in many different hierarchies. Software configuration is a complex beast --- consult each specific piece of software's documentation for the exact files used for configuration.
 
-Files in the root and :file:`/usr` hierarchies are usually readable but not writable by ordinary users. Ordinary users typically only have one directory to where persistent data can be written: their home directory. This is typically :samp:`/home/{username}`. As such, this is the place where a user installs their own programs. Although the system hierarchies cannot be written by a standard user, the structure of these system hierarchies is typically mirrored by hierarchies created in a user's home directory.
+Files in the root and :file:`/usr` hierarchies are usually readable but not writable by standard users. Standard users usually only have one directory to which persistent data can be written: their home directory. This is typically :samp:`/home/{username}`. As such, this is the place where a user installs their own programs. Although the system hierarchies cannot be written by a standard user, the structure of these system hierarchies is often mirrored by hierarchies created in a user's home directory.
 
 .. tip::
 

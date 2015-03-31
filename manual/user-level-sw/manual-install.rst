@@ -13,7 +13,7 @@ However, due to the myriad of different GNU/Linux distributions, software for GN
 Ready the Prefix
 ================
 
-The hierarchy to which a program is installed is typically called its *prefix*. Most build systems will install by default to :file:`/usr/local`, the system hierarchy typically used for custom-installed programs or programs compiled from source. However, because a standard user cannot write to this prefix, we are required to change our installion prefix to a directory within our home directory.
+The hierarchy to which a program is installed is typically called its *prefix*. Most build systems will install by default to :file:`/usr/local`, the system hierarchy typically used for custom-installed programs or programs compiled from source. However, because a standard user cannot write to this prefix, we are required to change our installation prefix to a directory within our home directory.
 
 The prefix that we recommend for manually-installed user-level programs is :file:`~/.local`, which is the hidden :file:`.local` directory immediately within your home directory. This directory has some precedent, being `used by Python`_ and `in the Freedesktop specifications`_. Setting this prefix is the primary step to successfully installing user-level software.
 
@@ -102,7 +102,7 @@ This should create a :file:`editorconfig-core-c-0.12.0.zip` file in the current 
 
       less editorconfig-core-c-0.12.0.zip
 
-This command should have created a :file:`editorconfig-core-c-0.12.0.zip` directory in the current working directory. Make that directory your working directory::
+This command should have created a :file:`editorconfig-core-c-0.12.0` directory in the current working directory. Make that directory your working directory::
 
    cd editorconfig-core-c-0.12.0
 

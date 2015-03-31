@@ -72,7 +72,7 @@ Follow the directions for your session for :ref:`shell-startup-apply`. After thi
 Managing Paths
 ==============
 
-Although the previous ``export`` commands work fine, there is a lot of repitition, especially if you would like to use :ref:`linuxbrew-section` as well. In this case, the following snippet from the :ref:`shell-example-files` is recommended as a replacement:
+Although the previous ``export`` commands work fine, there is a lot of repetition, especially if you would like to use :ref:`linuxbrew-section` as well. In this case, the following snippet from the :ref:`shell-example-files` is recommended as a replacement:
 
 .. literalinclude:: ../shell/profile.bash
    :language: bash
