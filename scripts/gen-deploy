@@ -49,7 +49,7 @@ def main(argv):
         '/usr/bin/ssh',
         HOST,
         ' && '.join([
-            'source ~/.bash_profile'
+            'source ~/.bash_profile',
             'cd {0}'.format(remote_repo_path),
             'scripts/auto-deploy',
         ]),
