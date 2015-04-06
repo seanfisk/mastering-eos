@@ -264,7 +264,7 @@
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
 <p>If you do not care about saving the original source tarball, you can download and extract simultaneously with:</p>
-<div class="highlight-bash"><div class="highlight"><pre>wget http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz -O - | tar -xz
+<div class="highlight-bash"><div class="highlight"><pre>wget http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz -O - <span class="p">|</span> tar -xz
 </pre></div>
 </div>
 <p class="last">Note that you must pass the compression algorithm to <tt class="cmd docutils literal"><span class="pre">tar</span></tt> because it is not able to detect the type by file extension when input is given through a pipe.</p>
@@ -324,7 +324,7 @@
 </div>
 <p>You will see many lines printed to the terminal, which is the script doing various checks on the system and compiler and adjusting the build to our specific system.</p>
 <p><tt class="file docutils literal"><span class="pre">configure</span></tt> scripts typically also accept a myriad of other options, which can be viewed with:</p>
-<div class="highlight-bash"><div class="highlight"><pre>../configure --help | less
+<div class="highlight-bash"><div class="highlight"><pre>../configure --help <span class="p">|</span> less
 </pre></div>
 </div>
 <p>Passing other options is typically unnecessary unless you would like to customize the build. Piping to <tt class="cmd docutils literal"><span class="pre">less</span></tt> is recommended due to the usual length of the output.</p>
@@ -382,7 +382,7 @@
 </pre></div>
 </div>
 <p>Now, we must configure the software by running CMake. Similar to the <tt class="file docutils literal"><span class="pre">configure</span></tt> script, we tell CMake the install prefix at this stage. Run the following:</p>
-<div class="highlight-bash"><div class="highlight"><pre>cmake -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="s2">&quot;$HOME/.local&quot;</span> ..
+<div class="highlight-bash"><div class="highlight"><pre>cmake -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.local&quot;</span> ..
 </pre></div>
 </div>
 <p>You will see various checks on the system and compiler printed to the terminal as with Autotools.</p>
@@ -475,7 +475,7 @@ info bash
 </li>
 </ul>
 <p>You can see the default paths in which the system looks for libraries by running:</p>
-<div class="highlight-bash"><div class="highlight"><pre>ldconfig -v | less
+<div class="highlight-bash"><div class="highlight"><pre>ldconfig -v <span class="p">|</span> less
 </pre></div>
 </div>
 </div>
@@ -508,7 +508,7 @@ info bash
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/d84df65">d84df65</a> built 2015-03-13 14:24:47 EDT.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/70e679a">70e679a</a> built 2015-04-06 15:36:20 EDT.<br />
     </p>
   </div>
 

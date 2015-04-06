@@ -278,16 +278,16 @@
 <td><tt class="docutils literal"><span class="pre">b5:ce:1c:6e:58:ee:8b:cc:03:b1:1f:a0:8f:7d:c7:fa</span></tt></td>
 </tr>
 <tr class="row-even"><td>dc03</td>
-<td>down for maintenance</td>
+<td><tt class="docutils literal"><span class="pre">68:85:4d:d5:2f:c1:3b:88:ca:8c:f8:36:68:61:c4:54</span></tt></td>
 </tr>
 <tr class="row-odd"><td>dc04</td>
-<td><tt class="docutils literal"><span class="pre">21:a6:2f:a2:7c:24:77:46:06:a5:3f:72:82:74:5c:6e</span></tt></td>
+<td>down for maintenance</td>
 </tr>
 <tr class="row-even"><td>dc05</td>
 <td><tt class="docutils literal"><span class="pre">35:6a:ad:56:3a:94:94:3b:97:8b:2e:11:5d:6b:1f:bf</span></tt></td>
 </tr>
 <tr class="row-odd"><td>dc06</td>
-<td>down for maintenance</td>
+<td><tt class="docutils literal"><span class="pre">c8:f6:6a:b5:49:21:3e:ae:11:f7:66:e3:8e:19:47:41</span></tt></td>
 </tr>
 <tr class="row-even"><td>dc07</td>
 <td><tt class="docutils literal"><span class="pre">0e:70:b2:f5:71:aa:f5:a8:45:47:68:6d:93:1e:b9:68</span></tt></td>
@@ -305,7 +305,7 @@
 <td><tt class="docutils literal"><span class="pre">ab:ee:8d:64:cf:27:ec:eb:23:c9:a2:27:e9:ef:2e:e4</span></tt></td>
 </tr>
 <tr class="row-odd"><td>dc12</td>
-<td>down for maintenance</td>
+<td><tt class="docutils literal"><span class="pre">0f:9a:31:da:ad:2a:6c:be:a6:d1:f9:2c:89:29:fc:05</span></tt></td>
 </tr>
 <tr class="row-even"><td>dc13</td>
 <td><tt class="docutils literal"><span class="pre">b9:88:ec:49:ff:6a:18:bc:f7:d6:ca:d4:3b:3b:c9:17</span></tt></td>
@@ -446,7 +446,7 @@
 <span id="win-ssh-keys"></span><h2>Password-less Logins (SSH keys)<a class="headerlink" href="#password-less-logins-ssh-keys" title="Permalink to this headline">¶</a></h2>
 <p>It is often handy to be able to SSH into a host without having to type a password, for instance as part of a script. First, we need to generate your public/private key pair. Open <a class="reference external" href="http://the.earth.li/~sgtatham/putty/0.63/htmldoc/Chapter8.html#pubkey-puttygen">PuTTYgen</a> from the PuTTY distribution to begin the generation process. Click <em class="guilabel">Generate</em> and do the mouse nonsense to generate your keys.</p>
 <p>Copy the text from the field labelled <em class="guilabel">Public key for pasting into OpenSSH authorized_keys file</em>. Open Notepad and paste this text. Save it to the desktop as <tt class="file docutils literal"><span class="pre">id_rsa.pub</span></tt>. Now open Windows PowerShell from the Start Menu and run the following command. If your EOS saved session is named something other than &#8220;EOS&#8221;, you will need to change it in the command below.</p>
-<div class="highlight-powershell"><div class="highlight"><pre>$puttySessionName = &#39;EOS&#39;; Get-Content &quot;$env:USERPROFILE\Desktop\id_rsa.pub&quot; | &amp; &quot;$env:SYSTEMDRIVE\Program Files (x86)\PuTTY\plink&quot; -pw ([Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($(Read-Host -AsSecureString Password)))) $puttySessionName &#39;umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys&#39;
+<div class="highlight-powershell"><div class="highlight"><pre><span class="nv">$puttySessionName</span> <span class="p">=</span> <span class="s1">&#39;EOS&#39;</span><span class="p">;</span> <span class="nb">Get-Content</span> <span class="s2">&quot;$env:USERPROFILE\Desktop\id_rsa.pub&quot;</span> <span class="p">|</span> <span class="p">&amp;</span> <span class="s2">&quot;$env:SYSTEMDRIVE\Program Files (x86)\PuTTY\plink&quot;</span> <span class="n">-pw</span> <span class="p">(</span><span class="no">[Runtime.InteropServices.Marshal]</span><span class="p">::</span><span class="n">PtrToStringAuto</span><span class="p">(</span><span class="no">[Runtime.InteropServices.Marshal]</span><span class="p">::</span><span class="n">SecureStringToBSTR</span><span class="p">($(</span><span class="nb">Read-Host</span> <span class="n">-AsSecureString</span> <span class="n">Password</span><span class="p">))))</span> <span class="nv">$puttySessionName</span> <span class="s1">&#39;umask u=rwx,go= &amp;&amp; mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys&#39;</span>
 </pre></div>
 </div>
 <p>Your public key has now been uploaded to EOS. The file <tt class="file docutils literal"><span class="pre">id_rsa.pub</span></tt> may be deleted now.</p>
@@ -538,7 +538,7 @@
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/d84df65">d84df65</a> built 2015-03-13 14:24:47 EDT.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/70e679a">70e679a</a> built 2015-04-06 15:36:20 EDT.<br />
     </p>
   </div>
 

@@ -233,7 +233,7 @@
 </pre></div>
 </div>
 <p>To show most everything:</p>
-<div class="highlight-bash"><div class="highlight"><pre>inxi -v 7 -Z
+<div class="highlight-bash"><div class="highlight"><pre>inxi -v <span class="m">7</span> -Z
 </pre></div>
 </div>
 <p>For more information on the options, run:</p>
@@ -247,20 +247,20 @@
 <p>Unfortunately, it is not installed by default on the EOS computers, so it must be compiled from source. Don&#8217;t be afraid, though &#8212; by following these steps, you should be able to install HardInfo quickly and simply. It is unnecessary but beneficial to be familiar with the steps involved in <a class="reference internal" href="user-level-sw/manual-install.html#manual-install"><em>Manual Installation</em></a> as well.</p>
 <p>First, follow the steps to <a class="reference internal" href="user-level-sw/manual-install.html#ready-prefix"><em>Ready the Prefix</em></a>. Then download the source code:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> ~/.local/src
-wget https://github.com/lpereira/hardinfo/archive/master.tar.gz -O - | tar -xz
+wget https://github.com/lpereira/hardinfo/archive/master.tar.gz -O - <span class="p">|</span> tar -xz
 <span class="nb">cd </span>hardinfo-master
 </pre></div>
 </div>
 <p>HardInfo uses <a class="reference internal" href="user-level-sw/manual-install.html#cmake-section"><em>CMake</em></a> as a build system, so the steps will be very similar to those shown in that section. First, create the build directory and configure the build system:</p>
 <div class="highlight-bash"><div class="highlight"><pre>mkdir build
 <span class="nb">cd </span>build
-cmake -Wno-dev -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="s2">&quot;$HOME/.local&quot;</span> ..
+cmake -Wno-dev -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.local&quot;</span> ..
 </pre></div>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>If you use <a class="reference internal" href="user-level-sw/linuxbrew.html#linuxbrew-section"><em>Linuxbrew</em></a> as a package manager, CMake may find your locally-installed version of <a class="reference external" href="http://www.freedesktop.org/wiki/Software/pkg-config/">pkg-config</a> and fail. To remedy this, run:</p>
-<div class="last highlight-bash"><div class="highlight"><pre>cmake -Wno-dev -DPKG_CONFIG_EXECUTABLE<span class="o">=</span>/usr/bin/pkg-config -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="s2">&quot;$HOME/.local&quot;</span> ..
+<div class="last highlight-bash"><div class="highlight"><pre>cmake -Wno-dev -DPKG_CONFIG_EXECUTABLE<span class="o">=</span>/usr/bin/pkg-config -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.local&quot;</span> ..
 </pre></div>
 </div>
 </div>
@@ -430,7 +430,7 @@ chmod o+r ~/public_html/info.php
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/d84df65">d84df65</a> built 2015-03-13 14:24:47 EDT.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/70e679a">70e679a</a> built 2015-04-06 15:36:20 EDT.<br />
     </p>
   </div>
 

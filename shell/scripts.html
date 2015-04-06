@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>User-level Software Installation &mdash; Mastering EOS</title>
+  <title>Shell Scripting &mdash; Mastering EOS</title>
   
 
   
@@ -30,11 +30,14 @@
   
 
   
+    <link rel="stylesheet" href="../_static/table-override.css" type="text/css" />
+  
         <link rel="author" title="About these documents"
               href="../about.html"/>
     <link rel="top" title="Mastering EOS" href="../index.html"/>
-        <link rel="next" title="The Standard Hierarchy" href="std-hierarchy.html"/>
-        <link rel="prev" title="Shells" href="../shells.html"/>
+        <link rel="up" title="Using the Command Line" href="index.html"/>
+        <link rel="next" title="Remote Access (SSH/VNC)" href="../remote-access/index.html"/>
+        <link rel="prev" title="Interactive Shell Use" href="interactive.html"/>
  
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -89,7 +92,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../rules.html#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../basics.html">Command Line Basics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Using the Command Line</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shells.html">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Shell Use</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Shell Scripting</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/windows/index.html">Microsoft Windows</a></li>
@@ -97,16 +106,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/gnu-linux/index.html">GNU/Linux</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#kornshell">Kornshell</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">User-level Software Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="std-hierarchy.html">The Standard Hierarchy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual-install.html">Manual Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linuxbrew.html">Linuxbrew</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-level-sw/index.html">User-level Software Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user-level-sw/manual-install.html">Manual Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user-level-sw/linuxbrew.html">Linuxbrew</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user-level-sw/user-hierarchies.html">User-level Hierarchies</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sys-sw-info.html">System and Software Information</a><ul>
@@ -198,10 +202,12 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-    <li>User-level Software Installation</li>
+          <li><a href="index.html">Using the Command Line</a> &raquo;</li>
+      
+    <li>Shell Scripting</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/user-level-sw/index.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/shell/scripts.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -209,24 +215,44 @@
 </div>
           <div role="main">
             
-  <div class="section" id="user-level-software-installation">
-<h1>User-level Software Installation<a class="headerlink" href="#user-level-software-installation" title="Permalink to this headline">¶</a></h1>
-<p>The EOS labs already have many packages installed to augment the base system. However, it is entirely possible that your work requires software which is not already installed. In this case, one option is to request the installation of this software from <a class="reference external" href="mailto:woodriir&#37;&#52;&#48;gvsu&#46;edu">Ira Woodring</a>. This is a good option if you feel the software would also be useful to others. If the software is primarily for personal use, however, you are advised to first attempt a user-level installation of the software.</p>
-<p>Begin by reading about the <a class="reference internal" href="std-hierarchy.html#std-hierarchy"><em>The Standard Hierarchy</em></a>, and then try your hand at <a class="reference internal" href="manual-install.html#manual-install"><em>Manual Installation</em></a>. Once you have succeeded at installing the examples manually, give <a class="reference internal" href="linuxbrew.html#linuxbrew-section"><em>Linuxbrew</em></a> a try.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="std-hierarchy.html">The Standard Hierarchy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="manual-install.html">Manual Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="manual-install.html#ready-the-prefix">Ready the Prefix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual-install.html#download-and-extract">Download and Extract</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual-install.html#build-the-software">Build the Software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual-install.html#adjusting-the-environment">Adjusting the Environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual-install.html#library-dependencies">Library Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual-install.html#conclusion">Conclusion</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="linuxbrew.html">Linuxbrew</a></li>
-</ul>
+  <div class="section" id="shell-scripting">
+<h1>Shell Scripting<a class="headerlink" href="#shell-scripting" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="shebang">
+<span id="shell-shebang"></span><h2>Shebang<a class="headerlink" href="#shebang" title="Permalink to this headline">¶</a></h2>
+<p>The shebang is a feature of Unix-like operating systems that allows text-based interpreted programs to be treated as executable files. The <a class="reference external" href="http://en.wikipedia.org/wiki/Shebang_(Unix)">Shebang Wikipedia article</a> does a great job of explaining how the shebang works. There are two common shebangs used for Bash scripts:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">#!/bin/bash</span>
+<span class="nb">echo</span> <span class="s1">&#39;This script runs with the system Bash interpreter.&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">#!/usr/bin/env bash</span>
+<span class="nb">echo</span> <span class="s1">&#39;This script runs with the Bash interpreter on the PATH.&#39;</span>
+</pre></div>
+</div>
+<p>Each shebang is relatively self-explanatory. The second uses the <tt class="cmd docutils literal"><span class="pre">env</span></tt> utility (see <a class="reference internal" href="interactive.html#shell-env-vars"><em>Environment Variables</em></a>) to execute with the first Bash interpreter found on the <span class="target" id="index-0"></span><a class="reference internal" href="../envvars.html#envvar-PATH"><tt class="xref std std-envvar docutils literal"><span class="pre">PATH</span></tt></a>. Unless you have reason to specify the system Bash interpreter, the <tt class="docutils literal"><span class="pre">#!/usr/bin/env</span> <span class="pre">bash</span></tt> shebang is preferred because it gives the user greater flexibility over which Bash interpreter to use.</p>
+</div>
+<div class="section" id="boilerplate">
+<h2>Boilerplate<a class="headerlink" href="#boilerplate" title="Permalink to this headline">¶</a></h2>
+<p>Although shell scripts allow rapid development, they suffer from a number of weaknesses. However, some of these weaknesses can be mitigated by making shell scripts more responsive to possible errors.</p>
+<p>By default, Bash continues to execute commands in a script even if a command fails. This is rather non-intuitive, and usually not desired because each successive command typically depends on the result of previous ones. To tell Bash to report errors by exiting when a command fails, use the <tt class="docutils literal"><span class="pre">errexit</span></tt> option at the top of your script:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">set</span> -o errexit
+</pre></div>
+</div>
+<p>In addition, by default Bash substitutes an empty string for any undefined variable references. This is usually not desired because this typically represents a typo of some sort. To tell Bash to report any undefined variables, use the <tt class="docutils literal"><span class="pre">nounset</span></tt> option at the top of your script:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">set</span> -o nounset
+</pre></div>
+</div>
+<p>Combining these options with the shebang above yields the following shell script boilerplate:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">#!/usr/bin/env bash</span>
+
+<span class="nb">set</span> -o errexit
+<span class="nb">set</span> -o nounset
+</pre></div>
+</div>
+<p>By using these options, you will increase the chances of having robust, error-free scripts.</p>
+</div>
+<div class="section" id="when-to-shell-script">
+<h2>When to Shell Script<a class="headerlink" href="#when-to-shell-script" title="Permalink to this headline">¶</a></h2>
+<p>Shell scripts can become unwieldy very quickly. When writing shell scripts, you must remember their trade-offs: although they frequently allow you to accomplish tasks very quickly, they are often ugly and error-prone. In this case, it is usually better to rewrite said scripts in a more full-featured programming language such as <a class="reference external" href="http://python.org/">Python</a> or <a class="reference external" href="https://www.ruby-lang.org/">Ruby</a>.</p>
 </div>
 </div>
 
@@ -237,10 +263,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="std-hierarchy.html" class="btn btn-neutral float-right" title="The Standard Hierarchy">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../remote-access/index.html" class="btn btn-neutral float-right" title="Remote Access (SSH/VNC)">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../shells.html" class="btn btn-neutral" title="Shells"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="interactive.html" class="btn btn-neutral" title="Interactive Shell Use"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -253,7 +279,7 @@
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/70e679a">70e679a</a> built 2015-04-06 15:36:20 EDT.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/3284400">3284400</a> built 2015-03-30 13:50:14 EDT.<br />
     </p>
   </div>
 

@@ -273,7 +273,7 @@ ssh arch04
 <h2>Multi-Hop Connections<a class="headerlink" href="#multi-hop-connections" title="Permalink to this headline">¶</a></h2>
 <p>Oftentimes a machine is only available when SSH&#8217;ing into another machine. For example, this is the case with the DEN&#8217;s Okami server, used in CIS 677 High-Performance Computing. In addition, Okami&#8217;s SSH server is only available on a non-standard port. This typically results in the user going through this process:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">smithj@local$</span> ssh smithj@eos01.cis.gvsu.edu
-<span class="gp">smithj@eos01$</span> ssh -p 43022 okami
+<span class="gp">smithj@eos01$</span> ssh -p <span class="m">43022</span> okami
 <span class="gp">smithj@okami$</span> <span class="c"># Finally here!</span>
 </pre></div>
 </div>
@@ -299,7 +299,7 @@ ssh arch04
 <img alt="IEEE Xplore Login Page" src="../../_images/denied.png" />
 <p>By using a proxy through the EOS machines, we can transparently access the IEEE library as if we were on campus.</p>
 <p>OpenSSH support the SOCKS protocol for proxying. Activating the SOCKS feature is accomplished with the <tt class="docutils literal"><span class="pre">-D</span></tt> flag like so:</p>
-<div class="highlight-bash"><div class="highlight"><pre>ssh -D 5555 eos01
+<div class="highlight-bash"><div class="highlight"><pre>ssh -D <span class="m">5555</span> eos01
 </pre></div>
 </div>
 <p>This establishes a SOCKS proxy with EOS01 served up on the local machine on port 5555. Now we must configure our operating system or browser to use this proxy.</p>
@@ -346,7 +346,7 @@ ssh arch04
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/d84df65">d84df65</a> built 2015-03-13 14:24:47 EDT.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/70e679a">70e679a</a> built 2015-04-06 15:36:20 EDT.<br />
     </p>
   </div>
 
