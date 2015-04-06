@@ -30,7 +30,11 @@ def open_file(self, node):
     """Open a node in operating system's associated program."""
     path = node.abspath()
     if self.env.OPEN:
-        self.exec_command(self.env.OPEN + [path])
+        self.exec_command(
+            self.env.OPEN + [path],
+            # Don't buffer the program's output. On GNU/Linux, buffering
+            # xdg-open's output causes it to block the Waf process.
+            stdout=None, stderr=None)
     elif SYSTEM == 'Windows':
         os.startfile(path) # pylint: disable=no-member
     else:
@@ -81,10 +85,10 @@ def open_info_emacs(self, node):
                 '--eval', '(info "{}")'.format(
                     node.abspath().replace('"', r'\"')),
             ],
-            # Don't capture the standard streams so that the program can run
+            # Avoid capturing the standard streams so that the program can run
             # successfully.
-            stdout=sys.stdout,
-            stderr=sys.stderr,
+            stdout=None,
+            stderr=None,
         )
     else:
         _tool_not_found(self, 'info document', 'emacsclient')
@@ -97,10 +101,10 @@ def _open_man_info(ctx, prog, fmt, node):
     if exe:
         ctx.exec_command(
             exe + [node.abspath()],
-            # Don't capture the standard streams so that the program can run
+            # Avoid capturing the standard streams so that the program can run
             # successfully.
-            stdout=sys.stdout,
-            stderr=sys.stderr,
+            stdout=None,
+            stderr=None,
         )
     else:
         _tool_not_found(ctx, prog, fmt)
