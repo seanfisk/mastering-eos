@@ -22,7 +22,7 @@ charset = utf-8
 # We want 2-space indentation for Bash so that it looks good on the
 # poster. If we use tabs, they will be expanded to 8 spaces. Better
 # just to guarantee consistency.
-[*.{tex,tex.in,sty,sty.in,el,html,bash.in}]
+[*.{tex,tex.in,sty,sty.in,el,html,bash,bash.in}]
 indent_style = space
 indent_size = 2
 

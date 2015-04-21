@@ -450,6 +450,8 @@ rst_epilog = '''
 .. _run-time search path (rpath): http://en.wikipedia.org/wiki/Rpath
 .. _pull requests:
 .. _making a pull request: https://help.github.com/articles/using-pull-requests/
+.. _Emacs:
+.. _GNU Emacs: https://gnu.org/software/emacs/
 
 .. Sort these
 
@@ -459,11 +461,16 @@ rst_epilog = '''
 .. _EditorConfig: http://editorconfig.org/
 .. _ExpanDrive: http://www.expandrive.com/expandrive
 .. _GNOME: http://www.gnome.org/
+.. _Git: http://git-scm.com/
+.. _GitHub: https://github.com/
+.. _Homebrew: http://brew.sh/
 .. _KDE: https://www.kde.org/
 .. _LXDE: http://lxde.org/
 .. _Mastering EOS GitHub repository: {url}
+.. _Python: http://python.org/
 .. _Qt: http://qt-project.org/
 .. _QtQuick/QML: http://qt-project.org/doc/qt-5/qmlapplications.html
+.. _Ruby: https://www.ruby-lang.org/
 .. _Russ Allbery's notes on Shared Library Search Paths: http://www.eyrie.org/~eagle/notes/rpath.html
 .. _Sphinx: http://sphinx-doc.org/
 .. _The Linux Documentation Project article on Shared Libraries: http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
@@ -485,6 +492,9 @@ extlinks = {
         urljoin(_sphinx_base_url, 'markup/inline.html#role-%s'), ''),
     'sphinx-directive': (
         urljoin(_sphinx_base_url, 'domains.html#directive-%s'), ''),
+    'bash': ('http://www.gnu.org/software/bash/manual/bash.html#%s', ''),
+    # This is the 2013-revised edition of POSIX.1-2008.
+    'posix': ('http://pubs.opengroup.org/onlinepubs/9699919799/%s.html', ''),
 }
 
 # Git revision: custom option, for use in '_templates/footer.html'.
@@ -512,3 +522,9 @@ def _override_command_role():
     role = roles.CustomRole(rolename, generic, {'classes': [rolename]})
     roles.register_local_role(rolename, role)
 _override_command_role()
+
+# Override table CSS, see:
+# https://github.com/snide/sphinx_rtd_theme/issues/117#issuecomment-41571653
+def setup(app):
+    """Hook into Sphinx's application setup."""
+    app.add_stylesheet('table-override.css')

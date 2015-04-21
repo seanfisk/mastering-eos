@@ -56,6 +56,7 @@ Thanks to GVSU students:
 - Sam DeHaan for working for many hours on various projects with me in the Arch lab.
 - Kurt O'Hearn for showing me LaTeX and helping me with system administration.
 - Taylor Countryman, Chelsea Champion, and Robb Nemecek for listening to endless amounts of technobabble from me.
+- Eric Vanklompenberg for helping me to learn more about PowerShell and the Windows console.
 
 Thanks to GVSU faculty:
 
