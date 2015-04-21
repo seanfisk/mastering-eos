@@ -3,7 +3,6 @@
 """Open various filetypes."""
 
 import os
-import sys
 import platform
 import webbrowser
 
