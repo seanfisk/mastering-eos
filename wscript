@@ -74,10 +74,8 @@ def options(ctx):
     ctx.add_option(
         '-l', '--latex-engine',
         choices=latex_engines, default=default_latex_engine,
-        help=("set LaTeX engine; valid values {0}; "
-              "default is '{1}'").format(
-                  ', '.join("'{0}'".format(e) for e in latex_engines),
-                  default_latex_engine))
+        help=('set LaTeX engine ({}) [default: %default]'.format(
+            '/'.join(latex_engines))))
 
     ctx.load('tex')
     ctx.load(['sphinx_internal', 'fabric_tool', 'grako_tool', 'open'],
