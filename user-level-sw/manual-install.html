@@ -30,6 +30,8 @@
   
 
   
+    <link rel="stylesheet" href="../_static/table-override.css" type="text/css" />
+  
         <link rel="author" title="About these documents"
               href="../about.html"/>
     <link rel="top" title="Mastering EOS" href="../index.html"/>
@@ -90,7 +92,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../rules.html#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shell/index.html">Using the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shell/basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/shells.html">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/interactive.html">Interactive Shell Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/scripts.html">Shell Scripting</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/windows/index.html">Microsoft Windows</a></li>
@@ -98,16 +106,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/gnu-linux/index.html">GNU/Linux</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#kornshell">Kornshell</a></li>
-</ul>
-</li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">User-level Software Installation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="std-hierarchy.html">The Standard Hierarchy</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Manual Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linuxbrew.html">Linuxbrew</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-hierarchies.html">User-level Hierarchies</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sys-sw-info.html">System and Software Information</a><ul>
@@ -218,7 +221,7 @@
 <p>However, due to the myriad of different GNU/Linux distributions, software for GNU/Linux is often distributed in source code form only. This requires a potential user of the software to build the software from its source code, colloquially known as <em>compiling from source</em>. In addition, due to the lack of an accepted structure for installing user-level software, almost all software that is installed in a per-user fashion will need to be compiled from source.</p>
 <div class="section" id="ready-the-prefix">
 <span id="ready-prefix"></span><h2>Ready the Prefix<a class="headerlink" href="#ready-the-prefix" title="Permalink to this headline">¶</a></h2>
-<p>The hierarchy to which a program is installed is typically called its <em>prefix</em>. Most build systems will install by default to <tt class="file docutils literal"><span class="pre">/usr/local</span></tt>, the system hierarchy typically used for custom-installed programs or programs compiled from source. However, because a standard user cannot write to this prefix, we are required to change our installion prefix to a directory within our home directory.</p>
+<p>The hierarchy to which a program is installed is typically called its <em>prefix</em>. Most build systems will install by default to <tt class="file docutils literal"><span class="pre">/usr/local</span></tt>, the system hierarchy typically used for custom-installed programs or programs compiled from source. However, because a standard user cannot write to this prefix, we are required to change our installation prefix to a directory within our home directory.</p>
 <p>The prefix that we recommend for manually-installed user-level programs is <tt class="file docutils literal"><span class="pre">~/.local</span></tt>, which is the hidden <tt class="file docutils literal"><span class="pre">.local</span></tt> directory immediately within your home directory. This directory has some precedent, being <a class="reference external" href="http://legacy.python.org/dev/peps/pep-0370/#unix-notes">used by Python</a> and <a class="reference external" href="http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html#variables">in the Freedesktop specifications</a>. Setting this prefix is the primary step to successfully installing user-level software.</p>
 <p>To ready your prefix for downloading and compiling source code, run the following command:</p>
 <div class="highlight-bash"><div class="highlight"><pre>mkdir -p ~/.local/src
@@ -292,7 +295,7 @@
 </pre></div>
 </div>
 </div>
-<p>This command should have created a <tt class="file docutils literal"><span class="pre">editorconfig-core-c-0.12.0.zip</span></tt> directory in the current working directory. Make that directory your working directory:</p>
+<p>This command should have created a <tt class="file docutils literal"><span class="pre">editorconfig-core-c-0.12.0</span></tt> directory in the current working directory. Make that directory your working directory:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>editorconfig-core-c-0.12.0
 </pre></div>
 </div>
@@ -304,7 +307,7 @@
 <p>Almost all professional-grade software projects use a build system for compilation and installation. A build system automates the tedious task of constructing compiler commands and installing files to the proper places. Using a build system should not be viewed as running a program which automagically produces another program, but rather as a practical solution to a real problem.</p>
 <p>There are several build systems used by typical software on GNU/Linux. Read the following sections to learn about the different build system and how to identify and use them.</p>
 <div class="section" id="autotools">
-<h3>Autotools<a class="headerlink" href="#autotools" title="Permalink to this headline">¶</a></h3>
+<span id="autotools-section"></span><h3>Autotools<a class="headerlink" href="#autotools" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/GNU_build_system">Autotools</a>, also known as the GNU Build System, is the build system currently used by most programs on GNU/Linux. You can usually identify a program using Autotools by the presence of a <tt class="file docutils literal"><span class="pre">configure</span></tt> script in the root of the source distribution.</p>
 <p>The software which makes up Autotools itself is usually not necessary to build a program using Autotools as a build system. Instead, the functionality is embedded into the <tt class="file docutils literal"><span class="pre">configure</span></tt> script itself. Autotools build systems typically only require the presence of Make.</p>
 <div class="section" id="example-gnu-bash">
@@ -363,7 +366,17 @@
 <div class="highlight-bash"><div class="highlight"><pre>make install
 </pre></div>
 </div>
-<p>GNU Bash has now been installed to your home directory! Continue reading to find out how to make your locally-installed version override the system version.</p>
+<p>GNU Bash has now been installed to your home directory! You can run it with:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> ~/.local/bin/bash --version
+<span class="go">GNU bash, version 4.3.0(1)-release (x86_64-unknown-linux-gnu)</span>
+<span class="go">Copyright (C) 2013 Free Software Foundation, Inc.</span>
+<span class="go">License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;</span>
+
+<span class="go">This is free software; you are free to change and redistribute it.</span>
+<span class="go">There is NO WARRANTY, to the extent permitted by law.</span>
+</pre></div>
+</div>
+<p>Continue reading <a class="reference internal" href="user-hierarchies.html#user-hierarchies"><em>User-level Hierarchies</em></a> to find out how to use it without typing the full path and to make your locally-installed version override the system version.</p>
 </div>
 </div>
 <div class="section" id="cmake">
@@ -400,6 +413,12 @@
 <div class="highlight-bash"><div class="highlight"><pre>cmake --build . --target install
 </pre></div>
 </div>
+<p>EditorConfig has now been installed to your home directory! You can run it with:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> ~/.local/bin/editorconfig --version
+<span class="go">EditorConfig C Core Version 0.12.0</span>
+</pre></div>
+</div>
+<p>Continue reading <a class="reference internal" href="user-hierarchies.html#user-hierarchies"><em>User-level Hierarchies</em></a> to find out how to use it without typing the full path.</p>
 </div>
 </div>
 <div class="section" id="other-build-systems">
@@ -407,67 +426,13 @@
 <p>The majority of C and C++ software that you may want to install to your EOS account likely uses Autotools or CMake as its build system. For those that don&#8217;t, we recommend consulting the project&#8217;s <tt class="file docutils literal"><span class="pre">README</span></tt> or <tt class="file docutils literal"><span class="pre">INSTALL</span></tt> file or the project&#8217;s documentation or website for compilation instructions.</p>
 </div>
 </div>
-<div class="section" id="adjusting-the-environment">
-<span id="adjust-env"></span><h2>Adjusting the Environment<a class="headerlink" href="#adjusting-the-environment" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="executable-path">
-<h3>Executable Path<a class="headerlink" href="#executable-path" title="Permalink to this headline">¶</a></h3>
-<p>You can always use executables installed to your home directory by typing the full path to the executable, for example:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> ~/.local/bin/bash --version
-<span class="go">GNU bash, version 4.3.0(1)-release (x86_64-unknown-linux-gnu)</span>
-<span class="go">Copyright (C) 2013 Free Software Foundation, Inc.</span>
-<span class="go">License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;</span>
-
-<span class="go">This is free software; you are free to change and redistribute it.</span>
-<span class="go">There is NO WARRANTY, to the extent permitted by law.</span>
-</pre></div>
-</div>
-<p>For obvious reasons, typing the full path can get tedious if you are using the executable frequently. In addition, other utilities may assume that the executable in question is available on the <span class="target" id="index-0"></span><a class="reference internal" href="../envvars.html#envvar-PATH"><tt class="xref std std-envvar docutils literal"><span class="pre">PATH</span></tt></a> and not in a custom prefix.</p>
-<p>If you are installing an executable that is already present on the system, there is another consideration &#8212; you may want to override the system version with the version that you installed to your home directory. This is typically useful if you would like to use a newer version of a program than one installed to a system hierarchy.</p>
-<p>To illustrate this, note that when typing:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> which bash
-<span class="go">/usr/bin/bash</span>
-</pre></div>
-</div>
-<p>the shell will still default to using the system Bash, which happens to be <tt class="file docutils literal"><span class="pre">/usr/bin/bash</span></tt>.</p>
-<p>To resolve both of these issues, we can add the executable&#8217;s parent directory to executable search path, stored in the environment variable <span class="target" id="index-1"></span><a class="reference internal" href="../envvars.html#envvar-PATH"><tt class="xref std std-envvar docutils literal"><span class="pre">PATH</span></tt></a>. Open your <tt class="file docutils literal"><span class="pre">~/.bash_profile</span></tt> in an editor and add the following line to the end:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>~/.local/bin:<span class="nv">$PATH</span>
-</pre></div>
-</div>
-<p>This line prepends the path of your locally-installed executables to the executable search path. Your executable will now not only be accesible without typing the full path, but it will also override any executables of the same name in system hierarchies.</p>
-<p><em>Restart your shell to effect the changes to your</em> <tt class="file docutils literal"><span class="pre">~/.bash_profile</span></tt> <em>by logging out and logging back in.</em> After logging back in, the following should yield:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> which bash
-<span class="go">~/.local/bin/bash</span>
-</pre></div>
-</div>
-<p>Now you should be able to simply type:</p>
-<div class="highlight-bash"><div class="highlight"><pre>bash
-</pre></div>
-</div>
-<p>to start the GNU Bash installed to your home directory!</p>
-</div>
-<div class="section" id="man-and-info-paths">
-<h3>Man and Info Paths<a class="headerlink" href="#man-and-info-paths" title="Permalink to this headline">¶</a></h3>
-<p>Although you are now able to run your new Bash without typing the full path, the commands:</p>
-<div class="highlight-bash"><div class="highlight"><pre>man bash
-info bash
-</pre></div>
-</div>
-<p>still show the Bash documentation for the system Bash. Although this may not seem like a big deal, small changes between versions of the same program can be the difference between an working and non-working script. To allow <tt class="cmd docutils literal"><span class="pre">man</span></tt> and <tt class="cmd docutils literal"><span class="pre">info</span></tt> to find locally-installed documentation, add the following lines to your <tt class="file docutils literal"><span class="pre">~/.bash_profile</span></tt>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export </span><span class="nv">MANPATH</span><span class="o">=</span>~/.local/share/man:~/.local/man:<span class="nv">$MANPATH</span>
-<span class="nb">export </span><span class="nv">INFOPATH</span><span class="o">=</span>~/.local/share/info:<span class="nv">$INFOPATH</span>
-</pre></div>
-</div>
-<p>There is unfortunately some inconsistency with the location of installed man pages, which why we added both directories to the <span class="target" id="index-2"></span><a class="reference internal" href="../envvars.html#envvar-MANPATH"><tt class="xref std std-envvar docutils literal"><span class="pre">MANPATH</span></tt></a>. <span class="target" id="index-3"></span><a class="reference internal" href="../envvars.html#envvar-INFOPATH"><tt class="xref std std-envvar docutils literal"><span class="pre">INFOPATH</span></tt></a> does not have these problems.</p>
-<p>After restarting your shell, the commands at the beginning of this section should bring up the correct documentation.</p>
-</div>
-</div>
 <div class="section" id="library-dependencies">
 <span id="lib-deps"></span><h2>Library Dependencies<a class="headerlink" href="#library-dependencies" title="Permalink to this headline">¶</a></h2>
 <p>Bash and the EditorConfig C Core both compile without issue on EOS. However, programs frequently have compile-time dependencies: libraries which need to be installed before compiling the program.</p>
 <p>As with the project itself, one option is to ask the <a class="reference external" href="mailto:woodriir&#37;&#52;&#48;gvsu&#46;edu">Ira Woodring</a> to install the library for you. If you would like to compile and install the dependency on your own, it is possible, but is currently out of the scope of this guide. Here are some hints:</p>
 <ul class="simple">
-<li>When compiling the program, you may need to set the <span class="target" id="index-4"></span><a class="reference internal" href="../envvars.html#envvar-CPPFLAGS"><tt class="xref std std-envvar docutils literal"><span class="pre">CPPFLAGS</span></tt></a> and <span class="target" id="index-5"></span><a class="reference internal" href="../envvars.html#envvar-LDFLAGS"><tt class="xref std std-envvar docutils literal"><span class="pre">LDFLAGS</span></tt></a> environment variables to allow the compiler to locate headers and libraries, respectively. See the <a class="reference external" href="http://www.gnu.org/software/autoconf/manual/autoconf.html#Preset-Output-Variables">Autoconf manual on Preset Output Variables</a> for descriptions of each of these variables. Some build systems are able to locate headers and libraries automatically in the specified install prefix.</li>
-<li>If you installed the libraries to your home directory, the operating system will not know to search for them there when running a program (even if that program is in your home directory). To allow the program to find its shared library dependencies at runtime, you must either set its <a class="reference external" href="http://en.wikipedia.org/wiki/Rpath">rpath</a> (recommended) or use the <span class="target" id="index-6"></span><a class="reference internal" href="../envvars.html#envvar-LD_LIBRARY_PATH"><tt class="xref std std-envvar docutils literal"><span class="pre">LD_LIBRARY_PATH</span></tt></a> environment variable (not recommended). See the following links for hints on this topic:<ul>
+<li>When compiling the program, you may need to set the <span class="target" id="index-0"></span><a class="reference internal" href="../envvars.html#envvar-CPPFLAGS"><tt class="xref std std-envvar docutils literal"><span class="pre">CPPFLAGS</span></tt></a> and <span class="target" id="index-1"></span><a class="reference internal" href="../envvars.html#envvar-LDFLAGS"><tt class="xref std std-envvar docutils literal"><span class="pre">LDFLAGS</span></tt></a> environment variables to allow the compiler to locate headers and libraries, respectively. See the <a class="reference external" href="http://www.gnu.org/software/autoconf/manual/autoconf.html#Preset-Output-Variables">Autoconf manual on Preset Output Variables</a> for descriptions of each of these variables. Some build systems are able to locate headers and libraries automatically in the specified install prefix.</li>
+<li>If you installed the libraries to your home directory, the operating system will not know to search for them there when running a program (even if that program is in your home directory). To allow the program to find its shared library dependencies at runtime, you must either set its <a class="reference external" href="http://en.wikipedia.org/wiki/Rpath">rpath</a> (recommended) or use the <span class="target" id="index-2"></span><a class="reference internal" href="../envvars.html#envvar-LD_LIBRARY_PATH"><tt class="xref std std-envvar docutils literal"><span class="pre">LD_LIBRARY_PATH</span></tt></a> environment variable (not recommended). See the following links for hints on this topic:<ul>
 <li><a class="reference external" href="http://www.eyrie.org/~eagle/notes/rpath.html">Russ Allbery&#8217;s notes on Shared Library Search Paths</a></li>
 <li>The <a class="reference external" href="http://www.gnu.org/software/autoconf/manual/autoconf.html#Preset-Output-Variables">Autoconf manual on Preset Output Variables</a></li>
 <li>The <a class="reference external" href="http://en.wikipedia.org/wiki/Rpath">Wikipedia entry on rpath</a></li>
@@ -508,7 +473,7 @@ info bash
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/389928c">389928c</a> built 2015-04-06 16:03:31 EDT.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/1a9fdf8">1a9fdf8</a> built 2015-04-26 00:16:12 EDT.<br />
     </p>
   </div>
 

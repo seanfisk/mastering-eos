@@ -4,7 +4,7 @@
  Linuxbrew
 ===========
 
-Linuxbrew is a package manager for GNU/Linux systems. The main advantage of Linuxbrew over system package managers like Apt and Yum is that it allows installation of software on a per-user basis. Linuxbrew is a Linux port of Homebrew, the popular package manager for Mac OS X. As such, some of its packages still contain Mac-specific code or do not yet build on GNU/Linux. Your mileage may vary, but in general Linuxbrew works quite well.
+Linuxbrew_ is a package manager for GNU/Linux systems. The main advantage of Linuxbrew over system package managers like Apt and Yum is that it allows installation of software on a per-user basis. Linuxbrew is a Linux port of Homebrew_, the popular package manager for Mac OS X. As such, some of its packages still contain Mac-specific code or do not yet build on GNU/Linux. Your mileage may vary, but in general Linuxbrew works quite well.
 
 .. important::
 
@@ -31,6 +31,12 @@ In this one command, Linuxbrew does a lot for you. It first installs tmux's depe
    /home/smithj/.linuxbrew/lib
 
 This command uses patchelf_, which can also be installed using Linuxbrew ;)
+
+You can use the version of tmux you just installed by typing::
+
+   $ ~/.linuxbrew/bin/tmux
+
+Continue reading :ref:`user-hierarchies` to find out how to use it without typing the full path and to make your locally-installed version override the system version.
 
 Enjoy installing packages using Linuxbrew!
 

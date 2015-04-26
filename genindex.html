@@ -31,6 +31,8 @@
   
 
   
+    <link rel="stylesheet" href="_static/table-override.css" type="text/css" />
+  
         <link rel="author" title="About these documents"
               href="about.html"/>
     <link rel="top" title="Mastering EOS" href="index.html"/>
@@ -88,7 +90,13 @@
 <li class="toctree-l2"><a class="reference internal" href="rules.html#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell/index.html">Using the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shell/basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell/shells.html">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell/interactive.html">Interactive Shell Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell/scripts.html">Shell Scripting</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/windows/index.html">Microsoft Windows</a></li>
@@ -96,16 +104,11 @@
 <li class="toctree-l2"><a class="reference internal" href="remote-access/gnu-linux/index.html">GNU/Linux</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#kornshell">Kornshell</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="user-level-sw/index.html">User-level Software Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user-level-sw/manual-install.html">Manual Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user-level-sw/linuxbrew.html">Linuxbrew</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-level-sw/user-hierarchies.html">User-level Hierarchies</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sys-sw-info.html">System and Software Information</a><ul>
@@ -222,7 +225,7 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="user-level-sw/manual-install.html#index-4">CPPFLAGS</a>
+  <dt><a href="user-level-sw/manual-install.html#index-0">CPPFLAGS</a>
   </dt>
 
   </dl></td>
@@ -232,33 +235,47 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
+  <dt><a href="shell/interactive.html#index-1">EDITOR</a>, <a href="shell/interactive.html#index-3">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
   <dt>
     environment variable
   </dt>
 
       <dd><dl>
         
-  <dt><a href="envvars.html#envvar-CPPFLAGS">CPPFLAGS</a>, <a href="user-level-sw/manual-install.html#index-4">[1]</a>
+  <dt><a href="envvars.html#envvar-CPPFLAGS">CPPFLAGS</a>, <a href="user-level-sw/manual-install.html#index-0">[1]</a>
   </dt>
 
         
-  <dt><a href="envvars.html#envvar-INFOPATH">INFOPATH</a>, <a href="user-level-sw/manual-install.html#index-3">[1]</a>
+  <dt><a href="envvars.html#envvar-EDITOR">EDITOR</a>, <a href="shell/interactive.html#index-1">[1]</a>, <a href="shell/interactive.html#index-3">[2]</a>
   </dt>
 
         
-  <dt><a href="envvars.html#envvar-LDFLAGS">LDFLAGS</a>, <a href="user-level-sw/manual-install.html#index-5">[1]</a>
+  <dt><a href="envvars.html#envvar-INFOPATH">INFOPATH</a>, <a href="user-level-sw/user-hierarchies.html#index-2">[1]</a>
   </dt>
 
         
-  <dt><a href="envvars.html#envvar-LD_LIBRARY_PATH">LD_LIBRARY_PATH</a>, <a href="user-level-sw/manual-install.html#index-6">[1]</a>
+  <dt><a href="envvars.html#envvar-LDFLAGS">LDFLAGS</a>, <a href="user-level-sw/manual-install.html#index-1">[1]</a>
   </dt>
 
         
-  <dt><a href="envvars.html#envvar-MANPATH">MANPATH</a>, <a href="user-level-sw/manual-install.html#index-2">[1]</a>
+  <dt><a href="envvars.html#envvar-LD_LIBRARY_PATH">LD_LIBRARY_PATH</a>, <a href="user-level-sw/manual-install.html#index-2">[1]</a>
   </dt>
 
         
-  <dt><a href="envvars.html#envvar-PATH">PATH</a>, <a href="user-level-sw/manual-install.html#index-0">[1]</a>, <a href="user-level-sw/manual-install.html#index-1">[2]</a>
+  <dt><a href="envvars.html#envvar-MANPATH">MANPATH</a>, <a href="user-level-sw/user-hierarchies.html#index-1">[1]</a>
+  </dt>
+
+        
+  <dt><a href="envvars.html#envvar-PATH">PATH</a>, <a href="user-level-sw/user-hierarchies.html#index-0">[1]</a>, <a href="shell/scripts.html#index-0">[2]</a>, <a href="shell/interactive.html#index-0">[3]</a>, <a href="shell/interactive.html#index-4">[4]</a>, <a href="shell/interactive.html#index-5">[5]</a>, <a href="shell/interactive.html#index-6">[6]</a>, <a href="shell/interactive.html#index-7">[7]</a>, <a href="shell/interactive.html#index-8">[8]</a>, <a href="shell/interactive.html#index-9">[9]</a>, <a href="shell/interactive.html#index-10">[10]</a>, <a href="shell/interactive.html#index-11">[11]</a>, <a href="shell/interactive.html#index-12">[12]</a>, <a href="shell/interactive.html#index-13">[13]</a>, <a href="shell/interactive.html#index-14">[14]</a>
+  </dt>
+
+        
+  <dt><a href="envvars.html#envvar-PWD">PWD</a>, <a href="shell/interactive.html#index-2">[1]</a>
   </dt>
 
         
@@ -273,7 +290,7 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="user-level-sw/manual-install.html#index-3">INFOPATH</a>
+  <dt><a href="user-level-sw/user-hierarchies.html#index-2">INFOPATH</a>
   </dt>
 
   </dl></td>
@@ -283,13 +300,13 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="user-level-sw/manual-install.html#index-6">LD_LIBRARY_PATH</a>
+  <dt><a href="user-level-sw/manual-install.html#index-2">LD_LIBRARY_PATH</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="user-level-sw/manual-install.html#index-5">LDFLAGS</a>
+  <dt><a href="user-level-sw/manual-install.html#index-1">LDFLAGS</a>
   </dt>
 
   </dl></td>
@@ -299,7 +316,7 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="user-level-sw/manual-install.html#index-2">MANPATH</a>
+  <dt><a href="user-level-sw/user-hierarchies.html#index-1">MANPATH</a>
   </dt>
 
   </dl></td>
@@ -312,10 +329,14 @@
   <dt><a href="remote-access/windows/file-transfer.html#index-0">Path</a>, <a href="remote-access/windows/file-transfer.html#index-1">[1]</a>, <a href="remote-access/windows/file-transfer.html#index-2">[2]</a>
   </dt>
 
+      
+  <dt><a href="user-level-sw/user-hierarchies.html#index-0">PATH</a>, <a href="shell/scripts.html#index-0">[1]</a>, <a href="shell/interactive.html#index-0">[2]</a>, <a href="shell/interactive.html#index-4">[3]</a>, <a href="shell/interactive.html#index-5">[4]</a>, <a href="shell/interactive.html#index-6">[5]</a>, <a href="shell/interactive.html#index-7">[6]</a>, <a href="shell/interactive.html#index-8">[7]</a>, <a href="shell/interactive.html#index-9">[8]</a>, <a href="shell/interactive.html#index-10">[9]</a>, <a href="shell/interactive.html#index-11">[10]</a>, <a href="shell/interactive.html#index-12">[11]</a>, <a href="shell/interactive.html#index-13">[12]</a>, <a href="shell/interactive.html#index-14">[13]</a>
+  </dt>
+
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="user-level-sw/manual-install.html#index-0">PATH</a>, <a href="user-level-sw/manual-install.html#index-1">[1]</a>
+  <dt><a href="shell/interactive.html#index-2">PWD</a>
   </dt>
 
   </dl></td>
@@ -336,7 +357,7 @@
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/389928c">389928c</a> built 2015-04-20 14:35:58 EDT.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/1a9fdf8">1a9fdf8</a> built 2015-04-26 00:16:12 EDT.<br />
     </p>
   </div>
 

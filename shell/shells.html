@@ -1,0 +1,380 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Available Shells &mdash; Mastering EOS</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/table-override.css" type="text/css" />
+  
+        <link rel="author" title="About these documents"
+              href="../about.html"/>
+    <link rel="top" title="Mastering EOS" href="../index.html"/>
+        <link rel="up" title="Using the Command Line" href="index.html"/>
+        <link rel="next" title="Interactive Shell Use" href="interactive.html"/>
+        <link rel="prev" title="Command-Line Basics" href="basics.html"/>
+ 
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-19591513-4', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('send', 'pageview');
+  </script>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> Mastering EOS</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#physical-access-keycards">Physical Access (Keycards)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#computer-access-credentials">Computer Access (Credentials)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rules.html">Rules and Procedures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#disk-space">Disk Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#copyrighted-material">Copyrighted Material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#food-and-drink">Food and Drink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#overnight-parking">Overnight Parking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#living-in-the-lab">Living in the Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#malicious-activity">Malicious Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#games">Games</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Using the Command Line</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Shell Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripts.html">Shell Scripting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../remote-access/inter-eos.html">Inter-EOS SSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../remote-access/windows/index.html">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../remote-access/mac-os-x/index.html">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../remote-access/gnu-linux/index.html">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user-level-sw/index.html">User-level Software Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user-level-sw/manual-install.html">Manual Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user-level-sw/linuxbrew.html">Linuxbrew</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user-level-sw/user-hierarchies.html">User-level Hierarchies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sys-sw-info.html">System and Software Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sys-sw-info.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sys-sw-info.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sys-sw-info.html#web-server">Web Server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../winserv.html">Winserv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#common-settings">Common Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#microsoft-windows">Microsoft Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../winserv.html#gnu-linux">GNU/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../databases.html">Databases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#mysql">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#oracle">Oracle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#oracle-apex">Oracle APEX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#mssql">MSSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#sqlite">SQLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases.html#remote-database-connections">Remote Database Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../editors.html">Editors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../editors.html#basic-text-editors">Basic Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editors.html#advanced-text-editors">Advanced Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editors.html#integrated-development-environments">Integrated Development Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editors.html#editorconfig">EditorConfig</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gui-toolkits.html">GUI Toolkits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#choosing-a-toolkit">Choosing a Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#qt">Qt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#wxwidgets">wxWidgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#gtk">GTK+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#tk">Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#swing">Swing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#swt">SWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gui-toolkits.html#native-toolkits">Native Toolkits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../misc.html">Miscellaneous</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#kill-the-x-server">Kill the X Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#directory-navigation">Directory Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#xdg-open">xdg-open</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#uptime">uptime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html#user-interactions">User Interactions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to Mastering EOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/repo-setup.html">Repository Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/prereqs.html">Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/build-system.html">Using the Build System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/edit.html">Editing the Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/make-pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/guidelines.html">Writing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/review-pull-request.html">Reviewing Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/maintenance.html">Maintenance Tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../envvars.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About This Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../about.html#people">People</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about.html#licensing">Licensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about.html#special-thanks">Special Thanks</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Mastering EOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Using the Command Line</a> &raquo;</li>
+      
+    <li>Available Shells</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/shell/shells.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="available-shells">
+<h1>Available Shells<a class="headerlink" href="#available-shells" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="bash">
+<span id="id1"></span><h2>Bash<a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.gnu.org/software/bash/">GNU Bash</a> (<em>Bourne-again shell</em>) is the default shell on many Unix-like systems, including most GNU/Linux distributions and OS X. It is a full-featured shell with many capabilities. Although other shells exist, we recommend first learning Bash because of its ubiquity and popularity. In addition, by learning Bash, you will have a better understanding of other shells if you choose to use them.</p>
+<p>The <a class="reference external" href="http://www.gnu.org/software/bash/manual/bash.html">GNU Bash Manual</a> is the comprehensive guide to all of the workings of the shell. It is a reference manual, so it does not provide a lot of examples. However, it is clear and concise and recommended reading for Bash users. It is also available for the version specific to EOS by typing <tt class="docutils literal"><span class="pre">info</span> <span class="pre">bash</span></tt> on any EOS computer.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">OS X is notorious for including a very outdated version of Bash as the default shell. If you use Bash under OS X, you are recommended to install a newer version using a package manager such as <a class="reference external" href="http://brew.sh/">Homebrew</a>.</p>
+</div>
+</div>
+<div class="section" id="sh">
+<span id="id2"></span><h2>sh<a class="headerlink" href="#sh" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="http://en.wikipedia.org/wiki/Bourne_shell">Bourne shell</a> (also known by sh) is one of the original Unix shells. It is the precursor to many modern shells, including <a class="reference internal" href="#bash"><em>Bash</em></a> and <a class="reference internal" href="#zsh"><em>Zsh</em></a>. Although it is still used for scripts, its use as an interactive shell is primarily historical.</p>
+<p>The sh interpreter is specified by <a class="reference external" href="http://pubs.opengroup.org/onlinepubs/9699919799/nframe.html">POSIX</a> in the <a class="reference external" href="http://pubs.opengroup.org/onlinepubs/9699919799/utilities/sh.html">sh</a> and <a class="reference external" href="http://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html">Shell Command Language</a> pages. On many systems, the command <tt class="cmd docutils literal"><span class="pre">sh</span></tt> actually activates <a class="reference internal" href="#bash"><em>Bash</em></a> in an sh-emulation mode (try <tt class="docutils literal"><span class="pre">sh</span> <span class="pre">--version</span></tt>).</p>
+</div>
+<div class="section" id="zsh">
+<span id="id3"></span><h2>Zsh<a class="headerlink" href="#zsh" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://zsh.sourceforge.net/">Z shell</a> (Zsh) is a very capable shell based on the Bourne shell with too many features to count. Although it is not directly related to <a class="reference internal" href="#bash"><em>Bash</em></a>, those who are proficient in Bash will undoubtedly feel comfortable using Zsh. In many ways, Zsh can be seen as having a superset of Bash&#8217;s features.</p>
+</div>
+<div class="section" id="fish">
+<span id="id4"></span><h2>fish<a class="headerlink" href="#fish" title="Permalink to this headline">¶</a></h2>
+<p>Another interesting shell is <a class="reference external" href="http://fishshell.com/">fish</a>, the friendly interactive shell. fish aims to be a modern shell that works well out-of-the-box. It is especially focused on interactive features such as on-the-fly syntax highlighting, auto-suggestions, and auto-completion. However, it also focuses on having a clean, consistent command interface.</p>
+<p>fish is not installed by default on EOS, so you will have to install using <a class="reference internal" href="../user-level-sw/linuxbrew.html#linuxbrew-section"><em>Linuxbrew</em></a> or compile it manually.</p>
+</div>
+<div class="section" id="other-shells-for-unix-like-systems">
+<h2>Other Shells for Unix-like Systems<a class="headerlink" href="#other-shells-for-unix-like-systems" title="Permalink to this headline">¶</a></h2>
+<p>Two other traditional shells are Tcsh and KornShell. <a class="reference external" href="http://www.tcsh.org/">Tcsh</a> (TENEX C SHell) is a modern shell based on the C shell. <a class="reference external" href="http://www.kornshell.org/">Kornshell</a> is an older shell developed at AT&amp;T Bell Laboratories based on the best features of the Bourne and C shells. For an overview of Unix shell history, and comparison of these shells as well as those listed above, see the <a class="reference external" href="http://www.faqs.org/faqs/unix-faq/shell/shell-differences/">UNIX shell differences</a> article.</p>
+<p>The concept of a shell is neither complex nor set in stone. Many projects have striven to create alternative shells. These are usually based on enhanced interaction with a specific programming language or environment, yet retain some of the usage and concepts of traditional shells:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="58%" />
+<col width="42%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Shell</th>
+<th class="head">Environment</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="http://www.gnu.org/software/emacs/manual/html_mono/eshell.html">Eshell</a></td>
+<td><a class="reference external" href="https://gnu.org/software/emacs/">Emacs</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/jberger/Zoidberg">Zoidberg</a>, <a class="reference external" href="http://gnp.github.io/psh/">psh</a></td>
+<td><a class="reference external" href="http://www.perl.org/">Perl</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://ipython.org/ipython-doc/2/interactive/shell.html">IPython</a></td>
+<td><a class="reference external" href="http://python.org/">Python</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://documentup.com/arturadib/shelljs">ShellJS</a></td>
+<td><a class="reference external" href="http://nodejs.org/">NodeJS</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://pryrepl.org/">Pry</a></td>
+<td><a class="reference external" href="https://www.ruby-lang.org/">Ruby</a></td>
+</tr>
+</tbody>
+</table>
+<p>For a more complete list of shells, see Wikipedia&#8217;s <a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_command_shells">shell comparison</a> and <a class="reference external" href="http://en.wikipedia.org/wiki/Unix_shell">article on Unix shells</a>. For a side-by-side comparison of the syntax of different shells, see <a class="reference external" href="http://hyperpolyglot.org/unix-shells">Hyperpolyglot&#8217;s Unix shells section</a>.</p>
+</div>
+<div class="section" id="which-shell">
+<h2>Which Shell?<a class="headerlink" href="#which-shell" title="Permalink to this headline">¶</a></h2>
+<p>When deciding which shell to use, it is important to consider both types of use: <em>interactive work</em> and <em>scripting</em>. When choosing to use a shell interactively, you are really making that decision only for yourself. However, when deciding which shell to use for a script, you are choosing that shell for the script&#8217;s audience. That could be for yourself only, for the members of your project, or for the world if the script is part of a public project. It is also obviously an advantage to use the same shell for both interactive and script work.</p>
+<p>For interactive work, we recommend starting with <a class="reference internal" href="#bash"><em>Bash</em></a>. Bash is currently the default shell on OS X and most GNU/Linux distributions (including EOS systems). Because Bash is prevalent on many systems and is a full-featured shell, we recommend becoming comfortable with it first.</p>
+<p>Bash is a great shell even for power users. However, there are other shells that offer more built-in features and opportunity for extensibility. Once you have become proficient in Bash, we recommend trying <a class="reference internal" href="#zsh"><em>Zsh</em></a>. Zsh offers a similar experience to Bash but has even more features, plugins, and frameworks.</p>
+<p>For those who have tried <a class="reference internal" href="#bash"><em>Bash</em></a> or <a class="reference internal" href="#zsh"><em>Zsh</em></a> and are looking for something more modern and different, <a class="reference internal" href="#fish"><em>fish</em></a> is a good choice. However, be aware that because it is less popular, less programs, plugins, and frameworks are compatible with it.</p>
+<p>When it comes to scripting, we once again recommend using <a class="reference internal" href="#bash"><em>Bash</em></a>. More exotic shells such as <a class="reference internal" href="#zsh"><em>Zsh</em></a> and <a class="reference internal" href="#fish"><em>fish</em></a> are often not found on systems, meaning that the shell has to be installed before the script can be run. However, Bash&#8217;s prevalence means that it is installed by default on many systems, making it a good choice for scripting. If scripting features of more advanced shells are needed, we recommend instead moving straight to a true programming language such as <a class="reference external" href="http://python.org/">Python</a> or <a class="reference external" href="https://www.ruby-lang.org/">Ruby</a>.</p>
+<p>You may find some recommendations to use <a class="reference internal" href="#sh"><em>sh</em></a> for scripting because it is specified by POSIX while Bash is not. Because Bash is widely available and offers significant benefits over sh, we recommend that you script on the EOS machines using Bash. You will certainly get differing recommendations on this, but we feel Bash&#8217;s features and availability justify its use for scripting.</p>
+</div>
+<div class="section" id="windows-shells">
+<h2>Windows Shells<a class="headerlink" href="#windows-shells" title="Permalink to this headline">¶</a></h2>
+<p>While Unix-like operating systems are known for full-featured shells, Windows also has quite a few shells available.</p>
+<div class="section" id="command-prompt">
+<span id="cmd-exe"></span><h3>Command Prompt<a class="headerlink" href="#command-prompt" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Cmd.exe">Command Prompt</a> (or cmd.exe) is the classic Windows shell, inherited mostly from the <a class="reference external" href="http://en.wikipedia.org/wiki/DOS">DOS</a> shell <a class="reference external" href="http://en.wikipedia.org/wiki/COMMAND.COM">COMMAND.COM</a>. It is a relatively limited shell, with only a basic set of commands. For those looking for a daily shell on Windows, you are recommended to look elsewhere.</p>
+</div>
+<div class="section" id="windows-powershell">
+<span id="powershell"></span><h3>Windows PowerShell<a class="headerlink" href="#windows-powershell" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://microsoft.com/powershell">Windows Powershell</a> is a relatively new advanced shell for Windows released by Microsoft in 2006. Different versions of PowerShell are distributed with Windows starting from Windows 7. PowerShell is based on the <a class="reference external" href="http://en.wikipedia.org/wiki/.NET Framework">.NET Framework</a>, but is inspired by Unix shells like <a class="reference internal" href="#bash"><em>Bash</em></a>.</p>
+<p>Since it has been released, PowerShell has become increasingly popular with developers looking for a decent shell on Windows, and a large number of scripts and plugins have been developed by the community. This makes it a great choice for your Windows shell.</p>
+<p>If you are interested in learning PowerShell and already know Bash, see <a class="reference external" href="http://hyperpolyglot.org/shell">Hyperpolyglot&#8217;s OS automation section</a> for a side-by-side comparison of POSIX shell, Command Prompt, and PowerShell features.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Although Microsoft created a great shell with <a class="reference internal" href="#powershell"><em>Windows PowerShell</em></a>, they did nothing to replace the terrible <a class="reference external" href="http://en.wikipedia.org/wiki/Win32_console">Win32 console</a> provided with Windows, which runs both <a class="reference internal" href="#cmd-exe"><em>Command Prompt</em></a> and <a class="reference internal" href="#powershell"><em>Windows PowerShell</em></a> by default. For a better console on Windows, we recommending checking out <a class="reference external" href="https://code.google.com/p/conemu-maximus5/">ConEmu</a> or <a class="reference external" href="http://sourceforge.net/projects/console/">Console 2</a>.</p>
+</div>
+</div>
+<div class="section" id="cygwin">
+<h3>Cygwin<a class="headerlink" href="#cygwin" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://cygwin.com/">Cygwin</a> is a project which provides a Unix-like environment for Windows, including shells such as <a class="reference internal" href="#bash"><em>Bash</em></a>. If you are looking for many of the tools and libraries you use on Unix-like operating systems, but on Windows, Cygwin is a great choice.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+<footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="interactive.html" class="btn btn-neutral float-right" title="Interactive Shell Use">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="basics.html" class="btn btn-neutral" title="Command-Line Basics"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    
+      &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
+      <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/1a9fdf8">1a9fdf8</a> built 2015-04-26 00:16:12 EDT.<br />
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

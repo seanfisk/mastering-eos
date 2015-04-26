@@ -30,11 +30,13 @@
   
 
   
+    <link rel="stylesheet" href="../_static/table-override.css" type="text/css" />
+  
         <link rel="author" title="About these documents"
               href="../about.html"/>
     <link rel="top" title="Mastering EOS" href="../index.html"/>
         <link rel="next" title="Inter-EOS SSH" href="inter-eos.html"/>
-        <link rel="prev" title="Command Line Basics" href="../basics.html"/>
+        <link rel="prev" title="Shell Scripting" href="../shell/scripts.html"/>
  
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -89,7 +91,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../rules.html#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shell/index.html">Using the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shell/basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/shells.html">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/interactive.html">Interactive Shell Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/scripts.html">Shell Scripting</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="windows/index.html">Microsoft Windows</a></li>
@@ -97,16 +105,11 @@
 <li class="toctree-l2"><a class="reference internal" href="gnu-linux/index.html">GNU/Linux</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#kornshell">Kornshell</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../user-level-sw/index.html">User-level Software Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../user-level-sw/manual-install.html">Manual Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../user-level-sw/linuxbrew.html">Linuxbrew</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user-level-sw/user-hierarchies.html">User-level Hierarchies</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sys-sw-info.html">System and Software Information</a><ul>
@@ -211,7 +214,7 @@
             
   <div class="section" id="remote-access-ssh-vnc">
 <span id="remote-access"></span><h1>Remote Access (SSH/VNC)<a class="headerlink" href="#remote-access-ssh-vnc" title="Permalink to this headline">¶</a></h1>
-<p>When not sitting at a physical machine in the EOS, Arch, or Datacomm labs, EOS can be accessed from home using a protocol called Secure Shell (SSH). SSH gives you a prompt open to <a class="reference internal" href="../shells.html#bash"><em>Bash</em></a>, the default shell on EOS. From this shell, you can run commands as you would inside a normal terminal emulator in an EOS desktop session. The commands will be run on the EOS machine to which you have connected.</p>
+<p>When not sitting at a physical machine in the EOS, Arch, or Datacomm labs, EOS can be accessed from home using a protocol called Secure Shell (SSH). SSH gives you a prompt open to <a class="reference internal" href="../shell/shells.html#bash"><em>Bash</em></a>, the default shell on EOS. From this shell, you can run commands as you would inside a normal terminal emulator in an EOS desktop session. The commands will be run on the EOS machine to which you have connected.</p>
 <p>SSH is a command-line-only technology. However, a graphical remote desktop session is available through a protocol called Virtual Network Computing (VNC). VNC allows access to a graphical desktop as if sitting at an EOS machine. Because the VNC protocol has no security of its own, our lab setup requires tunnelling VNC traffic through the SSH protocol. Each respective guide describes how to do this, but remember that you will first need to successfully set up SSH before attempting to use VNC.</p>
 <p>An alternative to starting an entire desktop session is to run individual graphical applications from an SSH session using the <a class="reference external" href="http://en.wikipedia.org/wiki/X_Window_System">X Window System</a>. This takes advantage of X&#8217;s <a class="reference external" href="http://en.wikipedia.org/wiki/X_Window_System#Purpose_and_abilities">network transparency feature</a> and SSH&#8217;s X forwarding capabilities to render on your local machine applications running on an EOS machine.</p>
 <p>In addition to command-line and graphical access, you will likely need to transfer files between your local machine and EOS. This can be accomplished using the protocols Secure Copy (SCP) and Secure File Transfer Protocol (SFTP). Using these protocols, files can be transferred to and from EOS as well as synced between EOS and your local machine. In addition, the use of software <a class="reference external" href="http://en.wikipedia.org/wiki/Filesystem_in_Userspace">FUSE</a> and <a class="reference external" href="http://en.wikipedia.org/wiki/SSHFS">SSHFS</a> allows you to treat files on EOS as if they were located on your local machine.</p>
@@ -260,7 +263,7 @@
         <a href="inter-eos.html" class="btn btn-neutral float-right" title="Inter-EOS SSH">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../basics.html" class="btn btn-neutral" title="Command Line Basics"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../shell/scripts.html" class="btn btn-neutral" title="Shell Scripting"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -273,7 +276,7 @@
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/389928c">389928c</a> built 2015-04-06 16:03:31 EDT.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/1a9fdf8">1a9fdf8</a> built 2015-04-26 00:16:12 EDT.<br />
     </p>
   </div>
 

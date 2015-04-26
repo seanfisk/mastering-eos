@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Repository Setup &mdash; Mastering EOS</title>
+  <title>Using the Command Line &mdash; Mastering EOS</title>
   
 
   
@@ -35,9 +35,8 @@
         <link rel="author" title="About these documents"
               href="../about.html"/>
     <link rel="top" title="Mastering EOS" href="../index.html"/>
-        <link rel="up" title="Contributing to Mastering EOS" href="index.html"/>
-        <link rel="next" title="Pre-requisites" href="prereqs.html"/>
-        <link rel="prev" title="Contributing to Mastering EOS" href="index.html"/>
+        <link rel="next" title="Command-Line Basics" href="basics.html"/>
+        <link rel="prev" title="Rules and Procedures" href="../rules.html"/>
  
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -92,11 +91,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../rules.html#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../shell/index.html">Using the Command Line</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../shell/basics.html">Command-Line Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shell/shells.html">Available Shells</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shell/interactive.html">Interactive Shell Use</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shell/scripts.html">Shell Scripting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Using the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shells.html">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Shell Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripts.html">Shell Scripting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
@@ -161,15 +160,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../misc.html#user-interactions">User Interactions</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Contributing to Mastering EOS</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">Repository Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prereqs.html">Pre-requisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build-system.html">Using the Build System</a></li>
-<li class="toctree-l2"><a class="reference internal" href="edit.html">Editing the Manual</a></li>
-<li class="toctree-l2"><a class="reference internal" href="make-pull-request.html">Making a Pull Request</a></li>
-<li class="toctree-l2"><a class="reference internal" href="guidelines.html">Writing Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="review-pull-request.html">Reviewing Pull Requests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="maintenance.html">Maintenance Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to Mastering EOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/repo-setup.html">Repository Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/prereqs.html">Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/build-system.html">Using the Build System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/edit.html">Editing the Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/make-pull-request.html">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/guidelines.html">Writing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/review-pull-request.html">Reviewing Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/maintenance.html">Maintenance Tasks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../envvars.html">Environment Variables</a></li>
@@ -202,12 +201,10 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="index.html">Contributing to Mastering EOS</a> &raquo;</li>
-      
-    <li>Repository Setup</li>
+    <li>Using the Command Line</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/contributing/repo-setup.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/shell/index.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -215,15 +212,48 @@
 </div>
           <div role="main">
             
-  <div class="section" id="repository-setup">
-<h1>Repository Setup<a class="headerlink" href="#repository-setup" title="Permalink to this headline">¶</a></h1>
-<p>To obtain the source code for Mastering EOS (which you will be editing), you must go through the Git version control system. Fortunately, the GitHub contribution process is excellently documented. Follow these steps:</p>
-<ol class="arabic simple">
-<li>Read <a class="reference external" href="https://guides.github.com/activities/contributing-to-open-source/#contributing">GitHub&#8217;s guide to Contributing to a Project</a>.</li>
-<li><a class="reference external" href="https://help.github.com/articles/set-up-git/#platform-linux">Set up Git</a> if you have not already done so. You can skip the step of downloading and installing Git &#8212; it is already installed on the EOS computers.</li>
-<li><a class="reference external" href="https://help.github.com/articles/fork-a-repo">Fork and create a local clone</a> of the Mastering EOS repository.</li>
-</ol>
-<p>You have now downloaded the source code to Mastering EOS! Continue on to find out how to build the documents and make changes.</p>
+  <div class="section" id="using-the-command-line">
+<h1>Using the Command Line<a class="headerlink" href="#using-the-command-line" title="Permalink to this headline">¶</a></h1>
+<p><em>What is a shell?</em> A shell is an interface to a computer&#8217;s operating system. You are probably already familiar with at least one shell: your machine&#8217;s <em>graphical shell</em> , also know as a <em>graphical user interface</em> (GUI). This shell allows you to interact with windows, menus, buttons, and many other widgets using the keyboard, mouse, and other peripherals.</p>
+<p>Although there are shells of many types, the other most common type of shell is a text shell, also known as a <em>command-line interface</em> (CLI). Text shells are typically command interpreters: they wait for you to type commands, then execute them when you press <tt class="kbd docutils literal"><span class="pre">Enter</span></tt>. Interaction typically happens with the keyboard only. Unlike most graphical shells, text shells also excel at batch execution.</p>
+<p>Although text and graphical shells share some capabilities, each type of shell has strengths and weaknesses. For many tasks, text shells represent a faster and more concise way to interact with the operating system. A successful computer scientist will learn to be comfortable using both graphical and text shells.</p>
+<p>Please see the <a class="reference external" href="http://en.wikipedia.org/wiki/Shell_(computing)">Wikipedia article on shells</a> for a more detailed explanation on the history and types of shells, as well as the articles on the <a class="reference external" href="http://en.wikipedia.org/wiki/Command-line_interface">Command-line interface</a> and <a class="reference external" href="http://en.wikipedia.org/wiki/Graphical_user_interface">Graphical user interface</a>.</p>
+<p>Read on to continue your adventure with the shell!</p>
+<p>Please make sure to read about interactive use of the shell before reading about shell scripting, as many interactive concepts are also used while scripting.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Command-Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shells.html">Available Shells</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#bash">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#sh">sh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#zsh">Zsh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#fish">fish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#other-shells-for-unix-like-systems">Other Shells for Unix-like Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#which-shell">Which Shell?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shells.html#windows-shells">Windows Shells</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interactive.html">Interactive Shell Use</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#aliases">Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#built-ins">Built-Ins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#quoting">Quoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#environment-variables">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#pipelines">Pipelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#redirection">Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#path-manipulation">Path Manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#startup-files">Startup Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#utilities">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#frameworks">Frameworks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scripts.html">Shell Scripting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scripts.html#shebang">Shebang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripts.html#boilerplate">Boilerplate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripts.html#when-to-shell-script">When to Shell Script</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 
 
@@ -233,10 +263,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="prereqs.html" class="btn btn-neutral float-right" title="Pre-requisites">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="basics.html" class="btn btn-neutral float-right" title="Command-Line Basics">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Contributing to Mastering EOS"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../rules.html" class="btn btn-neutral" title="Rules and Procedures"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

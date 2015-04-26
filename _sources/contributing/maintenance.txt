@@ -29,6 +29,8 @@ Although everything in the manual having to do with EOS needs to be kept up-to-d
 - Ensure that we still run each of the :ref:`databases` and that the login mechanisms still work.
 - Ensure that the URL for :ref:`oracle-apex` is still accurate.
 - Ensure that all advertised :ref:`editors` are still available on EOS. Those that aren't should be placed in their respective section's *Other* subsection.
+- Ensure that :ref:`bash` 4 is still the default shell on EOS. At this time of writing, a user's default shell can't be changed. If it can in the future, make a note about this in :ref:`shell-interactive`.
+- Ensure that :ref:`sh` still invokes Bash. That would be embarassing if it isn't and we use it as an example.
 - Ensure that all the steps outlined in :ref:`contributing` still work.
 - Ensure that the :ref:`list of maintainers <maintainers>` stays up-to-date.
 

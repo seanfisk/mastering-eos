@@ -15,9 +15,8 @@
 
    intro
    rules
-   basics
+   shell/index
    remote-access/index
-   shells
    user-level-sw/index
    sys-sw-info
    winserv

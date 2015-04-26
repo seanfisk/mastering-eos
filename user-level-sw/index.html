@@ -30,11 +30,13 @@
   
 
   
+    <link rel="stylesheet" href="../_static/table-override.css" type="text/css" />
+  
         <link rel="author" title="About these documents"
               href="../about.html"/>
     <link rel="top" title="Mastering EOS" href="../index.html"/>
         <link rel="next" title="The Standard Hierarchy" href="std-hierarchy.html"/>
-        <link rel="prev" title="Shells" href="../shells.html"/>
+        <link rel="prev" title="Alternative Clients" href="../remote-access/gnu-linux/alternatives.html"/>
  
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -89,7 +91,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../rules.html#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shell/index.html">Using the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shell/basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/shells.html">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/interactive.html">Interactive Shell Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/scripts.html">Shell Scripting</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/windows/index.html">Microsoft Windows</a></li>
@@ -97,16 +105,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/gnu-linux/index.html">GNU/Linux</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#kornshell">Kornshell</a></li>
-</ul>
-</li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">User-level Software Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="std-hierarchy.html">The Standard Hierarchy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual-install.html">Manual Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linuxbrew.html">Linuxbrew</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-hierarchies.html">User-level Hierarchies</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sys-sw-info.html">System and Software Information</a><ul>
@@ -211,7 +214,7 @@
             
   <div class="section" id="user-level-software-installation">
 <h1>User-level Software Installation<a class="headerlink" href="#user-level-software-installation" title="Permalink to this headline">¶</a></h1>
-<p>The EOS labs already have many packages installed to augment the base system. However, it is entirely possible that your work requires software which is not already installed. In this case, one option is to request the installation of this software from <a class="reference external" href="mailto:woodriir&#37;&#52;&#48;gvsu&#46;edu">Ira Woodring</a>. This is a good option if you feel the software would also be useful to others. If the software is primarily for personal use, however, you are advised to first attempt a user-level installation of the software.</p>
+<p>The EOS Labs already have many packages installed to augment the base system. However, it is entirely possible that your work requires software which is not already installed. In this case, one option is to request the installation of this software from <a class="reference external" href="mailto:woodriir&#37;&#52;&#48;gvsu&#46;edu">Ira Woodring</a>. This is a good option if you feel the software would also be useful to others. If the software is primarily for personal use, however, you are advised to first attempt a user-level installation of the software.</p>
 <p>Begin by reading about the <a class="reference internal" href="std-hierarchy.html#std-hierarchy"><em>The Standard Hierarchy</em></a>, and then try your hand at <a class="reference internal" href="manual-install.html#manual-install"><em>Manual Installation</em></a>. Once you have succeeded at installing the examples manually, give <a class="reference internal" href="linuxbrew.html#linuxbrew-section"><em>Linuxbrew</em></a> a try.</p>
 <div class="toctree-wrapper compound">
 <ul>
@@ -220,12 +223,17 @@
 <li class="toctree-l2"><a class="reference internal" href="manual-install.html#ready-the-prefix">Ready the Prefix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual-install.html#download-and-extract">Download and Extract</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual-install.html#build-the-software">Build the Software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual-install.html#adjusting-the-environment">Adjusting the Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual-install.html#library-dependencies">Library Dependencies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual-install.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="linuxbrew.html">Linuxbrew</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-hierarchies.html">User-level Hierarchies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-hierarchies.html#executable-path">Executable Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-hierarchies.html#man-and-info-paths">Man and Info Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-hierarchies.html#managing-paths">Managing Paths</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -240,7 +248,7 @@
         <a href="std-hierarchy.html" class="btn btn-neutral float-right" title="The Standard Hierarchy">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../shells.html" class="btn btn-neutral" title="Shells"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../remote-access/gnu-linux/alternatives.html" class="btn btn-neutral" title="Alternative Clients"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -253,7 +261,7 @@
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/389928c">389928c</a> built 2015-04-06 16:03:31 EDT.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/1a9fdf8">1a9fdf8</a> built 2015-04-26 00:16:12 EDT.<br />
     </p>
   </div>
 

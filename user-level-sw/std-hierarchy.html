@@ -30,6 +30,8 @@
   
 
   
+    <link rel="stylesheet" href="../_static/table-override.css" type="text/css" />
+  
         <link rel="author" title="About these documents"
               href="../about.html"/>
     <link rel="top" title="Mastering EOS" href="../index.html"/>
@@ -90,7 +92,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../rules.html#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shell/index.html">Using the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shell/basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/shells.html">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/interactive.html">Interactive Shell Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/scripts.html">Shell Scripting</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/windows/index.html">Microsoft Windows</a></li>
@@ -98,16 +106,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/gnu-linux/index.html">GNU/Linux</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#kornshell">Kornshell</a></li>
-</ul>
-</li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">User-level Software Installation</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="">The Standard Hierarchy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual-install.html">Manual Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linuxbrew.html">Linuxbrew</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-hierarchies.html">User-level Hierarchies</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sys-sw-info.html">System and Software Information</a><ul>
@@ -214,12 +217,12 @@
             
   <div class="section" id="the-standard-hierarchy">
 <span id="std-hierarchy"></span><h1>The Standard Hierarchy<a class="headerlink" href="#the-standard-hierarchy" title="Permalink to this headline">¶</a></h1>
-<p>Before installing software on your own, it is important to understand the concept of the standard hierarchy. The standard hierarchy is a way of organizing files on the filesystem such that it may be used cohesively by multiple programs. If you are a Windows or Mac OS X user, you may be used to programs having their own subdirectories of <tt class="file docutils literal"><span class="pre">C:Program</span> <span class="pre">Files</span></tt> or <tt class="file docutils literal"><span class="pre">/Applications</span></tt>, respectively. However, UNIX-like machines do not typically work in this way, electing instead to separate installed files by type or purpose.</p>
-<p>The root hierarchy, <tt class="file docutils literal"><span class="pre">/</span></tt>, is the directory which contains all other files. Files which are absolutely essential to the system&#8217;s operation may be installed here. The primary hierarchy for programs used by a typical user is the <tt class="file docutils literal"><span class="pre">/usr</span></tt> hierarchy. Both these hierarchies can contain each of the following directories:</p>
+<p>Before installing software on your own, it is important to understand the concept of the standard hierarchy. The standard hierarchy is a way of organizing files on the filesystem such that it may be used cohesively by multiple programs. If you are a Windows or Mac OS X user, you may be used to programs having their own subdirectories in <tt class="file docutils literal"><span class="pre">C:\Program</span> <span class="pre">Files</span></tt> or <tt class="file docutils literal"><span class="pre">/Applications</span></tt>, respectively. However, Unix-like machines do not typically work in this way, electing instead to separate installed files by type or purpose.</p>
+<p>The root hierarchy, <tt class="file docutils literal"><span class="pre">/</span></tt>, is the directory which contains all other files. Files which are absolutely essential to the system&#8217;s operation may be installed here. The primary hierarchy for programs used by a standard user is the <tt class="file docutils literal"><span class="pre">/usr</span></tt> hierarchy. Both these hierarchies can contain each of the following directories:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="11%" />
-<col width="89%" />
+<col width="20%" />
+<col width="80%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Name</th>
@@ -230,26 +233,30 @@
 <tr class="row-even"><td><tt class="docutils literal"><span class="pre">bin</span></tt></td>
 <td>Program executable files; <em>bin</em> stands for <em>binary</em> which is another name for <em>executable</em></td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">include</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">sbin</span></tt></td>
+<td>Programs used for system administration</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">include</span></tt></td>
 <td>Include files (headers) for the C programming language</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">lib</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">lib</span></tt></td>
 <td>Shared libraries, which frequently correspond to headers in the <tt class="docutils literal"><span class="pre">include</span></tt> directory</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">etc</span></tt></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">etc</span></tt></td>
 <td>Configuration files <a class="footnote-reference" href="#etc" id="id1">[1]</a></td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">src</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">src</span></tt></td>
 <td>Source code for programs installed to said hierarchy</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">man</span></tt></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">man</span></tt>, <tt class="docutils literal"><span class="pre">share/man</span></tt></td>
 <td>Manual pages for programs installed to said hierarchy</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">share/info</span></tt></td>
+<td>Info documentation for programs installed to said hierarchy</td>
 </tr>
 </tbody>
 </table>
 <p>Although there are more directories which can be present in each hierarchy, these directories are the most important ones with which to be familiar.</p>
-<p>Files in the root and <tt class="file docutils literal"><span class="pre">/usr</span></tt> filesystems are usually readable but not writable by ordinary users. Ordinary users typically only have one directory to where persistent data can be written: their home directory. This is typically <tt class="samp docutils literal"><span class="pre">/home/</span><em><span class="pre">username</span></em></tt>. As such, this is the place where a user installs their own programs. Although the system hierarchies cannot be written by a standard user, the structure of these system hierarchies is typically mirrored by hierarchies created in a user&#8217;s home directory.</p>
-<p>Programs typically look in the system hierarchies for programs, headers, libraries, configuration files, and other data files which they may use or need. Special considerations usually need to be applied in order to make programs compile and run correctly from a user&#8217;s home directory.</p>
 <p>For more information on the standard hierarchy, please see the very well-written <a class="reference external" href="http://www.pathname.com/fhs/">Filesystem Hierarchy Standard</a>, which is the source of most of this information.</p>
 <table class="docutils footnote" frame="void" id="etc" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -257,6 +264,13 @@
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Unlike most hierarchy directories which contain files related to other files in their hierarchy, configuration files in <tt class="file docutils literal"><span class="pre">/etc</span></tt> are usually used to configure programs in many different hierarchies. Software configuration is a complex beast &#8212; consult each specific piece of software&#8217;s documentation for the exact files used for configuration.</td></tr>
 </tbody>
 </table>
+<p>Files in the root and <tt class="file docutils literal"><span class="pre">/usr</span></tt> hierarchies are usually readable but not writable by standard users. Standard users usually only have one directory to which persistent data can be written: their home directory. This is typically <tt class="samp docutils literal"><span class="pre">/home/</span><em><span class="pre">username</span></em></tt>. As such, this is the place where a user installs their own programs. Although the system hierarchies cannot be written by a standard user, the structure of these system hierarchies is often mirrored by hierarchies created in a user&#8217;s home directory.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">A hierarchy is not a special directory, simply a sane way of organizing files. It can be created by a build system like <a class="reference internal" href="manual-install.html#cmake-section"><em>CMake</em></a> or <a class="reference internal" href="manual-install.html#autotools-section"><em>Autotools</em></a>, a package manager like <a class="reference internal" href="linuxbrew.html#linuxbrew-section"><em>Linuxbrew</em></a>, or manually on your own!</p>
+</div>
+<p>Programs typically look in the system hierarchies for programs, headers, libraries, configuration files, and other data files which they may use or need. Special considerations usually need to be applied in order to make programs compile and run correctly from a user&#8217;s home directory.</p>
+<p>After installing programs to a user-level hierarchy, follow the directions in <a class="reference internal" href="user-hierarchies.html#user-hierarchies"><em>User-level Hierarchies</em></a> in order to correctly use them.</p>
 </div>
 
 
@@ -282,7 +296,7 @@
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/389928c">389928c</a> built 2015-04-06 16:03:31 EDT.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/1a9fdf8">1a9fdf8</a> built 2015-04-26 00:16:12 EDT.<br />
     </p>
   </div>
 

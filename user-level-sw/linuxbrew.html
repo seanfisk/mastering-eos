@@ -30,11 +30,13 @@
   
 
   
+    <link rel="stylesheet" href="../_static/table-override.css" type="text/css" />
+  
         <link rel="author" title="About these documents"
               href="../about.html"/>
     <link rel="top" title="Mastering EOS" href="../index.html"/>
         <link rel="up" title="User-level Software Installation" href="index.html"/>
-        <link rel="next" title="System and Software Information" href="../sys-sw-info.html"/>
+        <link rel="next" title="User-level Hierarchies" href="user-hierarchies.html"/>
         <link rel="prev" title="Manual Installation" href="manual-install.html"/>
  
   <script>
@@ -90,7 +92,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../rules.html#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shell/index.html">Using the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shell/basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/shells.html">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/interactive.html">Interactive Shell Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shell/scripts.html">Shell Scripting</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/windows/index.html">Microsoft Windows</a></li>
@@ -98,16 +106,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../remote-access/gnu-linux/index.html">GNU/Linux</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shells.html#kornshell">Kornshell</a></li>
-</ul>
-</li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">User-level Software Installation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="std-hierarchy.html">The Standard Hierarchy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual-install.html">Manual Installation</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Linuxbrew</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-hierarchies.html">User-level Hierarchies</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sys-sw-info.html">System and Software Information</a><ul>
@@ -214,7 +217,7 @@
             
   <div class="section" id="linuxbrew">
 <span id="linuxbrew-section"></span><h1>Linuxbrew<a class="headerlink" href="#linuxbrew" title="Permalink to this headline">¶</a></h1>
-<p>Linuxbrew is a package manager for GNU/Linux systems. The main advantage of Linuxbrew over system package managers like Apt and Yum is that it allows installation of software on a per-user basis. Linuxbrew is a Linux port of Homebrew, the popular package manager for Mac OS X. As such, some of its packages still contain Mac-specific code or do not yet build on GNU/Linux. Your mileage may vary, but in general Linuxbrew works quite well.</p>
+<p><a class="reference external" href="http://brew.sh/linuxbrew/">Linuxbrew</a> is a package manager for GNU/Linux systems. The main advantage of Linuxbrew over system package managers like Apt and Yum is that it allows installation of software on a per-user basis. Linuxbrew is a Linux port of <a class="reference external" href="http://brew.sh/">Homebrew</a>, the popular package manager for Mac OS X. As such, some of its packages still contain Mac-specific code or do not yet build on GNU/Linux. Your mileage may vary, but in general Linuxbrew works quite well.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p class="last">Before using Linuxbrew, please make sure that you are comfortable with compiling and installing software manually. Although Linuxbrew generally makes installing user-level software much easier, there is no magic &#8212; it performs the same steps as you would during a manual install. When Linuxbrew does not behave as intended, you will need knowledge of manual installation to fix the problem. What we are saying is this: do not come to <a class="reference external" href="mailto:woodriir&#37;&#52;&#48;gvsu&#46;edu">Ira Woodring</a> with Linuxbrew package installation issues unless you have first tried to compile the software on your own.</p>
@@ -236,6 +239,11 @@
 </pre></div>
 </div>
 <p>This command uses <a class="reference external" href="http://nixos.org/patchelf.html">patchelf</a>, which can also be installed using Linuxbrew ;)</p>
+<p>You can use the version of tmux you just installed by typing:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>~/.linuxbrew/bin/tmux
+</pre></div>
+</div>
+<p>Continue reading <a class="reference internal" href="user-hierarchies.html#user-hierarchies"><em>User-level Hierarchies</em></a> to find out how to use it without typing the full path and to make your locally-installed version override the system version.</p>
 <p>Enjoy installing packages using Linuxbrew!</p>
 </div>
 
@@ -246,7 +254,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../sys-sw-info.html" class="btn btn-neutral float-right" title="System and Software Information">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="user-hierarchies.html" class="btn btn-neutral float-right" title="User-level Hierarchies">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="manual-install.html" class="btn btn-neutral" title="Manual Installation"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -262,7 +270,7 @@
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="../_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/389928c">389928c</a> built 2015-04-06 16:03:31 EDT.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/1a9fdf8">1a9fdf8</a> built 2015-04-26 00:16:12 EDT.<br />
     </p>
   </div>
 

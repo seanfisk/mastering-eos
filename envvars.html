@@ -30,6 +30,8 @@
   
 
   
+    <link rel="stylesheet" href="_static/table-override.css" type="text/css" />
+  
         <link rel="author" title="About these documents"
               href="about.html"/>
     <link rel="top" title="Mastering EOS" href="index.html"/>
@@ -89,7 +91,13 @@
 <li class="toctree-l2"><a class="reference internal" href="rules.html#games">Games</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="basics.html">Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell/index.html">Using the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shell/basics.html">Command-Line Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell/shells.html">Available Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell/interactive.html">Interactive Shell Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell/scripts.html">Shell Scripting</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="remote-access/index.html">Remote Access (SSH/VNC)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/inter-eos.html">Inter-EOS SSH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="remote-access/windows/index.html">Microsoft Windows</a></li>
@@ -97,16 +105,11 @@
 <li class="toctree-l2"><a class="reference internal" href="remote-access/gnu-linux/index.html">GNU/Linux</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="shells.html">Shells</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#bash">Bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#tcsh">Tcsh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shells.html#kornshell">Kornshell</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="user-level-sw/index.html">User-level Software Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="user-level-sw/std-hierarchy.html">The Standard Hierarchy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user-level-sw/manual-install.html">Manual Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user-level-sw/linuxbrew.html">Linuxbrew</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-level-sw/user-hierarchies.html">User-level Hierarchies</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sys-sw-info.html">System and Software Information</a><ul>
@@ -211,29 +214,29 @@
             
   <div class="section" id="environment-variables">
 <span id="env-vars"></span><h1>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h1>
-<p>This page contains a list of all environment variables referred to in the manual.</p>
+<p>This page contains a list of all environment variables referred to in the manual. Another list is the <a class="reference external" href="http://en.wikibooks.org/wiki/Guide_to_Unix/Environment_Variables">Guide to Unix&#8217;s Environment Variables section</a>.</p>
 <dl class="envvar">
-<dt id="envvar-PATH">
-<tt class="descname">PATH</tt><a class="headerlink" href="#envvar-PATH" title="Permalink to this definition">¶</a></dt>
-<dd><p>The GNU/Linux search path for executable files.</p>
+<dt id="envvar-CPPFLAGS">
+<tt class="descname">CPPFLAGS</tt><a class="headerlink" href="#envvar-CPPFLAGS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flags given to the C pre-processor during compilation. See the <a class="reference external" href="http://www.gnu.org/software/autoconf/manual/autoconf.html#Preset-Output-Variables">Autoconf manual on Preset Output Variables</a>.</p>
 </dd></dl>
 
 <dl class="envvar">
-<dt id="envvar-MANPATH">
-<tt class="descname">MANPATH</tt><a class="headerlink" href="#envvar-MANPATH" title="Permalink to this definition">¶</a></dt>
-<dd><p>The search path for manual pages readable by <tt class="cmd docutils literal"><span class="pre">man</span></tt>.</p>
+<dt id="envvar-EDITOR">
+<tt class="descname">EDITOR</tt><a class="headerlink" href="#envvar-EDITOR" title="Permalink to this definition">¶</a></dt>
+<dd><p>The command for the editor to run when a file needs editing. Programs which use this variable include crontab, <a class="reference internal" href="user-level-sw/linuxbrew.html#linuxbrew-section"><em>Linuxbrew</em></a>, and various version control systems. There is no standard for how it is interpreted. Depending on the program reading it, it could be interpreted as a command-line interpreted by the shell (likely passed to <a class="reference external" href="http://pubs.opengroup.org/onlinepubs/9699919799/functions/popen.html">popen</a>) or a single name or path to an editor (likely passed to <a class="reference external" href="http://pubs.opengroup.org/onlinepubs/9699919799/functions/exec.html">exec family</a>). For maxiumum portability, set the value to a single name or path without spaces so that it can be utilized in both ways. See <a class="reference internal" href="shell/interactive.html#shell-env-vars-example"><em>this example</em></a> for how it may be used with crontab.</p>
 </dd></dl>
 
 <dl class="envvar">
 <dt id="envvar-INFOPATH">
 <tt class="descname">INFOPATH</tt><a class="headerlink" href="#envvar-INFOPATH" title="Permalink to this definition">¶</a></dt>
-<dd><p>The search path for manual pages readable by <tt class="cmd docutils literal"><span class="pre">info</span></tt>.</p>
+<dd><p>The search path for manual pages readable by <tt class="cmd docutils literal"><span class="pre">info</span></tt>. See <a class="reference internal" href="user-level-sw/user-hierarchies.html#man-info-paths"><em>Man and Info Paths</em></a> for instructions on how to set it.</p>
 </dd></dl>
 
 <dl class="envvar">
-<dt id="envvar-CPPFLAGS">
-<tt class="descname">CPPFLAGS</tt><a class="headerlink" href="#envvar-CPPFLAGS" title="Permalink to this definition">¶</a></dt>
-<dd><p>Flags given to the C pre-processor during compilation. See the <a class="reference external" href="http://www.gnu.org/software/autoconf/manual/autoconf.html#Preset-Output-Variables">Autoconf manual on Preset Output Variables</a>.</p>
+<dt id="envvar-LD_LIBRARY_PATH">
+<tt class="descname">LD_LIBRARY_PATH</tt><a class="headerlink" href="#envvar-LD_LIBRARY_PATH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Additional paths in which the dynamic linker should search for shared libraries. See <a class="reference external" href="http://www.eyrie.org/~eagle/notes/rpath.html">Russ Allbery&#8217;s notes on Shared Library Search Paths</a>, the <a class="reference external" href="http://www.gnu.org/software/autoconf/manual/autoconf.html#Preset-Output-Variables">Autoconf manual on Preset Output Variables</a>, and the <a class="reference external" href="http://en.wikipedia.org/wiki/Rpath">Wikipedia entry on rpath</a>.</p>
 </dd></dl>
 
 <dl class="envvar">
@@ -243,9 +246,21 @@
 </dd></dl>
 
 <dl class="envvar">
-<dt id="envvar-LD_LIBRARY_PATH">
-<tt class="descname">LD_LIBRARY_PATH</tt><a class="headerlink" href="#envvar-LD_LIBRARY_PATH" title="Permalink to this definition">¶</a></dt>
-<dd><p>Additional paths in which the dynamic linker should search for shared libraries. See <a class="reference external" href="http://www.eyrie.org/~eagle/notes/rpath.html">Russ Allbery&#8217;s notes on Shared Library Search Paths</a>, the <a class="reference external" href="http://www.gnu.org/software/autoconf/manual/autoconf.html#Preset-Output-Variables">Autoconf manual on Preset Output Variables</a>, and the <a class="reference external" href="http://en.wikipedia.org/wiki/Rpath">Wikipedia entry on rpath</a>.</p>
+<dt id="envvar-MANPATH">
+<tt class="descname">MANPATH</tt><a class="headerlink" href="#envvar-MANPATH" title="Permalink to this definition">¶</a></dt>
+<dd><p>The search path for manual pages readable by <tt class="cmd docutils literal"><span class="pre">man</span></tt>. See <a class="reference internal" href="user-level-sw/user-hierarchies.html#man-info-paths"><em>Man and Info Paths</em></a> for instructions on how to set it.</p>
+</dd></dl>
+
+<dl class="envvar">
+<dt id="envvar-PATH">
+<tt class="descname">PATH</tt><a class="headerlink" href="#envvar-PATH" title="Permalink to this definition">¶</a></dt>
+<dd><p>The GNU/Linux search path for executable files. See <a class="reference internal" href="shell/interactive.html#shell-path-manip"><em>Path Manipulation</em></a> for how to manipulate it and <a class="reference internal" href="user-level-sw/user-hierarchies.html#user-hierarchies-path"><em>Executable Path</em></a> for how to set it correctly for user-level hierarchies.</p>
+</dd></dl>
+
+<dl class="envvar">
+<dt id="envvar-PWD">
+<tt class="descname">PWD</tt><a class="headerlink" href="#envvar-PWD" title="Permalink to this definition">¶</a></dt>
+<dd><p>The current working directory. This variable is usually set and exported by the shell.</p>
 </dd></dl>
 
 <dl class="envvar">
@@ -279,7 +294,7 @@
       &copy; Copyright 2015 Sean Fisk and Ira Woodring<br />
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>&nbsp;&nbsp;All text licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.<br />
       <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="_static/apache-feather.png" height="15"></a>&nbsp;&nbsp;All code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> unless otherwise stated.<br />
-      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/389928c">389928c</a> built 2015-04-06 16:03:31 EDT.<br />
+      Revision <a href="https://github.com/seanfisk/mastering-eos/commit/1a9fdf8">1a9fdf8</a> built 2015-04-26 00:16:12 EDT.<br />
     </p>
   </div>
 
