@@ -27,6 +27,7 @@ import locale
 extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.extlinks',
+    'sphinxcontrib.spelling',
     # 'rst2pdf.pdfbuilder',
 ]
 

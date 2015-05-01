@@ -53,6 +53,10 @@ class LinkcheckContext(waflib.Build.BuildContext):
     """runs the Sphinx link checker"""
     cmd = 'linkcheck'
 
+class SpellingContext(waflib.Build.BuildContext):
+    """run the Sphinx spellchecker"""
+    cmd = 'spelling'
+
 def options(ctx):
     # This option puts the project in developer mode, which causes the build
     # system to make certain assumptions which speed up the build (and hence
