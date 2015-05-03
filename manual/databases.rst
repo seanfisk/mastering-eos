@@ -13,7 +13,7 @@ MySQL is a powerful open-source database. To access it via the command-line, log
 
    mysql -u smithj -p -h cis.gvsu.edu
 
-This attempts to log you in with the provided username, using a password, to the host cis.gvsu.edu (our MySQL server).
+This attempts to log you in with the provided username, using a password, to the host ``cis.gvsu.edu`` (our MySQL server).
 
 Oracle
 ======
@@ -35,8 +35,8 @@ http://dbserv.cis.gvsu.edu:5560/apex
 
 You will need to provide a workspace name, username, and password.  If your username is :samp:`smithj`, a sample login would be
 
-:Workspace: smithj_ws
-:Username: smithj
+:Workspace: ``smithj_ws``
+:Username: ``smithj``
 :Password: \**********
 
 Do not attempt to use the *Reset Password* feature on the APEX homepage; it has never worked properly. If you attempt to use it you will be unable to login until a system administrator can delete and recreate your account.
@@ -51,7 +51,7 @@ SQLite
 
 The SQLite system is a relational database that can exist within your home directory. SQLite is different from the above mentioned databases in that it does not operate as a client/server set of processes, but instead can be linked to the application being programmed. As many databases as need be created (within storage limits) can be created by you, as each database is merely a separate file on the filesystem.
 
-Outside of a programming context, SQLite can be accessed from the commandline with::
+Outside of a programming context, SQLite can be accessed from the command-line with::
 
    sqlite3
 

@@ -106,7 +106,7 @@ This command should have created a :file:`editorconfig-core-c-0.12.0` directory 
 
    cd editorconfig-core-c-0.12.0
 
-You are now in the root of the Editorconfig C Core source distribution.
+You are now in the root of the EditorConfig C Core source distribution.
 
 .. _EditorConfig C Core: https://github.com/editorconfig/editorconfig-core-c
 .. _download page for EditorConfig C Core 0.12.0: http://sourceforge.net/projects/editorconfig/files/EditorConfig-C-Core/0.12.0/source/
