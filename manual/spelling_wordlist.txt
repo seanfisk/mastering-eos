@@ -120,6 +120,10 @@ xdg
 xfreerdp
 xinetd
 
+KiB
+MiB
+GiB
+
 Woodring
 Xah
 cis
