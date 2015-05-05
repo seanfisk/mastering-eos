@@ -65,9 +65,6 @@ html_title = project
 # using the given strftime format.
 html_last_updated_fmt = '%Y-%m-%d %H:%M:%S %Z'
 
-# If false, no module index is generated.
-html_domain_indices = False
-
 # Output file base name for HTML help builder.
 htmlhelp_basename = _slug
 
@@ -79,9 +76,6 @@ htmlhelp_basename = _slug
 latex_documents = [
     ('index', _slug + '.tex', project, _authors_str, 'manual'),
 ]
-
-# If false, no module index is generated.
-latex_domain_indices = False
 
 # -- Options for manual page output ---------------------------------------
 
@@ -101,10 +95,10 @@ texinfo_documents = [
      'EOS Lab Documentation', 'Miscellaneous'),
 ]
 
-# If false, no module index is generated.
-texinfo_domain_indices = False
-
 # -- Custom Options -------------------------------------------------------
+
+# Disable module indices for all our output types.
+html_domain_indices = latex_domain_indices = texinfo_domain_indices = False
 
 _github_url = 'https://github.com/seanfisk/mastering-eos'
 
