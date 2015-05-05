@@ -76,4 +76,4 @@ Although the previous ``export`` commands work fine, there is a lot of repetitio
 
 .. literalinclude:: ../shell/profile.bash
    :language: bash
-   :lines: 9-35
+   :lines: 8-34
