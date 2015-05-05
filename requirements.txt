@@ -8,11 +8,6 @@ MarkupSafe==0.23
 docutils==0.12
 sphinx-rtd-theme==0.1.6
 
-# For the manual's reportlab builder (not currently in use)
-#rst2pdf==0.93
-#reportlab==3.0
-#pdfrw==0.1
-
 # Fabric, used for fetching info from and deployment to EOS
 Fabric==1.10.1
 ecdsa==0.11
