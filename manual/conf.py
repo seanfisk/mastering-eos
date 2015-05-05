@@ -23,13 +23,13 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Mastering EOS'
-unix_name = 'mastering-eos'
-authors = ['Sean Fisk', 'Ira Woodring']
-authors_str = ' and '.join(authors)
-copyright = '{year} {authors_str}'.format( # pylint: disable=redefined-builtin
-    year=date.today().year, authors_str=authors_str)
+_slug = 'mastering-eos'
+_authors = ['Sean Fisk', 'Ira Woodring']
+_authors_str = ' and '.join(_authors)
+copyright = '{0} {1}'.format( # pylint: disable=redefined-builtin
+    date.today().year, _authors_str)
 # Name of the man page and info docs.
-man_info_name = 'eos'
+_short_name = 'eos'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -69,7 +69,7 @@ html_last_updated_fmt = '%Y-%m-%d %H:%M:%S %Z'
 html_domain_indices = False
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = unix_name
+htmlhelp_basename = _slug
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -77,7 +77,7 @@ htmlhelp_basename = unix_name
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ('index', unix_name + '.tex', project, authors_str, 'manual'),
+    ('index', _slug + '.tex', project, _authors_str, 'manual'),
 ]
 
 # If false, no module index is generated.
@@ -88,7 +88,7 @@ latex_domain_indices = False
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', man_info_name, project, authors, 7),
+    ('index', _short_name, project, _authors, 7),
 ]
 
 # -- Options for Texinfo output -------------------------------------------
@@ -97,7 +97,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', man_info_name, project, authors_str, project,
+    ('index', _short_name, project, _authors_str, project,
      'EOS Lab Documentation', 'Miscellaneous'),
 ]
 
