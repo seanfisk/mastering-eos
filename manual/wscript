@@ -26,8 +26,9 @@ def configure(ctx):
 
 def build(ctx):
     is_linkcheck = ctx.cmd == 'linkcheck'
+    is_spelling = ctx.cmd == 'spelling'
     if not (any(map(ctx.should_build, SPHINX_TARGET_BUILDERS.keys())) or
-            is_linkcheck):
+            is_linkcheck or is_spelling):
         return
 
     fingerprints_table_path = (
@@ -93,6 +94,12 @@ def build(ctx):
             # will crash out on the first dead link. We have internal links
             # that we know it will fail on, so we want it to run to completion.
             warningiserror=False,
+        )
+    elif is_spelling:
+        sphinx_kwds = dict(
+            builders=['spelling'],
+            # Turn off quiet to print out spelling problems.
+            quiet=False,
         )
     else:
         fmt, is_open = ctx.env.SPECIFIC_TARGET

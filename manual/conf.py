@@ -27,6 +27,7 @@ import locale
 extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.extlinks',
+    'sphinxcontrib.spelling',
     # 'rst2pdf.pdfbuilder',
 ]
 
@@ -528,3 +529,6 @@ _override_command_role()
 def setup(app):
     """Hook into Sphinx's application setup."""
     app.add_stylesheet('table-override.css')
+
+# Show suggestions for spellchecker.
+spelling_show_suggestions = True
