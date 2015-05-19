@@ -125,6 +125,6 @@ When creating hyperlinks in rST, do not use backticks when they are not necessar
 Linking to Sections
 -------------------
 
-Although regular reST supports `implicit hyperlink targets`_ to section titles, etc., we recommend using the Sphinx-specific :sphinx-role:`ref role <ref>` for cross-referencing. See the last sentence of the :sphinx-role:`ref` documentation if you are curious as to why.
+Although regular rST supports `implicit hyperlink targets`_ to section titles, etc., we recommend using the Sphinx-specific :sphinx-role:`ref role <ref>` for cross-referencing. See the last sentence of the :sphinx-role:`ref` documentation if you are curious as to why.
 
 .. _implicit hyperlink targets: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#implicit-hyperlink-targets

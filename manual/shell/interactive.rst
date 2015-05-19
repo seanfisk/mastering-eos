@@ -92,7 +92,7 @@ This is because Bash splits the command line it is given based upon spaces, and 
 
 Single quotes remove any special meaning from all the characters inside them. *Always use single quotes when the characters inside the quotes should not be interpreted by the shell.*
 
-:bash:`Double quotes <Double-Quotes>` may be used to expand only the meaning of certain shell metacharacters. They are most often used for variable substitution. For example, to print your current working directory::
+:bash:`Double quotes <Double-Quotes>` may be used to expand only the meaning of certain shell meta-characters. They are most often used for variable substitution. For example, to print your current working directory::
 
    $ echo "My current directory is: $PWD"
    My current directory is: /home/smithj/directory name with spaces
@@ -375,7 +375,7 @@ The file :file:`myfiles.txt` will now contain the usual output of :cmd:`ls`. Inp
 
    $ write smithj <hello-john.txt # does not wait for input
 
-Both input and output redirection can be used simulatenously. To find all words which have the letters "eos" in them, and write them to a file::
+Both input and output redirection can be used simultaneously. To find all words which have the letters "eos" in them, and write them to a file::
 
    $ grep --fixed-strings --ignore-case eos </usr/share/dict/words >eos-words.txt
 
@@ -633,7 +633,7 @@ To allow changes to your shell startup files to take effect, you need to restart
 |SSH session               |End the session and SSH back in.           |Close the shell and start it again. If you|
 |                          |                                           |only have one shell open (e.g., not using |
 |                          |                                           |tmux), this will be the same as ending    |
-|                          |                                           |your SSH ssession and logging back in.    |
+|                          |                                           |your SSH session and logging back in.     |
 +--------------------------+-------------------------------------------+------------------------------------------+
 |Text terminal             |End the session and log back in.           |Close the shell and start it again. If you|
 |                          |                                           |only have one shell open (e.g., not using |

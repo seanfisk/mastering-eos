@@ -1,3 +1,25 @@
+.. spelling::
+
+   Davide
+   Donley
+   Dulimarta
+   Engelsma
+   Kurmas
+   Medawar
+   Nemecek
+   O'Hearn
+   Robb
+   Roys
+   Strebel
+   Trefftz
+   Vanderzouwen
+   Vanklompenberg
+   Vento
+   Wolffe
+   Woodring
+   Woodring
+   Zach
+
 ==========================
  About This Documentation
 ==========================
@@ -50,7 +72,7 @@ Thanks to GVSU students:
 
 - James Donley for getting me into programming, user-level installation, and far more than I could possibly remember or list here.
 - Dave Medawar for teaching me about SSH, Bash, VNC, remote printing, the VPN, web servers, and much more.
-- John Roys and James Vanderzouwem for advice and encouragement.
+- John Roys and James Vanderzouwen for advice and encouragement.
 - Paul Wand for learning to program with me.
 - Joseph Roth for teaching me how to use Git.
 - Sam DeHaan for working for many hours on various projects with me in the Arch lab.

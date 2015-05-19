@@ -1,7 +1,7 @@
 Shared Connections
 ------------------
 
-There is a about a minute timeout between allowed successive connnections to each individual EOS machine. This can prove very annoying when establishing multiple SSH connections to use :program:`scp` to copy files or opening multiple terminals (but see terminal multiplexing). One way to mitigate this annoyance is by using GVSU's VPN. Another way is to used SSH shared connections. These solutions are also not mutually exclusive.
+There is a about a minute timeout between allowed successive connections to each individual EOS machine. This can prove very annoying when establishing multiple SSH connections to use :program:`scp` to copy files or opening multiple terminals (but see terminal multiplexing). One way to mitigate this annoyance is by using GVSU's VPN. Another way is to used SSH shared connections. These solutions are also not mutually exclusive.
 
 Shared connections are established by creating a socket which multiplexes multiple connections. This socket is controlled by the ``ControlMaster`` and ``ControlPath`` keywords. The first connection is called the "master" and creates the socket. Subsequent connections use the already-created socket. This behavior can be automated by setting ``ControlMaster`` to the value ``auto``. ``ControlPath`` specifies the path to the socket, with variables substituted as necessary. The following config amend the previous config to add connection sharing to EOS machines.
 

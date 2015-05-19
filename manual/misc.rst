@@ -31,7 +31,7 @@ After you have used :cmd:`pushd` and stored one or more directories on the stack
 dirs
 ----
 
-:cmd:`dirs` allows you to see what directories you have stored on the stack. The far left directory is the most recently saved. Another way to view the directory from most recent to least recent is by using the commmand ``dirs -v``.
+:cmd:`dirs` allows you to see what directories you have stored on the stack. The far left directory is the most recently saved. Another way to view the directory from most recent to least recent is by using the command ``dirs -v``.
 
 xdg-open
 ========

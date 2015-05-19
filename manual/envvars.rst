@@ -14,7 +14,7 @@ This page contains a list of all environment variables referred to in the manual
 
 .. envvar:: EDITOR
 
-   The command for the editor to run when a file needs editing. Programs which use this variable include crontab, :ref:`linuxbrew-section`, and various version control systems. There is no standard for how it is interpreted. Depending on the program reading it, it could be interpreted as a command-line interpreted by the shell (likely passed to :posix:`popen <functions/popen>`) or a single name or path to an editor (likely passed to :posix:`exec family <functions/exec>`). For maxiumum portability, set the value to a single name or path without spaces so that it can be utilized in both ways. See :ref:`this example <shell-env-vars-example>` for how it may be used with crontab.
+   The command for the editor to run when a file needs editing. Programs which use this variable include crontab, :ref:`linuxbrew-section`, and various version control systems. There is no standard for how it is interpreted. Depending on the program reading it, it could be interpreted as a command-line interpreted by the shell (likely passed to :posix:`popen <functions/popen>`) or a single name or path to an editor (likely passed to :posix:`exec family <functions/exec>`). For maximum portability, set the value to a single name or path without spaces so that it can be utilized in both ways. See :ref:`this example <shell-env-vars-example>` for how it may be used with crontab.
 
 .. envvar:: INFOPATH
 

@@ -49,19 +49,19 @@ Any files may be stored in your home directory. This includes games, movies, and
 
 These incidents are usually caused by unintentional permissions issues or deliberate misuse of the system. Whatever the cause, copyright infringement is a violation of school policy.
 
-These cases are taken very seriously. Your user account will be terminated immediatly upon discovering the infringement. Additionally, this offense is against our school's honor code, so you may be expelled or even face criminal proceedings.
+These cases are taken very seriously. Your user account will be terminated immediately upon discovering the infringement. Additionally, this offense is against our school's honor code, so you may be expelled or even face criminal proceedings.
 
 Suffice to say, please be very careful when dealing with copyrighted materials within the EOS system. Be familiar with how permissions work, and take the time to set them correctly.
 
 Food and Drink
 ==============
 
-You are allowed to eat and drink in the labs --- these labs were made for you and we want them to be as comfortable and useful as possible. Many restaraunts in the area deliver to the labs. However, it is your responsibility to clean up after yourself. If the lab becomes too messy, policies to limit food and drinks will be instituted.
+You are allowed to eat and drink in the labs --- these labs were made for you and we want them to be as comfortable and useful as possible. Many restaurants in the area deliver to the labs. However, it is your responsibility to clean up after yourself. If the lab becomes too messy, policies to limit food and drinks will be instituted.
 
 Overnight Parking
 =================
 
-Even if you have a parking pass, it is still neccessary to obtain a special permit to park overnight. These permits are granted by Campus Safety. Parking overnight without one of these permits can result in a ticket or towing.
+Even if you have a parking pass, it is still necessary to obtain a special permit to park overnight. These permits are granted by Campus Safety. Parking overnight without one of these permits can result in a ticket or towing.
 
 Living in the Lab
 =================

@@ -10,6 +10,6 @@ We have tried various VNC clients, but found Remmina to be the easiest to use. H
 * `RealVNC Viewer <http://realvnc.com/download/viewer/>`_ --- free and paid versions available
 * `RealVNC Viewer for Google Chrome <https://chrome.google.com/webstore/detail/vnc-viewer-for-google-chr/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en>`_ --- free Google Chrome extension
 
-Operation of each of these applications is similar. For the host, enter in the hostname of the EOS machine to which you have SSH'ed. If a display is requested, enter ``0``; if a port is requested, enter ``5900`` (these mean the same thing). If the viewer offers support for multiple protocols, make sure you select "VNC".
+Operation of each of these applications is similar. For the host, enter in the hostname of the EOS machine to which you have logged in to using SSH. If a display is requested, enter ``0``; if a port is requested, enter ``5900`` (these mean the same thing). If the viewer offers support for multiple protocols, make sure you select "VNC".
 
 .. include:: ../common/filezilla-warning.rst

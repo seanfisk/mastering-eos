@@ -16,7 +16,7 @@ needs_sphinx = '1.3'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.extlinks']
+extensions = ['sphinx.ext.extlinks', 'sphinxcontrib.spelling']
 
 # The master toctree document.
 master_doc = 'index'
@@ -204,3 +204,6 @@ _override_command_role()
 def setup(app):
     """Hook into Sphinx's application setup."""
     app.add_stylesheet('table-override.css')
+
+# Show suggestions for spellchecker.
+spelling_show_suggestions = True

@@ -1,7 +1,7 @@
 Multi-Hop Connections
 ---------------------
 
-Oftentimes a machine is only available when SSH'ing into another machine. For example, this is the case with the DEN's Okami server, used in CIS 677 High-Performance Computing. In addition, Okami's SSH server is only available on a non-standard port. This typically results in the user going through this process:
+Oftentimes a machine is only available by first using SSH to login to another machine. For example, this is the case with the DEN's Okami server, used in CIS 677 High-Performance Computing. In addition, Okami's SSH server is only available on a non-standard port. This typically results in the user going through this process:
 
 .. code-block:: console
 

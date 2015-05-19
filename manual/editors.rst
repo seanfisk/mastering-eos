@@ -64,7 +64,7 @@ Vim
    :alt: Vim logo
    :target: Vim_
 
-Vim_ (Vi IMmproved) is an editor inspired by the classic :wikipedia:`vi` editor. One of the most popular editors of all time, Vim is included with many operating systems and available for many others. Vim is unique as compared to other popular editors in that it features a modal interface in which different keys execute different actions. Vim is customizable through `Vim script`_ as well as other languages. The first version of Vim was released in 1991, while the first version of vi was released in 1976.
+Vim_ (Vi IMproved) is an editor inspired by the classic :wikipedia:`vi` editor. One of the most popular editors of all time, Vim is included with many operating systems and available for many others. Vim is unique as compared to other popular editors in that it features a modal interface in which different keys execute different actions. Vim is customizable through `Vim script`_ as well as other languages. The first version of Vim was released in 1991, while the first version of vi was released in 1976.
 
 As mentioned, Vim is available for many platforms including Windows, Mac OS X, and GNU/Linux.
 
