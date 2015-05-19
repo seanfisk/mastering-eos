@@ -221,7 +221,7 @@ class sphinx_build_task(waflib.Task.Task):
         # BuildEnvironment.update() docstring: "(Re-)read all files new or
         # changed since last update." Note that this only returns *doc names
         # that have been updated*.
-        summary, num_docs_reread, updated_doc_names_iterator = app.env.update(
+        updated_doc_names = app.env.update(
             app.config,
             app.srcdir,
             app.doctreedir,
@@ -237,13 +237,17 @@ class sphinx_build_task(waflib.Task.Task):
         # dependency *if it changed*.
 
         # Add documents which have been updated.
-        for doc_name in updated_doc_names_iterator:
-            doc_path = doc_name + app.config.source_suffix
-            doc_node = self.src_dir_node.find_node([doc_path])
-            if doc_node is None:
+        suffixes = app.config.source_suffix
+        for doc_name in updated_doc_names:
+            for suffix in suffixes:
+                doc_node = self.src_dir_node.find_node([doc_name + suffix])
+                if doc_node:
+                    break
+            else:
                 raise waflib.Errors.WafError(
-                    'Could not find Sphinx document node: {0}'.format(
-                        doc_path))
+                    'Could not find Sphinx document node at any of: {0}'
+                    .format(', '.join(
+                        doc_name + suffix for suffix in suffixes)))
             dependency_nodes.add(doc_node)
 
         # Add dependencies of documents which have been updated.
@@ -257,7 +261,7 @@ class sphinx_build_task(waflib.Task.Task):
                 if node is None:
                     raise waflib.Errors.WafError(
                         'Could not find Sphinx document dependency node: {0}'
-                        .format(doc_path))
+                        .format(dependency_path))
                 dependency_nodes.add(node)
 
         # Sphinx's Builder.build() methods calls

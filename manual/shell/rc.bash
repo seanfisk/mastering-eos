@@ -1,4 +1,3 @@
-# .bashrc
 # Run for interactive Bash non-login shell
 
 # Use a custom multiline prompt

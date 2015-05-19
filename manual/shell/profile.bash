@@ -1,4 +1,3 @@
-# .bash_profile
 # Run for interactive Bash login shells
 
 # Set umask for more privacy. Child processes inherit the umask from

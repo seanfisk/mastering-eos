@@ -605,9 +605,11 @@ Here are some example startup files which illustrate many of the features mentio
 
 .. literalinclude:: profile.bash
    :language: bash
+   :caption: :file:`~/.bash_profile`
 
 .. literalinclude:: rc.bash
    :language: bash
+   :caption: :file:`~/.bashrc`
 
 .. _shell-startup-apply:
 
