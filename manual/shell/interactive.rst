@@ -482,8 +482,8 @@ Your output will probably contain more paths, and trying to decipher them from a
       /usr/bin
       /usr/local/sbin
       /usr/sbin
-      $ alias path-print='(IFS='"$'\n'"'; echo "${path[*]}")' # similar to the Bash technique
-      $ echo "${PATH//:/\n}"
+      $ alias path-print='(IFS='"$'\n'"'; echo "${path[*]}")'
+      $ echo "${PATH//:/\n}" # similar to the Bash technique
       /usr/local/bin
       /usr/bin
       /usr/local/sbin
