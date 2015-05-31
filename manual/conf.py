@@ -18,6 +18,12 @@ needs_sphinx = '1.3'
 # ones.
 extensions = ['sphinx.ext.extlinks', 'sphinxcontrib.spelling']
 
+# Add any paths that contain templates here, relative to this directory.
+#
+# This needs to be specified, or else files in the '_templates' dir won't be
+# picked up.
+templates_path = ['_templates']
+
 # The master toctree document.
 master_doc = 'index'
 
