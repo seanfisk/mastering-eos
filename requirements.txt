@@ -20,9 +20,6 @@ ecdsa==0.11
 paramiko==1.15.2
 pycrypto==2.6.1
 
-# GitHub pages deployment
-ghp-import==0.4.1
-
 # Table parsing/generation
 texttable==0.8.2
 grako==3.4.3

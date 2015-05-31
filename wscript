@@ -14,7 +14,6 @@ import fnmatch
 
 import six
 import waflib
-from waflib.Task import always_run
 
 # Waf constants
 APPNAME = 'mastering-eos'
@@ -129,7 +128,6 @@ def configure(ctx):
             'extra',
         ],
         tooldir=WAF_TOOLS_DIR)
-    ctx.find_program('ghp-import', var='GHP_IMPORT')
 
     # Add the vendor directory to the TeX search path so that our vendored
     # packages can be found.
@@ -303,36 +301,20 @@ def archive(ctx):
 
 # Deploy context and command
 
-@always_run
-class ghp_import_task(waflib.Task.Task):
-    """Handle run of ghp-import."""
-
-    vars = ['GHP_IMPORT']
-
-    def __init__(self, dir_node, *args, **kwargs):
-        super(ghp_import_task, self).__init__(*args, **kwargs)
-        self._dir_node = dir_node
-
-    def run(self):
-        return self.exec_command(self.env.GHP_IMPORT + [
-            '-n', # Include a .nojekyll file in the branch
-            '-p', # Push the branch after import
-            self._dir_node.abspath(),
-        ])
-
 class DeployContext(waflib.Build.BuildContext):
     cmd = 'deploy'
     fun = 'deploy'
 
 def deploy(ctx):
-    """deploys the docs to the website and EOS"""
-    # Deploy man and info docs
+    """deploys the docs to EOS"""
     hostnames_node = ctx.path.find_or_declare('hostnames')
+    website_node = ctx.bldnode.find_dir('website')
     ctx(features='fabric',
         fabfile=ctx.path.find_resource('fabfile.py'),
         commands=collections.OrderedDict([
+            ('deploy_website', dict(webdir=website_node.abspath())),
             ('set_hosts', dict(hostfile=hostnames_node.abspath())),
-            ('deploy_to_eos', dict(
+            ('deploy_individual', dict(
                 manpage=ctx.bldnode.find_node([
                     'manual', 'man', 'eos.7']).abspath(),
                 infodoc=ctx.bldnode.find_node([
@@ -342,11 +324,6 @@ def deploy(ctx):
         ]),
         source=[hostnames_node],
         always=True)
-
-    # Deploy GitHub pages
-    website_node = ctx.bldnode.find_dir('website')
-    ghp_task = ghp_import_task(website_node, env=ctx.env)
-    ctx.add_to_group(ghp_task)
 
 class LintContext(waflib.Build.BuildContext):
     cmd = 'lint'

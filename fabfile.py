@@ -12,13 +12,14 @@ import re
 import six
 from fabric.api import ( # pylint: disable=import-error
     env, task, runs_once, execute, run, get, put)
+from fabric.contrib.project import rsync_project
 from texttable import Texttable
 
 # Allow being overridden from the command line.
 if env.hosts == []:
     # Since the EOS hostnames are determined dynamically, set the only one
     # we've determined we "know for sure". This host is used to obtain the
-    # '/etc/hosts' file for EOS.
+    # '/etc/hosts' file for EOS and to run website deployment.
     env.hosts = ['eos01.cis.gvsu.edu']
 
 # Instruct Fabric to read the SSH config file, but only if it exists. Fabric
@@ -106,7 +107,22 @@ def download_hosts_file(output):
     get(remote_path='/etc/hosts', local_path=output)
 
 @task
-def deploy_to_eos(manpage, infodoc, webscript):
+@runs_once
+def deploy_website(webdir):
+    ("Deploy the website to the ``meos`` user's ``public_html`` directory "
+     'on EOS. Requires authorization to log in under that user.')
+    env.user = 'meos'
+    rsync_project(
+        remote_dir='public_html',
+        # End with a trailing slash so that contents of the local directory are
+        # copied, not the directory itself.
+        local_dir=os.path.normpath(webdir) + '/',
+        delete=True,
+        extra_opts='--chmod=go=rX',
+    )
+
+@task
+def deploy_individual(manpage, infodoc, webscript):
     ('Upload the man page, info docs, and web docs script to each EOS machine.'
      ' Requires root access to said machines.')
     # Collect args and assign more sensible names. We will be doing a lot of
