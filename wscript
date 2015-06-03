@@ -89,6 +89,10 @@ def options(ctx):
 
 def configure(ctx):
     # Assign the URL for substitution in various places.
+    #
+    # If you change the URL, please make sure to change it on the GitHub page
+    # as well as in the file CONTRIBUTING.rst (this can't be substituted, else
+    # we would).
     ctx.env.URL = 'http://seanfisk.com/mastering-eos/'
 
     ctx.find_program('pylint')
