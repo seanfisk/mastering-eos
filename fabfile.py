@@ -8,6 +8,7 @@ See <http://fabfile.org/>
 import os
 from pipes import quote as shquote
 import re
+from collections import defaultdict
 
 import six
 from fabric.api import ( # pylint: disable=import-error
@@ -30,6 +31,7 @@ SSH_KEYGEN_RE = re.compile(
     r'\d+\s+(?P<fingerprint>(?:(?:[0-9a-f]{2}):){15}[0-9a-f]{2})',
     # Don't care about case for hex digits.
     flags=re.IGNORECASE)
+FQDN_RE = re.compile(r'(?P<lab>[a-z]+)(?P<num>\d+)\.cis\.gvsu\.edu')
 
 def _get_fingerprint():
     """Retrieve the SSH fingerprint for a specific machine."""
@@ -75,18 +77,30 @@ def make_ssh_fingerprints_table(output):
     # The default decoration produces the correct table.
     table.header(['Host', 'Fingerprint'])
 
-    for host, command_output in sorted(six.iteritems(results_dict)):
-        # Use the short host name.
-        short_hostname = host.split('.')[0]
+    labs = defaultdict(list)
 
-        fingerprint_text = (
-            # Indicate that the host is down in the table.
-            'down for maintenance' if
+    for host, command_output in sorted(six.iteritems(results_dict)):
+        match = FQDN_RE.match(host)
+        if not match:
+            raise ValueError('Unexpected FQDN for CIS machine')
+        labs[match.group('lab')].append((match.group('num'), command_output))
+
+    for lab, machines in sorted(six.iteritems(labs)):
+        # Find out if one machine is down, or the entire lab (Arch goes down
+        # for the summer).
+        down_text = (
+            'lab down for season' if
             # Fabric returns the exception if the task failed.
-            isinstance(command_output, Exception)
+            all(isinstance(command_output, Exception)
+                for num, command_output in machines)
+            else 'machine down for maintenance')
+        table.add_rows(((
+            '{}{}'.format(lab, num),
+            # Indicate that the host is down in the table.
+            down_text if isinstance(command_output, Exception)
             # Use a fixed-width font for the fingerprint itself.
-            else '``{0}``'.format(command_output))
-        table.add_row((short_hostname, fingerprint_text))
+            else '``{}``'.format(command_output)
+        ) for num, command_output in machines), header=False)
 
     with open(output, 'w') as output_file:
         six.print_(table.draw(), file=output_file)
