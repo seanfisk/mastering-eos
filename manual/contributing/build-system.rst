@@ -1,3 +1,7 @@
+.. spelling::
+
+   linter
+
 ========================
  Using the Build System
 ========================
@@ -50,6 +54,30 @@ The build will create outputs in various formats. Run *one* of the following com
 .. hint:: It is not necessary to run ``./waf build`` before running any of these commands --- for example, ``./waf ohtml`` will build the HTML docs, then open them in a browser. However, it will not update the poster, PDF, etc.
 
 Although we'd like all the outputs to look good, we primarily focus on the HTML output.
+
+.. _contributing-run-tests:
+
+Run the Tests
+=============
+
+There are two tests you are encouraged to run to ensure quality of the documentation. The first checks for spelling mistakes::
+
+   ./waf spelling
+
+This will output words detected as misspelled in the documentation, with suggestions on how to correct the misspellings. You should make sure that no misspelled words are reported. If words that are correct are reported, configure them as an exception in that document by using the spelling directive:
+
+.. code-block:: rst
+
+   .. spelling::
+
+      automagically
+      borked
+
+Another lesser-used command runs our code linter (Pylint_). This should be run every time our Python infrastructure code is modified, and should not report any messages::
+
+   ./waf lint
+
+.. _Pylint: http://pylint.org/
 
 Other commands
 ==============

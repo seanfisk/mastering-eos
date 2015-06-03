@@ -28,7 +28,7 @@ Fire up your editor to open the file::
 
 Find the sentence and make the change.
 
-As shown in the previous section, you will want to :ref:`contributing-build-docs` and :ref:`contributing-view-results` after you make your change. Once you are happy with how it looks, it is time to create a branch on which to commit your change.
+As shown in the previous section, you will want to :ref:`contributing-build-docs` and :ref:`contributing-view-results` after you make your change. Please make sure that you :ref:`contributing-run-tests` and they pass, specifically the ``spelling`` task for any documentation changes. Once you are happy with your modifications, it is time to create a branch on which to commit them.
 
 .. _Sphinx's reStructuredText Primer: http://sphinx-doc.org/rest.html
 
