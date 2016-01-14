@@ -93,14 +93,6 @@ def make_ssh_fingerprints_table(output):
 
 @task
 @runs_once
-def download_vncts_file(output):
-    """Download the ``vncts`` file from EOS."""
-    get(remote_path='/etc/xinetd.d/vncts',
-        # local_path can be a file-like object.
-        local_path=output)
-
-@task
-@runs_once
 def download_hosts_file(output):
     """Download the ``hosts`` file from EOS."""
     get(remote_path='/etc/hosts', local_path=output)
